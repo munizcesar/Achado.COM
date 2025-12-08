@@ -14,78 +14,20 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <style>
-/* --- ESTILOS GERAIS --- */
 body {margin:0;font-family:Arial;background:#0A1026;color:#FFFFFF;}
-.topo {
-    text-align:center;
-    padding:30px 20px; /* Mais padding para dar 'respiro' ao título */
-    background:linear-gradient(90deg,#1A1F71,#0A1026);
-} 
-.topo h1 {
-    color:#FFD700;
-    font-size: 38px; /* Aumenta o tamanho para impacto */
-    letter-spacing: 2px; /* Espaçamento sutil para elegância */
-    text-transform: uppercase;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6); /* Efeito de brilho premium */
-    margin: 0; /* Remove margem padrão do h1 */
-}
-.topo p {
-    font-size: 18px;
-    margin-top: 5px;
-}
-
-/* --- SEÇÃO HERO/CTA --- */
+.topo {text-align:center;padding:20px;background:linear-gradient(90deg,#1A1F71,#0A1026);} 
+.topo h1 {color:#FFD700;font-size:32px;}
 .hero {position:relative;text-align:center;}
 .hero img {width:100%;max-height:480px;object-fit:cover;border-radius:12px;}
-.cta {
-    position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);
-    backdrop-filter:blur(12px);
-    padding:20px 30px;
-    border-radius:15px;
-    background:rgba(255,255,255,0.1);
-    text-align: center; /* Centraliza texto dentro do CTA */
-} 
-.cta h2 {
-    font-size: 26px;
-    color: #FFFFFF;
-    margin-bottom: 15px; /* Espaçamento abaixo do título */
-    margin-top: 0;
-}
+.cta {position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);backdrop-filter:blur(12px);padding:20px 30px;border-radius:15px;background:rgba(255,255,255,0.1);} 
 .botao {padding:14px 28px;border:none;background:#FFD700;color:#0A1026;font-size:20px;cursor:pointer;border-radius:10px;transition:0.3s;} 
 .botao:hover {transform:scale(1.07);box-shadow:0 0 18px #FFD700;} 
-
-/* --- SEÇÃO QR CODE --- */
-.qrcode{
-    margin: 40px auto; /* Mais espaçamento superior */
-    text-align:center;
-} 
-.qrcode h3 {
-    font-size: 24px;
-    color: #FFFFFF;
-    margin-bottom: 20px;
-}
+footer{text-align:center;padding:20px;background:linear-gradient(90deg,#0A1026,#1A1F71);margin-top:20px;} 
+@media(max-width:768px){.hero img{max-height:320px;} .cta{width:80%;}} 
+.qrcode{margin:30px auto;text-align:center;} 
 .qrcode img{width:180px;filter:drop-shadow(0 0 08px #070707);} 
 
-/* --- SEÇÃO REVIEW DE EXEMPLO --- */
-.review-content {
-    padding: 40px 20px;
-    max-width: 800px;
-    margin: 0 auto; /* Centraliza o conteúdo de review */
-}
-.review-content h2 {
-    text-align: center;
-    color: #FFD700;
-    font-size: 30px; 
-    margin-bottom: 30px;
-}
-
-/* --- FOOTER --- */
-footer{text-align:center;padding:20px;background:linear-gradient(90deg,#0A1026,#1A1F71);margin-top:20px;} 
-
-/* --- RESPONSIVIDADE --- */
-@media(max-width:768px){.hero img{max-height:320px;} .cta{width:80%;}} 
-
-/* 🟢 CSS DA PRÉVIA DE PRODUTO (MANUAL) 🟢 */
+/* 🟢 CSS DA PRÉVIA DE PRODUTO 🟢 */
 .product-preview-box {
     margin: 30px auto; 
     border: 1px solid #FFD700; /* Borda da sua cor de destaque */
@@ -108,26 +50,26 @@ footer{text-align:center;padding:20px;background:linear-gradient(90deg,#0A1026,#
 }
 
 .product-image-container {
-    flex-shrink: 0; 
-    width: 150px; 
-    height: 150px; 
+    flex-shrink: 0; /* Impede que a imagem encolha */
+    width: 150px; /* Largura fixa para a imagem da prévia */
+    height: 150px; /* Altura fixa */
     overflow: hidden;
 }
 
 .product-image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover; /* Garante que a imagem preencha sem distorcer */
 }
 
 .product-info {
     padding: 10px 15px;
-    flex-grow: 1; 
+    flex-grow: 1; /* Permite que o texto preencha o restante do espaço */
 }
 
 .product-title {
     margin-top: 0;
-    color: #FFD700; 
+    color: #FFD700; /* Título em destaque */
     font-size: 18px;
 }
 
@@ -160,8 +102,8 @@ footer{text-align:center;padding:20px;background:linear-gradient(90deg,#0A1026,#
 </div>
 </section>
 
-<section class="review-content">
-    <h2>Análise Completa: Novo Lançamento</h2>
+<section class="review-content" style="padding: 20px;">
+    <h2 style="text-align: center; color: #FFD700; margin-bottom: 30px;">Análise Completa: Novo Lançamento</h2>
     
     <p>Nesta análise, exploramos o mais recente produto que está dominando o mercado. Nossa pontuação foi 5/5 devido à qualidade e ao custo-benefício. Se você busca um "achado" premium, veja o link abaixo:</p>
     
@@ -180,7 +122,7 @@ footer{text-align:center;padding:20px;background:linear-gradient(90deg,#0A1026,#
             
         </a>
     </div>
-    <p>Este produto representa o melhor em inovação e durabilidade. Não perca a chance de adquiri-lo com as condições especiais do nosso grupo VIP!</p>
+    <p>Para mais análises como esta, entre em nosso grupo VIP!</p>
 </section>
 <section class="qrcode">
 <h3>Entre pelo QR Code</h3>
