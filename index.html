@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Achado.COM: Onde o Premium vira Achado!</title>
+
+<meta property="og:image" content="https://achado.netlify.app/img/og-previa.jpg" />
+<meta property="og:title" content="🔥 Achado.COM: Onde o Premium vira Achado!" />
+<meta property="og:description" content="Acesse o grupo e receba as melhores Ofertas Premium em primeira mão. Estoques limitados!" />
+<meta property="og:url" content="https://achado.netlify.app/" />
+<meta property="og:type" content="website" />
+
+<meta name="twitter:card" content="summary_large_image">
+
+<style>
+/* --- ESTILOS GERAIS --- */
+body {margin:0;font-family:Arial;background:#0A1026;color:#FFFFFF;}
+.topo {
+    text-align:center;
+    padding:30px 20px;
+    background:linear-gradient(90deg,#1A1F71,#0A1026);
+} 
+.topo h1 {
+    color:#FFD700;
+    font-size: 38px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 0 0px rgba(255, 215, 0, 0.6);
+    margin: 0;
+}
+.topo p {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+/* --- SEÇÃO HERO/CTA --- */
+.hero {position:relative;text-align:center;}
+
+/* Estilo Básico para ambas as imagens */
+.hero img {
+    width:100%;
+    max-height:480px; /* Altura máxima para desktop */
+    object-fit:cover;
+    border-radius:12px;
+}
+/* Oculta a imagem mobile no desktop por padrão */
+.hero-img-mobile {
+    display: none; 
+}
+/* Exibe a imagem desktop por padrão */
+.hero-img-desktop {
+    display: block; 
+}
+
+.cta {
+    position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);
+    backdrop-filter:blur(12px);
+    padding:20px 30px;
+    border-radius:15px;
+    background:rgba(255,255,255,0.1);
+    text-align: center;
+} 
+.cta h2 {
+    font-size: 26px;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+.botao {padding:14px 28px;border:none;background:#FFD700;color:#0A1026;font-size:20px;cursor:pointer;border-radius:10px;transition:0.3s;} 
+.botao:hover {transform:scale(1.07);box-shadow:0 0 18px #FFD700;} 
+
+/* --- SEÇÃO QR CODE --- */
+.qrcode{
+    margin: 40px auto;
+    text-align:center;
+} 
+.qrcode h3 {
+    font-size: 24px;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+.qrcode img{width:180px;filter:drop-shadow(0 0 08px #070707);} 
+
+/* --- SEÇÃO REVIEW DE EXEMPLO --- */
+.review-content {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.review-content h2 {
+    text-align: center;
+    color: #FFD700;
+    font-size: 30px; 
+    margin-bottom: 30px;
+}
+
+/* --- FOOTER --- */
+footer{text-align:center;padding:20px;background:linear-gradient(90deg,#0A1026,#1A1F71);margin-top:20px;} 
+
+/* --- MEDIA QUERIES (PARA CELULAR) --- */
+@media(max-width:768px){
+    /* 🛑 TROCA DE IMAGENS 🛑 */
+    .hero-img-desktop {
+        display: none; /* Oculta a imagem desktop no celular */
+    }
+    .hero-img-mobile {
+        display: block; /* Exibe a imagem mobile no celular */
+    }
+    .hero img{max-height:320px;} /* Altura para celular */
+    .cta{width:80%;}
+} 
+
+/* 🟢 CSS DA PRÉVIA DE PRODUTO (MANUAL) 🟢 */
+.product-preview-box {
+    margin: 30px auto; 
+    border: 1px solid #FFD700; 
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 500px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.product-link {
+    display: flex; 
+    text-decoration: none;
+    color: #FFFFFF;
+    background: #1A1F71; 
+    transition: background 0.3s;
+}
+
+.product-link:hover {
+    background: #252a8d; 
+}
+
+.product-image-container {
+    flex-shrink: 0; 
+    width: 150px; 
+    height: 150px; 
+    overflow: hidden;
+}
+
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.product-info {
+    padding: 10px 15px;
+    flex-grow: 1; 
+}
+
+.product-title {
+    margin-top: 0;
+    color: #FFD700; 
+    font-size: 18px;
+}
+
+.product-description {
+    font-size: 14px;
+    color: #CCCCCC;
+    margin-bottom: 5px;
+}
+
+.product-url {
+    display: block;
+    font-size: 12px;
+    color: #A0A0A0;
+}
+</style>
+</head>
+<body>
+<header class="topo">
+<h1>🔥 Achado.COM</h1>
+<p>Onde o Premium vira Achado!</p>
+</header>
+
+<section class="hero">
+    <img src="imagem_desktop.jpg" alt="Imagem Principal Desktop" class="hero-img-desktop">
+    
+    <img src="imagem_celular.jpg" alt="Imagem Principal Celular" class="hero-img-mobile">
+    
+    <div class="cta">
+        <h2>Ofertas Premium ao seu Alcance</h2>
+        <a href="https://chat.whatsapp.com/E6kgRRbyoiP99NoIANB81t" target="_blank">
+            <button class="botao">Entrar no Grupo</button>
+        </a>
+    </div>
+</section>
+
+<section class="review-content">
+    <h2>Oferta do Dia>></h2>
+    
+    <p>Este é o produto que realmente faz a diferença. Ele está no radar do mercado e se destaca pela sua qualidade superior e um custo-benefício notável. Se você busca uma solução premium que realmente vale o investimento, este é um achado imperdível.</p>
+    
+    <div class="product-preview-box">
+        <a href="SEU_LINK_DE_AFILIADO_OU_PRODUTO_AQUI" target="_blank" class="product-link">
+            
+            <div class="product-image-container">
+                <img src="caminho/para/imagem-do-produto.jpg" alt="Nome do Produto">
+            </div>
+            
+            <div class="product-info">
+                <h4 class="product-title">NOME DO PRODUTO REVISADO (MÁX. 40 CARACTERES)</h4>
+                <p class="product-description">Clique aqui para ver a oferta exclusiva e o preço atualizado na loja!</p>
+                <span class="product-url">Acesse agora: LojaOficial.com</span>
+            </div>
+            
+        </a>
+    </div>
+    <p>Este produto representa o melhor em inovação e durabilidade. Não perca a chance de adquiri-lo com as condições especiais do nosso grupo VIP!</p>
+</section>
+<section class="qrcode">
+<h3>Entre pelo QR Code</h3>
+<img src="qrcode_achado.png" alt="QR Code Achado.COM">
+</section>
+
+<footer>
+<p>© 2025 Achado.COM - Todos os Direitos Reservados</p>
+</footer>
+</body>
+</html>
