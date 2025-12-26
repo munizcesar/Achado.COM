@@ -1,0 +1,333 @@
+/* --- ESTILOS GERAIS --- */
+body {margin:0;font-family:Arial;background:#0A1026;color:#FFFFFF;}
+.topo {
+    text-align:center;
+    padding:30px 20px;
+    background:linear-gradient(90deg,#1A1F71,#0A1026);
+} 
+.topo h1 {
+    color:#FFD700;
+    font-size: 38px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 0 0px rgba(255, 215, 0, 0.6);
+    margin: 0;
+}
+.topo p {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+/* --- SEÇÃO HERO/CTA --- */
+.hero {position:relative;text-align:center;}
+
+/* Estilo Básico para ambas as imagens */
+.hero img {
+    width:100%;
+    max-height:620px; /* Altura máxima para desktop */
+    object-fit:cover;
+    border-radius:12px;
+}
+/* Oculta a imagem mobile no desktop por padrão */
+.hero-img-mobile {
+    display: none; 
+}
+/* Exibe a imagem desktop por padrão */
+.hero-img-desktop {
+    display: block; 
+}
+
+.cta {
+    position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);
+    backdrop-filter:blur(12px);
+    padding:20px 30px;
+    border-radius:15px;
+    background:rgba(255,255,255,0.1);
+    text-align: center;
+} 
+.cta h2 {
+    font-size: 26px;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+.botao {padding:14px 28px;border:none;background:#FFD700;color:#0A1026;font-size:20px;cursor:pointer;border-radius:10px;transition:0.3s;} 
+.botao:hover {transform:scale(1.07);box-shadow:0 0 18px #FFD700;} 
+
+/* --- SEÇÃO REVIEW DE EXEMPLO --- */
+.review-content {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.review-content h2 {
+    text-align: center;
+    color: #FFD700;
+    font-size: 30px; 
+    margin-bottom: 30px;
+}
+
+/* --- SEÇÃO QR CODE --- */
+.qrcode{
+    margin: 40px auto;
+    text-align:center;
+} 
+.qrcode h3 {
+    font-size: 24px;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+.qrcode img{width:180px;filter:drop-shadow(0 0 08px #070707);} 
+
+/* --- FOOTER --- */
+footer{text-align:center;padding:20px;background:linear-gradient(90deg,#0A1026,#1A1F71);margin-top:20px;} 
+
+/* --- MEDIA QUERIES (PARA CELULAR) --- */
+@media(max-width:768px){
+    /* 🛑 TROCA DE IMAGENS 🛑 */
+    .hero-img-desktop {
+        display: none; /* Oculta a imagem desktop no celular */
+    }
+    .hero-img-mobile {
+        display: block; /* Exibe a imagem mobile no celular */
+    }
+    .hero img{max-height:320px;} /* Altura para celular */
+    .cta{width:80%;}
+} 
+
+/* ========================================
+   🔥 NOVO BOX DE OFERTAS COM CONFIANÇA 🔥
+   ======================================== */
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 40px rgba(0, 200, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 0 80px rgba(0, 200, 255, 0.6);
+    }
+}
+
+@keyframes float-up {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.offers-box {
+    margin: 40px auto;
+    max-width: 650px;
+    border: 3px solid #FFD700;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(255, 215, 0, 0.3);
+    background: #1A1F71;
+    transition: all 0.3s ease;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.offers-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 50px rgba(255, 215, 0, 0.5), 0 0 40px rgba(0, 200, 255, 0.4);
+    border-color: #00D4FF;
+}
+
+.offers-link {
+    display: block;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.offers-image-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    background: #0A1026;
+}
+
+.offers-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.offers-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.offers-box:hover .offers-overlay {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+.offers-cta-text {
+    text-align: center;
+    color: #FFFFFF;
+    z-index: 10;
+}
+
+.offers-cta-text h3 {
+    font-size: 32px;
+    color: #FFD700;
+    margin: 0;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+    font-weight: bold;
+    animation: float-up 2s ease-in-out infinite;
+}
+
+.offers-cta-text p {
+    font-size: 18px;
+    color: #FFFFFF;
+    margin: 10px 0 0 0;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* --- SEÇÃO DE CONFIANÇA --- */
+.trust-section {
+    padding: 20px;
+    background: linear-gradient(90deg, rgba(26, 31, 113, 0.6), rgba(10, 16, 38, 0.8));
+    border-top: 2px solid #FFD700;
+}
+
+.trust-title {
+    text-align: center;
+    color: #FFD700;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.offers-action-button {
+    /* ... propriedades existentes ... */
+    
+    /* ADICIONE ISTO para centralizar o ícone e o texto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* ... propriedades existentes ... */
+}
+.trust-badges {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.trust-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    min-width: 120px;
+}
+
+.trust-badge-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.trust-badge-text {
+    font-size: 13px;
+    color: #CCCCCC;
+    font-weight: bold;
+}
+
+.trust-badge-highlight {
+    color: #FFD700;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* --- BOTÃO DE AÇÃO --- */
+.offers-action-button {
+    display: block;
+    width: 90%;
+    margin: 15px auto;
+    padding: 14px 20px;
+    background: linear-gradient(90deg, #FFD700, #FFA500);
+    color: #0A1026;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.offers-action-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(255, 215, 0, 0.6);
+}
+
+/* --- RESPONSIVO --- */
+@media(max-width:768px){
+    .offers-box {
+        margin: 30px auto;
+        max-width: 100%;
+    }
+
+    .offers-image-container {
+        height: 300px;
+    }
+
+    .offers-cta-text h3 {
+        font-size: 26px;
+    }
+
+    .offers-cta-text p {
+        font-size: 16px;
+    }
+
+    .trust-badges {
+        gap: 10px;
+    }
+
+    .trust-badge {
+        min-width: 100px;
+    }
+
+    .trust-badge-icon {
+        font-size: 24px;
+    }
+
+    .trust-badge-text {
+        font-size: 12px;
+    }
+}
+/* --- CORREÇÃO FINAL OTIMIZADA DOS PARÁGRAFOS --- */
+.review-content p {
+    /* Centraliza as linhas de texto */
+    text-align: center; 
+    
+    /* **CHAVE:** Reduz a largura máxima do BLOCO de parágrafo. */
+    /* Isso força o texto a quebrar mais cedo, deixando a centralização mais visível */
+    max-width: 600px; /* Reduzido de 90% para um valor fixo mais estreito */
+
+    /* Garante que o bloco fique centrado */
+    margin: 20px auto; 
+    
+    /* Outras configurações */
+    line-height: 1.6;
+    font-size: 16px;
+}
