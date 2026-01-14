@@ -587,3 +587,46 @@ a.post-preview-card:hover {
     margin-right: 8px;
     display: inline-block;
 }
+
+/* =============================== 
+   FOOTER E REDES SOCIAIS
+   =============================== */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #0A1026;
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #E0E0E0;
+}
+
+footer a {
+    color: #FFD700;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #FFFFFF;
+}
+
+.social-icons {
+    margin: 15px 0;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 24px;
+    color: #FFD700;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #FFFFFF;
+    transform: scale(1.2);
+}
