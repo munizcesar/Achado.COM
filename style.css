@@ -511,6 +511,28 @@ a.post-preview-card:hover {
     .post-content-wrapper {
         padding: 20px;
     }
+
+    /* Ajustes para botões no mobile */
+    .botao-padrao-achado {
+        max-width: 300px;
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    /* Ajuste da frase "Oportunidades em Destaque" */
+    .offers-cta-text h3 {
+        font-size: 24px;
+    }
+
+    /* Ajustes para selos de segurança */
+    .trust-badges {
+        gap: 15px;
+    }
+
+    .trust-badge {
+        min-width: 80px;
+        max-width: 120px;
+    }
 }
 
 /* Estilização do Menu de Navegação */
@@ -523,7 +545,7 @@ a.post-preview-card:hover {
 }
 
 .menu-navegacao a {
-    color: #FFD700; /* Dourado Premium */
+    color: #E0E0E0; /* Cinza claro */
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
@@ -534,7 +556,7 @@ a.post-preview-card:hover {
 }
 
 .menu-navegacao a:hover {
-    color: #FFFFFF; /* Branco ao passar o mouse */
+    color: #FFD700; /* Dourado no hover */
     border-bottom: 2px solid #FFD700; /* Linha dourada embaixo ao passar o mouse */
 }
 
@@ -629,4 +651,18 @@ footer a:hover {
 .social-icons a:hover {
     color: #FFFFFF;
     transform: scale(1.2);
+}
+
+/* Estilos para o título */
+.achado {
+    color: #FFFFFF;
+}
+
+.vip {
+    color: #FFD700;
+}
+
+.vip-highlight {
+    color: #FFD700;
+    font-weight: bold;
 }
