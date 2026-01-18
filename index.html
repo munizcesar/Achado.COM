@@ -32,19 +32,23 @@
         </a>
 
         <div class="header-actions">
+            <button class="search-toggle" id="search-toggle">
+                <i class="fas fa-search"></i>
+            </button>
             <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" class="btn-whatsapp-topo">
-                <i class="fab fa-whatsapp"></i> Canal de Ofertas
+                <i class="fab fa-whatsapp"></i> Canal
             </a>
+            <input type="search" id="search-input" placeholder="Buscar ofertas..." class="search-input">
         </div>
     </div>
 </header>
 
 <nav class="menu-categorias">
     <div class="container">
-        <div class="header-actions">
-            <input type="text" id="search-input" placeholder="Buscar">
-        </div>
-        <div class="categorias-links">
+        <button class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i> Categorias
+        </button>
+        <div class="menu-dropdown" id="menu-dropdown">
             <a href="categorias/eletronicos.html"><i class="fas fa-tv"></i> Eletrônicos</a>
             <a href="categorias/saude.html"><i class="fas fa-heartbeat"></i> Saúde</a>
             <a href="categorias/casa.html"><i class="fas fa-home"></i> Casa</a>
@@ -80,7 +84,7 @@
 
         <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
             <a href="blog.html" class="btn-explorar-premium">
-                EXPLORAR TODAS AS OFERTAS <i class="fas fa-plus-circle"></i>
+                EXPLORAR OFERTAS <i class="fas fa-plus-circle"></i>
             </a>
         </div>
     </section>
@@ -170,10 +174,59 @@
         <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         <a href="https://x.com/AchadoCertoVIP" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
     </div>
-    <p>© 2026 AchadoCerto.VIP — Todos os Direitos Reservados</p>
+    <p> 2026 AchadoCerto.VIP — Todos os Direitos Reservados</p>
 </footer>
 
 <script src="script.js"></script>
+
+<script>
+// Menu toggle functionality
+document.getElementById('menu-toggle').addEventListener('click', function() {
+    const dropdown = document.getElementById('menu-dropdown');
+    dropdown.classList.toggle('active');
+    
+    // Change icon based on state
+    const icon = this.querySelector('i');
+    if (dropdown.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+        this.innerHTML = '<i class="fas fa-times"></i> Fechar';
+    } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        this.innerHTML = '<i class="fas fa-bars"></i> Categorias';
+    }
+});
+
+// Search toggle functionality
+document.getElementById('search-toggle').addEventListener('click', function() {
+    const searchInput = document.getElementById('search-input');
+    const icon = this.querySelector('i');
+    
+    if (searchInput.style.display === 'block' || searchInput.style.display === '') {
+        searchInput.style.display = 'none';
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-search');
+    } else {
+        searchInput.style.display = 'block';
+        searchInput.focus();
+        icon.classList.remove('fa-search');
+        icon.classList.add('fa-times');
+    }
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', function(event) {
+    const menu = document.querySelector('.menu-categorias');
+    const toggle = document.getElementById('menu-toggle');
+    const dropdown = document.getElementById('menu-dropdown');
+    
+    if (!menu.contains(event.target) && dropdown.classList.contains('active')) {
+        dropdown.classList.remove('active');
+        toggle.innerHTML = '<i class="fas fa-bars"></i> Categorias';
+    }
+});
+</script>
 
 </body>
 </html>
