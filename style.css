@@ -918,75 +918,41 @@ footer a:hover {
     }
 
     .offers-image-container {
-        height: 250px;
-    }
-    
-    .offers-cta-text h3 {
-        font-size: 24px;
-    }
-
-    .trust-badges {
-        gap: 10px;
-    }
-    
-    .trust-badge {
-        min-width: 45%;
-    }
-
-    .menu-categorias .container {
         flex-direction: column;
-        align-items: stretch;
-        gap: 15px;
+        gap: 12px;
     }
-    .header-actions {
+
+    .botao {
         width: 100%;
+        text-align: center;
         justify-content: center;
+        font-size: 14px;
+        padding: 15px 20px;
     }
-    #search-input {
-        max-width: 100%;
-    }
-    .btn-whatsapp-topo {
-        width: 100%;
-        text-align: center;
-    }
-    .categorias-links {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-    
-    .grid-achados {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-}
 
-/* Media Queries para Mobile */
-@media (max-width: 768px) {
-    .menu-categorias .container {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 15px;
-    }
     .header-actions {
-        width: 100%;
-        justify-content: center;
-    }
-    #search-input {
-        max-width: 100%;
-    }
-    .btn-whatsapp-topo {
-        width: 100%;
-        text-align: center;
-    }
-    .categorias-links {
-        flex-direction: column;
+        display: flex;
+        align-items: center;
         gap: 10px;
-        text-align: center;
+        margin-top: 10px;
     }
-    
-    .grid-achados {
-        grid-template-columns: 1fr;
-        gap: 20px;
+
+    .search-input {
+        flex: 1;
+        max-width: 200px;
+        padding: 10px 15px;
+        border: 2px solid #1A1F71;
+        border-radius: 25px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        font-size: 14px;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-whatsapp-topo {
+        padding: 10px 15px;
+        font-size: 12px;
+        white-space: nowrap;
     }
 }
