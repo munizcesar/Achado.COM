@@ -15,33 +15,29 @@
         /* --- Header / Topo --- */
         .topo {
             background: #090122;
-            padding: 15px;
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid #1A1F71;
-            flex-wrap: wrap;
-            gap: 15px;
         }
-        .topo h1 { font-size: 20px; color: #FFF; }
+        .topo h1 { font-size: 24px; color: #FFF; }
         .achado { color: #FFF; }
         .vip { color: #FFD700; }
 
         /* Search Input */
         #search-input {
-            padding: 10px 15px;
-            border: 2px solid #1A1F71;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
             border-radius: 25px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
+            background: #f0f0f0;
+            color: #333;
             font-size: 14px;
-            width: 100%;
-            max-width: 300px;
+            width: 200px;
             outline: none;
-            transition: all 0.3s ease;
         }
-        #search-input::placeholder { color: rgba(255, 255, 255, 0.6); }
-        #search-input:focus { border-color: #FFD700; box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+        #search-input::placeholder { color: #999; }
+        #search-input:focus { border-color: #FFD700; }
 
         /* --- Título da Página --- */
         .blog-header { text-align: center; padding: 40px 20px; background: #090122; }
@@ -56,8 +52,8 @@
 
         .blog-grid { 
             display: grid; 
-            grid-template-columns: 1fr; 
-            gap: 20px; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
             margin-bottom: 40px;
         }
 
@@ -148,17 +144,10 @@
         footer { text-align: center; padding: 20px; background: #090122; color: #777; font-size: 14px; border-top: 1px solid #1A1F71; }
 
         @media(min-width: 768px) {
-            .topo { padding: 20px; }
-            .topo h1 { font-size: 24px; }
-            .blog-grid { 
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-                gap: 30px; 
-            }
-            .banner-inline-vip { grid-column: span 2; }
+            .banner-inline-vip { grid-column: span 2; } /* Ocupa 2 colunas em telas médias */
         }
         @media(min-width: 1024px) {
-            .blog-grid { gap: 40px; }
-            .banner-inline-vip { grid-column: span 3; }
+            .banner-inline-vip { grid-column: span 3; } /* Ocupa 3 colunas (linha toda) no desktop */
         }
     </style>
 </head>

@@ -12,18 +12,8 @@ fetch('posts.json')
             targetContainer.innerHTML = lista.map(post => {
                 if (isBlogPage) {
                     // Para blog.html, usar estrutura com tags
-                    let tagClass, tagText;
-                    
-                    if (post.titulo.includes('TV')) {
-                        tagClass = 'tag-eletronicos';
-                        tagText = 'Eletrônicos';
-                    } else if (post.titulo.includes('Arginina') || post.titulo.includes('Creatina')) {
-                        tagClass = 'tag-saude';
-                        tagText = 'Saúde';
-                    } else {
-                        tagClass = 'tag-guia';
-                        tagText = 'Guia do Achado';
-                    }
+                    const tagClass = post.titulo.includes('TV') ? 'tag-eletronicos' : post.titulo.includes('Mercado') ? 'tag-guia' : 'tag-guia';
+                    const tagText = post.titulo.includes('TV') ? 'Eletrônicos' : post.titulo.includes('Mercado') ? 'Guia do Achado' : 'Guia do Achado';
                     return `
                         <a href="${post.link}" class="post-card">
                             <img src="${post.imagem}" alt="${post.titulo}">
@@ -37,23 +27,11 @@ fetch('posts.json')
                     `;
                 } else {
                     // Para index.html, estrutura existente
-                    let tagClass, tagText;
-                    
-                    if (post.titulo.includes('TV')) {
-                        tagClass = 'tag-eletronicos';
-                        tagText = 'Eletrônicos';
-                    } else if (post.titulo.includes('Arginina') || post.titulo.includes('Creatina')) {
-                        tagClass = 'tag-saude';
-                        tagText = 'Saúde';
-                    } else {
-                        tagClass = 'tag-guia';
-                        tagText = 'Guia do Achado';
-                    }
                     return `
                         <a href="${post.link}" class="card-post">
                             <img src="${post.imagem}" alt="${post.titulo}">
                             <div class="card-body">
-                                <span class="tag ${tagClass}">${tagText}</span>
+                                <span class="tag ${post.titulo.includes('TV') ? 'tag-eletronicos' : 'tag-guia'}">${post.titulo.includes('TV') ? 'Eletrônicos' : 'Guia do Achado'}</span>
                                 <h3 class="card-title">${post.titulo}</h3>
                                 <span class="card-link">${post.chamada} <i class="fas fa-arrow-right"></i></span>
                             </div>
