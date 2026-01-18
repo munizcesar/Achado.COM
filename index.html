@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <link rel="stylesheet" href="style.css">
     <link rel="preload" as="image" href="images/imagem_celular.png" media="(max-width: 768px)">
@@ -26,76 +26,12 @@
 <body>
 
 <header class="topo">
-    <div class="container-header">
-        <button class="mobile-menu-toggle" id="mobile-menu-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        
-        <a href="index.html" class="logo">
-            <h1>🔍AchadoCerto<span class="vip-color">.VIP</span></h1>
-        </a>
-
-        <div class="header-actions">
-            <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" class="btn-whatsapp-topo">
-                <i class="fab fa-whatsapp"></i> Canal de Ofertas
-            </a>
-        </div>
-    </div>
+    <nav class="menu-navegacao"> <a href="index.html">Home</a>
+        <a href="blog.html">BLOG</a> 
+    </nav>
+    <h1>🔍<span class="achado">AchadoCerto.</span><span class="vip">VIP</span></h1>
+    <p>O clube <span class="vip-highlight">VIP</span> de achados, cupons e ofertas.</p>
 </header>
-
-<<<<<<< HEAD
-<nav class="menu-categorias">
-    <div class="container">
-        <div class="header-actions">
-            <input type="text" id="search-input" placeholder="Buscar">
-        </div>
-        <div class="categorias-links">
-            <a href="categorias/eletronicos.html"><i class="fas fa-tv"></i> Eletrônicos</a>
-            <a href="categorias/saude.html"><i class="fas fa-heartbeat"></i> Saúde</a>
-            <a href="categorias/casa.html"><i class="fas fa-home"></i> Casa</a>
-            <a href="categorias/moda.html"><i class="fas fa-tshirt"></i> Moda</a>
-            <a href="categorias/guia-do-achado.html"><i class="fas fa-lightbulb"></i> Guia do Achado</a>
-=======
-<nav class="mobile-menu" id="mobile-menu">
-    <div class="mobile-menu-header">
-        <h3>Menu</h3>
-        <button class="mobile-menu-close" id="mobile-menu-close">
-            <i class="fas fa-times"></i>
-        </button>
-    </div>
-    <div class="mobile-menu-content">
-        <div class="menu-section">
-            <h4>Categorias</h4>
-            <ul class="menu-categories">
-                <li><a href="categorias/eletronicos.html"><i class="fas fa-tv"></i> Eletrônicos</a></li>
-                <li><a href="categorias/saude.html"><i class="fas fa-heartbeat"></i> Saúde</a></li>
-                <li><a href="categorias/casa.html"><i class="fas fa-home"></i> Casa</a></li>
-                <li><a href="categorias/moda.html"><i class="fas fa-tshirt"></i> Moda</a></li>
-                <li><a href="categorias/guia-do-achado.html"><i class="fas fa-lightbulb"></i> Guia do Achado</a></li>
-            </ul>
-        </div>
-        <div class="menu-section">
-            <h4>Links Úteis</h4>
-            <ul class="menu-links">
-                <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
-                <li><a href="politica.html"><i class="fas fa-shield-alt"></i> Política de Privacidade</a></li>
-                <li><a href="termos.html"><i class="fas fa-file-contract"></i> Termos de Uso</a></li>
-                <li><a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank"><i class="fab fa-whatsapp"></i> Contato</a></li>
-            </ul>
-        </div>
-        <div class="menu-section">
-            <h4>Redes Sociais</h4>
-            <div class="menu-social">
-                <a href="https://www.instagram.com/achadocertovip?igsh=Y2Rua2praTdha3dk" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@achadocertovip?_r=1&_t=ZS-934lRAtLp1s" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://x.com/AchadoCertoVIP" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
-            </div>
->>>>>>> 9b44a7ec761bc9d77c0b3ad4396b57093a5444fc
-        </div>
-    </div>
-</nav>
-
 
 <section class="hero">
     <picture>
@@ -134,17 +70,16 @@
             <p style="color:#FFD700; margin-bottom:5px;">📍 Guia do Achado: Análises & Curiosidades</p>
         </div>
 
-        <div id="latest-post" class="grid-achados">
-            <!-- Posts serão carregados dinamicamente aqui -->
-        </div>
+        <div id="latest-post"></div>
 
-        <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
-            <a href="blog.html" class="btn-explorar-premium">
-                EXPLORAR TODAS AS OFERTAS <i class="fas fa-plus-circle"></i>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="blog.html" class="botao-padrao-achado" title="Confira nossa curadoria dos melhores produtos e guias de compra">
+                EXPLORAR
             </a>
         </div>
     </section>
 
+    <!-- BOX DE OFERTAS -->
     <div class="offers-box">
         <a href="https://www.mercadolivre.com.br/social/muc1576372" target="_blank" class="offers-link">
             
@@ -153,7 +88,8 @@
                 <div class="offers-overlay">
                     <div class="offers-cta-text">
                         <h3>🎯OPORTUNIDADES EM DESTAQUE</h3>
-                        <p>Clique para ver os achados do dia</p>
+                        <p><p>Clique para ver os achados do dia</p>
+</p>
                     </div>
                 </div>
             </div>
@@ -186,11 +122,11 @@
             </div>
 
             <div style="text-align: center; width: 100%; padding: 20px 0;">
-                <span class="botao-padrao-achado">
+                <a href="https://www.mercadolivre.com.br/social/muc1576372" target="_blank" class="botao-padrao-achado">
                     <i class="fas fa-lock"> </i>  OFERTA VERIFICADA
-                </span>
+                </a>
             </div>
-        </a>
+        </div>
     </div>
 </section>
 
@@ -220,9 +156,8 @@
         <a href="https://www.instagram.com/achadocertovip?igsh=Y2Rua2praTdha3dk" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="https://www.tiktok.com/@achadocertovip?_r=1&_t=ZS-934lRAtLp1s" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
         <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://x.com/AchadoCertoVIP" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
     </div>
-    <p> 2026 AchadoCerto.VIP — Todos os Direitos Reservados</p>
+    <p>© 2026 AchadoCerto.VIP — Todos os Direitos Reservados</p>
 </footer>
 
 <script src="script.js"></script>
