@@ -27,36 +27,63 @@
 
 <header class="topo">
     <div class="container-header">
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        
         <a href="index.html" class="logo">
             <h1>🔍AchadoCerto<span class="vip-color">.VIP</span></h1>
         </a>
 
         <div class="header-actions">
-            <button class="search-toggle" id="search-toggle">
-                <i class="fas fa-search"></i>
-            </button>
+            <input type="search" id="search-input" placeholder="Buscar ofertas..." class="search-input">
             <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" class="btn-whatsapp-topo">
                 <i class="fab fa-whatsapp"></i> Canal
             </a>
-            <input type="search" id="search-input" placeholder="Buscar ofertas..." class="search-input">
         </div>
     </div>
 </header>
 
-<nav class="menu-categorias">
-    <div class="container">
-        <button class="menu-toggle" id="menu-toggle">
-            <i class="fas fa-bars"></i> Categorias
+<nav class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-header">
+        <h3>Menu</h3>
+        <button class="mobile-menu-close" id="mobile-menu-close">
+            <i class="fas fa-times"></i>
         </button>
-        <div class="menu-dropdown" id="menu-dropdown">
-            <a href="categorias/eletronicos.html"><i class="fas fa-tv"></i> Eletrônicos</a>
-            <a href="categorias/saude.html"><i class="fas fa-heartbeat"></i> Saúde</a>
-            <a href="categorias/casa.html"><i class="fas fa-home"></i> Casa</a>
-            <a href="categorias/moda.html"><i class="fas fa-tshirt"></i> Moda</a>
-            <a href="categorias/guia-do-achado.html"><i class="fas fa-lightbulb"></i> Guia do Achado</a>
+    </div>
+    <div class="mobile-menu-content">
+        <div class="menu-section">
+            <h4>Categorias</h4>
+            <ul class="menu-categories">
+                <li><a href="categorias/eletronicos.html"><i class="fas fa-tv"></i> Eletrônicos</a></li>
+                <li><a href="categorias/saude.html"><i class="fas fa-heartbeat"></i> Saúde</a></li>
+                <li><a href="categorias/casa.html"><i class="fas fa-home"></i> Casa</a></li>
+                <li><a href="categorias/moda.html"><i class="fas fa-tshirt"></i> Moda</a></li>
+                <li><a href="categorias/guia-do-achado.html"><i class="fas fa-lightbulb"></i> Guia do Achado</a></li>
+            </ul>
+        </div>
+        <div class="menu-section">
+            <h4>Links Úteis</h4>
+            <ul class="menu-links">
+                <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
+                <li><a href="politica.html"><i class="fas fa-shield-alt"></i> Política de Privacidade</a></li>
+                <li><a href="termos.html"><i class="fas fa-file-contract"></i> Termos de Uso</a></li>
+                <li><a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank"><i class="fab fa-whatsapp"></i> Contato</a></li>
+            </ul>
+        </div>
+        <div class="menu-section">
+            <h4>Redes Sociais</h4>
+            <div class="menu-social">
+                <a href="https://www.instagram.com/achadocertovip?igsh=Y2Rua2praTdha3dk" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@achadocertovip?_r=1&_t=ZS-934lRAtLp1s" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://x.com/AchadoCertoVIP" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
+            </div>
         </div>
     </div>
 </nav>
+
+<div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
 
 <section class="hero">
     <picture>
@@ -180,50 +207,38 @@
 <script src="script.js"></script>
 
 <script>
-// Menu toggle functionality
-document.getElementById('menu-toggle').addEventListener('click', function() {
-    const dropdown = document.getElementById('menu-dropdown');
-    dropdown.classList.toggle('active');
-    
-    // Change icon based on state
-    const icon = this.querySelector('i');
-    if (dropdown.classList.contains('active')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-        this.innerHTML = '<i class="fas fa-times"></i> Fechar';
-    } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-        this.innerHTML = '<i class="fas fa-bars"></i> Categorias';
-    }
+// Mobile menu functionality
+document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent body scroll
 });
 
-// Search toggle functionality
-document.getElementById('search-toggle').addEventListener('click', function() {
-    const searchInput = document.getElementById('search-input');
-    const icon = this.querySelector('i');
-    
-    if (searchInput.style.display === 'block' || searchInput.style.display === '') {
-        searchInput.style.display = 'none';
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-search');
-    } else {
-        searchInput.style.display = 'block';
-        searchInput.focus();
-        icon.classList.remove('fa-search');
-        icon.classList.add('fa-times');
-    }
+document.getElementById('mobile-menu-close').addEventListener('click', function() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.remove('active');
+    document.body.style.overflow = ''; // Restore body scroll
 });
 
 // Close menu when clicking outside
 document.addEventListener('click', function(event) {
-    const menu = document.querySelector('.menu-categorias');
-    const toggle = document.getElementById('menu-toggle');
-    const dropdown = document.getElementById('menu-dropdown');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuToggle = document.getElementById('mobile-menu-toggle');
     
-    if (!menu.contains(event.target) && dropdown.classList.contains('active')) {
-        dropdown.classList.remove('active');
-        toggle.innerHTML = '<i class="fas fa-bars"></i> Categorias';
+    if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target) && mobileMenu.classList.contains('active')) {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+// Close menu when pressing Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     }
 });
 </script>
