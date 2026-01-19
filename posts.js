@@ -1,8 +1,8 @@
 const postsData = [
   {
-    "titulo": "💪 Whey Pro Max Titanium: O Suplemento Ideal para Seus Treinos",
-    "resumo": "Com 15g de proteína e 3,4g de BCAA, o Whey Pro é a escolha perfeita para quem busca performance e custo-benefício.",
-    "imagem": "images/imagesposts/whey-pro-max-titanium-baunilha.webp",
+    "titulo": "💪 Whey Pro Max Titanium: O Guia Definitivo para sua Evolução",
+    "resumo": "Descubra por que o Whey Pro é o aliado perfeito para ganhar massa magra e acelerar sua recuperação muscular com o melhor custo-benefício.",
+    "imagem": "images/imagesposts/whey-pro-max-titanium-premium.jpg",
     "link": "blog/whey-pro-max-titanium.html",
     "chamada": "📖 Ler Matéria Completa",
     "categoria": "saude"
