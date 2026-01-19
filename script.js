@@ -1,43 +1,88 @@
-fetch('posts.json')
-    .then(response => response.json())
-    .then(data => {
-        
-        // --- LÓGICA DA HOME (index.html) ---
-        const containerHome = document.getElementById('latest-post');
-        if (containerHome && data.length > 0) {
-            const post = data[0]; // Pega o mais recente
-            containerHome.innerHTML = `
-                <a href="${post.link}" class="post-preview-card">
-                    <div class="post-image-wrapper">
-                        <img src="${post.imagem}" alt="${post.titulo}">
-                    </div>
-                    <div class="post-content-wrapper">
-                        <h3>${post.titulo}</h3>
-                        <p>${post.resumo}</p>
-                        <span class="post-btn">${post.chamada} →</span>
-                    </div>
-                </a>
-            `;
-        }
+function carregarPosts() {
+    if (typeof postsData === 'undefined') {
+        console.error("ERRO: O arquivo posts.js não foi carregado corretamente.");
+        return;
+    }
 
-        // --- LÓGICA DO BLOG (blog.html) ---
-        const containerBlog = document.getElementById('blog-lista');
-        if (containerBlog) {
-            containerBlog.innerHTML = ''; 
-            data.forEach(post => {
-                containerBlog.innerHTML += `
-                    <a href="${post.link}" class="post-preview-card">
-                        <div class="post-image-wrapper">
-                            <img src="${post.imagem}" alt="${post.titulo}">
-                        </div>
-                        <div class="post-content-wrapper">
-                            <h3>${post.titulo}</h3>
-                            <p>${post.resumo}</p>
-                            <span class="post-btn">${post.chamada} →</span>
-                        </div>
-                    </a>
-                `;
-            });
-        }
-    })
-    .catch(err => console.error('Erro ao carregar matérias:', err));
+    const data = postsData;
+    const url = window.location.href;
+    const containerCategoria = document.getElementById('lista-categoria');
+    const containerHome = document.getElementById('latest-post');
+    const containerBlog = document.getElementById('blog-lista');
+
+    const isSubfolder = url.includes('/categorias/');
+    const prefix = isSubfolder ? '../' : '';
+
+    // --- LÓGICA DE BUSCA ---
+    const searchForm = document.querySelector('.header-actions');
+    const searchInput = document.querySelector('.header-actions input');
+
+    if (searchForm && searchInput) {
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const termo = searchInput.value.toLowerCase().trim();
+            
+            if (termo === '') return;
+
+            // Filtra os posts pelo título ou resumo
+            const resultados = data.filter(p => 
+                p.titulo.toLowerCase().includes(termo) || 
+                p.resumo.toLowerCase().includes(termo)
+            );
+
+            // Define onde mostrar os resultados
+            const targetContainer = containerCategoria || containerBlog || containerHome;
+            
+            if (targetContainer) {
+                // Limpa o título da página para indicar que é uma busca
+                const tituloPagina = document.querySelector('.review-content h2');
+                if (tituloPagina) tituloPagina.innerHTML = `🔍 Resultados para: "${searchInput.value}"`;
+                
+                renderizar(resultados, targetContainer, prefix);
+                
+                // Rola a página até os resultados
+                targetContainer.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    // --- LÓGICA DE CARREGAMENTO INICIAL ---
+    if (containerCategoria) {
+        const pagina = url.split('/').pop().replace('.html', '');
+        const filtrados = data.filter(p => p.categoria.toLowerCase() === pagina.toLowerCase());
+        renderizar(filtrados, containerCategoria, prefix);
+    }
+
+    if (containerHome && (url.includes('index.html') || !url.includes('.html'))) {
+        renderizar([data[0]], containerHome, prefix);
+    }
+
+    if (containerBlog && url.includes('blog.html')) {
+        renderizar(data, containerBlog, prefix);
+    }
+}
+
+function renderizar(posts, container, prefix) {
+    container.innerHTML = '';
+    if (!posts || posts.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color:#888; width:100%; padding:40px;">Nenhuma matéria encontrada com este termo.</p>';
+        return;
+    }
+    posts.forEach(post => {
+        container.innerHTML += `
+            <a href="${prefix}${post.link}" class="post-preview-card" style="text-decoration:none; display:flex; background:#151B4A; border-radius:15px; margin-bottom:20px; overflow:hidden; border:1px solid rgba(255,215,0,0.1); min-height: 180px;">
+                <div style="flex:1; min-width:140px; max-width:220px; background: #050814; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <img src="${prefix}${post.imagem}" style="width:100%; height:100%; object-fit: contain; padding: 5px;" onerror="this.src='${prefix}images/produtos_ofertas.png'">
+                </div>
+                <div style="flex:2; padding:20px; display: flex; flex-direction: column; justify-content: center;">
+                    <span style="display:inline-block; background:rgba(255, 215, 0, 0.1); color:#FFD700; font-size:10px; font-weight:800; text-transform:uppercase; padding:4px 8px; border-radius:4px; margin-bottom:10px; width: fit-content;">${post.categoria}</span>
+                    <h3 style="color:#FFD700; margin:0 0 10px; font-size:18px; line-height: 1.3;">${post.titulo}</h3>
+                    <p style="color:#E0E0E0; font-size:13px; margin:0 0 15px; line-height:1.5;">${post.resumo}</p>
+                    <span style="color:#FFD700; font-weight:700; font-size:12px; text-transform: uppercase; letter-spacing: 0.5px;">${post.chamada} →</span>
+                </div>
+            </a>
+        `;
+    });
+}
+
+window.onload = carregarPosts;

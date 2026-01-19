@@ -26,12 +26,29 @@
 <body>
 
 <header class="topo">
-    <nav class="menu-navegacao"> <a href="index.html">Home</a>
-        <a href="blog.html">BLOG</a> 
-    </nav>
-    <h1>🔍<span class="achado">AchadoCerto.</span><span class="vip">VIP</span></h1>
-    <p>O clube <span class="vip-highlight">VIP</span> de achados, cupons e ofertas.</p>
+    <a href="index.html" style="text-decoration: none;">
+        <h1 style="margin:0; font-weight:900; font-size: 42px; letter-spacing: 1px;">
+            🔍<span style="color: #FFFFFF;">AchadoCerto.</span><span style="color: #FFD700;">VIP</span>
+        </h1>
+    </a>
+    <p>O clube <span style="color: #FFD700; font-weight: bold;">VIP</span> de achados, cupons e ofertas.</p>
 </header>
+
+<nav class="menu-categorias">
+    <div class="container">
+        <div class="categorias-links">
+            <a href="categorias/tech.html"><i class="fas fa-microchip"></i> Tech</a>
+            <a href="categorias/saude.html"><i class="fas fa-heartbeat"></i> Saúde</a>
+            <a href="categorias/lar.html"><i class="fas fa-home"></i> Lar</a>
+            <a href="categorias/estilo.html"><i class="fas fa-tshirt"></i> Estilo</a>
+            <a href="categorias/dicas.html"><i class="fas fa-lightbulb"></i> Dicas</a>
+        </div>
+        <form class="header-actions" action="/buscar" method="get">
+            <input type="search" name="q" placeholder="Buscar">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+</nav>
 
 <section class="hero">
     <picture>
@@ -39,42 +56,49 @@
         <img src="images/imagem_celular.png" alt="Ofertas Premium AchadoCerto VIP" class="hero-img">
     </picture>
 
-    <div class="cta">
-        <h2>Ofertas focadas em economia</h2>
+    <!-- NOVOS CARDS VIP PREMIUM -->
+    <div class="cta-container" style="display: flex; gap: 20px; justify-content: center; margin: -50px auto 40px; padding: 0 20px; position: relative; z-index: 10; max-width: 900px; flex-wrap: wrap;">
+        <!-- Card Canal Oficial -->
+        <div style="background: #151B4A; border: 1px solid rgba(255, 215, 0, 0.4); border-radius: 15px; padding: 25px; flex: 1; min-width: 280px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s;">
+            <i class="fas fa-bullhorn" style="font-size: 30px; margin-bottom: 15px; color: #FFD700;"></i>
+            <h3 style="font-size: 18px; margin-bottom: 15px; color: #FFFFFF; font-weight: 700;">Canal Oficial de Ofertas</h3>
+            <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" style="display: block; padding: 12px; border-radius: 8px; font-weight: 800; text-transform: uppercase; font-size: 14px; background: #FFD700; color: #0A1026; text-decoration: none;">
+                Seguir Canal
+            </a>
+        </div>
 
-        <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" class="botao botao-secundario">
-            <i class="fas fa-bullhorn"></i> Seguir Canal Oficial
-        </a>
+        <!-- Card Grupo VIP -->
+        <div style="background: #151B4A; border: 1px solid rgba(255, 215, 0, 0.4); border-radius: 15px; padding: 25px; flex: 1; min-width: 280px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s;">
+            <i class="fab fa-whatsapp" style="font-size: 30px; margin-bottom: 15px; color: #25D366;"></i>
+            <h3 style="font-size: 18px; margin-bottom: 15px; color: #FFFFFF; font-weight: 700;">Grupo VIP de Achados</h3>
+            <a href="https://chat.whatsapp.com/E6kgRRbyoiP99NoIANB81t" target="_blank" style="display: block; padding: 12px; border-radius: 8px; font-weight: 800; text-transform: uppercase; font-size: 14px; background: #25D366; color: #FFFFFF; text-decoration: none;">
+                Entrar no Grupo
+            </a>
+        </div>
+    </div>
 
-        <a href="https://chat.whatsapp.com/E6kgRRbyoiP99NoIANB81t" target="_blank" class="botao">
-            <i class="fab fa-whatsapp"></i> Entrar no Grupo VIP
-        </a>
-
-        <p style="font-size:13px; margin-top:10px; color:#E0E0E0; opacity:0.9;">
-            🔒 Selecionamos ofertas reais todos os dias. <br>
-            Você escolhe e compra direto na loja oficial.
-        </p>
+    <div style="text-align: center; margin-top: 20px; font-size: 13px; color: #B0B0B0; opacity: 0.9;">
+        <p>🔒 Selecionamos ofertas reais todos os dias. Você escolhe e compra direto na loja oficial.</p>
     </div>
 </section>
 
 <section class="review-content">
-    <h2>Achados focados em economia</h2>
+    <h2 style="text-align: center; color: #FFD700; font-size: 32px; margin-bottom: 20px;">Achados focados em economia</h2>
 
-    <p>
-        Promoções selecionadas e oportunidades que realmente valem a pena.
-        Sem spam. Só achados.
+    <p style="text-align: center; color: #B0B0B0; margin-bottom: 40px; font-size: 18px; max-width: 700px; margin-left: auto; margin-right: auto;">
+        Promoções selecionadas e oportunidades que realmente valem a pena. Sem spam. Só achados.
     </p>
 
     <section class="latest-post">
         <div style="text-align:center; margin-bottom: 20px;">
-            <p style="color:#FFD700; margin-bottom:5px;">📍 Guia do Achado: Análises & Curiosidades</p>
+            <p style="color:#FFD700; margin-bottom:5px; font-weight: bold;">📍 Guia do Achado: Análises & Curiosidades</p>
         </div>
 
         <div id="latest-post"></div>
 
         <div style="text-align: center; margin-top: 30px;">
             <a href="blog.html" class="botao-padrao-achado" title="Confira nossa curadoria dos melhores produtos e guias de compra">
-                EXPLORAR
+                EXPLORAR BLOG
             </a>
         </div>
     </section>
@@ -82,85 +106,49 @@
     <!-- BOX DE OFERTAS -->
     <div class="offers-box">
         <a href="https://www.mercadolivre.com.br/social/muc1576372" target="_blank" class="offers-link">
-            
             <div class="offers-image-container">
                 <img src="images/produtos_ofertas.png" alt="Produtos em Oferta Verificada">
                 <div class="offers-overlay">
                     <div class="offers-cta-text">
-                        <h3>🎯OPORTUNIDADES EM DESTAQUE</h3>
-                        <p><p>Clique para ver os achados do dia</p>
-</p>
+                        <h3>🎯 OPORTUNIDADES EM DESTAQUE</h3>
+                        <p style="color: #fff;">Clique para ver os achados do dia</p>
                     </div>
                 </div>
             </div>
+        </a>
+        
+       <div style="text-align: center; padding: 20px;">
+    <a href="https://www.mercadolivre.com.br/social/muc1576372" target="_blank" class="botao-padrao-achado">
+        <i class="fas fa-lock" style="margin-right: 8px;"></i> OFERTA VERIFICADA
+    </a>
+</div>
 
-            <div class="trust-section">
-                <div class="trust-title">✅ Por que esses achados são confiáveis?</div>
-
-                <div class="trust-badges">
-                    <div class="trust-badge">
-                        <div class="trust-badge-icon">⭐</div>
-                        <div class="trust-badge-text">
-                             <span class="trust-badge-highlight">Produtos selecionados</span>
-                        </div>
-                    </div>
-
-                    <div class="trust-badge">
-                        <div class="trust-badge-icon">🛡️</div>
-                        <div class="trust-badge-text">
-                            Navegação <span class="trust-badge-highlight">Segura</span>
-                        </div>
-                    </div>
-
-                    <div class="trust-badge">
-                        <div class="trust-badge-icon">💰</div>
-                        <div class="trust-badge-text">
-                            Ótimo <span class="trust-badge-highlight">custo-benefício</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align: center; width: 100%; padding: 20px 0;">
-                <a href="https://www.mercadolivre.com.br/social/muc1576372" target="_blank" class="botao-padrao-achado">
-                    <i class="fas fa-lock"> </i>  OFERTA VERIFICADA
-                </a>
-            </div>
-        </div>
     </div>
 </section>
 
-<section class="trust-extra" style="margin:40px auto; max-width:900px; padding:0 20px; text-align:left;">
-    <h2>Por que confiar no AchadoCerto.VIP?</h2>
-    <ul style="line-height:1.8; font-size:16px;">
-        <li>✔️ Selecionamos ofertas reais e cupons válidos</li>
-        <li>✔️ O Canal Oficial concentra as principais publicações</li>
-        <li>✔️ O Grupo VIP é usado apenas para achados e avisos</li>
-        <li>✔️ Não solicitamos pagamentos ou dados pessoais</li>
-        <li>✔️ Links direcionam para lojas reconhecidas e oficiais</li>
-    </ul>
-</section>
-
-<section class="qrcode" style="text-align: center;">
-    <h3>Entre pelo QR Code</h3>
-    <img src="images/qrcode_achado.png" alt="QR Code Grupo AchadoCerto VIP" loading="lazy">
+<section class="qrcode" style="text-align: center; margin: 60px auto;">
+    <h3 style="color: #FFD700; margin-bottom: 20px;">Entre pelo QR Code</h3>
+    <img src="images/qrcode_achado.png" alt="QR Code Grupo AchadoCerto VIP" loading="lazy" style="width: 180px; border: 5px solid #fff; border-radius: 10px;">
 </section>
 
 <footer>
+    <div class="social-icons">
+        <a href="https://www.instagram.com/achadocertovip?igsh=Y2Rua2praTdha3dk" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@achadocertovip?_r=1&_t=ZS-934lRAtLp1s" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://x.com/AchadoCertoVIP" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
+    </div>
     <p>
         <a href="politica.html">Privacidade</a> | 
         <a href="termos.html">Termos</a> | 
         <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank">Contato</a>
     </p>
-    <div class="social-icons">
-        <a href="https://www.instagram.com/achadocertovip?igsh=Y2Rua2praTdha3dk" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.tiktok.com/@achadocertovip?_r=1&_t=ZS-934lRAtLp1s" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    </div>
     <p>© 2026 AchadoCerto.VIP — Todos os Direitos Reservados</p>
 </footer>
 
+<script src="posts.js"></script>
 <script src="script.js"></script>
+
 
 </body>
 </html>
