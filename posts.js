@@ -1,5 +1,13 @@
 const postsData = [
   {
+    "titulo": "💪 Whey Pro Max Titanium: O Suplemento Ideal para Seus Treinos",
+    "resumo": "Com 15g de proteína e 3,4g de BCAA, o Whey Pro é a escolha perfeita para quem busca performance e custo-benefício.",
+    "imagem": "images/imagesposts/whey-pro-max-titanium-baunilha.webp",
+    "link": "blog/whey-pro-max-titanium.html",
+    "chamada": "📖 Ler Matéria Completa",
+    "categoria": "saude"
+  },
+  {
     "titulo": "📺 Melhor TV 55\" 2026: TCL vs Samsung vs LG",
     "resumo": "Comparativo completo com as melhores opções custo-benefício, imagem premium e tecnologias que realmente importam.",
     "imagem": "images/imagesposts/melhor-tv-55-2026.webp",
