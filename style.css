@@ -480,7 +480,8 @@ footer a {
    9. MOBILE (RESPONSIVIDADE)
    =============================== */
 @media (max-width: 768px) {
-    .topo h1 { font-size: 32px; }
+        .topo h1 { font-size: 22px !important; white-space: nowrap !important; }
+
     
     .cta-container {
         flex-direction: column;
