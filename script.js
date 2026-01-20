@@ -56,17 +56,23 @@ function carregarPosts() {
     }
 
     // --- LÓGICA DE CARREGAMENTO INICIAL ---
+    // Detecção mais robusta da página atual
+    const pathParts = url.split('/');
+    const fileName = pathParts[pathParts.length - 1] || 'index.html';
+
     if (containerCategoria) {
-        const pagina = url.split('/').pop().replace('.html', '');
-        const filtrados = data.filter(p => p.categoria.toLowerCase() === pagina.toLowerCase());
+        const categoriaNome = fileName.replace('.html', '');
+        const filtrados = data.filter(p => p.categoria.toLowerCase() === categoriaNome.toLowerCase());
         renderizar(filtrados, containerCategoria, prefix);
     }
 
-    if (containerHome && (url.endsWith('index.html') || url.endsWith('/') || url === '')) {
+    // Se for a home (index.html, / ou vazio)
+    if (containerHome && (fileName === 'index.html' || fileName === '')) {
         renderizar([data[0]], containerHome, prefix);
     }
 
-    if (containerBlog && url.includes('blog.html')) {
+    // Se for a página de blog
+    if (containerBlog && fileName === 'blog.html') {
         renderizar(data, containerBlog, prefix);
     }
 }
