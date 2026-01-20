@@ -10,15 +10,17 @@ function carregarPosts() {
     const containerHome = document.getElementById('latest-post');
     const containerBlog = document.getElementById('blog-lista');
 
-    const isSubfolder = url.includes('/categorias/');
-    const prefix = isSubfolder ? '../' : '';
+    // Determina o prefixo para caminhos de arquivos (se estiver em subpastas)
+    const isSubfolder = url.includes('/categorias/') || url.includes('/blog/');
+    // Nota: blog.html está na raiz, mas posts dentro de blog/ estão em subpasta.
+    // O script.js é chamado por páginas na raiz e em subpastas.
+    const prefix = url.includes('/categorias/') ? '../' : '';
 
     // --- LÓGICA DE BUSCA ---
     const searchForm = document.querySelector('.header-actions');
     const searchInput = document.querySelector('.header-actions input');
     const mobileSearchToggle = document.getElementById('mobile-search-toggle');
 
-    // Toggle de busca mobile
     if (mobileSearchToggle && searchForm) {
         mobileSearchToggle.addEventListener('click', () => {
             searchForm.classList.toggle('mobile-visible');
@@ -43,37 +45,37 @@ function carregarPosts() {
             const targetContainer = containerCategoria || containerBlog || containerHome;
             
             if (targetContainer) {
-                const tituloPagina = document.querySelector('.review-content h2');
+                const tituloPagina = document.querySelector('.review-content h2') || document.querySelector('.blog-header h2');
                 if (tituloPagina) tituloPagina.innerHTML = `🔍 Resultados para: "${searchInput.value}"`;
                 
                 renderizar(resultados, targetContainer, prefix);
                 targetContainer.scrollIntoView({ behavior: 'smooth' });
-                
-                // Esconde a busca mobile após pesquisar
                 searchForm.classList.remove('mobile-visible');
             }
         });
     }
 
     // --- LÓGICA DE CARREGAMENTO INICIAL ---
-    // Detecção mais robusta da página atual
-    const pathParts = url.split('/');
-    const fileName = pathParts[pathParts.length - 1] || 'index.html';
-
+    // Detecção de página baseada na presença dos containers (mais seguro que URL no mobile)
+    
+    // 1. Se houver container de categoria (ex: saude.html)
     if (containerCategoria) {
+        const pathParts = url.split('/');
+        const fileName = pathParts[pathParts.length - 1] || '';
         const categoriaNome = fileName.replace('.html', '');
         const filtrados = data.filter(p => p.categoria.toLowerCase() === categoriaNome.toLowerCase());
         renderizar(filtrados, containerCategoria, prefix);
     }
 
-    // Se for a home (index.html, / ou vazio)
-    if (containerHome && (fileName === 'index.html' || fileName === '')) {
-        renderizar([data[0]], containerHome, prefix);
+    // 2. Se houver container de blog (blog.html)
+    if (containerBlog) {
+        renderizar(data, containerBlog, prefix);
     }
 
-    // Se for a página de blog
-    if (containerBlog && fileName === 'blog.html') {
-        renderizar(data, containerBlog, prefix);
+    // 3. Se houver container de home (index.html)
+    if (containerHome) {
+        // Na home, mostramos apenas o post mais recente (o primeiro da lista)
+        renderizar([data[0]], containerHome, prefix);
     }
 }
 
@@ -100,7 +102,7 @@ function renderizar(posts, container, prefix) {
     });
 }
 
-// Garante que o script rode após o carregamento completo da página
+// Inicialização
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', carregarPosts);
 } else {
