@@ -16,6 +16,17 @@ function carregarPosts() {
     // --- LÓGICA DE BUSCA ---
     const searchForm = document.querySelector('.header-actions');
     const searchInput = document.querySelector('.header-actions input');
+    const mobileSearchToggle = document.getElementById('mobile-search-toggle');
+
+    // Toggle de busca mobile
+    if (mobileSearchToggle && searchForm) {
+        mobileSearchToggle.addEventListener('click', () => {
+            searchForm.classList.toggle('mobile-visible');
+            if (searchForm.classList.contains('mobile-visible')) {
+                searchInput.focus();
+            }
+        });
+    }
 
     if (searchForm && searchInput) {
         searchForm.addEventListener('submit', (e) => {
@@ -37,6 +48,9 @@ function carregarPosts() {
                 
                 renderizar(resultados, targetContainer, prefix);
                 targetContainer.scrollIntoView({ behavior: 'smooth' });
+                
+                // Esconde a busca mobile após pesquisar
+                searchForm.classList.remove('mobile-visible');
             }
         });
     }

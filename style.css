@@ -502,7 +502,27 @@ footer a {
         display: none;
     }
 
-    .header-actions { display: none; }
+    .header-actions { 
+        display: none; 
+        width: 100%;
+        max-width: 100%;
+        margin-top: 15px;
+        background: rgba(255, 215, 0, 0.05);
+    }
+    
+    .header-actions.mobile-visible {
+        display: flex !important;
+        animation: slideDown 0.3s ease-out;
+    }
+
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    #mobile-search-toggle {
+        display: block !important;
+    }
 
     a.post-preview-card {
         flex-direction: column;
