@@ -1,5 +1,13 @@
 const postsData = [
   {
+    "titulo": "☕ Cafeteira Italiana Inox: O Segredo do Café Perfeito em Casa",
+    "resumo": "Descubra como elevar o nível do seu café matinal com a praticidade e o sabor incomparável da prensa italiana em aço inox.",
+    "imagem": "images/imagesposts/cafeteira-italiana-inox-fundo-colorido.webp",
+    "link": "blog/cafeteira-italiana-inox.html",
+    "chamada": "📖 Ver Segredo do Café",
+    "categoria": "lar"
+  },
+  {
     "titulo": "💪 Whey Pro Max Titanium: O Guia Definitivo para sua Evolução",
     "resumo": "Descubra por que o Whey Pro é o aliado perfeito para ganhar massa magra e acelerar sua recuperação muscular com o melhor custo-benefício.",
     "imagem": "images/imagesposts/whey-pro-max-titanium-premium.jpg",
