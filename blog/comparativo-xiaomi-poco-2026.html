@@ -10,7 +10,72 @@
         .materia-container { max-width: 800px; margin: 40px auto; padding: 0 20px; color: #E0E0E0; line-height: 1.8; }
         .materia-header { text-align: center; margin-bottom: 40px; }
         .materia-header h1 { color: #FFD700; font-size: 32px; margin-bottom: 10px; }
-        .materia-img-principal { width: 100%; max-width: 650px; border-radius: 20px; margin: 0 auto 30px; display: block; border: 1px solid rgba(255,215,0,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        
+        /* Banner principal estratégico */
+        .banner-principal {
+            background: linear-gradient(135deg, #1A1F71 0%, #0a0e27 50%, #1A1F71 100%);
+            border: 2px solid #FFD700;
+            border-radius: 20px;
+            padding: 40px 20px;
+            margin: 0 auto 30px;
+            max-width: 800px;
+            box-shadow: 0 15px 40px rgba(255,215,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .banner-principal::before {
+            content: '🔥 LANÇAMENTOS 2026';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #FFD700;
+            color: #000;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            z-index: 10;
+        }
+        .banner-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .banner-produto {
+            text-align: center;
+            background: rgba(10, 14, 39, 0.6);
+            border-radius: 15px;
+            padding: 15px;
+            transition: all 0.3s;
+        }
+        .banner-produto:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255,215,0,0.4);
+        }
+        .banner-produto img {
+            width: 100%;
+            max-width: 180px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .banner-produto h3 {
+            color: #FFD700;
+            font-size: 14px;
+            margin: 10px 0 5px 0;
+        }
+        .banner-produto .tag-banner {
+            background: #00D4FF;
+            color: #000;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        
         .materia-img { width: 100%; max-width: 600px; border-radius: 20px; margin: 20px auto; display: block; border: 1px solid rgba(255,215,0,0.2); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
         .conteudo-texto { font-size: 18px; }
         .box-afiliado { background: #1A1F71; border: 2px solid #FFD700; border-radius: 12px; padding: 25px; margin: 40px 0; text-align: center; }
@@ -50,6 +115,7 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .grid-produtos { grid-template-columns: repeat(2, 1fr); }
+            .banner-grid { grid-template-columns: 1fr; }
         }
         
         @media (max-width: 600px) {
@@ -61,9 +127,12 @@
             .produto-card { padding: 15px; }
             .produto-card h4 { font-size: 14px; }
             .btn-oferta { padding: 10px 15px; font-size: 13px; }
-            .materia-img-principal, .materia-img { max-width: 100%; border-radius: 15px; }
+            .materia-img { max-width: 100%; border-radius: 15px; }
             .tabela-comparativa { font-size: 11px; overflow-x: auto; display: block; }
             .tabela-comparativa th, .tabela-comparativa td { padding: 8px; min-width: 100px; white-space: normal; }
+            .banner-principal { padding: 30px 15px; }
+            .banner-grid { grid-template-columns: 1fr; gap: 15px; }
+            .banner-produto img { max-width: 150px; }
         }
     </style>
 </head>
@@ -76,9 +145,26 @@
 <article class="materia-container">
     <a href="../index.html" class="voltar"><i class="fas fa-arrow-left"></i> Voltar para o início</a>
 
-    <img src="../images/imagesposts/comparativo-xiaomi-poco-2026.jpg" 
-         alt="Comparativo Poco X7 Pro, Redmi Note 14 Pro+, Xiaomi 15T Pro e 15T - Lançamentos 2026" 
-         class="materia-img-principal" loading="lazy">
+    <!-- BANNER PRINCIPAL ESTRATÉGICO -->
+    <div class="banner-principal">
+        <div class="banner-grid">
+            <div class="banner-produto">
+                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_960662-MLA99955909577_112025-F.webp" alt="Poco X7 Pro 5G">
+                <h3>Poco X7 Pro</h3>
+                <span class="tag-banner">🎮 GAMER</span>
+            </div>
+            <div class="banner-produto">
+                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_881370-MLA99502160902_112025-F.webp" alt="Redmi Note 14 Pro+ 5G">
+                <h3>Redmi Note 14 Pro+</h3>
+                <span class="tag-banner">📸 200MP</span>
+            </div>
+            <div class="banner-produto">
+                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_981163-MLA103755999865_012026-F.webp" alt="Xiaomi 15T Pro">
+                <h3>Xiaomi 15T Pro</h3>
+                <span class="tag-banner">🏆 FLAGSHIP</span>
+            </div>
+        </div>
+    </div>
 
     <header class="materia-header">
         <h1>📱 Comparativo Definitivo: Os 4 Últimos Lançamentos Xiaomi e Poco (2026)</h1>
@@ -106,7 +192,7 @@
                 <!-- POCO X7 PRO -->
                 <div class="produto-card">
                     <span class="destaque">🔥 LANÇAMENTO JAN/2026</span>
-                    <img src="../images/imagesposts/poco-x7-pro.jpg" alt="Poco X7 Pro 5G lançamento 2026">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_960662-MLA99955909577_112025-F.webp" alt="Poco X7 Pro 5G lançamento 2026">
                     <h4>Poco X7 Pro 5G</h4>
                     <p class="preco">💪 Dimensity 8400-Ultra</p>
                     <p style="font-size: 12px; color: #aaa;">12GB RAM | 512GB | 120Hz</p>
@@ -118,7 +204,7 @@
                 <!-- REDMI NOTE 14 PRO+ -->
                 <div class="produto-card">
                     <span class="destaque">✨ NOVÍSSIMO</span>
-                    <img src="../images/imagesposts/redmi-note-14-pro-plus.jpg" alt="Redmi Note 14 Pro+ 5G">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_881370-MLA99502160902_112025-F.webp" alt="Redmi Note 14 Pro+ 5G">
                     <h4>Redmi Note 14 Pro+ 5G</h4>
                     <p class="preco">📸 Câmera 200MP + IA</p>
                     <p style="font-size: 12px; color: #aaa;">12GB RAM | 512GB | 6200mAh</p>
@@ -130,7 +216,7 @@
                 <!-- XIAOMI 15T PRO -->
                 <div class="produto-card">
                     <span class="destaque">🏆 FLAGSHIP</span>
-                    <img src="../images/imagesposts/xiaomi-15t-pro.jpg" alt="Xiaomi 15T Pro 2025">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_981163-MLA103755999865_012026-F.webp" alt="Xiaomi 15T Pro 2025">
                     <h4>Xiaomi 15T Pro</h4>
                     <p class="preco">⚡ Dimensity 9300+</p>
                     <p style="font-size: 12px; color: #aaa;">12GB RAM | 512GB | 144Hz</p>
@@ -142,7 +228,7 @@
                 <!-- XIAOMI 15T -->
                 <div class="produto-card">
                     <span class="destaque">💎 EQUILIBRADO</span>
-                    <img src="../images/imagesposts/xiaomi-15t.jpg" alt="Xiaomi 15T 2025">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_981163-MLA103755999865_012026-F.webp" alt="Xiaomi 15T 2025">
                     <h4>Xiaomi 15T</h4>
                     <p class="preco">🎯 Dimensity 8300-Ultra</p>
                     <p style="font-size: 12px; color: #aaa;">12GB RAM | 256GB | 144Hz</p>
@@ -227,22 +313,22 @@
 
         <h3>1. 🔥 Poco X7 Pro – O Gamer com Bateria Infinita</h3>
         <p>Lançado em janeiro de 2026, o <strong>Poco X7 Pro</strong> é o sonho dos gamers mobile. Seu processador Dimensity 8400-Ultra entrega performance de flagship a um preço intermediário premium. A bateria de <strong>6000mAh com carregamento de 90W</strong> garante maratonas de jogos sem preocupação.</p>
-        <img src="../images/imagesposts/poco-x7-pro.jpg" alt="Poco X7 Pro design e tela" class="materia-img">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_960662-MLA99955909577_112025-F.webp" alt="Poco X7 Pro design e tela" class="materia-img">
         <p>A tela AMOLED de 120Hz é fluida e perfeita para PUBG, Free Fire e Genshin Impact. Com 12GB de RAM e 512GB de armazenamento, não faltará espaço para seus games e apps.</p>
 
         <h3>2. 📸 Redmi Note 14 Pro+ – A Estrela das Câmeras</h3>
         <p>O <strong>Redmi Note 14 Pro+</strong> chegou para revolucionar a fotografia mobile em janeiro de 2026. Sua câmera de <strong>200MP com inteligência artificial</strong> captura detalhes impressionantes, mesmo em ambientes com pouca luz.</p>
-        <img src="../images/imagesposts/redmi-note-14-pro-plus.jpg" alt="Redmi Note 14 Pro+ câmera 200MP" class="materia-img">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_881370-MLA99502160902_112025-F.webp" alt="Redmi Note 14 Pro+ câmera 200MP" class="materia-img">
         <p>A bateria de <strong>6200mAh</strong> é a maior da categoria, e o carregamento ultrarrápido de 120W leva você de 0 a 100% em menos de 20 minutos. Tela curva premium e design elegante completam o pacote.</p>
 
         <h3>3. 🏆 Xiaomi 15T Pro – Flagship Absoluto</h3>
         <p>O <strong>Xiaomi 15T Pro</strong> não brinca em serviço. Com o processador <strong>Dimensity 9300+</strong>, está entre os smartphones mais potentes de 2026. A parceria com Leica traz câmeras profissionais certificadas Summilux.</p>
-        <img src="../images/imagesposts/xiaomi-15t-pro.jpg" alt="Xiaomi 15T Pro flagship" class="materia-img">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_981163-MLA103755999865_012026-F.webp" alt="Xiaomi 15T Pro flagship" class="materia-img">
         <p>A tela de 144Hz é a mais fluida já vista em um Xiaomi, perfeita para jogos competitivos e navegação. WiFi 7 coloca você no futuro da conectividade.</p>
 
         <h3>4. 💎 Xiaomi 15T – Equilíbrio Perfeito</h3>
         <p>O <strong>Xiaomi 15T</strong> é para quem quer tecnologia de ponta sem gastar fortunas. O Dimensity 8300-Ultra oferece 95% da performance do modelo Pro, mas com preço muito mais acessível.</p>
-        <img src="../images/imagesposts/xiaomi-15t.jpg" alt="Xiaomi 15T custo-benefício" class="materia-img">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_2X_981163-MLA103755999865_012026-F.webp" alt="Xiaomi 15T custo-benefício" class="materia-img">
         <p>A câmera Sony IMX906 de 50MP é extremamente competente, e a tela de 144Hz mantém a fluidez premium. É o melhor custo-benefício desta lista.</p>
 
         <h2>Qual Escolher?</h2>
