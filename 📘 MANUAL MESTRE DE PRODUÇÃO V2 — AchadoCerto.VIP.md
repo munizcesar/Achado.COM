@@ -72,6 +72,7 @@ Para manter a consistência da marca **AchadoCerto.VIP**, siga rigorosamente:
 Sempre adicionar o novo post no **topo** da lista em `posts.js`.
 *   **Categorias permitidas**: `tech`, `saude`, `lar`, `estilo`, `dicas`.
 *   **Título com Emoji**: Usar um emoji que represente a categoria no início do título para atrair o clique.
+*   **Race Condition Fix**: O `script.js` possui um mecanismo de `retry` (re-tentativa) para carregar os posts caso o `postsData` não esteja pronto. Não remova essa lógica.
 
 ---
 
@@ -89,6 +90,18 @@ Uma área estratégica na página inicial para conversão de tráfego vindo de r
     *   Borda Dourada (#FFD700) arredondada.
     *   Fundo Azul Escuro (#151B4A).
 *   **Responsividade**: O vídeo deve usar `min-width` e `calc(100%)` para não quebrar em telas pequenas (iPhone SE) nem esticar demais em desktops.
+
+---
+
+## 8. 🔍 PADRONIZAÇÃO DE BUSCA E HEADER
+
+Regras rígidas para garantir consistência entre Home e Blog, especialmente no mobile:
+
+*   **Botão Submit**: Todo formulário de busca (`.header-actions`) **OBRIGATORIAMENTE** deve conter o botão de envio visível: `<button type="submit"><i class="fas fa-search"></i></button>`.
+*   **Botão Mobile**: O ícone de lupa no topo (header mobile) deve ser **transparente** e posicionado com `absolute` à direita.
+    *   **Correto**: `background: transparent; border: none; right: 0;`
+    *   **Incorreto**: Fundo azul, bordas ou posicionamento relativo.
+*   **Consistência**: O código do `<header>` do `blog.html` deve ser **idêntico** ao do `index.html` para evitar diferenças visuais.
 
 ---
 
