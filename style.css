@@ -539,3 +539,93 @@ footer a {
         padding: 20px;
     }
 }
+
+/* ===============================
+   10. BOXES E BOTOES DE POSTS (NOVO)
+   =============================== */
+
+/* Box padrão de afiliados/ofertas */
+.box-afiliado, 
+.box-oferta-premium {
+    background: #1A1F71;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 40px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.box-afiliado h3,
+.box-oferta-premium h3 {
+    color: #FFD700;
+    margin-top: 0;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.box-afiliado img,
+.box-oferta-premium img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    max-height: 300px;
+    object-fit: contain;
+}
+
+/* Botão Dourado Padrão (VIP/Oferta) */
+.botao,
+.botao-oferta-vip,
+.btn-oferta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000 !important; /* Força cor preta para contraste */
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: 800;
+    border-radius: 50px; /* Pílula */
+    transition: all 0.3s;
+    font-size: 14px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    margin: 15px 0;
+}
+
+.botao:hover,
+.botao-oferta-vip:hover,
+.btn-oferta:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+    filter: brightness(1.1);
+}
+
+.botao i,
+.botao-oferta-vip i,
+.btn-oferta i {
+    margin-right: 8px;
+}
+
+/* Botão Secundário (WhatsApp/Verde) */
+.botao-secundario {
+    background: #25D366;
+    color: #FFF !important;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s;
+}
+
+.botao-secundario:hover {
+    transform: scale(1.05);
+    background: #1ebe57;
+}
