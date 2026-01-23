@@ -42,20 +42,28 @@ O texto deve ser interessante e fácil de ler no celular:
 
 ## 4. 📱 EXPERIÊNCIA MOBILE E BUSCA
 
-*   **Busca Mobile**: O botão de lupa (🔍) deve estar sempre visível no topo. O campo de busca deve ser expansível para não ocupar espaço desnecessário.
-*   **Responsividade**: Cards de posts devem se ajustar para coluna única no celular, garantindo que a imagem não fique pequena demais nem o texto apertado.
+Para garantir que a busca seja acessível em telas pequenas:
+
+*   **Layout de Coluna**: No mobile, o container do menu deve adotar `flex-direction: column`.
+*   **Menu Horizontal**: Os links das categorias (Tech, Saúde, etc.) ficam no topo, com rolagem horizontal (`overflow-x: auto`).
+*   **Busca Expansível**: O campo de busca (input) deve aparecer **abaixo** dos links, ocupando a largura total, e não misturado na lista de rolagem. Isso evita que o campo fique escondido fora da tela.
+*   **Responsividade dos Posts**: Cards de posts devem se ajustar para coluna única no celular.
 
 ---
 
-## 5. 🔗 RODAPÉ E REDES SOCIAIS
+## 5. 🔗 RODAPÉ E REDES SOCIAIS (IDENTIDADE VISUAL)
 
-Todo post de blog deve terminar com o bloco oficial de redes sociais:
+Para manter a consistência da marca **AchadoCerto.VIP**, siga rigorosamente:
 
-*   **Instagram**: Link oficial.
-*   **TikTok**: Link oficial.
-*   **WhatsApp**: Link do canal.
-*   **X (Twitter)**: Link oficial (https://x.com/AchadoCertoVIP).
-*   **Links Legais**: Privacidade e Termos devem estar presentes no rodapé.
+*   **Classe Padrão**: Todo bloco de ícones sociais deve usar a classe `<div class="social-icons">`.
+*   **Cor Dourada Obrigatória**:
+    *   **NUNCA** use estilos inline (ex: `style="color: #E1306C"`) para colorir ícones com as cores originais das redes (rosa para Instagram, verde para WhatsApp, etc.).
+    *   A cor deve ser herdada do CSS global: **Dourado (#FFD700)** para ícones e **Branco (#FFFFFF)** ao passar o mouse (hover).
+*   **Links Oficiais**:
+    *   Instagram: Link oficial.
+    *   TikTok: Link oficial.
+    *   WhatsApp: Link do canal.
+    *   X (Twitter): Link oficial (https://x.com/AchadoCertoVIP).
 
 ---
 
@@ -67,4 +75,4 @@ Sempre adicionar o novo post no **topo** da lista em `posts.js`.
 
 ---
 
-> **Nota**: Este manual deve ser atualizado sempre que uma nova melhoria de layout ou funcionalidade for validada e aprovada.
+> **Nota**: Este manual deve ser consultado antes de cada publicação para garantir que o padrão de qualidade (V2) seja mantido em todas as páginas.
