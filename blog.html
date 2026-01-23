@@ -16,19 +16,21 @@
 <body>
 
 <header class="topo">
-    <div class="header-container" style="display: flex; justify-content: center; align-items: center; position: relative; max-width: 1200px; margin: 0 auto;">
-        <a href="index.html" style="text-decoration: none;">
-            <h1 style="margin:0; font-weight:900; font-size: 42px; letter-spacing: 1px;">
+    <!-- Header ajustado para mobile e botão separado -->
+    <div class="header-container header-mobile-layout">
+        <a href="index.html" class="brand-link">
+            <h1 class="brand-title">
                 🔍<span style="color: #FFFFFF;">AchadoCerto.</span><span style="color: #FFD700;">VIP</span>
             </h1>
         </a>
-        <button id="mobile-search-toggle" class="mobile-only" style="position: absolute; right: 0; background: transparent; border: none; color: #FFD700; font-size: 24px; cursor: pointer; display: none;">
+        
+        <!-- Botão de Busca: Classe mobile-search-btn adicionada para controle via CSS -->
+        <button id="mobile-search-toggle" class="mobile-only mobile-search-btn" type="button" aria-label="Buscar">
             <i class="fas fa-search"></i>
         </button>
     </div>
     <p>O clube <span style="color: #FFD700; font-weight: bold;">VIP</span> de achados, cupons e ofertas.</p>
 </header>
-
 
 <nav class="menu-categorias">
     <div class="container">
@@ -73,9 +75,9 @@
     <p>© 2026 AchadoCerto.VIP — Todos os Direitos Reservados</p>
 </footer>
 
-<script src="posts.js"></script>
-<script src="script.js"></script>
-
+<!-- SCRIPTS COM DEFER (Isso corrige o erro de não carregar posts no mobile) -->
+<script src="posts.js" defer></script>
+<script src="script.js" defer></script>
 
 </body>
 </html>

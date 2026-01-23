@@ -639,3 +639,71 @@ footer a {
     transform: scale(1.05);
     background: #1ebe57;
 }
+/* ========================================= */
+/* CORREÇÕES FINAIS (MOBILE + BLOG + BUSCA) */
+/* ========================================= */
+
+/* 1. Header Mobile: Botão e Logo organizados */
+.header-mobile-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+.brand-title {
+  margin: 0;
+  font-weight: 900;
+  font-size: 42px;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.brand-link { text-decoration: none; }
+
+/* Esconde botão mobile no desktop */
+#mobile-search-toggle.mobile-search-btn {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  /* Reduz logo para não quebrar linha */
+  .brand-title {
+    font-size: 26px !important;
+  }
+
+  /* Botão de Busca: Fixo à direita e destacado */
+  #mobile-search-toggle.mobile-search-btn {
+    display: flex !important;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    background-color: #151B4A;
+    border: 1px solid rgba(255, 215, 0, 0.6);
+    border-radius: 12px;
+    color: #FFD700;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 10;
+  }
+  
+  /* 2. Destaque Viral (Vídeo) Ajustado no Mobile */
+  .video-highlight-container{
+    max-width: 360px;
+    padding: 0 10px;
+    margin: 0 auto 30px;
+  }
+  .video-wrapper .instagram-media{
+    width: 100% !important;
+    max-width: 340px !important;
+    min-width: 0 !important;
+    margin: 0 auto !important;
+  }
+}
