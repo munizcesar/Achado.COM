@@ -75,4 +75,21 @@ Sempre adicionar o novo post no **topo** da lista em `posts.js`.
 
 ---
 
+## 7. 📹 SESSÃO DESTAQUE VIRAL (HOME)
+
+Uma área estratégica na página inicial para conversão de tráfego vindo de redes sociais (TikTok/Reels).
+
+*   **Localização (Hot Zone)**: Inserir logo após os Cards de Grupos (WhatsApp/Canal) e *antes* do conteúdo principal de texto.
+*   **Estrutura Visual**:
+    *   **Container**: Largura máxima de 500px (foco mobile) centralizado.
+    *   **Embed**: Usar script oficial (Instagram/TikTok/YouTube Shorts) para garantir reprodução.
+    *   **Botão de Conversão**: Posicionado imediatamente abaixo do vídeo, ocupando 100% da largura do container, com a chamada "COMPRAR AGORA".
+*   **Identidade**:
+    *   Tag "🔥 DESTAQUE VIRAL" no topo.
+    *   Borda Dourada (#FFD700) arredondada.
+    *   Fundo Azul Escuro (#151B4A).
+*   **Responsividade**: O vídeo deve usar `min-width` e `calc(100%)` para não quebrar em telas pequenas (iPhone SE) nem esticar demais em desktops.
+
+---
+
 > **Nota**: Este manual deve ser consultado antes de cada publicação para garantir que o padrão de qualidade (V2) seja mantido em todas as páginas.
