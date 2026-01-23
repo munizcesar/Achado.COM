@@ -2,7 +2,7 @@ const postsData = [
   {
     "titulo": "📱 Comparativo: Poco X7 Pro vs Redmi Note 14 Pro+ vs Xiaomi 15T Pro e 15T",
     "resumo": "Os 4 últimos lançamentos Xiaomi e Poco comparados! Descubra qual smartphone é perfeito para você: gamer, fotógrafo ou quem busca custo-benefício.",
-    "imagem": "images/imagesposts/comparativo-xiaomi-poco-2026.jpg",
+    "imagem": "images/imagesposts/produtos_xiaomi.jpg",
     "link": "blog/comparativo-xiaomi-poco-2026.html",
     "chamada": "📖 Ver Comparativo Completo",
     "categoria": "tech"
