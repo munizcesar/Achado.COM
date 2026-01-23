@@ -22,6 +22,35 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preload" as="image" href="images/imagem_celular.png" media="(max-width: 768px)">
     <script async src="//www.instagram.com/embed.js"></script>
+    
+    <style>
+        /* Ajuste fino para botões menores em mobile */
+        @media (max-width: 600px) {
+            .compact-btn {
+                padding: 10px !important;
+                font-size: 13px !important;
+            }
+            .compact-card {
+                padding: 15px !important;
+                min-width: auto !important;
+            }
+            .compact-icon {
+                font-size: 24px !important;
+                margin-bottom: 8px !important;
+            }
+            .compact-title {
+                font-size: 15px !important;
+                margin-bottom: 8px !important;
+            }
+            /* Ajuste do container do vídeo para não cortar */
+            .video-wrapper blockquote {
+                min-width: 280px !important; 
+                max-width: 100% !important;
+                width: 100% !important;
+                margin: 0 !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -63,51 +92,51 @@
         <img src="images/imagem_celular.png" alt="Ofertas Premium AchadoCerto VIP" class="hero-img">
     </picture>
 
-    <!-- NOVOS CARDS VIP PREMIUM -->
-    <div class="cta-container" style="display: flex; gap: 20px; justify-content: center; margin: -50px auto 40px; padding: 0 20px; position: relative; z-index: 10; max-width: 900px; flex-wrap: wrap;">
+    <!-- NOVOS CARDS VIP PREMIUM (Compactados no mobile) -->
+    <div class="cta-container" style="display: flex; gap: 15px; justify-content: center; margin: -50px auto 40px; padding: 0 15px; position: relative; z-index: 10; max-width: 900px; flex-wrap: wrap;">
         <!-- Card Canal Oficial -->
-        <div style="background: #151B4A; border: 1px solid rgba(255, 215, 0, 0.4); border-radius: 15px; padding: 25px; flex: 1; min-width: 280px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s;">
-            <i class="fas fa-bullhorn" style="font-size: 30px; margin-bottom: 15px; color: #FFD700;"></i>
-            <h3 style="font-size: 18px; margin-bottom: 15px; color: #FFFFFF; font-weight: 700;">Canal Oficial de Ofertas</h3>
-            <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" style="display: block; padding: 12px; border-radius: 8px; font-weight: 800; text-transform: uppercase; font-size: 14px; background: #FFD700; color: #0A1026; text-decoration: none;">
+        <div class="compact-card" style="background: #151B4A; border: 1px solid rgba(255, 215, 0, 0.4); border-radius: 15px; padding: 25px; flex: 1; min-width: 280px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s;">
+            <i class="fas fa-bullhorn compact-icon" style="font-size: 30px; margin-bottom: 15px; color: #FFD700;"></i>
+            <h3 class="compact-title" style="font-size: 18px; margin-bottom: 15px; color: #FFFFFF; font-weight: 700;">Canal Oficial de Ofertas</h3>
+            <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" class="compact-btn" style="display: block; padding: 12px; border-radius: 8px; font-weight: 800; text-transform: uppercase; font-size: 14px; background: #FFD700; color: #0A1026; text-decoration: none;">
                 Seguir Canal
             </a>
         </div>
 
         <!-- Card Grupo VIP -->
-        <div style="background: #151B4A; border: 1px solid rgba(255, 215, 0, 0.4); border-radius: 15px; padding: 25px; flex: 1; min-width: 280px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s;">
-            <i class="fab fa-whatsapp" style="font-size: 30px; margin-bottom: 15px; color: #25D366;"></i>
-            <h3 style="font-size: 18px; margin-bottom: 15px; color: #FFFFFF; font-weight: 700;">Grupo VIP de Achados</h3>
-            <a href="https://chat.whatsapp.com/E6kgRRbyoiP99NoIANB81t" target="_blank" style="display: block; padding: 12px; border-radius: 8px; font-weight: 800; text-transform: uppercase; font-size: 14px; background: #25D366; color: #FFFFFF; text-decoration: none;">
+        <div class="compact-card" style="background: #151B4A; border: 1px solid rgba(255, 215, 0, 0.4); border-radius: 15px; padding: 25px; flex: 1; min-width: 280px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: transform 0.3s;">
+            <i class="fab fa-whatsapp compact-icon" style="font-size: 30px; margin-bottom: 15px; color: #25D366;"></i>
+            <h3 class="compact-title" style="font-size: 18px; margin-bottom: 15px; color: #FFFFFF; font-weight: 700;">Grupo VIP de Achados</h3>
+            <a href="https://chat.whatsapp.com/E6kgRRbyoiP99NoIANB81t" target="_blank" class="compact-btn" style="display: block; padding: 12px; border-radius: 8px; font-weight: 800; text-transform: uppercase; font-size: 14px; background: #25D366; color: #FFFFFF; text-decoration: none;">
                 Entrar no Grupo
             </a>
         </div>
     </div>
 
-    <!-- SESSÃO DESTAQUE EM VÍDEO (NOVO) -->
-    <section class="video-highlight-container" style="max-width: 500px; margin: 0 auto 50px; padding: 0 20px;">
+    <!-- SESSÃO DESTAQUE EM VÍDEO (AJUSTADA) -->
+    <section class="video-highlight-container" style="max-width: 450px; margin: 0 auto 50px; padding: 0 15px;">
         
         <!-- Título Chamativo -->
         <div style="text-align: center; margin-bottom: 15px;">
-            <span style="background: #FFD700; color: #0A1026; padding: 5px 15px; border-radius: 20px; font-weight: 800; font-size: 12px; text-transform: uppercase;">
+            <span style="background: #FFD700; color: #0A1026; padding: 4px 12px; border-radius: 20px; font-weight: 800; font-size: 11px; text-transform: uppercase;">
                 🔥 Destaque Viral
             </span>
-            <h3 style="color: #fff; margin-top: 10px; font-size: 22px;">Viu no Instagram? Tá Aqui! 👇</h3>
+            <h3 style="color: #fff; margin-top: 10px; font-size: 20px;">Viu no Instagram? Tá Aqui! 👇</h3>
         </div>
 
         <!-- Box do Vídeo + Botão -->
-        <div style="background: #151B4A; border: 2px solid #FFD700; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+        <div style="background: #151B4A; border: 2px solid #FFD700; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.5);">
             
-            <!-- Área do Vídeo (Embed Instagram) -->
+            <!-- Área do Vídeo (Embed Instagram Ajustado) -->
             <div class="video-wrapper" style="position: relative; background: #000; display: flex; justify-content: center; overflow: hidden;">
-                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTzE8tpjjJg/?igsh=Z3Vzc2QwaGV4bWw4" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 0px auto; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DTzE8tpjjJg/?igsh=Z3Vzc2QwaGV4bWw4" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 0px auto; max-width:400px; min-width:280px; padding:0; width:100%;">
                 </blockquote>
             </div>
 
             <!-- Botão de Ação -->
-            <div style="padding: 20px; text-align: center; background: linear-gradient(180deg, #151B4A 0%, #0A1026 100%);">
-                <p style="color: #E0E0E0; font-size: 14px; margin-bottom: 15px;">Gostou deste Achado? Garanta com desconto:</p>
-                <a href="https://divulgador.magalu.com/bSBWacsW" target="_blank" class="botao-padrao-achado" style="width: 100%; display: block; padding: 15px; font-size: 16px; margin-top: 0;">
+            <div style="padding: 15px; text-align: center; background: linear-gradient(180deg, #151B4A 0%, #0A1026 100%);">
+                <p style="color: #E0E0E0; font-size: 13px; margin-bottom: 10px;">Gostou deste Achado? Garanta com desconto:</p>
+                <a href="https://divulgador.magalu.com/bSBWacsW" target="_blank" class="botao-padrao-achado compact-btn" style="width: 100%; display: block; padding: 12px; font-size: 14px; margin-top: 0;">
                     <i class="fas fa-shopping-bag" style="margin-right: 8px;"></i> COMPRAR AGORA
                 </a>
             </div>
