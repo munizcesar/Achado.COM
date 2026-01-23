@@ -1,6 +1,9 @@
 function carregarPosts() {
+    // Mecanismo de re-tentativa (Retry) caso postsData não esteja definido
+    // Isso corrige problemas onde o script.js carrega antes do posts.js (race condition)
     if (typeof postsData === 'undefined') {
-        console.error("ERRO: O arquivo posts.js não foi carregado corretamente.");
+        console.warn("Aviso: postsData ainda não está disponível. Tentando novamente em 100ms...");
+        setTimeout(carregarPosts, 100);
         return;
     }
 
@@ -58,7 +61,16 @@ function carregarPosts() {
     // --- LÓGICA DE CARREGAMENTO INICIAL ---
     // Detecção mais robusta da página atual
     const pathParts = url.split('/');
-    const fileName = pathParts[pathParts.length - 1] || 'index.html';
+    let fileName = pathParts[pathParts.length - 1];
+    
+    // Tratamento para URL sem nome de arquivo (ex: /blog/)
+    if (fileName === '' || fileName === 'blog') {
+        if (url.includes('blog')) fileName = 'blog.html';
+        else fileName = 'index.html';
+    }
+    
+    // Remove query params se houver
+    fileName = fileName.split('?')[0];
 
     if (containerCategoria) {
         const categoriaNome = fileName.replace('.html', '');
@@ -72,7 +84,7 @@ function carregarPosts() {
     }
 
     // Se for a página de blog
-    if (containerBlog && fileName === 'blog.html') {
+    if (containerBlog && (fileName === 'blog.html' || url.includes('/blog'))) {
         renderizar(data, containerBlog, prefix);
     }
 }
@@ -100,7 +112,7 @@ function renderizar(posts, container, prefix) {
     });
 }
 
-// Garante que o script rode após o carregamento completo da página
+// Inicialização com suporte a DOMContentLoaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', carregarPosts);
 } else {
