@@ -259,7 +259,7 @@ a {
     background: rgba(11, 18, 32, 0.85);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    z-index: 9999;
+    z-index: 999;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -301,7 +301,7 @@ a {
         border: 1.5px solid rgba(212, 175, 55, 0.35);
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(212, 175, 55, 0.1) inset;
         border-radius: 18px;
-        z-index: 10000;
+        z-index: 1000;
         opacity: 0;
         pointer-events: none;
         transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -332,16 +332,19 @@ a {
     .header-search-main.mobile-visible {
         display: flex !important;
         flex-direction: row !important;
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-        pointer-events: auto;
+        align-items: center !important;
+        opacity: 1 !important;
+        transform: translateX(-50%) translateY(0) !important;
+        pointer-events: auto !important;
+        z-index: 1000 !important;
         animation: searchSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
     
     .header-search-main.mobile-visible input,
     .header-search-main.mobile-visible button {
-        display: block !important;
+        display: inline-flex !important;
         visibility: visible !important;
+        opacity: 1 !important;
     }
     
     @keyframes searchSlideIn {
