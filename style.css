@@ -69,7 +69,7 @@ a {
 
 /* Busca do header - v2.1 atualizado */
 .header-search-main {
-    display: none !important;
+    display: none;
     position: relative;
     align-items: center;
     min-height: 48px;
@@ -273,7 +273,9 @@ a {
 @media (max-width: 768px) {
     .topo {
         padding: 12px 0;
-        position: relative;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
     }
     
     .header-container {
@@ -287,7 +289,7 @@ a {
     }
     
     .header-search-main {
-        display: none !important;
+        display: none;
         position: fixed;
         top: 70px;
         left: 50%;
@@ -329,10 +331,17 @@ a {
     
     .header-search-main.mobile-visible {
         display: flex !important;
+        flex-direction: row !important;
         opacity: 1;
         transform: translateX(-50%) translateY(0);
         pointer-events: auto;
         animation: searchSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    
+    .header-search-main.mobile-visible input,
+    .header-search-main.mobile-visible button {
+        display: block !important;
+        visibility: visible !important;
     }
     
     @keyframes searchSlideIn {
