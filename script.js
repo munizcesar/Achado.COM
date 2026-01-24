@@ -1,6 +1,73 @@
+// Função para configurar a busca (independente dos posts)
+function configurarBusca() {
+    const searchForm = document.querySelector('.header-actions');
+    const searchInput = document.querySelector('.header-actions input');
+    const mobileSearchToggle = document.getElementById('mobile-search-toggle');
+
+    // Configura o toggle do mobile (abrir/fechar busca)
+    if (mobileSearchToggle && searchForm) {
+        // Remove event listeners antigos para evitar duplicidade (boa prática)
+        const newToggle = mobileSearchToggle.cloneNode(true);
+        mobileSearchToggle.parentNode.replaceChild(newToggle, mobileSearchToggle);
+        
+        newToggle.addEventListener('click', (e) => {
+            e.preventDefault(); // Previne comportamentos padrão
+            searchForm.classList.toggle('mobile-visible');
+            if (searchForm.classList.contains('mobile-visible')) {
+                setTimeout(() => searchInput.focus(), 100); // Pequeno delay para garantir foco no mobile
+            }
+        });
+    }
+
+    // Configura o envio do formulário
+    if (searchForm && searchInput) {
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            realizarBusca(searchInput.value);
+        });
+    }
+}
+
+// Função de busca separada
+function realizarBusca(termo) {
+    termo = termo.toLowerCase().trim();
+    if (termo === '') return;
+
+    if (typeof postsData === 'undefined') {
+        console.warn("postsData ainda não carregado para busca.");
+        return;
+    }
+
+    const data = postsData;
+    const url = window.location.pathname;
+    const isSubfolder = url.includes('/categorias/');
+    const prefix = isSubfolder ? '../' : '';
+
+    const containerCategoria = document.getElementById('lista-categoria');
+    const containerHome = document.getElementById('latest-post');
+    const containerBlog = document.getElementById('blog-lista');
+    const targetContainer = containerCategoria || containerBlog || containerHome;
+
+    const resultados = data.filter(p => 
+        p.titulo.toLowerCase().includes(termo) || 
+        p.resumo.toLowerCase().includes(termo)
+    );
+    
+    if (targetContainer) {
+        const tituloPagina = document.querySelector('.review-content h2');
+        if (tituloPagina) tituloPagina.innerHTML = `🔍 Resultados para: "${termo}"`;
+        
+        renderizar(resultados, targetContainer, prefix);
+        targetContainer.scrollIntoView({ behavior: 'smooth' });
+        
+        // Esconde a busca mobile após pesquisar
+        const searchForm = document.querySelector('.header-actions');
+        if (searchForm) searchForm.classList.remove('mobile-visible');
+    }
+}
+
 function carregarPosts() {
-    // Mecanismo de re-tentativa (Retry) caso postsData não esteja definido
-    // Isso corrige problemas onde o script.js carrega antes do posts.js (race condition)
+    // Mecanismo de re-tentativa (Retry) APENAS para os posts
     if (typeof postsData === 'undefined') {
         console.warn("Aviso: postsData ainda não está disponível. Tentando novamente em 100ms...");
         setTimeout(carregarPosts, 100);
@@ -16,60 +83,14 @@ function carregarPosts() {
     const isSubfolder = url.includes('/categorias/');
     const prefix = isSubfolder ? '../' : '';
 
-    // --- LÓGICA DE BUSCA ---
-    const searchForm = document.querySelector('.header-actions');
-    const searchInput = document.querySelector('.header-actions input');
-    const mobileSearchToggle = document.getElementById('mobile-search-toggle');
-
-    // Toggle de busca mobile
-    if (mobileSearchToggle && searchForm) {
-        mobileSearchToggle.addEventListener('click', () => {
-            searchForm.classList.toggle('mobile-visible');
-            if (searchForm.classList.contains('mobile-visible')) {
-                searchInput.focus();
-            }
-        });
-    }
-
-    if (searchForm && searchInput) {
-        searchForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const termo = searchInput.value.toLowerCase().trim();
-            
-            if (termo === '') return;
-
-            const resultados = data.filter(p => 
-                p.titulo.toLowerCase().includes(termo) || 
-                p.resumo.toLowerCase().includes(termo)
-            );
-
-            const targetContainer = containerCategoria || containerBlog || containerHome;
-            
-            if (targetContainer) {
-                const tituloPagina = document.querySelector('.review-content h2');
-                if (tituloPagina) tituloPagina.innerHTML = `🔍 Resultados para: "${searchInput.value}"`;
-                
-                renderizar(resultados, targetContainer, prefix);
-                targetContainer.scrollIntoView({ behavior: 'smooth' });
-                
-                // Esconde a busca mobile após pesquisar
-                searchForm.classList.remove('mobile-visible');
-            }
-        });
-    }
-
     // --- LÓGICA DE CARREGAMENTO INICIAL ---
-    // Detecção mais robusta da página atual
     const pathParts = url.split('/');
     let fileName = pathParts[pathParts.length - 1];
     
-    // Tratamento para URL sem nome de arquivo (ex: /blog/)
     if (fileName === '' || fileName === 'blog') {
         if (url.includes('blog')) fileName = 'blog.html';
         else fileName = 'index.html';
     }
-    
-    // Remove query params se houver
     fileName = fileName.split('?')[0];
 
     if (containerCategoria) {
@@ -78,12 +99,10 @@ function carregarPosts() {
         renderizar(filtrados, containerCategoria, prefix);
     }
 
-    // Se for a home (index.html, / ou vazio)
     if (containerHome && (fileName === 'index.html' || fileName === '')) {
         renderizar([data[0]], containerHome, prefix);
     }
 
-    // Se for a página de blog
     if (containerBlog && (fileName === 'blog.html' || url.includes('/blog'))) {
         renderizar(data, containerBlog, prefix);
     }
@@ -112,9 +131,8 @@ function renderizar(posts, container, prefix) {
     });
 }
 
-// Inicialização com suporte a DOMContentLoaded
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', carregarPosts);
-} else {
-    carregarPosts();
-}
+// Inicialização
+document.addEventListener('DOMContentLoaded', () => {
+    configurarBusca(); // Configura busca imediatamente (não depende de postsData)
+    carregarPosts();   // Inicia carregamento dos posts (pode ter retry)
+});
