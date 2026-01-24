@@ -1,6 +1,12 @@
 /* ===============================
    1. ESTILOS GERAIS (RESET)
    =============================== */
+
+:root {
+    --header-height-desktop: 60px;
+    --header-height-mobile: 54px;
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -368,7 +374,7 @@ a {
     padding: 12px 0;
     width: 100%;
     position: sticky;
-    top: 60px;
+    top: var(--header-height-desktop);
     z-index: 900;
 }
 
@@ -855,7 +861,7 @@ footer a {
 
     /* Ajuste para o container do menu */
     .menu-categorias {
-        top: 54px; /* Adjusted for mobile header height */
+        top: var(--header-height-mobile); /* Adjusted for mobile header height */
     }
     
     .menu-categorias .container {
