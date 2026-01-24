@@ -265,6 +265,23 @@ a {
         flex-wrap: nowrap !important;
     }
     
+    /* Overlay with blur when search is open */
+    .header-search-main::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(11, 18, 32, 0.7);
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+        z-index: 9999;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
     .header-search-main {
         display: none !important;
         position: fixed;
@@ -312,6 +329,11 @@ a {
         transform: translateX(-50%) translateY(0);
         pointer-events: auto;
         animation: searchSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    
+    .header-search-main.mobile-visible::before {
+        opacity: 1;
+        pointer-events: auto;
     }
     
     @keyframes searchSlideIn {
