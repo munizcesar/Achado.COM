@@ -1,6 +1,12 @@
 /* ===============================
    1. ESTILOS GERAIS (RESET)
    =============================== */
+
+:root {
+    --header-height-desktop: 60px;
+    --header-height-mobile: 54px;
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -39,11 +45,20 @@ a {
    =============================== */
 .topo {
     padding: 14px 0;
-    background: rgba(11, 18, 32, 0.6);
+    background: rgba(11, 18, 32, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(212, 175, 55, 0.08);
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Enhanced shadow when scrolled */
+.topo.scrolled {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 /* Estilo para o link do logotipo */
@@ -252,7 +267,8 @@ a {
 @media (max-width: 768px) {
     .topo {
         padding: 12px 0;
-        position: relative;
+        position: sticky;
+        top: 0;
     }
     
     .header-container {
@@ -352,14 +368,14 @@ a {
    3. MENU DE CATEGORIAS E BUSCA
    =============================== */
 .menu-categorias {
-    background: rgba(14, 20, 35, 0.5);
+    background: rgba(14, 20, 35, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(212, 175, 55, 0.05);
     padding: 12px 0;
     width: 100%;
     position: sticky;
-    top: 0;
-    z-index: 50;
+    top: var(--header-height-desktop);
+    z-index: 900;
 }
 
 .menu-categorias .container {
@@ -844,6 +860,10 @@ footer a {
     .cta-card { padding: 20px; }
 
     /* Ajuste para o container do menu */
+    .menu-categorias {
+        top: var(--header-height-mobile); /* Adjusted for mobile header height */
+    }
+    
     .menu-categorias .container {
         flex-direction: column; /* Organiza em coluna: Links em cima, Busca embaixo */
         align-items: stretch; /* Ocupa a largura total */

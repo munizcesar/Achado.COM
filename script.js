@@ -154,4 +154,17 @@ function renderizar(posts, container, prefix) {
 document.addEventListener('DOMContentLoaded', () => {
     configurarBusca(); // Configura busca imediatamente (não depende de postsData)
     carregarPosts();   // Inicia carregamento dos posts (pode ter retry)
+    
+    // Adiciona efeito de shadow no header ao rolar
+    const SCROLL_THRESHOLD = 10; // Pixels scrolled before adding enhanced shadow
+    const header = document.querySelector('.topo');
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > SCROLL_THRESHOLD) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
 });
