@@ -668,6 +668,8 @@ footer a {
         display: none;
     }
 
+    /* Correção: Maior especificidade para display none/flex */
+    form.header-actions,
     .header-actions { 
         display: none; 
         width: 100%;
@@ -676,6 +678,7 @@ footer a {
         background: rgba(255, 215, 0, 0.05);
     }
     
+    form.header-actions.mobile-visible,
     .header-actions.mobile-visible {
         display: flex !important;
         animation: slideDown 0.3s ease-out;
@@ -795,6 +798,7 @@ footer a {
     transform: scale(1.05);
     background: #1ebe57;
 }
+
 /* ========================================= */
 /* CORREÇÕES FINAIS (MOBILE + BLOG + BUSCA) */
 /* ========================================= */
@@ -829,25 +833,6 @@ footer a {
   /* Reduz logo para não quebrar linha */
   .brand-title {
     font-size: 26px !important;
-  }
-
-  /* Botão de Busca: Fixo à direita e destacado */
-  #mobile-search-toggle.mobile-search-btn {
-    display: flex !important;
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
-    align-items: center;
-    justify-content: center;
-    background-color: #151B4A;
-    border: 1px solid rgba(255, 215, 0, 0.6);
-    border-radius: 12px;
-    color: #FFD700;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    z-index: 10;
   }
   
   /* 2. Destaque Viral (Vídeo) Ajustado no Mobile */
