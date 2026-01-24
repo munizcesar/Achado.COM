@@ -128,6 +128,11 @@
 
 <header class="topo">
     <div class="header-container" style="display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; gap: 40px; width: 100%; position: relative;">
+        <!-- Botão Menu Drawer -->
+        <button class="drawer-toggle" style="align-items: center; justify-content: center; width: 40px; height: 40px; background: transparent; border: none; color: #FFD700; font-size: 24px; cursor: pointer; line-height: 1;" title="Abrir menu" aria-label="Abrir menu">
+            <i class="fas fa-bars"></i>
+        </button>
+
         <!-- Logo discreto -->
         <a href="index.html" style="text-decoration: none; flex-shrink: 0;">
             <h1 style="margin:0; font-size: 22px; letter-spacing: 0.3px; line-height: 1;">
@@ -183,21 +188,22 @@
     </a>
 </div>
 
-<section class="video-highlight-container" style="max-width: 380px; margin: 0 auto 40px; padding: 0 15px;">
-        
+<!-- WRAPPER PARA VIDEO + BLOG LADO A LADO -->
+<div class="content-sections-wrapper">
+    <!-- SEÇÃO DE VÍDEO (DESTAQUE) -->
+    <section class="video-highlight-section">
         <!-- Título Chamativo -->
-        <div style="text-align: center; margin-bottom: 12px;">
+        <div style="text-align: center; margin-bottom: 12px; padding: 0 15px;">
             <span style="background: rgba(212, 175, 55, 0.15); color: #D4AF37; padding: 4px 12px; border-radius: 20px; font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">
                 Destaque
             </span>
             <h3 style="color: #F5F7FA; margin-top: 10px; font-size: 17px; font-weight: 400;">Viu no Instagram? Tá Aqui</h3>
         </div>
 
-        <!-- Box do Vídeo + Botão -->
-        <div style="background: rgba(21, 27, 74, 0.4); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 10px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.3);">
+        <div style="background: rgba(21, 27, 74, 0.4); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 10px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,0.3); height: 100%;">
             
             <!-- Área do Vídeo (Embed Instagram Ajustado) -->
-            <div class="video-wrapper" style="position: relative; background: #000; display: flex; justify-content: center; overflow: hidden; min-height: 500px;">
+            <div class="video-wrapper" style="position: relative; background: #000; display: flex; justify-content: center; overflow: hidden; min-height: 380px;">
                 <!-- Skeleton loader -->
                 <div class="instagram-skeleton" id="instagram-skeleton"></div>
                 <!-- Embed do Instagram com loading lazy -->
@@ -215,41 +221,41 @@
         </div>
     </section>
 
-    <div style="text-align: center; margin-top: 20px; font-size: 13px; color: #C5CAD3; opacity: 0.85;">
-        <p>Selecionamos ofertas reais todos os dias. Você escolhe e compra direto na loja oficial.</p>
-    </div>
+    <!-- SEÇÃO DE BLOG -->
+    <section class="blog-highlight-section">
+        <h2 style="text-align: center; color: #D4AF37; font-size: 32px; margin-bottom: 20px;">Achados focados em economia</h2>
 
-<section class="review-content">
-    <h2 style="text-align: center; color: #D4AF37; font-size: 32px; margin-bottom: 20px;">Achados focados em economia</h2>
+        <p style="text-align: center; color: #C5CAD3; margin-bottom: 40px; font-size: 18px; max-width: 700px; margin-left: auto; margin-right: auto;">
+            Promoções selecionadas e oportunidades que realmente valem a pena. Sem spam. Só achados.
+        </p>
 
-    <p style="text-align: center; color: #C5CAD3; margin-bottom: 40px; font-size: 18px; max-width: 700px; margin-left: auto; margin-right: auto;">
-        Promoções selecionadas e oportunidades que realmente valem a pena. Sem spam. Só achados.
-    </p>
+        <!-- BOX DESTACADO DO ÚLTIMO POST -->
+        <section class="latest-post" style="max-width: 100%; margin: 0 auto 60px; padding: 0;">
+            <div style="background: rgba(21, 27, 74, 0.3); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 12px; padding: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.3);">
+                
+                <!-- Badge "Último Post" -->
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <span style="background: rgba(212, 175, 55, 0.15); color: #D4AF37; padding: 6px 16px; border-radius: 20px; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">
+                        Último do Blog
+                    </span>
+                </div>
 
-    <!-- BOX DESTACADO DO ÚLTIMO POST -->
-    <section class="latest-post" style="max-width: 900px; margin: 0 auto 60px; padding: 0 20px;">
-        <div style="background: rgba(21, 27, 74, 0.3); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 12px; padding: 30px; box-shadow: 0 8px 25px rgba(0,0,0,0.3);">
-            
-            <!-- Badge "Último Post" -->
-            <div style="text-align: center; margin-bottom: 20px;">
-                <span style="background: rgba(212, 175, 55, 0.15); color: #D4AF37; padding: 6px 16px; border-radius: 20px; font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;">
-                    Último do Blog
-                </span>
+                <!-- Conteúdo do último post -->
+                <div id="latest-post"></div>
+
+                <!-- Botão -->
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="blog.html" class="botao-padrao-achado" title="Confira nossa curadoria dos melhores produtos e guias de compra" style="display: inline-flex; align-items: center; gap: 8px;">
+                        EXPLORAR BLOG
+                    </a>
+                </div>
             </div>
-
-            <!-- Conteúdo do último post -->
-            <div id="latest-post"></div>
-
-            <!-- Botão -->
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="blog.html" class="botao-padrao-achado" title="Confira nossa curadoria dos melhores produtos e guias de compra" style="display: inline-flex; align-items: center; gap: 8px;">
-                    EXPLORAR BLOG
-                </a>
-            </div>
-        </div>
+        </section>
     </section>
+</div>
 
-    <!-- BOX DE OFERTAS -->
+<!-- BOX DE OFERTAS (DESTAQUE) -->
+<section style="max-width: 1400px; margin: 0 auto; padding: 40px 20px;">
     <div class="offers-box">
         <a href="https://www.mercadolivre.com.br/social/muc1576372" target="_blank" class="offers-link">
             <div class="offers-image-container">
@@ -290,6 +296,7 @@
 <script src="posts.js" defer></script>
 <script src="script.js" defer></script>
 <script src="search-animation.js" defer></script>
+<script src="drawer.js" defer></script>
 
 
 </body>
