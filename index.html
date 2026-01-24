@@ -65,7 +65,7 @@
         </a>
         
         <!-- Busca em destaque -->
-        <form class="header-search-main" method="get" action="blog.html" id="main-search-form" style="position: absolute; top: -9999px; left: -9999px; opacity: 0; pointer-events: none; max-width: 600px;">
+        <form class="header-search-main" method="get" action="blog.html" id="main-search-form">
             <input type="search" name="q" id="search-input" placeholder="Buscar achados…" style="width: 100%; padding: 10px 45px 10px 20px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 25px; color: #fff; font-size: 14px; font-weight: 300; outline: none; transition: all 0.3s;">
             <button type="submit" style="position: absolute; right: 15px; background: transparent; border: none; color: #D4AF37; cursor: pointer; padding: 5px; font-size: 16px;">
                 <i class="fas fa-search"></i>
@@ -77,50 +77,6 @@
         </button>
     </div>
 </header>
-
-<script>
-// Controle ULTRA agressivo - força esconder/mostrar fisicamente
-(function() {
-    const searchForm = document.getElementById('main-search-form');
-    const toggleBtn = document.getElementById('mobile-search-toggle');
-    
-    function updateVisibility() {
-        const isMobile = window.innerWidth <= 768;
-        
-        if (isMobile) {
-            // Mobile: form FORA DA TELA
-            searchForm.style.position = 'absolute';
-            searchForm.style.top = '-9999px';
-            searchForm.style.left = '-9999px';
-            searchForm.style.opacity = '0';
-            searchForm.style.pointerEvents = 'none';
-            searchForm.style.display = 'none';
-            toggleBtn.style.display = 'block';
-            toggleBtn.style.position = 'relative';
-        } else {
-            // Desktop: form VISÍVEL normalmente
-            searchForm.style.position = 'relative';
-            searchForm.style.top = 'auto';
-            searchForm.style.left = 'auto';
-            searchForm.style.opacity = '1';
-            searchForm.style.pointerEvents = 'auto';
-            searchForm.style.display = 'flex';
-            searchForm.style.alignItems = 'center';
-            toggleBtn.style.display = 'none';
-        }
-    }
-    
-    // Executa IMEDIATAMENTE
-    updateVisibility();
-    
-    // Força execução após 10ms (caso ainda não tenha carregado)
-    setTimeout(updateVisibility, 10);
-    
-    // Atualiza ao redimensionar
-    window.addEventListener('resize', updateVisibility);
-})();
-</script>
-
 
 <nav class="menu-categorias">
     <div class="container">
