@@ -1,108 +1,200 @@
-# 📘 MANUAL MESTRE DE PRODUÇÃO V2 — AchadoCerto.VIP
+# 📘 MANUAL MESTRE DE PRODUÇÃO V3 — AchadoCerto.VIP
 
 Este manual é a evolução das diretrizes de produção do **AchadoCerto.VIP**, consolidando as melhorias de design premium, experiência mobile e conversão implementadas em 2026.
 
+**Última atualização**: 24 de janeiro de 2026
+
 ---
 
-## 1. 🖼️ PADRONIZAÇÃO DE IMAGENS (PREMIUM LOOK)
+## 1. 🎨 TIPOGRAFIA PREMIUM (FONTES LEVES)
 
-Para manter a elegância e evitar que as fotos fiquem desproporcionais (especialmente no mobile):
+O site utiliza fontes premium com traços leves, seguindo referências Apple/Google:
+
+*   **Fontes Principais**: 
+    *   `Inter` (300, 400, 500)
+    *   `DM Sans` (300, 400, 500)
+    *   Fallback: `-apple-system, BlinkMacSystemFont, sans-serif`
+*   **Pesos Permitidos**:
+    *   `300` — Light (textos secundários, descrições)
+    *   `400` — Regular (corpo do texto)
+    *   `500` — Medium (botões, títulos, destaques)
+*   **Pesos Proibidos**: `600`, `700`, `800`, `900`, `bold` — NÃO USAR
+*   **Exceção**: Logo "AchadoCerto**VIP**" usa `600` no "VIP" para destaque da marca
+*   **Propriedades Globais**:
+    *   `letter-spacing: 0.2px` — espaçamento sutil
+    *   `line-height: 1.6` — altura de linha respirada
+    *   `-webkit-font-smoothing: antialiased` — renderização premium
+    *   `text-transform: none` — sem uppercase forçado (exceto tags)
+
+---
+
+## 2. 🖼️ PADRONIZAÇÃO DE IMAGENS (PREMIUM LOOK)
+
+Para manter a elegância e evitar que as fotos fiquem desproporcionais:
 
 *   **Tamanho Máximo**: Largura de **600px a 650px**.
 *   **Estilo**: Bordas arredondadas (`border-radius: 20px`), sombra suave (`box-shadow`) e borda fina dourada (`1px solid rgba(255,215,0,0.2)`).
 *   **Posicionamento**: Sempre centralizadas.
-*   **Nomenclatura**: Salvar em `images/imagesposts/` com nomes descritivos (ex: `whey-pro-max-titanium-premium.jpg`).
+*   **Nomenclatura**: Salvar em `images/imagesposts/` com nomes descritivos.
+*   **Fundo das Imagens nos Posts**: 
+    *   Cor: **Branco Gelo** (`#F5F7FA`)
+    *   `object-fit: contain` — mostra imagem inteira com barras laterais
+    *   Aplicado em `.post-image-wrapper` e `.post-image-wrapper img`
 
 ---
 
-## 2. 🎯 BOX DE OFERTA ESTRATÉGICA (CONVERSÃO)
+## 3. 🔘 BOTÕES VIP (CANAL E GRUPO)
 
-Toda matéria deve conter uma **Box de Oferta VIP** no meio ou final do texto, seguindo este padrão:
+Botões de ação para Canal e Grupo WhatsApp seguem padrão pílula compacto:
+
+*   **Formato**: Pílula (`border-radius: 50px`)
+*   **Tamanho**: `padding: 12px 24px`, `font-size: 13px`
+*   **Layout**: `display: inline-flex; align-items: center; gap: 8px`
+*   **Botão Canal (Dourado)**:
+    *   Background: `linear-gradient(135deg, #D4AF37, #C9A24D)`
+    *   Texto: **Branco** (`color: #fff`) com `text-shadow: 0 1px 2px rgba(0,0,0,0.3)`
+    *   Ícone: `fas fa-bullhorn`
+    *   Texto: "Seguir Canal"
+*   **Botão Grupo (Verde)**:
+    *   Background: `linear-gradient(135deg, #25D366, #1EAA52)`
+    *   Texto: **Branco** (`color: #fff`)
+    *   Ícone: `fas fa-users`
+    *   Texto: "Entrar no Grupo"
+*   **Sombra**: `box-shadow: 0 4px 15px rgba(cor, 0.4)`
+*   **Posição nas Páginas**:
+    *   **index.html**: Logo após a hero section
+    *   **blog.html e categorias**: Apenas no rodapé, antes do footer
+
+---
+
+## 4. 📄 ESTRUTURA DAS PÁGINAS DE CATEGORIA
+
+Todas as páginas de categoria seguem esta estrutura:
+
+1. **Header** (logo centralizado)
+2. **Menu de categorias** (links horizontais)
+3. **Título da categoria** (centralizado, com descrição)
+   *   H2: `font-size: 32px; color: #D4AF37`
+   *   Descrição: `font-size: 18px; color: #C5CAD3`
+4. **Conteúdo/Posts** (`#lista-categoria`)
+5. **Botões VIP** (formato pílula, no rodapé)
+6. **Footer**
+
+*   **Páginas**: tech.html, saude.html, lar.html, estilo.html, dicas.html
+
+---
+
+## 5. 🎯 BOX DE OFERTA ESTRATÉGICA (CONVERSÃO)
+
+Toda matéria deve conter uma **Box de Oferta VIP** no meio ou final do texto:
 
 *   **Miniatura**: Imagem do produto centralizada e com fundo limpo.
 *   **Título Chamativo**: Ex: "🎯 Achado VIP: [Nome do Produto]".
 *   **Botão de Ação**: 
-    *   Cor: Dourado (`#FFD700`) com texto em Azul Escuro.
+    *   Cor: Dourado (`#FFD700`) com texto escuro.
     *   Ícone: Carrinho de compras (`fas fa-shopping-cart`).
-    *   Texto: "APROVEITAR OFERTA NO MERCADO LIVRE" (ou loja correspondente).
+    *   Texto: "APROVEITAR OFERTA NO MERCADO LIVRE".
+    *   `font-weight: 500` (não usar bold)
 *   **Selo de Confiança**: Incluir ícone de escudo e texto sobre "Compra Garantida".
 
 ---
 
-## 3. ✍️ ESTRUTURA DE CONTEÚDO (ENGAJAMENTO)
+## 6. ✍️ ESTRUTURA DE CONTEÚDO (ENGAJAMENTO)
 
 O texto deve ser interessante e fácil de ler no celular:
 
-*   **Tags de Benefícios**: Logo após a imagem principal, incluir 3 a 4 tags com ícones (ex: 💪 Proteína, ⚡ Energia).
-*   **Títulos (H2)**: Devem ter a borda lateral dourada para destaque.
-*   **Dicas VIP**: Finalizar com uma dica prática em itálico para o leitor.
-*   **Links**: Valorizar links no meio e no final do texto, garantindo que sejam fáceis de clicar.
+*   **Tags de Benefícios**: 3 a 4 tags com ícones (ex: 💪 Proteína, ⚡ Energia).
+*   **Títulos (H2)**: Borda lateral dourada para destaque.
+*   **Dicas VIP**: Finalizar com uma dica prática em itálico.
+*   **Links**: Fáceis de clicar, no meio e no final do texto.
 
 ---
 
-## 4. 📱 EXPERIÊNCIA MOBILE E BUSCA
+## 7. 🔍 BUSCA E HEADER (MOBILE-FIRST)
 
-Para garantir que a busca seja acessível em telas pequenas:
+Sistema de busca otimizado para mobile:
 
-*   **Layout de Coluna**: No mobile, o container do menu deve adotar `flex-direction: column`.
-*   **Menu Horizontal**: Os links das categorias (Tech, Saúde, etc.) ficam no topo, com rolagem horizontal (`overflow-x: auto`).
-*   **Busca Expansível**: O campo de busca (input) deve aparecer **abaixo** dos links, ocupando a largura total, e não misturado na lista de rolagem. Isso evita que o campo fique escondido fora da tela.
-*   **Responsividade dos Posts**: Cards de posts devem se ajustar para coluna única no celular.
+*   **Botão Mobile Toggle**: 
+    *   ID: `#mobile-search-toggle`
+    *   Ícone dourado (`#D4AF37`), fundo transparente
+    *   Posição: Absoluto à direita do header
+*   **Campo de Busca Expandido**:
+    *   Altura: `50px` (desktop) / `54px` (mobile)
+    *   Background: `#1C2333` (sólido)
+    *   Border-radius: `25px`
+    *   Animação: slide-in da direita
+*   **Botão de Busca (Lupa)**:
+    *   Formato circular: `40px x 40px` (desktop) / `44px x 44px` (mobile)
+    *   Background: gradiente dourado
+    *   Posição: `absolute; right: 5px; top: 50%; transform: translateY(-50%)`
+*   **Botão X (Limpar)**:
+    *   Estilo iOS: círculo cinza (`#8E8E93`) com X branco
+    *   Tamanho: `20px` (desktop) / `22px` (mobile)
+*   **Z-index**: `10000` para sobrepor outros elementos
 
 ---
 
-## 5. 🔗 RODAPÉ E REDES SOCIAIS (IDENTIDADE VISUAL)
+## 8. 📱 EXPERIÊNCIA MOBILE
 
-Para manter a consistência da marca **AchadoCerto.VIP**, siga rigorosamente:
+Regras para garantir boa experiência em telas pequenas:
 
-*   **Classe Padrão**: Todo bloco de ícones sociais deve usar a classe `<div class="social-icons">`.
-*   **Cor Dourada Obrigatória**:
-    *   **NUNCA** use estilos inline (ex: `style="color: #E1306C"`) para colorir ícones com as cores originais das redes (rosa para Instagram, verde para WhatsApp, etc.).
-    *   A cor deve ser herdada do CSS global: **Dourado (#FFD700)** para ícones e **Branco (#FFFFFF)** ao passar o mouse (hover).
+*   **Menu Categorias**: Links horizontais com rolagem (`overflow-x: auto`)
+*   **Posts**: Cards em coluna única no mobile
+*   **Imagens**: `object-fit: contain` com fundo branco gelo
+*   **Botões**: Formato pílula, centralizados, com `flex-wrap: wrap`
+
+---
+
+## 9. 🔗 RODAPÉ E REDES SOCIAIS
+
+Identidade visual consistente:
+
+*   **Classe Padrão**: `<div class="social-icons">`
+*   **Cor dos Ícones**: Dourado (`#FFD700`), branco no hover
 *   **Links Oficiais**:
-    *   Instagram: Link oficial.
-    *   TikTok: Link oficial.
-    *   WhatsApp: Link do canal.
-    *   X (Twitter): Link oficial (https://x.com/AchadoCertoVIP).
+    *   Instagram: @achadocertovip
+    *   TikTok: @achadocertovip
+    *   WhatsApp: Canal oficial
+    *   X: @AchadoCertoVIP
 
 ---
 
-## 6. 🛠️ REGISTRO TÉCNICO (POSTS.JS)
+## 10. 🛠️ REGISTRO TÉCNICO (POSTS.JS)
 
-Sempre adicionar o novo post no **topo** da lista em `posts.js`.
-*   **Categorias permitidas**: `tech`, `saude`, `lar`, `estilo`, `dicas`.
-*   **Título com Emoji**: Usar um emoji que represente a categoria no início do título para atrair o clique.
-*   **Race Condition Fix**: O `script.js` possui um mecanismo de `retry` (re-tentativa) para carregar os posts caso o `postsData` não esteja pronto. Não remova essa lógica.
-
----
-
-## 7. 📹 SESSÃO DESTAQUE VIRAL (HOME)
-
-Uma área estratégica na página inicial para conversão de tráfego vindo de redes sociais (TikTok/Reels).
-
-*   **Localização (Hot Zone)**: Inserir logo após os Cards de Grupos (WhatsApp/Canal) e *antes* do conteúdo principal de texto.
-*   **Estrutura Visual**:
-    *   **Container**: Largura máxima de 500px (foco mobile) centralizado.
-    *   **Embed**: Usar script oficial (Instagram/TikTok/YouTube Shorts) para garantir reprodução.
-    *   **Botão de Conversão**: Posicionado imediatamente abaixo do vídeo, ocupando 100% da largura do container, com a chamada "COMPRAR AGORA".
-*   **Identidade**:
-    *   Tag "🔥 DESTAQUE VIRAL" no topo.
-    *   Borda Dourada (#FFD700) arredondada.
-    *   Fundo Azul Escuro (#151B4A).
-*   **Responsividade**: O vídeo deve usar `min-width` e `calc(100%)` para não quebrar em telas pequenas (iPhone SE) nem esticar demais em desktops.
+*   Adicionar novo post no **topo** da lista
+*   **Categorias**: `tech`, `saude`, `lar`, `estilo`, `dicas`
+*   **Título com Emoji**: Para atrair cliques
+*   **Race Condition Fix**: Mecanismo de retry no script.js
 
 ---
 
-## 8. 🔍 PADRONIZAÇÃO DE BUSCA E HEADER
+## 11. 📹 SESSÃO DESTAQUE VIRAL (HOME)
 
-Regras rígidas para garantir consistência entre Home e Blog, especialmente no mobile:
+Área estratégica para conversão de tráfego de redes sociais:
 
-*   **Botão Submit**: Todo formulário de busca (`.header-actions`) **OBRIGATORIAMENTE** deve conter o botão de envio visível: `<button type="submit"><i class="fas fa-search"></i></button>`.
-*   **Botão Mobile**: O ícone de lupa no topo (header mobile) deve ser **transparente** e posicionado com `absolute` à direita.
-    *   **Correto**: `background: transparent; border: none; right: 0;`
-    *   **Incorreto**: Fundo azul, bordas ou posicionamento relativo.
-*   **Consistência**: O código do `<header>` do `blog.html` deve ser **idêntico** ao do `index.html` para evitar diferenças visuais.
+*   **Localização**: Após botões VIP, antes do conteúdo principal
+*   **Container**: Largura máxima 500px, centralizado
+*   **Embed**: Script oficial (Instagram/TikTok)
+*   **Botão**: 100% largura, abaixo do vídeo
+*   **Identidade**: Tag "🔥 DESTAQUE", borda dourada, fundo azul escuro
 
 ---
 
-> **Nota**: Este manual deve ser consultado antes de cada publicação para garantir que o padrão de qualidade (V2) seja mantido em todas as páginas.
+## 12. 🎨 PALETA DE CORES
+
+| Elemento | Cor | Hex |
+|----------|-----|-----|
+| Fundo principal | Azul Escuro | `#0B1220` |
+| Fundo cards | Azul Marinho | `#151B4A` |
+| Fundo busca | Cinza Azulado | `#1C2333` |
+| Fundo imagens | Branco Gelo | `#F5F7FA` |
+| Dourado principal | Ouro | `#D4AF37` |
+| Dourado claro | Ouro Claro | `#FFD700` |
+| Verde WhatsApp | Verde | `#25D366` |
+| Texto principal | Branco | `#F5F7FA` |
+| Texto secundário | Cinza Claro | `#C5CAD3` |
+| Botão X (iOS) | Cinza | `#8E8E93` |
+
+---
+
+> **Nota**: Este manual deve ser consultado antes de cada publicação para garantir que o padrão de qualidade (V3) seja mantido em todas as páginas.

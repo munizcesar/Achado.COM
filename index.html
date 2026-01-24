@@ -16,7 +16,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <link rel="stylesheet" href="style.css">
@@ -66,13 +67,13 @@
         
         <!-- Busca em destaque -->
         <form class="header-search-main" method="get" action="blog.html" id="main-search-form">
-            <input type="search" name="q" id="search-input" placeholder="Buscar achados…" style="width: 100%; padding: 10px 45px 10px 20px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 25px; color: #fff; font-size: 14px; font-weight: 300; outline: none; transition: all 0.3s;">
-            <button type="submit" style="position: absolute; right: 15px; background: transparent; border: none; color: #D4AF37; cursor: pointer; padding: 5px; font-size: 16px;">
+            <input type="search" name="q" id="search-input" placeholder="Buscar achados…">
+            <button type="submit">
                 <i class="fas fa-search"></i>
             </button>
         </form>
         
-        <button id="mobile-search-toggle" class="mobile-only" style="background: transparent; border: none; color: #D4AF37; font-size: 20px; cursor: pointer; flex-shrink: 0; display: block;">
+        <button id="mobile-search-toggle" class="mobile-only" type="button" aria-label="Abrir busca">
             <i class="fas fa-search"></i>
         </button>
     </div>
@@ -102,24 +103,14 @@
     </div>
 </section>
 
-<!-- NOVOS CARDS VIP PREMIUM (Compactados no mobile) -->
-<div class="cta-container" style="display: flex; gap: 15px; justify-content: center; margin: 40px auto; padding: 0 15px; position: relative; z-index: 10; max-width: 900px; flex-wrap: wrap;">
-        <!-- Card Canal Oficial -->
-        <div class="compact-card" style="background: rgba(21, 27, 74, 0.4); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 12px; padding: 25px; flex: 1; min-width: 280px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.3); transition: all 0.3s;">
-            <h3 class="compact-title" style="font-size: 16px; margin-bottom: 15px; color: #F5F7FA; font-weight: 400; letter-spacing: 0.3px;">Canal Oficial de Ofertas</h3>
-            <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" class="compact-btn" style="display: block; padding: 11px; border-radius: 6px; font-weight: 600; text-transform: none; font-size: 14px; background: linear-gradient(135deg, #D4AF37 0%, #C9A24D 100%); color: #0B1220; text-decoration: none; box-shadow: 0 3px 10px rgba(212, 175, 55, 0.25); transition: all 0.3s;">
-                Seguir Canal
-            </a>
-        </div>
-
-        <!-- Card Grupo VIP -->
-        <div class="compact-card" style="background: rgba(21, 27, 74, 0.4); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 12px; padding: 25px; flex: 1; min-width: 280px; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.3); transition: all 0.3s;">
-            <h3 class="compact-title" style="font-size: 16px; margin-bottom: 15px; color: #F5F7FA; font-weight: 400; letter-spacing: 0.3px;">Grupo VIP de Achados</h3>
-            <a href="https://chat.whatsapp.com/E6kgRRbyoiP99NoIANB81t" target="_blank" class="compact-btn" style="display: block; padding: 11px; border-radius: 6px; font-weight: 600; text-transform: none; font-size: 14px; background: linear-gradient(135deg, #25D366 0%, #1EAA52 100%); color: #F5F7FA; text-decoration: none; box-shadow: 0 3px 10px rgba(37, 211, 102, 0.25); transition: all 0.3s;">
-                Entrar no Grupo
-            </a>
-        </div>
-    </div>
+<!-- Botões VIP Pílula -->
+<div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 30px auto; padding: 0 20px; max-width: 500px;">
+    <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: linear-gradient(135deg, #D4AF37, #C9A24D); color: #fff; text-decoration: none; border-radius: 50px; font-size: 13px; font-weight: 500; letter-spacing: 0.3px; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); transition: all 0.3s; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">
+        <i class="fas fa-bullhorn"></i> Seguir Canal
+    </a>
+    <a href="https://chat.whatsapp.com/E6kgRRbyoiP99NoIANB81t" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: linear-gradient(135deg, #25D366, #1EAA52); color: #fff; text-decoration: none; border-radius: 50px; font-size: 13px; font-weight: 500; letter-spacing: 0.3px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: all 0.3s;">
+        <i class="fas fa-users"></i> Entrar no Grupo
+    </a>
 </div>
 
 <section class="video-highlight-container" style="max-width: 380px; margin: 0 auto 40px; padding: 0 15px;">
@@ -228,9 +219,9 @@
     <p>© 2026 AchadoCerto.VIP — Todos os Direitos Reservados</p>
 </footer>
 
-<script src="posts.js"></script>
-<script src="script.js"></script>
-<script src="search-animation.js"></script>
+<script src="posts.js" defer></script>
+<script src="script.js" defer></script>
+<script src="search-animation.js" defer></script>
 
 
 </body>

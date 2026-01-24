@@ -1,20 +1,37 @@
 // Função para configurar a busca (independente dos posts)
 function configurarBusca() {
-    const searchForm = document.querySelector('.header-actions');
-    const searchInput = document.querySelector('.header-actions input');
+    const searchForm = document.getElementById('main-search-form');
+    const searchInput = document.querySelector('#main-search-form input');
     const mobileSearchToggle = document.getElementById('mobile-search-toggle');
 
-    // Configura o toggle do mobile (abrir/fechar busca)
+    // Toggle simples baseado em classe, confiando no CSS
     if (mobileSearchToggle && searchForm) {
-        // Remove event listeners antigos para evitar duplicidade (boa prática)
+        // Remove .cloneNode which strips other potentially useful things, and just use the element.
+        // Using replaceNode was deleting listeners, but a simple click is clearer.
+        // We will keep the replace logic to ensure a clean slate, but use standard 'click'.
+        
         const newToggle = mobileSearchToggle.cloneNode(true);
         mobileSearchToggle.parentNode.replaceChild(newToggle, mobileSearchToggle);
-        
+
         newToggle.addEventListener('click', (e) => {
-            e.preventDefault(); // Previne comportamentos padrão
+            // Prevent default button behavior (though type="button" does nothing anyway)
+            e.preventDefault();
+            e.stopPropagation(); // Prevent immediate closing by document click listener
+            
             searchForm.classList.toggle('mobile-visible');
+            
+            if (searchForm.classList.contains('mobile-visible') && searchInput) {
+                // Small delay to ensure visibility checks pass if needed, but modern browsers usually handle focus immediately
+                setTimeout(() => searchInput.focus(), 50); 
+            }
+        });
+
+        // Fechar ao clicar fora
+        document.addEventListener('click', function(e) {
             if (searchForm.classList.contains('mobile-visible')) {
-                setTimeout(() => searchInput.focus(), 100); // Pequeno delay para garantir foco no mobile
+                if (!e.target.closest('#main-search-form') && !e.target.closest('#mobile-search-toggle')) {
+                    searchForm.classList.remove('mobile-visible');
+                }
             }
         });
     }
@@ -50,7 +67,10 @@ function realizarBusca(termo) {
 
     const resultados = data.filter(p => 
         p.titulo.toLowerCase().includes(termo) || 
-        p.resumo.toLowerCase().includes(termo)
+        p.resumo.toLowerCase().includes(termo) ||
+        (p.categoria && p.categoria.toLowerCase().includes(termo)) ||
+        (p.chamada && p.chamada.toLowerCase().includes(termo)) ||
+        (p.keywords && p.keywords.toLowerCase().includes(termo))
     );
     
     if (targetContainer) {
@@ -61,7 +81,7 @@ function realizarBusca(termo) {
         targetContainer.scrollIntoView({ behavior: 'smooth' });
         
         // Esconde a busca mobile após pesquisar
-        const searchForm = document.querySelector('.header-actions');
+        const searchForm = document.getElementById('main-search-form');
         if (searchForm) searchForm.classList.remove('mobile-visible');
     }
 }
@@ -82,55 +102,6 @@ function carregarPosts() {
 
     const isSubfolder = url.includes('/categorias/');
     const prefix = isSubfolder ? '../' : '';
-
-<<<<<<< HEAD
-    // --- LÓGICA DE BUSCA ---
-    const searchForm = document.querySelector('.header-actions');
-    const searchInput = document.querySelector('.header-actions input');
-    const mobileSearchToggle = document.getElementById('mobile-search-toggle');
-
-    // Toggle de busca mobile
-    if (mobileSearchToggle && searchForm) {
-        mobileSearchToggle.addEventListener('click', () => {
-            searchForm.classList.toggle('mobile-visible');
-            if (searchForm.classList.contains('mobile-visible')) {
-                searchInput.focus();
-            }
-        });
-    }
-
-    if (searchForm && searchInput) {
-        searchForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const termo = searchInput.value.toLowerCase().trim();
-            
-            if (termo === '') return;
-
-            const resultados = data.filter(p => 
-                p.titulo.toLowerCase().includes(termo) || 
-                p.resumo.toLowerCase().includes(termo) ||
-                p.categoria.toLowerCase().includes(termo) ||
-                p.chamada.toLowerCase().includes(termo) ||
-                (p.keywords && p.keywords.toLowerCase().includes(termo))
-            );
-
-            const targetContainer = containerCategoria || containerBlog || containerHome;
-            
-            if (targetContainer) {
-                const tituloPagina = document.querySelector('.review-content h2');
-                if (tituloPagina) tituloPagina.innerHTML = `🔍 Resultados para: "${searchInput.value}"`;
-                
-                renderizar(resultados, targetContainer, prefix);
-                targetContainer.scrollIntoView({ behavior: 'smooth' });
-                
-                // Esconde a busca mobile após pesquisar
-                searchForm.classList.remove('mobile-visible');
-            }
-        });
-    }
-
-=======
->>>>>>> 9b653cb16e5ec68ffe4cbce1323603eda35d8809
     // --- LÓGICA DE CARREGAMENTO INICIAL ---
     const pathParts = url.split('/');
     let fileName = pathParts[pathParts.length - 1];

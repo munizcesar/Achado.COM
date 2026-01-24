@@ -41,12 +41,15 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
     
+    /* CONFLITO CORRIGIDO: Esta animação recarregava a página (submit) enquanto o script.js
+       tentava fazer a busca via AJAX/SPA. Desativando para priorizar a busca rápida do script.js.
+    
     if (searchForm) {
         searchForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const searchInput = this.querySelector('input[name="q"]');
-            const searchTerm = searchInput.value.trim();
+            // ... (código original comentado) ...
+        });
+    }
+    */
             
             if (searchTerm === '') {
                 return;
@@ -153,6 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1200);
         });
     }
+    */
     
     // Adicionar animação ao clicar nos cards de blog
     document.addEventListener('click', function(e) {
