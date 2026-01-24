@@ -40,7 +40,10 @@ function carregarPosts() {
 
             const resultados = data.filter(p => 
                 p.titulo.toLowerCase().includes(termo) || 
-                p.resumo.toLowerCase().includes(termo)
+                p.resumo.toLowerCase().includes(termo) ||
+                p.categoria.toLowerCase().includes(termo) ||
+                p.chamada.toLowerCase().includes(termo) ||
+                (p.keywords && p.keywords.toLowerCase().includes(termo))
             );
 
             const targetContainer = containerCategoria || containerBlog || containerHome;

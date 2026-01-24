@@ -5,7 +5,8 @@ const postsData = [
     "imagem": "images/imagesposts/produtos_xiaomi.jpg",
     "link": "blog/comparativo-xiaomi-poco-2026.html",
     "chamada": "📖 Ver Comparativo Completo",
-    "categoria": "tech"
+    "categoria": "tech",
+    "keywords": "xiaomi poco x7 pro redmi note 14 pro+ 15t smartphone celular android mediatek dimensity 8400 qualcomm snapdragon tela amoled 120hz câmera 50mp bateria 6000mah carregamento rápido 90w gamer fotografia custo benefício preço barato bom 2026 lançamento melhor celular processador performance fotos vídeo"
   },
   {
     "titulo": "☕ Cafeteira Italiana Inox: O Segredo do Café Perfeito em Casa",
@@ -13,7 +14,8 @@ const postsData = [
     "imagem": "images/imagesposts/cafeteira-italiana-inox-fundo-colorido.webp",
     "link": "blog/cafeteira-italiana-inox.html",
     "chamada": "📖 Ver Segredo do Café",
-    "categoria": "lar"
+    "categoria": "lar",
+    "keywords": "cafeteira italiana moka inox aço inoxidável café expresso pressão casa cozinha bialetti fogão como fazer espresso cremoso moagem pó café grãos barista qualidade sabor aroma durável manual prático econômico cafézinho manhã preparo tradicional"
   },
   {
     "titulo": "💪 Whey Pro Max Titanium: O Guia Definitivo para sua Evolução",
@@ -21,7 +23,8 @@ const postsData = [
     "imagem": "images/imagesposts/whey-pro-max-titanium-premium.jpg",
     "link": "blog/whey-pro-max-titanium.html",
     "chamada": "📖 Ler Matéria Completa",
-    "categoria": "saude"
+    "categoria": "saude",
+    "keywords": "whey protein pro max titanium suplemento proteína academia musculação hipertrofia ganhar massa magra músculos recuperação pós treino shake aminoácidos bcaa concentrado isolado hidrolisado melhor whey barato custo benefício sabores chocolate morango baunilha como tomar dose porção"
   },
   {
     "titulo": "📺 Melhor TV 55\" 2026: TCL vs Samsung vs LG",
@@ -29,7 +32,8 @@ const postsData = [
     "imagem": "images/imagesposts/melhor-tv-55-2026.webp",
     "link": "blog/melhor-tv-55-polegadas-2026.html",
     "chamada": "Ver Comparativo Completo",
-    "categoria": "tech"
+    "categoria": "tech",
+    "keywords": "tv televisão 55 polegadas smart tv 4k uhd hdr qled oled nanocell tcl samsung lg comparativo melhor custo benefício 2026 android google tv tizen webos netflix youtube prime video streaming games console ps5 xbox taxa atualização 120hz hdmi 2.1 dolby atmos som qualidade imagem brilho contraste"
   },
   {
     "titulo": "⚡ Arginina: O Segredo da Potência e Vascularização",
@@ -37,7 +41,8 @@ const postsData = [
     "imagem": "images/imagesposts/arginina.png",
     "link": "blog/guia-arginina.html",
     "chamada": "📖 Ver Matéria Completa",
-    "categoria": "saude"
+    "categoria": "saude",
+    "keywords": "arginina l-arginina suplemento pump vascularização vasodilatador óxido nítrico pré treino performance muscular academia musculação força resistência recuperação circulação sanguínea veias definição muscular dose como tomar benefícios aminoácido essencial saúde cardiovascular"
   },
   {
     "titulo": "💪 Creatina: O Guia Definitivo para Performance e Saúde",
@@ -45,7 +50,8 @@ const postsData = [
     "imagem": "images/imagesposts/creatina-soldiers-500g.jpeg", 
     "link": "blog/guia-creatina-performance.html",
     "chamada": "📖 Ler Guia Completo",
-    "categoria": "saude"
+    "categoria": "saude",
+    "keywords": "creatina monoidratada suplemento academia musculação força explosão performance ganho massa muscular hipertrofia recuperação energia atp treino intenso soldiers growth max titanium integral medica creapure dose saturação como tomar quando tomar benefícios melhor marca custo benefício"
   },
   {
     "titulo": "🛡️ Mercado Livre é Seguro? Veja como comprar com confiança",
@@ -53,6 +59,7 @@ const postsData = [
     "imagem": "images/imagesposts/seguranca-ml.jpg", 
     "link": "blog/guia-seguranca-mercado-livre.html",
     "chamada": "📖 Ver Guia de Segurança",
-    "categoria": "dicas"
+    "categoria": "dicas",
+    "keywords": "mercado livre seguro compra garantida full frete grátis devolução marketplace ecommerce compras online vendedor reputação avaliação como comprar segurança proteção fraude golpe dicas confiável mercado pago pagamento cartão pix boleto entrega rastreamento"
   }
 ];

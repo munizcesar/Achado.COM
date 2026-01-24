@@ -9,51 +9,34 @@
 </head>
 <body>
 <header class="topo">
-    <a href="../index.html" style="text-decoration: none;">
-        <h1 style="margin:0; font-weight:900; font-size: 43px; letter-spacing: 1px;">
-            🔍<span style="color: #FFFFFF;">AchadoCerto.</span><span style="color: #FFD700;">VIP</span>
-        </h1>
-    </a>
-    <p>O clube <span style="color: #FFD700; font-weight: bold;">VIP</span> de achados, cupons e ofertas.</p>
+    <div class="header-container" style="display: flex; justify-content: center; align-items: center; max-width: 1200px; margin: 0 auto;">
+        <a href="../index.html" style="text-decoration: none;">
+            <h1 style="margin:0; font-size: 22px; letter-spacing: 0.3px; line-height: 1;">
+                <span style="color: #C5CAD3; font-weight: 300;">AchadoCerto</span><span style="color: #D4AF37; font-weight: 600;">VIP</span>
+            </h1>
+        </a>
+    </div>
 </header>
-
-<div id="lista-categoria" class="grid-blog-container"></div>
-
-
-
 
 <nav class="menu-categorias">
     <div class="container"> 
         <div class="categorias-links">
-            <a href="tech.html">
-                <i class="fas fa-microchip"></i> Tech
-            </a>
-            <a href="saude.html">
-                <i class="fas fa-heartbeat"></i> Saúde
-            </a>
-            <a href="lar.html">
-                <i class="fas fa-home"></i> Lar
-            </a>
-            <a href="estilo.html">
-                <i class="fas fa-tshirt"></i> Estilo
-            </a>
-            <a href="dicas.html" class="active">
-                <i class="fas fa-lightbulb"></i> Dicas
-            </a>
+            <a href="tech.html">Tech</a>
+            <a href="saude.html">Saúde</a>
+            <a href="lar.html">Lar</a>
+            <a href="estilo.html">Estilo</a>
+            <a href="dicas.html" class="active">Dicas</a>
         </div>
     </div>
 </nav>
 <section class="review-content" style="min-height: 70vh;">
-    <h2 style="color: #FFD700;"> Dicas </h2>
-    <p>Dicas, análises de produtos e tutoriais para economizar.</p>
-    <div class="grid-achados">
-        <div style="grid-column: 1/-1; text-align: center; padding: 50px; opacity: 0.5;">
-            <i class="fas fa-book-open" style="font-size: 40px; color: #FFD700;"></i>
-            <p>Carregando guias de compra e dicas exclusivas...</p>
-        </div>
-    </div>
+    <h2 style="color: #D4AF37;">Dicas</h2>
+    <p style="color: #C5CAD3;">Dicas, análises de produtos e tutoriais para economizar.</p>
+    
+    <!-- AS MATÉRIAS VÃO APARECER AQUI AUTOMATICAMENTE -->
+    <div id="lista-categoria" class="grid-blog-container"></div>
 </section>
-<footer><p> 2026 AchadoCerto.VIP</p></footer>
+<footer><p>© 2026 AchadoCerto.VIP</p></footer>
 
 <script src="../posts.js"></script>
 <script src="../script.js"></script>
