@@ -3,6 +3,15 @@ function configurarBusca() {
     const searchForm = document.getElementById('main-search-form');
     const searchInput = document.querySelector('#main-search-form input');
     const mobileSearchToggle = document.getElementById('mobile-search-toggle');
+    
+    // Criar overlay fosco para mobile
+    let searchOverlay = document.getElementById('search-overlay');
+    if (!searchOverlay) {
+        searchOverlay = document.createElement('div');
+        searchOverlay.id = 'search-overlay';
+        searchOverlay.className = 'search-overlay';
+        document.body.appendChild(searchOverlay);
+    }
 
     // Toggle simples baseado em classe, confiando no CSS
     if (mobileSearchToggle && searchForm) {
@@ -19,10 +28,16 @@ function configurarBusca() {
             e.stopPropagation(); // Prevent immediate closing by document click listener
             
             searchForm.classList.toggle('mobile-visible');
+            searchOverlay.classList.toggle('active');
             
             if (searchForm.classList.contains('mobile-visible') && searchInput) {
                 // Small delay to ensure visibility checks pass if needed, but modern browsers usually handle focus immediately
-                setTimeout(() => searchInput.focus(), 50); 
+                setTimeout(() => searchInput.focus(), 50);
+                // Previne scroll quando busca está aberta
+                document.body.style.overflow = 'hidden';
+            } else {
+                // Restaura scroll quando busca fecha
+                document.body.style.overflow = '';
             }
         });
 
@@ -31,8 +46,17 @@ function configurarBusca() {
             if (searchForm.classList.contains('mobile-visible')) {
                 if (!e.target.closest('#main-search-form') && !e.target.closest('#mobile-search-toggle')) {
                     searchForm.classList.remove('mobile-visible');
+                    searchOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
                 }
             }
+        });
+        
+        // Fechar ao clicar no overlay
+        searchOverlay.addEventListener('click', function() {
+            searchForm.classList.remove('mobile-visible');
+            searchOverlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
     }
 

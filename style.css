@@ -248,6 +248,27 @@ a {
     }
 }
 
+/* Overlay fosco para mobile search */
+.search-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 18, 32, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.search-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
 /* Mobile: esconde busca principal, mostra botão toggle */
 @media (max-width: 768px) {
     .topo {
