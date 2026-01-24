@@ -512,6 +512,8 @@ footer a {
         display: none;
     }
 
+    /* Correção: Maior especificidade para display none/flex */
+    form.header-actions,
     .header-actions { 
         display: none; 
         width: 100%;
@@ -520,6 +522,7 @@ footer a {
         background: rgba(255, 215, 0, 0.05);
     }
     
+    form.header-actions.mobile-visible,
     .header-actions.mobile-visible {
         display: flex !important;
         animation: slideDown 0.3s ease-out;
