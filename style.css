@@ -42,8 +42,10 @@ a {
     background: rgba(11, 18, 32, 0.6);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(212, 175, 55, 0.08);
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 1000;
+    transition: all 0.3s ease;
 }
 
 /* Estilo para o link do logotipo */
