@@ -161,8 +161,6 @@ a {
     transform: translateY(-50%) scale(0.96);
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
-    transform: translateY(-50%) scale(0.95);
-}
 
 .header-search-main button:focus-visible {
     outline: 2px solid #D4AF37;
