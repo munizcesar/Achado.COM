@@ -83,7 +83,7 @@ a {
     height: 50px;
     padding: 0 50px 0 20px;
     background: #1C2333;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: none;
     border-radius: 25px;
     color: #FFFFFF;
     font-size: 16px;
@@ -275,7 +275,7 @@ a {
 /* Mobile: esconde busca principal, mostra botão toggle */
 @media (max-width: 768px) {
     .topo {
-        padding: 12px 0;
+        padding: 10px 0;
         position: sticky;
         top: 0;
         z-index: 10000;
@@ -285,11 +285,11 @@ a {
     
     .header-container {
         display: flex !important;
-        justify-content: space-between !important;
+        justify-content: flex-start !important;
         align-items: center !important;
         width: 100% !important;
-        gap: 10px !important;
-        padding: 0 20px !important;
+        gap: 12px !important;
+        padding: 0 12px !important;
         flex-wrap: nowrap !important;
     }
 
@@ -304,23 +304,40 @@ a {
         border: none;
         cursor: pointer;
         font-size: 24px;
-        color: rgba(255, 255, 255, 0.55);
+        color: rgba(255, 255, 255, 0.85);
         padding: 8px;
         border-radius: 8px;
         transition: all 0.3s ease;
         line-height: 1;
         z-index: 10001;
         -webkit-tap-highlight-color: transparent;
+        flex-shrink: 0;
     }
 
     .drawer-toggle:hover {
-        color: rgba(255, 255, 255, 0.8);
+        color: #FFFFFF;
         background: rgba(255, 255, 255, 0.08);
     }
 
     .drawer-toggle:active {
         color: rgba(255, 255, 255, 0.7);
         transform: scale(0.95);
+    }
+    
+    /* Logo - Responsivo Mobile */
+    .header-container a {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        align-items: center;
+    }
+    
+    .header-container h1 {
+        font-size: 18px !important;
+        margin: 0 !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     
     .header-search-main {
@@ -331,11 +348,11 @@ a {
         transform: translateX(-50%) translateY(-20px);
         width: calc(100% - 32px);
         max-width: 500px;
-        padding: 16px;
-        background: linear-gradient(135deg, rgba(11, 18, 32, 0.98) 0%, rgba(21, 27, 74, 0.96) 100%);
-        border: 1.5px solid rgba(212, 175, 55, 0.35);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(212, 175, 55, 0.1) inset;
-        border-radius: 18px;
+        padding: 0;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
         z-index: 1000;
         opacity: 0;
         pointer-events: none;
@@ -362,6 +379,9 @@ a {
         width: 44px;
         right: 4px;
         font-size: 18px;
+        color: #D4D4D8;
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.25);
     }
     
     .header-search-main.mobile-visible {
@@ -371,7 +391,7 @@ a {
         opacity: 1 !important;
         transform: translateX(-50%) translateY(0) !important;
         pointer-events: auto !important;
-        z-index: 1000 !important;
+        z-index: 1001 !important;
         animation: searchSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
     
@@ -380,6 +400,7 @@ a {
         display: inline-flex !important;
         visibility: visible !important;
         opacity: 1 !important;
+        pointer-events: auto !important;
     }
     
     @keyframes searchSlideIn {
@@ -504,7 +525,7 @@ a {
 .header-actions button {
     background: transparent;
     border: none;
-    color: #FFD700;
+    color: rgba(255, 255, 255, 0.85);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -536,7 +557,7 @@ a {
     height: auto;
     display: block;
     border-radius: 0 0 12px 12px;
-    object-fit: cover;
+    object-fit: contain;
     aspect-ratio: 16 / 8;
 }
 
@@ -703,6 +724,16 @@ a {
     50% { box-shadow: 0 0 35px rgba(255,215,0,0.6); }
 }
 
+/* Shimmer animation para video loading */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
 .offers-box {
     margin: 0 auto 40px;
     max-width: 100%;
@@ -747,6 +778,10 @@ a {
     text-transform: none;
     font-weight: 500;
     letter-spacing: 0.5px;
+    background: rgba(11, 18, 32, 0.65);
+    padding: 12px 20px;
+    border-radius: 8px;
+    display: inline-block;
 }
 
 /* ===============================
@@ -1448,7 +1483,7 @@ footer a {
     #mobile-search-toggle.mobile-only {
         display: inline-flex !important;
         position: absolute;
-        right: 16px;
+        right: 12px;
         top: 50%;
         transform: translateY(-50%);
         margin-top: 0;
@@ -1459,8 +1494,8 @@ footer a {
         color: rgba(255, 255, 255, 0.85);
         z-index: 10;
         transition: color 0.2s ease;
-        font-size: 22px;
-        padding: 8px;
+        font-size: 20px;
+        padding: 6px;
         box-shadow: none;
         border-radius: 6px;
         width: auto;
@@ -1477,10 +1512,23 @@ footer a {
     max-width: 360px;
     padding: 0 10px;
     margin: 0 auto 30px;
+    overflow: visible;
   }
   
   .video-wrapper {
-    background: transparent !important;
+    background: #1C3A5C !important;
+    padding: 15px;
+    border-radius: 12px;
+    overflow: visible;
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0,
+      rgba(255, 255, 255, 0.15) 20%,
+      rgba(255, 255, 255, 0.3) 60%,
+      rgba(255, 255, 255, 0)
+    ) !important;
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
   }
   
   .video-wrapper .instagram-media{

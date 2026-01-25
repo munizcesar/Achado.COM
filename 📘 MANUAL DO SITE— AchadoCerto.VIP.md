@@ -1,8 +1,60 @@
 # 📘 MANUAL MESTRE DE PRODUÇÃO V3 — AchadoCerto.VIP
 
-Este manual é a evolução das diretrizes de produção do **AchadoCerto.VIP**, consolidando as melhorias de design premium, experiência mobile e conversão implementadas em 2026.
+---
+
+## ⚠️ LEIA PRIMEIRO — O QUE É ESTE DOCUMENTO?
+
+Este é o **MANUAL OFICIAL DO SITE** AchadoCerto.VIP — um documento **vivo e evolutivo** que documenta:
+
+✅ **Padrões de Design** — cores, tipografia, dimensões, componentes  
+✅ **Padrões de UX/UI** — comportamentos, animações, responsividade  
+✅ **Padrões de Conteúdo** — estrutura de posts, boxes, botões, SEO  
+✅ **Padrões de Produção** — como criar, publicar, manter a qualidade  
+
+### 🔄 Como Este Manual Funciona
+
+**Este documento será ATUALIZADO CONTINUAMENTE:**
+- Sempre que o site ganhar novos features → atualizamos aqui
+- Sempre que o design mudar/evoluir → documentamos aqui
+- Sempre que descobrirmos melhorias → adicionamos aqui
+- **Sempre que você fizer uma mudança CSS → ATUALIZE ESTE MANUAL IMEDIATAMENTE**
+
+### 🤖 Para Inteligências Artificiais
+
+**Se você é uma IA lendo isto:**
+1. Este documento é sua SOURCE OF TRUTH sobre como o site funciona
+2. Antes de sugerir mudanças, consulte ESTE manual
+3. Quando completar uma tarefa que afete design/funcionalidade, ATUALIZE ESTE MANUAL
+4. Mantenha este documento SEMPRE SINCRONIZADO com o código CSS/HTML
+5. Dúvidas sobre padrões? Consulte a seção correspondente aqui
+
+### 📅 Histórico de Versões
+
+| Versão | Data | Atualizações |
+|--------|------|-------------|
+| V3 | 24 jan 2026 | Shimmer animation, banner contain, search white, drawer docs |
+| V2 | - | Estrutura inicial de padrões |
+| V1 | - | Base inicial |
 
 **Última atualização**: 24 de janeiro de 2026
+
+---
+
+## 📋 CHANGELOG - ATUALIZAÇÕES RECENTES (JAN 2026)
+
+### ✅ Atualizações Implementadas
+- **Banner com `object-fit: contain`** — imagens aparecem inteiras sem cortes
+- **Shimmer Animation** — efeito de carregamento elegante no vídeo (2s infinite)
+- **Mobile Search UX** — removido border/background, design pílula puro
+- **Video Container** — background azul (#1C3A5C) com overflow visible
+- **Favicon** — magnifying glass azul (#3B82F6) em SVG
+- **Botão Hamburger** — harmonizado para branco semitransparent (rgba(255,255,255,0.85))
+
+### 📐 Dimensões Banner
+- **Recomendado**: 1920 × 960 px
+- **Proporção**: 16:8 (2:1)
+- **Formato**: JPG ou WebP, máx 300KB
+- **Configuração CSS**: `object-fit: contain` para aparecer inteiro
 
 ---
 
@@ -112,20 +164,22 @@ O texto deve ser interessante e fácil de ler no celular:
 
 ## 7. 🔍 BUSCA E HEADER (MOBILE-FIRST)
 
-Sistema de busca otimizado para mobile:
+Sistema de busca otimizado para mobile com design moderno:
 
 *   **Botão Mobile Toggle**: 
     *   ID: `#mobile-search-toggle`
-    *   Ícone dourado (`#D4AF37`), fundo transparente
+    *   Ícone branco semitransparente: `rgba(255,255,255,0.85)`
+    *   Fundo transparente, sem círculo
     *   Posição: Absoluto à direita do header
 *   **Campo de Busca Expandido**:
     *   Altura: `50px` (desktop) / `54px` (mobile)
     *   Background: `#1C2333` (sólido)
     *   Border-radius: `25px`
-    *   Animação: slide-in da direita
+    *   Animação: slide-in da direita (cubic-bezier)
+    *   Sem border/box-shadow na versão mobile (formato pílula puro)
 *   **Botão de Busca (Lupa)**:
     *   Formato circular: `40px x 40px` (desktop) / `44px x 44px` (mobile)
-    *   Background: gradiente dourado
+    *   Cor: branco semitransparente `rgba(255,255,255,0.85)`
     *   Posição: `absolute; right: 5px; top: 50%; transform: translateY(-50%)`
 *   **Botão X (Limpar)**:
     *   Estilo iOS: círculo cinza (`#8E8E93`) com X branco
@@ -170,17 +224,115 @@ Identidade visual consistente:
 
 ## 11. 📹 SESSÃO DESTAQUE VIRAL (HOME)
 
-Área estratégica para conversão de tráfego de redes sociais:
+Área estratégica para conversão de tráfego de redes sociais com animação premium:
 
 *   **Localização**: Após botões VIP, antes do conteúdo principal
 *   **Container**: Largura máxima 500px, centralizado
 *   **Embed**: Script oficial (Instagram/TikTok)
+*   **Fundo**: Azul escuro `#1C3A5C` com padding 15px e border-radius 12px
+*   **Animação de Carregamento**: Shimmer effect (gradiente branco deslizante, 2s infinite)
+*   **Overflow**: `visible` para evitar clipping de animações
 *   **Botão**: 100% largura, abaixo do vídeo
-*   **Identidade**: Tag "🔥 DESTAQUE", borda dourada, fundo azul escuro
+*   **Identidade**: Tag "🔥 DESTAQUE", borda dourada, fundo azul
 
 ---
 
-## 12. 🎨 PALETA DE CORES
+## 12. � DRAWER (MENU LATERAL MOBILE)
+
+Menu lateral responsivo que abre da esquerda com animação premium:
+
+**Ativação:**
+- Botão: `.drawer-toggle` (ícone hamburger no header mobile)
+- Cor do botão: Branco semitransparente `rgba(255,255,255,0.85)`
+- Posição: Canto superior esquerdo do header
+
+**Container Principal:**
+- Classe: `.drawer-container`
+- Largura: 100% (mobile), máx 420px
+- Background: Gradiente azul escuro `linear-gradient(135deg, rgba(15,20,45,0.98), rgba(11,18,32,0.98))`
+- Borda direita: Fina dourada `2px solid rgba(212,175,55,0.3)`
+- Sombra: `8px 0 32px rgba(0,0,0,0.6)`
+- Animação: Slide-in da esquerda (cubic-bezier 0.34, 1.56, 0.64, 1)
+- Z-index: `9999`
+
+**Overlay (Fundo Escuro):**
+- Classe: `.drawer-overlay`
+- Background: Preto semitransparente com blur `rgba(11,18,32,0.75)` + `backdrop-filter: blur(4px)`
+- Z-index: `9998`
+- Fecha ao clicar
+
+**Cabeçalho do Drawer:**
+- Classe: `.drawer-header`
+- Padding: `40px 25px 30px`
+- Borda inferior: `1px solid rgba(212,175,55,0.15)`
+- Background: Gradiente sutil `linear-gradient(180deg, rgba(212,175,55,0.1), transparent)`
+
+**Título (H2):**
+- Cor: Branco `#FFFFFF`
+- Tamanho: `28px`
+- Peso: `300` (light)
+- Inclui ícone dourado à esquerda
+- Espaçamento: `gap: 12px`
+
+**Botão Fechar (X):**
+- Posição: Canto superior direito
+- Formato: Círculo `40px x 40px`
+- Background: `rgba(255,215,0,0.15)` no estado normal
+- Cor: Dourado `#FFD700`
+- Animação no hover: Rotação 90° + scale 1.1
+- Z-index: `10000`
+
+**Conteúdo do Drawer:**
+- Classe: `.drawer-content`
+- Padding: `25px`
+- Scroll vertical: `overflow-y: auto`
+- Flex: `1` (ocupa espaço disponível)
+
+**Seções (`.drawer-section`):**
+- Margin-bottom: `35px`
+- Animação staggered: `slideInLeft` com delays (0.1s, 0.2s, 0.3s, 0.4s)
+- Cada seção com H3 + P + links
+
+**H3 das Seções:**
+- Cor: Dourado `#FFD700`
+- Uppercase e espaçamento: `letter-spacing: 1.2px`
+- Borda inferior dourada: `1px solid rgba(212,175,55,0.2)`
+- Inclui ícone ao lado
+
+**Links no Drawer:**
+- Format: Pílula `display: inline-flex` com `border-radius: 10px`
+- Background: Gradiente dourado semitransparente
+- Cor: Dourado `#FFD700`
+- Padding: `12px 18px`
+- Gap com ícone: `gap: 10px`
+- Hover: Desliza direita + brilha
+
+**Divisor (`.drawer-divider`):**
+- Altura: `1px`
+- Background: Gradiente horizontal com fade
+- Margin: `30px 0`
+
+**Footer do Drawer:**
+- Classe: `.drawer-footer`
+- Padding: `20px 25px`
+- Background: Gradiente superior `linear-gradient(to top, rgba(11,18,32,0.9), transparent)`
+- Borda superior: `1px solid rgba(212,175,55,0.15)`
+- Texto pequeno: `12px`, cor `#888`
+- Posição: No final com `margin-top: auto`
+
+**Responsividade:**
+- Mobile (max-width: 480px): Reduz padding para `30px 20px 25px`
+- H2 reduzido: `24px`
+- Botão X: `36px x 36px`
+
+**Estados:**
+- Normal: Fora da tela (`transform: translateX(-100%)`)
+- Ativo (`.active`): Visível (`transform: translateX(0)`)
+- Animação: `0.5s cubic-bezier(0.34, 1.56, 0.64, 1)`
+
+---
+
+## 13. �🎨 PALETA DE CORES
 
 | Elemento | Cor | Hex |
 |----------|-----|-----|
