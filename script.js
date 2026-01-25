@@ -60,11 +60,26 @@ function configurarBusca() {
         });
     }
 
-    // Configura o envio do formulário
+    // Configura o envio do formulário com suporte a Enter key
     if (searchForm && searchInput) {
         searchForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            realizarBusca(searchInput.value);
+            e.stopPropagation();
+            const termo = searchInput.value.trim();
+            if (termo) {
+                realizarBusca(termo);
+            }
+        });
+        
+        // Também permite buscar ao pressionar Enter no input
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const termo = searchInput.value.trim();
+                if (termo) {
+                    realizarBusca(termo);
+                }
+            }
         });
     }
 }
@@ -102,11 +117,32 @@ function realizarBusca(termo) {
         if (tituloPagina) tituloPagina.innerHTML = `🔍 Resultados para: "${termo}"`;
         
         renderizar(resultados, targetContainer, prefix);
-        targetContainer.scrollIntoView({ behavior: 'smooth' });
         
-        // Esconde a busca mobile após pesquisar
+        // Scroll inteligente com offset para não pular para o topo
+        setTimeout(() => {
+            const firstCard = targetContainer.querySelector('a');
+            if (firstCard) {
+                const headerHeight = document.querySelector('.topo').offsetHeight + document.querySelector('.menu-categorias').offsetHeight;
+                const cardPosition = firstCard.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
+                
+                window.scrollTo({
+                    top: cardPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }, 100);
+        
+        // Esconde a busca mobile após pesquisar E fecha o overlay
         const searchForm = document.getElementById('main-search-form');
-        if (searchForm) searchForm.classList.remove('mobile-visible');
+        const searchOverlay = document.getElementById('search-overlay');
+        const searchInput = document.querySelector('#main-search-form input');
+        
+        if (searchForm) {
+            searchForm.classList.remove('mobile-visible');
+            searchForm.reset(); // Limpa o campo de busca
+        }
+        if (searchOverlay) searchOverlay.classList.remove('active');
+        document.body.style.overflow = ''; // Restaura scroll
     }
 }
 

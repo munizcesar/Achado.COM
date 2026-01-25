@@ -57,7 +57,7 @@ class DrawerManager {
                     <h3><i class="fas fa-users"></i> Comunidade VIP</h3>
                     <p>Junte-se ao nosso grupo e receba ofertas exclusivas em tempo real.</p>
                     <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank"><i class="fab fa-whatsapp"></i> Canal WhatsApp</a>
-                    <a href="https://chat.whatsapp.com/seu-grupo" target="_blank"><i class="fas fa-user-group"></i> Entrar no Grupo</a>
+                    <a href="https://chat.whatsapp.com/E6kgRRbyoiP99NoIANB81t" target="_blank"><i class="fas fa-user-group"></i> Entrar no Grupo</a>
                 </div>
 
                 <div class="drawer-divider"></div>
@@ -65,8 +65,8 @@ class DrawerManager {
                 <div class="drawer-section">
                     <h3><i class="fas fa-share-nodes"></i> Siga-nos</h3>
                     <p>Acompanhe nossas redes sociais para atualizações diárias.</p>
-                    <a href="https://instagram.com/AchadoCertoVIP" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-                    <a href="https://tiktok.com/@AchadoCertoVIP" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+                    <a href="https://www.instagram.com/achadocertovip?igsh=Y2Rua2praTdha3dk" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://www.tiktok.com/@achadocertovip?_r=1&_t=ZS-934lRAtLp1s" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
                     <a href="https://x.com/AchadoCertoVIP" target="_blank"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
                 </div>
 

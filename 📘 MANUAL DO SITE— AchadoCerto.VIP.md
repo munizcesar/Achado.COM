@@ -32,19 +32,37 @@ Este é o **MANUAL OFICIAL DO SITE** AchadoCerto.VIP — um documento **vivo e e
 
 | Versão | Data | Atualizações |
 |--------|------|-------------|
+| V4 | 24 jan 2026 | ✅ Busca mobile corrigida, overlay fixed, scroll inteligente, animação vídeo removida |
 | V3 | 24 jan 2026 | Shimmer animation, banner contain, search white, drawer docs |
 | V2 | - | Estrutura inicial de padrões |
 | V1 | - | Base inicial |
 
-**Última atualização**: 24 de janeiro de 2026
+**Última atualização**: 24 de janeiro de 2026 (V4 - Busca mobile crítica corrigida)
 
 ---
 
 ## 📋 CHANGELOG - ATUALIZAÇÕES RECENTES (JAN 2026)
 
-### ✅ Atualizações Implementadas
+### ✅ V4 - Correções Críticas da Busca Mobile (24 jan 2026)
+- **Busca Mobile - Redirecionamento Corrigido**: Removido `method="get"` e `action="blog.html"` do formulário
+  - Antes: Ao pesquisar, redirecionava para blog.html
+  - Agora: Executa `realizarBusca()` sem redirecionar, ficando na mesma página
+- **Overlay Desaparece Corretamente**: Adicionado fechamento do overlay em `realizarBusca()`
+  - Problema: Overlay fosco ficava visível após busca
+  - Solução: `searchOverlay.classList.remove('active')` + `document.body.style.overflow = ''`
+- **Scroll Inteligente (Não sobe para topo)**: 
+  - Implementado scroll com offset da altura do header + menu
+  - Calcula: `headerHeight + menuHeight + margem de 20px`
+  - Usa `getBoundingClientRect()` para posicionamento preciso
+  - Scroll suave: `behavior: 'smooth'` com delay de 100ms
+  - Resultado: Usuário vê o primeiro produto encontrado sem pular para topo
+- **Limpeza do Campo de Busca**: Campo é resetado com `searchForm.reset()` após pesquisar
+- **Animação Vídeo Removida**: Shimmer effect (`background-image`, `background-size`, `animation: shimmer`) removido do `.video-wrapper`
+  - Antes: Círculo girando continuamente no vídeo
+  - Agora: Vídeo exibe limpo e estático, sem animação de carregamento
+
+### ✅ Atualizações Anteriores (V3)
 - **Banner com `object-fit: contain`** — imagens aparecem inteiras sem cortes
-- **Shimmer Animation** — efeito de carregamento elegante no vídeo (2s infinite)
 - **Mobile Search UX** — removido border/background, design pílula puro
 - **Video Container** — background azul (#1C3A5C) com overflow visible
 - **Favicon** — magnifying glass azul (#3B82F6) em SVG
@@ -164,27 +182,58 @@ O texto deve ser interessante e fácil de ler no celular:
 
 ## 7. 🔍 BUSCA E HEADER (MOBILE-FIRST)
 
-Sistema de busca otimizado para mobile com design moderno:
+### Comportamento da Busca (V4 Otimizado)
 
-*   **Botão Mobile Toggle**: 
-    *   ID: `#mobile-search-toggle`
-    *   Ícone branco semitransparente: `rgba(255,255,255,0.85)`
-    *   Fundo transparente, sem círculo
-    *   Posição: Absoluto à direita do header
-*   **Campo de Busca Expandido**:
-    *   Altura: `50px` (desktop) / `54px` (mobile)
-    *   Background: `#1C2333` (sólido)
-    *   Border-radius: `25px`
-    *   Animação: slide-in da direita (cubic-bezier)
-    *   Sem border/box-shadow na versão mobile (formato pílula puro)
-*   **Botão de Busca (Lupa)**:
-    *   Formato circular: `40px x 40px` (desktop) / `44px x 44px` (mobile)
-    *   Cor: branco semitransparente `rgba(255,255,255,0.85)`
-    *   Posição: `absolute; right: 5px; top: 50%; transform: translateY(-50%)`
-*   **Botão X (Limpar)**:
-    *   Estilo iOS: círculo cinza (`#8E8E93`) com X branco
-    *   Tamanho: `20px` (desktop) / `22px` (mobile)
-*   **Z-index**: `10000` para sobrepor outros elementos
+Sistema de busca otimizado para mobile com redirecionamento fixo:
+
+**Formulário Principal:**
+- ID: `#main-search-form`
+- **IMPORTANTE**: Sem atributos `method` ou `action` — redireciona via JavaScript apenas
+- Executa `realizarBusca(termo)` ao envio ou pressionar Enter
+- Filtra posts por: `titulo`, `resumo`, `categoria`, `chamada`, `keywords`
+
+**Fluxo de Busca (V4):**
+1. Usuário digita e pressiona Enter ou clica em 🔍
+2. `realizarBusca(termo)` é executado
+3. Posts são renderizados no container apropriado (nunca redireciona)
+4. **Scroll inteligente**: Posiciona no primeiro resultado COM offset do header
+   - Calcula altura: `headerHeight + menuHeight + 20px margem`
+   - Usa `getBoundingClientRect()` para precisão
+   - Suavidade: `behavior: 'smooth'` com delay 100ms
+5. **Overlay fecha automaticamente**
+6. **Campo limpo** com `searchForm.reset()`
+7. **Body scroll restaurado** com `document.body.style.overflow = ''`
+
+**Botão Mobile Toggle**: 
+*   ID: `#mobile-search-toggle`
+*   Ícone branco semitransparente: `rgba(255,255,255,0.85)`
+*   Fundo transparente, sem círculo
+*   Posição: Absoluto à direita do header
+
+**Campo de Busca Expandido**:
+*   Altura: `50px` (desktop) / `54px` (mobile)
+*   Background: `#1C2333` (sólido)
+*   Border-radius: `25px`
+*   Animação: slide-in da direita (cubic-bezier)
+*   Sem border/box-shadow na versão mobile (formato pílula puro)
+
+**Botão de Busca (Lupa)**:
+*   Formato circular: `40px x 40px` (desktop) / `44px x 44px` (mobile)
+*   Cor: branco semitransparente `rgba(255,255,255,0.85)`
+*   Posição: `absolute; right: 5px; top: 50%; transform: translateY(-50%)`
+
+**Botão X (Limpar)**:
+*   Estilo iOS: círculo cinza (`#8E8E93`) com X branco
+*   Tamanho: `20px` (desktop) / `22px` (mobile)
+
+**Overlay Fosco** (`.search-overlay`):
+*   Position: `fixed`, cobre 100% da tela
+*   Background: `rgba(11, 18, 32, 0.85)` com blur
+*   Z-index: `999`
+*   **Importante**: `pointer-events: none` quando inativo, `pointer-events: auto` quando `.active`
+*   Fecha ao clicar fora ou ao pesquisar
+
+**Z-index**: `10000` para sobrepor outros elementos
 
 ---
 
@@ -224,13 +273,13 @@ Identidade visual consistente:
 
 ## 11. 📹 SESSÃO DESTAQUE VIRAL (HOME)
 
-Área estratégica para conversão de tráfego de redes sociais com animação premium:
+Área estratégica para conversão de tráfego de redes sociais com design limpo (V4):
 
 *   **Localização**: Após botões VIP, antes do conteúdo principal
 *   **Container**: Largura máxima 500px, centralizado
 *   **Embed**: Script oficial (Instagram/TikTok)
 *   **Fundo**: Azul escuro `#1C3A5C` com padding 15px e border-radius 12px
-*   **Animação de Carregamento**: Shimmer effect (gradiente branco deslizante, 2s infinite)
+*   **Animação de Carregamento**: **REMOVIDA na V4** (antes era shimmer effect)
 *   **Overflow**: `visible` para evitar clipping de animações
 *   **Botão**: 100% largura, abaixo do vídeo
 *   **Identidade**: Tag "🔥 DESTAQUE", borda dourada, fundo azul
