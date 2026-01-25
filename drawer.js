@@ -29,7 +29,7 @@ class DrawerManager {
             <button class="drawer-close" aria-label="Fechar menu">×</button>
             
             <div class="drawer-header">
-                <h2><i class="fas fa-bolt"></i>Achado<span>Certo</span></h2>
+                <h2><i class="fas fa-bolt"></i>AchadoCerto<span>VIP</span></h2>
             </div>
             
             <div class="drawer-content">
