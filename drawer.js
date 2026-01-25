@@ -29,59 +29,78 @@ class DrawerManager {
             <button class="drawer-close" aria-label="Fechar menu">×</button>
             
             <div class="drawer-header">
-                <h2><i class="fas fa-bolt"></i>AchadoCerto<span>VIP</span></h2>
+                <h2><span style="color: #C5CAD3; font-weight: 300;">AchadoCerto</span><span style="color: #D4AF37; font-weight: 600; margin-left: -2px;">VIP</span></h2>
             </div>
             
             <div class="drawer-content">
-                <div class="drawer-section">
-                    <h3><i class="fas fa-tag"></i> Categorias de Ofertas</h3>
-                    <p>Explore nossas categorias selecionadas com os melhores achados do mercado.</p>
-                    <a href="categorias/tech.html"><i class="fas fa-laptop"></i> Tecnologia</a>
-                    <a href="categorias/saude.html"><i class="fas fa-heart-pulse"></i> Saúde & Bem-estar</a>
-                    <a href="categorias/lar.html"><i class="fas fa-home"></i> Casa & Lar</a>
-                    <a href="categorias/estilo.html"><i class="fas fa-shirt"></i> Estilo & Moda</a>
-                    <a href="categorias/dicas.html"><i class="fas fa-lightbulb"></i> Dicas & Guias</a>
+                <div class="drawer-section" style="background: rgba(0, 102, 204, 0.12); padding: 15px; border-radius: 8px;">
+                    <h3 style="display: flex; align-items: center; gap: 8px; font-weight: 700;"><span style="background: linear-gradient(135deg, #0066CC, #0052CC); color: white; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 700;">M</span> Ofertas Magalu</h3>
+                    <p style="color: #FFD700; font-size: 12px; font-weight: 600; margin-bottom: 12px;">Parceiro Oficial - Melhores Preços</p>
+                    <p style="font-weight: 300;">Encontre os melhores tênis, suplementos esportivos, SmartTV e celulares com desconto no Magalu. Ofertas verificadas e entrega garantida.</p>
+                    <a href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/tenis/" target="_blank" rel="noopener noreferrer" title="Comprar tênis com desconto no Magalu" style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: rgba(0, 102, 204, 0.1); border-left: 4px solid #0066CC; margin-top: 8px; margin-bottom: 6px; font-weight: 500;"><i class="fas fa-shoe-prints" style="color: #0066CC;"></i> <span>Tênis Premium</span></a>
+                    <a href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/suplementos+esportivos/" target="_blank" rel="noopener noreferrer" title="Suplementos esportivos com melhor preço" style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: rgba(0, 102, 204, 0.1); border-left: 4px solid #0066CC; margin-top: 8px; margin-bottom: 6px; font-weight: 500;"><i class="fas fa-flask" style="color: #0066CC;"></i> <span>Suplementos</span></a>
+                    <a href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/tvs/" target="_blank" rel="noopener noreferrer" title="SmartTV com ofertas imperdíveis" style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: rgba(0, 102, 204, 0.1); border-left: 4px solid #0066CC; margin-top: 8px; margin-bottom: 6px; font-weight: 500;"><i class="fas fa-tv" style="color: #0066CC;"></i> <span>SmartTV</span></a>
+                    <a href="https://www.magazinevoice.com.br/magazinevantagensmax/busca/celular/" target="_blank" rel="noopener noreferrer" title="Celulares e smartphones com desconto" style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: rgba(0, 102, 204, 0.1); border-left: 4px solid #0066CC; margin-top: 8px; font-weight: 500;"><i class="fas fa-mobile" style="color: #0066CC;"></i> <span>Celular</span></a>
+                </div>
+
+                <div class="drawer-divider"></div>
+
+                <div class="drawer-section" style="background: rgba(255, 204, 0, 0.12); padding: 15px; border-radius: 8px;">
+                    <h3 style="display: flex; align-items: center; gap: 8px; font-weight: 700;"><span style="background: linear-gradient(135deg, #FFCC00, #FFB800); color: #000; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 700;">ML</span> Ofertas Mercado Livre</h3>
+                    <p style="color: #FFD700; font-size: 12px; font-weight: 600; margin-bottom: 12px;">Parceiro Oficial - Maior Marketplace</p>
+                    <p style="font-weight: 300;">Descubra milhões de produtos com as melhores ofertas do Mercado Livre. Envio rápido e compra protegida.</p>
+                    <a href="https://www.mercadolivre.com.br/social/muc1576372" target="_blank" rel="noopener noreferrer" title="Ver ofertas no Mercado Livre" style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: rgba(255, 204, 0, 0.1); border-left: 4px solid #FFCC00; margin-top: 8px; font-weight: 600;"><i class="fas fa-shopping-cart" style="color: #FFCC00;"></i> <span>OFERTAS DO DIA</span></a>
+                </div>
+
+                <div class="drawer-divider"></div>
+
+                <div class="drawer-section" style="background: rgba(255, 153, 0, 0.12); padding: 15px; border-radius: 8px;">
+                    <h3 style="display: flex; align-items: center; gap: 8px; font-weight: 700;"><span style="background: linear-gradient(135deg, #333333, #FF9900); color: white; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 700;">A</span> Ofertas Amazon</h3>
+                    <p style="color: #FFD700; font-size: 12px; font-weight: 600; margin-bottom: 12px;">Parceiro Oficial - Ofertas Exclusivas</p>
+                    <p style="font-weight: 300;">Aproveite as melhores ofertas da Amazon com entrega rápida e frete grátis para clientes Prime.</p>
+                    <a href="https://amzn.to/3YV6t3h" target="_blank" rel="noopener noreferrer" title="Ver ofertas do dia na Amazon" style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: rgba(51, 51, 51, 0.08); border-left: 4px solid #FF9900; margin-top: 8px; font-weight: 600;"><i class="fas fa-shopping-cart" style="color: #FF9900;"></i> <span>OFERTAS DO DIA</span></a>
                 </div>
 
                 <div class="drawer-divider"></div>
 
                 <div class="drawer-section">
-                    <h3><i class="fas fa-newspaper"></i> Blog</h3>
-                    <p>Confira guias, reviews e comparativos de produtos premium.</p>
-                    <a href="blog.html"><i class="fas fa-arrow-right"></i> Ver todos os posts</a>
+                    <h3 style="font-weight: 700;"><i class="fas fa-newspaper"></i> Blog</h3>
+                    <p style="font-weight: 300;">Confira guias, reviews e comparativos de produtos premium.</p>
+                    <a href="blog.html" style="font-weight: 500;"><i class="fas fa-arrow-right"></i> Ver todos os posts</a>
                 </div>
 
                 <div class="drawer-divider"></div>
 
                 <div class="drawer-section">
-                    <h3><i class="fas fa-users"></i> Comunidade VIP</h3>
-                    <p>Junte-se ao nosso grupo e receba ofertas exclusivas em tempo real.</p>
-                    <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank"><i class="fab fa-whatsapp"></i> Canal WhatsApp</a>
-                    <a href="https://chat.whatsapp.com/E6kgRRbyoiP99NoIANB81t" target="_blank"><i class="fas fa-user-group"></i> Entrar no Grupo</a>
+                    <h3 style="font-weight: 700;"><i class="fas fa-users"></i> Comunidade VIP</h3>
+                    <p style="font-weight: 300;">Junte-se ao nosso grupo e receba ofertas exclusivas em tempo real.</p>
+                    <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" style="font-weight: 500;"><i class="fab fa-whatsapp"></i> Canal WhatsApp</a>
+                    <a href="https://chat.whatsapp.com/E6kgRRbyoiP99NoIANB81t" target="_blank" style="font-weight: 500;"><i class="fas fa-user-group"></i> Entrar no Grupo</a>
                 </div>
 
                 <div class="drawer-divider"></div>
 
                 <div class="drawer-section">
-                    <h3><i class="fas fa-share-nodes"></i> Siga-nos</h3>
-                    <p>Acompanhe nossas redes sociais para atualizações diárias.</p>
-                    <a href="https://www.instagram.com/achadocertovip?igsh=Y2Rua2praTdha3dk" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-                    <a href="https://www.tiktok.com/@achadocertovip?_r=1&_t=ZS-934lRAtLp1s" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
-                    <a href="https://x.com/AchadoCertoVIP" target="_blank"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
+                    <h3 style="font-weight: 700;"><i class="fas fa-share-nodes"></i> Siga-nos</h3>
+                    <p style="font-weight: 300;">Acompanhe nossas redes sociais para atualizações diárias.</p>
+                    <a href="https://www.instagram.com/achadocertovip?igsh=Y2Rua2praTdha3dk" target="_blank" style="font-weight: 500;"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://www.tiktok.com/@achadocertovip?_r=1&_t=ZS-934lRAtLp1s" target="_blank" style="font-weight: 500;"><i class="fab fa-tiktok"></i> TikTok</a>
+                    <a href="https://x.com/AchadoCertoVIP" target="_blank" style="font-weight: 500;"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
                 </div>
 
                 <div class="drawer-divider"></div>
 
                 <div class="drawer-section">
-                    <h3><i class="fas fa-circle-info"></i> Informações</h3>
-                    <p>Tudo o que você precisa saber sobre o AchadoCerto.VIP.</p>
-                    <a href="termos.html"><i class="fas fa-file-lines"></i> Termos de Uso</a>
-                    <a href="politica.html"><i class="fas fa-shield"></i> Política de Privacidade</a>
+                    <h3 style="font-weight: 700;"><i class="fas fa-circle-info"></i> Informações</h3>
+                    <p style="font-weight: 300;">Tudo o que você precisa saber sobre o AchadoCerto.VIP.</p>
+                    <a href="termos.html" style="font-weight: 500;"><i class="fas fa-file-lines"></i> Termos de Uso</a>
+                    <a href="politica.html" style="font-weight: 500;"><i class="fas fa-shield"></i> Política de Privacidade</a>
                 </div>
             </div>
 
             <div class="drawer-footer">
-                <p>© 2026 AchadoCerto.VIP • Ofertas Verificadas</p>
+                <p style="font-size: 11px; font-weight: 400; line-height: 1.4; color: #A8AEB8;">Afiliados: Ganhamos comissão, mas você economiza. Selecionamos apenas cupons e ofertas em destaque.</p>
+                <p style="font-size: 11px; margin-top: 8px;">© 2026 AchadoCerto.VIP • Ofertas Verificadas</p>
             </div>
         `;
         document.body.appendChild(this.drawer);

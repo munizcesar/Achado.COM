@@ -1,0 +1,16 @@
+# robots.txt - AchadoCerto.VIP
+# Guia para web crawlers (Google, Bing, etc)
+
+# Permitir todos os crawlers
+User-agent: *
+Allow: /
+
+# Bloquear pastas sensíveis (se tiver)
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap
+Sitemap: https://achadocertovip.com.br/sitemap.xml
+
+# Crawl delay (respeite o servidor)
+Crawl-delay: 1

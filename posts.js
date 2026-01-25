@@ -3,8 +3,8 @@ const postsData = [
     "titulo": "💪 Creatina Monohidratada 500g Pura: Potencialize seu Desempenho",
     "resumo": "Descubra por que a creatina monohidratada é o suplemento mais comprovado para ganho de força e massa muscular. Qualidade importada 99.8% pura com laudo de pureza garantido.",
     "imagem": "https://a-static.mlcdn.com.br/420x420/creatina-monohidratada-500g-100-pura-importada-soldiers-nutrition/soldiersnutrition/14/00c9ff13362d96a5369f69432ab0dcbc.jpeg",
-    "link": "https://mercadolivre.com/sec/2KW8RB6",
-    "chamada": "🎯 Ver Oferta Especial",
+    "link": "blog/creatina-soldiers-500g.html",
+    "chamada": "🎯 Ler Artigo Completo",
     "categoria": "saude",
     "conteudo": `<div class='post-detalhado'>
       <h2>🏋️ Creatina Monohidratada Pura: Potencialize seu Desempenho</h2>
@@ -151,10 +151,10 @@ const postsData = [
     "keywords": "arginina l-arginina suplemento pump vascularização vasodilatador óxido nítrico pré treino performance muscular academia musculação força resistência recuperação circulação sanguínea veias definição muscular dose como tomar benefícios aminoácido essencial saúde cardiovascular"
   },
   {
-    "titulo": "💪 Creatina: O Guia Definitivo para Performance e Saúde",
-    "resumo": "Descubra por que a creatina é o suplemento nº 1 para ganho de força e recuperação muscular.",
+    "titulo": "💪 Creatina Monohidratada 500g Pura: Potencialize seu Desempenho",
+    "resumo": "Descubra por que a creatina monohidratada é o suplemento mais comprovado para ganho de força e massa muscular. Qualidade importada 99.8% pura com laudo de pureza garantido.",
     "imagem": "images/imagesposts/creatina-soldiers-500g.jpeg", 
-    "link": "blog/guia-creatina-performance.html",
+    "link": "blog/creatina-soldiers-500g.html",
     "chamada": "📖 Ler Guia Completo",
     "categoria": "saude",
     "keywords": "creatina monoidratada suplemento academia musculação força explosão performance ganho massa muscular hipertrofia recuperação energia atp treino intenso soldiers growth max titanium integral medica creapure dose saturação como tomar quando tomar benefícios melhor marca custo benefício"

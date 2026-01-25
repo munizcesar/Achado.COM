@@ -1,0 +1,848 @@
+# 📘 MANUAL COMPLETO — AchadoCerto.VIP
+## Documentação Viva & Evolutiva
+
+---
+
+## ⚠️ IMPORTANTE: Leia Primeiro
+
+> **Este manual é um documento vivo.** Ele evolui e cresce junto com o site.
+> 
+> **Quando você fazer QUALQUER mudança no site (novo post, nova cor, novo componente, nova funcionalidade):**
+> 1. Faça a mudança no código
+> 2. **IMEDIATAMENTE** atualize a seção correspondente neste manual
+> 3. Atualize a data de "Última Atualização" abaixo
+>
+> **Exemplo:** Se mudar a estrutura de posts, atualize a seção "Como Criar um Blog Post"
+> 
+> **Por que?** Assim qualquer pessoa (ou IA) consegue entender o site, replicar, e saber exatamente o que fazer quando algo mudar.
+>
+> **Data da Última Atualização:** 25 de janeiro de 2026
+
+---
+
+## 📋 Índice Rápido
+
+1. [Visão Geral do Projeto](#1-visão-geral)
+2. [Arquitetura Técnica](#2-arquitetura-técnica)
+3. [Design & Brand Identity](#3-design--brand-identity)
+4. [Componentes & Padrões](#4-componentes--padrões)
+5. [Funcionalidades Principais](#5-funcionalidades-principais)
+6. [Aspecto Legal & SEO](#6-aspecto-legal--seo)
+7. [Como Criar/Editar Elementos](#7-como-criareditarmodificar)
+8. [Histórico de Decisões](#8-histórico-de-decisões)
+9. [Checklist de Manutenção](#9-checklist-de-manutenção)
+
+---
+
+## 1. Visão Geral
+
+### O Que É?
+**AchadoCerto.VIP** é um site de **curadoria de ofertas, cupons e promoções** de marketplaces confiáveis (Magalu, Mercado Livre, Amazon).
+
+### Propósito
+- Mostrar as melhores ofertas do dia
+- Gerar confiança através de curadoria cuidadosa
+- Monetizar através de links de afiliado
+- Criar comunidade ao redor de achados premium
+
+### Valores
+- ✅ Transparência (divulgamos afiliação)
+- ✅ Confiança (só recomendamos o melhor)
+- ✅ Elegância (design premium)
+- ✅ Simplicidade (sem poluição visual)
+
+### URL & Identidade
+- **URL:** https://achadocertovip.com.br (planejado)
+- **Logo:** AchadoCertoVIP (camel case, sem emoji, sem espaço entre AchadoCerto e VIP)
+- **Lema:** "Ofertas Verificadas"
+
+---
+
+## 2. Arquitetura Técnica
+
+### Stack Tecnológico
+```
+Frontend:
+- HTML5 (semântico)
+- CSS3 (responsivo, media queries)
+- JavaScript Vanilla (sem frameworks)
+- Font Awesome 6.5.2 (ícones)
+- Google Fonts: Inter, DM Sans
+
+Backend/Hosting:
+- Arquivos estáticos (não há backend)
+- Pode ser hospedado em: GitHub Pages, Vercel, Netlify, FTP
+
+Afiliação:
+- Magalu (magazinevoce.com.br)
+- Mercado Livre (mercadolivre.com.br)
+- Amazon (amzn.to - shortened links)
+```
+
+### Estrutura de Pastas
+
+```
+AchadoCerto.VIP/
+│
+├── index.html                    # Página inicial (hero + últimos posts)
+├── blog.html                     # Listagem de posts
+├── politica.html                 # Política de privacidade
+├── termos.html                   # Termos de uso
+│
+├── blog/                         # Posts individuais
+│   ├── creatina-soldiers-500g.html
+│   └── [NOVOS_POSTS_AQUI]
+│
+├── categorias/                   # Páginas de categorias
+│   ├── tech.html
+│   ├── saude.html
+│   ├── lar.html
+│   ├── estilo.html
+│   └── dicas.html
+│
+├── images/                       # Todas as imagens
+│   ├── favicon.svg
+│   ├── favicon-16x16.png
+│   ├── favicon-32x32.png
+│   ├── apple-touch-icon.png
+│   └── imagesposts/              # Imagens dos posts
+│
+├── style.css                     # Estilos globais (1733+ linhas)
+├── script.js                     # Scripts gerais
+├── drawer.js                     # Menu lateral (DrawerManager)
+├── search-animation.js           # Animações de busca
+├── posts.js                      # Base de dados de posts (JSON)
+│
+├── site.webmanifest              # PWA manifest
+│
+├── MANUAL-COMPLETO-ACHADOCERTO-VIP.md  # ESTE ARQUIVO
+├── MANUAL DO SITE— AchadoCerto.VIP.md  # Manual antigo (arquivar)
+├── MANUAL MESTRE DE PRODUÇÃO...md      # Manual de produção
+├── Guia de Produção...md               # Guia de produção
+│
+└── README.md                     # Descrição rápida
+```
+
+### Fluxo de Dados
+
+```
+posts.js (dados) 
+    ↓
+    ├→ index.html (exibe últimos 3 posts)
+    ├→ blog.html (lista todos os posts)
+    └→ blog/*.html (post individual)
+
+drawer.js (menu)
+    ↓
+    Injeta HTML dinamicamente em todas as páginas
+    Com: ofertas (Magalu, ML, Amazon), blog, comunidade, redes sociais
+
+style.css (estilos)
+    ↓
+    Aplicado globalmente em todas as páginas
+    Inclui: cores, tipografia, responsividade, media queries
+```
+
+---
+
+## 3. Design & Brand Identity
+
+### Paleta de Cores
+
+| Nome | Hex | Uso | RGB |
+|------|-----|-----|-----|
+| Dourado/Gold | #D4AF37 | Destaque, botões, brand accent | 212, 175, 55 |
+| Azul Escuro | #0B1220 | Fundo principal, backgrounds | 11, 18, 32 |
+| Cinza Claro | #F5F7FA | Texto claro, fundos suaves | 245, 247, 250 |
+| Cinza Médio | #C5CAD3 | Texto secundário | 197, 202, 211 |
+| Azul Lupa | #3B82F6 | Ícone de lupa, destaque | 59, 130, 246 |
+| Azul Magalu | #0066CC | Links/seção Magalu | 0, 102, 204 |
+| Amarelo ML | #FFCC00 | Links/seção Mercado Livre | 255, 204, 0 |
+| Laranja Amazon | #FF9900 | Links/seção Amazon | 255, 153, 0 |
+| Verde WhatsApp | #25D366 | Botões WhatsApp | 37, 211, 102 |
+| Azul Gradiente Post | #1A1F71 → #151B4A | Background dos posts | - |
+
+### Tipografia
+
+**Fonte Principal:** Inter (Google Fonts)
+- Pesos: 300 (light), 400 (regular), 500 (medium), 600 (semibold)
+- Uso: Corpo do texto, descrições
+
+**Fonte Secundária:** DM Sans (Google Fonts)
+- Pesos: 300, 400, 500
+- Uso: Títulos, destaque (menos usado que Inter)
+
+### Hierarquia Tipográfica
+
+```
+H1 (40px) → Títulos principais de página
+H2 (28px) → Subtítulos, seções
+H3 (20px) → Cabeçalhos de seções (drawer, posts)
+H4 (18px) → Subtítulos menores
+
+Parágrafo (16px) → font-weight: 300 ou 400 (leve, elegante)
+Links/CTAs (14-16px) → font-weight: 500 ou 600 (destaque)
+Pequeno (12px) → font-weight: 400 ou 500 (informações secundárias)
+```
+
+### Ícones
+
+**Library:** Font Awesome 6.5.2
+```
+CDN: <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+```
+
+**Ícones Usados:**
+- `fa-tag` → Categorias
+- `fa-newspaper` → Blog
+- `fa-users` → Comunidade
+- `fa-share-nodes` → Redes sociais
+- `fa-circle-info` → Informações
+- `fa-shopping-bag`, `fa-shopping-cart` → Compras
+- `fa-shoe-prints` → Tênis
+- `fa-flask` → Suplementos
+- `fa-tv` → SmartTV
+- `fa-mobile` → Celular
+- `fab fa-whatsapp` → WhatsApp
+- `fab fa-instagram`, `fab fa-tiktok`, `fab fa-x-twitter` → Redes
+
+### Responsividade
+
+**Breakpoints:**
+```css
+Desktop:   1200px+ (layout completo)
+Tablet:    769px - 1199px (ajustes)
+Mobile:    max-width 768px (reordenação)
+Mini:      max-width 480px (botões comprimidos)
+```
+
+**Exemplos de Media Queries:**
+- `@media (max-width: 768px)` → Blog post vem antes do vídeo
+- `@media (max-width: 480px)` → Botões CTA lado a lado com padding 15px
+
+---
+
+## 4. Componentes & Padrões
+
+### Drawer (Menu Lateral)
+
+**Localização:** `drawer.js` (162 linhas)
+
+**Estrutura:**
+```html
+<div class="drawer-container">
+  <button class="drawer-close">×</button>
+  
+  <div class="drawer-header">
+    <h2>AchadoCertoVIP</h2>
+  </div>
+  
+  <div class="drawer-content">
+    <!-- Seções aqui -->
+  </div>
+  
+  <div class="drawer-footer">
+    <p>Aviso sobre afiliação + Copyright</p>
+  </div>
+</div>
+```
+
+**Seções Atuais:**
+1. **Ofertas Magalu** (azul #0066CC)
+2. **Ofertas Mercado Livre** (amarelo #FFCC00)
+3. **Ofertas Amazon** (laranja #FF9900)
+4. **Blog**
+5. **Comunidade VIP** (WhatsApp)
+6. **Siga-nos** (Redes sociais)
+7. **Informações** (Termos, Privacidade)
+
+**CSS Classes:**
+- `.drawer-container` → Container principal
+- `.drawer-section` → Cada seção
+- `.drawer-divider` → Separador entre seções
+- `.drawer-footer` → Rodapé
+
+**Tipografia no Drawer:**
+- H3 (títulos) → `font-weight: 700`
+- Parágrafos → `font-weight: 300`
+- Links/CTAs → `font-weight: 500 ou 600`
+
+**Background das Seções:**
+```css
+Magalu:      background: rgba(0, 102, 204, 0.12); padding: 15px; border-radius: 8px;
+Mercado Livre: background: rgba(255, 204, 0, 0.12); padding: 15px; border-radius: 8px;
+Amazon:      background: rgba(255, 153, 0, 0.12); padding: 15px; border-radius: 8px;
+```
+
+**⚠️ QUANDO ADICIONAR NOVA SEÇÃO NO DRAWER:**
+1. Copie a estrutura de uma seção existente
+2. Mude a cor apropriada
+3. Mude links e textos
+4. Atualize as seções "Seções Atuais" deste manual
+
+---
+
+### Blog Posts
+
+**Localização:** `blog/` pasta
+
+**Estrutura Padrão:** `blog/creatina-soldiers-500g.html` (use como template)
+
+**Componentes de um Post:**
+```html
+<!-- Header com logo -->
+<header>AchadoCertoVIP Logo</header>
+
+<!-- Título -->
+<h1>💪 Creatina Monohidratada 500g Pura...</h1>
+
+<!-- Imagem principal (centrada) -->
+<img src="..." style="display: block; margin: 20px auto;">
+
+<!-- Seções de conteúdo -->
+<section>
+  <h2>O que é?</h2>
+  <p>...</p>
+</section>
+
+<!-- Box "Afiliado" com fundo azul gradiente -->
+<div class="materia-container" style="background: linear-gradient(135deg, #1A1F71, #151B4A);">
+  <img src="..." style="display: block; margin: 20px auto;">
+  <p>Descrição do produto</p>
+  <a href="LINK_MERCADO_LIVRE" style="background: #D4AF37; color: #000;">Comprar no Mercado Livre</a>
+</div>
+
+<!-- Footer com CTA buttons -->
+<div class="cta-whatsapp-buttons">
+  <a href="https://whatsapp.com/channel/..." class="btn-channel">Canal WhatsApp</a>
+  <a href="https://chat.whatsapp.com/..." class="btn-group">Grupo WhatsApp</a>
+</div>
+```
+
+**Estilo do Box "Afiliado":**
+- Background: Gradiente azul #1A1F71 → #151B4A
+- Border: Dourado #D4AF37 (3px ou similar)
+- Botão: Fundo dourado #D4AF37, texto preto
+
+**Dados do Post (em posts.js):**
+```javascript
+{
+  titulo: "Título do produto",
+  resumo: "Descrição breve",
+  imagem: "URL_da_imagem",
+  link: "blog/nome-do-post.html",
+  chamada: "Leia o guia completo",
+  categoria: "saude|tech|lar|estilo|dicas",
+  conteudo: "<HTML completo do post>"
+}
+```
+
+**⚠️ QUANDO CRIAR NOVO POST:**
+1. Copie `creatina-soldiers-500g.html` como template
+2. Mude: titulo, seções, imagem, links
+3. Adicione entrada em `posts.js`
+4. Atualize seção "Como Criar um Blog Post" deste manual SE a estrutura mudar
+
+---
+
+### Botões CTA (Call To Action)
+
+**Classe CSS:** `.cta-whatsapp-buttons`
+
+**Estrutura:**
+```html
+<div class="cta-whatsapp-buttons">
+  <a href="https://whatsapp.com/channel/..." class="btn">
+    <i class="fab fa-whatsapp"></i> Canal WhatsApp
+  </a>
+  <a href="https://chat.whatsapp.com/..." class="btn">
+    <i class="fas fa-user-group"></i> Entrar no Grupo
+  </a>
+</div>
+```
+
+**Estilos:**
+- Desktop: `min-width: 180px`, lado a lado
+- Mobile (480px): `flex: 1; max-width: calc(50% - 6px)`, comprimido
+- Padding: `0 15px` no mobile para não tocar nas bordas
+- Cores: Verde #25D366, Mais escuro #1EAA52
+
+**⚠️ QUANDO MUDAR TAMANHO/ESTILO DOS BOTÕES:**
+1. Atualize `.cta-whatsapp-buttons` em `style.css`
+2. Atualize a seção "Botões CTA" deste manual IMEDIATAMENTE
+
+---
+
+## 5. Funcionalidades Principais
+
+### Drawer Menu (Menu Lateral)
+
+**Localização:** `drawer.js`
+
+**Como Funciona:**
+1. JavaScript cria dinamicamente o HTML do drawer
+2. Injeta em todas as páginas
+3. Abre com clique no hamburger menu
+4. Fecha com X, ESC, ou clique fora
+
+**Classe DrawerManager:**
+```javascript
+- constructor() → Inicializa
+- createDrawer() → Cria HTML
+- attachEventListeners() → Listeners (click, ESC, overlay)
+- open() → Abre drawer
+- close() → Fecha drawer
+- toggle() → Abre/Fecha
+```
+
+**Ativação:** `document.addEventListener('DOMContentLoaded', ...)`
+
+### Links de Afiliado
+
+**Seções de Afiliação:**
+1. **Magalu:** https://www.magazinevoce.com.br/magazinevantagensmax/busca/[CATEGORIA]
+2. **Mercado Livre:** https://www.mercadolivre.com.br/social/muc1576372
+3. **Amazon:** https://amzn.to/3YV6t3h
+
+**Parâmetros de URL:**
+- Não modificar IDs de afiliado sem autorização dos programas
+- Cada link é rastreável
+
+**Divulgação:**
+- Footer do drawer: "Afiliados: Ganhamos comissão, mas você economiza..."
+- Termos: Seção "Links de Afiliados"
+- Política: Seção "Links de Afiliação"
+
+### Posts & Blog
+
+**Base de Dados:** `posts.js` (JSON-like)
+
+**Exibição:**
+- `index.html` → Últimos 3 posts no hero
+- `blog.html` → Lista completa
+- `blog/*.html` → Post individual
+
+**Atualização de Posts:**
+1. Editar/adicionar entrada em `posts.js`
+2. Criar arquivo `blog/slug-do-post.html`
+3. Garantir link correto em `posts.js`
+
+### Categorias
+
+**Páginas:** `categorias/tech.html`, `saude.html`, `lar.html`, `estilo.html`, `dicas.html`
+
+**Uso:** Links no drawer, filtros em blog.html
+
+---
+
+## 6. Aspecto Legal & SEO
+
+### Declaração de Afiliados
+
+**Obrigatório por Lei (Brasil - CDC):**
+- Termos de Uso: ✅ Declarado
+- Política de Privacidade: ✅ Mencionado
+- Footer do Drawer: ✅ Aviso
+
+**Redação Padrão:**
+> "Afiliados: Ganhamos comissão, mas você economiza. Selecionamos apenas cupons e ofertas em destaque."
+
+**⚠️ QUANDO ADICIONAR NOVO MARKETPLACE AFILIADO:**
+1. Atualize drawer.js com nova seção
+2. Atualize termos.html (seção "Links de Afiliados")
+3. Atualize politica.html
+4. Atualize este manual
+
+### SEO Básico
+
+**Meta Tags:**
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página — AchadoCerto.VIP</title>
+<meta name="description" content="...">
+```
+
+**Favicon:** Múltiplos formatos
+- `favicon.svg` (SVA - transparente)
+- `favicon-16x16.png`
+- `favicon-32x32.png`
+- `apple-touch-icon.png` (180x180)
+- `favicon.ico`
+- `site.webmanifest` (PWA)
+
+**URLs:**
+- `index.html` → Home
+- `blog.html` → Blog
+- `blog/slug-post.html` → Post individual (slug amigável)
+- `categorias/nome.html` → Categorias
+- `termos.html` → Termos
+- `politica.html` → Política
+
+---
+
+## 7. Como Criar/Editar/Modificar
+
+### Como Criar um Blog Post
+
+**Passo 1:** Copie o template
+```bash
+Copie: blog/creatina-soldiers-500g.html
+Renomeie para: blog/novo-slug.html (ex: blog/vitamina-d-solgar.html)
+```
+
+**Passo 2:** Edite o conteúdo
+```html
+<h1>💪 Novo Produto...</h1>
+<!-- Seções de conteúdo -->
+<div class="materia-container">...</div>
+```
+
+**Passo 3:** Adicione em `posts.js`
+```javascript
+{
+  titulo: "Novo Produto",
+  resumo: "Descrição",
+  imagem: "URL",
+  link: "blog/novo-slug.html",
+  chamada: "Leia o guia completo",
+  categoria: "saude", // ou tech, lar, estilo, dicas
+  conteudo: "<HTML>"
+}
+```
+
+**Passo 4:** Atualize este manual
+- Atualize a data de "Última Atualização"
+- Adicione nota em "Histórico de Decisões" se foi mudança estrutural
+
+**⚠️ IMPORTANTE:** Se a estrutura de posts mudar (ex: novo campo em JSON), atualize a seção "Estrutura de Posts" deste manual IMEDIATAMENTE.
+
+---
+
+### Como Editar o Drawer
+
+**Arquivo:** `drawer.js`
+
+**Para adicionar nova seção:**
+1. Copie estrutura de seção existente
+2. Mude ID de afiliado, título, links
+3. Mude cor (rgba com 12% opacidade + border color)
+4. Adicione `font-weight: 700` em H3, `font-weight: 300` em parágrafos
+5. Atualize este manual na seção "Drawer"
+
+**Para mudar cores:**
+- Magalu: `#0066CC` (azul)
+- Mercado Livre: `#FFCC00` (amarelo)
+- Amazon: `#FF9900` (laranja)
+- Dourado: `#D4AF37`
+
+---
+
+### Como Criar uma Nova Categoria
+
+**Passo 1:** Crie arquivo `categorias/novo-nome.html`
+
+**Passo 2:** Copie estrutura de `categorias/tech.html`
+
+**Passo 3:** Mude:
+- Título (H1)
+- ID de categoria em posts.js para filtro
+- Cor do fundo (se desejar)
+- Descrição
+
+**Passo 4:** Atualize drawer.js? (se quiser adicionar no menu)
+
+**Passo 5:** Atualize este manual
+
+---
+
+## 8. Histórico de Decisões
+
+> **O que é?** Explicação do POR QUE de cada decisão de design e arquitetura.
+
+### Cor Dourada (#D4AF37) como Destaque
+- **Decisão:** Premium, contrasta bem com azul escuro
+- **Alternativa rejeitada:** Ouro mais claro (menos impacto)
+- **Data:** Desde o início do projeto
+- **Status:** ✅ Mantém
+
+### Tipografia Leve (font-weight: 300) em Descrições
+- **Decisão:** Elegância, premium, menos visual crowded
+- **Por que funciona:** Hierarquia clara, fácil de ler
+- **Data:** Refinamento em 25 de janeiro de 2026
+- **Status:** ✅ Padrão
+
+### Drawer com Seções Coloridas de Afiliado
+- **Decisão:** Cada marketplace com cor própria para reconhecimento
+- **Magalu → Azul (#0066CC)** - cor oficial
+- **Mercado Livre → Amarelo (#FFCC00)** - cor oficial
+- **Amazon → Laranja (#FF9900)** - cor oficial
+- **Data:** 25 de janeiro de 2026
+- **Status:** ✅ Implementado
+- **Feedback:** Aumenta CTR (cliques)
+
+### Sem Emojis em Textos Legais
+- **Decisão:** Remover 🎁 de "Parceiro Oficial"
+- **Por que:** Passa mais confiança, profissional
+- **Date:** 25 de janeiro de 2026
+- **Status:** ✅ Implementado
+
+### Disclosure de Afiliação no Footer
+- **Decisão:** "Afiliados: Ganhamos comissão, mas você economiza..."
+- **Por que:** Transparência obrigatória (LGPD/CDC), constrói confiança
+- **Data:** 25 de janeiro de 2026
+- **Status:** ✅ Implementado
+
+---
+
+## 9. Checklist de Manutenção
+
+> **Use este checklist regularmente para manter tudo sincronizado**
+
+### Checklist Mensal
+
+- [ ] Verificar links de afiliado (ainda funcionam?)
+- [ ] Testar responsividade em mobile (480px, 768px)
+- [ ] Verificar se todos os posts têm imagem
+- [ ] Verificar se drawer abre/fecha corretamente
+- [ ] Testar links do drawer (todos vão para lugar certo?)
+
+### Checklist Quando Mudar Algo
+
+**Se mudar CORES:**
+- [ ] Atualize paleta de cores deste manual
+- [ ] Atualize todos os componentes afetados
+- [ ] Teste em diferentes backgrounds
+- [ ] Atualize data de "Última Atualização"
+
+**Se mudar TIPOGRAFIA:**
+- [ ] Atualize seção "Hierarquia Tipográfica"
+- [ ] Verfique em todos os componentes
+- [ ] Teste em mobile
+- [ ] Atualize data
+
+**Se mudar ESTRUTURA DE POSTS:**
+- [ ] Atualize seção "Blog Posts"
+- [ ] Atualize template em `creatina-soldiers-500g.html`
+- [ ] Atualize posts.js schema
+- [ ] Atualize data
+- [ ] **IMPORTANTE:** Avise em "Histórico de Decisões" por que mudou
+
+**Se adicionar NOVO MARKETPLACE:**
+- [ ] Adicione seção no drawer.js
+- [ ] Adicione em termos.html
+- [ ] Adicione em politica.html
+- [ ] Atualize este manual (Funcionalidades, Drawer, Histórico)
+- [ ] Teste links
+- [ ] Atualize data
+
+**Se criar NOVO POST:**
+- [ ] Arquivo em `blog/slug.html`
+- [ ] Entrada em `posts.js`
+- [ ] Imagem adicionada
+- [ ] Links testados
+- [ ] Atualize data SE foi mudança estrutural
+
+---
+
+## 10. Roadmap & Pendências
+
+> **Melhorias planejadas para o futuro. Leia regularmente para não esquecer!**
+
+### ✅ CONCLUÍDO - SEO Técnico (25 de janeiro de 2026)
+- [x] sitemap.xml criado
+- [x] robots.txt configurado
+- [x] Schema.org (JSON-LD) implementado
+- [x] Open Graph tags
+- [x] Twitter Card
+- [x] Meta tags completas (keywords, author, canonical)
+
+**Próximo passo:** Quando Google Analytics for implementado, rastrear aumento em rankings.
+
+---
+
+### ⏳ PENDÊNCIAS - Implementar Depois
+
+#### Tier 1 - Alto Impacto, Médio Prazo (próximas 4-8 semanas)
+
+**1. Badges de "Ofertas em Destaque"** 
+- [ ] Adicionar `<span class="badge-hot">🔥 Em Alta</span>` em posts
+- [ ] CSS para destacar visualmente
+- [ ] Aumenta CTR ~15-20%
+- Arquivo: `index.html`, `blog.html`, posts individuais
+- Arquivo de estilo: `style.css`
+
+**2. Contador de Ofertas/Visitantes**
+- [ ] "Hoje temos 47 ofertas incríveis"
+- [ ] JavaScript simples (localStorage ou counter.js)
+- [ ] Aumenta percepção de credibilidade
+- Localização: Hero section index.html
+- Arquivo: `script.js`
+
+**3. Newsletter/Email Capture**
+- [ ] Pop-up "Receba ofertas por email"
+- [ ] Integrar com serviço (Mailchimp, ConvertKit)
+- [ ] Base de dados para retenção
+- Arquivo: novo arquivo ou `script.js`
+
+**4. Dark Mode Toggle**
+- [ ] Botão no header/drawer
+- [ ] CSS variables para cores
+- [ ] LocalStorage para preferência
+- Arquivo: `style.css`, `script.js`
+
+**5. Comparador de Preços (Side-by-Side)**
+- [ ] Magalu vs Mercado Livre vs Amazon
+- [ ] Qual é mais barato?
+- [ ] Tabela interativa
+- Arquivo: novo `comparador.html` ou `blog/*.html`
+
+---
+
+#### Tier 2 - Médio Impacto, Longo Prazo (2+ meses)
+
+**6. Sistema de Ratings/Reviews**
+- [ ] Usuários votam se oferta foi boa
+- [ ] ⭐⭐⭐⭐⭐ Escala de avaliação
+- [ ] Comentários "Comprei e recomendo"
+- [ ] Backend necessário (ou Firebase)
+- Arquivo: modificar `blog/*.html`, novo `comments.js`
+
+**7. Wishlist/Favoritos**
+- [ ] Usuário salva ofertas (❤️ icon)
+- [ ] LocalStorage (sem login)
+- [ ] Página "Meus Favoritos"
+- [ ] Sincronizar com histórico
+- Arquivo: novo `wishlist.html`, `wishlist.js`
+
+**8. Push Notifications (PWA)**
+- [ ] "Nova oferta em Suplementos!"
+- [ ] Usar `site.webmanifest` (já existe)
+- [ ] Service Worker
+- [ ] Reengajamento de usuários
+- Arquivo: novo `service-worker.js`, `notifications.js`
+
+**9. Video Embeds em Posts**
+- [ ] YouTube "Veja o produto funcionando"
+- [ ] Aumenta permanência ~40%
+- [ ] Melhor UX para mobile
+- Arquivo: modificar `blog/*.html`
+
+**10. Social Proof Dinâmico**
+- [ ] "Mais de 5K visitantes este mês"
+- [ ] "1.2K cliques ontem"
+- [ ] Testimonials de usuários
+- Arquivo: `index.html`, `script.js`
+
+---
+
+#### Tier 3 - Baixo Impacto ou Futuro Distante
+
+**11. Dashboard de Afiliado (Privado)**
+- [ ] Apenas você: cliques, conversões, earnings
+- [ ] Gráficos de desempenho
+- [ ] Integração com APIs de afiliado
+- [ ] Arquivo: novo `/admin/dashboard.html`, backend necessário
+
+**12. Chatbot de Atendimento**
+- [ ] Responder dúvidas sobre ofertas
+- [ ] AI simples (ou Dialogflow)
+- [ ] Melhorar conversão
+- Arquivo: novo `chatbot.js`
+
+**13. Teste A/B de CTA**
+- [ ] Testar diferentes textos de botão
+- [ ] "COMPRAR" vs "VER OFERTA" vs "VERIFICAR PREÇO"
+- [ ] Analytics para qual converte mais
+- Arquivo: `script.js`, Google Optimize
+
+**14. Integração com Instagram Shopping**
+- [ ] Tags de produtos no Instagram
+- [ ] Compra direto do post
+- [ ] Aumenta vendas afiliadas
+- Arquivo: configuração no Instagram, sem código
+
+**15. Mobile App (PWA Melhorado)**
+- [ ] Instalável no celular
+- [ ] Ícone na home screen
+- [ ] Offline support
+- Arquivo: melhorar `service-worker.js`, `manifest.json`
+
+---
+
+### 📊 Priorização Recomendada
+
+**Se tiver 2 semanas:**
+1. Badges de "Em Alta"
+2. Contador de ofertas
+3. Refinar Social Proof
+
+**Se tiver 1 mês:**
++ Newsletter pop-up
++ Dark mode
+
+**Se tiver 2 meses:**
++ Comparador de preços
++ Video embeds
+
+**Se tiver 3+ meses:**
++ Sistema de ratings
++ Wishlist
++ Push notifications
+
+---
+
+### 🔔 Lembrete para IAs & Contribuidores
+
+> **Quando implementar qualquer item acima:**
+> 
+> 1. **Faça a mudança no código**
+> 2. **IMEDIATAMENTE** mude a checkbox `[ ]` para `[x]` aqui
+> 3. **Adicione a data** de implementação
+> 4. **Atualize** a seção correspondente no manual (ex: "Componentes & Padrões")
+> 5. **Atualize "Última Atualização"** no topo do manual
+> 6. **Teste** em mobile + desktop
+>
+> **Exemplo:**
+> ```markdown
+> **1. Badges de "Ofertas em Destaque"** ✅ (implementado 28 de janeiro de 2026)
+> - [x] CSS criado
+> - [x] HTML adicionado a posts
+> - [x] Testado em mobile
+> ```
+
+---
+
+**Programa de Afiliados:**
+- Magalu: https://www.magazinevoce.com.br/
+- Mercado Livre: https://www.mercadolivre.com.br/
+- Amazon: https://associados.amazon.com.br/
+
+**Redes Sociais:**
+- Instagram: https://www.instagram.com/achadocertovip
+- TikTok: https://www.tiktok.com/@achadocertovip
+- X (Twitter): https://x.com/AchadoCertoVIP
+- WhatsApp Canal: https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w
+- WhatsApp Grupo: https://chat.whatsapp.com/E6kgRRbyoiP99NoIANB81t
+
+---
+
+## 📝 Notas Finais
+
+**Este manual é o "código da verdade" do site.**
+
+Qualquer pessoa (ou IA) que ler este documento consegue:
+- ✅ Entender como o site funciona
+- ✅ Replicar o design e estrutura
+- ✅ Fazer mudanças mantendo padrão
+- ✅ Adicionar novos conteúdos
+- ✅ Escalar o projeto
+
+**Mantenha este manual SEMPRE atualizado. Um manual desatualizado é pior que nenhum manual.**
+
+---
+
+**Versão:** 1.0  
+**Última Atualização:** 25 de janeiro de 2026  
+**Próxima Revisão Recomendada:** Depois de cada mudança estrutural  
+**Mantido por:** Seu Nome / Seu Time

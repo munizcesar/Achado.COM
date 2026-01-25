@@ -559,7 +559,7 @@ a {
     height: auto;
     display: block;
     border-radius: 0 0 12px 12px;
-    object-fit: contain;
+    object-fit: cover;
     aspect-ratio: 16 / 8;
 }
 
@@ -1715,5 +1715,75 @@ footer a {
     /* Substitui os botões grandes no mobile */
     .cta-container {
         display: none !important;
+    }
+
+    /* Reordena o layout do vídeo e blog no mobile */
+    .content-sections-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .blog-highlight-section {
+        order: -1; /* Coloca o blog (e último post) ANTES do vídeo */
+    }
+
+    .video-highlight-section {
+        order: 1; /* Vídeo vem depois */
+    }
+}
+
+/* ===============================
+   BOTÕES WHATSAPP RESPONSIVOS
+   =============================== */
+.cta-whatsapp-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.cta-whatsapp-buttons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: all 0.3s;
+    min-width: 180px;
+}
+
+.cta-whatsapp-buttons a:first-child {
+    background: linear-gradient(135deg, #D4AF37, #C9A24D);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.cta-whatsapp-buttons a:last-child {
+    background: linear-gradient(135deg, #25D366, #1EAA52);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+
+@media (max-width: 480px) {
+    .cta-whatsapp-buttons {
+        padding: 0 15px;
+    }
+
+    .cta-whatsapp-buttons a {
+        padding: 10px 14px;
+        font-size: 11px;
+        min-width: auto;
+        flex: 1;
+        max-width: calc(50% - 6px);
+    }
+
+    .cta-whatsapp-buttons a i {
+        font-size: 12px;
     }
 }
