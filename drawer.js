@@ -38,9 +38,9 @@ class DrawerManager {
                     <p style="color: #FFFFFF; font-size: 12px; font-weight: 600; margin-bottom: 12px;">Parceiro Oficial - Melhores Preços</p>
                     <p style="font-weight: 300; color: #FFFFFF;">Encontre os melhores tênis, suplementos esportivos, SmartTV e celulares com desconto no Magalu. Ofertas verificadas e entrega garantida.</p>
                     <a href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/tenis/" target="_blank" rel="noopener noreferrer" title="Comprar tênis com desconto no Magalu" class="drawer-btn drawer-btn-magalu"><i class="fas fa-shoe-prints"></i> <span>Tênis Premium</span></a>
-                    <a href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/suplementos+esportivos/" target="_blank" rel="noopener noreferrer" title="Suplementos esportivos com melhor preço" class="drawer-btn drawer-btn-magalu"><i class="fas fa-flask"></i> <span>Suplementos</span></a>
+                    <a href="https://divulgador.magalu.com/P-zXy4Ya" target="_blank" rel="noopener noreferrer" title="Suplementos esportivos com melhor preço" class="drawer-btn drawer-btn-magalu"><i class="fas fa-flask"></i> <span>Suplementos</span></a>
                     <a href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/tvs/" target="_blank" rel="noopener noreferrer" title="SmartTV com ofertas imperdíveis" class="drawer-btn drawer-btn-magalu"><i class="fas fa-tv"></i> <span>SmartTV</span></a>
-                    <a href="https://www.magazinevoice.com.br/magazinevantagensmax/busca/celular/" target="_blank" rel="noopener noreferrer" title="Celulares e smartphones com desconto" class="drawer-btn drawer-btn-magalu"><i class="fas fa-mobile"></i> <span>Celular</span></a>
+                    <a href="https://divulgador.magalu.com/dfeB0D53" target="_blank" rel="noopener noreferrer" title="Celulares e smartphones com desconto" class="drawer-btn drawer-btn-magalu"><i class="fas fa-mobile"></i> <span>Celular</span></a>
                 </div>
 
                 <div class="drawer-divider"></div>
