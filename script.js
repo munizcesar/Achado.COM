@@ -195,15 +195,15 @@ function renderizar(posts, container, prefix) {
     }
     posts.forEach(post => {
         container.innerHTML += `
-            <a href="${prefix}${post.link}" class="post-preview-card" style="text-decoration:none; display:flex; background:#151B4A; border-radius:15px; margin-bottom:20px; overflow:hidden; border:1px solid rgba(255,215,0,0.1); min-height: 180px;">
-                <div class="post-image-wrapper" style="flex:1; min-width:140px; max-width:220px; background: #050814; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                    <img src="${prefix}${post.imagem}" style="width:100%; height:100%; object-fit: contain; padding: 5px;" onerror="this.src='${prefix}images/imagesposts/produtos_xiaomi.jpg'">
+            <a href="${prefix}${post.link}" class="post-preview-card">
+                <div class="post-image-wrapper">
+                    <img src="${prefix}${post.imagem}" onerror="this.style.display='none'">
                 </div>
-                <div class="post-content-wrapper" style="flex:2; padding:20px; display: flex; flex-direction: column; justify-content: center;">
-                    <span style="display:inline-block; background:rgba(255, 215, 0, 0.1); color:#FFD700; font-size:10px; font-weight:800; text-transform:uppercase; padding:4px 8px; border-radius:4px; margin-bottom:10px; width: fit-content;">${post.categoria}</span>
-                    <h3 style="color:#FFD700; margin:0 0 10px; font-size:18px; line-height: 1.3;">${post.titulo}</h3>
-                    <p style="color:#E0E0E0; font-size:13px; margin:0 0 15px; line-height:1.5;">${post.resumo}</p>
-                    <span style="color:#FFD700; font-weight:700; font-size:12px; text-transform: uppercase; letter-spacing: 0.5px;">${post.chamada} →</span>
+                <div class="post-content-wrapper">
+                    <span class="post-category">${post.categoria}</span>
+                    <h3>${post.titulo}</h3>
+                    <p>${post.resumo}</p>
+                    <span class="post-cta">${post.chamada} <i class="fas fa-arrow-right"></i></span>
                 </div>
             </a>
         `;
