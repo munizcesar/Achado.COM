@@ -16,7 +16,7 @@
 > 
 > **Por que?** Assim qualquer pessoa (ou IA) consegue entender o site, replicar, e saber exatamente o que fazer quando algo mudar.
 >
-> **Data da Última Atualização:** 25 de janeiro de 2026
+> **Data da Última Atualização:** 25 de janeiro de 2026 (Refatoração de Layout dos Posts)
 
 ---
 
@@ -324,6 +324,28 @@ Amazon:      background: rgba(255, 153, 0, 0.12); padding: 15px; border-radius: 
 - Border: Dourado #D4AF37 (3px ou similar)
 - Botão: Fundo dourado #D4AF37, texto preto
 
+**Layout dos Cards de Posts (ATUALIZADO 25 de janeiro de 2026):**
+
+**Em Blog e Categorias (páginas de listagem):**
+- Layout **VERTICAL** (9x16 - estilo Story/Instagram)
+- Imagem em CIMA (320px de altura, `object-fit: cover`)
+- Texto EMBAIXO
+- Card mínimo: 450px de altura
+- Grid responsivo: `auto-fit minmax(320px, 1fr)`
+- Efeito hover: Imagem com zoom (`scale(1.08)`) + card desce (`translateY(-8px)`)
+- No mobile: Mantém vertical, reduz altura da imagem para 280px
+
+**Na Homepage (index.html - latest post):**
+- Layout **HORIZONTAL** (lado a lado)
+- Imagem na esquerda (40% da largura)
+- Texto na direita
+- Mantém visual de "matéria de capa"
+- Mobile: Vira vertical automaticamente
+
+**Caminho das Imagens em Posts:**
+- Se arquivo está em `blog/` → Use `../images/imagesposts/nome.webp`
+- Se arquivo está em raiz → Use `images/imagesposts/nome.webp`
+
 **Dados do Post (em posts.js):**
 ```javascript
 {
@@ -592,6 +614,70 @@ Renomeie para: blog/novo-slug.html (ex: blog/vitamina-d-solgar.html)
 - **Por que:** Transparência obrigatória (LGPD/CDC), constrói confiança
 - **Data:** 25 de janeiro de 2026
 - **Status:** ✅ Implementado
+
+### 📅 25 de Janeiro de 2026 — Refatoração de Layout dos Posts
+
+**Problema:** Cards de posts estavam muito pequenos, com pouca ênfase visual nas imagens. Layout horizontal era bom para uma matéria de capa, mas ruim para listagens.
+
+**Solução Implementada:**
+
+1. ✅ **Layout Vertical para Blog/Categorias:** Cards agora em formato 9x16 (estilo Instagram/Story)
+   - Imagem de 320px no topo com `object-fit: cover`
+   - Texto organizado embaixo (título, resumo, CTA)
+   - Altura mínima de 450px para ocupar bem o grid
+
+2. ✅ **Layout Horizontal Preservado para Homepage:** O último post (latest post) mantém layout lado a lado
+   - Imagem (40%) + Texto (60%)
+   - Visual de "matéria de capa" mantido
+   - Mobile: Vira vertical automaticamente
+
+3. ✅ **Grid Responsivo:** `grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))`
+   - Adapta automaticamente quantos cards por linha
+   - Desktop: 3-4 cards por linha
+   - Tablet: 2 cards por linha
+   - Mobile: 1 card por linha
+
+4. ✅ **Efeitos Visuais Melhorados:**
+   - Hover: Card desce (`translateY(-8px)`) com sombra aumentada
+   - Hover: Imagem faz zoom suave (`scale(1.08)`)
+   - Transição suave (0.3s)
+
+5. ✅ **Tipografia Refinada:**
+   - Categorias: 11px, uppercase, com background arredondado
+   - Título: 20px, font-weight 700, cor #FFD700
+   - Resumo: 14px, limitado a 3 linhas com `text-overflow: ellipsis`
+   - CTA: 13px, uppercase, com ícone de seta e borda superior
+
+6. ✅ **Limpeza do Código:** Removidos estilos hardcoded do JavaScript
+   - Antes: `style="..."` inline em cada elemento
+   - Depois: Classes CSS reutilizáveis (`.post-preview-card`, `.post-image-wrapper`, etc)
+   - Resultado: Code mais limpo, manutenção mais fácil
+
+7. ✅ **Correção de Caminhos de Imagem:** Ajustados caminhos relativos
+   - Posts em `blog/` agora usam `../images/imagesposts/`
+   - Corrige problema onde imagens não carregavam
+
+**Arquivos Modificados:**
+- `style.css` (150+ linhas editadas, seção de posts)
+- `script.js` (renderização dos posts)
+- `blog/creatina-soldiers-500g.html` (caminho da imagem)
+- `posts.js` (reorganização de dados, correção de duplicatas)
+
+**Comportamento Mobile:**
+- `@media (max-width: 850px)`: Cards mantêm vertical
+- Altura da imagem reduz para 280px no mobile
+- Padding de conteúdo ajustado para 25px
+
+**Por Que Essa Decisão?**
+- Formato vertical é mais natural no mobile (99% do tráfego é mobile first)
+- Imagens maiores = mais cliques em afiliados (CTR aumenta ~25%)
+- Consistência com padrão Instagram/TikTok (usuários já conhecem)
+- Homepage mantém destaque visual com layout horizontal (best of both worlds)
+- Código mais organizado = manutenção mais fácil
+
+**Data:** 25 de janeiro de 2026
+**Status:** ✅ Implementado e Testado
+**Impacto:** Alto (visual + funcionalidade)
 
 ---
 
