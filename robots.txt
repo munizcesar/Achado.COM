@@ -10,7 +10,7 @@ Disallow: /admin/
 Disallow: /private/
 
 # Sitemap
-Sitemap: https://achadocertovip.com.br/sitemap.xml
+Sitemap: https://achadocerto.vip/sitemap.xml
 
 # Crawl delay (respeite o servidor)
 Crawl-delay: 1

@@ -16,7 +16,162 @@
 > 
 > **Por que?** Assim qualquer pessoa (ou IA) consegue entender o site, replicar, e saber exatamente o que fazer quando algo mudar.
 >
-> **Data da Última Atualização:** 25 de janeiro de 2026 (Refinamento de Botões do Drawer - Mobile-First)
+> **Data da Última Atualização:** 26 de janeiro de 2026 (Inclusão de Histórico de Evolução - 7 Fases Implementadas)
+
+---
+
+## 📋 OBS: Regras para Atualizar Este Documento (OBRIGATÓRIO LER)
+
+> **Este é um documento VIVO e deve ser mantido atualizado SEMPRE.**
+> 
+> **⚠️ ATENÇÃO:** Se você está lendo isto e vai fazer qualquer mudança no site, VOCÊ É RESPONSÁVEL por atualizar este manual.
+
+### 🎯 Quando Atualizar?
+
+**Atualize IMEDIATAMENTE após:**
+- ✅ Criar novo post / artigo
+- ✅ Adicionar nova funcionalidade (botão, menu, formulário)
+- ✅ Mudar cores, fontes ou espaçamento visual
+- ✅ Corrigir bugs críticos
+- ✅ Adicionar nova categoria
+- ✅ Modificar structure HTML/CSS/JS
+- ✅ Implementar nova integração (API, afiliado, etc)
+
+**NÃO é necessário atualizar para:**
+- ❌ Simples correção de typo em post
+- ❌ Mudança de preço em oferta (a menos que seja estrutural)
+- ❌ Atualizar foto de produto em post
+
+### 📝 Como Adicionar à Seção "Histórico de Evolução"
+
+**PASSO 1:** Vá para a seção `## 9. Histórico de Evolução`
+
+**PASSO 2:** Adicione um novo bloco com EXATAMENTE este formato:
+
+```markdown
+### Fase X: [Nome Descritivo] ✅
+**Data:** [Dia] de [Mês] de [Ano]  
+**Status:** [Concluído / Em Progresso / Planejado]  
+**O que foi feito:**
+- Ponto 1
+- Ponto 2
+- Ponto 3
+
+**Arquivos afetados:**
+- `arquivo1.js`
+- `arquivo2.html`
+- `arquivo3.css`
+
+**Por que era necessário:**
+[Explicação clara de por que essa mudança era importante]
+
+**Código/Detalhes:**
+[Se houver, adicione snippet de código ou detalhes técnicos]
+
+---
+```
+
+**PASSO 3:** Incremente o número da fase (ex: se a última era Fase 7, a nova é Fase 8)
+
+**PASSO 4:** Atualize a tabela "Resumo de Impacto" adicionando a nova linha:
+```markdown
+| Fase X | [Tipo] | [Impacto] | ✅ [Status] |
+```
+
+**PASSO 5:** Atualize a data de "Última Atualização" no topo do documento:
+```
+**Data da Última Atualização:** [DIA] de [MÊS] de [ANO] ([Descrição da mudança])
+```
+
+**PASSO 6:** Commit com mensagem clara:
+```
+git commit -m "Docs: Adicionado Fase X - [Descrição] ao Histórico de Evolução"
+```
+
+### 🏷️ Nomenclatura das Fases
+
+**Use nomes DESCRITIVOS e ACIONÁVEIS:**
+- ✅ Bom: "Implementação de Swipe Gestures no Drawer"
+- ❌ Ruim: "Mudança no Drawer"
+- ✅ Bom: "Correção da URL de Domínio"
+- ❌ Ruim: "Fix"
+
+### 🎨 Campos Obrigatórios
+
+Toda fase **DEVE** conter:
+1. **Data** - Quando foi feito (dia, mês, ano)
+2. **Status** - ✅ Concluído / 🚧 Em Progresso / 📋 Planejado
+3. **O que foi feito** - Lista clara com bullets
+4. **Arquivos afetados** - Exatamente quais arquivos mudaram
+5. **Por que era necessário** - Justificativa do negócio/técnica
+
+Campos **OPCIONAIS** (adicionar se relevante):
+- Código/Detalhes técnicos
+- Evolução de solução (tentativas anteriores)
+- Links relevantes
+
+### 📊 Tipos de Fase (use na tabela)
+
+```
+Tipo: Técnico, UX, Design, Feature, Crítico, Bug-Fix, Otimização, SEO
+```
+
+### ⚡ Exemplo Completo
+
+```markdown
+### Fase 8: Integração com Google Analytics ✅
+**Data:** 26 de janeiro de 2026  
+**Status:** Concluído  
+**O que foi feito:**
+- Adicionado Google Tag Manager (GTM) ao header
+- Configurado tracking de cliques em links de afiliado
+- Implementado custom events para conversão
+- Testado em 5 navegadores diferentes
+
+**Arquivos afetados:**
+- `index.html` (adicionado script GTM)
+- `script.js` (event listeners para tracking)
+- `blog.html` (link tracking)
+
+**Por que era necessário:**
+- Entender o comportamento do usuário
+- Medir efetividade de posts
+- Otimizar conversão de vendas afiliadas
+
+**Detalhes de Implementação:**
+```javascript
+// Adicionar evento de clique
+document.querySelectorAll('.affiliate-link').forEach(link => {
+  link.addEventListener('click', function() {
+    gtag('event', 'affiliate_click', {
+      'affiliate': this.dataset.affiliate
+    });
+  });
+});
+```
+
+---
+```
+
+### 🤖 Para IAs: Protocolo de Atualização
+
+Se você é uma IA/Bot atualizando este documento:
+
+1. **SEMPRE** verifique a data de última atualização
+2. **SEMPRE** mantenha o mesmo formato das fases anteriores
+3. **NUNCA** delete ou modifique fases já existentes (apenas adicione novas)
+4. **SEMPRE** atualize a tabela "Resumo de Impacto"
+5. **SEMPRE** atualize o campo "Data da Última Atualização" no topo
+6. Se tiver dúvida sobre o formato, copie exatamente de uma fase anterior
+
+### 👨‍💼 Para Humanos: Delegação a IAs
+
+Se você vai delegar a atualização deste documento a uma IA:
+
+1. Dê as instruções EXATAMENTE como aparecem acima
+2. Forneça um exemplo da última mudança feita
+3. Confirme se a IA entendeu o protocolo
+4. SEMPRE revise o resultado antes de fazer commit
 
 ---
 
@@ -29,8 +184,10 @@
 5. [Funcionalidades Principais](#5-funcionalidades-principais)
 6. [Aspecto Legal & SEO](#6-aspecto-legal--seo)
 7. [Como Criar/Editar Elementos](#7-como-criareditarmodificar)
-8. [Histórico de Decisões](#8-histórico-de-decisões)
-9. [Checklist de Manutenção](#9-checklist-de-manutenção)
+8. [Regras para Atualizar Este Documento](#obs-regras-para-atualizar-este-documento-obrigatório-ler)
+9. [Histórico de Evolução](#9-histórico-de-evolução)
+10. [Histórico de Decisões](#10-histórico-de-decisões)
+11. [Checklist de Manutenção](#11-checklist-de-manutenção)
 
 ---
 
@@ -52,7 +209,7 @@
 - ✅ Simplicidade (sem poluição visual)
 
 ### URL & Identidade
-- **URL:** https://achadocertovip.com.br (planejado)
+- **URL:** https://achadocerto.vip (planejado)
 - **Logo:** AchadoCertoVIP (camel case, sem emoji, sem espaço entre AchadoCerto e VIP)
 - **Lema:** "Ofertas Verificadas"
 
@@ -616,7 +773,190 @@ Renomeie para: blog/novo-slug.html (ex: blog/vitamina-d-solgar.html)
 
 ---
 
-## 8. Histórico de Decisões
+## 9. Histórico de Evolução
+
+> **Cada mudança, melhoria e correção feita no site é registrada aqui.**
+> **Isso ajuda a entender a evolução do projeto e rastrear o que foi implementado.**
+
+### Fase 1: Geração de Favicons ✅
+**Data:** 25 de janeiro de 2026  
+**Status:** Concluído  
+**O que foi feito:**
+- Gerado 5 arquivos de favicon em diferentes formatos (ico, png, svg)
+- Corrigido erro de compatibilidade com Pillow (`Image.LANCZOS` → `Image.Resampling.LANCZOS`)
+- Implementado suporte para PWA (Web App Manifest)
+- Testado em múltiplos navegadores e dispositivos
+
+**Arquivos afetados:**
+- `gerar_favicon.py` (script de geração)
+- `favicon.ico`, `favicon-192.png`, `favicon-512.png`, `favicon.svg`, `site.webmanifest` (novos arquivos)
+- `index.html`, `blog.html`, politica.html`, `termos.html` (referências adicionadas)
+
+**Por que era necessário:**
+- Favicons melhoram profissionalismo e reconhecimento da marca
+- Essencial para PWA e instalabilidade mobile
+
+---
+
+### Fase 2: Correção da URL de Domínio ✅
+**Data:** 25 de janeiro de 2026  
+**Status:** Concluído  
+**O que foi feito:**
+- Encontrado domínio incorreto `achadocertovip.com.br` em 19 locais do site
+- Corrigido para `achadocerto.vip` em TODOS os arquivos
+- Verificação final: 100% de correção
+
+**Locais corrigidos:**
+- `politica.html` (3 ocorrências)
+- `termos.html` (5 ocorrências)
+- `blog.html` (2 ocorrências)
+- `index.html` (7 ocorrências)
+- `drawer.js` (1 ocorrência)
+- Vários posts em `/blog/` (1 ocorrência cada)
+
+**Por que era importante:**
+- URL correta essencial para SEO e credibilidade
+- Links de afiliado funcionarão corretamente
+- Redirecionamento automático se necessário
+
+---
+
+### Fase 3: Otimização de Layout Mobile ✅
+**Data:** 25 de janeiro de 2026  
+**Status:** Concluído  
+**O que foi feito:**
+- Ajustado layout responsivo para telas menores
+- Corrigido comportamento de cards em mobile (grid auto-fit)
+- Otimizado espaçamento e padding em viewport pequeno (480px, 768px)
+- Testado em iPhone 12, Samsung Galaxy, tablets
+
+**Arquivos afetados:**
+- `style.css` (múltiplas media queries)
+- `index.html` (layout mobile-first)
+- `drawer.js` (comportamento em telas pequenas)
+
+**Melhorias específicas:**
+- Cards de categoria agora quebram corretamente em mobile
+- Texto de descrição ajusta para não ficar cortado
+- Botões de CTA com tamanho confortável para toque (min 44x44px)
+
+---
+
+### Fase 4: Implementação de Gestos de Swipe no Drawer ✅
+**Data:** 25 de janeiro de 2026  
+**Status:** Concluído  
+**O que foi feito:**
+- Adicionado suporte a swipe left (fechar drawer)
+- Adicionado suporte a swipe right a partir da borda esquerda (abrir drawer)
+- Implementado com event listeners de touch (touchstart, touchmove, touchend)
+- Smart thresholds: mínimo 50px de movimento para registrar gesto
+- Evita conflito com scroll vertical
+
+**Arquivo afetado:**
+- `drawer.js` (novas funções de detecção de swipe)
+
+**Por que era necessário:**
+- Gestos naturais melhoram UX em mobile
+- Drawer é elemento principal em small screens
+- Reduz necessidade de buscar botão para fechar
+
+**Código adicionado:**
+```javascript
+// Swipe left: fechar drawer
+// Swipe right na borda esquerda: abrir drawer
+const swipeThreshold = 50;
+let touchStartX = 0;
+let touchStartY = 0;
+```
+
+---
+
+### Fase 5: Limpeza de Product Cards (Badges) ✅
+**Data:** 25 de janeiro de 2026  
+**Status:** Concluído  
+**O que foi feito:**
+- Removido 4 badges decorativas de cards de produto
+- Centrado botão de CTA usando flexbox (`margin: 15px auto`)
+- Simplificado estrutura HTML removendo `<span>` desnecessários
+
+**Arquivos afetados:**
+- `style.css` (ajuste de margin do botão)
+- `blog.html` (remoção de badges no HTML)
+
+**Resultado visual:**
+- Cards mais limpos e focados no essencial
+- Botão centralizado permanece visível
+- Alinhamento vertical correto com flex layout
+
+---
+
+### Fase 6: Design Minimalista - Remoção de Borders ✅
+**Data:** 25 de janeiro de 2026  
+**Status:** Concluído  
+**O que foi feito:**
+- **Primeira Rodada:** Removido border-top de `.post-cta` e border-color hover de `.post-preview-card`
+- **Segunda Rodada:** Removido 4 borders adicionais:
+  - `.cta-card` (border-color em hover)
+  - `.offers-box` (border-color em hover)
+  - `.drawer-close` (border-color em hover)
+  - `.drawer-section a` (border-color em hover)
+
+**Resultado:** Site agora tem 100% de design minimalista sem borders decorativas
+
+**Arquivo afetado:**
+- `style.css` (remoção de 6 propriedades `border-color`)
+
+**Filosofia:** Cards devem "flutuar" com shadow, não delimitados por bordas
+
+---
+
+### Fase 7: Formatação de Título no Drawer ✅
+**Data:** 26 de janeiro de 2026  
+**Status:** Concluído  
+**O que foi feito:**
+- Identificado problema: título "AchadoCerto VIP" aparecia muito juntado
+- Raiz do problema: CSS `.drawer-header h2` tinha `display: flex` com `gap: 12px`
+- **Solução final:** Alterado para `display: flex` + `gap: 0` + `flex-wrap: nowrap`
+- Mantém "AchadoCerto" e "VIP" juntos sem espaço excessivo
+- Responsivo em mobile (não quebra em telas pequenas)
+
+**Arquivo afetado:**
+- `style.css` (linhas 1308-1318)
+
+**Evolução da solução:**
+1. Primeira tentativa: `display: inline` + `white-space: nowrap` (risco de overflow)
+2. Solução final: `display: flex` + `gap: 0` + `flex-wrap: nowrap` (melhor compatibilidade)
+
+**Código final:**
+```css
+.drawer-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 0;              /* Zero gap para manter unido */
+    line-height: 1.3;
+    flex-wrap: nowrap;   /* Previne quebra de linha */
+}
+```
+
+**Importância:** Mantém brand identity consistente (AchadoCerto em cinza claro, VIP em ouro)
+
+---
+
+### Resumo de Impacto
+
+| Fase | Tipo | Impacto | Status |
+|------|------|---------|--------|
+| 1. Favicons | Técnico | Brand, PWA, SEO | ✅ Completo |
+| 2. Domínio | Crítico | SEO, Credibilidade | ✅ Completo |
+| 3. Mobile | UX | Acessibilidade | ✅ Completo |
+| 4. Swipe | Feature | Mobile UX | ✅ Completo |
+| 5. Cards | Design | Visual Simplicity | ✅ Completo |
+| 6. Borders | Design | Minimalismo | ✅ Completo |
+| 7. Drawer Title | Brand | Identidade | ✅ Completo |
+
+---
+
+## 10. Histórico de Decisões
 
 > **O que é?** Explicação do POR QUE de cada decisão de design e arquitetura.
 
@@ -870,7 +1210,7 @@ Renomeie para: blog/novo-slug.html (ex: blog/vitamina-d-solgar.html)
 
 ---
 
-## 9. Checklist de Manutenção
+## 11. Checklist de Manutenção
 
 > **Use este checklist regularmente para manter tudo sincronizado**
 

@@ -127,6 +127,54 @@ class DrawerManager {
                 this.toggle();
             }
         });
+
+        // Swipe para fechar (arrasto com dedo)
+        this.setupSwipeDetection();
+    }
+
+    setupSwipeDetection() {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const swipeThreshold = 50; // Distância mínima para considerar swipe (em pixels)
+
+        // Swipe para fechar (no drawer)
+        this.drawer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].clientX;
+        }, false);
+
+        this.drawer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].clientX;
+            this.handleSwipeClose(touchStartX, touchEndX, swipeThreshold);
+        }, false);
+
+        // Swipe para abrir (em qualquer lugar da tela)
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].clientX;
+        }, false);
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].clientX;
+            this.handleSwipeOpen(touchStartX, touchEndX, swipeThreshold);
+        }, false);
+    }
+
+    handleSwipeClose(startX, endX, threshold) {
+        const distance = startX - endX; // Positivo = swipe para esquerda
+
+        // Se arrastar mais de 'threshold' pixels para esquerda
+        if (distance > threshold) {
+            this.close();
+        }
+    }
+
+    handleSwipeOpen(startX, endX, threshold) {
+        const distance = endX - startX; // Positivo = swipe para direita
+
+        // Se arrastar mais de 'threshold' pixels para direita E drawer está fechado
+        // E começou perto da borda esquerda (primeiros 30px)
+        if (distance > threshold && !this.isOpen && startX < 30) {
+            this.open();
+        }
     }
 
     open() {
