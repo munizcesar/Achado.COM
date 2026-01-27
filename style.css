@@ -2041,17 +2041,18 @@ footer a {
 @media (max-width: 480px) {
     .cta-whatsapp-buttons {
         padding: 0 15px;
+        gap: 10px;
     }
 
     .cta-whatsapp-buttons a {
-        padding: 10px 14px;
-        font-size: 11px;
-        min-width: auto;
-        flex: 1;
-        max-width: calc(50% - 6px);
+        padding: 12px 16px;
+        font-size: 12px;
+        min-width: 140px;
+        flex: 0 1 auto;
+        border-radius: 50px;
     }
 
     .cta-whatsapp-buttons a i {
-        font-size: 12px;
+        font-size: 14px;
     }
 }
