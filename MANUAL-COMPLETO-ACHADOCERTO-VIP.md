@@ -634,17 +634,41 @@ Amazon:      background: #232F3E; padding: 15px; border-radius: 8px; color: #FFF
 
 **Base de Dados:** `posts.js` (JSON-like)
 
+**⚠️ REGRA CRÍTICA: ORDEM DOS POSTS NO ARRAY** ⭐⭐⭐
+
+> **ISSO NÃO PODE SER IGNORADO JAMAIS!**
+> 
+> A ordem em que os posts aparecem em `posts.js` **DETERMINA COMPLETAMENTE** como são exibidos em todo o site:
+> 
+> - **Primeiro post (índice 0)** = Mostrado como "Último do Blog" em `index.html`
+> - **Ordem da array** = Ordem de exibição em `blog.html`
+> - **Ordem da array** = Ordem nas páginas de categoria (`categorias/estilo.html`, etc)
+> 
+> **METODOLOGIA:**
+> - SEMPRE adicione novos posts NO INÍCIO do array (primeira posição)
+> - NUNCA adicione no meio ou no final
+> - Ordem cronológica INVERSA: Mais recentes no topo, mais antigos no final
+> - Se você adicionar no final, o post NÃO aparecerá como "novo" na homepage!
+>
+> **VERIFICAÇÃO APÓS CRIAR:**
+> 1. Refresque homepage (F5) → Deve aparecer como "Último do Blog" ✅
+> 2. Refresque blog.html (F5) → Deve estar no TOPO da lista ✅
+> 3. Refresque categoria correspondente → Deve estar no TOPO da categoria ✅
+
 **Exibição:**
-- `index.html` → Últimos 3 posts no hero
-- `blog.html` → Lista completa
+- `index.html` → `data[0]` = Primeiro post (o mais novo)
+- `blog.html` → Todos os posts em ordem (primeiro = mais novo)
 - `blog/*.html` → Post individual
+- `categorias/*.html` → Posts filtrados por categoria (em ordem)
 
-**Atualização de Posts:**
-1. Editar/adicionar entrada em `posts.js`
-2. Criar arquivo `blog/slug-do-post.html`
-3. Garantir link correto em `posts.js`
+**Atualização de Posts (OBRIGATÓRIO):**
+1. **CRIAR** arquivo `blog/slug-do-post.html`
+2. **ADICIONAR** entrada em `posts.js` **NO INÍCIO DO ARRAY**
+3. **GARANTIR** link correto em `posts.js`
+4. **RECARREGAR** browser para verificar posicionamento
+5. **ATUALIZAR** este manual se estrutura mudou
 
-### Categorias
+---
 
 **Páginas:** `categorias/tech.html`, `saude.html`, `lar.html`, `estilo.html`, `dicas.html`
 
@@ -702,6 +726,15 @@ Amazon:      background: #232F3E; padding: 15px; border-radius: 8px; color: #FFF
 
 ### Como Criar um Blog Post
 
+**ATENÇÃO CRÍTICA: ORDEM DO POST NO ARRAY** ⚠️
+
+> **ISSO NÃO PODE SER IGNORADO!**
+> - **SEMPRE** adicione o novo post NO INÍCIO do array `posts.js` (primeira posição)
+> - **NUNCA** adicione no meio ou no final
+> - A ordem em `posts.js` = ordem na homepage + blog.html + categorias
+> - `script.js` mostra `data[0]` (primeiro post) como "Último do Blog" na homepage
+> - Se você adicionar no final, o post NÃO aparecerá como novo!
+
 **Passo 1:** Copie o template
 ```bash
 Copie: blog/creatina-soldiers-500g.html
@@ -715,22 +748,34 @@ Renomeie para: blog/novo-slug.html (ex: blog/vitamina-d-solgar.html)
 <div class="materia-container">...</div>
 ```
 
-**Passo 3:** Adicione em `posts.js`
+**Passo 3:** Adicione em `posts.js` - INÍCIO DO ARRAY! ⭐
 ```javascript
-{
-  titulo: "Novo Produto",
-  resumo: "Descrição",
-  imagem: "URL",
-  link: "blog/novo-slug.html",
-  chamada: "Leia o guia completo",
-  categoria: "saude", // ou tech, lar, estilo, dicas
-  conteudo: "<HTML>"
-}
+const postsData = [
+  {  // ← NOVO POST AQUI (PRIMEIRA POSIÇÃO)
+    titulo: "Novo Produto",
+    resumo: "Descrição",
+    imagem: "URL",
+    link: "blog/novo-slug.html",
+    chamada: "Leia o guia completo",
+    categoria: "saude", // ou tech, lar, estilo, dicas
+  },
+  {  // ← Posts antigos agora começam aqui
+    titulo: "Post Antigo 1",
+    // ...
+  },
+  // ... resto dos posts
+];
 ```
 
 **Passo 4:** Atualize este manual
 - Atualize a data de "Última Atualização"
 - Adicione nota em "Histórico de Decisões" se foi mudança estrutural
+
+**VERIFICAÇÃO PÓS-CRIAÇÃO:**
+1. Refresque o navegador (F5)
+2. Verifique que o post aparece como "Último do Blog" em index.html ✅
+3. Verifique que o post aparece PRIMEIRO em blog.html ✅
+4. Verifique que o post aparece PRIMEIRO em sua categoria ✅
 
 **⚠️ IMPORTANTE:** Se a estrutura de posts mudar (ex: novo campo em JSON), atualize a seção "Estrutura de Posts" deste manual IMEDIATAMENTE.
 

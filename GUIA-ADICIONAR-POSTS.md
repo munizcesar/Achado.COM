@@ -1,5 +1,51 @@
 # 📋 Guia Seguro para Adicionar Posts — AchadoCerto.VIP
 
+---
+
+## 🚨 ⚠️ REFORÇO CRÍTICO: POSIÇÃO DO POST NO ARRAY
+
+> **ISSO É CRÍTICO E NÃO PODE SER IGNORADO!**
+>
+> ### ⭐ SEMPRE adicione o novo post NO INÍCIO do array em `posts.js` (primeira posição - index 0)
+>
+> **POR QUÊ?**
+> - O script.js mostra `data[0]` (primeiro post) como "Último do Blog" na homepage
+> - A ordem em `posts.js` determina a ordem em que aparecem em `blog.html`
+> - Posts novos devem aparecer PRIMEIRO (cronológico inverso: mais recentes no topo)
+>
+> **O QUE FAZER:**
+> 1. ✅ Copie o novo post JSON
+> 2. ✅ Abra `posts.js`
+> 3. ✅ Procure por: `const postsData = [`
+> 4. ✅ Cole o post **IMEDIATAMENTE APÓS** essa linha (antes de todos os outros)
+> 5. ✅ Coloque uma **vírgula** após o fechamento do novo post
+> 6. ✅ Verifique que o post antigo que estava em primeiro agora tem vírgula
+>
+> **ERRADO ❌:**
+> ```javascript
+> const postsData = [
+>   { post_antigo_1 },
+>   { post_antigo_2 },
+>   { NOVO_POST }, // ← Errado! Está no meio/fim
+> ];
+> ```
+>
+> **CORRETO ✅:**
+> ```javascript
+> const postsData = [
+>   { NOVO_POST }, // ← Correto! Está no início
+>   { post_antigo_1 },
+>   { post_antigo_2 },
+> ];
+> ```
+>
+> **RESULTADO APÓS REFRESCO (F5):**
+> - ✅ Novo post aparece como "Último do Blog" na homepage (index.html)
+> - ✅ Novo post aparece PRIMEIRO na página blog.html
+> - ✅ Novo post aparece PRIMEIRO na sua categoria
+
+---
+
 ## ✅ Forma Mais Segura de Adicionar Posts
 
 ### 1️⃣ **Estrutura Obrigatória**
