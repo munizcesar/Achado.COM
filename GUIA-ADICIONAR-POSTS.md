@@ -828,6 +828,112 @@ A animação pulsante em ouro continua no `.offers-box` (caixa de destaques/víd
 
 ---
 
+## � Otimização para Compartilhamento (IMPORTANTE!)
+
+> **Quando você compartilha um post no WhatsApp, Facebook, LinkedIn ou redes sociais, isso controla COMO ele aparece!**
+
+### Open Graph (OG) - Metadados de Compartilhamento
+
+**O que é?** Metadados que controlam como seu link aparece quando compartilhado.
+
+**OBRIGATÓRIO adicionar no `<head>` de CADA post HTML:**
+
+```html
+<head>
+    <!-- ... outros meta tags ... -->
+    
+    <!-- Open Graph (Redes Sociais: Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:title" content="Legging Fitness Selene: Zero Transparência + Tecido Grosso" />
+    <meta property="og:description" content="Descubra por que a Selene é a legging ideal para treinar com segurança. Zero transparência, tecido grosso, sem costura." />
+    <meta property="og:image" content="https://achadocerto.vip/images/imagesposts/legging-fitness-zero-transparencia-selene.webp" />
+    <meta property="og:url" content="https://achadocerto.vip/blog/legging-fitness-zero-transparencia-selene.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="AchadoCerto.VIP" />
+    
+    <!-- Twitter Card (Twitter/X) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Legging Fitness Selene: Zero Transparência + Tecido Grosso">
+    <meta name="twitter:description" content="Guia completo: Por que a Selene é a melhor legging para treino. Análise funcional e comparativo.">
+    <meta name="twitter:image" content="https://achadocerto.vip/images/imagesposts/legging-fitness-zero-transparencia-selene.webp">
+    <meta name="twitter:site" content="@AchadoCertoVIP">
+    
+    <!-- Canonical URL (evita duplicate content) -->
+    <link rel="canonical" href="https://achadocerto.vip/blog/legging-fitness-zero-transparencia-selene.html">
+</head>
+```
+
+### Campos Obrigatórios para Compartilhamento:
+
+| Campo | O Que É | Exemplo |
+|-------|---------|---------|
+| `og:title` | Título que aparece no share | "Legging Fitness Selene: Zero Transparência" |
+| `og:description` | Descrição que aparece no share (máx 160 chars) | "Descubra por que a Selene é ideal para treinar com segurança..." |
+| `og:image` | Imagem que aparece no share (1200x630px ideal) | https://achadocerto.vip/images/imagesposts/legging-fitness-zero-transparencia-selene.webp |
+| `og:url` | URL exata do post | https://achadocerto.vip/blog/legging-fitness-zero-transparencia-selene.html |
+| `og:type` | Tipo de conteúdo | `article` para posts |
+| `og:locale` | Idioma | `pt_BR` (português Brasil) |
+| `twitter:card` | Tipo de card Twitter | `summary_large_image` (com imagem grande) |
+
+### ✅ PASSO A PASSO para cada novo post:
+
+1. **Copie esta estrutura** no `<head>` do seu HTML:
+```html
+<meta property="og:title" content="SEU TÍTULO AQUI" />
+<meta property="og:description" content="SUA DESCRIÇÃO AQUI (máx 160 chars)" />
+<meta property="og:image" content="https://achadocerto.vip/images/imagesposts/SUA-IMAGEM.webp" />
+<meta property="og:url" content="https://achadocerto.vip/blog/SEU-POST.html" />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="AchadoCerto.VIP" />
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SEU TÍTULO AQUI" />
+<meta name="twitter:description" content="SUA DESCRIÇÃO AQUI" />
+<meta name="twitter:image" content="https://achadocerto.vip/images/imagesposts/SUA-IMAGEM.webp">
+<meta name="twitter:site" content="@AchadoCertoVIP">
+
+<link rel="canonical" href="https://achadocerto.vip/blog/SEU-POST.html">
+```
+
+2. **Substitua:**
+   - `SEU TÍTULO` → Título atrativo (máx 60 chars)
+   - `SUA DESCRIÇÃO` → Resumo vendedor (máx 160 chars)
+   - `SUA-IMAGEM.webp` → Nome da imagem do post
+   - `SEU-POST.html` → Nome do arquivo HTML do post
+
+3. **Teste no Sharing Debugger:**
+   - Vá para: https://www.facebook.com/sharer/sharer.php?u=SEU_URL
+   - Veja como fica o preview antes de publicar
+
+### 📸 Recomendações para Imagem de Compartilhamento:
+
+- **Tamanho:** 1200x630px (idealmente)
+- **Formato:** .webp, .jpg
+- **Tamanho do arquivo:** máx 100KB
+- **O que incluir:** Produto + nome da marca + call-to-action visual
+- **Evitar:** Textos muito pequenos, muitas cores, fundo confuso
+
+### 🎯 Benefícios de Otimizar para Compartilhamento:
+
+✅ Posts aparecem bonitos no WhatsApp (imagem + título + descrição)
+✅ LinkedIn mostra preview profissional
+✅ Facebook reconhece como artigo
+✅ Twitter/X exibe com imagem grande
+✅ Aumenta cliques em compartilhamentos
+✅ Melhora SEO (Google entende melhor)
+✅ Aumenta viralização orgânica
+
+### ❌ Erros Comuns:
+
+❌ Esquecer `og:image` → Fica sem imagem no share
+❌ URL incorreta → Quebra o link
+❌ Descrição muito longa → Fica cortada
+❌ Usar `http://` em vez de `https://` → Não funciona
+❌ Título igual para todos posts → Difícil de diferenciar
+
+---
+
 ## 💡 Dicas Finais
 
 ✅ Sempre faça backup de `posts.js` antes de editar  
@@ -839,4 +945,6 @@ A animação pulsante em ouro continua no `.offers-box` (caixa de destaques/víd
 ✅ Ordem dos scripts importa (não mude!)  
 ✅ Redes sociais: sempre `target="_blank"`  
 ✅ IDs e classes do JavaScript: NÃO MUDE!  
+✅ **NOVO:** Sempre adicione Open Graph em novos posts!  
+✅ **NOVO:** Teste o compartilhamento no Facebook Debugger!  
 
