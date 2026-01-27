@@ -1662,12 +1662,12 @@ footer a {
     justify-content: center;
     background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
     color: #000 !important; /* Força cor preta para contraste */
-    padding: 15px 30px;
+    padding: 10px 20px;
     text-decoration: none;
     font-weight: 500;
     border-radius: 50px; /* Pílula */
     transition: all 0.3s;
-    font-size: 14px;
+    font-size: 12px;
     text-transform: none;
     letter-spacing: 0.3px;
     border: none;

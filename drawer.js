@@ -41,6 +41,7 @@ class DrawerManager {
                     <a href="https://divulgador.magalu.com/P-zXy4Ya" target="_blank" rel="noopener noreferrer" title="Suplementos esportivos com melhor preço" class="drawer-btn drawer-btn-magalu"><i class="fas fa-flask"></i> <span>Suplementos</span></a>
                     <a href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/tvs/" target="_blank" rel="noopener noreferrer" title="SmartTV com ofertas imperdíveis" class="drawer-btn drawer-btn-magalu"><i class="fas fa-tv"></i> <span>SmartTV</span></a>
                     <a href="https://divulgador.magalu.com/dfeB0D53" target="_blank" rel="noopener noreferrer" title="Celulares e smartphones com desconto" class="drawer-btn drawer-btn-magalu"><i class="fas fa-mobile"></i> <span>Celular</span></a>
+                    <a href="https://divulgador.magalu.com/bwHpcLD5" target="_blank" rel="noopener noreferrer" title="Produtos PET com desconto no Magalu" class="drawer-btn drawer-btn-magalu"><i class="fas fa-paw"></i> <span>Produtos PET</span></a>
                 </div>
 
                 <div class="drawer-divider"></div>
