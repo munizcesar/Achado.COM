@@ -1,26 +1,47 @@
 {
-  "name": "AchadoCerto.VIP",
+  "name": "AchadoCerto.VIP - Onde o Premium vira Achado",
   "short_name": "AchadoCerto",
   "description": "Onde o Premium vira Achado!",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#3B82F6",
+  "background_color": "#0B1220",
+  "theme_color": "#D4AF37",
+  "scope": "/",
   "icons": [
     {
       "src": "/images/favicon-16x16.png",
       "sizes": "16x16",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/images/favicon-32x32.png",
       "sizes": "32x32",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/images/apple-touch-icon.png",
       "sizes": "180x180",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["shopping", "news"],
+  "shortcuts": [
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "description": "Leia nossos artigos e guias de compra",
+      "url": "/blog.html",
+      "icons": [{ "src": "/images/favicon-32x32.png", "sizes": "32x32" }]
+    },
+    {
+      "name": "Tech",
+      "short_name": "Tech",
+      "description": "Últimas em tecnologia",
+      "url": "/categorias/tech.html",
+      "icons": [{ "src": "/images/favicon-32x32.png", "sizes": "32x32" }]
     }
   ]
 }

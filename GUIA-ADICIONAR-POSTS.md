@@ -528,7 +528,254 @@ const postsData = [
 - `class="drawer-container"` (obrigatório)
 - `class="drawer-toggle"` (obrigatório)
 
+---
+
+## 🎨 **Phase 8: Características UI/UX (27 de Janeiro de 2026)**
+
+### **Padrão Visual Atualizado — Botões em Formato Pílula**
+
+Todos os botões do site agora seguem o padrão **pílula** com cor ouro (#D4AF37):
+
+```css
+/* Botão padrão dos posts */
+.post-cta {
+    color: #0A1026;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 10px 20px;
+    border-radius: 50px; /* ← Formato pílula */
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+```
+
+✅ **Características dos botões:**
+- Gradient ouro: #FFD700 → #FFA500
+- Border-radius: 50px (forma pílula)
+- Box-shadow com cor ouro (0.4 de opacidade)
+- Responsive mobile: padding 8px 16px, font-size 11px
+
+### **Favicon Padronizado em Ouro**
+
+O favicon foi atualizado com a cor ouro (#D4AF37) em todos os formatos:
+- `favicon-16x16.png` (16x16)
+- `favicon-32x32.png` (32x32)
+- `apple-touch-icon.png` (180x180 para iOS)
+- `favicon.svg` (vetorial)
+- `favicon.ico` (compatibilidade)
+
+**Arquivo:** `gerar_favicon.py` (atualizado com `line_color='#D4AF37'`)
+
+### **Responsividade Mobile Melhorada**
+
+Mudanças implementadas para melhor experiência mobile:
+
+#### 1. **Padding de Textos em Mobile (768px)**
+```css
+.blog-highlight-section {
+    padding: 0 20px; /* Evita texto encostado nas laterais */
+}
+```
+
+#### 2. **Redimensionamento de Botões em Mobile**
+```css
+@media (max-width: 768px) {
+    .post-cta {
+        padding: 8px 16px;
+        font-size: 11px;
+    }
+}
+```
+
+✅ Textos não ficam mais encostados nas laterais  
+✅ Botões são proporcionais ao tamanho da tela  
+✅ Hover effect reduzido em mobile (translateY -1px ao invés de -2px)
+
+### **Imagens Sem Molduras — Apresentação Clean**
+
+Remoção de visual clutter nas imagens dos posts:
+
+```css
+/* Antes: */
+.materia-img-principal {
+    border: 1px solid #D4AF37;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+}
+
+/* Agora: */
+.materia-img-principal {
+    border-radius: 20px;
+    /* Sem border, sem box-shadow */
+}
+```
+
+✅ Imagens mais limpas e focadas  
+✅ Removida caixa visual (border) ao redor das fotos  
+✅ Removido box-shadow pesado das imagens  
+✅ Mantido border-radius para proporção visual
+
+**Aplicado em:**
+- `.materia-img-principal` (imagens principais)
+- `.materia-img` (imagens secundárias)
+- `.banner-principal` (banners especiais como no comparativo)
+
+### **Animações Removidas — Foco em Conteúdo**
+
+A animação pulsante (`pulse-glow`) foi removida da seção de destaques:
+
+```css
+/* Antes: */
+.offers-box {
+    animation: pulse-glow 2.5s infinite; /* ← Removido */
+}
+
+/* Agora: */
+.offers-box {
+    /* Apenas estático com hover interativo */
+}
+```
+
+✅ Menos distração visual  
+✅ Foco maior no conteúdo  
+✅ Hover effect mantido para interatividade
+
+### **Tabelas Responsivas — Comparativos em Mobile**
+
+O comparativo de produtos agora é responsivo:
+
+```css
+@media (max-width: 600px) {
+    table {
+        width: 100%;
+        overflow: visible;
+        word-break: break-word;
+    }
+}
+```
+
+✅ Tabelas funcionam em mobile sem scroll horizontal excessivo  
+✅ Colunas distribuem proporcionalmente  
+✅ Texto quebra corretamente em pequenas telas
+
+### **Cor Ouro Padronizada (#D4AF37)**
+
+Toda a paleta visual foi alinhada para a cor ouro:
+- Favicon e theme-color dos navegadores
+- Botões principais (gradient)
+- Acentos visuais
+- PWA manifest colors
+
+**Theme-color em todas as páginas:**
+```html
+<meta name="theme-color" content="#D4AF37">
+<meta name="msapplication-TileColor" content="#0B1220">
+```
+
+### **Padrão de Cores para Novos Posts**
+
+Ao criar novos posts, respeite:
+- ✅ Botões gradient ouro: #FFD700 → #FFA500
+- ✅ Imagens sem molduras: apenas border-radius
+- ✅ Responsive design: testar em 768px e 480px
+- ✅ Texto mobile: padding lateral mínimo 20px
+- ✅ Sem animações contínuas em destacados
+
+### **Checklist Pré-Publicação (Phase 8)**
+
+Antes de publicar um novo post:
+
+- [ ] Botão segue formato pílula com gradient ouro
+- [ ] Imagem principal não tem border ou box-shadow
+- [ ] Texto responsivo testado em mobile (768px, 480px)
+- [ ] Nenhuma animação `animation:` nos destaques
+- [ ] Favicon com cor ouro (#D4AF37) ✓
+- [ ] Meta tags theme-color presentes
+- [ ] Tabelas responsivas (se houver)
+- [ ] Padding lateral 20px em mobile (`.blog-highlight-section`)
+
+### **Atualização 2: Bordas Suaves Restauradas & Animação Mantida (27 de Janeiro)**
+
+#### ✨ **Bordas Suaves Restauradas**
+
+Restauradas bordas **suaves e discretas** (1px com opacidade baixa) para elegância visual:
+
+```css
+/* Bordas suaves com transparência */
+.botao-padrao-achado {
+    border: 1px solid rgba(255, 215, 0, 0.3);  /* Bem sutil */
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+.box-afiliado, .box-oferta-premium {
+    border: 1px solid rgba(212, 175, 55, 0.2);  /* Muito suave */
+    background: #1A1F71;
+}
+```
+
+✅ **Características:**
+- Espessura: 1px (fina e delicada)
+- Opacidade: 30% em botões, 20% em boxes
+- Não dominam o visual, apenas sutileza
+- Mantêm profundidade e definição
+- Box-shadow continua reforçando
+
+**Padrão para novos posts:**
+```html
+<!-- Botão com borda suave -->
+<a class="botao-padrao-achado" href="#">
+    Ver Oferta
+</a>
+
+<!-- Box com borda suave -->
+<div class="box-afiliado">
+    <h3>Oferta Especial</h3>
+    <p>Conteúdo da oferta...</p>
+</div>
+```
+
+#### ✨ **Animação Pulse-Glow Mantida**
+
+A animação pulsante em ouro continua no `.offers-box` (caixa de destaques/vídeos):
+
+```css
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,0.3); }
+    50% { box-shadow: 0 0 35px rgba(255,215,0,0.6); }
+}
+
+.offers-box {
+    animation: pulse-glow 2.5s infinite;  /* Ativa */
+}
+```
+
+✅ **Características:**
+- Duração: 2.5 segundos
+- Ciclo infinito contínuo
+- Cor: ouro com opacidade variável (30% → 60%)
+- Efeito: destaca seções de ofertas/vídeos importantes
+
+### **Resumo: Bordas Suaves + Animação**
+
+| Elemento | Estilo | Efeito |
+|----------|--------|--------|
+| `.botao-padrao-achado` | 1px rgba(255,215,0,0.3) | Borda elegante suave |
+| `.box-afiliado` | 1px rgba(212,175,55,0.2) | Borda discreta |
+| `.box-oferta-premium` | 1px rgba(212,175,55,0.2) | Borda discreta |
+| `.offers-box` | animation: pulse-glow 2.5s | Brilho pulsante infinito |
+
+---
+
 ❌ **NÃO FAZER:**
+- Aumentar espessura das bordas (manter 1px)
+- Aumentar opacidade das bordas (30% botão, 20% boxes)
+- Remover animação do `.offers-box`
 - Renomear classes
 - Remover drawer-overlay
 - Adicionar novo ID diferente

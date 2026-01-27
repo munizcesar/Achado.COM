@@ -16,7 +16,7 @@
 > 
 > **Por que?** Assim qualquer pessoa (ou IA) consegue entender o site, replicar, e saber exatamente o que fazer quando algo mudar.
 >
-> **Data da Última Atualização:** 26 de janeiro de 2026 (Inclusão de Histórico de Evolução - 7 Fases Implementadas)
+> **Data da Última Atualização:** 27 de janeiro de 2026 (Otimizações de UI/UX - Fase 8 Implementada)
 
 ---
 
@@ -942,6 +942,69 @@ let touchStartY = 0;
 
 ---
 
+### Fase 8: Otimizações de UI/UX — Mobile, Botões e Favicons ✅
+**Data:** 27 de janeiro de 2026  
+**Status:** Concluído  
+**O que foi feito:**
+
+#### 1. Padronização de Botões em Formato Pílula
+- Todos os botões dos posts agora usam `border-radius: 50px` (formato pílula)
+- `.post-cta` atualizado com gradiente dourado (`#FFD700` → `#FFA500`)
+- `.botao-secundario` (WhatsApp) padronizado com pílula e `box-shadow`
+- Hover effects consistentes: `translateY(-2px)` e aumento de `box-shadow`
+
+**Arquivos afetados:**
+- `style.css` (seções `.post-cta` e `.botao-secundario`)
+- Todos os HTML de blog (aplicação automática via CSS)
+
+#### 2. Responsividade Mobile Melhorada
+- Texto da seção "Achados focados em economia" com padding `0 20px` para não ficar encostado nas laterais
+- Botões dos posts reduzidos no mobile: `padding: 8px 16px` e `font-size: 11px`
+- `.post-cta` no mobile com transformação suave: `translateY(-1px)` em vez de `-2px`
+- Comparativo de TV (tabela) agora com `word-break: break-word` e distribuição correta de colunas
+
+**Arquivos afetados:**
+- `style.css` (media queries)
+- `blog/melhor-tv-55-polegadas-2026.html` (tabela comparativa)
+
+#### 3. Otimização de Favicon
+- Regenerado todos os favicons com cor ouro (#D4AF37) em vez de azul (#3B82F6)
+- `gerar_favicon.py` atualizado para cor correta
+- Favicons regenerados: favicon-16x16.png, favicon-32x32.png, apple-touch-icon.png, favicon.svg, favicon.ico
+- `site.webmanifest` atualizado com:
+  - `theme_color`: #D4AF37 (ouro)
+  - `background_color`: #0B1220 (fundo escuro)
+  - Adicionado `scope`, `purpose` e `shortcuts` para atalhos mobile
+
+**Meta tags de theme-color adicionadas em:**
+- index.html, blog.html, politica.html, termos.html
+- Todas as 5 categorias (tech, saúde, lar, estilo, dicas)
+- Todos os 8 posts de blog
+
+#### 4. Limpeza de Design (Remoção de Molduras)
+- Removido `padding` e `background: linear-gradient` das imagens principais dos posts
+- Removido `box-shadow` das imagens para visual mais clean
+- Removido `border` e `box-shadow` da moldura do comparativo Xiaomi (`.banner-principal`)
+- Removido `animation: pulse-glow 2.5s infinite` do `.offers-box` (video destaque)
+
+**Arquivos afetados:**
+- Todos os 8 arquivos de blog em `/blog/`
+- `style.css`
+
+**Por que era necessário:**
+- Móvel responsivo = melhor conversão (55% dos usuários vêm de mobile)
+- Botões em pílula = padrão moderno (Material Design 3, iOS)
+- Favicon com cor correta = brand consistency
+- Limpeza visual = foco na foto, menos poluição visual
+
+**Resultado esperado:**
+- ✅ Site 100% responsivo em mobile (480px, 768px, 1024px)
+- ✅ Favicon ouro em todas as páginas (desktop + mobile + iOS)
+- ✅ Botões com visual moderno e consistente
+- ✅ Imagens mais destaque (sem moldura de distração)
+
+---
+
 ### Resumo de Impacto
 
 | Fase | Tipo | Impacto | Status |
@@ -953,6 +1016,7 @@ let touchStartY = 0;
 | 5. Cards | Design | Visual Simplicity | ✅ Completo |
 | 6. Borders | Design | Minimalismo | ✅ Completo |
 | 7. Drawer Title | Brand | Identidade | ✅ Completo |
+| 8. UI/UX Otimizações | Design/UX | Mobile + Botões | ✅ Completo |
 
 ---
 
@@ -1458,6 +1522,6 @@ Qualquer pessoa (ou IA) que ler este documento consegue:
 ---
 
 **Versão:** 1.0  
-**Última Atualização:** 25 de janeiro de 2026  
+**Última Atualização:** 27 de janeiro de 2026  
 **Próxima Revisão Recomendada:** Depois de cada mudança estrutural  
 **Mantido por:** Seu Nome / Seu Time

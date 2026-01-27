@@ -7,9 +7,9 @@ Script para gerar favicons em múltiplos tamanhos
 from PIL import Image, ImageDraw
 import os
 
-def create_favicon_image(size=100, line_color='#3B82F6', line_width=6):
+def create_favicon_image(size=100, line_color='#D4AF37', line_width=6):
     """
-    Cria uma imagem com o logo da lupa (transparente)
+    Cria uma imagem com o logo da lupa (transparente) em cor ouro
     """
     img = Image.new('RGBA', (size, size), (0, 0, 0, 0))  # Transparente
     draw = ImageDraw.Draw(img)
@@ -43,15 +43,15 @@ def create_favicon_image(size=100, line_color='#3B82F6', line_width=6):
 
 def create_favicon_svg(output_path):
     """
-    Cria um favicon SVG
+    Cria um favicon SVG em cor ouro
     """
     svg_content = '''<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
   <rect width="100" height="100" fill="transparent"/>
   <!-- Círculo da lupa -->
-  <circle cx="40" cy="40" r="28" fill="none" stroke="#3B82F6" stroke-width="6"/>
+  <circle cx="40" cy="40" r="28" fill="none" stroke="#D4AF37" stroke-width="6"/>
   <!-- Haste da lupa -->
-  <line x1="60" y1="60" x2="88" y2="88" stroke="#3B82F6" stroke-width="6" stroke-linecap="round"/>
+  <line x1="60" y1="60" x2="88" y2="88" stroke="#D4AF37" stroke-width="6" stroke-linecap="round"/>
 </svg>'''
     
     with open(output_path, 'w', encoding='utf-8') as f:
