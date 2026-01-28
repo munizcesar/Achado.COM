@@ -197,7 +197,7 @@ function renderizar(posts, container, prefix) {
         container.innerHTML += `
             <a href="${prefix}${post.link}" class="post-preview-card">
                 <div class="post-image-wrapper">
-                    <img src="${prefix}${post.imagem}" onerror="this.style.display='none'">
+                    <img src="${prefix}${post.imagem}" onerror="this.style.display='none'" loading="lazy">
                 </div>
                 <div class="post-content-wrapper">
                     <span class="post-category">${post.categoria}</span>
@@ -210,8 +210,23 @@ function renderizar(posts, container, prefix) {
     });
 }
 
+// Função para aplicar lazy loading em todas as imagens
+function aplicarLazyLoading() {
+    const imagens = document.querySelectorAll('img:not([loading])');
+    imagens.forEach(img => {
+        if (!img.hasAttribute('loading')) {
+            img.setAttribute('loading', 'lazy');
+        }
+    });
+}
+
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
     configurarBusca(); // Configura busca imediatamente (não depende de postsData)
     carregarPosts();   // Inicia carregamento dos posts (pode ter retry)
+    
+    // Aplicar lazy loading a todas as imagens após carregamento
+    setTimeout(() => {
+        aplicarLazyLoading();
+    }, 500);
 });

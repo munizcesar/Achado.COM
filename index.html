@@ -80,7 +80,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.min.css">
     <link rel="preload" as="image" href="images/imagem_celular.png" media="(max-width: 768px)">
     <script async src="//www.instagram.com/embed.js"></script>
     <script>
@@ -223,8 +223,13 @@
 
 <section class="hero">
     <picture>
+        <!-- WebP para navegadores modernos (quando tiver imagens .webp) -->
+        <!-- <source media="(min-width: 769px)" srcset="images/imagem_desktop.webp" type="image/webp">
+        <source media="(max-width: 768px)" srcset="images/imagem_celular.webp" type="image/webp"> -->
+        
+        <!-- PNG/JPG fallback para todos os navegadores -->
         <source media="(min-width: 769px)" srcset="images/imagem_desktop.png">
-        <img src="images/imagem_celular.png" alt="Ofertas Premium AchadoCerto VIP" class="hero-img">
+        <img src="images/imagem_celular.png" alt="Ofertas Premium AchadoCerto VIP" class="hero-img" loading="lazy">
     </picture>
     
     <!-- Overlay com texto -->
@@ -313,7 +318,7 @@
     <div class="offers-box">
         <a href="https://www.mercadolivre.com.br/social/muc1576372" target="_blank" class="offers-link">
             <div class="offers-image-container">
-                <img src="images/produtos_ofertas.png" alt="Produtos em Oferta Verificada">
+                <img src="images/produtos_ofertas.png" alt="Produtos em Oferta Verificada" loading="lazy">
                 <div class="offers-overlay">
                     <div class="offers-cta-text">
                         <h3>🎯 OPORTUNIDADES EM DESTAQUE</h3>
@@ -348,9 +353,9 @@
 </footer>
 
 <script src="posts.js" defer></script>
-<script src="script.js" defer></script>
-<script src="search-animation.js" defer></script>
-<script src="drawer.js" defer></script>
+<script src="script.min.js" defer></script>
+<script src="search-animation.min.js" defer></script>
+<script src="drawer.min.js" defer></script>
 
 
 </body>

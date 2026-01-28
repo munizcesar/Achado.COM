@@ -1,0 +1,92 @@
+# ============================================
+# AchadoCerto.VIP - Cache & Compression
+# ============================================
+# Ativado: 28 de janeiro de 2026
+# Segurança: Arquivo separado, fácil de remover se necessário
+
+# Enable GZIP compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Browser cache - Expiração
+<IfModule mod_expires.c>
+  ExpiresActive On
+  
+  # Images (1 ano)
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
+  
+  # CSS e JavaScript (1 mês)
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  
+  # Fonts (1 ano)
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+  ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+  ExpiresByType application/x-font-ttf "access plus 1 year"
+  
+  # HTML (não cache, sempre atualizar)
+  ExpiresByType text/html "access plus 0 seconds"
+  
+  # Default
+  ExpiresDefault "access plus 2 days"
+</IfModule>
+
+# Cache Control headers
+<IfModule mod_headers.c>
+  # Desabilitar cache para HTML
+  <FilesMatch "\.(html|php)$">
+    Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+  </FilesMatch>
+  
+  # CSS e JavaScript - 1 mês
+  <FilesMatch "\.(js|css)$">
+    Header set Cache-Control "max-age=2592000, public"
+  </FilesMatch>
+  
+  # Imagens - 1 ano
+  <FilesMatch "\.(gif|jpg|jpeg|png|webp|svg|ico)$">
+    Header set Cache-Control "max-age=31536000, public"
+  </FilesMatch>
+  
+  # Fonts - 1 ano
+  <FilesMatch "\.(woff|woff2|ttf|eot|otf)$">
+    Header set Cache-Control "max-age=31536000, public"
+  </FilesMatch>
+</IfModule>
+
+# Habilitar mod_rewrite
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Redirecionar HTTP para HTTPS (quando domínio estiver ativo)
+  # Descomente quando tiver certificado SSL
+  # RewriteCond %{HTTPS} off
+  # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# ============================================
+# NOTAS DE SEGURANÇA
+# ============================================
+# 1. Este arquivo é REVERSÍVEL - basta deletar
+# 2. Cache em navegador ajuda na velocidade
+# 3. HTML nunca é cacheado (sempre atualizado)
+# 4. Imagens cacheadas por 1 ano (mudanças = novo nome)
+# 5. Se algo quebrar, remova o .htaccess e volte ao normal
+# ============================================
