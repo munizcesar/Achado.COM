@@ -48,46 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const onclickAttr = blogCard.getAttribute('onclick');
             const urlMatch = onclickAttr.match(/window\.location\.href='([^']+)'/);
-            
             if (urlMatch) {
-                const targetUrl = urlMatch[1];
-                
-                const overlay = document.createElement('div');
-                overlay.style.cssText = `
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background: linear-gradient(135deg, rgba(11, 18, 32, 0.95) 0%, rgba(21, 27, 74, 0.95) 100%);
-                    z-index: 9999;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    opacity: 0;
-                    transition: opacity 0.3s ease;
-                `;
-                
-                overlay.innerHTML = `
-                    <div style="text-align: center;">
-                        <i class="fas fa-arrow-right" style="font-size: 48px; color: #D4AF37; animation: slideRight 0.6s ease-out infinite;"></i>
-                        <p style="color: #F5F7FA; margin-top: 20px; font-size: 18px; font-weight: 300;">Abrindo produto...</p>
-                    </div>
-                    <style>
-                        @keyframes slideRight {
-                            0% { transform: translateX(-20px); opacity: 0.5; }
-                            50% { transform: translateX(0); opacity: 1; }
-                            100% { transform: translateX(20px); opacity: 0.5; }
-                        }
-                    </style>
-                `;
-                
-                document.body.appendChild(overlay);
-                setTimeout(() => overlay.style.opacity = '1', 10);
-                
-                setTimeout(() => {
-                    window.location.href = targetUrl;
-                }, 500);
+                window.location.href = urlMatch[1];
             }
         }
     });
