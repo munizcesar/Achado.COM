@@ -11,7 +11,7 @@ import sys
 # Mapear imagens que queremos converter (principais)
 IMAGENS_PRINCIPAIS = [
     ('images/imagem_celular.png', 'images/imagem_celular.webp'),
-    ('images/imagem_desktop.png', 'images/imagem_desktop.webp'),
+    ('images/imagem_desktop.webp', 'images/imagem_desktop.webp'),
     ('images/produtos_ofertas.png', 'images/produtos_ofertas.webp'),
     ('images/imagesposts/creatinarefil.webp', None),  # Já é WebP
 ]

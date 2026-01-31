@@ -1282,7 +1282,7 @@ Fase 9 + 10 = ~50-60% redução em tamanho inicial
     <source media="(max-width: 768px)" srcset="images/imagem_celular.webp" type="image/webp"> -->
     
     <!-- PNG/JPG fallback para todos os navegadores -->
-    <source media="(min-width: 769px)" srcset="images/imagem_desktop.png">
+    <source media="(min-width: 769px)" srcset="images/imagem_desktop.webp">
     <img src="images/imagem_celular.png" alt="..." class="hero-img" loading="lazy">
 </picture>
 ```
@@ -1345,7 +1345,7 @@ Fase 9 + 10 = ~50-60% redução em tamanho inicial
 **Passo 1:** Converter imagens para WebP (qualquer ferramenta)
 ```
 cwebp images/imagem_celular.png -o images/imagem_celular.webp -q 85
-cwebp images/imagem_desktop.png -o images/imagem_desktop.webp -q 85
+cwebp images/imagem_desktop.webp -o images/imagem_desktop.webp -q 85
 ```
 
 **Passo 2:** Descomente as linhas WebP no HTML

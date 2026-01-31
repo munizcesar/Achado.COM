@@ -14,7 +14,7 @@
     <!-- Open Graph (Compartilhamento Social) -->
     <meta property="og:title" content="AchadoCerto.VIP — Onde o Premium vira Achado!" />
     <meta property="og:description" content="Ofertas verificadas, cupons reais e achados selecionados. Entre no Grupo VIP!" />
-    <meta property="og:image" content="https://achadocerto.vip/images/og-previa.jpg" />
+    <meta property="og:image" content="https://achadocerto.vip/images/og-previa.webp" />
     <meta property="og:url" content="https://achadocerto.vip/" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
@@ -23,7 +23,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AchadoCerto.VIP — Onde o Premium vira Achado!">
     <meta name="twitter:description" content="Ofertas verificadas e cupons reais. Economize com segurança.">
-    <meta name="twitter:image" content="https://achadocerto.vip/images/og-previa.jpg">
+    <meta name="twitter:image" content="https://achadocerto.vip/images/og-previa.webp">
     
     <!-- Canonical URL (evita duplicate content) -->
     <link rel="canonical" href="https://achadocerto.vip/">
@@ -81,7 +81,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <link rel="stylesheet" href="style.min.css">
-    <link rel="preload" as="image" href="images/imagem_celular.png" media="(max-width: 768px)">
+    <link rel="preload" as="image" href="images/imagem_celular.webp" media="(max-width: 768px)">
     <script async src="//www.instagram.com/embed.js"></script>
     <script>
         // Esconder skeleton quando Instagram carregar
@@ -237,8 +237,9 @@
         <source media="(max-width: 768px)" srcset="images/imagem_celular.webp" type="image/webp"> -->
         
         <!-- PNG/JPG fallback para todos os navegadores -->
-        <source media="(min-width: 769px)" srcset="images/imagem_desktop.png">
-        <img src="images/imagem_celular.png" alt="Ofertas Premium AchadoCerto VIP" class="hero-img" loading="lazy">
+        <source media="(min-width: 769px)" srcset="images/imagem_desktop.webp">
+        <source media="(max-width: 768px)" srcset="images/imagem_celular.webp">
+        <img src="images/imagem_celular.webp" alt="Ofertas Premium AchadoCerto VIP" class="hero-img" loading="lazy">
     </picture>
     
     <!-- Overlay com texto -->
