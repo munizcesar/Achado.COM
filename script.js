@@ -179,7 +179,7 @@ function carregarPosts() {
     }
 
     if (containerHome && (fileName === 'index.html' || fileName === '')) {
-        renderizar(data.slice(0, 3), containerHome, prefix);
+        renderizar(data.slice(0, 1), containerHome, prefix);
     }
 
     if (containerBlog && (fileName === 'blog.html' || url.includes('/blog'))) {
