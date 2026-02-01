@@ -1,5 +1,14 @@
 const postsData = [
   {
+    "titulo": "💊 Colágeno II + Condroitina + Glucosamina Bionatus 30 Comprimidos",
+    "resumo": "Colágeno II + Condroitina + Glucosamina Bionatus: a solução completa para saúde articular. Vegano, sem glúten. 649 avaliações 4.8★. Elimine dores nas articulações.",
+    "imagem": "images/imagesposts/colagen-ii-bionatus-30-comprimidos.webp",
+    "link": "blog/colagen-ii-bionatus-saude-articular.html",
+    "chamada": "📖 Ver Guia Completo",
+    "categoria": "saude",
+    "keywords": "colágeno condroitina glucosamina bionatus saúde articular dor articulações osteoartrite artrose suplemento vegano sem glúten comprimidos mobilidade osseo"
+  },
+  {
     "titulo": "🏋️ Calça Legging Fitness Zero Transparência Cintura Alta Selene 2026",
     "resumo": "Legging fitness Selene com zero transparência, tecido grosso e sem costura. A segurança e conforto total que a academia pediu. Cintura alta e durável.",
     "imagem": "images/imagesposts/legging-fitness-zero-transparencia-selene.webp",
