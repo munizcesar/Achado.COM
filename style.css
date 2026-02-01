@@ -2100,6 +2100,51 @@ footer a {
     }
 }
 
+/* Responsividade para Share Buttons em tablets e mobiles */
+@media (max-width: 768px) {
+    .share-buttons-container {
+        gap: 10px;
+        padding: 15px;
+        margin: 30px 0;
+    }
+
+    .share-btn {
+        padding: 9px 14px;
+        font-size: 12px;
+        border-radius: 6px;
+    }
+
+    .share-btn i {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .share-buttons-container {
+        gap: 8px;
+        padding: 12px 10px;
+        margin: 25px 0;
+    }
+
+    .share-btn {
+        padding: 8px 12px;
+        font-size: 11px;
+        border-radius: 6px;
+        flex: 1 1 calc(50% - 4px);
+        max-width: none;
+        min-width: unset;
+    }
+
+    .share-btn i {
+        font-size: 12px;
+    }
+
+    .share-buttons-label {
+        font-size: 11px;
+        margin-bottom: 10px;
+    }
+}
+
 .premium-actions .vip-action-card {
     display: flex;
     align-items: stretch;
