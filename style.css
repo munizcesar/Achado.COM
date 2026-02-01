@@ -5,6 +5,18 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg-dark: #0B1220;
+    --bg-card: #151B4A;
+    --bg-card-light: #1F2B5F;
+    --color-primary: #FFD700;
+    --color-urgent: #FF6B35;
+    --color-success: #4CAF50;
+    --color-text: #F5F7FA;
+    --color-text-muted: #C5CAD3;
+    --color-border: rgba(212, 175, 55, 0.2);
+}
+
 html, body {
     width: 100%;
     margin: 0;
@@ -14,8 +26,8 @@ html, body {
 
 body {
     font-family: 'Inter', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; 
-    background: #0B1220;
-    color: #F5F7FA;
+    background: var(--bg-dark);
+    color: var(--color-text);
     line-height: 1.6;
     font-weight: 400;
     letter-spacing: 0.2px;
@@ -588,10 +600,10 @@ a {
 
 .hero-text h2 {
     font-size: 32px;
-    font-weight: 300;
+    font-weight: 600;
     letter-spacing: 0.5px;
     line-height: 1.3;
-    color: #F5F7FA;
+    color: var(--color-text);
     margin: 0;
     max-width: 500px;
 }
@@ -631,59 +643,88 @@ a {
 
 .cta-card {
     flex: 1;
-    background: #151B4A;
-    border: 1px solid rgba(255, 215, 0, 0.3);
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-light) 100%);
+    border: 2px solid var(--color-primary);
+    border-left: 4px solid var(--color-primary);
     border-radius: 15px;
     padding: 25px;
     text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(250, 250, 250, 0.5);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+    transition: left 0.5s ease;
+    pointer-events: none;
+}
+
+.cta-card:hover::before {
+    left: 100%;
 }
 
 .cta-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(255, 215, 0, 0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(255, 215, 0, 0.25);
 }
 
 .cta-card i {
-    font-size: 30px;
+    font-size: 40px;
     margin-bottom: 15px;
-    color: #FFD700;
+    color: var(--color-primary);
+    transition: transform 0.3s ease;
+}
+
+.cta-card:hover i {
+    transform: scale(1.15);
 }
 
 .cta-card h3 {
     font-size: 18px;
     margin-bottom: 15px;
-    color: #FFFFFF;
+    color: var(--color-text);
+    font-weight: 600;
 }
 
 .botao-card {
     display: block;
     padding: 12px;
     border-radius: 8px;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: none;
     font-size: 14px;
     letter-spacing: 0.3px;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .btn-canal {
-    background: #FFD700;
+    background: linear-gradient(135deg, #FFD700 0%, #FFC700 100%);
     color: #0A1026;
 }
 
 .btn-grupo {
-    background: #25D366;
+    background: linear-gradient(135deg, #25D366 0%, #1FA856 100%);
     color: #FFFFFF;
 }
 
 .botao-card:hover {
-    filter: brightness(1.1);
-    transform: scale(1.02);
+    filter: brightness(1.15);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
 }
 
 .cta-footer-info {
@@ -704,9 +745,10 @@ a {
 
 .review-content h2 {
     text-align: center;
-    color: #FFD700;
+    color: var(--color-primary);
     font-size: 32px;
     margin-bottom: 40px;
+    font-weight: 600;
 }
 
 .review-content p {
@@ -732,11 +774,70 @@ a {
 }
 
 /* ===============================
+   BADGES E LABELS (NOVO, URGÊNCIA)
+   =============================== */
+.badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-new {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #FFC700 100%);
+    color: #0A1026;
+    animation: pulse-scale 2s ease-in-out infinite;
+}
+
+.badge-urgent {
+    background: linear-gradient(135deg, var(--color-urgent) 0%, #FF5520 100%);
+    color: #FFFFFF;
+    animation: pulse-scale 1.5s ease-in-out infinite;
+}
+
+.badge-hot {
+    background: linear-gradient(135deg, #FF6B35 0%, #FF4500 100%);
+    color: #FFFFFF;
+    box-shadow: 0 0 15px rgba(255, 107, 53, 0.4);
+}
+
+/* ===============================
    6. BOX DE OFERTAS (ANIMAÇÕES)
    =============================== */
 @keyframes pulse-glow {
     0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,0.3); }
     50% { box-shadow: 0 0 35px rgba(255,215,0,0.6); }
+}
+
+@keyframes slide-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse-scale {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.cta-card {
+    animation: slide-in-up 0.6s ease;
+}
+
+.cta-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.cta-card:nth-child(3) {
+    animation-delay: 0.2s;
 }
 
 /* Shimmer animation para video loading - DESABILITADO */
@@ -1074,22 +1175,23 @@ a.post-preview-card:hover .post-image-wrapper img {
     align-items: center;
     justify-content: center;
     padding: 14px 40px;
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    border: none;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #FFA500 100%);
     color: #0A1026;
-    font-weight: 500;
+    font-weight: 600;
     text-transform: none;
     letter-spacing: 0.3px;
     border-radius: 50px;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     margin-top: 20px;
     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    cursor: pointer;
 }
 
 .botao-padrao-achado:hover {
-    background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+    background: linear-gradient(135deg, #FFA500 0%, var(--color-primary) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
     color: #0A1026;
 }
 
