@@ -1981,6 +1981,7 @@ footer a {
     justify-content: center;
     gap: 6px;
     padding: 10px 16px;
+    min-height: 44px;
     border-radius: 8px;
     font-weight: 600;
     font-size: 13px;
@@ -2112,6 +2113,7 @@ footer a {
         padding: 9px 14px;
         font-size: 12px;
         border-radius: 6px;
+        min-height: 42px;
     }
 
     .share-btn i {
@@ -2133,6 +2135,7 @@ footer a {
         flex: 1 1 calc(50% - 4px);
         max-width: none;
         min-width: unset;
+        min-height: 40px;
     }
 
     .share-btn i {
