@@ -4,7 +4,15 @@
  * FUNÇÃO: Verifica AUTOMATICAMENTE se o post está correto
  * SEM ERROS = Pronto para publicar
  * COM ERROS = Lista exata do que corrigir
+ * 
+ * EM DESENVOLVIMENTO: Mostra badge visual no topo
+ * EM PRODUÇÃO: Roda silenciosamente (apenas console)
  */
+
+// Detectar ambiente
+const isDevelopment = window.location.hostname === 'localhost' || 
+                      window.location.hostname === '127.0.0.1' ||
+                      window.location.hostname === '';
 
 function validarPost() {
     // Seleciona elementos do documento atual
@@ -110,7 +118,7 @@ function validarPost() {
         sucessos.push('✅ Todos os 4 botões de compartilhamento presentes');
     }
     
-    // ========== RELATÓRIO ==========
+    // ========== RELATÓRIO CONSOLE ==========
     
     console.clear();
     console.log('%c📋 VALIDADOR AUTOMÁTICO DE POSTS - AchadoCerto.VIP', 'color: #D4AF37; font-size: 16px; font-weight: bold;');
@@ -151,6 +159,11 @@ function validarPost() {
     
     console.log('═'.repeat(60));
     
+    // ========== BADGE VISUAL (APENAS EM DESENVOLVIMENTO) ==========
+    if (isDevelopment) {
+        mostrarBadgeValidacao(erros.length, avisos.length, sucessos.length);
+    }
+    
     // ========== RETORNA RESULTADO ==========
     return {
         erros: erros.length,
@@ -159,13 +172,87 @@ function validarPost() {
     };
 }
 
+function mostrarBadgeValidacao(totalErros, totalAvisos, totalSucessos) {
+    // Verifica se badge já existe
+    if (document.getElementById('validador-badge')) {
+        document.getElementById('validador-badge').remove();
+    }
+    
+    const badge = document.createElement('div');
+    badge.id = 'validador-badge';
+    
+    let html = '';
+    let cor = '';
+    let mensagem = '';
+    
+    if (totalErros > 0) {
+        cor = '#ff6b6b';
+        mensagem = `🔴 ${totalErros} ERRO(S) ENCONTRADO(S)`;
+        badge.className = 'validador-error';
+    } else if (totalAvisos > 0) {
+        cor = '#ffc107';
+        mensagem = `⚠️ ${totalAvisos} AVISO(S)`;
+        badge.className = 'validador-warning';
+    } else {
+        cor = '#2ecc71';
+        mensagem = `✅ POST VALIDADO - PRONTO PARA PUBLICAR`;
+        badge.className = 'validador-success';
+    }
+    
+    badge.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: ${cor};
+        color: white;
+        padding: 15px 20px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 14px;
+        z-index: 99999;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        border-bottom: 3px solid rgba(0,0,0,0.2);
+        cursor: pointer;
+        animation: slideDown 0.3s ease;
+    `;
+    
+    badge.innerHTML = `
+        ${mensagem}
+        <span style="margin-left: 20px; font-size: 12px; opacity: 0.9;">
+            (Clique para fechar | Abra F12 para ver detalhes)
+        </span>
+    `;
+    
+    badge.onclick = () => badge.remove();
+    
+    document.body.insertBefore(badge, document.body.firstChild);
+    
+    // Criar animação
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        #validador-badge {
+            animation: slideDown 0.3s ease;
+        }
+        
+        #validador-badge:hover {
+            opacity: 0.95;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
 // Executa automaticamente quando a página carrega
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('💡 Dica: Execute validarPost() no Console para validar o post');
+    validarPost();
     
-    // Auto-valida em desenvolvimento
-    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        validarPost();
+    if (!isDevelopment) {
+        console.log('💡 Post em produção - validação silenciosa ativa');
     }
 });
 
