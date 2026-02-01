@@ -670,11 +670,114 @@ Amazon:      background: #232F3E; padding: 15px; border-radius: 8px; color: #FFF
 
 ---
 
-**Páginas:** `categorias/tech.html`, `saude.html`, `lar.html`, `estilo.html`, `dicas.html`
+### Página Blog (blog.html) — Listagem de Todos os Posts
 
-**Uso:** Links no drawer, filtros em blog.html
+**Localização:** `blog.html` (página raiz)
+
+**Propósito:**
+- Exibir TODOS os posts em uma listagem paginada/grid
+- Permitir navegação por categorias
+- Facilitar busca por termos
+
+**Estrutura HTML (IMPORTANTE - Não Duplicar):**
+
+✅ **O QUE DEVE TER:**
+```html
+<!-- 1. HEADER com logo e busca -->
+<header class="topo">
+    <logo>AchadoCerto|VIP</logo>
+    <search-form />
+</header>
+
+<!-- 2. NAV COM CATEGORIAS (ÚNICA FORMA DE NAVEGAÇÃO POR CATEGORIA) -->
+<nav class="menu-categorias">
+    <a href="categorias/tech.html">Tech</a>
+    <a href="categorias/saude.html">Saúde</a>
+    <a href="categorias/lar.html">Lar</a>
+    <a href="categorias/estilo.html">Estilo</a>
+    <a href="categorias/dicas.html">Dicas</a>
+</nav>
+
+<!-- 3. TÍTULO + DESCRIÇÃO DA PÁGINA -->
+<h2>Guia do Achado: Análises & Curiosidades</h2>
+<p>Sua biblioteca de consumo inteligente. Explore guias, análises e ofertas selecionadas.</p>
+
+<!-- 4. ID ESPECÍFICO PARA INJETAR POSTS VIA JAVASCRIPT -->
+<div id="blog-lista" class="grid-blog-container">
+    <!-- Os posts aparecem aqui automaticamente via script.js -->
+</div>
+
+<!-- 5. BOTÕES DE CTA (WhatsApp) -->
+<div class="cta-whatsapp-buttons">
+    <a href="https://whatsapp.com/channel/...">Seguir Canal</a>
+    <a href="https://chat.whatsapp.com/...">Entrar no Grupo</a>
+</div>
+
+<!-- 6. FOOTER -->
+<footer>
+    <social-icons />
+    <links />
+</footer>
+```
+
+❌ **O QUE NÃO DEVE TER:**
+- ❌ Seção duplicada de categorias com ícones/emojis em baixo (redundante!)
+- ❌ Grid de cards de categoria DENTRO da página (use o navbar do topo)
+- ❌ Múltiplas formas de navegar por categoria (confunde o usuário)
+- ❌ Componentes não essenciais que poluem visual
+
+**Características CRÍTICAS:**
+
+1. **ID `blog-lista`** (OBRIGATÓRIO)
+   - Exatamente este ID: `id="blog-lista"`
+   - Classe: `class="grid-blog-container"`
+   - É neste div que `script.js` injeta todos os posts
+
+2. **Navbar de Categorias** (ÚNICA, no topo)
+   - Links simples para cada categoria
+   - Sem ícones desnecessários
+   - Sem cores que poluem visual
+   - Apenas navegação, nada mais
+
+3. **Sem Duplicação de Elementos**
+   - Categorias aparecem EM UM ÚNICO LUGAR (navbar)
+   - Se precisar de grid visual, use em `categorias/*.html`, não em `blog.html`
+   - Se tentar adicionar seção de categorias com ícones, será REMOVIDA
+
+4. **Layout Responsivo**
+   - Desktop: Grid de 3-4 cards por linha
+   - Tablet: Grid de 2 cards por linha
+   - Mobile: 1 card por linha
+   - Imagens: 320px altura, `object-fit: cover`
+
+5. **CSS Classes Esperadas**
+   - `.grid-blog-container` → Container do grid
+   - `.post-preview-card` → Cada card individual
+   - `.post-image-wrapper` → Wrapper da imagem
+   - `.post-content` → Conteúdo texto
+   - `.post-cta` → Botão "Leia Mais"
+
+**Scripts que Dependem de blog.html:**
+- `script.js` → Busca `#blog-lista` e injeta posts dinâmicos
+- `posts.js` → Fornece dados dos posts (base de dados)
+- `search-animation.js` → Anima buscas
+- `drawer.js` → Injeta menu lateral
+
+**⚠️ REGRA CRÍTICA: Quando Adicionar Elementos Novos**
+
+Se for adicionar algo novo em `blog.html`:
+1. **Pergunte-se:** "Isso já aparece em outro lugar da página?"
+2. **Se SIM:** Não adicione (evitar redundância)
+3. **Se NÃO:** Verifique se é essencial (não poluir visual)
+4. **SEMPRE:** Atualize este manual IMEDIATAMENTE com as mudanças
+
+**Histórico de Mudanças:**
+- **1 de fevereiro de 2026:** Removida seção "Explore Por Categoria" (estava duplicando navbar do topo)
+- **25 de janeiro de 2026:** Adicionado grid responsivo de posts
 
 ---
+
+### Páginas de Categorias (categorias/*.html)
 
 ## 6. Aspecto Legal & SEO
 
