@@ -15,12 +15,16 @@ class GeradorPostsIA {
      */
     async extrairDadosML(urlML) {
         try {
-            // Simular extração (em produção, usar API real do ML ou scraping)
-            const regex = /-([A-Z0-9]+)$/;
-            const match = urlML.match(regex);
-            
-            if (!match) {
-                console.error('URL inválida. Formato esperado: https://www.mercadolivre.com.br/...-XXXXXZ');
+            // Validar URL do Mercado Livre
+            if (!urlML.includes('mercadolivre.com.br')) {
+                console.error('URL inválida. Formato esperado: https://www.mercadolivre.com.br/...-XXXXX');
+                return false;
+            }
+
+            // Extrair ID do produto (MLB seguido de números)
+            const idMatch = urlML.match(/MLB\d+/);
+            if (!idMatch) {
+                console.error('URL inválida. Não foi possível extrair o ID do produto.');
                 return false;
             }
 
