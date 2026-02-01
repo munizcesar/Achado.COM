@@ -1119,24 +1119,64 @@ a.post-preview-card:hover .post-image-wrapper img {
     min-height: auto;
     height: auto;
     align-items: stretch;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 10px 35px rgba(212, 175, 55, 0.1);
+    background: linear-gradient(135deg, #151B4A 0%, #0B0E1F 100%);
+}
+
+#latest-post a.post-preview-card:hover {
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: 0 15px 45px rgba(212, 175, 55, 0.25);
+    transform: translateY(-5px);
 }
 
 #latest-post .post-image-wrapper {
-    width: 40%;
+    width: 38%;
     height: auto; 
-    min-height: 220px;
+    min-height: 280px;
     border-bottom: none;
-    border-right: none;
+    border-right: 1px solid rgba(212, 175, 55, 0.2);
+    background: rgba(21, 27, 74, 0.8);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #latest-post .post-content-wrapper {
-    padding: 30px;
-    justify-content: center;
+    padding: 35px 40px;
+    justify-content: space-between;
+    background: transparent;
 }
 
 #latest-post .post-image-wrapper img {
     object-fit: contain; /* Volta para contain para mostrar produto inteiro */
-    padding: 10px;
+    padding: 0;
+    max-width: 100%;
+    max-height: 100%;
+    transition: transform 0.4s ease;
+}
+
+#latest-post a.post-preview-card:hover .post-image-wrapper img {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+#latest-post .post-content-wrapper h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+#latest-post .post-content-wrapper p {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    color: #D0D0E8;
+}
+
+#latest-post .post-category {
+    background: rgba(212, 175, 55, 0.15);
+    font-size: 12px;
 }
 
 /* Responsividade específica para o latest post voltar a ser vertical APENAS no mobile */
@@ -1148,17 +1188,24 @@ a.post-preview-card:hover .post-image-wrapper img {
     }
     #latest-post .post-image-wrapper {
         width: 100%;
-        height: 200px;
+        height: 240px;
         border-right: none;
-        border-bottom: none;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        padding: 15px;
     }
     #latest-post .post-image-wrapper img {
-        object-fit: cover;
+        object-fit: contain;
         padding: 0;
     }
     #latest-post .post-content-wrapper {
-        padding: 20px;
+        padding: 25px;
         justify-content: flex-start;
+    }
+    #latest-post .post-content-wrapper h3 {
+        font-size: 20px;
+    }
+    #latest-post .post-content-wrapper p {
+        font-size: 14px;
     }
 }
 
