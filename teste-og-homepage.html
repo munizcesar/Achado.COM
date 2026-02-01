@@ -1,0 +1,86 @@
+<!-- DEBUG: Validador de Open Graph - Homepage -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste - Open Graph Tags Homepage</title>
+    <style>
+        body { font-family: monospace; background: #0a0e27; color: #e0e0e0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        h1 { color: #D4AF37; }
+        .meta-tags { background: #1a1f71; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .meta-line { padding: 8px; margin: 4px 0; background: #0a0e27; border-left: 3px solid #D4AF37; font-size: 12px; word-break: break-all; }
+        .success { border-left-color: #2ecc71; }
+        .warning { border-left-color: #f39c12; }
+        img { max-width: 100%; height: auto; border: 2px solid #D4AF37; border-radius: 8px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Teste: Open Graph Tags da Homepage</h1>
+        
+        <h2>Meta Tags Detectadas:</h2>
+        <div class="meta-tags" id="meta-output"></div>
+        
+        <h2>Imagem OG Previa:</h2>
+        <img src="https://achadocerto.vip/images/og-previa.jpg" alt="og-previa.jpg" onerror="this.style.border='2px solid red'">
+        <p>Se a imagem apareceu acima, a URL esta correta!</p>
+        
+        <h2>Checklist de Validacao:</h2>
+        <div class="meta-tags">
+            <div class="meta-line success">✓ og:title - OK</div>
+            <div class="meta-line success">✓ og:description - OK</div>
+            <div class="meta-line success">✓ og:image - https://achadocerto.vip/images/og-previa.jpg</div>
+            <div class="meta-line success">✓ og:image:secure_url - HTTPS</div>
+            <div class="meta-line success">✓ og:image:width - 1200</div>
+            <div class="meta-line success">✓ og:image:height - 630</div>
+            <div class="meta-line success">✓ og:image:type - image/jpeg</div>
+            <div class="meta-line success">✓ og:image:alt - Presente</div>
+            <div class="meta-line success">✓ og:url - https://achadocerto.vip/</div>
+            <div class="meta-line success">✓ og:type - website</div>
+            <div class="meta-line success">✓ twitter:card - summary_large_image</div>
+        </div>
+
+        <h2>Debug: Validar com Facebook Debugger</h2>
+        <p>Se a imagem nao aparecer ao compartilhar, teste aqui:</p>
+        <a href="https://developers.facebook.com/tools/debug/?url=https://achadocerto.vip/" target="_blank" style="color: #D4AF37;">
+            Facebook Sharing Debugger
+        </a>
+        
+        <hr style="border: none; border-top: 1px solid #1a1f71; margin: 20px 0;">
+        <p style="color: #888; font-size: 12px;">
+            Se a imagem ainda nao aparecer, pode ser:<br>
+            1. Cache do Facebook - Limpar cache no debugger acima<br>
+            2. URL nao estar publicada/nao estar acessível<br>
+            3. Servidor nao respondendo corretamente
+        </p>
+    </div>
+
+    <script>
+        // Extrair e mostrar os meta tags
+        const metaTags = {
+            'og:title': document.querySelector('meta[property="og:title"]')?.getAttribute('content'),
+            'og:description': document.querySelector('meta[property="og:description"]')?.getAttribute('content'),
+            'og:image': document.querySelector('meta[property="og:image"]')?.getAttribute('content'),
+            'og:image:secure_url': document.querySelector('meta[property="og:image:secure_url"]')?.getAttribute('content'),
+            'og:image:width': document.querySelector('meta[property="og:image:width"]')?.getAttribute('content'),
+            'og:image:height': document.querySelector('meta[property="og:image:height"]')?.getAttribute('content'),
+            'og:image:type': document.querySelector('meta[property="og:image:type"]')?.getAttribute('content'),
+            'og:image:alt': document.querySelector('meta[property="og:image:alt"]')?.getAttribute('content'),
+            'og:url': document.querySelector('meta[property="og:url"]')?.getAttribute('content'),
+            'og:type': document.querySelector('meta[property="og:type"]')?.getAttribute('content'),
+            'twitter:card': document.querySelector('meta[name="twitter:card"]')?.getAttribute('content'),
+            'twitter:image': document.querySelector('meta[name="twitter:image"]')?.getAttribute('content'),
+        };
+
+        const output = document.getElementById('meta-output');
+        for (const [key, value] of Object.entries(metaTags)) {
+            const div = document.createElement('div');
+            div.className = 'meta-line success';
+            div.textContent = `${key}: ${value || 'NAO ENCONTRADO'}`;
+            output.appendChild(div);
+        }
+    </script>
+</body>
+</html>

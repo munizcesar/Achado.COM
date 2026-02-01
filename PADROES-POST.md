@@ -1,6 +1,34 @@
 # 📋 Guia Seguro para Adicionar Posts — AchadoCerto.VIP
 
-**Versão:** 2.1 | **Data:** 1 de fevereiro de 2026 | **Status:** Atualizado ✅
+**Versão:** 2.1.0 | **Data:** 1 de fevereiro de 2026 | **Status:** Atualizado ✅
+
+---
+
+## 🆕 O QUE MUDOU NA v2.1.0 (CRÍTICO!)
+
+### Mudanças Obrigatórias em Novos Posts:
+
+| Item | v2.0 | v2.1.0 | Impacto |
+|------|------|--------|--------|
+| **Formato de Imagem** | WebP | **JPG** ⭐ | Facebook/Twitter rejeitam WebP |
+| **og:image:secure_url** | Opcional | **Obrigatório** ⭐ | HTTPS requer versão segura |
+| **og:image:alt** | Não usava | **Obrigatório** ⭐ | Acessibilidade + SEO |
+| **og:image:type** | Não declarava | **Obrigatório** ⭐ | Especificar MIME type |
+| **Validação** | Manual | **Script Automático** ⭐ | Evita erros publicação |
+
+### ✨ Automatização Nova:
+```bash
+# ANTES (manual e propenso a erros):
+- Converter imagem manualmente
+- Adicionar meta tags manualmente
+- Verificar em Facebook Debugger
+
+# AGORA (automático):
+python validador-posts-auto.py seu-post.html
+→ ✅ Valida tudo automaticamente
+→ ✅ Aponta erros específicos
+→ ✅ Pronto para publicar ou refazer
+```
 
 ---
 

@@ -23,6 +23,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const encodedTitle = encodeURIComponent(title);
         const encodedDesc = encodeURIComponent(description);
         
+        // Get OG image from meta tag
+        const ogImage = document.querySelector('meta[property="og:image"]')?.content || '';
+        const encodedImage = encodeURIComponent(ogImage);
+        
         switch(network) {
             case 'whatsapp':
                 const whatsappText = encodeURIComponent(`${title}\n${url}`);
@@ -42,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
                 
             case 'pinterest':
-                shareUrl = `https://pinterest.com/pin/create/button/?url=${encodedUrl}&description=${encodedTitle}`;
+                shareUrl = `https://pinterest.com/pin/create/button/?url=${encodedUrl}&description=${encodedTitle}&media=${encodedImage}`;
                 break;
                 
             case 'copy-link':
