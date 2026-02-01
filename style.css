@@ -1903,14 +1903,154 @@ footer a {
 }
 
 /* ===============================
-   11. PREMIUM ACTIONS (MOBILE-FIRST)
+   SHARE BUTTONS (COMPARTILHAMENTO)
    =============================== */
-.premium-actions {
-    display: none; /* Desktop: oculto por padrão */
-    max-width: 900px;
-    margin: 20px auto 30px;
-    padding: 0 20px;
-    font-family: 'Inter', 'Manrope', 'Poppins', 'Montserrat', Arial, sans-serif;
+.share-buttons-container {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 40px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(21, 27, 74, 0.4) 0%, rgba(31, 43, 95, 0.3) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+}
+
+.share-buttons-label {
+    width: 100%;
+    text-align: center;
+    color: #C5CAD3;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.share-btn i {
+    font-size: 14px;
+}
+
+/* WhatsApp */
+.share-btn.whatsapp {
+    background: linear-gradient(135deg, #25D366 0%, #1FA856 100%);
+    color: #FFFFFF;
+}
+
+.share-btn.whatsapp:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+}
+
+/* Twitter/X */
+.share-btn.twitter {
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
+    color: #FFFFFF;
+}
+
+.share-btn.twitter:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Facebook */
+.share-btn.facebook {
+    background: linear-gradient(135deg, #1877F2 0%, #0A66C2 100%);
+    color: #FFFFFF;
+}
+
+.share-btn.facebook:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 16px rgba(24, 119, 242, 0.4);
+}
+
+/* Telegram */
+.share-btn.telegram {
+    background: linear-gradient(135deg, #0088cc 0%, #0066aa 100%);
+    color: #FFFFFF;
+}
+
+.share-btn.telegram:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 16px rgba(0, 136, 204, 0.4);
+}
+
+/* Pinterest */
+.share-btn.pinterest {
+    background: linear-gradient(135deg, #E60023 0%, #C81C1C 100%);
+    color: #FFFFFF;
+}
+
+.share-btn.pinterest:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 16px rgba(230, 0, 35, 0.4);
+}
+
+/* Copy Link */
+.share-btn.copy-link {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #0A1026;
+}
+
+.share-btn.copy-link:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 16px rgba(255, 215, 0, 0.4);
+}
+
+/* Sticky share buttons (lado esquerdo - desktop only) */
+.share-buttons-sticky {
+    display: none;
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+    gap: 8px;
+    z-index: 1000;
+    background: rgba(11, 18, 32, 0.85);
+    padding: 12px 8px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.share-buttons-sticky .share-btn {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    font-size: 18px;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.share-buttons-sticky .share-btn i {
+    font-size: 18px;
+}
+
+@media (min-width: 1024px) {
+    .share-buttons-sticky {
+        display: flex;
+    }
 }
 
 .premium-actions .vip-action-card {
