@@ -4,7 +4,7 @@ const postsData = [
     "resumo": "Análise completa do JBL Wave Buds 2 preto. Som de qualidade premium, bateria de 8 horas, Bluetooth 5.3 e design confortável. Descubra por que é a escolha ideal.",
     "imagem": "images/imagesposts/jbl-wave-buds-2.webp",
     "link": "blog/jbl-wave-buds-2.html",
-    "chamada": "� Ver Detalhes",
+    "chamada": "🎧 Ver Detalhes",
     "categoria": "tech",
     "keywords": "JBL Wave Buds 2, fone bluetooth, earbuds, qualidade de som, bateria, Bluetooth 5.3"
   },
