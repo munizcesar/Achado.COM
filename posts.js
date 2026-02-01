@@ -1,5 +1,14 @@
 const postsData = [
   {
+    "titulo": "JBL Wave Buds 2 - Fone Bluetooth Premium com Som Incomparável",
+    "resumo": "Análise completa do JBL Wave Buds 2 preto. Som de qualidade premium, bateria de 8 horas, Bluetooth 5.3 e design confortável. Descubra por que é a escolha ideal.",
+    "imagem": "https://http2.mlstatic.com/D_Q_NP_757411-MLA50309521657_062022-F.webp",
+    "link": "blog/jbl-wave-buds-2.html",
+    "chamada": "📱 JBL Wave Buds 2 - Som Premium que Impressiona",
+    "categoria": "tech",
+    "keywords": "JBL Wave Buds 2, fone bluetooth, earbuds, qualidade de som, bateria, Bluetooth 5.3"
+  },
+  {
     "titulo": "💊 Colágeno II + Condroitina + Glucosamina Bionatus 30 Comprimidos",
     "resumo": "Colágeno II + Condroitina + Glucosamina Bionatus: a solução completa para saúde articular. Vegano, sem glúten. 649 avaliações 4.8★. Elimine dores nas articulações.",
     "imagem": "images/imagesposts/colagen-ii-bionatus-30-comprimidos.webp",
