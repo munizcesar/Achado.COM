@@ -1980,8 +1980,8 @@ footer a {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    padding: 10px 16px;
-    min-height: 44px;
+    padding: 0 16px;
+    height: 44px;
     border-radius: 8px;
     font-weight: 600;
     font-size: 13px;
@@ -2110,10 +2110,10 @@ footer a {
     }
 
     .share-btn {
-        padding: 9px 14px;
+        padding: 0 14px;
         font-size: 12px;
         border-radius: 6px;
-        min-height: 42px;
+        height: 42px;
     }
 
     .share-btn i {
@@ -2129,13 +2129,13 @@ footer a {
     }
 
     .share-btn {
-        padding: 8px 12px;
+        padding: 0 12px;
         font-size: 11px;
         border-radius: 6px;
         flex: 1 1 calc(50% - 4px);
         max-width: none;
         min-width: unset;
-        min-height: 40px;
+        height: 40px;
     }
 
     .share-btn i {
