@@ -20,27 +20,30 @@ class MercadoLivreAPI {
   // Buscar dados de um produto pelo URL
   async buscarProduto(urlProduto) {
     try {
+      // Resolver URL curta se necessário
+      const urlResolvida = await this.resolverUrlCurta(urlProduto);
+      
       // Verifica cache
-      if (this.cache.has(urlProduto)) {
-        const cached = this.cache.get(urlProduto);
+      if (this.cache.has(urlResolvida)) {
+        const cached = this.cache.get(urlResolvida);
         if (Date.now() - cached.timestamp < 30 * 60 * 1000) {
-          console.log('📦 Retornando do cache:', urlProduto);
+          console.log('📦 Retornando do cache:', urlResolvida);
           return cached.data;
         }
       }
 
-      console.log('🔍 Buscando:', urlProduto);
+      console.log('🔍 Buscando:', urlResolvida);
 
       const response = await axios.get(`${this.baseURL}/listing_data`, {
         params: {
-          url: urlProduto
+          url: urlResolvida
         },
         headers: this.getHeaders(),
         timeout: 10000
       });
 
       // Cacheia resposta
-      this.cache.set(urlProduto, {
+      this.cache.set(urlResolvida, {
         data: response.data,
         timestamp: Date.now()
       });
@@ -50,6 +53,27 @@ class MercadoLivreAPI {
       console.error('❌ Erro ao buscar produto:', error.message);
       throw new Error(`Erro ao buscar produto: ${error.message}`);
     }
+  }
+
+  // Resolver URLs curtas do Mercado Livre
+  async resolverUrlCurta(url) {
+    try {
+      // Se for uma URL curta (/sec/), tentar resolver
+      if (url.includes('/sec/')) {
+        const response = await axios.head(url, {
+          maxRedirects: 5,
+          timeout: 5000
+        });
+        
+        const urlResolvida = response.request.res.responseUrl || response.config.url;
+        console.log('✓ URL curta resolvida:', urlResolvida);
+        return urlResolvida;
+      }
+    } catch (error) {
+      console.warn('⚠️ Não conseguiu resolver URL curta:', error.message);
+    }
+    
+    return url;
   }
 
   // Buscar avaliações de um produto

@@ -138,11 +138,19 @@ function extrairTituloDeUrl(url) {
     const urlObj = new URL(url);
     const path = urlObj.pathname;
     
-    // O padrão da URL do ML é: /nome-do-produto/p/PRODUCT_ID
-    // Extrair a parte "nome-do-produto"
+    // O padrão da URL do ML é: /nome-do-produto/p/PRODUCT_ID ou /sec/SHORT_ID
     const partes = path.split('/').filter(p => p);
     
-    // Procurar a primeira parte que não é 'p' e não começa com 'MLA'
+    // Se for uma URL curta (/sec/...), tentar extrair algo mais significativo
+    if (partes[0] === 'sec' || partes[0] === 'SEC') {
+      // Para URLs curtas, retornar null para que a API tente resolver
+      return {
+        titulo: null,
+        palavra_chave: 'produto'
+      };
+    }
+    
+    // Para URLs normais, procurar a primeira parte que não é 'p' e não começa com 'MLA'
     for (let i = 0; i < partes.length; i++) {
       const parte = partes[i];
       if (parte !== 'p' && !parte.startsWith('MLA')) {
