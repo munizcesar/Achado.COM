@@ -118,17 +118,39 @@ function gerarProdutoMock(url) {
   const { titulo, palavra_chave } = extrairTituloDeUrl(url);
   const imagem = gerarImagemPlaceholder(palavra_chave);
   
+  // Produtos reais brasileiros com dados mais realistas
+  const produtosReais = [
+    { titulo: 'iPhone 15 Pro Max 256GB', preco: 7999, precoOriginal: 8499, desconto: 6, avaliacao: 4.8, vendidos: 2340, estoque: 12 },
+    { titulo: 'Samsung Galaxy S24 Ultra', preco: 6799, precoOriginal: 7199, desconto: 6, avaliacao: 4.7, vendidos: 1890, estoque: 8 },
+    { titulo: 'Fone JBL Tune 770NC', preco: 299, precoOriginal: 399, desconto: 25, avaliacao: 4.6, vendidos: 5420, estoque: 45 },
+    { titulo: 'Notebook ASUS VivoBook 15', preco: 2999, precoOriginal: 3499, desconto: 14, avaliacao: 4.5, vendidos: 1234, estoque: 6 },
+    { titulo: 'TV 55 polegadas LG QNED80', preco: 3499, precoOriginal: 4299, desconto: 19, avaliacao: 4.9, vendidos: 867, estoque: 3 },
+    { titulo: 'Airfryer Mondial 4.2L', preco: 249, precoOriginal: 399, desconto: 38, avaliacao: 4.8, vendidos: 8923, estoque: 28 },
+    { titulo: 'Webcam Logitech C920 Pro', preco: 279, precoOriginal: 349, desconto: 20, avaliacao: 4.7, vendidos: 4156, estoque: 19 },
+    { titulo: 'Smartwatch Samsung Galaxy Watch 6', preco: 1299, precoOriginal: 1599, desconto: 19, avaliacao: 4.6, vendidos: 3211, estoque: 15 },
+    { titulo: 'Mouse Razer Basilisk V3', preco: 299, precoOriginal: 399, desconto: 25, avaliacao: 4.8, vendidos: 2987, estoque: 33 },
+    { titulo: 'Teclado Mecânico Corsair K95', preco: 899, precoOriginal: 1199, desconto: 25, avaliacao: 4.7, vendidos: 1543, estoque: 11 },
+    { titulo: 'Monitor LG 27 pol 144Hz', preco: 1199, precoOriginal: 1599, desconto: 25, avaliacao: 4.8, vendidos: 2156, estoque: 7 },
+    { titulo: 'Headphone Sony WH-CH720', preco: 399, precoOriginal: 599, desconto: 33, avaliacao: 4.6, vendidos: 6234, estoque: 22 }
+  ];
+  
+  // Selecionar um produto aleatório
+  const produtoAleatorio = produtosReais[Math.floor(Math.random() * produtosReais.length)];
+  
+  // Misturar com dados da URL se houver
+  const tituloFinal = titulo && titulo !== 'Produto' ? titulo : produtoAleatorio.titulo;
+  
   return {
-    titulo: titulo || 'Produto Premium Mercado Livre',
+    titulo: tituloFinal,
     imagem: imagem,
-    preco: Math.random() * 1000 + 100,
-    precoOriginal: Math.random() * 1500 + 200,
-    desconto: Math.floor(Math.random() * 40) + 10,
-    avaliacao: (Math.random() * 1 + 4).toFixed(1),
-    vendidos: Math.floor(Math.random() * 5000) + 100,
+    preco: produtoAleatorio.preco,
+    precoOriginal: produtoAleatorio.precoOriginal,
+    desconto: produtoAleatorio.desconto,
+    avaliacao: produtoAleatorio.avaliacao,
+    vendidos: produtoAleatorio.vendidos,
     vendedor: 'Vendedor Verificado',
     condicao: 'novo',
-    estoque: Math.floor(Math.random() * 50) + 5,
+    estoque: produtoAleatorio.estoque,
     link: url
   };
 }
@@ -181,16 +203,22 @@ function extrairTituloDeUrl(url) {
 }
 
 function gerarImagemPlaceholder(keyword) {
-  // Usar um serviço que gera imagens baseado em palavras-chave
-  // Fallback para imagens genéricas do Mercado Livre
+  // Imagens reais de produtos via DuckDuckGo/Unsplash
   const queries = {
-    'motorola': 'https://via.placeholder.com/400x300?text=Motorola&bg=0D1B4A&txtcolor=D4AF37',
-    'iphone': 'https://via.placeholder.com/400x300?text=iPhone&bg=0D1B4A&txtcolor=D4AF37',
-    'samsung': 'https://via.placeholder.com/400x300?text=Samsung&bg=0D1B4A&txtcolor=D4AF37',
-    'fone': 'https://via.placeholder.com/400x300?text=Fone&bg=0D1B4A&txtcolor=D4AF37',
-    'tv': 'https://via.placeholder.com/400x300?text=TV&bg=0D1B4A&txtcolor=D4AF37',
-    'notebook': 'https://via.placeholder.com/400x300?text=Notebook&bg=0D1B4A&txtcolor=D4AF37',
-    'smartphone': 'https://via.placeholder.com/400x300?text=Smartphone&bg=0D1B4A&txtcolor=D4AF37'
+    'iphone': 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=500&h=500&fit=crop',
+    'samsung': 'https://images.unsplash.com/photo-1610945415295-d9bbf8d33b4b?w=500&h=500&fit=crop',
+    'motorola': 'https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=500&h=500&fit=crop',
+    'fone': 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop',
+    'tv': 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=500&h=500&fit=crop',
+    'notebook': 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&h=500&fit=crop',
+    'smartphone': 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=500&h=500&fit=crop',
+    'airfryer': 'https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=500&h=500&fit=crop',
+    'webcam': 'https://images.unsplash.com/photo-1598122045060-5c505c02e15f?w=500&h=500&fit=crop',
+    'smartwatch': 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=500&fit=crop',
+    'mouse': 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=500&h=500&fit=crop',
+    'teclado': 'https://images.unsplash.com/photo-1587829191301-dc798b83add3?w=500&h=500&fit=crop',
+    'monitor': 'https://images.unsplash.com/photo-1559056199-641a0ac8b8d5?w=500&h=500&fit=crop',
+    'headphone': 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500&h=500&fit=crop'
   };
   
   const keywordLower = keyword.toLowerCase();
@@ -200,8 +228,8 @@ function gerarImagemPlaceholder(keyword) {
     }
   }
   
-  // Fallback genérico
-  return `https://via.placeholder.com/400x300?text=${encodeURIComponent(keyword)}&bg=0D1B4A&txtcolor=D4AF37`;
+  // Fallback genérico com imagem de produto
+  return 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop';
 }
 
 // 3. BUSCAR AVALIAÇÕES
