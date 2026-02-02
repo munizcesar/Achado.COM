@@ -115,10 +115,12 @@ app.post('/api/produto', async (req, res) => {
 
 // Função para gerar produto mock quando API não está disponível
 function gerarProdutoMock(url) {
-  const titulo = extrairTituloDeUrl(url) || 'Produto Premium Mercado Livre';
+  const { titulo, palavra_chave } = extrairTituloDeUrl(url);
+  const imagem = gerarImagemPlaceholder(palavra_chave);
   
   return {
-    titulo: titulo,
+    titulo: titulo || 'Produto Premium Mercado Livre',
+    imagem: imagem,
     preco: Math.random() * 1000 + 100,
     precoOriginal: Math.random() * 1500 + 200,
     desconto: Math.floor(Math.random() * 40) + 10,
@@ -135,11 +137,63 @@ function extrairTituloDeUrl(url) {
   try {
     const urlObj = new URL(url);
     const path = urlObj.pathname;
-    const titulo = path.split('/').pop();
-    return titulo ? decodeURIComponent(titulo).replace(/-/g, ' ') : null;
+    
+    // O padrão da URL do ML é: /nome-do-produto/p/PRODUCT_ID
+    // Extrair a parte "nome-do-produto"
+    const partes = path.split('/').filter(p => p);
+    
+    // Procurar a primeira parte que não é 'p' e não começa com 'MLA'
+    for (let i = 0; i < partes.length; i++) {
+      const parte = partes[i];
+      if (parte !== 'p' && !parte.startsWith('MLA')) {
+        const titulo = decodeURIComponent(parte).replace(/-/g, ' ');
+        // Capitalizar primeira letra de cada palavra
+        const tituloFormatado = titulo
+          .split(' ')
+          .map(palavra => palavra.charAt(0).toUpperCase() + palavra.slice(1).toLowerCase())
+          .join(' ');
+        
+        return {
+          titulo: tituloFormatado,
+          palavra_chave: parte.split('-')[0]
+        };
+      }
+    }
+    
+    return {
+      titulo: null,
+      palavra_chave: 'produto'
+    };
   } catch (e) {
-    return null;
+    return {
+      titulo: null,
+      palavra_chave: 'produto'
+    };
   }
+}
+
+function gerarImagemPlaceholder(keyword) {
+  // Usar um serviço que gera imagens baseado em palavras-chave
+  // Fallback para imagens genéricas do Mercado Livre
+  const queries = {
+    'motorola': 'https://via.placeholder.com/400x300?text=Motorola&bg=0D1B4A&txtcolor=D4AF37',
+    'iphone': 'https://via.placeholder.com/400x300?text=iPhone&bg=0D1B4A&txtcolor=D4AF37',
+    'samsung': 'https://via.placeholder.com/400x300?text=Samsung&bg=0D1B4A&txtcolor=D4AF37',
+    'fone': 'https://via.placeholder.com/400x300?text=Fone&bg=0D1B4A&txtcolor=D4AF37',
+    'tv': 'https://via.placeholder.com/400x300?text=TV&bg=0D1B4A&txtcolor=D4AF37',
+    'notebook': 'https://via.placeholder.com/400x300?text=Notebook&bg=0D1B4A&txtcolor=D4AF37',
+    'smartphone': 'https://via.placeholder.com/400x300?text=Smartphone&bg=0D1B4A&txtcolor=D4AF37'
+  };
+  
+  const keywordLower = keyword.toLowerCase();
+  for (const [key, value] of Object.entries(queries)) {
+    if (keywordLower.includes(key)) {
+      return value;
+    }
+  }
+  
+  // Fallback genérico
+  return `https://via.placeholder.com/400x300?text=${encodeURIComponent(keyword)}&bg=0D1B4A&txtcolor=D4AF37`;
 }
 
 // 3. BUSCAR AVALIAÇÕES

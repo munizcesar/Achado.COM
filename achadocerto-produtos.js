@@ -460,11 +460,17 @@ class AchadoCertoProdutos {
         const produtoId = this.extrairProdutoId(url);
         const paginaAtual = window.location.pathname.split('/').pop() || 'desconhecida';
         
+        const imagemUrl = produto.imagem || 'https://via.placeholder.com/400x300?text=Produto&bg=0D1B4A&txtcolor=D4AF37';
+        
         return `
             <div class="produto-widget">
                 <div class="produto-header">
                     <div class="produto-icon">🎯</div>
                     <div class="produto-badge">${badgeColor} ${badge}</div>
+                </div>
+                
+                <div class="produto-imagem">
+                    <img src="${imagemUrl}" alt="${this.sanitizeHTML(produto.titulo)}" style="width: 100%; height: auto; border-radius: 8px; object-fit: cover;">
                 </div>
                 
                 <div class="produto-info">
