@@ -18,9 +18,9 @@ class AchadoCertoProdutos {
     }
 
     // Inicializar sistema
-    init() {
+    async init() {
         this.criarEstilos();
-        this.verificarApiStatus();
+        await this.verificarApiStatus();  // Aguardar verificação
         this.processar();
         console.log('🚀 Sistema AchadoCerto iniciado | API:', this.apiUrl);
     }
@@ -33,10 +33,10 @@ class AchadoCertoProdutos {
                 timeout: 3000
             });
             this.apiStatus = response.ok ? 'online' : 'offline';
-            if (this.debug) console.log('API Status:', this.apiStatus);
+            console.log('🔍 API Health Check:', this.apiStatus, 'Status Code:', response.status);
         } catch (error) {
             this.apiStatus = 'offline';
-            if (this.debug) console.log('API offline:', error.message);
+            console.log('🔴 API Error:', error.message);
         }
     }
 
@@ -347,6 +347,7 @@ class AchadoCertoProdutos {
         try {
             // Se API online, tentar buscar dados reais
             if (this.apiStatus === 'online') {
+                console.log('📡 Buscando produto:', url);
                 const response = await fetch(`${this.apiUrl}/api/produto`, {
                     method: 'POST',
                     headers: {
@@ -356,8 +357,11 @@ class AchadoCertoProdutos {
                     timeout: 8000
                 });
 
+                console.log('📍 Resposta API:', response.status, response.ok);
+                
                 if (response.ok) {
                     const result = await response.json();
+                    console.log('✅ Dados recebidos:', result.produto.titulo);
                     
                     if (result.sucesso && result.produto) {
                         // Cachear resultado
@@ -366,13 +370,14 @@ class AchadoCertoProdutos {
                             timestamp: Date.now()
                         });
                         
-                        if (this.debug) console.log('✅ Dados do produto carregados:', result.produto);
                         return result.produto;
                     }
                 }
+            } else {
+                console.log('⚠️ API offline, usando fallback');
             }
         } catch (error) {
-            if (this.debug) console.log('⚠️ Erro ao buscar produto:', error.message);
+            console.log('🔴 Erro ao buscar produto:', error.message);
         }
 
         // Fallback: dados estáticos
