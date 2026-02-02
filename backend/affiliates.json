@@ -1,0 +1,108 @@
+{
+  "config": {
+    "mercadolivre": {
+      "ativo": true,
+      "tipo": "referencia",
+      "documentacao": "Mercado Livre - Use seu código de referência"
+    }
+  },
+  "produtos": {
+    "motorola-moto-e14": {
+      "titulo": "Motorola Moto E14",
+      "categoria": "tech",
+      "ml_url": "https://www.mercadolivre.com.br/motorola-moto-e14-64gb-preto-prismatico/p/MLB32154234",
+      "afiliado_url": "🔴 COLE SEU LINK DE AFILIADO AQUI 🔴",
+      "ativo": true,
+      "cliques": 0,
+      "criado_em": "2026-02-01"
+    },
+    "samsung-galaxy-a15": {
+      "titulo": "Samsung Galaxy A15",
+      "categoria": "tech",
+      "ml_url": "https://www.mercadolivre.com.br/samsung-galaxy-a15-5g-128gb/p/MLB39012345",
+      "afiliado_url": "🔴 COLE SEU LINK DE AFILIADO AQUI 🔴",
+      "ativo": true,
+      "cliques": 0,
+      "criado_em": "2026-02-01"
+    },
+    "jbl-wave-buds-2": {
+      "titulo": "JBL Wave Buds 2",
+      "categoria": "tech",
+      "ml_url": "https://www.mercadolivre.com.br/jbl-wave-buds-2/p/MLB32789456",
+      "afiliado_url": "🔴 COLE SEU LINK DE AFILIADO AQUI 🔴",
+      "ativo": true,
+      "cliques": 0,
+      "criado_em": "2026-02-01"
+    },
+    "cafeteira-italiana-inox": {
+      "titulo": "Cafeteira Italiana Inox",
+      "categoria": "lar",
+      "ml_url": "https://www.mercadolivre.com.br/cafeteira-italiana-inox/p/MLB31234567",
+      "afiliado_url": "🔴 COLE SEU LINK DE AFILIADO AQUI 🔴",
+      "ativo": true,
+      "cliques": 0,
+      "criado_em": "2026-02-01"
+    },
+    "whey-pro-max-titanium": {
+      "titulo": "Whey Pro Max Titanium",
+      "categoria": "saude",
+      "ml_url": "https://www.mercadolivre.com.br/whey-pro-max-titanium/p/MLB30987654",
+      "afiliado_url": "🔴 COLE SEU LINK DE AFILIADO AQUI 🔴",
+      "ativo": true,
+      "cliques": 0,
+      "criado_em": "2026-02-01"
+    },
+    "colagen-ii-bionatus": {
+      "titulo": "Colágeno II Bionatus",
+      "categoria": "saude",
+      "ml_url": "https://www.mercadolivre.com.br/colagen-ii-bionatus/p/MLB31357924",
+      "afiliado_url": "🔴 COLE SEU LINK DE AFILIADO AQUI 🔴",
+      "ativo": true,
+      "cliques": 0,
+      "criado_em": "2026-02-01"
+    },
+    "creatina-soldiers-500g": {
+      "titulo": "Creatina Soldiers 500g",
+      "categoria": "saude",
+      "ml_url": "https://www.mercadolivre.com.br/creatina-soldiers-500g/p/MLB30654321",
+      "afiliado_url": "🔴 COLE SEU LINK DE AFILIADO AQUI 🔴",
+      "ativo": true,
+      "cliques": 0,
+      "criado_em": "2026-02-01"
+    },
+    "legging-fitness-selene": {
+      "titulo": "Legging Fitness Zero Transparência Selene",
+      "categoria": "estilo",
+      "ml_url": "https://www.mercadolivre.com.br/legging-fitness-selene/p/MLB31234890",
+      "afiliado_url": "🔴 COLE SEU LINK DE AFILIADO AQUI 🔴",
+      "ativo": true,
+      "cliques": 0,
+      "criado_em": "2026-02-01"
+    },
+    "tv-55-polegadas-2026": {
+      "titulo": "Melhor TV 55 Polegadas 2026",
+      "categoria": "tech",
+      "ml_url": "https://www.mercadolivre.com.br/tv-55-polegadas/p/MLB32456789",
+      "afiliado_url": "🔴 COLE SEU LINK DE AFILIADO AQUI 🔴",
+      "ativo": true,
+      "cliques": 0,
+      "criado_em": "2026-02-01"
+    }
+  },
+  "cliques_por_pagina": {
+    "documentacao": "Rastreia quantos cliques cada página gerou",
+    "exemplo": {
+      "blog/jbl-wave-buds-2.html": {
+        "produto": "jbl-wave-buds-2",
+        "cliques": 150,
+        "ultima_atualizacao": "2026-02-01T19:30:00Z"
+      }
+    }
+  },
+  "instrucoes": {
+    "1_como_adicionar_link": "Substitua 🔴 COLE SEU LINK DE AFILIADO AQUI 🔴 pelo URL real com seu código de referência",
+    "2_formato_url": "https://www.mercadolivre.com.br/seu-produto/p/CODIGOPRODUTO?ref=SEU_CODIGO_AFILIADO",
+    "3_rastreamento": "Cada clique em 'Comprar' registra automaticamente qual página gerou",
+    "4_acessar_stats": "GET /api/afiliados/stats - Ver cliques totais e por página"
+  }
+}
