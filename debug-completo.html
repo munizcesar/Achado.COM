@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Completo - AchadoCerto</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0D1B4A;
+            color: #C5CAD3;
+            font-family: monospace;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #D4AF37; margin: 20px 0; }
+        .section { background: rgba(21, 27, 74, 0.8); padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 3px solid #D4AF37; }
+        .log { background: #000; padding: 15px; border-radius: 4px; color: #0f0; font-size: 12px; max-height: 300px; overflow-y: auto; margin: 10px 0; }
+        button { background: #D4AF37; color: #0D1B4A; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; margin: 5px; }
+        button:hover { background: #F4C10F; }
+        .success { color: #0f0; }
+        .error { color: #f00; }
+        .warning { color: #ff0; }
+        img { max-width: 300px; border-radius: 8px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Debug Completo - Sistema de Produtos</h1>
+        
+        <div class="section">
+            <h2>1. Verificacoes Iniciais</h2>
+            <div class="log" id="initLog">Aguardando...</div>
+            <button onclick="verificarInicial()">Verificar Agora</button>
+        </div>
+        
+        <div class="section">
+            <h2>2. Teste de API</h2>
+            <div class="log" id="apiLog">Aguardando...</div>
+            <button onclick="testarAPI()">Testar API</button>
+        </div>
+        
+        <div class="section">
+            <h2>3. Renderizacao do Produto</h2>
+            <div class="log" id="renderLog">Aguardando...</div>
+            <button onclick="renderizarProduto()">Renderizar</button>
+        </div>
+        
+        <div class="section">
+            <h2>4. Widget do Produto</h2>
+            <div id="widget" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px;"></div>
+        </div>
+    </div>
+
+    <script>
+        function log(containerId, msg, type = 'info') {
+            const container = document.getElementById(containerId);
+            const color = type === 'success' ? '#0f0' : type === 'error' ? '#f00' : '#ff0';
+            const time = new Date().toLocaleTimeString();
+            const line = document.createElement('div');
+            line.style.color = color;
+            line.textContent = `[${time}] ${msg}`;
+            container.appendChild(line);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        async function verificarInicial() {
+            const l = 'initLog';
+            document.getElementById(l).innerHTML = '';
+            
+            log(l, '1. Verificando window.location...', 'info');
+            log(l, `   hostname: ${window.location.hostname}`, 'success');
+            log(l, `   port: ${window.location.port}`, 'success');
+            
+            log(l, '2. Verificando se AchadoCertoProdutos foi carregado...', 'info');
+            if (typeof AchadoCertoProdutos === 'undefined') {
+                log(l, '   AchadoCertoProdutos: NAO DEFINIDO - Script nao carregou!', 'error');
+            } else {
+                log(l, '   AchadoCertoProdutos: Carregado OK', 'success');
+            }
+            
+            log(l, '3. Verificando window.achadoCerto...', 'info');
+            if (!window.achadoCerto) {
+                log(l, '   window.achadoCerto: NAO INICIALIZADO', 'warning');
+                log(l, '   Tentando inicializar manualmente...', 'warning');
+                try {
+                    window.achadoCerto = new AchadoCertoProdutos();
+                    log(l, '   Inicializacao manual OK', 'success');
+                } catch (e) {
+                    log(l, `   ERRO na inicializacao: ${e.message}`, 'error');
+                }
+            } else {
+                log(l, '   window.achadoCerto: Inicializado OK', 'success');
+                log(l, `   apiUrl: ${window.achadoCerto.apiUrl}`, 'success');
+                log(l, `   apiStatus: ${window.achadoCerto.apiStatus}`, 'success');
+            }
+        }
+
+        async function testarAPI() {
+            const l = 'apiLog';
+            document.getElementById(l).innerHTML = '';
+            
+            log(l, 'Testando conexao com API...', 'info');
+            
+            try {
+                log(l, 'GET /api/health...', 'info');
+                const resp1 = await fetch('http://localhost:3001/api/health');
+                log(l, `   Status: ${resp1.status}`, 'success');
+                const health = await resp1.json();
+                log(l, `   Response: ${JSON.stringify(health)}`, 'success');
+            } catch (e) {
+                log(l, `   ERRO: ${e.message}`, 'error');
+            }
+            
+            try {
+                log(l, 'POST /api/produto...', 'info');
+                const resp2 = await fetch('http://localhost:3001/api/produto', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url: 'https://mercadolivre.com/sec/2gY23Vh' })
+                });
+                log(l, `   Status: ${resp2.status}`, 'success');
+                const data = await resp2.json();
+                log(l, `   Titulo: ${data.produto?.titulo || 'N/A'}`, 'success');
+                log(l, `   Preco: R$ ${data.produto?.preco?.toFixed(2) || 'N/A'}`, 'success');
+                log(l, `   Tem imagem: ${!!data.produto?.imagem}`, 'success');
+            } catch (e) {
+                log(l, `   ERRO: ${e.message}`, 'error');
+            }
+        }
+
+        async function renderizarProduto() {
+            const l = 'renderLog';
+            document.getElementById(l).innerHTML = '';
+            
+            const widget = document.getElementById('widget');
+            
+            try {
+                log(l, 'Buscando dados do produto...', 'info');
+                const resp = await fetch('http://localhost:3001/api/produto', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url: 'https://mercadolivre.com/sec/2gY23Vh' })
+                });
+                
+                if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+                log(l, 'Dados recebidos OK', 'success');
+                
+                const data = await resp.json();
+                const prod = data.produto;
+                
+                log(l, `Renderizando widget para: ${prod.titulo}`, 'info');
+                
+                widget.innerHTML = `
+                    <h3 style="color: #D4AF37; margin-bottom: 15px;">${prod.titulo}</h3>
+                    <img src="${prod.imagem}" alt="${prod.titulo}" style="width: 100%; max-width: 400px;">
+                    <div style="margin-top: 15px;">
+                        <div style="color: #D4AF37; font-size: 24px; font-weight: bold;">R$ ${prod.preco.toFixed(2)}</div>
+                        <div style="color: #C5CAD3; margin-top: 10px;">
+                            <div>Avaliacao: ${prod.avaliacao} estrelas</div>
+                            <div>Vendidos: ${prod.vendidos}</div>
+                            <div>Estoque: ${prod.estoque}</div>
+                        </div>
+                        <a href="${prod.link}" target="_blank" style="display: inline-block; margin-top: 15px; background: #D4AF37; color: #0D1B4A; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;">Comprar</a>
+                    </div>
+                `;
+                
+                log(l, 'Widget renderizado com sucesso!', 'success');
+                
+            } catch (e) {
+                log(l, `ERRO: ${e.message}`, 'error');
+                widget.innerHTML = `<div style="color: #f00;">Erro: ${e.message}</div>`;
+            }
+        }
+
+        // Auto-executar ao carregar
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                verificarInicial();
+                testarAPI();
+                renderizarProduto();
+            }, 500);
+        });
+    </script>
+</body>
+</html>
