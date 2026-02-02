@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Produtos - AchadoCerto</title>
+    <style>
+        body {
+            background: #0D1B4A;
+            color: #fff;
+            font-family: Inter, sans-serif;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 { color: #D4AF37; }
+        .log { background: #1a2847; padding: 20px; border-radius: 8px; margin: 10px 0; font-family: monospace; }
+        .success { color: #00ff00; }
+        .error { color: #ff4444; }
+        button { 
+            background: #D4AF37; 
+            color: #0D1B4A; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+            margin: 10px 5px 10px 0;
+        }
+        button:hover { background: #f5d547; }
+        #widget { margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h1>Debug - Sistema de Produtos</h1>
+    
+    <div class="log">
+        <button onclick="testarHealth()">1. Testar API Health</button>
+        <button onclick="testarProduto()">2. Testar Busca Produto</button>
+        <button onclick="iniciarSistema()">3. Iniciar Sistema</button>
+        <button onclick="limparLog()">Limpar Log</button>
+    </div>
+    
+    <div id="log" class="log">Aguardando testes...</div>
+    
+    <div id="widget">
+        <!-- Widget será inserido aqui -->
+    </div>
+
+    <script src="achadocerto-produtos.js"></script>
+    
+    <script>
+        function addLog(msg, type = 'info') {
+            const log = document.getElementById('log');
+            const color = type === 'success' ? 'green' : type === 'error' ? 'red' : 'white';
+            const time = new Date().toLocaleTimeString();
+            log.innerHTML += `<div style="color: ${color};">[${time}] ${msg}</div>`;
+            log.scrollTop = log.scrollHeight;
+        }
+
+        function limparLog() {
+            document.getElementById('log').innerHTML = 'Log limpo';
+        }
+
+        async function testarHealth() {
+            try {
+                addLog('Testando /api/health...', 'info');
+                const resp = await fetch('http://localhost:3001/api/health');
+                const data = await resp.json();
+                addLog(`Health OK: ${JSON.stringify(data)}`, 'success');
+            } catch (e) {
+                addLog(`Health ERRO: ${e.message}`, 'error');
+            }
+        }
+
+        async function testarProduto() {
+            try {
+                addLog('Testando /api/produto...', 'info');
+                const resp = await fetch('http://localhost:3001/api/produto', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        url: 'https://www.mercadolivre.com.br/motorola-moto-e14-64gb-cinza-grafite/p/MLA33017055'
+                    })
+                });
+                
+                const data = await resp.json();
+                const prod = data.produto;
+                addLog(`Produto OK: ${prod.titulo}`, 'success');
+                addLog(`  - Preco: R$ ${prod.preco.toFixed(2)}`, 'success');
+                addLog(`  - Imagem: ${prod.imagem.substring(0, 50)}...`, 'success');
+                
+                return prod;
+            } catch (e) {
+                addLog(`Produto ERRO: ${e.message}`, 'error');
+            }
+        }
+
+        async function iniciarSistema() {
+            try {
+                addLog('Inicializando sistema AchadoCertoProdutos...', 'info');
+                
+                const widget = document.getElementById('widget');
+                widget.innerHTML = '<div data-produto-url="https://www.mercadolivre.com.br/motorola-moto-e14-64gb-cinza-grafite/p/MLA33017055" data-produto-titulo="Motorola Moto E14"></div>';
+                
+                addLog('Widget HTML adicionado ao DOM', 'success');
+                
+                // Pequeno delay para o DOM atualizar
+                await new Promise(r => setTimeout(r, 100));
+                
+                // Agora inicializar
+                window.achadoCerto = new AchadoCertoProdutos();
+                addLog('Sistema inicializado com sucesso!', 'success');
+                
+            } catch (e) {
+                addLog(`Sistema ERRO: ${e.message}`, 'error');
+                console.error(e);
+            }
+        }
+
+        // Teste automático ao carregar
+        window.addEventListener('load', function() {
+            addLog('Página carregada', 'success');
+            addLog('Clique nos botões acima para testar', 'info');
+        });
+    </script>
+</body>
+</html>
