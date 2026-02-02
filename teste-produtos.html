@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Produtos - AchadoCerto</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: #0D1B4A;
+            color: #C5CAD3;
+            font-family: 'Inter', sans-serif;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #D4AF37;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .input-area {
+            background: rgba(21, 27, 74, 0.8);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            margin-bottom: 40px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #D4AF37;
+            font-weight: 600;
+        }
+        
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-family: monospace;
+            margin-bottom: 15px;
+        }
+        
+        input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: #D4AF37;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        button {
+            background: linear-gradient(135deg, #D4AF37, #F4C10F);
+            color: #0D1B4A;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 215, 0, 0.4);
+        }
+        
+        .examples {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 3px solid #D4AF37;
+        }
+        
+        .examples h3 {
+            color: #D4AF37;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .example-list {
+            list-style: none;
+        }
+        
+        .example-list li {
+            padding: 8px 0;
+            font-size: 13px;
+            cursor: pointer;
+            color: #C5CAD3;
+        }
+        
+        .example-list li:hover {
+            color: #D4AF37;
+        }
+        
+        .example-list code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        #widget {
+            margin-top: 50px;
+        }
+        
+        .info {
+            background: rgba(0, 255, 100, 0.1);
+            border: 1px solid rgba(0, 255, 100, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            color: #00ff64;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Teste de Produtos - AchadoCerto</h1>
+        
+        <div class="info">
+            Cole uma URL de produto do Mercado Livre (completa ou curta) e clique em "Testar"
+        </div>
+        
+        <div class="input-area">
+            <label for="urlInput">URL do Produto:</label>
+            <input type="text" id="urlInput" placeholder="Ex: https://www.mercadolivre.com.br/..." value="https://mercadolivre.com/sec/2gY23Vh">
+            
+            <button onclick="testarProduto()">Testar URL</button>
+            <button onclick="limparWidget()">Limpar</button>
+            
+            <div class="examples">
+                <h3>Exemplos:</h3>
+                <ul class="example-list">
+                    <li onclick="usarExemplo('https://www.mercadolivre.com.br/motorola-moto-e14-64gb-cinza-grafite/p/MLA33017055')">
+                        Motorola Moto E14 (URL completa)
+                    </li>
+                    <li onclick="usarExemplo('https://mercadolivre.com/sec/2gY23Vh')">
+                        URL Curta (sec/...)
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="widget">
+            <!-- Widget será renderizado aqui -->
+        </div>
+    </div>
+
+    <script src="achadocerto-produtos.js" defer></script>
+    
+    <script>
+        function usarExemplo(url) {
+            document.getElementById('urlInput').value = url;
+            setTimeout(testarProduto, 100);
+        }
+
+        async function testarProduto() {
+            const url = document.getElementById('urlInput').value.trim();
+            
+            if (!url) {
+                alert('Por favor, insira uma URL');
+                return;
+            }
+            
+            const widget = document.getElementById('widget');
+            widget.innerHTML = '<div style="text-align: center; padding: 40px; color: #D4AF37;">Carregando...</div>';
+            
+            try {
+                const resp = await fetch('http://localhost:3001/api/produto', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url })
+                });
+                
+                if (resp.ok) {
+                    const data = await resp.json();
+                    const prod = data.produto;
+                    
+                    // Renderizar widget
+                    widget.innerHTML = `
+                        <div style="background: linear-gradient(135deg, rgba(21, 27, 74, 0.9), rgba(30, 40, 90, 0.9)); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 16px; padding: 30px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);">
+                            <div style="display: grid; grid-template-columns: 300px 1fr; gap: 30px; align-items: start;">
+                                <div>
+                                    <img src="${prod.imagem}" alt="${prod.titulo}" style="width: 100%; border-radius: 8px; object-fit: cover; height: 300px;">
+                                </div>
+                                <div>
+                                    <h2 style="color: #C5CAD3; margin-bottom: 15px; font-size: 24px;">${prod.titulo}</h2>
+                                    <div style="color: #D4AF37; font-size: 32px; font-weight: 600; margin: 15px 0;">
+                                        R$ ${prod.preco.toFixed(2)}
+                                        ${prod.precoOriginal ? `<span style="font-size: 18px; color: #888; text-decoration: line-through; margin-left: 10px;">R$ ${prod.precoOriginal.toFixed(2)}</span>` : ''}
+                                    </div>
+                                    ${prod.desconto > 0 ? `<div style="color: #00ff64; font-weight: 600;">-${prod.desconto}% de desconto</div>` : ''}
+                                    
+                                    <div style="margin: 20px 0; color: #C5CAD3; font-size: 14px;">
+                                        <div>⭐ ${prod.avaliacao} estrelas (${prod.vendidos} vendidos)</div>
+                                        <div>✓ ${prod.condicao === 'novo' ? 'Novo' : 'Usado'}</div>
+                                        <div>📦 ${prod.estoque} em estoque</div>
+                                    </div>
+                                    
+                                    <a href="${prod.link}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #D4AF37, #F4C10F); color: #0D1B4A; padding: 14px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 20px;">
+                                        Comprar no Mercado Livre
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    widget.innerHTML = `<div style="color: #ff6b6b; padding: 20px;">Erro ao buscar produto: ${resp.status}</div>`;
+                }
+            } catch (e) {
+                widget.innerHTML = `<div style="color: #ff6b6b; padding: 20px;">Erro: ${e.message}</div>`;
+            }
+        }
+
+        function limparWidget() {
+            document.getElementById('widget').innerHTML = '';
+            document.getElementById('urlInput').value = '';
+            document.getElementById('urlInput').focus();
+        }
+
+        // Carregar exemplo ao iniciar
+        window.addEventListener('load', function() {
+            setTimeout(testarProduto, 500);
+        });
+    </script>
+</body>
+</html>
