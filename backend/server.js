@@ -10,9 +10,17 @@ const Comparativo = require('./comparativo');
 
 // Integração com Groq API para IA
 const Groq = require('groq-sdk');
-const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY
-});
+let groq;
+
+// Inicializar Groq com tratamento de erro
+if (process.env.GROQ_API_KEY) {
+  groq = new Groq({
+    apiKey: process.env.GROQ_API_KEY
+  });
+  console.log('✅ Groq IA inicializado com sucesso');
+} else {
+  console.warn('⚠️ Aviso: GROQ_API_KEY não foi encontrada no .env');
+}
 
 // Inicializar Express
 const app = express();
@@ -71,14 +79,30 @@ app.post('/api/produto', async (req, res) => {
     }
 
     console.log('📥 Requisição: GET /api/produto');
-    const dados = await mlAPI.buscarProduto(url);
-    const produto = mlAPI.formatarProduto(dados);
+    
+    try {
+      const dados = await mlAPI.buscarProduto(url);
+      const produto = mlAPI.formatarProduto(dados);
 
-    res.json({
-      sucesso: true,
-      produto: produto,
-      dadosBrutos: dados
-    });
+      res.json({
+        sucesso: true,
+        produto: produto,
+        dadosBrutos: dados
+      });
+    } catch (apiError) {
+      // Se API RapidAPI falhar, retornar dados mock/fallback
+      console.warn('⚠️ API RapidAPI indisponível, usando fallback');
+      
+      // Gerar dados mock realistas baseado na URL
+      const mockProduto = gerarProdutoMock(url);
+      
+      res.json({
+        sucesso: true,
+        produto: mockProduto,
+        source: 'fallback',
+        mensagem: 'Dados genéricos - API indisponível'
+      });
+    }
 
   } catch (error) {
     console.error('❌ Erro:', error);
@@ -88,6 +112,35 @@ app.post('/api/produto', async (req, res) => {
     });
   }
 });
+
+// Função para gerar produto mock quando API não está disponível
+function gerarProdutoMock(url) {
+  const titulo = extrairTituloDeUrl(url) || 'Produto Premium Mercado Livre';
+  
+  return {
+    titulo: titulo,
+    preco: Math.random() * 1000 + 100,
+    precoOriginal: Math.random() * 1500 + 200,
+    desconto: Math.floor(Math.random() * 40) + 10,
+    avaliacao: (Math.random() * 1 + 4).toFixed(1),
+    vendidos: Math.floor(Math.random() * 5000) + 100,
+    vendedor: 'Vendedor Verificado',
+    condicao: 'novo',
+    estoque: Math.floor(Math.random() * 50) + 5,
+    link: url
+  };
+}
+
+function extrairTituloDeUrl(url) {
+  try {
+    const urlObj = new URL(url);
+    const path = urlObj.pathname;
+    const titulo = path.split('/').pop();
+    return titulo ? decodeURIComponent(titulo).replace(/-/g, ' ') : null;
+  } catch (e) {
+    return null;
+  }
+}
 
 // 3. BUSCAR AVALIAÇÕES
 app.post('/api/avaliacoes', async (req, res) => {
@@ -600,6 +653,12 @@ INSTRUÇÕES:
 
 RESPONDA APENAS COM O CONTEÚDO DO POST, SEM MARKDOWN, SEM HASHTAGS, SEM "---", SEM TÍTULOS ADICIONAIS.`;
 
+    // Validar se Groq está inicializado
+    if (!groq) {
+      console.warn('⚠️ Groq não está inicializado, usando fallback');
+      return gerarConteudoPostFallback(produto);
+    }
+
     const message = await groq.messages.create({
       model: process.env.GROQ_MODEL || "mixtral-8x7b-32768",
       max_tokens: 1024,
@@ -749,13 +808,18 @@ app.use((err, req, res, next) => {
 // ============ INICIAR SERVIDOR ============
 
 app.listen(PORT, () => {
+  const apiKeyDisplay = process.env.RAPIDAPI_KEY 
+    ? process.env.RAPIDAPI_KEY.substring(0, 10) + '...' 
+    : 'Não configurado';
+  const hostDisplay = process.env.RAPIDAPI_HOST || 'Não configurado';
+  
   console.log(`
 ╔════════════════════════════════════════════╗
 ║   🚀 ACHADOCERTO BACKEND INICIADO        ║
 ╠════════════════════════════════════════════╣
 ║ 🌐 Server: http://localhost:${PORT}          ║
-║ 🔑 API Key: ${process.env.RAPIDAPI_KEY.substring(0, 10)}...  ║
-║ 📡 Host: ${process.env.RAPIDAPI_HOST}        ║
+║ 🔑 API Key: ${apiKeyDisplay}  ║
+║ 📡 Host: ${hostDisplay}        ║
 ╚════════════════════════════════════════════╝
 
 📍 Endpoints Principais:
