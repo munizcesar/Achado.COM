@@ -5,11 +5,12 @@
 
 class AchadoCertoProdutos {
     constructor() {
-        const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        this.apiUrl = isDev ? 'http://localhost:3001' : window.location.origin;
+        // Sempre usa localhost:3001 para o backend, independente do contexto
+        this.apiUrl = 'http://localhost:3001';
         this.apiStatus = 'online';
         
         console.log('🚀 Sistema AchadoCerto Simplificado iniciado');
+        console.log('📡 Conectando ao backend em:', this.apiUrl);
         this.criarEstilos();
         this.processar();
     }
