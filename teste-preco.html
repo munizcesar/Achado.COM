@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste Preço</title>
+    <style>
+        body { font-family: Arial; background: #0d1b4a; color: #fff; padding: 20px; }
+        .resultado { background: #1a2f6a; padding: 20px; border-radius: 8px; margin: 10px 0; }
+        pre { background: #000; padding: 10px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Teste de Preço - Backend API</h1>
+    
+    <div id="resultado" class="resultado">
+        <p>Carregando...</p>
+    </div>
+
+    <script>
+        async function testar() {
+            const res = document.getElementById('resultado');
+            try {
+                const response = await fetch('http://localhost:3001/api/post-aleatorio');
+                const json = await response.json();
+                
+                console.log('Resposta JSON:', json);
+                
+                res.innerHTML = `
+                    <h3>Resposta do Servidor:</h3>
+                    <pre>${JSON.stringify(json, null, 2)}</pre>
+                    
+                    <h3>Dados Extraídos:</h3>
+                    <ul>
+                        <li>Título: ${json.titulo}</li>
+                        <li>Preço: R$ ${json.preco}</li>
+                        <li>Preço Original: R$ ${json.precoOriginal}</li>
+                        <li>Desconto: ${json.desconto}%</li>
+                        <li>Link: ${json.link}</li>
+                        <li>Imagem: ${json.imagem}</li>
+                    </ul>
+                `;
+            } catch (err) {
+                res.innerHTML = `<p style="color: red;">Erro: ${err.message}</p>`;
+            }
+        }
+
+        testar();
+    </script>
+</body>
+</html>

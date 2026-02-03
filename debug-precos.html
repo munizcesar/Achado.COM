@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Debug - Preços</title>
+    <style>
+        body { font-family: Arial; background: #0d1b4a; color: #fff; padding: 20px; }
+        .teste { background: #1a2f6a; padding: 20px; margin: 20px 0; border-radius: 8px; }
+        pre { background: #000; padding: 10px; overflow-x: auto; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <h1>Debug Preços - Post Aleatório</h1>
+    <button onclick="testar()">Testar Endpoint</button>
+    <div id="resultado"></div>
+
+    <script>
+        async function testar() {
+            const res = document.getElementById('resultado');
+            res.innerHTML = '<p>Carregando...</p>';
+            
+            try {
+                // 1. Buscar post aleatório
+                const postResp = await fetch('http://localhost:3001/api/post-aleatorio');
+                const post = await postResp.json();
+                
+                // 2. Testar /api/produto com o link
+                let produtoData = null;
+                try {
+                    const produtoResp = await fetch('http://localhost:3001/api/produto', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ url: post.link })
+                    });
+                    produtoData = await produtoResp.json();
+                } catch (e) {
+                    console.error('Erro ao buscar /api/produto:', e);
+                }
+
+                res.innerHTML = `
+                    <div class="teste">
+                        <h2>📦 Post Aleatório Retornado:</h2>
+                        <pre>${JSON.stringify(post, null, 2)}</pre>
+                    </div>
+
+                    <div class="teste">
+                        <h2>💰 Resposta de /api/produto:</h2>
+                        <pre>${produtoData ? JSON.stringify(produtoData, null, 2) : 'Erro ou sem resposta'}</pre>
+                    </div>
+
+                    <div class="teste">
+                        <h2>🔍 Análise:</h2>
+                        <ul>
+                            <li>Post Preco: <strong>${post.preco}</strong></li>
+                            <li>Post Link: <strong>${post.link}</strong></li>
+                            <li>Post Arquivo: <strong>${post.arquivo}</strong></li>
+                            <li>Produto Preco: <strong>${produtoData?.produto?.preco || 'N/A'}</strong></li>
+                        </ul>
+                    </div>
+                `;
+            } catch (err) {
+                res.innerHTML = `<div class="teste" style="color: red;"><p>Erro: ${err.message}</p></div>`;
+            }
+        }
+
+        testar();
+    </script>
+</body>
+</html>

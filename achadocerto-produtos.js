@@ -13,6 +13,7 @@ class AchadoCertoProdutos {
         this.cacheTime = 30 * 60 * 1000; // 30 minutos
         this.debug = localStorage.getItem('DEBUG_ACHADOCERTO') === 'true';
         this.apiStatus = 'unknown';
+        this.produtoLinks = new Map(); // Mapa para armazenar links dos produtos
         
         this.init();
     }
@@ -315,45 +316,53 @@ class AchadoCertoProdutos {
 
     // Criar widget do produto
     async criarWidget(container, url, titulo) {
+        console.log('🎨 Criando widget para URL:', url);
         // Mostrar loading
         container.innerHTML = this.getLoadingHTML(titulo);
 
         try {
             // Buscar dados do produto
             const dados = await this.buscarProduto(url);
+            console.log('📦 Dados recebidos:', dados);
             
             if (dados) {
+                console.log('✅ Renderizando HTML com dados...');
                 container.innerHTML = this.getProdutoHTML(dados, url);
             } else {
+                console.log('⚠️ Sem dados, usando fallback...');
                 container.innerHTML = this.getFallbackHTML(titulo, url);
             }
         } catch (error) {
-            console.error('Erro ao buscar produto:', error);
+            console.error('❌ Erro ao buscar produto:', error);
             container.innerHTML = this.getFallbackHTML(titulo, url);
         }
     }
 
     // Buscar dados do produto (com cache e fallback)
     async buscarProduto(url) {
+        // Expandir link encurtado se necessário
+        const urlExpandida = await this.expandirLinkEncurtado(url);
+        const urlFinal = urlExpandida || url;
+
         // Verificar cache
-        const cacheKey = url;
+        const cacheKey = urlFinal;
         const cached = this.cache.get(cacheKey);
         
         if (cached && Date.now() - cached.timestamp < this.cacheTime) {
-            if (this.debug) console.log('📦 Cache hit para:', url);
+            if (this.debug) console.log('📦 Cache hit para:', urlFinal);
             return cached.data;
         }
 
         try {
             // Se API online, tentar buscar dados reais
             if (this.apiStatus === 'online') {
-                console.log('📡 Buscando produto:', url);
+                console.log('📡 Buscando produto:', urlFinal);
                 const response = await fetch(`${this.apiUrl}/api/produto`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ url }),
+                    body: JSON.stringify({ url: urlFinal }),
                     timeout: 8000
                 });
 
@@ -364,6 +373,27 @@ class AchadoCertoProdutos {
                     console.log('✅ Dados recebidos:', result.produto.titulo);
                     
                     if (result.sucesso && result.produto) {
+                        // Detectar se é fallback do servidor (produto não relacionado à URL)
+                        // Comparamos a URL retornada: se for a mesma URL mas título diferente = fallback
+                        const urlRetornada = result.produto.link || '';
+                        const tituloRetornado = (result.produto.titulo || '').toLowerCase();
+                        
+                        // Lista de produtos genéricos do fallback do servidor
+                        const produtosFallback = ['iphone', 'samsung', 'galaxy', 'notebook', 'airfryer', 
+                                                   'webcam', 'smartwatch', 'mouse', 'teclado', 'monitor', 
+                                                   'headphone', 'tv', 'fone'];
+                        
+                        const ehFallbackServidor = produtosFallback.some(p => tituloRetornado.includes(p)) && 
+                                                   !urlFinal.toLowerCase().includes(tituloRetornado.split(' ')[0]);
+                        
+                        if (ehFallbackServidor) {
+                            console.log('⚠️ Detectado fallback do servidor, usando sistema de posts aleatórios');
+                            return await this.gerarDadosFallback(urlFinal);
+                        }
+                        
+                        // É produto real - guardar URL e usar
+                        result.produto.url = urlFinal;
+                        
                         // Cachear resultado
                         this.cache.set(cacheKey, {
                             data: result.produto,
@@ -381,36 +411,130 @@ class AchadoCertoProdutos {
         }
 
         // Fallback: dados estáticos
-        if (this.debug) console.log('📌 Usando fallback para:', url);
-        return this.gerarDadosFallback(url);
+        if (this.debug) console.log('📌 Usando fallback para:', urlFinal);
+        return await this.gerarDadosFallback(urlFinal);
     }
 
-    // Gerar dados estáticos quando API offline
-    gerarDadosFallback(url) {
-        // Extrair informações do URL para criar dados mais realistas
+    // Expandir link encurtado do Mercado Livre
+    async expandirLinkEncurtado(url) {
         try {
-            const urlObj = new URL(url);
-            const params = urlObj.pathname;
-            
-            // Padrão geral de um produto de exemplo
-            const produtos = {
-                titulo: this.extrairTituloUrl(url) || 'Produto Premium Verificado',
-                preco: 299.90,
-                precoOriginal: 399.90,
-                desconto: 25,
-                avaliacao: 4.7,
-                vendidos: 1250,
-                vendedor: 'Vendedor Verificado',
-                condicao: 'novo',
-                estoque: 15,
-                url: url,
-                imagem: 'https://via.placeholder.com/300x300?text=Produto'
-            };
-            
-            return produtos;
+            // Se não for link encurtado, retornar null (usar URL original)
+            if (!url.includes('mercadolivre.com/sec/')) {
+                return null;
+            }
+
+            if (this.debug) console.log('🔗 Expandindo link encurtado:', url);
+
+            // Usar endpoint do backend para expandir
+            try {
+                const response = await fetch(`${this.apiUrl}/api/expandir-link`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ url })
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    if (result.expandido && result.url) {
+                        console.log('✅ Link expandido pelo backend:', result.url);
+                        return result.url;
+                    }
+                }
+            } catch (backendError) {
+                console.log('⚠️ Erro ao usar backend para expandir:', backendError.message);
+            }
+
+            return null;
         } catch (error) {
+            console.log('⚠️ Erro ao expandir link:', error.message);
+            return null;
+        }
+    }
+
+    // Gerar dados estáticos quando API offline (RELEVANTES ao URL)
+    async gerarDadosFallback(url) {
+        // Primeiro, tenta buscar um post aleatório do blog
+        if (this.apiStatus === 'online') {
+            try {
+                console.log('🎲 Buscando post aleatório do blog...');
+                const response = await fetch(`${this.apiUrl}/api/post-aleatorio`);
+                
+                if (response.ok) {
+                    const post = await response.json();
+                    if (post.sucesso) {
+                        console.log('✅ Post aleatório encontrado:', post.titulo);
+                        console.log('� Preço (backend):', post.preco, 'R$ | Desconto:', post.desconto, '%');
+                        console.log('🔗 Link de afiliado:', post.link);
+                        
+                        // Usar os dados exatamente como retornou do backend
+                        return {
+                            titulo: post.titulo,
+                            preco: post.preco, 
+                            precoOriginal: post.precoOriginal,
+                            desconto: post.desconto,
+                            avaliacao: 4.7,
+                            vendidos: 1250,
+                            vendedor: 'Vendedor Verificado',
+                            condicao: 'novo',
+                            estoque: 15,
+                            url: post.link,  // Link de afiliado do post
+                            imagem: post.imagem
+                        };
+                    }
+                }
+            } catch (error) {
+                console.log('⚠️ Erro ao buscar post aleatório:', error.message);
+            }
+        }
+
+        // Fallback: gerar dados baseado no tipo de produto
+        try {
+            const titulo = this.extrairTituloUrl(url);
+            const imagem = this.gerarImagemRealista(url);
+            
+            // Gerar preço realista baseado no tipo de produto
+            const precoPorTipo = {
+                'creatina': { preco: 65, precoOriginal: 95, desconto: 31 },
+                'whey': { preco: 79, precoOriginal: 120, desconto: 34 },
+                'colageno': { preco: 45, precoOriginal: 65, desconto: 30 },
+                'arginina': { preco: 55, precoOriginal: 80, desconto: 31 },
+                'legging': { preco: 89, precoOriginal: 129, desconto: 31 },
+                'cafeteira': { preco: 199, precoOriginal: 299, desconto: 33 },
+                'tv': { preco: 1499, precoOriginal: 1999, desconto: 25 },
+                'smartphone': { preco: 999, precoOriginal: 1299, desconto: 23 },
+                'fone': { preco: 199, precoOriginal: 299, desconto: 33 },
+                'jbl': { preco: 249, precoOriginal: 399, desconto: 37 }
+            };
+
+            let precoInfo = { preco: 299.90, precoOriginal: 399.90, desconto: 25 };
+            const urlLower = this.normalizarTexto(url);
+            
+            for (const [tipo, preco] of Object.entries(precoPorTipo)) {
+                if (urlLower.includes(this.normalizarTexto(tipo))) {
+                    precoInfo = preco;
+                    break;
+                }
+            }
+            
             return {
-                titulo: 'Produto Premium',
+                titulo: titulo || 'Produto Premium Verificado',
+                preco: precoInfo.preco,
+                precoOriginal: precoInfo.precoOriginal,
+                desconto: precoInfo.desconto,
+                avaliacao: 4.7,
+                vendidos: 1250,
+                vendedor: 'Vendedor Verificado',
+                condicao: 'novo',
+                estoque: 15,
+                url: url,
+                imagem: imagem
+            };
+        } catch (error) {
+            console.error('Erro ao gerar fallback:', error);
+            return {
+                titulo: 'Produto Premium Verificado',
                 preco: 299.90,
                 precoOriginal: 399.90,
                 desconto: 25,
@@ -420,9 +544,57 @@ class AchadoCertoProdutos {
                 condicao: 'novo',
                 estoque: 15,
                 url: url,
-                imagem: 'https://via.placeholder.com/300x300?text=Produto'
+                imagem: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop'
             };
         }
+    }
+
+    // DEBUG: Log detalhado
+    logDados(dados) {
+        console.log('=== DADOS DO WIDGET ===');
+        console.log('Título:', dados.titulo);
+        console.log('Preço:', dados.preco, typeof dados.preco);
+        console.log('Preço Original:', dados.precoOriginal);
+        console.log('Desconto:', dados.desconto);
+        console.log('URL:', dados.url);
+        console.log('Imagem:', dados.imagem?.substring(0, 60));
+        console.log('========================');
+    }
+
+    // Gerar imagem realista baseada no título
+    gerarImagemRealista(url) {
+        const queries = {
+            'iphone': 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=500&h=500&fit=crop',
+            'samsung': 'https://images.unsplash.com/photo-1610945415295-d9bbf8d33b4b?w=500&h=500&fit=crop',
+            'motorola': 'https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=500&h=500&fit=crop',
+            'fone': 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop',
+            'tv': 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=500&h=500&fit=crop',
+            'notebook': 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&h=500&fit=crop',
+            'smartphone': 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=500&h=500&fit=crop',
+            'airfryer': 'https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=500&h=500&fit=crop',
+            'webcam': 'https://images.unsplash.com/photo-1598122045060-5c505c02e15f?w=500&h=500&fit=crop',
+            'smartwatch': 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=500&fit=crop',
+            'mouse': 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=500&h=500&fit=crop',
+            'teclado': 'https://images.unsplash.com/photo-1587829191301-dc798b83add3?w=500&h=500&fit=crop',
+            'monitor': 'https://images.unsplash.com/photo-1559056199-641a0ac8b8d5?w=500&h=500&fit=crop',
+            'headphone': 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500&h=500&fit=crop',
+            'cafeteira': 'https://images.unsplash.com/photo-1517668808822-9ebb02ae2a0e?w=500&h=500&fit=crop',
+            'legging': 'https://images.unsplash.com/photo-1506629082847-11d3e7789919?w=500&h=500&fit=crop',
+            'colágeno': 'https://images.unsplash.com/photo-1584308666744-24d5f400f6f0?w=500&h=500&fit=crop',
+            'creatina': 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&h=500&fit=crop',
+            'jbl': 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop',
+            'whey': 'https://images.unsplash.com/photo-1584308666744-24d5f400f6f0?w=500&h=500&fit=crop'
+        };
+        
+        const urlLower = url.toLowerCase();
+        for (const [key, value] of Object.entries(queries)) {
+            if (urlLower.includes(key)) {
+                return value;
+            }
+        }
+        
+        // Fallback genérico com imagem de produto
+        return 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop';
     }
 
     // Extrair título do URL
@@ -454,6 +626,9 @@ class AchadoCertoProdutos {
 
     // HTML do produto com dados
     getProdutoHTML(produto, url) {
+        // Log detalhado dos dados recebidos
+        this.logDados(produto);
+        
         const precoFormatado = produto.preco.toFixed(2).replace('.', ',');
         const precoOriginalFormatado = produto.precoOriginal ? 
             produto.precoOriginal.toFixed(2).replace('.', ',') : null;
@@ -464,6 +639,14 @@ class AchadoCertoProdutos {
         // Extrair ID do produto para buscar link de afiliado
         const produtoId = this.extrairProdutoId(url);
         const paginaAtual = window.location.pathname.split('/').pop() || 'desconhecida';
+        
+        // Usar o link do produto se tiver (post aleatório), senão usa a URL original
+        const linkProduto = produto.url || url;
+        
+        console.log('📌 Link do produto:', linkProduto);
+        
+        // Codificar o link em base64 para passar no onclick
+        const linkBase64 = btoa(encodeURIComponent(linkProduto));
         
         const imagemUrl = produto.imagem || 'https://via.placeholder.com/400x300?text=Produto&bg=0D1B4A&txtcolor=D4AF37';
         
@@ -512,7 +695,7 @@ class AchadoCertoProdutos {
                     </div>
                     
                     <div class="produto-acoes">
-                        <button onclick="window.achadoCerto.abrirLinkAfiliado('${produtoId}', '${paginaAtual}')" class="btn-produto">
+                        <button onclick="window.achadoCerto.abrirLink('${linkBase64}')" class="btn-produto">
                             <i class="fas fa-shopping-cart"></i>
                             Comprar no ML
                         </button>
@@ -522,6 +705,18 @@ class AchadoCertoProdutos {
         `;
     }
 
+    // Abrir link decodificado
+    abrirLink(linkBase64) {
+        try {
+            const link = decodeURIComponent(atob(linkBase64));
+            console.log('🔗 Abrindo link:', link);
+            window.open(link, '_blank');
+        } catch (error) {
+            console.error('❌ Erro ao abrir link:', error);
+            window.open('https://www.mercadolivre.com.br/', '_blank');
+        }
+    }
+
     // Sanitizar HTML para evitar XSS
     sanitizeHTML(text) {
         const div = document.createElement('div');
@@ -529,47 +724,54 @@ class AchadoCertoProdutos {
         return div.innerHTML;
     }
 
+    normalizarTexto(texto) {
+        return (texto || '')
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '');
+    }
+
     // Extrair ID do produto da URL
     extrairProdutoId(url) {
         try {
-            const parts = url.split('/').filter(p => p);
-            // Pega o último segmento (nome do produto) e remove números finais (código ML)
-            const ultimoParte = parts[parts.length - 1];
-            const id = ultimoParte.split('-').slice(0, -1).join('-') || ultimoParte;
-            return id.toLowerCase().replace(/[^a-z0-9-]/g, '');
+            // URL: https://www.mercadolivre.com.br/motorola-moto-e14-64gb-preto-prismatico/p/MLB32154234
+            // Extrai: motorola-moto-e14-64gb-preto-prismatico
+            const match = url.match(/mercadolivre\.com\.br\/([^\/]+?)(?:\/p\/|$)/);
+            if (match && match[1]) {
+                let nomeProduto = match[1].toLowerCase();
+                // Remove quantidade (ex: -64gb, -128gb, etc)
+                nomeProduto = nomeProduto.replace(/-\d+(?:gb|ml|g|l)$/i, '');
+                // Remove cores e materiais comuns (ex: -preto, -inox, etc)
+                nomeProduto = nomeProduto.replace(/-(preto|branco|prata|cinza|rosa|vermelho|azul|inox|aço|material).*$/i, '');
+                // Remove espaços e caracteres especiais
+                nomeProduto = nomeProduto.replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-').replace(/^-|-$/g, '');
+                return nomeProduto;
+            }
+            return 'produto-desconhecido';
         } catch (error) {
+            console.error('Erro ao extrair ID do produto:', error);
             return 'produto-desconhecido';
         }
     }
 
     // Abrir link de afiliado e registrar clique
-    async abrirLinkAfiliado(produtoId, pagina) {
+    async abrirLinkAfiliado(widgetId, pagina) {
         try {
-            if (this.apiStatus !== 'online') {
-                // Se offline, abre URL direto do Mercado Livre
-                if (this.debug) console.log('⚠️ API offline - abrindo link direto');
-                window.open('https://www.mercadolivre.com.br/', '_blank');
+            console.log('🔗 Abrindo link do widget:', widgetId);
+            
+            // Primeiro verifica se tem link armazenado
+            const linkArmazenado = this.produtoLinks.get(widgetId);
+            if (linkArmazenado) {
+                console.log('🔗 Usando link armazenado:', linkArmazenado);
+                window.open(linkArmazenado, '_blank');
                 return;
             }
-
-            // Buscar link de afiliado no backend
-            const response = await fetch(
-                `${this.apiUrl}/api/afiliado/${produtoId}?pagina=${encodeURIComponent(pagina)}`
-            );
-
-            if (response.ok) {
-                const result = await response.json();
-                if (this.debug) console.log('✅ Clique registrado:', result);
-                
-                // Abrir link de afiliado
-                window.open(result.url, '_blank');
-            } else {
-                // Fallback: abrir Mercado Livre
-                if (this.debug) console.log('⚠️ Produto não encontrado em afiliados');
-                window.open('https://www.mercadolivre.com.br/', '_blank');
-            }
+            
+            console.log('⚠️ Link não encontrado, abrindo Mercado Livre');
+            window.open('https://www.mercadolivre.com.br/', '_blank');
+            
         } catch (error) {
-            console.error('Erro ao abrir link:', error);
+            console.error('❌ Erro ao abrir link:', error);
             // Fallback: abrir Mercado Livre
             window.open('https://www.mercadolivre.com.br/', '_blank');
         }

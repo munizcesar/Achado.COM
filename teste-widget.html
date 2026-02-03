@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste Widget Completo</title>
+    <link rel="stylesheet" href="http://localhost:3001/style.css">
+</head>
+<body style="background: #0d1b4a; color: #fff; padding: 20px;">
+    <h1>Teste: Widget com Post Aleatório (Preço Real)</h1>
+    
+    <!-- Container para o widget -->
+    <div id="widget-container" data-produto-url="https://mercadolivre.com/sec/1swHtUC"></div>
+
+    <!-- Script da classe -->
+    <script src="http://localhost:3001/achadocerto-produtos.js"></script>
+
+    <script>
+        console.log('🔍 Iniciando teste...');
+        
+        // Aguardar um pouco para a classe ser definida
+        setTimeout(() => {
+            if (window.AchadoCertoProdutos) {
+                console.log('✅ Classe carregada');
+                // A classe já deve ter sido inicializada via script
+            } else {
+                console.warn('⚠️ Classe não foi carregada');
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

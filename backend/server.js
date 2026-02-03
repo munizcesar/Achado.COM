@@ -47,8 +47,31 @@ app.use(cors({
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
-// Servir arquivos estáticos (html)
-app.use(express.static(path.join(__dirname)));
+// Servir arquivos estáticos (html) - da pasta PAI (raiz do projeto)
+app.use(express.static(path.join(__dirname, '..')));
+
+// Utilitário para validar links do Mercado Livre antes de exibir ao usuário
+async function validarLinkMercadoLivre(url) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 5000);
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      redirect: 'follow',
+      signal: controller.signal,
+      headers: {
+        'User-Agent': 'AchadoCertoBot/1.0'
+      }
+    });
+    clearTimeout(timeout);
+    const valido = response.status >= 200 && response.status < 400;
+    return { valido, status: response.status };
+  } catch (error) {
+    clearTimeout(timeout);
+    console.warn(`⚠️ Erro ao validar link (${url}):`, error.message);
+    return { valido: false, erro: error.message };
+  }
+}
 
 // Inicializar API do Mercado Livre
 const mlAPI = new MercadoLivreAPI(
@@ -65,6 +88,394 @@ app.get('/api/health', (req, res) => {
     timestamp: new Date().toISOString(),
     version: '1.0.0'
   });
+});
+
+// 1.1. BUSCAR PRODUTOS ALEATÓRIOS COM LINK DE AFILIADO
+app.get('/api/produtos-ml-aleatorios', async (req, res) => {
+  try {
+    // Termos populares para buscar
+    const termosPopulares = [
+      'smartphones',
+      'fones',
+      'smartwatch',
+      'notebooks',
+      'tvs',
+      'cafeteiras',
+      'produtos em destaque',
+      'eletrônicos',
+      'moda',
+      'casa e jardim',
+      'esportes',
+      'beleza',
+      'games',
+      'acessórios'
+    ];
+
+    // Selecionar termo aleatório
+    const termo = termosPopulares[Math.floor(Math.random() * termosPopulares.length)];
+    
+    console.log(`🔍 Buscando produtos aleatórios para: ${termo}`);
+
+    // Buscar produtos via API
+    let resultadoBusca;
+    let produtos = [];
+    
+    try {
+      resultadoBusca = await mlAPI.buscarPorTermo(termo);
+      
+      console.log('📦 Resultado bruto da busca:', JSON.stringify(resultadoBusca).substring(0, 200));
+      
+      // Tentar extrair produtos da resposta
+      if (resultadoBusca && typeof resultadoBusca === 'object') {
+        produtos = resultadoBusca.listings || resultadoBusca.results || resultadoBusca.data || [];
+        // Se for um array diretamente
+        if (Array.isArray(resultadoBusca)) {
+          produtos = resultadoBusca;
+        }
+      }
+      
+      console.log(`✅ Encontrados ${produtos.length} produtos via API`);
+    } catch (apiError) {
+      console.error('⚠️ API retornou erro:', apiError.message);
+      // Não retornar erro ainda, usar fallback
+    }
+
+    // Se a API falhar, usar produtos de fallback
+    if (!produtos || produtos.length === 0) {
+      console.log('📦 Usando produtos de fallback...');
+      produtos = [
+        {
+          id: '1',
+          titulo: 'iPhone 15 Pro 256GB',
+          imagem: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400',
+          url: 'https://www.mercadolivre.com.br/iphone-15-pro-256gb/p/MLB',
+          preco: 4990
+        },
+        {
+          id: '2',
+          titulo: 'Samsung Galaxy S24 Ultra',
+          imagem: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400',
+          url: 'https://www.mercadolivre.com.br/samsung-galaxy-s24-ultra/p/MLB',
+          preco: 5500
+        },
+        {
+          id: '3',
+          titulo: 'Fone Wireless Sony WH-1000XM5',
+          imagem: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400',
+          url: 'https://www.mercadolivre.com.br/fone-sony-wh-1000xm5/p/MLB',
+          preco: 1299
+        },
+        {
+          id: '4',
+          titulo: 'Apple Watch Series 9',
+          imagem: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400',
+          url: 'https://www.mercadolivre.com.br/apple-watch-series-9/p/MLB',
+          preco: 2499
+        },
+        {
+          id: '5',
+          titulo: 'Notebook ASUS VivoBook 15',
+          imagem: 'https://images.unsplash.com/photo-1588405748450-7e77df1a3af5?w=400',
+          url: 'https://www.mercadolivre.com.br/notebook-asus-vivobook/p/MLB',
+          preco: 2899
+        },
+        {
+          id: '6',
+          titulo: 'Smart TV Samsung 55"',
+          imagem: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400',
+          url: 'https://www.mercadolivre.com.br/smart-tv-samsung-55/p/MLB',
+          preco: 1699
+        }
+      ];
+      console.log(`✅ Usando ${produtos.length} produtos de fallback`);
+    }
+
+    // Código de afiliado do usuário
+    const codigoAfiliado = 'muc1576372';
+    const urlAfiliado = `https://www.mercadolivre.com.br/social/${codigoAfiliado}`;
+
+    // Processar produtos e adicionar link de afiliado
+    const produtosProcessados = produtos.slice(0, 10).map(produto => {
+      // Adicionar código de afiliado ao link
+      let linkComAfiliado = produto.url || '';
+      
+      // Se o produto tem URL, adicionar o código de afiliado como parâmetro
+      if (linkComAfiliado) {
+        const separator = linkComAfiliado.includes('?') ? '&' : '?';
+        linkComAfiliado = `${linkComAfiliado}${separator}affiliateCode=${codigoAfiliado}`;
+      } else {
+        // Fallback: usar link geral de afiliado
+        linkComAfiliado = urlAfiliado;
+      }
+
+      return {
+        id: produto.id,
+        titulo: produto.titulo || produto.title,
+        imagem: produto.imagem || produto.image || produto.thumbnail,
+        link: linkComAfiliado,
+        linkAfiliado: urlAfiliado,
+        preco: produto.preco || null,
+        descricao: produto.descricao || '',
+        vendedor: produto.vendedor || ''
+      };
+    });
+
+    res.json({
+      sucesso: true,
+      termo: termo,
+      total: produtosProcessados.length,
+      produtos: produtosProcessados,
+      codigoAfiliado: codigoAfiliado
+    });
+
+  } catch (error) {
+    console.error('❌ Erro ao buscar produtos aleatórios:', error);
+    res.status(500).json({
+      sucesso: false,
+      erro: error.message,
+      produtos: []
+    });
+  }
+});
+
+// 1.2. BUSCAR POST ALEATÓRIO DOS BLOGS (para fallback inteligente)
+app.get('/api/post-aleatorio', async (req, res) => {
+  try {
+    const blogPath = path.join(__dirname, '..', 'blog');
+    
+    // Verificar se pasta existe
+    if (!fs.existsSync(blogPath)) {
+      return res.status(404).json({
+        erro: 'Pasta blog não encontrada',
+        sucesso: false
+      });
+    }
+
+    // Ler todos os arquivos HTML da pasta blog
+    const arquivos = fs.readdirSync(blogPath).filter(file => file.endsWith('.html'));
+
+    if (arquivos.length === 0) {
+      return res.status(404).json({
+        erro: 'Nenhum post encontrado',
+        sucesso: false
+      });
+    }
+
+    // Embaralhar lista de arquivos para evitar sempre o mesmo
+    const arquivosAleatorios = [...arquivos];
+    for (let i = arquivosAleatorios.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arquivosAleatorios[i], arquivosAleatorios[j]] = [arquivosAleatorios[j], arquivosAleatorios[i]];
+    }
+
+    for (const arquivoAleatorio of arquivosAleatorios) {
+      const caminhoCompleto = path.join(blogPath, arquivoAleatorio);
+      const conteudoHTML = fs.readFileSync(caminhoCompleto, 'utf8');
+
+      // Extrair dados do HTML
+      const tituloMatch = conteudoHTML.match(/<title>(.*?)<\/title>/i);
+      const imagemMatch = conteudoHTML.match(/<meta property="og:image" content="(.*?)"\s*\/>/i) || 
+                          conteudoHTML.match(/<img[^>]+src="([^"]+)"[^>]*>/i);
+      const descricaoMatch = conteudoHTML.match(/<meta name="description" content="(.*?)"\/>/i) ||
+                             conteudoHTML.match(/<meta property="og:description" content="(.*?)"\/>/i);
+
+      let titulo = tituloMatch ? tituloMatch[1].replace(' | Achado VIP', '').replace(' — ', ' - ').trim() : arquivoAleatorio.replace('.html', '').replace(/-/g, ' ');
+      
+      // Limitar título a 60 caracteres
+      if (titulo.length > 60) {
+        titulo = titulo.substring(0, 60) + '...';
+      }
+      
+      let imagem = imagemMatch ? imagemMatch[1] : 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop';
+      
+      // Converter caminho relativo para URL absoluta
+      if (imagem.startsWith('../')) {
+        imagem = 'http://localhost:3001/' + imagem.replace('../', '');
+      } else if (!imagem.startsWith('http')) {
+        imagem = 'http://localhost:3001/' + imagem;
+      }
+      
+      const descricao = descricaoMatch ? descricaoMatch[1] : 'Achado Premium Verificado';
+
+      // Extrair link de afiliado
+      // Prioridade 1: Link curto (sec) dentro de href
+      let linkMatch = conteudoHTML.match(/href=["'](https?:\/\/(?:www\.)?mercadolivre\.com(?:\.br)?\/sec\/[^"']+)['"]/i);
+      
+      // Prioridade 2: Qualquer link do ML em href
+      if (!linkMatch) {
+        linkMatch = conteudoHTML.match(/href=["'](https?:\/\/(?:www\.)?mercadolivre\.com(?:\.br)?[^"']+)['"]/i);
+      }
+      
+      // Prioridade 3: Link no JSON-LD (schema markup)
+      if (!linkMatch) {
+        linkMatch = conteudoHTML.match(/"url":\s*"(https?:\/\/(?:www\.)?mercadolivre\.com(?:\.br)?\/sec\/[^"]+)"/i);
+      }
+
+      const link = linkMatch ? linkMatch[1] : null;
+
+      if (!link) {
+        console.warn(`⚠️ Post ${arquivoAleatorio} não possui link de afiliado.`);
+        continue;
+      }
+
+      const validacaoLink = await validarLinkMercadoLivre(link);
+      if (!validacaoLink.valido) {
+        console.warn(`⚠️ Link inválido (${validacaoLink.status || validacaoLink.erro}): ${link}`);
+        continue;
+      }
+
+      console.log(`✅ Post aleatório selecionado: ${titulo} | Link OK (${validacaoLink.status})`);
+
+      // Expandir link encurtado se necessário
+      let linkExpandido = link;
+      if (link.includes('/sec/')) {
+        try {
+          console.log(`🔗 Expandindo link encurtado: ${link}`);
+          const expandResponse = await fetch('http://localhost:3001/api/expandir-link', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url: link }),
+            timeout: 5000
+          });
+          
+          if (expandResponse.ok) {
+            const expandData = await expandResponse.json();
+            if (expandData.url) {
+              linkExpandido = expandData.url;
+              console.log(`✅ Link expandido: ${linkExpandido}`);
+            }
+          }
+        } catch (err) {
+          console.warn(`⚠️ Erro ao expandir link:`, err.message);
+        }
+      }
+
+      // Buscar preço REAL do Mercado Livre
+      let precoInfo = { preco: 0, precoOriginal: 0, desconto: 0 };
+      try {
+        console.log(`💰 Buscando preço real do ML para: ${linkExpandido}`);
+        const produtoResponse = await fetch('http://localhost:3001/api/produto', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url: linkExpandido }),
+          timeout: 5000
+        });
+
+        if (produtoResponse.ok) {
+          const produtoData = await produtoResponse.json();
+          if (produtoData.sucesso && produtoData.produto) {
+            precoInfo = {
+              preco: produtoData.produto.preco || 0,
+              precoOriginal: produtoData.produto.precoOriginal || 0,
+              desconto: produtoData.produto.desconto || 0
+            };
+            console.log(`✅ Preço encontrado: R$ ${precoInfo.preco}`);
+          }
+        }
+      } catch (err) {
+        console.warn(`⚠️ Erro ao buscar preço do ML:`, err.message);
+      }
+
+      // Se não conseguiu preço real, usar fallback básico
+      if (!precoInfo.preco) {
+        precoInfo = { preco: 199.90, precoOriginal: 299.90, desconto: 33 };
+        console.log(`⚠️ Usando preço fallback: R$ ${precoInfo.preco}`);
+      }
+
+      return res.json({
+        sucesso: true,
+        titulo: titulo,
+        descricao: descricao,
+        imagem: imagem,
+        link: link,
+        arquivo: arquivoAleatorio,
+        url: `http://localhost:3001/blog/${arquivoAleatorio}`,
+        preco: precoInfo.preco,
+        precoOriginal: precoInfo.precoOriginal,
+        desconto: precoInfo.desconto
+      });
+    }
+
+    return res.status(502).json({
+      sucesso: false,
+      erro: 'Nenhum link válido encontrado nos posts',
+      detalhe: 'Todos os links testados retornaram erro ou inexistente'
+    });
+
+  } catch (error) {
+    console.error('❌ Erro ao buscar post aleatório:', error);
+    res.status(500).json({
+      erro: error.message,
+      sucesso: false
+    });
+  }
+});
+
+// 1.5. EXPANDIR LINK ENCURTADO (para evitar CORS no navegador)
+app.post('/api/expandir-link', async (req, res) => {
+  try {
+    const { url } = req.body;
+
+    if (!url) {
+      return res.status(400).json({
+        erro: 'URL é obrigatória',
+        expandido: false
+      });
+    }
+
+    console.log('🔗 Expandindo link:', url);
+
+    // Se não for link encurtado, retornar direto
+    if (!url.includes('mercadolivre.com/sec/')) {
+      return res.json({
+        url: url,
+        expandido: false,
+        razao: 'Não é link encurtado'
+      });
+    }
+
+    try {
+      // Tentar expandir seguindo redirects
+      let response;
+      try {
+        response = await fetch(url, {
+          method: 'HEAD',
+          redirect: 'follow',
+          timeout: 5000
+        });
+      } catch (headError) {
+        // Se HEAD falhar, tentar GET
+        response = await fetch(url, {
+          method: 'GET',
+          redirect: 'follow',
+          timeout: 5000
+        });
+      }
+
+      const urlExpandida = response.url;
+      console.log('✅ Link expandido:', urlExpandida);
+      
+      res.json({
+        url: urlExpandida,
+        expandido: true,
+        original: url
+      });
+    } catch (error) {
+      console.log('⚠️ Erro ao expandir:', error.message);
+      res.json({
+        url: url,
+        expandido: false,
+        erro: error.message
+      });
+    }
+
+  } catch (error) {
+    console.error('❌ Erro no endpoint expandir-link:', error);
+    res.status(500).json({
+      erro: error.message,
+      expandido: false
+    });
+  }
 });
 
 // 2. BUSCAR PRODUTO POR URL
@@ -113,11 +524,125 @@ app.post('/api/produto', async (req, res) => {
   }
 });
 
-// Função para gerar produto mock quando API não está disponível
+// NOVO: 1.5 EXPANDIR LINK ENCURTADO
+app.post('/api/expandir-link', async (req, res) => {
+  try {
+    const { url } = req.body;
+
+    if (!url) {
+      return res.status(400).json({
+        erro: 'URL é obrigatória'
+      });
+    }
+
+    console.log('🔗 Expandindo link:', url);
+
+    // Se não for encurtado, retorna o mesmo
+    if (!url.includes('mercadolivre.com/sec/')) {
+      return res.json({
+        sucesso: true,
+        urlOriginal: url,
+        urlExpandida: url,
+        expandido: false,
+        mensagem: 'Link não é encurtado'
+      });
+    }
+
+    // Tentar expandir o link
+    try {
+      const httpsAgent = new (require('https')).Agent({
+        rejectUnauthorized: false
+      });
+
+      const response = await fetch(url, {
+        method: 'GET',
+        redirect: 'follow',
+        timeout: 8000,
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        }
+      });
+
+      const urlExpandida = response.url || url;
+      
+      console.log('✅ Link expandido:', urlExpandida);
+
+      res.json({
+        sucesso: true,
+        urlOriginal: url,
+        urlExpandida: urlExpandida,
+        expandido: urlExpandida !== url,
+        mensagem: 'Link expandido com sucesso'
+      });
+    } catch (fetchError) {
+      console.warn('⚠️ Erro ao expandir:', fetchError.message);
+      
+      res.json({
+        sucesso: true,
+        urlOriginal: url,
+        urlExpandida: url,
+        expandido: false,
+        mensagem: 'Não foi possível expandir, usando URL original',
+        erro: fetchError.message
+      });
+    }
+
+  } catch (error) {
+    console.error('❌ Erro ao expandir link:', error);
+    res.status(500).json({
+      erro: error.message,
+      sucesso: false
+    });
+  }
+});
+
+// 2. BUSCAR AVALIAÇÕES
+app.post('/api/produto', async (req, res) => {
+  try {
+    const { url } = req.body;
+
+    if (!url) {
+      return res.status(400).json({
+        erro: 'URL do produto é obrigatória'
+      });
+    }
+
+    console.log('📥 Requisição: GET /api/produto');
+    
+    try {
+      const dados = await mlAPI.buscarProduto(url);
+      const produto = mlAPI.formatarProduto(dados);
+
+      res.json({
+        sucesso: true,
+        produto: produto,
+        dadosBrutos: dados
+      });
+    } catch (apiError) {
+      // Se API RapidAPI falhar, retornar dados mock/fallback
+      console.warn('⚠️ API RapidAPI indisponível, usando fallback');
+      
+      // Gerar dados mock realistas baseado na URL
+      const mockProduto = gerarProdutoMock(url);
+      
+      res.json({
+        sucesso: true,
+        produto: mockProduto,
+        source: 'fallback',
+        mensagem: 'Dados genéricos - API indisponível'
+      });
+    }
+
+  } catch (error) {
+    console.error('❌ Erro:', error);
+    res.status(500).json({
+      erro: error.message,
+      sucesso: false
+    });
+  }
+});
+
 function gerarProdutoMock(url) {
-  const { titulo, palavra_chave } = extrairTituloDeUrl(url);
-  const imagem = gerarImagemPlaceholder(palavra_chave);
-  
   // Produtos reais brasileiros com dados mais realistas
   const produtosReais = [
     { titulo: 'iPhone 15 Pro Max 256GB', preco: 7999, precoOriginal: 8499, desconto: 6, avaliacao: 4.8, vendidos: 2340, estoque: 12 },
@@ -137,12 +662,13 @@ function gerarProdutoMock(url) {
   // Selecionar um produto aleatório
   const produtoAleatorio = produtosReais[Math.floor(Math.random() * produtosReais.length)];
   
-  // Misturar com dados da URL se houver
+  // Extrair dados da URL
+  const { titulo, imagem } = extrairTituloDeUrl(url);
   const tituloFinal = titulo && titulo !== 'Produto' ? titulo : produtoAleatorio.titulo;
   
   return {
     titulo: tituloFinal,
-    imagem: imagem,
+    imagem: imagem || gerarImagemPlaceholder(produtoAleatorio.titulo),
     preco: produtoAleatorio.preco,
     precoOriginal: produtoAleatorio.precoOriginal,
     desconto: produtoAleatorio.desconto,
