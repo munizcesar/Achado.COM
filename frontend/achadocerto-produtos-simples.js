@@ -136,12 +136,36 @@ class AchadoCertoProdutos {
                 console.log(`✅ Widget #${idx}: Renderizando`, post.titulo);
                 container.innerHTML = this.renderizarProduto(post);
             } else {
-                container.innerHTML = '<div class="produto-loading" style="color: red;">Erro ao carregar produto</div>';
+                // Fallback: usar posts locais
+                this.usarFallbackLocal(container, idx);
             }
         }).catch(err => {
-            console.error(`❌ Widget #${idx}:`, err);
-            container.innerHTML = '<div class="produto-loading" style="color: red;">Erro: ' + err.message + '</div>';
+            console.warn(`⚠️ Widget #${idx}: Backend indisponível, usando fallback local`);
+            this.usarFallbackLocal(container, idx);
         });
+    }
+
+    usarFallbackLocal(container, idx) {
+        // Fallback usando postsData se disponível
+        if (typeof postsData !== 'undefined' && postsData.length > 0) {
+            const randomPost = postsData[Math.floor(Math.random() * postsData.length)];
+            const post = {
+                titulo: randomPost.titulo,
+                imagem: randomPost.imagem,
+                url: randomPost.link,
+                resumo: randomPost.resumo
+            };
+            console.log(`✅ Widget #${idx}: Usando fallback local:`, post.titulo);
+            container.innerHTML = this.renderizarProduto(post);
+        } else {
+            container.innerHTML = `
+                <div class="produto-widget" style="text-align: center;">
+                    <h3 style="color: #D4AF37;">🔥 Confira nossos achados!</h3>
+                    <p style="color: #C5CAD3; margin: 15px 0;">As melhores ofertas selecionadas para você</p>
+                    <a href="blog.html" class="btn-produto">📖 Ver Todos os Posts</a>
+                </div>
+            `;
+        }
     }
 
     async buscarPostAleatorio() {
