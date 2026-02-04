@@ -1,1 +1,4 @@
-/api/* https://api.seu-dominio.com/:splat 200
+# Redireciona todas as chamadas /api para o backend Vercel
+# Após fazer deploy, substitua <SUA-URL-VERCEL> pela URL que você receber
+# Exemplo: https://achadocerto-backend-xyz.vercel.app
+/api/* https://<SUA-URL-VERCEL>/:splat 200

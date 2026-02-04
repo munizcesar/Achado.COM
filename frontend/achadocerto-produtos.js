@@ -5,9 +5,8 @@
 
 class AchadoCertoProdutos {
     constructor() {
-        // Detectar ambiente
-        const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        this.apiUrl = isDev ? 'http://localhost:3001' : window.location.origin;
+        // Usar URLs relativas que funcionam em qualquer domínio
+        this.apiUrl = '';  // URLs relativas: /api/...
         
         this.cache = new Map();
         this.cacheTime = 30 * 60 * 1000; // 30 minutos

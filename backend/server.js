@@ -241,7 +241,7 @@ app.get('/api/produtos-ml-aleatorios', async (req, res) => {
 // 1.2. BUSCAR POST ALEATÓRIO DOS BLOGS (para fallback inteligente)
 app.get('/api/post-aleatorio', async (req, res) => {
   try {
-    const blogPath = path.join(__dirname, '..', 'blog');
+    const blogPath = path.join(__dirname, '..', 'frontend', 'blog');
     
     // Verificar se pasta existe
     if (!fs.existsSync(blogPath)) {
@@ -290,9 +290,9 @@ app.get('/api/post-aleatorio', async (req, res) => {
       
       // Converter caminho relativo para URL absoluta
       if (imagem.startsWith('../')) {
-        imagem = 'http://localhost:3001/' + imagem.replace('../', '');
+        imagem = '/' + imagem.replace('../', '');
       } else if (!imagem.startsWith('http')) {
-        imagem = 'http://localhost:3001/' + imagem;
+        imagem = '/' + imagem;
       }
       
       const descricao = descricaoMatch ? descricaoMatch[1] : 'Achado Premium Verificado';
@@ -326,61 +326,14 @@ app.get('/api/post-aleatorio', async (req, res) => {
 
       console.log(`✅ Post aleatório selecionado: ${titulo} | Link OK (${validacaoLink.status})`);
 
-      // Expandir link encurtado se necessário
+      // Expandir link encurtado se necessário (ou usar como está)
       let linkExpandido = link;
-      if (link.includes('/sec/')) {
-        try {
-          console.log(`🔗 Expandindo link encurtado: ${link}`);
-          const expandResponse = await fetch('http://localhost:3001/api/expandir-link', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ url: link }),
-            timeout: 5000
-          });
-          
-          if (expandResponse.ok) {
-            const expandData = await expandResponse.json();
-            if (expandData.url) {
-              linkExpandido = expandData.url;
-              console.log(`✅ Link expandido: ${linkExpandido}`);
-            }
-          }
-        } catch (err) {
-          console.warn(`⚠️ Erro ao expandir link:`, err.message);
-        }
-      }
+      // Links do Mercado Livre não precisam ser expandidos - já funcionam
+      console.log(`🔗 Link de afiliado pronto: ${linkExpandido}`);
 
-      // Buscar preço REAL do Mercado Livre
-      let precoInfo = { preco: 0, precoOriginal: 0, desconto: 0 };
-      try {
-        console.log(`💰 Buscando preço real do ML para: ${linkExpandido}`);
-        const produtoResponse = await fetch('http://localhost:3001/api/produto', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ url: linkExpandido }),
-          timeout: 5000
-        });
-
-        if (produtoResponse.ok) {
-          const produtoData = await produtoResponse.json();
-          if (produtoData.sucesso && produtoData.produto) {
-            precoInfo = {
-              preco: produtoData.produto.preco || 0,
-              precoOriginal: produtoData.produto.precoOriginal || 0,
-              desconto: produtoData.produto.desconto || 0
-            };
-            console.log(`✅ Preço encontrado: R$ ${precoInfo.preco}`);
-          }
-        }
-      } catch (err) {
-        console.warn(`⚠️ Erro ao buscar preço do ML:`, err.message);
-      }
-
-      // Se não conseguiu preço real, usar fallback básico
-      if (!precoInfo.preco) {
-        precoInfo = { preco: 199.90, precoOriginal: 299.90, desconto: 33 };
-        console.log(`⚠️ Usando preço fallback: R$ ${precoInfo.preco}`);
-      }
+      // Preço é extraído dinamicamente no frontend - usar fallback aqui
+      let precoInfo = { preco: 199.90, precoOriginal: 299.90, desconto: 33 };
+      console.log(`💰 Preço fallback: R$ ${precoInfo.preco} (será atualizado no frontend)`);
 
       return res.json({
         sucesso: true,
@@ -389,7 +342,7 @@ app.get('/api/post-aleatorio', async (req, res) => {
         imagem: imagem,
         link: link,
         arquivo: arquivoAleatorio,
-        url: `http://localhost:3001/blog/${arquivoAleatorio}`,
+        url: `/blog/${arquivoAleatorio}`,
         preco: precoInfo.preco,
         precoOriginal: precoInfo.precoOriginal,
         desconto: precoInfo.desconto
@@ -1238,10 +1191,10 @@ app.post('/api/salvar-post', (req, res) => {
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-|-$/g, '') + '.html';
 
-    const caminhoArquivo = path.join(__dirname, '..', 'blog', nomeArquivo);
+    const caminhoArquivo = path.join(__dirname, '..', 'frontend', 'blog', nomeArquivo);
 
     // Criar diretório se não existir
-    const blogDir = path.join(__dirname, '..', 'blog');
+    const blogDir = path.join(__dirname, '..', 'frontend', 'blog');
     if (!fs.existsSync(blogDir)) {
       fs.mkdirSync(blogDir, { recursive: true });
     }
@@ -1256,7 +1209,7 @@ app.post('/api/salvar-post', (req, res) => {
       mensagem: 'Post salvo com sucesso',
       arquivo: nomeArquivo,
       caminho: caminhoArquivo,
-      url: `http://localhost/AchadoCerto.VIP/blog/${nomeArquivo}`
+      url: `/blog/${nomeArquivo}`
     });
 
   } catch (error) {

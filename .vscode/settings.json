@@ -1,5 +1,6 @@
 {
     "chat.tools.terminal.autoApprove": {
-        "dir": true
+        "dir": true,
+        "Get-NetTCPConnection": true
     }
 }
