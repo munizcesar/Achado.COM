@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurar Afiliados | AchadoCerto VIP</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2f6a 0%, #0d1b4a 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #E0E0E0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+
+        .header h1 {
+            color: #D4AF37;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #B0B0B0;
+            font-size: 16px;
+        }
+
+        .card {
+            background: rgba(26, 47, 106, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .produto-card {
+            background: rgba(10, 16, 38, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .produto-card:hover {
+            border-color: #D4AF37;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .produto-nome {
+            color: #D4AF37;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .afiliado-item {
+            margin-bottom: 15px;
+        }
+
+        .afiliado-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            color: #B0B0B0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .afiliado-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .ml { background: #FFD700; color: #0d1b4a; }
+        .amz { background: #FF9900; color: white; }
+        .mag { background: #E30B5C; color: white; }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 6px;
+            color: #E0E0E0;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #D4AF37;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+        }
+
+        .botoes {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-salvar {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #0A1026;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-salvar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+        }
+
+        .btn-limpar {
+            background: rgba(255, 255, 255, 0.1);
+            color: #D4AF37;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-limpar:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .status {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+            font-weight: 600;
+        }
+
+        .status.sucesso {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            border: 1px solid rgba(76, 175, 80, 0.5);
+            display: block;
+        }
+
+        .status.erro {
+            background: rgba(244, 67, 54, 0.2);
+            color: #F44336;
+            border: 1px solid rgba(244, 67, 54, 0.5);
+            display: block;
+        }
+
+        .instrucoes {
+            background: rgba(33, 150, 243, 0.1);
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .instrucoes strong {
+            color: #2196F3;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 3px solid rgba(212, 175, 55, 0.2);
+            border-top: 3px solid #D4AF37;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="header">
+            <h1>⚙️ Configurar Afiliados</h1>
+            <p>Adicione os links dos seus afiliados para cada produto</p>
+        </div>
+
+        <div id="status" class="status"></div>
+
+        <div class="card">
+            <div class="instrucoes">
+                <strong>📌 Como usar:</strong><br>
+                Cole os links encurtados de cada afiliado para cada produto. 
+                Você pode adicionar um de cada vez ou todos de uma vez. 
+                Clique em "Salvar" para atualizar automaticamente todos os posts gerados!
+            </div>
+
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p style="margin-top: 10px;">Salvando...</p>
+            </div>
+
+            <div id="produtosContainer" class="produtos-grid"></div>
+
+            <div class="botoes">
+                <button class="btn-salvar" onclick="salvarTudo()">💾 Salvar Tudo</button>
+                <button class="btn-limpar" onclick="limparFormulario()">🗑️ Limpar</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const PRODUTOS = [
+            'motorola-moto-e14',
+            'samsung-galaxy-a15',
+            'jbl-wave-buds-2',
+            'cafeteira-italiana-inox',
+            'whey-pro-max-titanium',
+            'colagen-ii-bionatus',
+            'creatina-soldiers-500g',
+            'legging-fitness-selene',
+            'tv-55-polegadas-2026'
+        ];
+
+        const NOMES_PRODUTOS = {
+            'motorola-moto-e14': 'Motorola Moto E14',
+            'samsung-galaxy-a15': 'Samsung Galaxy A15',
+            'jbl-wave-buds-2': 'JBL Wave Buds 2',
+            'cafeteira-italiana-inox': 'Cafeteira Italiana Inox',
+            'whey-pro-max-titanium': 'Whey Pro Max Titanium',
+            'colagen-ii-bionatus': 'Colágeno II Bionatus',
+            'creatina-soldiers-500g': 'Creatina Soldiers 500g',
+            'legging-fitness-selene': 'Legging Fitness Selene',
+            'tv-55-polegadas-2026': 'Melhor TV 55 Polegadas 2026'
+        };
+
+        const AFILIADOS = [
+            { id: 'mercadolivre', nome: 'Mercado Livre', class: 'ml' },
+            { id: 'amazon', nome: 'Amazon', class: 'amz' },
+            { id: 'magalu', nome: 'Magalu', class: 'mag' }
+        ];
+
+        function renderizarProdutos() {
+            const container = document.getElementById('produtosContainer');
+            container.innerHTML = '';
+
+            PRODUTOS.forEach(produtoId => {
+                const card = document.createElement('div');
+                card.className = 'produto-card';
+                
+                let html = `<div class="produto-nome">${NOMES_PRODUTOS[produtoId]}</div>`;
+                
+                AFILIADOS.forEach(afiliadoData => {
+                    html += `
+                        <div class="afiliado-item">
+                            <label class="afiliado-label">
+                                <div class="afiliado-icon ${afiliadoData.class}">${afiliadoData.nome[0]}</div>
+                                ${afiliadoData.nome}
+                            </label>
+                            <input 
+                                type="text" 
+                                id="${produtoId}-${afiliadoData.id}"
+                                placeholder="Cole seu link encurtado aqui..."
+                            />
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = html;
+                container.appendChild(card);
+            });
+        }
+
+        async function salvarTudo() {
+            const loading = document.getElementById('loading');
+            const status = document.getElementById('status');
+            
+            loading.style.display = 'block';
+            status.style.display = 'none';
+
+            try {
+                const dados = {};
+
+                PRODUTOS.forEach(produtoId => {
+                    dados[produtoId] = {};
+                    AFILIADOS.forEach(afiliado => {
+                        const input = document.getElementById(`${produtoId}-${afiliado.id}`);
+                        const url = input.value.trim();
+                        dados[produtoId][afiliado.id] = url;
+                    });
+                });
+
+                const response = await fetch('/api/atualizar-afiliados', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(dados)
+                });
+
+                const resultado = await response.json();
+
+                loading.style.display = 'none';
+
+                if (response.ok) {
+                    status.className = 'status sucesso';
+                    status.innerHTML = `✅ ${resultado.mensagem}`;
+                } else {
+                    status.className = 'status erro';
+                    status.innerHTML = `❌ Erro: ${resultado.erro}`;
+                }
+
+                setTimeout(() => {
+                    status.style.display = 'none';
+                }, 4000);
+
+            } catch (error) {
+                loading.style.display = 'none';
+                status.className = 'status erro';
+                status.innerHTML = `❌ Erro ao salvar: ${error.message}`;
+                console.error(error);
+            }
+        }
+
+        function limparFormulario() {
+            PRODUTOS.forEach(produtoId => {
+                AFILIADOS.forEach(afiliado => {
+                    document.getElementById(`${produtoId}-${afiliado.id}`).value = '';
+                });
+            });
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', renderizarProdutos);
+    </script>
+
+</body>
+</html>

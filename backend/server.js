@@ -1107,6 +1107,61 @@ app.post('/api/afiliado/adicionar', (req, res) => {
   }
 });
 
+// ============ ATUALIZAR AFILIADOS (NOVO) ============
+// Endpoint para atualizar links de afiliados em massa
+app.post('/api/atualizar-afiliados', (req, res) => {
+  try {
+    const dados = req.body; // { "produto-id": { "mercadolivre": "url", "amazon": "url", ... }, ... }
+
+    // Atualizar cada produto com os novos URLs
+    Object.keys(dados).forEach(produtoId => {
+      if (!affiliatesData.produtos[produtoId]) {
+        affiliatesData.produtos[produtoId] = {
+          titulo: produtoId.replace(/-/g, ' ').toUpperCase(),
+          categoria: 'geral',
+          afiliados: {},
+          ativo: true,
+          cliques: 0,
+          criado_em: new Date().toISOString()
+        };
+      }
+
+      // Garantir que existe a estrutura de afiliados
+      if (!affiliatesData.produtos[produtoId].afiliados) {
+        affiliatesData.produtos[produtoId].afiliados = {};
+      }
+
+      // Atualizar cada afiliado se URL foi fornecida
+      ['mercadolivre', 'amazon', 'magalu'].forEach(afiliado => {
+        const url = dados[produtoId][afiliado];
+        if (url) {
+          affiliatesData.produtos[produtoId].afiliados[afiliado] = {
+            ativo: true,
+            url: url,
+            codigo: url // Usar a URL como código (já tem o tracking)
+          };
+        }
+      });
+    });
+
+    // Salvar em arquivo
+    fs.writeFileSync(affiliatesPath, JSON.stringify(affiliatesData, null, 2));
+
+    console.log('✅ Afiliados atualizados com sucesso');
+    res.json({
+      sucesso: true,
+      mensagem: '✅ Afiliados atualizados com sucesso! Todos os 9 produtos foram configurados.'
+    });
+
+  } catch (error) {
+    console.error('Erro ao atualizar afiliados:', error);
+    res.status(500).json({
+      sucesso: false,
+      erro: error.message
+    });
+  }
+});
+
 // ============ ROTAS DE GERAÇÃO DE POSTS COM IA ============
 
 // 11. GERAR POST COM IA
