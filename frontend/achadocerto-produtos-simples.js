@@ -75,32 +75,32 @@ class AchadoCertoProdutos {
                 background: linear-gradient(135deg, #fbd35d 0%, #f0b93d 100%);
                 border: none;
                 color: #0B1220;
-                padding: 14px 28px;
+                padding: 12px 22px;
                 border-radius: 999px;
                 font-weight: 700;
-                letter-spacing: 0.06em;
+                letter-spacing: 0.05em;
                 text-transform: uppercase;
                 cursor: pointer;
                 width: 100%;
-                font-size: 13px;
+                font-size: 12px;
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                gap: 10px;
+                gap: 8px;
                 text-align: center;
                 text-decoration: none;
-                box-shadow: 0 10px 28px rgba(240, 185, 61, 0.35);
+                box-shadow: 0 8px 22px rgba(240, 185, 61, 0.3);
             }
 
             .btn-produto::before {
                 content: attr(data-icon);
-                font-size: 15px;
+                font-size: 14px;
                 color: #0B1220;
             }
 
             .btn-produto:hover {
                 transform: translateY(-1px);
-                box-shadow: 0 16px 36px rgba(212,175,55,0.4);
+                box-shadow: 0 14px 32px rgba(212,175,55,0.35);
                 background: linear-gradient(135deg, #ffe07e, #f7c24c);
             }
 

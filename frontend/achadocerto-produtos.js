@@ -170,7 +170,7 @@ class AchadoCertoProdutos {
             .produto-acoes {
                 display: flex;
                 flex-direction: column;
-                gap: 14px;
+                gap: 12px;
                 width: 100%;
             }
 
@@ -178,11 +178,11 @@ class AchadoCertoProdutos {
                 background: linear-gradient(135deg, #fbd35d 0%, #f0b93d 100%);
                 border: none;
                 color: #0B1220;
-                padding: 14px 28px;
+                padding: 12px 22px;
                 border-radius: 999px;
                 font-weight: 700;
-                font-size: 13px;
-                letter-spacing: 0.06em;
+                font-size: 12px;
+                letter-spacing: 0.05em;
                 text-transform: uppercase;
                 cursor: pointer;
                 transition: all 0.25s ease;
@@ -191,21 +191,21 @@ class AchadoCertoProdutos {
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                gap: 10px;
-                min-width: 220px;
+                gap: 8px;
+                min-width: 190px;
                 width: 100%;
-                max-width: 320px;
-                box-shadow: 0 10px 28px rgba(240, 185, 61, 0.35);
+                max-width: 280px;
+                box-shadow: 0 8px 22px rgba(240, 185, 61, 0.3);
             }
 
             .btn-produto i {
-                font-size: 15px;
+                font-size: 14px;
                 color: #0B1220;
             }
 
             .btn-produto:hover {
                 transform: translateY(-2px);
-                box-shadow: 0 16px 36px rgba(212, 175, 55, 0.45);
+                box-shadow: 0 14px 32px rgba(212, 175, 55, 0.35);
                 background: linear-gradient(135deg, #ffe07e, #f7c24c);
             }
 
@@ -213,8 +213,8 @@ class AchadoCertoProdutos {
                 background: transparent;
                 border: 1px solid rgba(251, 211, 93, 0.7);
                 color: #F5F7FA;
-                font-size: 12px;
-                padding: 13px 26px;
+                font-size: 11px;
+                padding: 11px 22px;
                 border-radius: 999px;
                 display: inline-flex;
                 align-items: center;
@@ -222,9 +222,9 @@ class AchadoCertoProdutos {
                 gap: 8px;
                 cursor: pointer;
                 transition: all 0.25s ease;
-                min-width: 220px;
+                min-width: 190px;
                 width: 100%;
-                max-width: 320px;
+                max-width: 280px;
                 letter-spacing: 0.04em;
                 text-transform: uppercase;
             }
@@ -335,8 +335,8 @@ class AchadoCertoProdutos {
             @media (max-width: 480px) {
                 .btn-produto,
                 .btn-secundario {
-                    font-size: 12px;
-                    padding: 14px 22px;
+                    font-size: 11px;
+                    padding: 12px 20px;
                 }
             }
         `;
