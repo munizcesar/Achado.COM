@@ -171,6 +171,7 @@ class AchadoCertoProdutos {
                 display: flex;
                 flex-direction: column;
                 gap: 12px;
+                width: 100%;
             }
 
             .btn-produto {
@@ -189,7 +190,9 @@ class AchadoCertoProdutos {
                 align-items: center;
                 justify-content: center;
                 gap: 8px;
-                min-width: 180px;
+                min-width: 200px;
+                width: 100%;
+                max-width: 280px;
             }
 
             .btn-produto:hover {
@@ -199,17 +202,32 @@ class AchadoCertoProdutos {
             }
 
             .btn-secundario {
-                background: transparent;
-                border: 1px solid var(--color-border);
+                background: rgba(255, 255, 255, 0.02);
+                border: 1px dashed var(--color-border);
                 color: var(--color-text);
-                font-size: 12px;
-                padding: 8px 16px;
-                border-radius: 8px;
+                font-size: 13px;
+                padding: 12px 20px;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                min-width: 200px;
+                width: 100%;
+                max-width: 280px;
             }
 
             .btn-secundario:hover {
-                background: var(--bg-card-light);
+                background: rgba(255, 255, 255, 0.05);
                 border-color: var(--color-primary);
+                color: var(--color-primary);
+            }
+
+            .btn-secundario.copiado {
+                border-color: var(--color-success);
+                color: var(--color-success);
             }
 
             .produto-loading {
@@ -288,13 +306,27 @@ class AchadoCertoProdutos {
                     align-items: center;
                 }
 
-                .btn-produto {
+                .produto-acoes {
+                    align-items: stretch;
+                }
+
+                .btn-produto,
+                .btn-secundario {
                     width: 100%;
-                    max-width: 280px;
+                    max-width: none;
                 }
 
                 .produto-preco {
                     justify-content: center;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .btn-produto,
+                .btn-secundario {
+                    font-size: 15px;
+                    padding: 16px 20px;
+                    border-radius: 14px;
                 }
             }
         `;
@@ -698,6 +730,10 @@ class AchadoCertoProdutos {
                             <i class="fas fa-shopping-cart"></i>
                             Comprar no ML
                         </button>
+                        <button type="button" class="btn-secundario" onclick="window.achadoCerto.copiarLink('${linkBase64}', this)">
+                            <i class="fas fa-link"></i>
+                            Copiar link
+                        </button>
                     </div>
                 </div>
             </div>
@@ -714,6 +750,52 @@ class AchadoCertoProdutos {
             console.error('❌ Erro ao abrir link:', error);
             window.open('https://www.mercadolivre.com.br/', '_blank');
         }
+    }
+
+    async copiarLink(linkBase64, botao) {
+        try {
+            const link = decodeURIComponent(atob(linkBase64));
+
+            if (navigator.clipboard?.writeText) {
+                await navigator.clipboard.writeText(link);
+            } else {
+                this.copiarViaExecCommand(link);
+            }
+
+            this.exibirFeedbackCopiado(botao);
+            console.log('📋 Link copiado para a área de transferência');
+        } catch (error) {
+            console.error('❌ Erro ao copiar link:', error);
+            this.copiarViaExecCommand(linkBase64);
+        }
+    }
+
+    copiarViaExecCommand(linkOrBase64) {
+        try {
+            const link = linkOrBase64.startsWith('http') ? linkOrBase64 : decodeURIComponent(atob(linkOrBase64));
+            const tempArea = document.createElement('textarea');
+            tempArea.value = link;
+            document.body.appendChild(tempArea);
+            tempArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempArea);
+        } catch (error) {
+            console.warn('⚠️ Falha ao copiar com execCommand:', error.message);
+        }
+    }
+
+    exibirFeedbackCopiado(botao) {
+        if (!botao) return;
+
+        const textoOriginal = botao.dataset.originalText || botao.innerHTML;
+        botao.dataset.originalText = textoOriginal;
+        botao.innerHTML = '<i class="fas fa-check"></i> Copiado';
+        botao.classList.add('copiado');
+
+        setTimeout(() => {
+            botao.innerHTML = botao.dataset.originalText;
+            botao.classList.remove('copiado');
+        }, 1800);
     }
 
     // Sanitizar HTML para evitar XSS
@@ -778,6 +860,7 @@ class AchadoCertoProdutos {
 
     // HTML fallback (quando API offline)
     getFallbackHTML(titulo, url) {
+        const fallbackLinkBase64 = btoa(encodeURIComponent(url));
         return `
             <div class="produto-widget">
                 <div class="produto-header">
@@ -800,6 +883,10 @@ class AchadoCertoProdutos {
                             <i class="fas fa-external-link-alt"></i>
                             Ver no Mercado Livre
                         </a>
+                        <button type="button" class="btn-secundario" onclick="window.achadoCerto.copiarLink('${fallbackLinkBase64}', this)">
+                            <i class="fas fa-link"></i>
+                            Copiar link
+                        </button>
                     </div>
                 </div>
             </div>
