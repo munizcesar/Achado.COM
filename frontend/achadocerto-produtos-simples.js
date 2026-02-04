@@ -5,8 +5,10 @@
 
 class AchadoCertoProdutos {
     constructor() {
-        // Sempre usa localhost:3001 para o backend, independente do contexto
-        this.apiUrl = 'http://localhost:3001';
+        // Usa API em produção (Vercel) ou localhost em desenvolvimento
+        this.apiUrl = window.location.hostname === 'localhost' 
+            ? 'http://localhost:3001' 
+            : 'https://api.seu-dominio.com';
         this.apiStatus = 'online';
         
         console.log('🚀 Sistema AchadoCerto Simplificado iniciado');
