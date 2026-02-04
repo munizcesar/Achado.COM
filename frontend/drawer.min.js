@@ -40,6 +40,7 @@ class DrawerManager {
                     <a href="https://mercadolivre.com/sec/2kreXQc" target="_blank" rel="noopener noreferrer" title="Suplementos Mercado Livre" class="drawer-btn drawer-btn-mercadolivre"><i class="fas fa-flask"></i> <span>Suplementos</span></a>
                     <a href="https://www.mercadolivre.com.br/social/muc1576372" target="_blank" rel="noopener noreferrer" title="Explorar ofertas no Mercado Livre" class="drawer-btn drawer-btn-mercadolivre"><i class="fas fa-fire"></i> <span>Explorar Tudo</span></a>
                     <a href="https://mercadolivre.com/sec/2AfMec7" target="_blank" rel="noopener noreferrer" title="Creatina com melhor preço" class="drawer-btn drawer-btn-mercadolivre"><i class="fas fa-capsules"></i> <span>Creatina</span></a>
+                    <a href="https://mercadolivre.com/sec/31G3D4M" target="_blank" rel="noopener noreferrer" title="Smart TVs com ofertas especiais" class="drawer-btn drawer-btn-mercadolivre"><i class="fas fa-tv"></i> <span>Smart TV</span></a>
                 </div>
 
                 <div class="drawer-divider"></div>
