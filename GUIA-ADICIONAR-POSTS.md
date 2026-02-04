@@ -1,6 +1,8 @@
 # 📋 Guia Seguro para Adicionar Posts — AchadoCerto.VIP
 
-**Versão:** 2.1 | **Data:** 1 de fevereiro de 2026 | **Status:** Atualizado ✅
+**Versão:** 3.0 | **Data:** 4 de fevereiro de 2026 | **Status:** Atualizado ✅
+
+> **🆕 Novidade v3.0:** Campo `linkProduto` agora é obrigatório! O widget exibe dois botões: "Ler Post" e "Ver Oferta no Mercado Livre".
 
 ---
 
@@ -52,7 +54,7 @@
 
 ### 1️⃣ **Estrutura Obrigatória**
 
-Cada post **DEVE** ter exatamente estes 8 campos:
+Cada post **DEVE** ter exatamente estes 9 campos:
 
 ```javascript
 {
@@ -60,6 +62,7 @@ Cada post **DEVE** ter exatamente estes 8 campos:
   "resumo": "Seu resumo aqui",
   "imagem": "images/imagesposts/nome-da-imagem.webp",
   "link": "blog/seu-arquivo.html",
+  "linkProduto": "https://mercadolivre.com/sec/CODIGO",
   "chamada": "📖 Texto do Botão",
   "categoria": "saude",
   "keywords": "palavra1 palavra2 palavra3"
@@ -185,7 +188,27 @@ Cada post **DEVE** ter exatamente estes 8 campos:
 
 ---
 
-## 🚀 Template Pronto para Copiar
+### **8. `linkProduto` (Obrigatório - Para Widget)**
+- ✅ URL do produto no Mercado Livre com código de afiliado
+- ✅ Usar links curtos: `https://mercadolivre.com/sec/CODIGO`
+- ✅ Ou links completos: `https://www.mercadolivre.com.br/social/mucXXXXXXX`
+- ✅ Este link aparece no widget "Ver Oferta no Mercado Livre"
+- ❌ Não deixar vazio
+- ❌ Não usar links sem código de afiliado
+
+**Exemplos válidos:**
+```
+"linkProduto": "https://mercadolivre.com/sec/2mRWbw7"
+"linkProduto": "https://www.mercadolivre.com.br/social/muc1576372"
+"linkProduto": "https://mercadolivre.com/sec/2KW8RB6"
+```
+
+**Onde encontrar o código:**
+1. Acesse o painel de afiliados do Mercado Livre
+2. Gere o link para o produto
+3. Copie o link gerado (já vem com seu código)
+
+---
 
 Copie e cole este template, preenchendo apenas os valores:
 
@@ -195,6 +218,7 @@ Copie e cole este template, preenchendo apenas os valores:
   "resumo": "COLOQUE_SEU_RESUMO_AQUI",
   "imagem": "images/imagesposts/NOME-DA-IMAGEM.webp",
   "link": "blog/NOME-DO-ARQUIVO.html",
+  "linkProduto": "https://mercadolivre.com/sec/CODIGO_AFILIADO",
   "chamada": "📖 TEXTO_DO_BOTAO",
   "categoria": "saude",
   "keywords": "palavra1 palavra2 palavra3 palavra4 palavra5 palavra6 palavra7 palavra8 palavra9 palavra10"

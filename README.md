@@ -38,7 +38,7 @@ Página de divulgação de ofertas e produtos verificados de marketplaces confi�
 - ✅ Google Analytics integrado
 - ✅ Tema escuro (#0B1220) + ouro (#D4AF37)
 
-## 📊 Status (01 de Fevereiro de 2026)
+## 📊 Status (04 de Fevereiro de 2026)
 
 | Fase | Status | Descrição |
 |------|--------|-----------|
@@ -47,8 +47,17 @@ Página de divulgação de ofertas e produtos verificados de marketplaces confi�
 | 15 | ✅ Completa | POST-BOILERPLATE + Favicon |
 | 16 | ✅ Completa | Integração com API + Sistema de Afiliados |
 | 17 | ✅ Completa | Geração de Posts com **IA REAL (Groq)** ⭐ |
-| 18 | 🔴 Pendente | Admin Dashboard Completo |
-| 19 | 🔴 Pendente | Analytics & ROI Avançado |
+| 18 | ✅ Completa | **SEO Completo + Drawer + Widget Duplo** 🆕 |
+| 19 | 🔴 Pendente | Admin Dashboard Completo |
+| 20 | 🔴 Pendente | Analytics & ROI Avançado |
+
+### 🆕 Fase 18: Correções e Melhorias (04/02/2026)
+- ✅ **Drawer reorganizado:** Mercado Livre primeiro (amarelo), Magalu segundo (azul)
+- ✅ **Widget com 2 botões:** "Ler Post" + "Ver Oferta no Mercado Livre"
+- ✅ **linkProduto:** Novo campo obrigatório no posts.js com link de afiliado por produto
+- ✅ **SEO completo:** Meta tags em todas as páginas de categorias e blog
+- ✅ **Sitemap atualizado:** 11 posts indexados
+- ✅ **Posts reorganizados:** JBL Wave Buds 2 primeiro (mais recente)
 
 **🚀 NOVIDADE:** Fase 17 agora com **Groq IA Integrada!** Conteúdo original criado por IA em 2-3 segundos. Veja: [GROQ-IA-INTEGRADA.md](GROQ-IA-INTEGRADA.md)
 

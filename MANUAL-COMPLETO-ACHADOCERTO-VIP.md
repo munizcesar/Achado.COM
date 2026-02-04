@@ -16,7 +16,7 @@
 > 
 > **Por que?** Assim qualquer pessoa (ou IA) consegue entender o site, replicar, e saber exatamente o que fazer quando algo mudar.
 >
-> **Data da Última Atualização:** 1 de fevereiro de 2026 (Fase 16: Integração Frontend-Backend com APIs Dinâmicas)
+> **Data da Última Atualização:** 4 de fevereiro de 2026 (Fase 18: SEO Completo + Drawer Reorganizado + Widget Duplo)
 
 ---
 
@@ -1898,6 +1898,49 @@ Exibe widget com preço, avaliação, botão de compra
 
 ---
 
+### Fase 18: SEO Completo + Drawer + Widget Duplo ✅
+**Data:** 4 de fevereiro de 2026  
+**Status:** Concluído  
+
+**O que foi feito:**
+- **Drawer Reorganizado:**
+  - ✅ Mercado Livre agora aparece PRIMEIRO (seção amarela)
+  - ✅ Magalu em segundo (seção azul)
+  - ✅ Botões com cores legíveis (fundo branco, texto escuro)
+  - ✅ Todos os links de afiliado verificados e funcionando
+
+- **Widget com Dois Botões:**
+  - ✅ Novo campo `linkProduto` no posts.js (obrigatório)
+  - ✅ Widget exibe: "Ler Post" + "🛒 Ver Oferta no Mercado Livre"
+  - ✅ Fallback local funciona corretamente
+
+- **Posts Reorganizados:**
+  - ✅ JBL Wave Buds 2 agora é o primeiro (mais recente)
+  - ✅ 11 posts totais com linkProduto correto por produto
+  - ✅ "Último do Blog" na homepage mostra o post mais recente
+
+- **SEO Completo:**
+  - ✅ Meta tags em todas as páginas de categorias (tech, saude, lar, estilo, dicas)
+  - ✅ blog.html com canonical, og:title, keywords
+  - ✅ Sitemap atualizado com 11 posts
+
+**Arquivos afetados:**
+- `drawer.min.js` - Completamente reconstruído
+- `posts.js` - Novo campo linkProduto + reorganização
+- `achadocerto-produtos-simples.js` - Fallback com linkProduto
+- `script.js` - Usa data[0] para último post
+- `sitemap.xml` - 11 posts indexados
+- `blog.html` - SEO completo
+- `categorias/*.html` - SEO completo em 5 arquivos
+
+**Por que era crítico:**
+- Drawer com links quebrados = perda de comissões
+- Widget sem linkProduto = usuário não via oferta
+- SEO incompleto = menor rankeamento no Google
+- Posts desordenados = confusão sobre "último post"
+
+---
+
 ### Fase 14: Correção de Referências de Imagens OG ✅
 **Data:** 31 de janeiro de 2026  
 **Status:** Concluído  
@@ -1945,9 +1988,10 @@ Exibe widget com preço, avaliação, botão de compra
 
 ### Drawer com Seções Coloridas de Afiliado
 - **Decisão:** Cada marketplace com cor própria para reconhecimento
-- **Magalu → Azul (#0066CC)** - cor oficial
-- **Mercado Livre → Amarelo (#FFCC00)** - cor oficial
-- **Amazon → Laranja (#FF9900)** - cor oficial
+- **Mercado Livre → Amarelo (#FFED00)** - cor oficial, PRIMEIRO na lista
+- **Magalu → Azul (#0066FF)** - cor oficial, SEGUNDO na lista
+- **Amazon → Cinza (#232F3E)** - cor oficial
+- **Atualizado:** 4 de fevereiro de 2026 (ordem alterada, ML primeiro)
 - **Data:** 25 de janeiro de 2026
 - **Status:** ✅ Implementado
 - **Feedback:** Aumenta CTR (cliques)
