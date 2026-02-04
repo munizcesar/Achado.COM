@@ -51,6 +51,7 @@ class DrawerManager {
                     <p style="color: #000000; font-size: 12px; font-weight: 300; margin-bottom: 12px;">Parceiro Oficial - Maior Marketplace</p>
                     <p style="font-weight: 300; color: #000000;">Descubra milhões de produtos com as melhores ofertas do Mercado Livre. Envio rápido e compra protegida.</p>
                     <a href="https://www.mercadolivre.com.br/social/muc1576372" target="_blank" rel="noopener noreferrer" title="Ver ofertas no Mercado Livre" class="drawer-btn drawer-btn-mercadolivre"><i class="fas fa-shopping-cart"></i> <span>OFERTAS DO DIA</span></a>
+                    <a href="https://mercadolivre.com/sec/2AfMec7" target="_blank" rel="noopener noreferrer" title="Creatina com melhor preço" class="drawer-btn drawer-btn-mercadolivre"><i class="fas fa-capsules"></i> <span>Creatina</span></a>
                 </div>
 
                 <div class="drawer-divider"></div>
