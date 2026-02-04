@@ -95,6 +95,13 @@ class AchadoCertoProdutos {
                 margin-top: 10px;
             }
 
+            .produto-botoes {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+
             .produto-loading {
                 text-align: center;
                 padding: 20px;
@@ -152,7 +159,8 @@ class AchadoCertoProdutos {
             const post = {
                 titulo: randomPost.titulo,
                 imagem: randomPost.imagem,
-                url: randomPost.link,
+                link: randomPost.link,
+                linkProduto: randomPost.linkProduto,
                 resumo: randomPost.resumo
             };
             console.log(`✅ Widget #${idx}: Usando fallback local:`, post.titulo);
@@ -200,14 +208,14 @@ class AchadoCertoProdutos {
         const botoes = [];
 
         botoes.push(`
-            <a href="${produto.url}" target="_blank" class="btn-produto">
+            <a href="${produto.link}" target="_blank" class="btn-produto">
                 📖 Ler o Post Completo
             </a>
         `);
 
-        if (produto.link) {
+        if (produto.linkProduto) {
             botoes.push(`
-                <a href="${produto.link}" target="_blank" class="btn-produto">
+                <a href="${produto.linkProduto}" target="_blank" class="btn-produto">
                     🛒 Ver Oferta no Mercado Livre
                 </a>
             `);
@@ -221,7 +229,9 @@ class AchadoCertoProdutos {
 
                 <h3>${this.sanitize(produto.titulo)}</h3>
 
-                ${botoes.join('')}
+                <div class="produto-botoes">
+                    ${botoes.join('')}
+                </div>
             </div>
         `;
     }

@@ -179,7 +179,8 @@ function carregarPosts() {
     }
 
     if (containerHome && (fileName === 'index.html' || fileName === '')) {
-        renderizar(data.slice(0, 1), containerHome, prefix);
+        // Pega o primeiro post do array (mais recente - deve estar no topo do postsData)
+        renderizar([data[0]], containerHome, prefix);
     }
 
     if (containerBlog && (fileName === 'blog.html' || url.includes('/blog'))) {
