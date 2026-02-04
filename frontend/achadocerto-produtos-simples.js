@@ -6,9 +6,9 @@
 class AchadoCertoProdutos {
     constructor() {
         // Usa API em produção (Vercel) ou localhost em desenvolvimento
-        this.apiUrl = window.location.hostname === 'localhost' 
+        this.apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
             ? 'http://localhost:3001' 
-            : 'https://api.seu-dominio.com';
+            : 'https://api.achadocerto.vip';
         this.apiStatus = 'online';
         
         console.log('🚀 Sistema AchadoCerto Simplificado iniciado');
