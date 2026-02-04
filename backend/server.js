@@ -1329,10 +1329,25 @@ Recomendamos conferir o anúncio completo no Mercado Livre para mais detalhes e 
 
 // Gerar HTML do post
 function gerarHTMLPost(titulo, conteudo, produto, url) {
-  // Obter link de afiliado se disponível
+  // Obter link de afiliado se disponível - suporta múltiplos afiliados
   const produtoId = url.split('/')[3].split('-').slice(0, -1).join('-');
   const affiliate = affiliatesData.produtos[produtoId];
-  const linkVenda = affiliate?.afiliado_url || url;
+  
+  // Priorizar Mercado Livre, depois Amazon, depois Magalu
+  let linkVenda = url;
+  if (affiliate?.afiliados) {
+    if (affiliate.afiliados.mercadolivre?.ativo) {
+      linkVenda = affiliate.afiliados.mercadolivre.url;
+    } else if (affiliate.afiliados.amazon?.ativo) {
+      linkVenda = affiliate.afiliados.amazon.url;
+    } else if (affiliate.afiliados.magalu?.ativo) {
+      linkVenda = affiliate.afiliados.magalu.url;
+    }
+  } else if (affiliate?.afiliado_url) {
+    // Fallback para estrutura antiga
+    linkVenda = affiliate.afiliado_url;
+  }
+
 
   return `<!DOCTYPE html>
 <html lang="pt-BR">

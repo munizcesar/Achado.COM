@@ -3,15 +3,43 @@
     "mercadolivre": {
       "ativo": true,
       "tipo": "referencia",
-      "documentacao": "Mercado Livre - Use seu código de referência"
+      "documentacao": "Mercado Livre - Use seu código de referência",
+      "comissao": "5%"
+    },
+    "amazon": {
+      "ativo": true,
+      "tipo": "associate",
+      "documentacao": "Amazon Associates - Seu código de afiliado",
+      "comissao": "3-5%"
+    },
+    "magalu": {
+      "ativo": true,
+      "tipo": "afiliado",
+      "documentacao": "Magazine Luiza - Seu código de afiliado",
+      "comissao": "5-10%"
     }
   },
   "produtos": {
     "motorola-moto-e14": {
       "titulo": "Motorola Moto E14",
       "categoria": "tech",
-      "ml_url": "https://www.mercadolivre.com.br/motorola-moto-e14-64gb-preto-prismatico/p/MLB32154234",
-      "afiliado_url": "https://www.mercadolivre.com.br/motorola-moto-e14-64gb-preto-prismatico/p/MLB32154234",
+      "afiliados": {
+        "mercadolivre": {
+          "ativo": true,
+          "url": "https://www.mercadolivre.com.br/motorola-moto-e14-64gb-preto-prismatico/p/MLB32154234",
+          "codigo": "COLOQUE_SEU_CODIGO_ML_AQUI"
+        },
+        "amazon": {
+          "ativo": true,
+          "url": "https://www.amazon.com.br/s?k=motorola+moto+e14",
+          "codigo": "COLOQUE_SEU_CODIGO_AMAZON_AQUI"
+        },
+        "magalu": {
+          "ativo": true,
+          "url": "https://www.magazineluiza.com.br/busca/motorola+moto+e14/",
+          "codigo": "COLOQUE_SEU_CODIGO_MAGALU_AQUI"
+        }
+      },
       "ativo": true,
       "cliques": 0,
       "criado_em": "2026-02-01"
@@ -19,8 +47,23 @@
     "samsung-galaxy-a15": {
       "titulo": "Samsung Galaxy A15",
       "categoria": "tech",
-      "ml_url": "https://www.mercadolivre.com.br/samsung-galaxy-a15-5g-128gb/p/MLB39012345",
-      "afiliado_url": "https://www.mercadolivre.com.br/samsung-galaxy-a15-5g-128gb/p/MLB39012345",
+      "afiliados": {
+        "mercadolivre": {
+          "ativo": true,
+          "url": "https://www.mercadolivre.com.br/samsung-galaxy-a15-5g-128gb/p/MLB39012345",
+          "codigo": "COLOQUE_SEU_CODIGO_ML_AQUI"
+        },
+        "amazon": {
+          "ativo": true,
+          "url": "https://www.amazon.com.br/s?k=samsung+galaxy+a15",
+          "codigo": "COLOQUE_SEU_CODIGO_AMAZON_AQUI"
+        },
+        "magalu": {
+          "ativo": true,
+          "url": "https://www.magazineluiza.com.br/busca/samsung+galaxy+a15/",
+          "codigo": "COLOQUE_SEU_CODIGO_MAGALU_AQUI"
+        }
+      },
       "ativo": true,
       "cliques": 0,
       "criado_em": "2026-02-01"
@@ -28,8 +71,23 @@
     "jbl-wave-buds-2": {
       "titulo": "JBL Wave Buds 2",
       "categoria": "tech",
-      "ml_url": "https://www.mercadolivre.com.br/jbl-wave-buds-2/p/MLB32789456",
-      "afiliado_url": "https://www.mercadolivre.com.br/jbl-wave-buds-2/p/MLB32789456",
+      "afiliados": {
+        "mercadolivre": {
+          "ativo": true,
+          "url": "https://www.mercadolivre.com.br/jbl-wave-buds-2/p/MLB32789456",
+          "codigo": "COLOQUE_SEU_CODIGO_ML_AQUI"
+        },
+        "amazon": {
+          "ativo": true,
+          "url": "https://www.amazon.com.br/s?k=jbl+wave+buds+2",
+          "codigo": "COLOQUE_SEU_CODIGO_AMAZON_AQUI"
+        },
+        "magalu": {
+          "ativo": true,
+          "url": "https://www.magazineluiza.com.br/busca/jbl+wave+buds+2/",
+          "codigo": "COLOQUE_SEU_CODIGO_MAGALU_AQUI"
+        }
+      },
       "ativo": true,
       "cliques": 0,
       "criado_em": "2026-02-01"
@@ -37,8 +95,23 @@
     "cafeteira-italiana-inox": {
       "titulo": "Cafeteira Italiana Inox",
       "categoria": "lar",
-      "ml_url": "https://www.mercadolivre.com.br/cafeteira-italiana-inox/p/MLB31234567",
-      "afiliado_url": "https://www.mercadolivre.com.br/cafeteira-italiana-inox/p/MLB31234567",
+      "afiliados": {
+        "mercadolivre": {
+          "ativo": true,
+          "url": "https://www.mercadolivre.com.br/cafeteira-italiana-inox/p/MLB31234567",
+          "codigo": "COLOQUE_SEU_CODIGO_ML_AQUI"
+        },
+        "amazon": {
+          "ativo": true,
+          "url": "https://www.amazon.com.br/s?k=cafeteira+italiana+inox",
+          "codigo": "COLOQUE_SEU_CODIGO_AMAZON_AQUI"
+        },
+        "magalu": {
+          "ativo": true,
+          "url": "https://www.magazineluiza.com.br/busca/cafeteira+italiana+inox/",
+          "codigo": "COLOQUE_SEU_CODIGO_MAGALU_AQUI"
+        }
+      },
       "ativo": true,
       "cliques": 0,
       "criado_em": "2026-02-01"
@@ -46,8 +119,23 @@
     "whey-pro-max-titanium": {
       "titulo": "Whey Pro Max Titanium",
       "categoria": "saude",
-      "ml_url": "https://www.mercadolivre.com.br/whey-pro-max-titanium/p/MLB30987654",
-      "afiliado_url": "https://www.mercadolivre.com.br/whey-pro-max-titanium/p/MLB30987654",
+      "afiliados": {
+        "mercadolivre": {
+          "ativo": true,
+          "url": "https://www.mercadolivre.com.br/whey-pro-max-titanium/p/MLB30987654",
+          "codigo": "COLOQUE_SEU_CODIGO_ML_AQUI"
+        },
+        "amazon": {
+          "ativo": true,
+          "url": "https://www.amazon.com.br/s?k=whey+pro+max+titanium",
+          "codigo": "COLOQUE_SEU_CODIGO_AMAZON_AQUI"
+        },
+        "magalu": {
+          "ativo": true,
+          "url": "https://www.magazineluiza.com.br/busca/whey+pro+max+titanium/",
+          "codigo": "COLOQUE_SEU_CODIGO_MAGALU_AQUI"
+        }
+      },
       "ativo": true,
       "cliques": 0,
       "criado_em": "2026-02-01"
@@ -55,8 +143,23 @@
     "colagen-ii-bionatus": {
       "titulo": "Colágeno II Bionatus",
       "categoria": "saude",
-      "ml_url": "https://www.mercadolivre.com.br/colagen-ii-bionatus/p/MLB31357924",
-      "afiliado_url": "https://www.mercadolivre.com.br/colagen-ii-bionatus/p/MLB31357924",
+      "afiliados": {
+        "mercadolivre": {
+          "ativo": true,
+          "url": "https://www.mercadolivre.com.br/colagen-ii-bionatus/p/MLB31357924",
+          "codigo": "COLOQUE_SEU_CODIGO_ML_AQUI"
+        },
+        "amazon": {
+          "ativo": true,
+          "url": "https://www.amazon.com.br/s?k=colagen+II+bionatus",
+          "codigo": "COLOQUE_SEU_CODIGO_AMAZON_AQUI"
+        },
+        "magalu": {
+          "ativo": true,
+          "url": "https://www.magazineluiza.com.br/busca/colagen+II+bionatus/",
+          "codigo": "COLOQUE_SEU_CODIGO_MAGALU_AQUI"
+        }
+      },
       "ativo": true,
       "cliques": 0,
       "criado_em": "2026-02-01"
@@ -64,8 +167,23 @@
     "creatina-soldiers-500g": {
       "titulo": "Creatina Soldiers 500g",
       "categoria": "saude",
-      "ml_url": "https://www.mercadolivre.com.br/creatina-soldiers-500g/p/MLB30654321",
-      "afiliado_url": "https://www.mercadolivre.com.br/creatina-soldiers-500g/p/MLB30654321",
+      "afiliados": {
+        "mercadolivre": {
+          "ativo": true,
+          "url": "https://www.mercadolivre.com.br/creatina-soldiers-500g/p/MLB30654321",
+          "codigo": "COLOQUE_SEU_CODIGO_ML_AQUI"
+        },
+        "amazon": {
+          "ativo": true,
+          "url": "https://www.amazon.com.br/s?k=creatina+soldiers+500g",
+          "codigo": "COLOQUE_SEU_CODIGO_AMAZON_AQUI"
+        },
+        "magalu": {
+          "ativo": true,
+          "url": "https://www.magazineluiza.com.br/busca/creatina+soldiers+500g/",
+          "codigo": "COLOQUE_SEU_CODIGO_MAGALU_AQUI"
+        }
+      },
       "ativo": true,
       "cliques": 0,
       "criado_em": "2026-02-01"
@@ -73,8 +191,23 @@
     "legging-fitness-selene": {
       "titulo": "Legging Fitness Zero Transparência Selene",
       "categoria": "estilo",
-      "ml_url": "https://www.mercadolivre.com.br/legging-fitness-selene/p/MLB31234890",
-      "afiliado_url": "https://www.mercadolivre.com.br/legging-fitness-selene/p/MLB31234890",
+      "afiliados": {
+        "mercadolivre": {
+          "ativo": true,
+          "url": "https://www.mercadolivre.com.br/legging-fitness-selene/p/MLB31234890",
+          "codigo": "COLOQUE_SEU_CODIGO_ML_AQUI"
+        },
+        "amazon": {
+          "ativo": true,
+          "url": "https://www.amazon.com.br/s?k=legging+fitness+selene",
+          "codigo": "COLOQUE_SEU_CODIGO_AMAZON_AQUI"
+        },
+        "magalu": {
+          "ativo": true,
+          "url": "https://www.magazineluiza.com.br/busca/legging+fitness+selene/",
+          "codigo": "COLOQUE_SEU_CODIGO_MAGALU_AQUI"
+        }
+      },
       "ativo": true,
       "cliques": 0,
       "criado_em": "2026-02-01"
@@ -82,8 +215,23 @@
     "tv-55-polegadas-2026": {
       "titulo": "Melhor TV 55 Polegadas 2026",
       "categoria": "tech",
-      "ml_url": "https://www.mercadolivre.com.br/tv-55-polegadas/p/MLB32456789",
-      "afiliado_url": "https://www.mercadolivre.com.br/tv-55-polegadas/p/MLB32456789",
+      "afiliados": {
+        "mercadolivre": {
+          "ativo": true,
+          "url": "https://www.mercadolivre.com.br/tv-55-polegadas/p/MLB32456789",
+          "codigo": "COLOQUE_SEU_CODIGO_ML_AQUI"
+        },
+        "amazon": {
+          "ativo": true,
+          "url": "https://www.amazon.com.br/s?k=tv+55+polegadas",
+          "codigo": "COLOQUE_SEU_CODIGO_AMAZON_AQUI"
+        },
+        "magalu": {
+          "ativo": true,
+          "url": "https://www.magazineluiza.com.br/busca/tv+55+polegadas/",
+          "codigo": "COLOQUE_SEU_CODIGO_MAGALU_AQUI"
+        }
+      },
       "ativo": true,
       "cliques": 0,
       "criado_em": "2026-02-01"
@@ -100,9 +248,11 @@
     }
   },
   "instrucoes": {
-    "1_como_adicionar_link": "Substitua 🔴 COLE SEU LINK DE AFILIADO AQUI 🔴 pelo URL real com seu código de referência",
-    "2_formato_url": "https://www.mercadolivre.com.br/seu-produto/p/CODIGOPRODUTO?ref=SEU_CODIGO_AFILIADO",
-    "3_rastreamento": "Cada clique em 'Comprar' registra automaticamente qual página gerou",
-    "4_acessar_stats": "GET /api/afiliados/stats - Ver cliques totais e por página"
+    "1_como_configurar": "Substitua COLOQUE_SEU_CODIGO_XX_AQUI pelos seus códigos reais de afiliado",
+    "2_mercado_livre": "Seu código de referência do ML (exemplo: ?ref=SEUCOD)",
+    "3_amazon": "Seu ID de Associates da Amazon (exemplo: tag=SUAID-20)",
+    "4_magalu": "Seu código de afiliado Magalu",
+    "5_rastreamento": "Cada clique registra automaticamente qual afiliado foi usado",
+    "6_acessar_stats": "GET /api/afiliados/stats - Ver cliques totais e por afiliado"
   }
 }
