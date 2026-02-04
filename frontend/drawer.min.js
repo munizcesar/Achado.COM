@@ -33,6 +33,17 @@ class DrawerManager {
             </div>
             
             <div class="drawer-content">
+                <div class="drawer-section" style="background: #FFED00; padding: 15px; border-radius: 8px;">
+                    <h3 style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #003366;"><span style="background: #003366; color: #FFED00; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 700;">ML</span> <span style="font-weight: 300;">Ofertas</span> <span style="font-weight: 700;">Mercado Livre</span></h3>
+                    <p style="color: #000000; font-size: 12px; font-weight: 300; margin-bottom: 12px;">Parceiro Oficial - Maior Marketplace</p>
+                    <p style="font-weight: 300; color: #000000;">Descubra milhões de produtos com as melhores ofertas do Mercado Livre. Envio rápido e compra protegida.</p>
+                    <a href="https://mercadolivre.com/sec/2kreXQc" target="_blank" rel="noopener noreferrer" title="Suplementos Mercado Livre" class="drawer-btn drawer-btn-mercadolivre"><i class="fas fa-flask"></i> <span>Suplementos</span></a>
+                    <a href="https://www.mercadolivre.com.br/social/muc1576372" target="_blank" rel="noopener noreferrer" title="Explorar ofertas no Mercado Livre" class="drawer-btn drawer-btn-mercadolivre"><i class="fas fa-fire"></i> <span>Explorar Tudo</span></a>
+                    <a href="https://mercadolivre.com/sec/2AfMec7" target="_blank" rel="noopener noreferrer" title="Creatina com melhor preço" class="drawer-btn drawer-btn-mercadolivre"><i class="fas fa-capsules"></i> <span>Creatina</span></a>
+                </div>
+
+                <div class="drawer-divider"></div>
+
                 <div class="drawer-section" style="background: #0066FF; padding: 15px; border-radius: 8px;">
                     <h3 style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #FFFFFF;"><span style="background: #FFFFFF; color: #0066FF; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 700;">M</span> Ofertas <span style="color: #001A40; font-weight: 700;">Magalu</span></h3>
                     <p style="color: #FFFFFF; font-size: 12px; font-weight: 600; margin-bottom: 12px;">Parceiro Oficial - Melhores Preços</p>
@@ -42,16 +53,6 @@ class DrawerManager {
                     <a href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/tvs/" target="_blank" rel="noopener noreferrer" title="SmartTV com ofertas imperdíveis" class="drawer-btn drawer-btn-magalu"><i class="fas fa-tv"></i> <span>SmartTV</span></a>
                     <a href="https://divulgador.magalu.com/dfeB0D53" target="_blank" rel="noopener noreferrer" title="Celulares e smartphones com desconto" class="drawer-btn drawer-btn-magalu"><i class="fas fa-mobile"></i> <span>Celular</span></a>
                     <a href="https://divulgador.magalu.com/bwHpcLD5" target="_blank" rel="noopener noreferrer" title="Produtos PET com desconto no Magalu" class="drawer-btn drawer-btn-magalu"><i class="fas fa-paw"></i> <span>Produtos PET</span></a>
-                </div>
-
-                <div class="drawer-divider"></div>
-
-                <div class="drawer-section" style="background: #FFED00; padding: 15px; border-radius: 8px;">
-                    <h3 style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #003366;"><span style="background: #003366; color: #FFED00; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 700;">ML</span> <span style="font-weight: 300;">Ofertas</span> <span style="font-weight: 700;">Mercado Livre</span></h3>
-                    <p style="color: #000000; font-size: 12px; font-weight: 300; margin-bottom: 12px;">Parceiro Oficial - Maior Marketplace</p>
-                    <p style="font-weight: 300; color: #000000;">Descubra milhões de produtos com as melhores ofertas do Mercado Livre. Envio rápido e compra protegida.</p>
-                    <a href="https://www.mercadolivre.com.br/social/muc1576372" target="_blank" rel="noopener noreferrer" title="Ver ofertas no Mercado Livre" class="drawer-btn drawer-btn-mercadolivre"><i class="fas fa-shopping-cart"></i> <span>OFERTAS DO DIA</span></a>
-                    <a href="https://mercadolivre.com/sec/2AfMec7" target="_blank" rel="noopener noreferrer" title="Creatina com melhor preço" class="drawer-btn drawer-btn-mercadolivre"><i class="fas fa-capsules"></i> <span>Creatina</span></a>
                 </div>
 
                 <div class="drawer-divider"></div>
