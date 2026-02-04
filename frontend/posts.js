@@ -1,5 +1,32 @@
 const postsData = [
   {
+    "titulo": "💪 Creatina Monohidratada 500g Pura: Potencialize seu Desempenho",
+    "resumo": "Descubra por que a creatina monohidratada é o suplemento mais comprovado para ganho de força e massa muscular. Qualidade importada 99.8% pura com laudo de pureza garantido.",
+    "imagem": "images/imagesposts/creatinarefil.webp",
+    "link": "blog/creatina-soldiers-500g.html",
+    "chamada": "🎯 Ler Artigo Completo",
+    "categoria": "saude",
+    "keywords": "creatina monohidratada 500g soldiers nutrition pura importada laudo pureza 99.8% suplemento academia musculação força explosão performance ganho massa muscular hipertrofia recuperação energia atp treino intenso benefits como tomar dose saturação manutenção seguro científico comprovado"
+  },
+  {
+    "titulo": "P | Achado VIP",
+    "resumo": "Post de teste dinâmico gerado com IA.",
+    "imagem": "images/imagesposts/creatinarefil.webp",
+    "link": "blog/p.html",
+    "chamada": "📖 Ver Post",
+    "categoria": "dicas",
+    "keywords": "test post dynamic IA generated"
+  },
+  {
+    "titulo": "Teste de Integração Dinâmica",
+    "resumo": "Post para testar integração dinâmica do sistema.",
+    "imagem": "images/imagesposts/creatinarefil.webp",
+    "link": "blog/teste-integracao-dinamica.html",
+    "chamada": "🔍 Ver Teste",
+    "categoria": "dicas",
+    "keywords": "teste integração dinâmica sistema"
+  },
+  {
     "titulo": "JBL Wave Buds 2 - Fone Bluetooth Premium com Som Incomparável",
     "resumo": "Análise completa do JBL Wave Buds 2 preto. Som de qualidade premium, bateria de 8 horas, Bluetooth 5.3 e design confortável. Descubra por que é a escolha ideal.",
     "imagem": "images/imagesposts/jbl-wave-buds-2.webp",
