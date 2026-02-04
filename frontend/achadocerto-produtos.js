@@ -170,19 +170,19 @@ class AchadoCertoProdutos {
             .produto-acoes {
                 display: flex;
                 flex-direction: column;
-                gap: 12px;
+                gap: 14px;
                 width: 100%;
             }
 
             .btn-produto {
-                background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-                border: 1px solid rgba(212, 175, 55, 0.6);
-                color: #F5F7FA;
-                padding: 14px 26px;
-                border-radius: 14px;
-                font-weight: 600;
+                background: linear-gradient(135deg, #fbd35d 0%, #f0b93d 100%);
+                border: none;
+                color: #0B1220;
+                padding: 14px 28px;
+                border-radius: 999px;
+                font-weight: 700;
                 font-size: 13px;
-                letter-spacing: 0.08em;
+                letter-spacing: 0.06em;
                 text-transform: uppercase;
                 cursor: pointer;
                 transition: all 0.25s ease;
@@ -195,28 +195,27 @@ class AchadoCertoProdutos {
                 min-width: 220px;
                 width: 100%;
                 max-width: 320px;
-                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
-                backdrop-filter: blur(6px);
+                box-shadow: 0 10px 28px rgba(240, 185, 61, 0.35);
             }
 
             .btn-produto i {
                 font-size: 15px;
-                color: #FFD86B;
+                color: #0B1220;
             }
 
             .btn-produto:hover {
                 transform: translateY(-2px);
-                border-color: var(--color-primary);
-                box-shadow: 0 14px 36px rgba(212, 175, 55, 0.28);
+                box-shadow: 0 16px 36px rgba(212, 175, 55, 0.45);
+                background: linear-gradient(135deg, #ffe07e, #f7c24c);
             }
 
             .btn-secundario {
                 background: transparent;
-                border: 1px dashed rgba(212, 175, 55, 0.4);
-                color: #C5CAD3;
+                border: 1px solid rgba(251, 211, 93, 0.7);
+                color: #F5F7FA;
                 font-size: 12px;
-                padding: 13px 22px;
-                border-radius: 14px;
+                padding: 13px 26px;
+                border-radius: 999px;
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
@@ -226,20 +225,20 @@ class AchadoCertoProdutos {
                 min-width: 220px;
                 width: 100%;
                 max-width: 320px;
-                letter-spacing: 0.05em;
+                letter-spacing: 0.04em;
                 text-transform: uppercase;
             }
 
             .btn-secundario:hover {
-                color: var(--color-primary);
-                border-color: var(--color-primary);
-                background: rgba(255, 255, 255, 0.04);
+                color: #fbd35d;
+                border-color: #fbd35d;
+                background: rgba(251, 211, 93, 0.08);
             }
 
             .btn-secundario.copiado {
                 border-color: var(--color-success);
                 color: var(--color-success);
-                background: rgba(0, 217, 120, 0.08);
+                background: rgba(0, 217, 120, 0.12);
             }
 
             .produto-loading {
@@ -336,8 +335,8 @@ class AchadoCertoProdutos {
             @media (max-width: 480px) {
                 .btn-produto,
                 .btn-secundario {
-                    font-size: 14px;
-                    padding: 16px 22px;
+                    font-size: 12px;
+                    padding: 14px 22px;
                 }
             }
         `;

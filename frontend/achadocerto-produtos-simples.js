@@ -72,43 +72,43 @@ class AchadoCertoProdutos {
             }
 
             .btn-produto {
-                background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(13, 27, 74, 0.6));
-                border: 1px solid rgba(212, 175, 55, 0.6);
-                color: #F5F7FA;
-                padding: 14px 22px;
-                border-radius: 14px;
-                font-weight: 600;
-                letter-spacing: 0.08em;
+                background: linear-gradient(135deg, #fbd35d 0%, #f0b93d 100%);
+                border: none;
+                color: #0B1220;
+                padding: 14px 28px;
+                border-radius: 999px;
+                font-weight: 700;
+                letter-spacing: 0.06em;
                 text-transform: uppercase;
                 cursor: pointer;
                 width: 100%;
-                font-size: 14px;
+                font-size: 13px;
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
                 gap: 10px;
                 text-align: center;
                 text-decoration: none;
-                box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+                box-shadow: 0 10px 28px rgba(240, 185, 61, 0.35);
             }
 
             .btn-produto::before {
                 content: attr(data-icon);
                 font-size: 15px;
-                color: #FFD86B;
+                color: #0B1220;
             }
 
             .btn-produto:hover {
                 transform: translateY(-1px);
-                border-color: #FFD86B;
-                box-shadow: 0 16px 36px rgba(212,175,55,0.25);
+                box-shadow: 0 16px 36px rgba(212,175,55,0.4);
+                background: linear-gradient(135deg, #ffe07e, #f7c24c);
             }
 
             .btn-produto + .btn-produto {
                 margin-top: 10px;
-                border-style: dashed;
+                border: 1px solid rgba(251, 211, 93, 0.7);
                 background: transparent;
-                color: #C5CAD3;
+                color: #F5F7FA;
             }
 
             .produto-botoes {
