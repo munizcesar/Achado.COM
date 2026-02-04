@@ -94,7 +94,7 @@ const postsData = [
     "resumo": "Os 4 últimos lançamentos Xiaomi e Poco comparados! Descubra qual smartphone é perfeito para você: gamer, fotógrafo ou quem busca custo-benefício.",
     "imagem": "images/imagesposts/produtos_xiaomi.jpg",
     "link": "blog/comparativo-xiaomi-poco-2026.html",
-    "linkProduto": "https://www.mercadolivre.com.br/social/muc1576372",
+    "linkProduto": "https://mercadolivre.com/sec/2r9w3CA",
     "chamada": "Ver Comparativo Completo",
     "categoria": "tech",
     "keywords": "xiaomi poco x7 pro redmi note 14 pro+ 15t smartphone celular android mediatek dimensity 8400 qualcomm snapdragon tela amoled 120hz camera 50mp bateria 6000mah carregamento rapido 90w gamer fotografia custo beneficio preco barato bom 2026 lancamento melhor celular processador performance fotos video"
