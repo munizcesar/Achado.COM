@@ -175,59 +175,71 @@ class AchadoCertoProdutos {
             }
 
             .btn-produto {
-                background: linear-gradient(135deg, var(--color-primary), #F4C10F);
-                color: var(--bg-dark);
-                border: none;
-                padding: 14px 24px;
-                border-radius: 12px;
+                background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+                border: 1px solid rgba(212, 175, 55, 0.6);
+                color: #F5F7FA;
+                padding: 14px 26px;
+                border-radius: 14px;
                 font-weight: 600;
-                font-size: 14px;
+                font-size: 13px;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
                 cursor: pointer;
-                transition: all 0.3s ease;
+                transition: all 0.25s ease;
                 text-decoration: none;
                 text-align: center;
-                display: flex;
+                display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                gap: 8px;
-                min-width: 200px;
+                gap: 10px;
+                min-width: 220px;
                 width: 100%;
-                max-width: 280px;
+                max-width: 320px;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+                backdrop-filter: blur(6px);
+            }
+
+            .btn-produto i {
+                font-size: 15px;
+                color: #FFD86B;
             }
 
             .btn-produto:hover {
                 transform: translateY(-2px);
-                box-shadow: 0 8px 24px rgba(255, 215, 0, 0.4);
-                background: linear-gradient(135deg, #F4C10F, var(--color-primary));
+                border-color: var(--color-primary);
+                box-shadow: 0 14px 36px rgba(212, 175, 55, 0.28);
             }
 
             .btn-secundario {
-                background: rgba(255, 255, 255, 0.02);
-                border: 1px dashed var(--color-border);
-                color: var(--color-text);
-                font-size: 13px;
-                padding: 12px 20px;
-                border-radius: 12px;
-                display: flex;
+                background: transparent;
+                border: 1px dashed rgba(212, 175, 55, 0.4);
+                color: #C5CAD3;
+                font-size: 12px;
+                padding: 13px 22px;
+                border-radius: 14px;
+                display: inline-flex;
                 align-items: center;
                 justify-content: center;
                 gap: 8px;
                 cursor: pointer;
-                transition: all 0.3s ease;
-                min-width: 200px;
+                transition: all 0.25s ease;
+                min-width: 220px;
                 width: 100%;
-                max-width: 280px;
+                max-width: 320px;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
             }
 
             .btn-secundario:hover {
-                background: rgba(255, 255, 255, 0.05);
-                border-color: var(--color-primary);
                 color: var(--color-primary);
+                border-color: var(--color-primary);
+                background: rgba(255, 255, 255, 0.04);
             }
 
             .btn-secundario.copiado {
                 border-color: var(--color-success);
                 color: var(--color-success);
+                background: rgba(0, 217, 120, 0.08);
             }
 
             .produto-loading {
@@ -324,9 +336,8 @@ class AchadoCertoProdutos {
             @media (max-width: 480px) {
                 .btn-produto,
                 .btn-secundario {
-                    font-size: 15px;
-                    padding: 16px 20px;
-                    border-radius: 14px;
+                    font-size: 14px;
+                    padding: 16px 22px;
                 }
             }
         `;

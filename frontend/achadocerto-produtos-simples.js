@@ -72,26 +72,43 @@ class AchadoCertoProdutos {
             }
 
             .btn-produto {
-                background: linear-gradient(135deg, #D4AF37, #FFD700);
-                color: #000;
-                border: none;
-                padding: 12px 24px;
-                border-radius: 8px;
-                font-weight: bold;
+                background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(13, 27, 74, 0.6));
+                border: 1px solid rgba(212, 175, 55, 0.6);
+                color: #F5F7FA;
+                padding: 14px 22px;
+                border-radius: 14px;
+                font-weight: 600;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
                 cursor: pointer;
                 width: 100%;
-                font-size: 16px;
-                display: block;
+                font-size: 14px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
                 text-align: center;
                 text-decoration: none;
+                box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+            }
+
+            .btn-produto::before {
+                content: attr(data-icon);
+                font-size: 15px;
+                color: #FFD86B;
             }
 
             .btn-produto:hover {
-                background: linear-gradient(135deg, #FFD700, #D4AF37);
+                transform: translateY(-1px);
+                border-color: #FFD86B;
+                box-shadow: 0 16px 36px rgba(212,175,55,0.25);
             }
 
             .btn-produto + .btn-produto {
                 margin-top: 10px;
+                border-style: dashed;
+                background: transparent;
+                color: #C5CAD3;
             }
 
             .produto-botoes {
@@ -207,15 +224,15 @@ class AchadoCertoProdutos {
         const botoes = [];
 
         botoes.push(`
-            <a href="${produto.link}" target="_blank" class="btn-produto">
-                📖 Ler o Post Completo
+            <a href="${produto.link}" target="_blank" class="btn-produto" data-icon="📖">
+                Ler o Post Completo
             </a>
         `);
 
         if (produto.linkProduto) {
             botoes.push(`
-                <a href="${produto.linkProduto}" target="_blank" class="btn-produto">
-                    🛒 Ver Oferta no Mercado Livre
+                <a href="${produto.linkProduto}" target="_blank" class="btn-produto" data-icon="🛒">
+                    Ver Oferta no Mercado Livre
                 </a>
             `);
         }
