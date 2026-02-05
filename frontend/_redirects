@@ -1,4 +1,3 @@
 # Redireciona todas as chamadas /api para o backend Vercel
-# Após fazer deploy, substitua <SUA-URL-VERCEL> pela URL que você receber
-# Exemplo: https://achadocerto-backend-xyz.vercel.app
-/api/* https://<SUA-URL-VERCEL>/:splat 200
+# Backend atual: https://achadocertovip-gu4jjzvy2-munizcesars-projects.vercel.app
+/api/* https://achadocertovip-gu4jjzvy2-munizcesars-projects.vercel.app/:splat 200

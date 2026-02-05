@@ -237,13 +237,15 @@ class AchadoCertoProdutos {
             `);
         }
 
+        const tituloComMarca = this.aplicarMarca(produto.titulo);
+
         return `
             <div class="produto-widget">
                 <div class="produto-imagem">
-                    <img src="${produto.imagem}" alt="${this.sanitize(produto.titulo)}" onerror="this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500'">
+                    <img src="${produto.imagem}" alt="${tituloComMarca}" onerror="this.src='https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500'">
                 </div>
 
-                <h3>${this.sanitize(produto.titulo)}</h3>
+                <h3>${tituloComMarca}</h3>
 
                 <div class="produto-botoes">
                     ${botoes.join('')}
@@ -256,6 +258,11 @@ class AchadoCertoProdutos {
         const div = document.createElement('div');
         div.textContent = texto;
         return div.innerHTML;
+    }
+
+    aplicarMarca(titulo) {
+        const base = this.sanitize(titulo || 'AchadoCerto');
+        return base.includes('AchadoCerto.VIP') ? base : `${base} | AchadoCerto.VIP`;
     }
 }
 

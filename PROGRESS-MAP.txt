@@ -266,6 +266,15 @@ REFERENCE:
   → FASE-17-STATUS.txt (Detailed status)
 
 
+LATEST SESSION LOG (Feb 04, 2026)
+═════════════════════════════════════════════════════════════════════════════════
+
+✅ Branding unificado no widget automático (sufixo "| AchadoCerto.VIP" nos títulos)
+✅ Bloco "Ofertas Rotativas" com copy leve e multicanal (ML, Magalu, Amazon)
+✅ Layout refinado: badge com ícone separado e subtítulo com peso leve
+⚠️ Backend em Vercel online; RapidAPI ainda em fallback — avaliar API oficial ML
+
+
 ═════════════════════════════════════════════════════════════════════════════════
 
                     🎉 PHASE 17 IS COMPLETE & WORKING! 🎉

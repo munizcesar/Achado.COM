@@ -6,6 +6,13 @@
 ║                                                                                ║
 ╚════════════════════════════════════════════════════════════════════════════════╝
 
+ATUALIZAÇÃO 04/02/2026
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Widget automático agora insere sufixo “| AchadoCerto.VIP” nos títulos (branding unificado)
+• Bloco renomeado para "Ofertas Rotativas" com copy leve e multicanal (ML, Magalu, Amazon)
+• Layout refinado: badge com ícone separado e subtítulo com fonte mais leve
+• Backend em Vercel ativo; RapidAPI ainda em fallback (avaliar API oficial ML)
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📊 O QUE ACONTECEU NESTA SESSÃO
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

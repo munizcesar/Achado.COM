@@ -1444,15 +1444,17 @@ app.use((err, req, res, next) => {
   });
 });
 
-// ============ INICIAR SERVIDOR ============
+// ============ INICIAR SERVIDOR (LOCAL APENAS) ============
 
-app.listen(PORT, () => {
-  const apiKeyDisplay = process.env.RAPIDAPI_KEY 
-    ? process.env.RAPIDAPI_KEY.substring(0, 10) + '...' 
-    : 'Não configurado';
-  const hostDisplay = process.env.RAPIDAPI_HOST || 'Não configurado';
-  
-  console.log(`
+// No Vercel, o runtime cria o listener automaticamente. Evita erro de porta ocupada.
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    const apiKeyDisplay = process.env.RAPIDAPI_KEY 
+      ? process.env.RAPIDAPI_KEY.substring(0, 10) + '...' 
+      : 'Não configurado';
+    const hostDisplay = process.env.RAPIDAPI_HOST || 'Não configurado';
+    
+    console.log(`
 ╔════════════════════════════════════════════╗
 ║   🚀 ACHADOCERTO BACKEND INICIADO        ║
 ╠════════════════════════════════════════════╣
@@ -1479,7 +1481,10 @@ app.listen(PORT, () => {
   1. Edite backend/affiliates.json com seus links
   2. Use GET /api/afiliado/produto-id?pagina=seu-post.html
   3. Veja stats em GET /api/afiliados/stats
-  `);
-});
+    `);
+  });
+} else {
+  console.log('➡️ Rodando em ambiente Vercel (serverless) - listener automático');
+}
 
 module.exports = app;
