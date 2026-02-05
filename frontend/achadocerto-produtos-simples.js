@@ -232,7 +232,7 @@ class AchadoCertoProdutos {
         if (produto.linkProduto) {
             botoes.push(`
                 <a href="${produto.linkProduto}" target="_blank" class="btn-produto" data-icon="🛒">
-                    Ver Oferta no Mercado Livre
+                    Oferta no Mercado Livre
                 </a>
             `);
         }

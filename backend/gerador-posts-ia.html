@@ -403,7 +403,8 @@
     </div>
 
     <script>
-        const API_URL = 'http://localhost:3001';
+        // Ajusta base da API automaticamente: same-origin em host; localhost quando aberto via file://
+        const API_URL = window.location.protocol === 'file:' ? 'http://localhost:3001' : '';
         let postoGerado = null;
 
         // Função principal: Gerar post

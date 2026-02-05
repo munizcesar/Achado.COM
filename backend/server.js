@@ -1337,25 +1337,20 @@ Recomendamos conferir o anúncio completo no Mercado Livre para mais detalhes e 
 
 // Gerar HTML do post
 function gerarHTMLPost(titulo, conteudo, produto, url) {
-  // Obter link de afiliado se disponível - suporta múltiplos afiliados
-  const produtoId = url.split('/')[3].split('-').slice(0, -1).join('-');
-  const affiliate = affiliatesData.produtos[produtoId];
+  // Usar o link passado diretamente como link de afiliado
+  const linkVenda = url;
   
-  // Priorizar Mercado Livre, depois Amazon, depois Magalu
-  let linkVenda = url;
-  if (affiliate?.afiliados) {
-    if (affiliate.afiliados.mercadolivre?.ativo) {
-      linkVenda = affiliate.afiliados.mercadolivre.url;
-    } else if (affiliate.afiliados.amazon?.ativo) {
-      linkVenda = affiliate.afiliados.amazon.url;
-    } else if (affiliate.afiliados.magalu?.ativo) {
-      linkVenda = affiliate.afiliados.magalu.url;
-    }
-  } else if (affiliate?.afiliado_url) {
-    // Fallback para estrutura antiga
-    linkVenda = affiliate.afiliado_url;
-  }
-
+  // Gerar slug para o arquivo
+  const slug = produto.titulo
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+  
+  // URL canônica do post
+  const postUrl = `https://achadocerto.vip/blog/${slug}.html`;
+  
+  // Imagem do produto (usar a fornecida ou placeholder)
+  const imagemProduto = produto.imagem || 'https://via.placeholder.com/800x600/0D1B4A/D4AF37?text=Produto';
 
   return `<!DOCTYPE html>
 <html lang="pt-BR">
@@ -1363,37 +1358,160 @@ function gerarHTMLPost(titulo, conteudo, produto, url) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${titulo} | AchadoCerto.VIP</title>
-    <meta name="description" content="${titulo} - ${produto.titulo} por R$ ${produto.preco.toFixed(2)}">
+    <meta name="description" content="${produto.titulo} - ${titulo}. Confira análise completa, preço e onde comprar com o melhor desconto.">
+    <meta name="keywords" content="${produto.titulo.toLowerCase()}, achados, ofertas, mercado livre, desconto">
+    <meta name="author" content="AchadoCerto.VIP">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="language" content="Portuguese">
+    <meta name="revisit-after" content="7 days">
     
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#D4AF37">
+    <meta name="msapplication-TileColor" content="#0B1220">
+
+    <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+    
+    <!-- Styles -->
     <link rel="stylesheet" href="../style.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+    <!-- CSS Inline para Padrão de Post -->
     <style>
         .materia-container { max-width: 900px; margin: 40px auto; padding: 0 20px; color: #E0E0E0; line-height: 1.8; }
         .materia-header { text-align: center; margin-bottom: 40px; }
-        .materia-header h1 { color: #D4AF37; font-size: 36px; margin-bottom: 10px; font-weight: 900; }
+        .materia-header h1 { color: #D4AF37; font-size: 36px; margin-bottom: 10px; font-weight: 900; line-height: 1.2; }
+        .materia-img-principal { width: 100%; max-width: 650px; display: block; margin: 0 auto 30px; border-radius: 20px; }
         .conteudo-texto { font-size: 18px; text-align: justify; }
         .conteudo-texto h2 { color: #D4AF37; margin-top: 40px; font-size: 26px; border-left: 4px solid #D4AF37; padding-left: 15px; }
         .beneficio-tag { background: rgba(255, 215, 0, 0.1); color: #D4AF37; padding: 5px 12px; border-radius: 6px; font-weight: 700; font-size: 14px; margin-right: 10px; display: inline-block; margin-bottom: 10px; }
+        .voltar { display: inline-block; margin-bottom: 20px; color: #D4AF37; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .voltar:hover { transform: translateX(-5px); }
         .box-oferta-premium { background: linear-gradient(135deg, #1A1F71, #151B4A); border: 1px solid rgba(212, 175, 55, 0.2); padding: 30px; border-radius: 15px; margin: 50px 0; text-align: center; }
-        .botao-oferta-vip { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #0A1026; padding: 14px 28px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4); transition: all 0.3s ease; border: none; cursor: pointer; }
-        .botao-oferta-vip:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6); }
-        .voltar { display: inline-block; margin-bottom: 20px; color: #D4AF37; text-decoration: none; font-weight: bold; }
+        .botao-oferta-vip { display: inline-block; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #0A1026; padding: 14px 28px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4); transition: all 0.3s ease; border: none; cursor: pointer; }
+        .botao-oferta-vip:hover { background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6); }
     </style>
-
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B170HB38GJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-B170HB38GJ');
+    </script>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="${postUrl}">
+    
+    <!-- Open Graph (Compartilhamento em Redes Sociais) -->
     <meta property="og:title" content="${titulo}" />
-    <meta property="og:description" content="${titulo}" />
+    <meta property="og:description" content="${produto.titulo} - Confira análise completa, preço e onde comprar." />
+    <meta property="og:image" content="${imagemProduto}" />
+    <meta property="og:image:secure_url" content="${imagemProduto}" />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="600" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="${produto.titulo}" />
+    <meta property="og:url" content="${postUrl}" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://achadocerto.vip/blog/" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="AchadoCerto.VIP" />
+    <meta property="article:author" content="AchadoCerto.VIP" />
     <meta property="article:published_time" content="${new Date().toISOString()}" />
+    <meta property="article:section" content="${produto.categoria || 'Ofertas'}" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${titulo}">
+    <meta name="twitter:description" content="${produto.titulo} - Análise completa e melhor preço">
+    <meta name="twitter:image" content="${imagemProduto}">
+    <meta name="twitter:site" content="@AchadoCertoVIP">
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://achadocerto.vip"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://achadocerto.vip/blog.html"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "${produto.titulo}",
+                "item": "${postUrl}"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "${titulo}",
+        "image": "${imagemProduto}",
+        "author": {
+            "@type": "Organization",
+            "name": "AchadoCerto.VIP"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "AchadoCerto.VIP",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://achadocerto.vip/images/favicon.svg"
+            }
+        },
+        "datePublished": "${new Date().toISOString()}",
+        "dateModified": "${new Date().toISOString()}"
+    }
+    </script>
+
+    <!-- Product Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "${produto.titulo}",
+        "image": "${imagemProduto}",
+        "description": "${titulo}",
+        "brand": {
+            "@type": "Brand",
+            "name": "${produto.vendedor || 'Mercado Livre'}"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": "${linkVenda}",
+            "priceCurrency": "BRL",
+            "price": "${produto.preco.toFixed(2)}",
+            "availability": "https://schema.org/InStock"
+        }
+    }
+    </script>
+
 </head>
 <body>
 
     <header class="topo">
         <div class="header-container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
             <a href="../index.html" style="text-decoration: none;">
-                <h1 style="margin:0; font-size: 22px;">
+                <h1 style="margin:0; font-size: 22px; letter-spacing: 0.3px; line-height: 1;">
                     <span style="color: #C5CAD3; font-weight: 300;">AchadoCerto</span><span style="color: #D4AF37; font-weight: 600;">VIP</span>
                 </h1>
             </a>
@@ -1401,35 +1519,78 @@ function gerarHTMLPost(titulo, conteudo, produto, url) {
     </header>
 
     <article class="materia-container">
-        <a href="../index.html" class="voltar"><i class="fas fa-arrow-left"></i> Voltar</a>
+        <a href="../index.html" class="voltar"><i class="fas fa-arrow-left"></i> Voltar para o início</a>
 
         <header class="materia-header">
             <h1>${titulo}</h1>
-            <p style="color: #B0B0B0;">Gerado com IA | ${new Date().toLocaleDateString('pt-BR')}</p>
+            <p style="color: #B0B0B0;">Por Equipe AchadoCerto.VIP | ${new Date().toLocaleDateString('pt-BR')}</p>
         </header>
 
+        <img src="${imagemProduto}" alt="${produto.titulo}" class="materia-img-principal" onerror="this.src='https://via.placeholder.com/800x600/0D1B4A/D4AF37?text=Produto'">
+
         <div class="conteudo-texto">
-            ${conteudo.split('\\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('')}
+            ${conteudo.split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('')}
 
             <div class="box-oferta-premium">
-                <h3>🎁 Aprovoveitar Oferta</h3>
+                <h3>🎁 Aproveitar Oferta</h3>
                 <p style="color: #E0E0E0; margin-bottom: 25px;">Preço: <strong>R$ ${produto.preco.toFixed(2)}</strong></p>
                 <a href="${linkVenda}" target="_blank" class="botao-oferta-vip">
-                    <i class="fas fa-shopping-cart"></i> COMPRAR NO MERCADO LIVRE
+                    <i class="fas fa-shopping-cart"></i> APROVEITAR OFERTA NO MERCADO LIVRE
                 </a>
                 <p style="font-size:13px; margin-top:20px; opacity:0.9; color: #2ecc71; font-weight: 800;">
-                    <i class="fas fa-shield-alt"></i> COMPRA GARANTIDA | LOJA OFICIAL
+                    <i class="fas fa-shield-alt"></i> COMPRA GARANTIDA | LOJA OFICIAL | ESTOQUE FULL
                 </p>
             </div>
         </div>
+
+        <!-- Share Buttons -->
+        <div class="share-buttons-container" style="text-align: center; margin-top: 40px;">
+            <button class="share-btn whatsapp" data-network="whatsapp">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </button>
+            <button class="share-btn twitter" data-network="twitter">
+                <i class="fab fa-x-twitter"></i> Twitter
+            </button>
+            <button class="share-btn facebook" data-network="facebook">
+                <i class="fab fa-facebook"></i> Facebook
+            </button>
+            <button class="share-btn copy-link" data-network="copy-link">
+                <i class="fas fa-link"></i> Copiar Link
+            </button>
+        </div>
+
     </article>
 
-    <footer style="text-align: center; padding: 30px; color: #666; margin-top: 40px;">
+    <!-- Footer -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/achadocertovip?igsh=Y2Rua2praTdha3dk" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@achadocertovip?_r=1&_t=ZS-934lRAtLp1s" target="_blank" title="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" title="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://x.com/AchadoCertoVIP" target="_blank" title="X">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+        </div>
+        <p>
+            <a href="../politica.html">Privacidade</a> | 
+            <a href="../termos.html">Termos</a> | 
+            <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank">Contato</a>
+        </p>
         <p>© 2026 AchadoCerto.VIP — Todos os Direitos Reservados</p>
     </footer>
 
+    <!-- Scripts -->
     <script src="../posts.js" defer></script>
     <script src="../script.min.js" defer></script>
+    <script src="../search-animation.min.js" defer></script>
+    <script src="../drawer.min.js" defer></script>
+    <script src="../share.js" defer></script>
 </body>
 </html>`;
 }
