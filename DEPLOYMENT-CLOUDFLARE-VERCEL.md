@@ -147,6 +147,12 @@ AchadoCerto.VIP/
 - `/api/health` → `https://api.seu-dominio.com/api/health`
 - `/api/post-aleatorio` → `https://api.seu-dominio.com/api/post-aleatorio`
 
+#### Fallback se o `_redirects` não aplicar no Pages
+- Criar **Page Rule** (Forwarding URL 302) em Cloudflare: `https://achadocerto.vip/api/*` → `https://achadocertovip-gu4jjzvy2-munizcesars-projects.vercel.app/api/$1`.
+- Deixe 302/307 (temporário) para flexibilizar mudanças futuras de backend.
+- Reordene a regra para o topo se houver outras.
+- Use cache-buster no frontend após deploy: `https://achadocerto.vip/?v=YYYYMMDD` (ex.: `?v=20260205`).
+
 ---
 
 ### **3. Arquivo: `frontend/achadocerto-produtos-simples.js`**
