@@ -9,14 +9,21 @@
     --bg-dark: #04071f;
     --bg-card: #0f1636;
     --bg-card-light: #1b1f4b;
-    --color-primary: #FAD64C;
-    --color-urgent: #FF6B35;
-    --color-success: #4CAF50;
+    --color-primary: #2563eb;
+    --color-primary-dark: #1e40af;
+    --color-primary-light: #3b82f6;
+    --color-urgent: #f97316;
+    --color-urgent-dark: #ea580c;
+    --color-urgent-light: #fb923c;
+    --color-success: #10b981;
+    --color-success-dark: #059669;
+    --color-success-light: #34d399;
     --color-text: #F8F7FF;
     --color-text-muted: #CAD1FF;
     --color-border: rgba(255, 255, 255, 0.08);
-    --gradient-brand: linear-gradient(120deg, #ffb347 0%, #ff0f7b 100%);
+    --gradient-brand: linear-gradient(135deg, #2563eb 0%, #f97316 50%, #fb923c 100%);
     --gradient-electric: linear-gradient(120deg, #6b73ff 0%, #00d2ff 100%);
+    --gradient-action: linear-gradient(135deg, #f97316 0%, #fb7185 50%, #ec4899 100%);
     --glow-purple: rgba(140, 116, 255, 0.45);
 }
 
