@@ -6,30 +6,88 @@ import CtaBanner from '../components/CtaBanner.astro';
 import PostCard from '../components/PostCard.astro';
 import Footer from '../components/Footer.astro';
 
-// Busca posts do blog (Content Collections)
 let posts: any[] = [];
 try {
   const { getCollection } = await import('astro:content');
   const allPosts = await getCollection('blog');
   posts = allPosts
+    .filter(p => !p.data.draft)
     .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
-    .slice(0, 6);
+    .slice(0, 4);
 } catch {
   posts = [];
 }
 
 const featuredPost = posts[0];
-const recentPosts = posts.slice(1);
+const sidePosts = posts.slice(1, 4);
 
-// Ofertas em destaque (estáticas — substituir por API/CMS futuramente)
 const offers = [
-  { icon: '📱', name: 'Smartphone Samsung', old: 'R$ 1.299', price: 'R$ 899', badge: '-31%', url: 'https://mercadolivre.com/sec/1swHtUC' },
-  { icon: '🎧', name: 'Fone JBL Tune', old: 'R$ 299', price: 'R$ 189', badge: '-37%', url: 'https://mercadolivre.com/sec/2AfMec7' },
-  { icon: '💻', name: 'Notebook Lenovo', old: 'R$ 3.199', price: 'R$ 2.499', badge: '-22%', url: 'https://mercadolivre.com/sec/1swHtUC' },
-  { icon: '⌚', name: 'Smartwatch Xiaomi', old: 'R$ 499', price: 'R$ 349', badge: '-30%', url: 'https://mercadolivre.com/sec/1swHtUC' },
-  { icon: '🖥️', name: 'Monitor 24"', old: 'R$ 1.099', price: 'R$ 799', badge: '-27%', url: 'https://mercadolivre.com/sec/1swHtUC' },
-  { icon: '🎮', name: 'Controle Xbox', old: 'R$ 399', price: 'R$ 279', badge: '-30%', url: 'https://mercadolivre.com/sec/1swHtUC' },
+  {
+    name: 'Samsung Galaxy A55 5G 128GB',
+    store: 'Mercado Livre',
+    storeKey: 'ml',
+    priceOld: 'R$ 1.299',
+    price: 'R$ 899',
+    badge: '-31%',
+    url: 'https://mercadolivre.com/sec/1swHtUC',
+  },
+  {
+    name: 'Fone Bluetooth JBL Tune 520BT',
+    store: 'Amazon',
+    storeKey: 'amz',
+    priceOld: 'R$ 299',
+    price: 'R$ 179',
+    badge: '-40%',
+    url: 'https://amzn.to/3XhkJ9Z',
+  },
+  {
+    name: 'Notebook Lenovo IdeaPad 3 15\'',
+    store: 'Magalu',
+    storeKey: 'mg',
+    priceOld: 'R$ 3.199',
+    price: 'R$ 2.399',
+    badge: '-25%',
+    url: 'https://www.magazineluiza.com.br/',
+  },
+  {
+    name: 'Smartwatch Xiaomi Redmi Watch 3',
+    store: 'Mercado Livre',
+    storeKey: 'ml',
+    priceOld: 'R$ 499',
+    price: 'R$ 319',
+    badge: '-36%',
+    url: 'https://mercadolivre.com/sec/2AfMec7',
+  },
+  {
+    name: 'Monitor LG 24" Full HD IPS',
+    store: 'Amazon',
+    storeKey: 'amz',
+    priceOld: 'R$ 1.099',
+    price: 'R$ 749',
+    badge: '-32%',
+    url: 'https://amzn.to/3XhkJ9Z',
+  },
+  {
+    name: 'Controle Xbox Series Sem Fio',
+    store: 'Magalu',
+    storeKey: 'mg',
+    priceOld: 'R$ 499',
+    price: 'R$ 349',
+    badge: '-30%',
+    url: 'https://www.magazineluiza.com.br/',
+  },
 ];
+
+const storeBtnClass: Record<string, string> = {
+  ml:  'offer-card-btn offer-card-btn--ml',
+  amz: 'offer-card-btn offer-card-btn--amz',
+  mg:  'offer-card-btn offer-card-btn--mg',
+};
+const storeBtnLabel: Record<string, string> = {
+  ml:  'Ver no Mercado Livre',
+  amz: 'Ver na Amazon',
+  mg:  'Ver na Magalu',
+};
 ---
 
 <Layout>
@@ -37,24 +95,32 @@ const offers = [
   <Hero />
   <CtaBanner />
 
-  <!-- ===== BLOG: ÚLTIMAS POSTAGENS ===== -->
-  <section class="section" style="background: var(--color-bg);">
+  <!-- BLOG: ÚLTIMAS POSTAGENS -->
+  <section class="section section--white">
     <div class="container">
       <div class="section-header">
-        <div class="section-badge">📝 Blog</div>
-        <h2 class="section-title">Últimas do Blog</h2>
-        <p class="section-subtitle">Guias, comparativos e dicas para economizar com as melhores escolhas</p>
+        <div class="section-header-left">
+          <span class="section-label">Blog</span>
+          <h2 class="section-title">Últimas Publicações</h2>
+        </div>
+        <a href="/blog" class="section-link">
+          Ver todos
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
 
       {posts.length === 0 ? (
-        <div style="text-align:center; padding: 40px; color: var(--color-text-muted);">
-          <p style="font-size:40px; margin-bottom:12px;">📝</p>
-          <p>Nenhum post publicado ainda. Em breve!</p>
-          <a href="/blog" style="margin-top:16px; display:inline-block; color: var(--color-primary-mid);">Ver blog →</a>
+        <div class="empty-state">
+          <div class="empty-state-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+          </div>
+          <h3>Nenhum post ainda</h3>
+          <p>Em breve publicaremos guias e achados incríveis.</p>
+          <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" rel="noopener" class="btn btn-gold">Seguir Canal para não perder</a>
         </div>
       ) : (
-        <div class="posts-grid">
-          {featuredPost && (
+        <div class="magazine-grid">
+          <div class="magazine-main">
             <PostCard
               title={featuredPost.data.title}
               excerpt={featuredPost.data.description}
@@ -62,62 +128,73 @@ const offers = [
               category={featuredPost.data.category}
               date={featuredPost.data.date?.toISOString()}
               image={featuredPost.data.image}
-              featured={true}
+              variant="featured"
             />
-          )}
-          {recentPosts.map(post => (
-            <PostCard
-              title={post.data.title}
-              excerpt={post.data.description}
-              slug={post.slug}
-              category={post.data.category}
-              date={post.data.date?.toISOString()}
-              image={post.data.image}
-            />
-          ))}
+          </div>
+          <div class="magazine-sidebar">
+            {sidePosts.map(post => (
+              <PostCard
+                title={post.data.title}
+                excerpt={post.data.description}
+                slug={post.slug}
+                category={post.data.category}
+                date={post.data.date?.toISOString()}
+                image={post.data.image}
+                variant="mini"
+              />
+            ))}
+          </div>
         </div>
       )}
-
-      <div style="text-align:center; margin-top:36px;">
-        <a href="/blog" class="btn btn-gold">
-          <i class="fas fa-book-open"></i> Ver todos os posts
-        </a>
-      </div>
     </div>
   </section>
 
-  <!-- ===== OFERTAS DESTAQUE ===== -->
-  <section class="offers-section">
+  <!-- OFERTAS VERIFICADAS -->
+  <section class="section section--gray">
     <div class="container">
-      <div class="offers-inner">
-        <div class="section-header">
-          <div class="section-badge">🔥 Imperdível</div>
-          <h2 class="section-title">Ofertas Verificadas do Dia</h2>
-          <p class="section-subtitle">Curadoria atualizada diariamente — preços verificados antes de publicar</p>
+      <div class="section-header">
+        <div class="section-header-left">
+          <span class="section-label">Curadoria do Dia</span>
+          <h2 class="section-title">Ofertas Verificadas</h2>
         </div>
+        <a
+          href="https://www.mercadolivre.com.br/social/muc1576372"
+          target="_blank" rel="noopener"
+          class="section-link"
+        >
+          Ver todas
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
 
-        <div class="offers-grid">
-          {offers.map(offer => (
-            <a href={offer.url} target="_blank" rel="noopener" class="offer-card">
-              <div class="offer-card-icon">{offer.icon}</div>
-              <div class="offer-card-name">{offer.name}</div>
-              <div class="offer-card-old">{offer.old}</div>
-              <div class="offer-card-price">{offer.price}</div>
+      <div class="offers-grid">
+        {offers.map(offer => (
+          <div class="offer-card">
+            <div class="offer-card-img-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div class="offer-card-body">
+              <span class="offer-card-store">{offer.store}</span>
+              <p class="offer-card-name">{offer.name}</p>
+              <div class="offer-card-pricing">
+                <span class="offer-card-price-old">{offer.priceOld}</span>
+                <span class="offer-card-price">{offer.price}</span>
+              </div>
               <span class="offer-card-badge">{offer.badge}</span>
-            </a>
-          ))}
-        </div>
-
-        <div style="text-align:center; margin-top:36px;">
-          <a
-            href="https://www.mercadolivre.com.br/social/muc1576372"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-gold"
-          >
-            <i class="fas fa-lock"></i> Ver Todas as Ofertas Verificadas
-          </a>
-        </div>
+            </div>
+            <div class="offer-card-footer">
+              <a
+                href={offer.url}
+                target="_blank"
+                rel="noopener nofollow"
+                class={storeBtnClass[offer.storeKey]}
+              >
+                {storeBtnLabel[offer.storeKey]}
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>

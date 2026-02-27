@@ -8,9 +8,9 @@ let posts: any[] = [];
 try {
   const { getCollection } = await import('astro:content');
   const allPosts = await getCollection('blog');
-  posts = allPosts.sort(
-    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
-  );
+  posts = allPosts
+    .filter(p => !p.data.draft)
+    .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 } catch {
   posts = [];
 }
@@ -18,32 +18,32 @@ try {
 
 <Layout
   title="Blog — AchadoCerto.VIP"
-  description="Guias de compra, comparativos e dicas de economia. Tudo curado pelo AchadoCerto.VIP."
+  description="Guias de compra, comparativos e dicas de economia curados pelo AchadoCerto.VIP."
 >
   <Header />
 
-  <div class="blog-header">
+  <div class="page-header">
     <div class="container">
-      <div class="section-badge" style="margin-bottom:14px;">✍️ Blog</div>
-      <h1 class="blog-header-title">Achados focados em economia</h1>
-      <p class="blog-header-sub">Promoções selecionadas, guias e comparativos que realmente valem a pena</p>
+      <span class="page-header-eyebrow">Blog</span>
+      <h1 class="page-header-title">Achados que valem a pena</h1>
+      <p class="page-header-sub">Guias, comparativos e promoções selecionadas com critério</p>
     </div>
   </div>
 
-  <section class="section">
+  <section class="section section--white">
     <div class="container">
       {posts.length === 0 ? (
-        <div style="text-align:center; padding: 60px 20px; color: var(--color-text-muted);">
-          <p style="font-size:48px; margin-bottom:16px;">📝</p>
-          <h2 style="margin-bottom:8px;">Nenhum post ainda</h2>
+        <div class="empty-state">
+          <div class="empty-state-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+          </div>
+          <h3>Nenhum post ainda</h3>
           <p>Em breve publicaremos guias e achados incríveis aqui!</p>
-          <a href="/" class="btn btn-gold" style="margin-top:24px; display:inline-flex;">
-            <i class="fas fa-home"></i> Voltar ao Início
-          </a>
+          <a href="/" class="btn btn-gold" style="display:inline-flex; margin-top:8px;">Voltar ao Início</a>
         </div>
       ) : (
         <div class="posts-grid">
-          {posts.map((post, i) => (
+          {posts.map(post => (
             <PostCard
               title={post.data.title}
               excerpt={post.data.description}
@@ -51,7 +51,7 @@ try {
               category={post.data.category}
               date={post.data.date?.toISOString()}
               image={post.data.image}
-              featured={i === 0}
+              variant="grid"
             />
           ))}
         </div>
