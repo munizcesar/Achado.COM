@@ -1,0 +1,6 @@
+[build]
+command = "npm run build"
+pages_build_output_dir = "dist"
+
+[[build.environment_variables]]
+# NODE_VERSION controlado pelo .node-version

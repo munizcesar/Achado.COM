@@ -1,0 +1,72 @@
+---
+interface Props {
+  title: string;
+  excerpt?: string;
+  slug: string;
+  category?: string;
+  date?: string;
+  image?: string;
+  featured?: boolean;
+}
+
+const {
+  title,
+  excerpt,
+  slug,
+  category = 'Blog',
+  date,
+  image,
+  featured = false,
+} = Astro.props;
+
+const formattedDate = date
+  ? new Date(date).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' })
+  : null;
+---
+
+<article class={`post-card ${featured ? 'featured' : ''}`}>
+  {image && (
+    <img
+      src={image}
+      alt={title}
+      class="post-card-img"
+      loading="lazy"
+      width="800"
+      height="450"
+    />
+  )}
+  {!image && (
+    <div class="post-card-img post-card-img-placeholder" aria-hidden="true">
+      <span>📦</span>
+    </div>
+  )}
+
+  <div class="post-card-body">
+    <div class="post-card-meta">
+      <span class="post-card-category">{category}</span>
+      {formattedDate && <time class="post-card-date" datetime={date}>{formattedDate}</time>}
+    </div>
+
+    <h2 class="post-card-title">
+      <a href={`/blog/${slug}`}>{title}</a>
+    </h2>
+
+    {excerpt && <p class="post-card-excerpt">{excerpt}</p>}
+  </div>
+
+  <div class="post-card-footer">
+    <a href={`/blog/${slug}`} class="post-card-read">
+      Ler mais <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</article>
+
+<style>
+  .post-card-img-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    background: #F0F2F8;
+  }
+</style>

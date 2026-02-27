@@ -1,0 +1,5 @@
+# Redireciona rotas legadas para novas URLs Astro
+/index.html          /               301
+/blog.html           /blog           301
+/politica.html       /politica       301
+/termos.html         /termos         301

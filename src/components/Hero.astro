@@ -1,0 +1,89 @@
+---
+interface Props {
+  title?: string;
+  highlight?: string;
+  description?: string;
+}
+
+const {
+  title = 'Os melhores',
+  highlight = 'achados do dia',
+  description = 'Curadoria diária de promoções reais no Mercado Livre, Magalu e Amazon. Sem spam. Só o que vale a pena.',
+} = Astro.props;
+
+const featuredProducts = [
+  { icon: '📱', name: 'Smartphone', label: 'Tech', price: 'R$ 899', pct: 75 },
+  { icon: '🎧', name: 'Headphone', label: 'Áudio', price: 'R$ 199', pct: 55 },
+  { icon: '💻', name: 'Notebook', label: 'Informática', price: 'R$ 2.499', pct: 88 },
+  { icon: '⌚', name: 'Smartwatch', label: 'Wearable', price: 'R$ 349', pct: 62 },
+];
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <!-- Copy -->
+      <div class="hero-copy">
+        <div class="hero-badge">
+          <i class="fas fa-bolt"></i>
+          Ofertas Verificadas
+        </div>
+
+        <h1 class="hero-title">
+          {title} <span class="gold">{highlight}</span><br/>
+          você encontra aqui
+        </h1>
+
+        <p class="hero-desc">{description}</p>
+
+        <div class="hero-actions">
+          <a
+            href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-gold"
+          >
+            <i class="fas fa-bullhorn"></i>
+            Seguir Canal
+          </a>
+          <a href="/blog" class="btn btn-outline">
+            <i class="fas fa-fire"></i>
+            Ver Achados
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong>+10k</strong>
+            <span>Membros VIP</span>
+          </div>
+          <div class="hero-stat">
+            <strong>Diário</strong>
+            <span>Atualizações</span>
+          </div>
+          <div class="hero-stat">
+            <strong>100%</strong>
+            <span>Verificadas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual de produtos -->
+      <div class="hero-visual" aria-hidden="true">
+        {featuredProducts.map((p, i) => (
+          <div class={`hero-card ${i === 0 ? 'featured' : ''}`}>
+            <span class="hero-card-icon">{p.icon}</span>
+            <div>
+              <div class="hero-card-label">{p.label}</div>
+              <div class="hero-card-name">{p.name}</div>
+              <div class="hero-card-price">{p.price}</div>
+              <div class="hero-card-bar">
+                <div class="hero-card-bar-fill" style={`width:${p.pct}%`}></div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

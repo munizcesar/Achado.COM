@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import PostCard from '../components/PostCard.astro';
+import Footer from '../components/Footer.astro';
+
+// Busca posts do blog (Content Collections)
+let posts: any[] = [];
+try {
+  const { getCollection } = await import('astro:content');
+  const allPosts = await getCollection('blog');
+  posts = allPosts
+    .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+    .slice(0, 6);
+} catch {
+  posts = [];
+}
+
+const featuredPost = posts[0];
+const recentPosts = posts.slice(1);
+
+// Ofertas em destaque (estáticas — substituir por API/CMS futuramente)
+const offers = [
+  { icon: '📱', name: 'Smartphone Samsung', old: 'R$ 1.299', price: 'R$ 899', badge: '-31%', url: 'https://mercadolivre.com/sec/1swHtUC' },
+  { icon: '🎧', name: 'Fone JBL Tune', old: 'R$ 299', price: 'R$ 189', badge: '-37%', url: 'https://mercadolivre.com/sec/2AfMec7' },
+  { icon: '💻', name: 'Notebook Lenovo', old: 'R$ 3.199', price: 'R$ 2.499', badge: '-22%', url: 'https://mercadolivre.com/sec/1swHtUC' },
+  { icon: '⌚', name: 'Smartwatch Xiaomi', old: 'R$ 499', price: 'R$ 349', badge: '-30%', url: 'https://mercadolivre.com/sec/1swHtUC' },
+  { icon: '🖥️', name: 'Monitor 24"', old: 'R$ 1.099', price: 'R$ 799', badge: '-27%', url: 'https://mercadolivre.com/sec/1swHtUC' },
+  { icon: '🎮', name: 'Controle Xbox', old: 'R$ 399', price: 'R$ 279', badge: '-30%', url: 'https://mercadolivre.com/sec/1swHtUC' },
+];
+---
+
+<Layout>
+  <Header />
+  <Hero />
+  <CtaBanner />
+
+  <!-- ===== BLOG: ÚLTIMAS POSTAGENS ===== -->
+  <section class="section" style="background: var(--color-bg);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">📝 Blog</div>
+        <h2 class="section-title">Últimas do Blog</h2>
+        <p class="section-subtitle">Guias, comparativos e dicas para economizar com as melhores escolhas</p>
+      </div>
+
+      {posts.length === 0 ? (
+        <div style="text-align:center; padding: 40px; color: var(--color-text-muted);">
+          <p style="font-size:40px; margin-bottom:12px;">📝</p>
+          <p>Nenhum post publicado ainda. Em breve!</p>
+          <a href="/blog" style="margin-top:16px; display:inline-block; color: var(--color-primary-mid);">Ver blog →</a>
+        </div>
+      ) : (
+        <div class="posts-grid">
+          {featuredPost && (
+            <PostCard
+              title={featuredPost.data.title}
+              excerpt={featuredPost.data.description}
+              slug={featuredPost.slug}
+              category={featuredPost.data.category}
+              date={featuredPost.data.date?.toISOString()}
+              image={featuredPost.data.image}
+              featured={true}
+            />
+          )}
+          {recentPosts.map(post => (
+            <PostCard
+              title={post.data.title}
+              excerpt={post.data.description}
+              slug={post.slug}
+              category={post.data.category}
+              date={post.data.date?.toISOString()}
+              image={post.data.image}
+            />
+          ))}
+        </div>
+      )}
+
+      <div style="text-align:center; margin-top:36px;">
+        <a href="/blog" class="btn btn-gold">
+          <i class="fas fa-book-open"></i> Ver todos os posts
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OFERTAS DESTAQUE ===== -->
+  <section class="offers-section">
+    <div class="container">
+      <div class="offers-inner">
+        <div class="section-header">
+          <div class="section-badge">🔥 Imperdível</div>
+          <h2 class="section-title">Ofertas Verificadas do Dia</h2>
+          <p class="section-subtitle">Curadoria atualizada diariamente — preços verificados antes de publicar</p>
+        </div>
+
+        <div class="offers-grid">
+          {offers.map(offer => (
+            <a href={offer.url} target="_blank" rel="noopener" class="offer-card">
+              <div class="offer-card-icon">{offer.icon}</div>
+              <div class="offer-card-name">{offer.name}</div>
+              <div class="offer-card-old">{offer.old}</div>
+              <div class="offer-card-price">{offer.price}</div>
+              <span class="offer-card-badge">{offer.badge}</span>
+            </a>
+          ))}
+        </div>
+
+        <div style="text-align:center; margin-top:36px;">
+          <a
+            href="https://www.mercadolivre.com.br/social/muc1576372"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-gold"
+          >
+            <i class="fas fa-lock"></i> Ver Todas as Ofertas Verificadas
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

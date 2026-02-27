@@ -1,0 +1,75 @@
+---
+const navLinks = [
+  { href: '/categorias/tech', label: 'Tech' },
+  { href: '/categorias/saude', label: 'Saúde' },
+  { href: '/categorias/lar', label: 'Lar' },
+  { href: '/categorias/estilo', label: 'Estilo' },
+  { href: '/categorias/dicas', label: 'Dicas' },
+  { href: '/blog', label: 'Blog' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <!-- Menu toggle -->
+      <button class="menu-toggle" aria-label="Abrir menu" id="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Logo -->
+      <a href="/" class="logo" aria-label="AchadoCerto VIP - Página inicial">
+        <span class="logo-achado">Achado</span><span class="logo-certo">Certo</span><span class="logo-vip">VIP</span>
+      </a>
+
+      <!-- Busca -->
+      <form class="header-search" role="search" action="/blog" method="get">
+        <input
+          type="search"
+          name="q"
+          placeholder="Buscar achados…"
+          aria-label="Buscar"
+        />
+        <button type="submit" aria-label="Pesquisar">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+
+      <!-- Search toggle mobile -->
+      <button class="menu-toggle" id="search-toggle" aria-label="Buscar" style="display:none">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-categorias">
+  <div class="container">
+    <div class="nav-links" role="navigation" aria-label="Categorias">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class={currentPath.startsWith(link.href) ? 'active' : ''}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Mobile search toggle
+  const searchToggle = document.getElementById('search-toggle');
+  const headerSearch = document.querySelector('.header-search') as HTMLElement;
+
+  if (window.innerWidth <= 768 && searchToggle && headerSearch) {
+    searchToggle.style.display = 'flex';
+    searchToggle.addEventListener('click', () => {
+      const isVisible = headerSearch.style.display === 'flex';
+      headerSearch.style.display = isVisible ? 'none' : 'flex';
+    });
+  }
+</script>
