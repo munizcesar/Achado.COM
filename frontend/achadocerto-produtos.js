@@ -90,15 +90,7 @@ class AchadoCertoProdutos {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: var(--bg-dark);
-                font-weight: bold;
-                font-size: 16px;
-            }
-
-            .produto-badge {
-                background: var(--color-urgent);
-                color: white;
-                padding: 4px 12px;
+                color: #fff;
                 border-radius: 20px;
                 font-size: 12px;
                 font-weight: 500;

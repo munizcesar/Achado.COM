@@ -20,19 +20,19 @@ class AchadoCertoProdutos {
         const style = document.createElement('style');
         style.textContent = `
             .produto-widget {
-                background: linear-gradient(135deg, #1a2f6a 0%, #0d1b4a 100%);
-                border: 1px solid rgba(212, 175, 55, 0.3);
+                background: var(--bg-card);
+                border: 1px solid var(--color-border);
                 border-radius: 16px;
                 padding: 24px;
                 margin: 24px 0;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-                color: #fff;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+                color: var(--color-text);
             }
 
             .produto-widget:hover {
                 transform: translateY(-4px);
-                box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
-                border-color: #D4AF37;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                border-color: var(--color-primary);
             }
 
             .produto-imagem img {
@@ -45,25 +45,25 @@ class AchadoCertoProdutos {
             .produto-widget h3 {
                 margin: 0 0 12px 0;
                 font-size: 18px;
-                color: #fff;
+                color: var(--color-text);
             }
 
             .produto-preco {
                 font-size: 24px;
                 font-weight: bold;
-                color: #FFD700;
+                color: var(--color-primary);
                 margin-bottom: 12px;
             }
 
             .preco-original {
                 text-decoration: line-through;
-                color: #888;
+                color: var(--color-text-muted);
                 margin-left: 12px;
                 font-size: 16px;
             }
 
             .desconto {
-                background: #FF6B6B;
+                background: var(--color-urgent);
                 color: white;
                 padding: 4px 8px;
                 border-radius: 4px;
@@ -72,9 +72,9 @@ class AchadoCertoProdutos {
             }
 
             .btn-produto {
-                background: linear-gradient(135deg, #fbd35d 0%, #f0b93d 100%);
+                background: var(--color-primary);
                 border: none;
-                color: #0B1220;
+                color: #fff;
                 padding: 12px 22px;
                 border-radius: 999px;
                 font-weight: 700;
@@ -89,26 +89,27 @@ class AchadoCertoProdutos {
                 gap: 8px;
                 text-align: center;
                 text-decoration: none;
-                box-shadow: 0 8px 22px rgba(240, 185, 61, 0.3);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                transition: transform 0.2s, background-color 0.2s;
             }
 
             .btn-produto::before {
                 content: attr(data-icon);
                 font-size: 14px;
-                color: #0B1220;
+                color: #fff;
             }
 
             .btn-produto:hover {
-                transform: translateY(-1px);
-                box-shadow: 0 14px 32px rgba(212,175,55,0.35);
-                background: linear-gradient(135deg, #ffe07e, #f7c24c);
+                transform: translateY(-1px) scale(1.03);
+                box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+                background: var(--color-primary-hover);
             }
 
             .btn-produto + .btn-produto {
                 margin-top: 10px;
-                border: 1px solid rgba(251, 211, 93, 0.7);
+                border: 1px solid var(--color-border);
                 background: transparent;
-                color: #F5F7FA;
+                color: var(--color-text);
             }
 
             .produto-botoes {
@@ -121,15 +122,15 @@ class AchadoCertoProdutos {
             .produto-loading {
                 text-align: center;
                 padding: 20px;
-                color: #888;
+                color: var(--color-text-muted);
             }
 
             .spinner {
                 display: inline-block;
                 width: 20px;
                 height: 20px;
-                border: 3px solid rgba(212, 175, 55, 0.3);
-                border-top: 3px solid #D4AF37;
+                border: 3px solid var(--color-border);
+                border-top: 3px solid var(--color-primary);
                 border-radius: 50%;
                 animation: spin 1s linear infinite;
             }
