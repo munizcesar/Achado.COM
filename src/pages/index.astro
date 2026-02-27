@@ -1,203 +1,95 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import CtaBanner from '../components/CtaBanner.astro';
-import PostCard from '../components/PostCard.astro';
-import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
 
-let posts: any[] = [];
+// 1. Coleta de dados (Programmatic SEO Prep)
+let allPosts = [];
 try {
-  const { getCollection } = await import('astro:content');
-  const allPosts = await getCollection('blog');
-  posts = allPosts
-    .filter(p => !p.data.draft)
-    .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
-    .slice(0, 4);
-} catch {
-  posts = [];
+  allPosts = await getCollection('blog');
+} catch (e) {
+  console.error("Erro ao carregar posts:", e);
 }
 
-const featuredPost = posts[0];
-const sidePosts = posts.slice(1, 4);
+// 2. Criação de Silos Semânticos (Agrupando por Categoria)
+// Pega os posts não-rascunho ordenados por data
+const publishedPosts = allPosts
+  .filter(p => !p.data.draft)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 
-const offers = [
-  {
-    name: 'Samsung Galaxy A55 5G 128GB',
-    store: 'Mercado Livre',
-    storeKey: 'ml',
-    priceOld: 'R$ 1.299',
-    price: 'R$ 899',
-    badge: '-31%',
-    url: 'https://mercadolivre.com/sec/1swHtUC',
-  },
-  {
-    name: 'Fone Bluetooth JBL Tune 520BT',
-    store: 'Amazon',
-    storeKey: 'amz',
-    priceOld: 'R$ 299',
-    price: 'R$ 179',
-    badge: '-40%',
-    url: 'https://amzn.to/3XhkJ9Z',
-  },
-  {
-    name: 'Notebook Lenovo IdeaPad 3 15\'',
-    store: 'Magalu',
-    storeKey: 'mg',
-    priceOld: 'R$ 3.199',
-    price: 'R$ 2.399',
-    badge: '-25%',
-    url: 'https://www.magazineluiza.com.br/',
-  },
-  {
-    name: 'Smartwatch Xiaomi Redmi Watch 3',
-    store: 'Mercado Livre',
-    storeKey: 'ml',
-    priceOld: 'R$ 499',
-    price: 'R$ 319',
-    badge: '-36%',
-    url: 'https://mercadolivre.com/sec/2AfMec7',
-  },
-  {
-    name: 'Monitor LG 24" Full HD IPS',
-    store: 'Amazon',
-    storeKey: 'amz',
-    priceOld: 'R$ 1.099',
-    price: 'R$ 749',
-    badge: '-32%',
-    url: 'https://amzn.to/3XhkJ9Z',
-  },
-  {
-    name: 'Controle Xbox Series Sem Fio',
-    store: 'Magalu',
-    storeKey: 'mg',
-    priceOld: 'R$ 499',
-    price: 'R$ 349',
-    badge: '-30%',
-    url: 'https://www.magazineluiza.com.br/',
-  },
-];
+const categories = [...new Set(publishedPosts.map(p => p.data.category || 'Geral'))];
 
-const storeBtnClass: Record<string, string> = {
-  ml:  'offer-card-btn offer-card-btn--ml',
-  amz: 'offer-card-btn offer-card-btn--amz',
-  mg:  'offer-card-btn offer-card-btn--mg',
-};
-const storeBtnLabel: Record<string, string> = {
-  ml:  'Ver no Mercado Livre',
-  amz: 'Ver na Amazon',
-  mg:  'Ver na Magalu',
-};
+// Pega o último post de cada categoria para a Home
+const siloPosts = categories.map(cat => {
+  return publishedPosts.find(p => (p.data.category || 'Geral') === cat);
+}).filter(Boolean);
+
+// Schema.org para a Home (CollectionPage)
+const homeSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "AchadoCerto.VIP | Reviews e Guias de Compra",
+  "description": "Guias de compras baseados em testes reais e pesquisa aprofundada.",
+  "url": "https://achadocerto.vip/"
+});
 ---
 
-<Layout>
-  <Header />
-  <Hero />
-  <CtaBanner />
-
-  <!-- BLOG: ÚLTIMAS POSTAGENS -->
-  <section class="section section--white">
+<Layout schema={homeSchema}>
+  <!-- HEADER DO PORTAL (Entity-based NLP Focus) -->
+  <section style="padding: 80px 0 40px; text-align: center; background: var(--bg-surface); border-bottom: 1px solid var(--border-light);">
     <div class="container">
-      <div class="section-header">
-        <div class="section-header-left">
-          <span class="section-label">Blog</span>
-          <h2 class="section-title">Últimas Publicações</h2>
-        </div>
-        <a href="/blog" class="section-link">
-          Ver todos
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-
-      {posts.length === 0 ? (
-        <div class="empty-state">
-          <div class="empty-state-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
-          </div>
-          <h3>Nenhum post ainda</h3>
-          <p>Em breve publicaremos guias e achados incríveis.</p>
-          <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" rel="noopener" class="btn btn-gold">Seguir Canal para não perder</a>
-        </div>
-      ) : (
-        <div class="magazine-grid">
-          <div class="magazine-main">
-            <PostCard
-              title={featuredPost.data.title}
-              excerpt={featuredPost.data.description}
-              slug={featuredPost.slug}
-              category={featuredPost.data.category}
-              date={featuredPost.data.date?.toISOString()}
-              image={featuredPost.data.image}
-              variant="featured"
-            />
-          </div>
-          <div class="magazine-sidebar">
-            {sidePosts.map(post => (
-              <PostCard
-                title={post.data.title}
-                excerpt={post.data.description}
-                slug={post.slug}
-                category={post.data.category}
-                date={post.data.date?.toISOString()}
-                image={post.data.image}
-                variant="mini"
-              />
-            ))}
-          </div>
-        </div>
-      )}
+      <h1 style="font-size: clamp(32px, 5vw, 48px); font-weight: 800; letter-spacing: -1px; color: var(--primary); margin-bottom: 16px;">
+        Compre com confiança. <br/>Sem perder tempo.
+      </h1>
+      <p style="font-size: 18px; color: var(--text-muted); max-width: 600px; margin: 0 auto; line-height: 1.6;">
+        Nós pesquisamos, testamos e comparamos centenas de produtos para que você encontre exatamente o que precisa, pelo melhor preço.
+      </p>
     </div>
   </section>
 
-  <!-- OFERTAS VERIFICADAS -->
-  <section class="section section--gray">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-header-left">
-          <span class="section-label">Curadoria do Dia</span>
-          <h2 class="section-title">Ofertas Verificadas</h2>
-        </div>
-        <a
-          href="https://www.mercadolivre.com.br/social/muc1576372"
-          target="_blank" rel="noopener"
-          class="section-link"
-        >
-          Ver todas
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
+  <!-- SILOS DE CONTEÚDO (Último post de cada categoria) -->
+  {siloPosts.map((post, index) => {
+    // Otimização LCP: Apenas a primeira imagem da primeira categoria recebe fetchpriority="high"
+    const isLCP = index === 0;
+    
+    return (
+      <section class="silo-section">
+        <div class="container">
+          <div class="silo-header">
+            <h2 class="silo-title">{post.data.category}</h2>
+            <a href={`/categorias/${post.data.category.toLowerCase()}`} class="silo-link">
+              Ver todos os guias →
+            </a>
+          </div>
 
-      <div class="offers-grid">
-        {offers.map(offer => (
-          <div class="offer-card">
-            <div class="offer-card-img-placeholder">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            </div>
-            <div class="offer-card-body">
-              <span class="offer-card-store">{offer.store}</span>
-              <p class="offer-card-name">{offer.name}</p>
-              <div class="offer-card-pricing">
-                <span class="offer-card-price-old">{offer.priceOld}</span>
-                <span class="offer-card-price">{offer.price}</span>
-              </div>
-              <span class="offer-card-badge">{offer.badge}</span>
-            </div>
-            <div class="offer-card-footer">
-              <a
-                href={offer.url}
-                target="_blank"
-                rel="noopener nofollow"
-                class={storeBtnClass[offer.storeKey]}
-              >
-                {storeBtnLabel[offer.storeKey]}
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <article class="review-card-hero">
+            <a href={`/blog/${post.slug}`} class="r-card-img-wrapper" aria-label={`Ler review sobre ${post.data.title}`}>
+              <img 
+                src={post.data.image || 'https://via.placeholder.com/800x450'} 
+                alt={`Imagem do review: ${post.data.title}`} 
+                class="r-card-img"
+                width="800" 
+                height="450"
+                loading={isLCP ? "eager" : "lazy"}
+                fetchpriority={isLCP ? "high" : "auto"}
+                decoding={isLCP ? "sync" : "async"}
+              />
+            </a>
+            <div class="r-card-content">
+              <span class="r-card-cat">Novo em {post.data.category}</span>
+              <h3 class="r-card-title">
+                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+              </h3>
+              <!-- A resposta SGE/GEO já começa no excerpt do post -->
+              <p class="r-card-excerpt">
+                {post.data.description}
+              </p>
+              <a href={`/blog/${post.slug}`} class="btn-primary">
+                Ler Análise Completa
               </a>
             </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <Footer />
+          </article>
+        </div>
+      </section>
+    );
+  })}
 </Layout>

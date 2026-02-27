@@ -1,86 +1,82 @@
 ---
+import '../styles/global.css';
+
 interface Props {
   title?: string;
   description?: string;
-  image?: string;
-  canonical?: string;
+  schema?: string;
 }
 
-const {
-  title = 'AchadoCerto.VIP — Onde o Premium vira Achado!',
-  description = 'Achados, cupons e ofertas selecionadas com foco em economia real. Canal Oficial e Grupo VIP para quem quer economizar com segurança.',
-  image = 'https://achadocerto.vip/images/og-previa.jpg',
-  canonical = Astro.url.href,
+const { 
+  title = "AchadoCerto.VIP | Reviews e Guias de Compra Independentes", 
+  description = "Análises aprofundadas, testes reais e guias de compra estruturados para ajudar você a escolher os melhores produtos do mercado.",
+  schema 
 } = Astro.props;
+
+// Schema Organizacional Default (Base)
+const defaultSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "AchadoCerto.VIP",
+  "url": "https://achadocerto.vip/"
+});
 ---
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title}</title>
-  <meta name="description" content={description} />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href={canonical} />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content={image} />
-  <meta property="og:url" content={canonical} />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="pt_BR" />
-  <meta property="og:site_name" content="AchadoCerto.VIP" />
+    <!-- Fontes (Inter) otimizadas p/ LCP -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={image} />
+    <!-- GA4 Setup via Gtag (Analytics & Event Tracking) -->
+    <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+      
+      // Função global para tracking de afiliados (High-RPM Programmatic SEO)
+      window.trackAffiliateClick = function(productName, category, url) {
+        gtag('event', 'affiliate_click', {
+          'product_name': productName,
+          'category': category,
+          'outbound_url': url
+        });
+      }
+    </script>
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <meta name="theme-color" content="#E8B84B" />
+    <!-- Injeção de JSON-LD Schema (GEO & Semantic SEO) -->
+    <script type="application/ld+json" set:html={schema || defaultSchema}></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="/" class="logo">Achado<span>Certo</span></a>
+        <nav style="display:flex; gap: 24px; font-weight: 500; font-size: 14px; color: var(--text-muted);">
+          <a href="/blog">Reviews</a>
+          <a href="/sobre">Nossa Metodologia</a>
+        </nav>
+      </div>
+    </header>
 
-  <!-- Fontes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <main>
+      <slot />
+    </main>
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B170HB38GJ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-B170HB38GJ');
-  </script>
-
-  <!-- Schema.org -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "AchadoCerto.VIP",
-    "url": "https://achadocerto.vip",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://achadocerto.vip/blog?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-</head>
-<body>
-  <slot />
-</body>
+    <footer style="padding: 64px 0; text-align: center; border-top: 1px solid var(--border-light); margin-top: 64px; color: var(--text-muted); font-size: 14px;">
+      <div class="container">
+        <p>© {new Date().getFullYear()} AchadoCerto.VIP. Todos os direitos reservados.</p>
+        <p style="margin-top: 8px; font-size: 13px; color: var(--text-light);">Operamos de forma independente. Compras via nossos links podem gerar comissões que financiam nossos testes.</p>
+      </div>
+    </footer>
+  </body>
 </html>
-
-<style is:global>
-  @import '/src/styles/global.css';
-</style>

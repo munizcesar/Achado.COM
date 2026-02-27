@@ -1,27 +1,8 @@
-# =============================================
-# AchadoCerto.VIP — Cloudflare Pages _redirects
-# ASTRO SSG: NÃO usar /* /index.html 200
-# (isso é só para SPAs com roteamento client-side)
-# =============================================
+# Redirecionamentos para Preservar Link Equity (SEO)
+# Garante que URLs antigas terminadas em .html redirecionem para as novas rotas limpas do Astro (Status 301 - Permanent)
 
-# Páginas legadas do HTML puro → novas rotas Astro
-/index.html              /                       301
-/blog.html               /blog                   301
-/politica.html           /politica               301
-/termos.html             /termos                 301
+# Exemplo de uso no Cloudflare Pages:
+/*.html /:splat 301
 
-# Categorias legadas
-/categorias/tech.html    /categorias/tech        301
-/categorias/saude.html   /categorias/saude       301
-/categorias/lar.html     /categorias/lar         301
-/categorias/estilo.html  /categorias/estilo      301
-/categorias/dicas.html   /categorias/dicas       301
-
-# Posts legados do blog (pasta /blog/*.html)
-/blog/*.html             /blog/:splat            301
-
-# Debug e arquivos de desenvolvimento (bloquear em prod)
-/debug-*                 /                       301
-/teste-*                 /                       301
-/validador-*             /                       301
-/relatorio-*             /                       301
+# Caso existam categorias antigas específicas que mudaram de nome:
+# /categoria-antiga/* /categorias/nova-categoria/:splat 301
