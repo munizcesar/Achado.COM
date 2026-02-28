@@ -16,6 +16,7 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const currentPath = Astro.url.pathname;
 
 const defaultSchema = {
   '@context': 'https://schema.org',
@@ -58,14 +59,13 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- GA4 — G-B170HB38GJ -->
+  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-B170HB38GJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-B170HB38GJ');
-    // Rastrear cliques em links de afiliados automaticamente
     document.addEventListener('click', function(e) {
       var el = e.target.closest('[data-affiliate]');
       if (!el) return;
@@ -84,7 +84,7 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
   <!-- DRAWER OVERLAY -->
   <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
 
-  <!-- DRAWER -->
+  <!-- DRAWER MOBILE -->
   <aside class="drawer" id="drawer" role="dialog" aria-label="Menu" aria-hidden="true">
     <div class="drawer-header">
       <span class="logo">Achado<span class="logo-accent">Certo</span></span>
@@ -97,7 +97,7 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
       <nav class="drawer-links">
         <a href="/categorias/tech" class="drawer-link">Tech &amp; Eletrônicos</a>
         <a href="/categorias/saude" class="drawer-link">Saúde &amp; Bem-estar</a>
-        <a href="/categorias/lar" class="drawer-link">Casa &amp; Lar</a>
+        <a href="/categorias/casa" class="drawer-link">Casa &amp; Lar</a>
         <a href="/categorias/beleza" class="drawer-link">Beleza &amp; Cuidados</a>
         <a href="/categorias/esportes" class="drawer-link">Esportes</a>
         <a href="/categorias/dicas" class="drawer-link">Guias de Compra</a>
@@ -113,40 +113,47 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
     </div>
   </aside>
 
-  <!-- HEADER -->
+  <!-- HEADER PRINCIPAL -->
   <header class="site-header">
     <div class="container">
       <div class="header-inner">
+        <!-- Hamburguer (mobile) -->
         <button class="drawer-toggle" onclick="openDrawer()" aria-label="Abrir menu" aria-expanded="false" id="drawerToggle">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
           </svg>
         </button>
+
+        <!-- Logo -->
         <a href="/" class="logo">Achado<span class="logo-accent">Certo</span></a>
+
+        <!-- Busca -->
         <form class="header-search" role="search" action="/blog" method="get">
           <input type="search" name="q" placeholder="Buscar reviews e guias..." aria-label="Buscar" autocomplete="off" />
           <button type="submit" class="header-search-btn" aria-label="Pesquisar">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
           </button>
         </form>
+
+        <!-- Nav desktop: apenas ações, sem repetir categorias do subnav -->
         <nav class="header-nav">
-          <a href="/categorias/tech">Tech</a>
-          <a href="/categorias/saude">Saúde</a>
-          <a href="/categorias/lar">Casa</a>
-          <a href="/blog">Todos os Reviews</a>
+          <a href="/blog" class={currentPath === '/blog' ? 'active' : ''}>Todos os Reviews</a>
+          <a href="/sobre" class={currentPath === '/sobre' ? 'active' : ''}>Sobre</a>
         </nav>
       </div>
     </div>
+
+    <!-- SUBNAV: categorias completas (desktop) -->
     <nav class="subnav" aria-label="Categorias">
       <div class="container">
         <div class="subnav-inner">
-          <a href="/" class="subnav-link">Início</a>
-          <a href="/categorias/tech" class="subnav-link">Tech</a>
-          <a href="/categorias/saude" class="subnav-link">Saúde</a>
-          <a href="/categorias/lar" class="subnav-link">Casa &amp; Lar</a>
-          <a href="/categorias/beleza" class="subnav-link">Beleza</a>
-          <a href="/categorias/esportes" class="subnav-link">Esportes</a>
-          <a href="/categorias/dicas" class="subnav-link">Guias</a>
+          <a href="/" class={`subnav-link${currentPath === '/' ? ' active' : ''}`}>Início</a>
+          <a href="/categorias/tech" class={`subnav-link${currentPath.startsWith('/categorias/tech') ? ' active' : ''}`}>Tech</a>
+          <a href="/categorias/saude" class={`subnav-link${currentPath.startsWith('/categorias/saude') ? ' active' : ''}`}>Saúde</a>
+          <a href="/categorias/casa" class={`subnav-link${currentPath.startsWith('/categorias/casa') ? ' active' : ''}`}>Casa &amp; Lar</a>
+          <a href="/categorias/beleza" class={`subnav-link${currentPath.startsWith('/categorias/beleza') ? ' active' : ''}`}>Beleza</a>
+          <a href="/categorias/esportes" class={`subnav-link${currentPath.startsWith('/categorias/esportes') ? ' active' : ''}`}>Esportes</a>
+          <a href="/categorias/dicas" class={`subnav-link${currentPath.startsWith('/categorias/dicas') ? ' active' : ''}`}>Guias</a>
         </div>
       </div>
     </nav>
@@ -166,12 +173,13 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
           <h4>Categorias</h4>
           <a href="/categorias/tech">Tech &amp; Eletrônicos</a>
           <a href="/categorias/saude">Saúde &amp; Bem-estar</a>
-          <a href="/categorias/lar">Casa &amp; Lar</a>
+          <a href="/categorias/casa">Casa &amp; Lar</a>
           <a href="/categorias/beleza">Beleza</a>
           <a href="/categorias/esportes">Esportes</a>
+          <a href="/categorias/dicas">Guias</a>
         </div>
         <div class="footer-col">
-          <h4>Sobre</h4>
+          <h4>Site</h4>
           <a href="/blog">Todos os Reviews</a>
           <a href="/sobre">Sobre Nós</a>
           <a href="/politica">Privacidade</a>
