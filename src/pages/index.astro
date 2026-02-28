@@ -9,7 +9,12 @@ try {
     .sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
 } catch(e) { posts = []; }
 
-// Último post de cada categoria (silos semânticos)
+function fmtDate(d) {
+  if (!d) return '';
+  return new Date(d).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+}
+
+// Pega um post por categoria para o pool do hero
 const seen = new Set();
 const siloPosts = posts.filter(p => {
   const cat = p.data.category || 'Geral';
@@ -18,62 +23,37 @@ const siloPosts = posts.filter(p => {
   return true;
 });
 
-const hero    = siloPosts[0] ?? null;
-const sidebar = siloPosts.slice(1, 5);
-const grid    = siloPosts.slice(5);
-
-function fmtDate(d) {
-  if (!d) return '';
-  return new Date(d).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
-}
+// Demais posts para o grid inferior
+const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
 ---
 
 <Layout>
-  {hero ? (
-    <!-- HERO — destaque principal (LCP otimizado) -->
-    <section class="hero">
+
+  {siloPosts.length > 0 ? (
+    <section class="hero" id="heroSection">
       <div class="container">
         <div class="hero-grid">
 
-          <!-- Post em destaque -->
-          <article class="hero-main">
-            <a href={`/blog/${hero.slug}`} class="hero-main-img-wrap" aria-label={hero.data.title}>
-              <img
-                src={hero.data.image || '/placeholder.webp'}
-                alt={hero.data.title}
-                class="hero-main-img"
-                width="820" height="461"
-                loading="eager"
-                fetchpriority="high"
-                decoding="sync"
-              />
+          <!-- HERO PRINCIPAL: preenchido pelo JS com o post sorteado -->
+          <article class="hero-main" id="heroMain" style="opacity:0; transition: opacity 0.4s ease;">
+            <a id="heroImgLink" href="#" class="hero-main-img-wrap">
+              <img id="heroImg" src="" alt="" class="hero-main-img" width="820" height="461" loading="eager" fetchpriority="high" decoding="sync" />
             </a>
-            <span class="hero-cat">{hero.data.category}</span>
+            <span id="heroCat" class="hero-cat"></span>
             <h1 class="hero-title">
-              <a href={`/blog/${hero.slug}`}>{hero.data.title}</a>
+              <a id="heroTitleLink" href="#"></a>
             </h1>
-            <p class="hero-excerpt">{hero.data.description}</p>
-            <a href={`/blog/${hero.slug}`} class="btn-read-full">
+            <p id="heroExcerpt" class="hero-excerpt"></p>
+            <a id="heroBtn" href="#" class="btn-read-full">
               Ler análise completa
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </article>
 
-          <!-- Sidebar: últimas de cada categoria -->
-          <aside class="hero-sidebar">
-            <div class="hero-sidebar-header">Últimas análises</div>
-            {sidebar.map(post => (
-              <a href={`/blog/${post.slug}`} class="sidebar-post">
-                {post.data.image
-                  ? <img src={post.data.image} alt={post.data.title} class="sidebar-post-img" loading="lazy" width="72" height="54" />
-                  : <div class="sidebar-post-img" style="background:var(--c-border);"></div>
-                }
-                <div>
-                  <span class="sidebar-post-cat">{post.data.category}</span>
-                  <span class="sidebar-post-title">{post.data.title}</span>
-                </div>
-              </a>
-            ))}
+          <!-- SIDEBAR: preenchida pelo JS -->
+          <aside class="hero-sidebar" id="heroSidebar">
+            <div class="hero-sidebar-header">Outras análises</div>
+            <div id="sidebarPosts"></div>
           </aside>
 
         </div>
@@ -90,8 +70,8 @@ function fmtDate(d) {
     </section>
   )}
 
-  <!-- GRID: demais categorias -->
-  {grid.length > 0 && (
+  <!-- GRID inferior -->
+  {gridPosts.length > 0 && (
     <section class="section section-gray">
       <div class="container">
         <div class="section-header">
@@ -105,30 +85,18 @@ function fmtDate(d) {
           </a>
         </div>
         <div class="post-grid">
-          {grid.map((post, i) => (
+          {gridPosts.map(post => (
             <article class="post-card">
               <a href={`/blog/${post.slug}`} class="post-card-img-wrap">
-                <img
-                  src={post.data.image || '/placeholder.webp'}
-                  alt={post.data.title}
-                  class="post-card-img"
-                  width="600" height="400"
-                  loading="lazy"
-                />
+                <img src={post.data.image || '/placeholder.webp'} alt={post.data.title} class="post-card-img" width="600" height="400" loading="lazy" />
               </a>
               <div class="post-card-body">
                 <span class="post-card-cat">{post.data.category}</span>
-                <h3 class="post-card-title">
-                  <a href={`/blog/${post.slug}`}>{post.data.title}</a>
-                </h3>
-                {post.data.description && (
-                  <p class="post-card-excerpt">{post.data.description}</p>
-                )}
+                <h3 class="post-card-title"><a href={`/blog/${post.slug}`}>{post.data.title}</a></h3>
+                {post.data.description && <p class="post-card-excerpt">{post.data.description}</p>}
               </div>
               <div class="post-card-footer">
-                <time class="post-card-date" datetime={post.data.date?.toISOString?.() ?? ''}>
-                  {fmtDate(post.data.date)}
-                </time>
+                <time class="post-card-date" datetime={post.data.date?.toISOString?.() ?? ''}>{fmtDate(post.data.date)}</time>
                 <a href={`/blog/${post.slug}`} class="post-card-read">
                   Ler review
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -140,4 +108,64 @@ function fmtDate(d) {
       </div>
     </section>
   )}
+
+  <!-- Pool de posts serializado para o JS -->
+  <script type="application/json" id="postsPool">
+    {JSON.stringify(siloPosts.map(p => ({
+      slug: p.slug,
+      title: p.data.title,
+      description: p.data.description || '',
+      category: p.data.category || '',
+      image: p.data.image || '/placeholder.webp',
+      url: `/blog/${p.slug}`,
+    })))}
+  </script>
+
+  <script>
+    const pool = JSON.parse(document.getElementById('postsPool').textContent);
+    if (!pool || pool.length === 0) {
+      document.getElementById('heroSection')?.remove();
+    } else {
+      // Sorteia hero aleatório a cada refresh
+      const idx = Math.floor(Math.random() * pool.length);
+      const hero = pool[idx];
+      const sidebar = [...pool.slice(0, idx), ...pool.slice(idx + 1)].slice(0, 4);
+
+      // Preenche hero
+      const heroMain   = document.getElementById('heroMain');
+      const imgLink    = document.getElementById('heroImgLink');
+      const img        = document.getElementById('heroImg');
+      const cat        = document.getElementById('heroCat');
+      const titleLink  = document.getElementById('heroTitleLink');
+      const excerpt    = document.getElementById('heroExcerpt');
+      const btn        = document.getElementById('heroBtn');
+
+      imgLink.href     = hero.url;
+      img.src          = hero.image;
+      img.alt          = hero.title;
+      cat.textContent  = hero.category;
+      titleLink.href   = hero.url;
+      titleLink.textContent = hero.title;
+      excerpt.textContent   = hero.description;
+      btn.href         = hero.url;
+
+      // Fade in suave
+      requestAnimationFrame(() => { heroMain.style.opacity = '1'; });
+
+      // Preenche sidebar
+      const sidebarEl = document.getElementById('sidebarPosts');
+      sidebar.forEach(post => {
+        sidebarEl.insertAdjacentHTML('beforeend', `
+          <a href="${post.url}" class="sidebar-post">
+            <img src="${post.image}" alt="${post.title}" class="sidebar-post-img" loading="lazy" width="72" height="54" />
+            <div>
+              <span class="sidebar-post-cat">${post.category}</span>
+              <span class="sidebar-post-title">${post.title}</span>
+            </div>
+          </a>
+        `);
+      });
+    }
+  </script>
+
 </Layout>
