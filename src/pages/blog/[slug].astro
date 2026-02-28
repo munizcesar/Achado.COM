@@ -24,6 +24,11 @@ const ogImage = post.data.image
   ? (post.data.image.startsWith('http') ? post.data.image : `${siteUrl}${post.data.image}`)
   : `${siteUrl}/og-default.jpg`;
 
+// Imagem do produto separada da imagem hero (ou fallback para hero)
+const productImage = post.data.productImage || post.data.image || null;
+const hasAffiliate  = !!post.data.affiliateUrl;
+const price         = post.data.price || null;
+
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -36,8 +41,8 @@ const articleSchema = {
   mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
 };
 
-const shareText = encodeURIComponent(`${post.data.title} — AchadoCerto`);
-const shareUrl  = encodeURIComponent(postUrl);
+const shareText  = encodeURIComponent(`${post.data.title} — AchadoCerto`);
+const shareUrl   = encodeURIComponent(postUrl);
 const whatsappUrl = `https://wa.me/?text=${shareText}%20${shareUrl}`;
 const twitterUrl  = `https://x.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
 ---
@@ -49,82 +54,75 @@ const twitterUrl  = `https://x.com/intent/tweet?text=${shareText}&url=${shareUrl
   schema={articleSchema}
 >
   <article>
-    <!-- HERO DO POST -->
+
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
     <div style="background: var(--c-surface); border-bottom: 1px solid var(--c-border); padding: 48px 0 0;">
       <div class="container" style="max-width: 820px;">
+
         <!-- Breadcrumb -->
-        <nav style="font-size: 13px; color: var(--c-text-muted); margin-bottom: 20px; display: flex; gap: 6px; align-items: center;">
-          <a href="/" style="color: var(--c-brand);">Início</a>
-          <span>›</span>
-          <a href="/blog" style="color: var(--c-brand);">Reviews</a>
-          <span>›</span>
-          {post.data.category && <a href={`/categorias/${post.data.category.toLowerCase()}`} style="color: var(--c-brand);">{post.data.category}</a>}
+        <nav style="font-size:13px;color:var(--c-text-muted);margin-bottom:20px;display:flex;gap:6px;align-items:center;">
+          <a href="/" style="color:var(--c-brand);">Início</a><span>›</span>
+          <a href="/blog" style="color:var(--c-brand);">Reviews</a><span>›</span>
+          {post.data.category && <a href={`/categorias/${post.data.category.toLowerCase()}`} style="color:var(--c-brand);">{post.data.category}</a>}
           {post.data.category && <span>›</span>}
-          <span style="color: var(--c-text-light); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 200px;">{post.data.title}</span>
+          <span style="color:var(--c-text-light);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:200px;">{post.data.title}</span>
         </nav>
 
-        <!-- Categoria + Título -->
-        <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--c-brand); display: block; margin-bottom: 10px;">
+        <span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);display:block;margin-bottom:10px;">
           {post.data.category}
         </span>
-        <h1 style="font-size: clamp(26px, 4vw, 42px); font-weight: 800; letter-spacing: -.8px; line-height: 1.2; color: var(--c-text); margin-bottom: 16px;">
+        <h1 style="font-size:clamp(26px,4vw,42px);font-weight:800;letter-spacing:-.8px;line-height:1.2;color:var(--c-text);margin-bottom:16px;">
           {post.data.title}
         </h1>
         {post.data.description && (
-          <p style="font-size: 18px; color: var(--c-text-sub); line-height: 1.7; margin-bottom: 24px; max-width: 680px;">
+          <p style="font-size:18px;color:var(--c-text-sub);line-height:1.7;margin-bottom:24px;max-width:680px;">
             {post.data.description}
           </p>
         )}
 
         <!-- Meta + Compartilhar -->
-        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 32px; flex-wrap: wrap;">
-          <div style="display: flex; align-items: center; gap: 16px; font-size: 13px; color: var(--c-text-muted); flex-wrap: wrap;">
-            <span style="display:flex; align-items:center; gap:5px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:32px;flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;gap:16px;font-size:13px;color:var(--c-text-muted);flex-wrap:wrap;">
+            <span style="display:flex;align-items:center;gap:5px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
               <time datetime={post.data.date?.toISOString?.() ?? ''}>{fmtDate(post.data.date)}</time>
             </span>
-            <span style="display:flex; align-items:center; gap:5px;">
+            <span style="display:flex;align-items:center;gap:5px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               Equipe AchadoCerto
             </span>
             {post.data.tags?.length > 0 && post.data.tags.slice(0,3).map(tag => (
-              <span style="background: var(--c-tag-bg); color: var(--c-tag-text); padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600;">
-                #{tag}
-              </span>
+              <span style="background:var(--c-tag-bg);color:var(--c-tag-text);padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;">#{tag}</span>
             ))}
           </div>
-
-          <!-- Botões de compartilhar -->
           <div class="share-buttons">
             <span class="share-label">Compartilhar:</span>
-            <a href={twitterUrl} target="_blank" rel="noopener noreferrer" aria-label="Compartilhar no X" class="share-btn share-x">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
+            <a href={twitterUrl} target="_blank" rel="noopener noreferrer" aria-label="X" class="share-btn share-x">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Compartilhar no WhatsApp" class="share-btn share-whatsapp">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-              </svg>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="share-btn share-whatsapp">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
             </a>
-            <a href={`https://www.instagram.com/`} target="_blank" rel="noopener noreferrer" aria-label="Instagram AchadoCerto" class="share-btn share-instagram">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
+            <a href="https://www.instagram.com/achadocerto" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="share-btn share-instagram">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- IMAGEM DESTAQUE -->
+    <!-- ============================================================
+         IMAGEM HERO
+    ============================================================ -->
     {post.data.image && (
-      <div style="background: var(--c-bg); padding: 0 0 40px;">
-        <div class="container" style="max-width: 820px;">
+      <div style="background:var(--c-bg);padding:0 0 40px;">
+        <div class="container" style="max-width:820px;">
           <img
             src={post.data.image}
             alt={post.data.title}
-            style="width:100%; aspect-ratio:16/9; object-fit:cover; border-radius: var(--r-lg); box-shadow: var(--shadow-md); margin-top: -1px;"
+            style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r-lg);box-shadow:var(--shadow-md);margin-top:-1px;"
             width="820" height="461"
             loading="eager"
             fetchpriority="high"
@@ -133,41 +131,129 @@ const twitterUrl  = `https://x.com/intent/tweet?text=${shareText}&url=${shareUrl
       </div>
     )}
 
-    <!-- CONTEÚDO DO POST -->
-    <div style="padding: 8px 0 80px; background: var(--c-bg);">
-      <div class="container" style="max-width: 820px; display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: start;">
+    <!-- ============================================================
+         BOX PRODUTO INLINE — POSIÇÃO 1 (logo após hero, antes do texto)
+         Aparece somente se tiver affiliateUrl
+    ============================================================ -->
+    {hasAffiliate && (
+      <div class="container" style="max-width:820px;margin-bottom:0;padding-bottom:0;">
+        <div class="product-box-inline">
+          {productImage && (
+            <div class="product-box-img-wrap">
+              <img
+                src={productImage}
+                alt={post.data.title}
+                class="product-box-img"
+                loading="lazy"
+              />
+            </div>
+          )}
+          <div class="product-box-info">
+            <p class="product-box-label">Produto em destaque</p>
+            <p class="product-box-name">{post.data.title}</p>
+            {price && <p class="product-box-price">{price}</p>}
+            <a
+              href={post.data.affiliateUrl}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              data-affiliate
+              data-product={post.data.title}
+              data-category={post.data.category}
+              class="product-box-btn"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              Ver melhor preço
+            </a>
+            <p class="product-box-disclaimer">Link de afiliado — sem custo extra para você</p>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <!-- ============================================================
+         CONTEÚDO DO POST
+    ============================================================ -->
+    <div style="padding:32px 0 80px;background:var(--c-bg);">
+      <div class="container post-grid" style="max-width:820px;">
+
         <!-- Texto principal -->
         <div class="prose">
           <Content />
+
+          <!-- BOX CTA FINAL — POSIÇÃO 2 (fim do conteúdo) -->
+          {hasAffiliate && (
+            <div class="product-box-final">
+              {productImage && (
+                <img
+                  src={productImage}
+                  alt={post.data.title}
+                  class="product-box-final-img"
+                  loading="lazy"
+                />
+              )}
+              <div class="product-box-final-body">
+                <p class="product-box-final-label">⭐ Gostou do review? Confira o preço agora</p>
+                <p class="product-box-final-name">{post.data.title}</p>
+                {price && <p class="product-box-final-price">{price}</p>}
+                <a
+                  href={post.data.affiliateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  data-affiliate
+                  data-product={post.data.title}
+                  data-category={post.data.category}
+                  class="product-box-final-btn"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  Ver melhor preço
+                </a>
+                <p style="font-size:11px;color:var(--c-text-light);text-align:center;margin-top:8px;">Link de afiliado — sem custo extra para você</p>
+              </div>
+            </div>
+          )}
         </div>
 
         <!-- Sidebar sticky -->
-        <aside style="position: sticky; top: 88px;">
-          {post.data.affiliateUrl && (
-            <div style="background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 20px; margin-bottom: 20px; box-shadow: var(--shadow-sm);">
-              <p style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--c-text-muted); margin-bottom: 8px;">Melhor preço encontrado</p>
-              <a
-                href={post.data.affiliateUrl}
-                target="_blank"
-                rel="noopener noreferrer sponsored"
-                data-affiliate
-                data-product={post.data.title}
-                data-category={post.data.category}
-                style="display:flex; align-items:center; justify-content:center; gap:8px; background: var(--c-brand); color:#fff; font-weight:700; font-size:15px; padding: 13px 20px; border-radius: var(--r-sm); transition: background .2s;"
-                onmouseover="this.style.background='var(--c-brand-dark)'"
-                onmouseout="this.style.background='var(--c-brand)'"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                Ver melhor preço
-              </a>
-              <p style="font-size: 11px; color: var(--c-text-light); text-align:center; margin-top: 8px;">Link de afiliado — sem custo extra para você</p>
+        <aside class="post-sidebar">
+
+          <!-- BOX PRODUTO SIDEBAR — POSIÇÃO 3 (sticky, sempre visível) -->
+          {hasAffiliate && (
+            <div class="product-box-sidebar">
+              {productImage && (
+                <div class="product-box-sidebar-img-wrap">
+                  <img
+                    src={productImage}
+                    alt={post.data.title}
+                    class="product-box-sidebar-img"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              <div class="product-box-sidebar-body">
+                <p class="product-box-sidebar-label">Melhor preço</p>
+                <p class="product-box-sidebar-name">{post.data.title}</p>
+                {price && <p class="product-box-sidebar-price">{price}</p>}
+                <a
+                  href={post.data.affiliateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  data-affiliate
+                  data-product={post.data.title}
+                  data-category={post.data.category}
+                  class="product-box-sidebar-btn"
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  Ver melhor preço
+                </a>
+                <p class="product-box-sidebar-disclaimer">Link de afiliado — sem custo extra</p>
+              </div>
             </div>
           )}
 
-          <!-- Compartilhar sidebar -->
-          <div style="background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 20px; margin-bottom: 20px; box-shadow: var(--shadow-sm);">
-            <p style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--c-text-muted); margin-bottom: 14px;">Compartilhar</p>
-            <div style="display:flex; gap:10px;">
+          <!-- Compartilhar -->
+          <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--r-md);padding:20px;margin-bottom:16px;box-shadow:var(--shadow-sm);">
+            <p style="font-size:12px;font-weight:700;text-transform:uppercase;color:var(--c-text-muted);margin-bottom:14px;">Compartilhar</p>
+            <div style="display:flex;gap:10px;">
               <a href={twitterUrl} target="_blank" rel="noopener noreferrer" aria-label="X" class="share-btn share-x">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
               </a>
@@ -180,15 +266,15 @@ const twitterUrl  = `https://x.com/intent/tweet?text=${shareText}&url=${shareUrl
             </div>
           </div>
 
-          <!-- Navegação -->
-          <div style="background: var(--c-surface); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 20px; box-shadow: var(--shadow-sm);">
-            <p style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--c-text-muted); margin-bottom: 14px;">Navegar</p>
-            <a href="/blog" style="display:flex; align-items:center; gap:8px; font-size:14px; color: var(--c-text-sub); padding: 8px 0; border-bottom: 1px solid var(--c-border); transition: color .2s;"
+          <!-- Navegar -->
+          <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--r-md);padding:20px;box-shadow:var(--shadow-sm);">
+            <p style="font-size:12px;font-weight:700;text-transform:uppercase;color:var(--c-text-muted);margin-bottom:14px;">Navegar</p>
+            <a href="/blog" style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--c-text-sub);padding:8px 0;border-bottom:1px solid var(--c-border);transition:color .2s;"
                onmouseover="this.style.color='var(--c-brand)'" onmouseout="this.style.color='var(--c-text-sub)'">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
               Todos os reviews
             </a>
-            <a href="/" style="display:flex; align-items:center; gap:8px; font-size:14px; color: var(--c-text-sub); padding: 8px 0; transition: color .2s;"
+            <a href="/" style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--c-text-sub);padding:8px 0;transition:color .2s;"
                onmouseover="this.style.color='var(--c-brand)'" onmouseout="this.style.color='var(--c-text-sub)'">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
               Página inicial
@@ -200,53 +286,185 @@ const twitterUrl  = `https://x.com/intent/tweet?text=${shareText}&url=${shareUrl
   </article>
 
   <style>
-    .share-buttons {
+    /* ===================== GRID ===================== */
+    .post-grid {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 48px;
+      align-items: start;
+    }
+    .post-sidebar { position: sticky; top: 88px; }
+
+    /* ===================== BOX INLINE (pos 1) ===================== */
+    .product-box-inline {
       display: flex;
+      gap: 20px;
       align-items: center;
-      gap: 8px;
+      background: linear-gradient(135deg, #fff8f0 0%, #fff3e0 100%);
+      border: 2px solid var(--c-brand);
+      border-radius: var(--r-lg);
+      padding: 20px 24px;
+      margin: 0 0 32px;
+      box-shadow: 0 4px 20px rgba(var(--c-brand-rgb, 220,80,30), .12);
     }
-    .share-label {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--c-text-muted);
-      white-space: nowrap;
-    }
-    .share-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
+    .product-box-img-wrap {
+      flex-shrink: 0;
+      width: 110px;
+      height: 110px;
+      border-radius: var(--r-md);
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--c-border);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
-      transition: transform .2s, opacity .2s;
-      flex-shrink: 0;
     }
-    .share-btn:hover { transform: scale(1.12); opacity: .9; }
-    .share-x         { background: #000; }
-    .share-whatsapp  { background: #25D366; }
-    .share-instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+    .product-box-img { width: 100%; height: 100%; object-fit: contain; }
+    .product-box-info { flex: 1; }
+    .product-box-label  { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--c-brand); margin-bottom: 4px; }
+    .product-box-name   { font-size: 16px; font-weight: 700; color: var(--c-text); margin-bottom: 6px; line-height: 1.3; }
+    .product-box-price  { font-size: 22px; font-weight: 800; color: var(--c-brand); margin-bottom: 12px; }
+    .product-box-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--c-brand);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 11px 22px;
+      border-radius: var(--r-sm);
+      transition: background .2s, transform .15s;
+      text-decoration: none;
+    }
+    .product-box-btn:hover { background: var(--c-brand-dark); transform: translateY(-1px); }
+    .product-box-disclaimer { font-size: 11px; color: var(--c-text-light); margin-top: 6px; }
 
-    .prose { color: var(--c-text); font-size: 17px; line-height: 1.8; }
-    .prose h2 { font-size: 26px; font-weight: 800; letter-spacing: -.4px; margin: 40px 0 16px; color: var(--c-text); }
-    .prose h3 { font-size: 20px; font-weight: 700; margin: 32px 0 12px; color: var(--c-text); }
-    .prose p  { margin-bottom: 20px; }
-    .prose a  { color: var(--c-brand); text-decoration: underline; }
-    .prose a:hover { color: var(--c-brand-dark); }
-    .prose ul, .prose ol { margin: 0 0 20px 24px; }
-    .prose li { margin-bottom: 8px; }
-    .prose blockquote { border-left: 3px solid var(--c-brand); padding: 12px 20px; background: var(--c-brand-soft); border-radius: 0 var(--r-sm) var(--r-sm) 0; margin: 24px 0; font-style: italic; color: var(--c-text-sub); }
-    .prose img { border-radius: var(--r-md); margin: 24px 0; box-shadow: var(--shadow-md); }
-    .prose code { background: var(--c-bg); padding: 2px 6px; border-radius: 4px; font-size: 14px; }
-    .prose strong { font-weight: 700; color: var(--c-text); }
-    .prose hr { border: none; border-top: 1px solid var(--c-border); margin: 40px 0; }
-    .prose table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
-    .prose th { background: var(--c-bg); padding: 10px 14px; text-align: left; font-weight: 700; border: 1px solid var(--c-border); }
-    .prose td { padding: 10px 14px; border: 1px solid var(--c-border); }
-    .prose tr:nth-child(even) td { background: var(--c-bg); }
+    /* ===================== BOX CTA FINAL (pos 2) ===================== */
+    .product-box-final {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #fff8f0 0%, #fff3e0 100%);
+      border: 2px solid var(--c-brand);
+      border-radius: var(--r-lg);
+      padding: 32px 28px;
+      margin: 48px 0 0;
+      box-shadow: 0 6px 28px rgba(var(--c-brand-rgb, 220,80,30), .14);
+    }
+    .product-box-final-img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      border-radius: var(--r-md);
+      background: #fff;
+      border: 1px solid var(--c-border);
+      padding: 8px;
+      margin-bottom: 16px;
+    }
+    .product-box-final-body { width: 100%; }
+    .product-box-final-label { font-size: 13px; font-weight: 700; color: var(--c-brand); margin-bottom: 6px; }
+    .product-box-final-name  { font-size: 20px; font-weight: 800; color: var(--c-text); margin-bottom: 8px; line-height: 1.3; }
+    .product-box-final-price { font-size: 28px; font-weight: 800; color: var(--c-brand); margin-bottom: 16px; }
+    .product-box-final-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--c-brand);
+      color: #fff;
+      font-weight: 700;
+      font-size: 17px;
+      padding: 14px 32px;
+      border-radius: var(--r-sm);
+      transition: background .2s, transform .15s;
+      text-decoration: none;
+    }
+    .product-box-final-btn:hover { background: var(--c-brand-dark); transform: translateY(-2px); }
+
+    /* ===================== BOX SIDEBAR (pos 3) ===================== */
+    .product-box-sidebar {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-top: 3px solid var(--c-brand);
+      border-radius: var(--r-md);
+      overflow: hidden;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .product-box-sidebar-img-wrap {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--c-border);
+      padding: 16px;
+    }
+    .product-box-sidebar-img { width: 100%; height: 100%; object-fit: contain; }
+    .product-box-sidebar-body { padding: 16px; }
+    .product-box-sidebar-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--c-text-muted); margin-bottom: 4px; }
+    .product-box-sidebar-name  { font-size: 14px; font-weight: 700; color: var(--c-text); margin-bottom: 8px; line-height: 1.4; }
+    .product-box-sidebar-price { font-size: 20px; font-weight: 800; color: var(--c-brand); margin-bottom: 12px; }
+    .product-box-sidebar-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: var(--c-brand);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 16px;
+      border-radius: var(--r-sm);
+      transition: background .2s;
+      text-decoration: none;
+    }
+    .product-box-sidebar-btn:hover { background: var(--c-brand-dark); }
+    .product-box-sidebar-disclaimer { font-size: 10px; color: var(--c-text-light); text-align: center; margin-top: 8px; }
+
+    /* ===================== SHARE ===================== */
+    .share-buttons { display:flex; align-items:center; gap:8px; }
+    .share-label   { font-size:12px; font-weight:600; color:var(--c-text-muted); white-space:nowrap; }
+    .share-btn {
+      width:36px; height:36px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      color:#fff; transition:transform .2s,opacity .2s; flex-shrink:0;
+    }
+    .share-btn:hover { transform:scale(1.12); opacity:.9; }
+    .share-x         { background:#000; }
+    .share-whatsapp  { background:#25D366; }
+    .share-instagram { background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%); }
+
+    /* ===================== PROSE ===================== */
+    .prose { color:var(--c-text); font-size:17px; line-height:1.8; }
+    .prose h2 { font-size:26px; font-weight:800; letter-spacing:-.4px; margin:40px 0 16px; color:var(--c-text); }
+    .prose h3 { font-size:20px; font-weight:700; margin:32px 0 12px; color:var(--c-text); }
+    .prose p  { margin-bottom:20px; }
+    .prose a  { color:var(--c-brand); text-decoration:underline; }
+    .prose a:hover { color:var(--c-brand-dark); }
+    .prose ul,.prose ol { margin:0 0 20px 24px; }
+    .prose li { margin-bottom:8px; }
+    .prose blockquote { border-left:3px solid var(--c-brand); padding:12px 20px; background:var(--c-brand-soft); border-radius:0 var(--r-sm) var(--r-sm) 0; margin:24px 0; font-style:italic; color:var(--c-text-sub); }
+    .prose img { border-radius:var(--r-md); margin:24px 0; box-shadow:var(--shadow-md); }
+    .prose code { background:var(--c-bg); padding:2px 6px; border-radius:4px; font-size:14px; }
+    .prose strong { font-weight:700; color:var(--c-text); }
+    .prose hr { border:none; border-top:1px solid var(--c-border); margin:40px 0; }
+    .prose table { width:100%; border-collapse:collapse; margin:24px 0; font-size:15px; }
+    .prose th { background:var(--c-bg); padding:10px 14px; text-align:left; font-weight:700; border:1px solid var(--c-border); }
+    .prose td { padding:10px 14px; border:1px solid var(--c-border); }
+    .prose tr:nth-child(even) td { background:var(--c-bg); }
+
+    /* ===================== MOBILE ===================== */
     @media (max-width: 768px) {
-      .container[style*='grid-template-columns'] { display: block !important; }
-      .share-buttons { margin-top: 12px; }
+      .post-grid { display:block !important; }
+      .post-sidebar { position:static; margin-top:40px; }
+      .product-box-inline { flex-direction:column; text-align:center; }
+      .product-box-img-wrap { width:140px; height:140px; margin:0 auto; }
+      .product-box-btn { width:100%; justify-content:center; }
+      .share-buttons { margin-top:12px; }
     }
   </style>
 </Layout>
