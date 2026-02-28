@@ -7,24 +7,21 @@
     </linearGradient>
   </defs>
 
-  <!-- Círculo externo - azul claro, traço grosso -->
+  <!-- Circulo externo - azul claro, traco grosso -->
   <circle cx="44" cy="44" r="39" stroke="#7AB3F7" stroke-width="5"/>
 
-  <!-- Círculo médio - azul médio -->
+  <!-- Circulo medio - azul medio -->
   <circle cx="44" cy="44" r="28" stroke="#2563EB" stroke-width="6"/>
 
-  <!-- Listra branca divisória -->
+  <!-- Listra branca divisoria -->
   <circle cx="44" cy="44" r="22" stroke="#FFFFFF" stroke-width="5"/>
 
-  <!-- Círculo interno - azul forte -->
+  <!-- Circulo interno - azul forte -->
   <circle cx="44" cy="44" r="16" stroke="#1342A8" stroke-width="7.5"/>
 
-  <!-- Lente da lupa - PRETO -->
-  <circle cx="44" cy="44" r="9.5" stroke="#111111" stroke-width="10"/>
+  <!-- Lente da lupa - PRETO com centro BRANCO -->
+  <circle cx="44" cy="44" r="9.5" stroke="#111111" stroke-width="10" fill="white"/>
 
-  <!-- Reflexo na lente -->
-  <path d="M39.5 40.5 Q41.5 38.5 44.5 39.5" stroke="#7AB3F7" stroke-width="2.5" stroke-linecap="round"/>
-
-  <!-- Cabo PRETO - saindo bem além da borda -->
+  <!-- Cabo PRETO - saindo alem da borda -->
   <line x1="51" y1="51" x2="80" y2="80" stroke="#111111" stroke-width="15" stroke-linecap="round"/>
 </svg>
