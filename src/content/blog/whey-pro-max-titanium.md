@@ -3,7 +3,7 @@ title: "Whey Pro Max Titanium Baunilha 900g: Vale a Pena?"
 description: "Review completo do Whey Protein Pro Max Titanium sabor Baunilha 900g. Analisamos proteína por dose, sabor, solubilidade e custo por grama de proteína."
 date: 2026-02-10
 category: "saude"
-image: "/images/imagesposts/whey-pro-max-titanium-baunilha.webp"
+image: "/images/imagesposts/whey-pro-max-titanium-premium.jpg"
 tags: ["whey", "proteina", "suplemento", "titanium", "fitness"]
 afiliateUrl: "https://mercadolivre.com/sec/2UuxwxW"
 draft: false
