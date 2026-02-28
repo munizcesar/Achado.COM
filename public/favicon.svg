@@ -1,27 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
-  <defs>
-    <linearGradient id="grad" x1="5" y1="5" x2="95" y2="95" gradientUnits="userSpaceOnUse">
-      <stop offset="0%"   stop-color="#7AB3F7"/>
-      <stop offset="40%"  stop-color="#2563EB"/>
-      <stop offset="100%" stop-color="#0A2472"/>
-    </linearGradient>
-  </defs>
 
-  <!-- Circulo externo - azul claro, traco grosso -->
-  <circle cx="44" cy="44" r="39" stroke="#7AB3F7" stroke-width="5"/>
+  <!-- Fundo branco em todo o alvo -->
+  <circle cx="44" cy="44" r="39" fill="white"/>
+
+  <!-- Circulo externo - azul claro -->
+  <circle cx="44" cy="44" r="39" stroke="#7AB3F7" stroke-width="8" fill="none"/>
 
   <!-- Circulo medio - azul medio -->
-  <circle cx="44" cy="44" r="28" stroke="#2563EB" stroke-width="6"/>
+  <circle cx="44" cy="44" r="28" stroke="#2563EB" stroke-width="9" fill="none"/>
 
-  <!-- Listra branca divisoria -->
-  <circle cx="44" cy="44" r="22" stroke="#FFFFFF" stroke-width="5"/>
+  <!-- Anel branco divisorio -->
+  <circle cx="44" cy="44" r="22" stroke="#FFFFFF" stroke-width="8" fill="none"/>
 
   <!-- Circulo interno - azul forte -->
-  <circle cx="44" cy="44" r="16" stroke="#1342A8" stroke-width="7.5"/>
+  <circle cx="44" cy="44" r="16" stroke="#1342A8" stroke-width="10" fill="none"/>
 
-  <!-- Lente da lupa - PRETO com centro BRANCO -->
-  <circle cx="44" cy="44" r="9.5" stroke="#111111" stroke-width="10" fill="white"/>
+  <!-- Lente da lupa - PRETA com centro BRANCO -->
+  <circle cx="44" cy="44" r="9.5" fill="white"/>
+  <circle cx="44" cy="44" r="9.5" stroke="#111111" stroke-width="12" fill="none"/>
 
   <!-- Cabo PRETO - saindo alem da borda -->
   <line x1="51" y1="51" x2="80" y2="80" stroke="#111111" stroke-width="15" stroke-linecap="round"/>
+
 </svg>
