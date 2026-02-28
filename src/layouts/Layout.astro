@@ -4,79 +4,228 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
-  schema?: string;
+  image?: string;
+  schema?: object;
 }
 
-const { 
-  title = "AchadoCerto.VIP | Reviews e Guias de Compra Independentes", 
-  description = "Análises aprofundadas, testes reais e guias de compra estruturados para ajudar você a escolher os melhores produtos do mercado.",
-  schema 
+const {
+  title = 'AchadoCerto — Reviews e Guias de Compra Independentes',
+  description = 'Análises aprofundadas, comparativos e guias de compra para você fazer a melhor escolha sem perder tempo nem dinheiro.',
+  image = '/og-default.jpg',
+  schema,
 } = Astro.props;
 
-// Schema Organizacional Default (Base)
-const defaultSchema = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "AchadoCerto.VIP",
-  "url": "https://achadocerto.vip/"
-});
----
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
+const defaultSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'AchadoCerto',
+  url: 'https://achadocerto.vip',
+  description,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: { '@type': 'EntryPoint', urlTemplate: 'https://achadocerto.vip/blog?q={search_term_string}' },
+    'query-input': 'required name=search_term_string',
+  },
+};
+
+const schemaData = JSON.stringify(schema ?? defaultSchema);
+---
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="canonical" href={canonicalURL} />
 
-    <!-- Fontes (Inter) otimizadas p/ LCP -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>{title}</title>
+  <meta name="description" content={description} />
 
-    <!-- GA4 Setup via Gtag (Analytics & Event Tracking) -->
-    <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script type="text/partytown">
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-      
-      // Função global para tracking de afiliados (High-RPM Programmatic SEO)
-      window.trackAffiliateClick = function(productName, category, url) {
-        gtag('event', 'affiliate_click', {
-          'product_name': productName,
-          'category': category,
-          'outbound_url': url
-        });
-      }
-    </script>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={image} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Injeção de JSON-LD Schema (GEO & Semantic SEO) -->
-    <script type="application/ld+json" set:html={schema || defaultSchema}></script>
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a href="/" class="logo">Achado<span>Certo</span></a>
-        <nav style="display:flex; gap: 24px; font-weight: 500; font-size: 14px; color: var(--text-muted);">
-          <a href="/blog">Reviews</a>
-          <a href="/sobre">Nossa Metodologia</a>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Inter Font — preconnect para velocidade -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- GA4 — substitua G-XXXXXXXXXX pelo seu ID real -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+    // Rastrear cliques em links de afiliados
+    document.addEventListener('click', function(e) {
+      var el = e.target.closest('[data-affiliate]');
+      if (!el) return;
+      gtag('event', 'affiliate_click', {
+        product: el.dataset.product || '',
+        category: el.dataset.category || '',
+        destination: el.href || ''
+      });
+    });
+  </script>
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json" set:html={schemaData}></script>
+</head>
+<body>
+  <!-- DRAWER OVERLAY -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+  <!-- DRAWER -->
+  <aside class="drawer" id="drawer" role="dialog" aria-label="Menu" aria-hidden="true">
+    <div class="drawer-header">
+      <span class="logo">Achado<span class="logo-accent">Certo</span></span>
+      <button class="drawer-close" onclick="closeDrawer()" aria-label="Fechar menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="drawer-section">
+      <p class="drawer-section-label">Categorias</p>
+      <nav class="drawer-links">
+        <a href="/categorias/tech" class="drawer-link">Tech &amp; Eletrônicos</a>
+        <a href="/categorias/saude" class="drawer-link">Saúde &amp; Bem-estar</a>
+        <a href="/categorias/lar" class="drawer-link">Casa &amp; Lar</a>
+        <a href="/categorias/beleza" class="drawer-link">Beleza &amp; Cuidados</a>
+        <a href="/categorias/esportes" class="drawer-link">Esportes</a>
+        <a href="/categorias/dicas" class="drawer-link">Guias de Compra</a>
+      </nav>
+    </div>
+    <div class="drawer-section">
+      <p class="drawer-section-label">Site</p>
+      <nav class="drawer-links">
+        <a href="/blog" class="drawer-link">Todos os Reviews</a>
+        <a href="/sobre" class="drawer-link">Sobre Nós</a>
+        <a href="/politica" class="drawer-link">Privacidade</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <!-- Hamburguer (mobile) -->
+        <button
+          class="drawer-toggle"
+          onclick="openDrawer()"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          id="drawerToggle"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+
+        <a href="/" class="logo">Achado<span class="logo-accent">Certo</span></a>
+
+        <!-- Busca -->
+        <form class="header-search" role="search" action="/blog" method="get">
+          <input type="search" name="q" placeholder="Buscar reviews e guias..." aria-label="Buscar" autocomplete="off" />
+          <button type="submit" class="header-search-btn" aria-label="Pesquisar">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </button>
+        </form>
+
+        <!-- Nav desktop -->
+        <nav class="header-nav">
+          <a href="/categorias/tech">Tech</a>
+          <a href="/categorias/saude">Saúde</a>
+          <a href="/categorias/lar">Casa</a>
+          <a href="/blog">Todos os Reviews</a>
         </nav>
       </div>
-    </header>
+    </div>
 
-    <main>
-      <slot />
-    </main>
-
-    <footer style="padding: 64px 0; text-align: center; border-top: 1px solid var(--border-light); margin-top: 64px; color: var(--text-muted); font-size: 14px;">
+    <!-- Sub-nav categorias -->
+    <nav class="subnav" aria-label="Categorias">
       <div class="container">
-        <p>© {new Date().getFullYear()} AchadoCerto.VIP. Todos os direitos reservados.</p>
-        <p style="margin-top: 8px; font-size: 13px; color: var(--text-light);">Operamos de forma independente. Compras via nossos links podem gerar comissões que financiam nossos testes.</p>
+        <div class="subnav-inner">
+          <a href="/" class="subnav-link">Início</a>
+          <a href="/categorias/tech" class="subnav-link">Tech</a>
+          <a href="/categorias/saude" class="subnav-link">Saúde</a>
+          <a href="/categorias/lar" class="subnav-link">Casa &amp; Lar</a>
+          <a href="/categorias/beleza" class="subnav-link">Beleza</a>
+          <a href="/categorias/esportes" class="subnav-link">Esportes</a>
+          <a href="/categorias/dicas" class="subnav-link">Guias</a>
+        </div>
       </div>
-    </footer>
-  </body>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <slot />
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="/" class="footer-logo logo">Achado<span class="logo-accent">Certo</span></a>
+          <p class="footer-desc">
+            Reviews independentes, comparativos honestos e guias de compra para você escolher com confiança. Sem viés, sem publicidade disfarçada.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Categorias</h4>
+          <a href="/categorias/tech">Tech &amp; Eletrônicos</a>
+          <a href="/categorias/saude">Saúde &amp; Bem-estar</a>
+          <a href="/categorias/lar">Casa &amp; Lar</a>
+          <a href="/categorias/beleza">Beleza</a>
+          <a href="/categorias/esportes">Esportes</a>
+        </div>
+        <div class="footer-col">
+          <h4>Sobre</h4>
+          <a href="/blog">Todos os Reviews</a>
+          <a href="/sobre">Sobre Nós</a>
+          <a href="/politica">Privacidade</a>
+          <a href="/termos">Termos</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© {new Date().getFullYear()} AchadoCerto. Todos os direitos reservados.</span>
+        <span>Feito com cuidado no Brasil</span>
+      </div>
+      <p class="footer-disclaimer">
+        Este site pode conter links de afiliados. Ao comprar via nossos links, recebemos uma comissão sem custo adicional para você. Nossa opinião permanece independente.
+      </p>
+    </div>
+  </footer>
+
+  <!-- JS do Drawer (vanilla, zero dependências) -->
+  <script>
+    function openDrawer() {
+      document.body.classList.add('drawer-open');
+      document.getElementById('drawer').setAttribute('aria-hidden', 'false');
+      document.getElementById('drawerToggle').setAttribute('aria-expanded', 'true');
+    }
+    function closeDrawer() {
+      document.body.classList.remove('drawer-open');
+      document.getElementById('drawer').setAttribute('aria-hidden', 'true');
+      document.getElementById('drawerToggle').setAttribute('aria-expanded', 'false');
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeDrawer();
+    });
+  </script>
+</body>
 </html>

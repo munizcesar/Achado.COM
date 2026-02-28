@@ -1,8 +1,3 @@
-# Redirecionamentos para Preservar Link Equity (SEO)
-# Garante que URLs antigas terminadas em .html redirecionem para as novas rotas limpas do Astro (Status 301 - Permanent)
-
-# Exemplo de uso no Cloudflare Pages:
+# Cloudflare Pages — Redirects 301
+# Preserva link equity de URLs antigas com extensão .html
 /*.html /:splat 301
-
-# Caso existam categorias antigas específicas que mudaram de nome:
-# /categoria-antiga/* /categorias/nova-categoria/:splat 301
