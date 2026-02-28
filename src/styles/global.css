@@ -16,7 +16,7 @@
   --c-text-muted:  #6C757D;
   --c-text-light:  #ADB5BD;
 
-  --c-brand:       #1A56DB;   /* Azul SaaS confiável */
+  --c-brand:       #1A56DB;
   --c-brand-dark:  #1342A8;
   --c-brand-soft:  #EBF2FF;
 
@@ -317,6 +317,7 @@ body.drawer-open { overflow: hidden; }
   width: 100%;
   aspect-ratio: 16/9;
   object-fit: cover;
+  object-position: center center;
   border-radius: var(--r-md);
   background: var(--c-border);
   display: block;
@@ -397,7 +398,8 @@ body.drawer-open { overflow: hidden; }
 .sidebar-post-img {
   width: 72px;
   height: 54px;
-  object-fit: cover;
+  object-fit: contain;        /* produto inteiro visível, sem corte */
+  object-position: center;
   border-radius: var(--r-sm);
   background: var(--c-border);
   flex-shrink: 0;
@@ -438,16 +440,22 @@ body.drawer-open { overflow: hidden; }
   box-shadow: var(--shadow-lg);
   transform: translateY(-3px);
 }
-.post-card-img-wrap { overflow: hidden; }
+.post-card-img-wrap {
+  overflow: hidden;
+  /* altura fixa para uniformidade — sem corte excessivo */
+  height: 200px;
+}
 .post-card-img {
   width: 100%;
-  aspect-ratio: 3/2;
-  object-fit: cover;
-  background: var(--c-border);
+  height: 100%;
+  object-fit: contain;        /* produto inteiro visível, sem zoom/corte */
+  object-position: center;
+  background: var(--c-bg);
   display: block;
-  transition: transform .35s var(--ease);
+  transition: transform .3s var(--ease);
+  padding: 8px;               /* respiro ao redor do produto */
 }
-.post-card:hover .post-card-img { transform: scale(1.04); }
+.post-card:hover .post-card-img { transform: scale(1.02); }
 .post-card-body {
   padding: 18px 20px 20px;
   display: flex;
@@ -587,12 +595,13 @@ body.drawer-open { overflow: hidden; }
 
 @media (max-width: 768px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-sidebar { display: none; } /* no mobile mostra só o destaque */
+  .hero-sidebar { display: none; }
   .header-nav { display: none; }
   .header-search { max-width: 200px; }
   .drawer-toggle { display: flex; }
   .post-grid { grid-template-columns: 1fr; }
   .section { padding: 36px 0; }
+  .post-card-img-wrap { height: 180px; }
 }
 
 @media (max-width: 480px) {
