@@ -6,7 +6,7 @@ category: "esportes"
 image: "/images/imagesposts/legging-fitness-zero-transparencia-selene.webp"
 productImage: "/images/imagesposts/legging-fitness-zero-transparencia-selene.webp"
 tags: ["legging", "fitness", "selene", "academia", "moda-esportiva"]
-affiliateUrl: "https://mercadolivre.com/sec/2qVLzfW"
+affiliateUrl: "https://meli.la/26AYsDY"
 draft: false
 ---
 
@@ -19,7 +19,7 @@ A Selene é uma das marcas de roupas fitness mais populares do Brasil, conhecida
   <div style="flex:1;">
     <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);margin-bottom:4px;">🏋️ Melhor Legging Fitness Nacional</p>
     <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">Legging Zero Transparência Selene</p>
-    <a href="https://mercadolivre.com/sec/2qVLzfW" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
+    <a href="https://meli.la/26AYsDY" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
     <p style="font-size:11px;color:#999;margin-top:6px;">Link de afiliado — sem custo extra para você</p>
   </div>
 </div>
