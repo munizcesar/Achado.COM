@@ -21,8 +21,8 @@ A família Xiaomi/Poco chegou em 2026 com quatro lançamentos que cobrem todas a
 |:---|:---|:---:|:---:|:---:|:---|
 | [Poco X7 Pro](https://mercadolivre.com/sec/1eKL6VG) | Dimensity 8400 | 50 MP | 6000 mAh | 90W | 🎮 Gamer |
 | [Redmi Note 14 Pro+](https://mercadolivre.com/sec/2r9w3CA) | Dimensity 1400 | 200 MP | 5110 mAh | 90W | 📸 Fotografia |
-| [Xiaomi 15T Pro](https://mercadolivre.com/sec/3xTpQ9B) | Snapdragon 8s Gen 3 | 50 MP Leica | 5000 mAh | 120W | ⭐ Premium |
-| [Xiaomi 15T](https://mercadolivre.com/sec/4mNrZ7K) | Dimensity 8300 | 50 MP | 5000 mAh | 67W | ✅ Custo-benefício |
+| [Xiaomi 15T Pro](https://meli.la/2fUEmTi) | Snapdragon 8s Gen 3 | 50 MP Leica | 5000 mAh | 120W | ⭐ Premium |
+| [Xiaomi 15T](https://meli.la/1qanv7Z) | Dimensity 8300 | 50 MP | 5000 mAh | 67W | ✅ Custo-benefício |
 
 ## Poco X7 Pro — O Rei dos Games
 
@@ -40,13 +40,13 @@ A câmera de **200 MP com OIS** e estabilização por IA é o grande diferencial
 
 Câmeras **Leica**, Snapdragon 8s Gen 3 e carregamento **120W** fazem do 15T Pro uma alternativa real aos flagships de R$ 5.000+, custando bem menos.
 
-🛒 **[Ver preço do Xiaomi 15T Pro no Mercado Livre](https://mercadolivre.com/sec/3xTpQ9B)**
+🛒 **[Ver preço do Xiaomi 15T Pro no Mercado Livre](https://meli.la/2fUEmTi)**
 
 ## Xiaomi 15T — Equilíbrio Total
 
 Para quem não quer gastar no Pro mas ainda quer uma experiência premium, o 15T com Dimensity 8300 e tela AMOLED 144Hz entrega muito pelo preço.
 
-🛒 **[Ver preço do Xiaomi 15T no Mercado Livre](https://mercadolivre.com/sec/4mNrZ7K)**
+🛒 **[Ver preço do Xiaomi 15T no Mercado Livre](https://meli.la/1qanv7Z)**
 
 ## Qual Comprar?
 
