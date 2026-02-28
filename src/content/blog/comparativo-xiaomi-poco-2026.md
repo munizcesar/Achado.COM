@@ -2,7 +2,7 @@
 title: "Comparativo Xiaomi Poco 2026: Qual Comprar?"
 description: "Poco X7, X7 Pro ou M7 Pro? Comparamos os principais celulares Xiaomi Poco de 2026 em desempenho, câmera, bateria e custo-benefício para você decidir."
 date: 2026-02-18
-category: "Tech"
+category: "tech"
 image: "/images/imagesposts/produtos_xiaomi.jpg"
 tags: ["xiaomi", "poco", "celular", "android", "tech"]
 draft: false

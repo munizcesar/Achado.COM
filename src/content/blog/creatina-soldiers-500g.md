@@ -2,7 +2,7 @@
 title: "Creatina Soldiers Premium 500g: Vale a Pena?"
 description: "Review completo da Creatina Soldiers Premium 500g. Analisamos pureza, solubilidade, resultados e se o preço justifica a compra frente aos concorrentes."
 date: 2026-02-17
-category: "Saúde"
+category: "saude"
 image: "/images/imagesposts/creatina-soldiers-500g.jpeg"
 tags: ["creatina", "suplemento", "fitness", "musculacao"]
 draft: false

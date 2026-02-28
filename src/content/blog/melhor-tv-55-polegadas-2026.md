@@ -2,7 +2,7 @@
 title: "Melhor TV 55 Polegadas 2026: Top 4 Testadas e Comparadas"
 description: "Comparamos as melhores TVs 55 polegadas de 2026: Samsung, LG, TCL e Sony. Imagem, smart TV, custo-benefício e qual comprar para cada perfil."
 date: 2026-02-11
-category: "Tech"
+category: "tech"
 image: "/images/imagesposts/melhor-tv-55-2026.webp"
 tags: ["tv", "televisao", "4k", "samsung", "lg", "tech"]
 draft: false

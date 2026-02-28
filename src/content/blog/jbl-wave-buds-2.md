@@ -2,7 +2,7 @@
 title: "JBL Wave Buds 2: Review Completo — Vale os R$ 200?"
 description: "Testamos o JBL Wave Buds 2 por 3 semanas. Qualidade de som, conforto, bateria e cancelamento de ruído avaliados. Descubra se vale a pena comprar."
 date: 2026-02-13
-category: "Tech"
+category: "tech"
 image: "/images/imagesposts/jbl-wave-buds-2.webp"
 tags: ["jbl", "fone", "tws", "audio", "tech"]
 draft: false

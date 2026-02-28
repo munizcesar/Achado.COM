@@ -2,7 +2,7 @@
 title: "Arginina: Guia Completo — Para que Serve e Como Usar"
 description: "Tudo sobre L-Arginina: benefícios comprovados, dosagem correta, melhores horários para tomar e quais marcas realmente valem a pena comprar em 2026."
 date: 2026-02-16
-category: "Saúde"
+category: "saude"
 image: "/images/imagesposts/arginina.png"
 tags: ["arginina", "suplemento", "saude", "fitness"]
 draft: false

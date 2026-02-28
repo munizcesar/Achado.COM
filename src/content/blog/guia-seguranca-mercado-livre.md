@@ -2,7 +2,7 @@
 title: "Guia de Segurança no Mercado Livre: Como Comprar Sem Cair em Golpes"
 description: "Aprenda a identificar vendedores confiáveis, evitar golpes e comprar com segurança no Mercado Livre em 2026. Dicas práticas para não perder dinheiro."
 date: 2026-02-14
-category: "Dicas"
+category: "dicas"
 image: "/images/imagesposts/seguranca-ml.jpg"
 tags: ["mercadolivre", "seguranca", "compras", "dicas"]
 draft: false

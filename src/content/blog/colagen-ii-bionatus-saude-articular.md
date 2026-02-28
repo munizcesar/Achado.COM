@@ -2,7 +2,7 @@
 title: "Colágeno Tipo II Bionatus 30 Comprimidos: Review Completo"
 description: "Testamos o Colágeno Tipo II Não Hidrolisado da Bionatus. Descubra se realmente ajuda na saúde articular, dosagem correta e onde comprar mais barato."
 date: 2026-02-19
-category: "Saúde"
+category: "saude"
 image: "/images/imagesposts/colagen-ii-bionatus-30-comprimidos.webp"
 tags: ["colageno", "saude", "articular", "suplemento"]
 draft: false

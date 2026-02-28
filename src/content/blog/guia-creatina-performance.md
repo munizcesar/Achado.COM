@@ -2,7 +2,7 @@
 title: "Guia Completo de Creatina: Como Usar para Máxima Performance"
 description: "Tudo que você precisa saber sobre creatina: tipos, dosagem, fase de saturação, mitos e como escolher a melhor creatina para seus objetivos em 2026."
 date: 2026-02-15
-category: "Saúde"
+category: "saude"
 image: "/images/imagesposts/creatinarefil.webp"
 tags: ["creatina", "suplemento", "musculacao", "performance"]
 draft: false

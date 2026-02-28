@@ -2,7 +2,7 @@
 title: "Legging Fitness Zero Transparência Selene: Review Honesto"
 description: "Testamos a Legging Fitness Zero Transparência da Selene. Qualidade do tecido, compressão, durabilidade após lavagens e se realmente é zero transparência."
 date: 2026-02-12
-category: "Esportes"
+category: "esportes"
 image: "/images/imagesposts/legging-fitness-zero-transparencia-selene.webp"
 tags: ["legging", "fitness", "moda-fitness", "selene"]
 draft: false

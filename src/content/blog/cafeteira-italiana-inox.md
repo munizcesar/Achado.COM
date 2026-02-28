@@ -2,7 +2,7 @@
 title: "Cafeteira Italiana Inox 3 Xícaras: Vale a Pena?"
 description: "Review completo da Cafeteira Italiana Inox 3 xícaras. Análise de qualidade, durabilidade e se realmente faz um café espresso de verdade em casa."
 date: 2026-02-20
-category: "Casa"
+category: "casa"
 image: "/images/imagesposts/cafeteira-italiana-inox-fundo-colorido.webp"
 tags: ["cafeteira", "cozinha", "cafe", "casa"]
 draft: false
