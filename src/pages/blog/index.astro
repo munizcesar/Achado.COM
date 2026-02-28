@@ -21,6 +21,17 @@ const schema = {
   description: 'Todos os reviews, comparativos e guias de compra do AchadoCerto.',
   url: 'https://achadocerto.vip/blog',
 };
+
+// Serializa posts para o JS client-side usar na busca
+const postsData = posts.map(p => ({
+  slug: p.slug,
+  title: p.data.title,
+  description: p.data.description || '',
+  category: p.data.category || '',
+  image: p.data.image || '/placeholder.webp',
+  date: p.data.date ? new Date(p.data.date).toISOString() : '',
+  dateFormatted: fmtDate(p.data.date),
+}));
 ---
 
 <Layout
@@ -28,7 +39,7 @@ const schema = {
   description="Todos os nossos reviews, comparativos e guias de compra independentes."
   schema={schema}
 >
-  <!-- Page header -->
+  <!-- Page header com campo de busca -->
   <div style="background: var(--c-surface); border-bottom: 1px solid var(--c-border); padding: 48px 0 40px;">
     <div class="container">
       <span class="section-label">Blog</span>
@@ -36,51 +47,129 @@ const schema = {
       <p style="font-size: 16px; color: var(--c-text-muted); margin-top: 10px; max-width: 520px;">
         Análises honestas, testes reais e comparativos para você comprar com confiança.
       </p>
+      <!-- Busca interna da página -->
+      <form id="searchForm" style="display:flex; gap:8px; margin-top:24px; max-width:480px;" onsubmit="return false;">
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Buscar reviews e guias..."
+          autocomplete="off"
+          style="flex:1; padding:10px 14px; border:1.5px solid var(--c-border); border-radius:8px; font-size:15px; outline:none;"
+        />
+        <button type="submit" onclick="doSearch()" style="padding:10px 18px; background:var(--c-primary); color:#fff; border:none; border-radius:8px; font-weight:600; cursor:pointer; font-size:15px;">
+          Buscar
+        </button>
+      </form>
+      <p id="searchStatus" style="margin-top:12px; font-size:14px; color:var(--c-text-muted); min-height:20px;"></p>
     </div>
   </div>
 
   <section class="section section-white">
     <div class="container">
-      {posts.length === 0 ? (
-        <div class="empty-state">
-          <h2>Nenhum post publicado ainda</h2>
-          <p>Em breve publicaremos reviews completos aqui.</p>
-        </div>
-      ) : (
-        <div class="post-grid">
-          {posts.map(post => (
-            <article class="post-card">
-              <a href={`/blog/${post.slug}`} class="post-card-img-wrap">
-                <img
-                  src={post.data.image || '/placeholder.webp'}
-                  alt={post.data.title}
-                  class="post-card-img"
-                  width="600" height="400"
-                  loading="lazy"
-                />
+      <div id="postGrid" class="post-grid">
+        {posts.map(post => (
+          <article
+            class="post-card"
+            data-title={post.data.title.toLowerCase()}
+            data-description={(post.data.description || '').toLowerCase()}
+            data-category={(post.data.category || '').toLowerCase()}
+          >
+            <a href={`/blog/${post.slug}`} class="post-card-img-wrap">
+              <img
+                src={post.data.image || '/placeholder.webp'}
+                alt={post.data.title}
+                class="post-card-img"
+                width="600" height="400"
+                loading="lazy"
+              />
+            </a>
+            <div class="post-card-body">
+              <span class="post-card-cat">{post.data.category}</span>
+              <h2 class="post-card-title">
+                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+              </h2>
+              {post.data.description && (
+                <p class="post-card-excerpt">{post.data.description}</p>
+              )}
+            </div>
+            <div class="post-card-footer">
+              <time class="post-card-date" datetime={post.data.date?.toISOString?.() ?? ''}>
+                {fmtDate(post.data.date)}
+              </time>
+              <a href={`/blog/${post.slug}`} class="post-card-read">
+                Ler review
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
-              <div class="post-card-body">
-                <span class="post-card-cat">{post.data.category}</span>
-                <h2 class="post-card-title">
-                  <a href={`/blog/${post.slug}`}>{post.data.title}</a>
-                </h2>
-                {post.data.description && (
-                  <p class="post-card-excerpt">{post.data.description}</p>
-                )}
-              </div>
-              <div class="post-card-footer">
-                <time class="post-card-date" datetime={post.data.date?.toISOString?.() ?? ''}>
-                  {fmtDate(post.data.date)}
-                </time>
-                <a href={`/blog/${post.slug}`} class="post-card-read">
-                  Ler review
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-              </div>
-            </article>
-          ))}
-        </div>
-      )}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Estado vazio (hidden por padrão) -->
+      <div id="emptyState" style="display:none; text-align:center; padding:64px 0;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" style="margin-bottom:16px;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <h2 style="font-size:20px; color:var(--c-text-muted);">Nenhum resultado encontrado</h2>
+        <p style="color:var(--c-text-muted); margin-top:8px;">Tente outras palavras ou <a href="/blog" style="color:var(--c-primary);">veja todos os reviews</a>.</p>
+      </div>
     </div>
   </section>
+
+  <script>
+    const input = document.getElementById('searchInput');
+    const status = document.getElementById('searchStatus');
+    const emptyState = document.getElementById('emptyState');
+    const cards = document.querySelectorAll('.post-card');
+
+    function doSearch() {
+      const q = input.value.trim().toLowerCase();
+
+      // Atualiza URL sem recarregar
+      const url = new URL(window.location.href);
+      if (q) { url.searchParams.set('q', q); } else { url.searchParams.delete('q'); }
+      history.replaceState(null, '', url);
+
+      let visible = 0;
+      cards.forEach(card => {
+        const match = !q ||
+          card.dataset.title.includes(q) ||
+          card.dataset.description.includes(q) ||
+          card.dataset.category.includes(q);
+        card.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+
+      // Status e estado vazio
+      if (q) {
+        status.textContent = visible === 0
+          ? `Nenhum resultado para "${input.value.trim()}"`
+          : `${visible} resultado${visible !== 1 ? 's' : ''} para "${input.value.trim()}"`;
+      } else {
+        status.textContent = '';
+      }
+      emptyState.style.display = visible === 0 ? 'block' : 'none';
+    }
+
+    // Busca ao digitar (debounce 250ms)
+    let timer;
+    input.addEventListener('input', () => {
+      clearTimeout(timer);
+      timer = setTimeout(doSearch, 250);
+    });
+
+    // Busca ao pressionar Enter
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { clearTimeout(timer); doSearch(); }
+    });
+
+    // Ao carregar: lê ?q= da URL e executa busca automática
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('q') || '';
+      if (q) {
+        input.value = q;
+        doSearch();
+        input.focus();
+      }
+    });
+  </script>
 </Layout>
