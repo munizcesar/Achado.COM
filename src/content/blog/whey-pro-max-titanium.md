@@ -4,8 +4,22 @@ description: "Review completo do Whey Protein Pro Max Titanium sabor Baunilha 90
 date: 2026-02-10
 category: "saude"
 image: "/images/imagesposts/whey-pro-max-titanium-premium.jpg"
+productImage: "/images/imagesposts/whey-pro-max-titanium-baunilha.jpg"
+price: "Ver preço atual"
 tags: ["whey", "proteina", "suplemento", "titanium", "fitness"]
 affiliate_url: "https://mercadolivre.com/sec/2UuxwxW"
+affiliate_url: "https://mercadolivre.com/sec/2UuxwxW"
+affiliate_url: "https://mercadolivre.com/sec/2UuxwxW"
+affiliate_url: "https://mercadolivre.com/sec/2UuxwxW"
+affiliate_url: "https://mercadolivre.com/sec/2UuxwxW"
+affiliate_url: "https://mercadolivre.com/sec/2UuxwxW"
+affiliate_url: "https://mercadolivre.com/sec/2UuxwxW"
+affiliate_url: "https://mercadolivre.com/sec/2UuxwxW"
+affiliate_url: "https://mercadolivre.com/sec/2UuxwxW"
+affiliate_url: "https://mercadolivre.com/sec/2UuxwxW"
+affiliate_url: "https://mercadolivre.com/sec/2UuxwxW"
+affiliate_url: "https://mercadolivre.com/sec/2UuxwxW"
+affiliateUrl: "https://mercadolivre.com/sec/2UuxwxW"
 draft: false
 ---
 

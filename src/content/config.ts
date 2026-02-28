@@ -10,6 +10,10 @@ const blog = defineCollection({
     image: z.string().optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+    // Campos de monetização
+    affiliateUrl: z.string().url().optional(),
+    productImage: z.string().optional(),
+    price: z.string().optional(),
   }),
 });
 
