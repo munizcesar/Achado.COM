@@ -1,52 +1,50 @@
 ---
-title: "JBL Wave Buds 2: Review Completo — Vale os R$ 200?"
-description: "Testamos o JBL Wave Buds 2 por 3 semanas. Qualidade de som, conforto, bateria e cancelamento de ruído avaliados. Descubra se vale a pena comprar."
-date: 2026-02-13
+title: "JBL Wave Buds 2 Review: Fone Bluetooth Premium com Som Incomparável"
+description: "Análise completa do JBL Wave Buds 2 preto. Som de qualidade premium, bateria de 8 horas, Bluetooth 5.3 e design confortável. Descubra por que é a escolha ideal."
+date: 2026-02-25
 category: "tech"
 image: "/images/imagesposts/jbl-wave-buds-2.webp"
-tags: ["jbl", "fone", "tws", "audio", "tech"]
+tags: ["jbl", "fone", "bluetooth", "earbuds", "audio"]
+afiliateUrl: "https://mercadolivre.com/sec/2mRWbw7"
 draft: false
 ---
 
-## JBL Wave Buds 2 — O fone que surpreende
+## JBL Wave Buds 2: Som Premium no Seu Orçamento
 
-A JBL lançou os Wave Buds 2 como a opção mais acessível da linha Wave, prometendo qualidade de som superior para quem tem orçamento limitado. Testamos por 3 semanas para ver se a promessa se cumpre.
+O JBL Wave Buds 2 chega ao mercado como uma das melhores opções de fones TWS na faixa intermediária. Com Bluetooth 5.3, drivers de 10mm e até 32 horas de bateria combinada com o case, ele entrega muito pelo preço.
 
 ## Ficha Técnica
 
-- **Driver:** 12mm dinâmico
-- **Frequência de resposta:** 20Hz - 20kHz
-- **Bateria:** 8h (fone) + 32h (case) = 40h total
+- **Conectividade:** Bluetooth 5.3
+- **Driver:** 10mm dinâmico
+- **Bateria fone:** até 8 horas
+- **Bateria total (com case):** até 32 horas
 - **Resistência:** IPX2 (respingos)
-- **Conexão:** Bluetooth 5.3
-- **Latência:** Modo jogo disponível
-- **App:** JBL Headphones (iOS e Android)
+- **Controles:** touch nos fones
+- **Peso:** 5g por fone
 
-## Som — Melhor do que parece
+## Qualidade de Som
 
-Os Wave Buds 2 têm o característico som JBL: **graves encorpados**, médios presentes e agudos sem estridência. Para o preço, o desempenho é impressionante — supera fones de R$ 300 de outras marcas.
+O perfil sonoro é voltado para graves — característica clássica da JBL. Para quem curte música eletrônica, funk, hip-hop e pop, o som é envolvente. Médios e agudos são decentes para a faixa de preço, sem distorção mesmo em volume alto.
 
-## Conforto
+## Conforto e Ergonomia
 
-Design intra-auricular leve (5g cada fone). As ponteiras de silicone em 3 tamanhos garantem um encaixe seguro. Conseguimos usar por mais de 2h sem incômodo.
-
-## Bateria — Ponto forte
-
-40 horas totais com o case é excelente para o preço. Na prática, ficamos 4 dias sem precisar carregar o case.
+O design aberto (sem ponta de silicone) é um dos diferenciais: entra direto no canal auricular com a aleta, mantendo o fone estável mesmo durante exercícios. Ideal para quem não se adapta aos fones com pontinhos.
 
 ## Prós e Contras
 
 **Positivos:**
-- Som de qualidade com graves marcantes
-- Bateria excepcional (40h total)
-- Levíssimo e confortável
-- App com EQ customizável
+- Graves poderosos e presentes
+- Bateria excelente (32h total)
+- Design estável sem ponta de silicone
+- Bluetooth 5.3 com conexão estável
+- Preço competitivo
 
 **Negativos:**
-- IPX2 só protege contra respingos leves
-- Sem ANC (cancelamento de ruído ativo)
-- Microfone apenas razoável
+- Sem cancelamento ativo de ruído (ANC)
+- IPX2 — não pode molhar além de respingos
+- Médios um pouco recuados
 
 ## Vale a Pena?
 
-Sim! Para quem busca qualidade de som JBL sem gastar muito, os Wave Buds 2 são a melhor compra abaixo de R$ 250 no mercado brasileiro.
+Para quem busca som de qualidade, boa bateria e conforto sem gastar muito, sim. O JBL Wave Buds 2 entrega a assinatura sonora da marca com custo-benefício real.

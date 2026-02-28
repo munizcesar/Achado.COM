@@ -5,6 +5,7 @@ date: 2026-02-10
 category: "saude"
 image: "/images/imagesposts/whey-pro-max-titanium-baunilha.webp"
 tags: ["whey", "proteina", "suplemento", "titanium", "fitness"]
+afiliateUrl: "https://mercadolivre.com/sec/2UuxwxW"
 draft: false
 ---
 

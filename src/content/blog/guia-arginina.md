@@ -1,35 +1,50 @@
 ---
-title: "Arginina: Guia Completo — Para que Serve e Como Usar"
-description: "Tudo sobre L-Arginina: benefícios comprovados, dosagem correta, melhores horários para tomar e quais marcas realmente valem a pena comprar em 2026."
-date: 2026-02-16
+title: "L-Arginina: Guia Completo de Potência e Vascularização"
+description: "Acelere sua recuperação e maximize o pump muscular. O suplemento essencial para performance esportiva — tudo que você precisa saber sobre a L-Arginina."
+date: 2026-02-12
 category: "saude"
 image: "/images/imagesposts/arginina.png"
-tags: ["arginina", "suplemento", "saude", "fitness"]
+tags: ["arginina", "suplemento", "pump", "pre-treino", "fitness"]
+afiliateUrl: "https://mercadolivre.com/sec/2y9LCvd"
 draft: false
 ---
 
-## O que é a L-Arginina?
+## O Que é a L-Arginina?
 
-A L-Arginina é um aminoácido semi-essencial que o corpo pode produzir, mas em quantidades insuficientes para atletas e pessoas com demandas elevadas. É precursora do **óxido nítrico (NO)**, responsável pela vasodilatação e melhor circulação sanguínea.
+A L-Arginina é um aminoácido semi-essencial que atua como precursor direto do **óxido nítrico (NO)** — a molécula responsável pela vasodilatação. Mais óxido nítrico = mais sangue chegando aos músculos = mais pump, nutrientes e oxigênio durante o treino.
 
-## Para que serve?
+## Benefícios Comprovados
 
-- **Pump muscular:** Aumenta o fluxo sanguíneo para os músculos durante o treino
-- **Recuperação:** Acelera a regeneração muscular pós-treino
-- **Saúde cardiovascular:** Melhora a circulação e pode reduzir a pressão arterial
-- **Função sexual:** Pode auxiliar na disfunção erétil leve a moderada
-- **Cicatrização:** Suporta a síntese de colágeno
+- **Pump muscular:** vasodilatação aumenta o volume de sangue nos músculos
+- **Performance aeróbica:** melhora a eficiência do transporte de oxigênio
+- **Recuperação:** maior fluxo sanguíneo acelera remoção de metabólitos
+- **Saúde cardiovascular:** suporte à pressão arterial
+- **Síntese proteica:** participa da produção de creatina endógena
 
-## Dosagem recomendada
+## Dosagem Recomendada
 
-- **Para treino:** 3 a 6g, 30-60 minutos antes do exercício
-- **Para saúde cardiovascular:** 2 a 3g ao dia, divididos em 2 doses
-- **Máximo diário:** 10g (doses maiores podem causar desconforto intestinal)
+| Objetivo | Dose | Momento |
+|---|---|---|
+| Pump / pré-treino | 3 a 6g | 30-45min antes do treino |
+| Saúde cardiovascular | 2 a 3g | Em qualquer hora |
+| Máxima performance | 6 a 8g | Dividido (pré + pós treino) |
 
-## Quando tomar?
+## L-Arginina vs AAKG vs Citrulina
 
-O melhor horário é **em jejum ou longe das refeições**, pois aminoácidos de outras proteínas competem com a absorção da arginina.
+A **Citrulina Malato** tem biodisponibilidade superior e é mais eficiente para pump. Porém a L-Arginina tem custo muito menor e funciona bem para quem está começando. O **AAKG** (arginina + alfa-cetoglutarato) tem absorção intermediária.
 
-## Vale a pena suplementar?
+## Prós e Contras
 
-Sim, especialmente para praticantes de musculação que buscam melhor vascularização e pump. Para saúde cardiovascular, consulte um médico antes.
+**Positivos:**
+- Custo baixo por dose
+- Efeito de pump visível após 2 semanas
+- Sem estimulantes (pode usar à noite)
+- Segura para longo prazo
+
+**Negativos:**
+- Biodisponibilidade inferior à Citrulina
+- Doses altas podem causar desconforto gástrico
+
+## Vale a Pena?
+
+Sim, especialmente pela relação custo-benefício. Para quem quer pump e vascularização sem pagar por fórmulas pré-treino complexas, a L-Arginina pura é o caminho mais econômico e eficiente.
