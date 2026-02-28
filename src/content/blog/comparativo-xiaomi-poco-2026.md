@@ -7,18 +7,6 @@ image: "/images/imagesposts/produtos_xiaomi.jpg"
 productImage: "/images/imagesposts/produtos_xiaomi.jpg"
 price: "A partir de R$ 1.499"
 tags: ["xiaomi", "poco", "smartphone", "android", "comparativo"]
-affiliate_url: "https://mercadolivre.com/sec/2r9w3CA"
-affiliate_url: "https://mercadolivre.com/sec/2r9w3CA"
-affiliate_url: "https://mercadolivre.com/sec/2r9w3CA"
-affiliate_url: "https://mercadolivre.com/sec/2r9w3CA"
-affiliate_url: "https://mercadolivre.com/sec/2r9w3CA"
-affiliate_url: "https://mercadolivre.com/sec/2r9w3CA"
-affiliate_url: "https://mercadolivre.com/sec/2r9w3CA"
-affiliate_url: "https://mercadolivre.com/sec/2r9w3CA"
-affiliate_url: "https://mercadolivre.com/sec/2r9w3CA"
-affiliate_url: "https://mercadolivre.com/sec/2r9w3CA"
-affiliate_url: "https://mercadolivre.com/sec/2r9w3CA"
-affiliate_url: "https://mercadolivre.com/sec/2r9w3CA"
 affiliateUrl: "https://mercadolivre.com/sec/2r9w3CA"
 draft: false
 ---
