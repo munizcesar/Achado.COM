@@ -398,7 +398,7 @@ body.drawer-open { overflow: hidden; }
 .sidebar-post-img {
   width: 72px;
   height: 54px;
-  object-fit: contain;        /* produto inteiro visível, sem corte */
+  object-fit: cover;
   object-position: center;
   border-radius: var(--r-sm);
   background: var(--c-border);
@@ -420,7 +420,7 @@ body.drawer-open { overflow: hidden; }
 }
 .sidebar-post-title:hover { color: var(--c-brand); }
 
-/* ── POST CARD (grid de categorias) ── */
+/* ── POST CARD (grid de categorias e home) ── */
 .post-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -442,20 +442,18 @@ body.drawer-open { overflow: hidden; }
 }
 .post-card-img-wrap {
   overflow: hidden;
-  /* altura fixa para uniformidade — sem corte excessivo */
-  height: 200px;
+  height: 210px; /* altura uniforme em todos os cards */
 }
 .post-card-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;        /* produto inteiro visível, sem zoom/corte */
+  object-fit: cover;          /* preenche toda a área, igual à página de categoria */
   object-position: center;
-  background: var(--c-bg);
+  background: var(--c-border);
   display: block;
-  transition: transform .3s var(--ease);
-  padding: 8px;               /* respiro ao redor do produto */
+  transition: transform .35s var(--ease);
 }
-.post-card:hover .post-card-img { transform: scale(1.02); }
+.post-card:hover .post-card-img { transform: scale(1.04); }
 .post-card-body {
   padding: 18px 20px 20px;
   display: flex;
@@ -601,7 +599,7 @@ body.drawer-open { overflow: hidden; }
   .drawer-toggle { display: flex; }
   .post-grid { grid-template-columns: 1fr; }
   .section { padding: 36px 0; }
-  .post-card-img-wrap { height: 180px; }
+  .post-card-img-wrap { height: 200px; }
 }
 
 @media (max-width: 480px) {
