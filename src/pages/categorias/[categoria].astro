@@ -1,0 +1,97 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const categorias = [...new Set(posts.map(p => p.data.category.toLowerCase()))];
+  return categorias.map(cat => ({
+    params: { categoria: cat },
+    props: {
+      categoria: cat,
+      posts: posts
+        .filter(p => p.data.category.toLowerCase() === cat)
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
+  }));
+}
+
+const { categoria, posts } = Astro.props;
+
+const nomes = {
+  tech: 'Tech & Eletrônicos',
+  saude: 'Saúde & Bem-estar',
+  casa: 'Casa & Lar',
+  lar: 'Casa & Lar',
+  esportes: 'Esportes',
+  beleza: 'Beleza & Cuidados',
+  dicas: 'Guias & Dicas',
+  guias: 'Guias & Dicas',
+};
+
+const nomeExibido = nomes[categoria] ?? categoria.charAt(0).toUpperCase() + categoria.slice(1);
+
+function fmtDate(d) {
+  if (!d) return '';
+  return new Date(d).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+}
+---
+
+<Layout
+  title={`${nomeExibido} — Reviews e Guias | AchadoCerto`}
+  description={`Os melhores reviews e guias de compra de ${nomeExibido} do Brasil. Análises independentes e honestas.`}
+>
+  <!-- HERO CATEGORIA -->
+  <section style="background: var(--c-surface); border-bottom: 1px solid var(--c-border); padding: 48px 0 40px;">
+    <div class="container">
+      <nav style="font-size:13px; color:var(--c-text-muted); margin-bottom:16px; display:flex; gap:6px;">
+        <a href="/" style="color:var(--c-brand);">Início</a>
+        <span>›</span>
+        <span>{nomeExibido}</span>
+      </nav>
+      <h1 style="font-size:clamp(28px,4vw,44px); font-weight:800; letter-spacing:-.8px; color:var(--c-text); margin-bottom:10px;">
+        {nomeExibido}
+      </h1>
+      <p style="font-size:17px; color:var(--c-text-sub);">
+        {posts.length} {posts.length === 1 ? 'review publicado' : 'reviews publicados'}
+      </p>
+    </div>
+  </section>
+
+  <!-- GRID DE POSTS -->
+  <section style="padding: 48px 0 80px; background: var(--c-bg);">
+    <div class="container">
+      {posts.length === 0 ? (
+        <div style="text-align:center; padding:80px 0; color:var(--c-text-muted);">
+          <p style="font-size:18px;">Em breve: reviews de {nomeExibido}.</p>
+          <a href="/blog" style="color:var(--c-brand); margin-top:16px; display:inline-block;">← Ver todos os reviews</a>
+        </div>
+      ) : (
+        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:28px;">
+          {posts.map(post => (
+            <article style="background:var(--c-surface); border:1px solid var(--c-border); border-radius:var(--r-md); overflow:hidden; box-shadow:var(--shadow-sm); transition:box-shadow .2s;" onmouseover="this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.boxShadow='var(--shadow-sm)'">
+              {post.data.image && (
+                <a href={`/blog/${post.slug}`}>
+                  <img src={post.data.image} alt={post.data.title} style="width:100%; aspect-ratio:16/9; object-fit:cover;" loading="lazy" width="400" height="225" />
+                </a>
+              )}
+              <div style="padding:20px;">
+                <span style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--c-brand);">{post.data.category}</span>
+                <h2 style="font-size:18px; font-weight:700; letter-spacing:-.3px; margin:8px 0; line-height:1.3;">
+                  <a href={`/blog/${post.slug}`} style="color:var(--c-text); text-decoration:none;" onmouseover="this.style.color='var(--c-brand)'" onmouseout="this.style.color='var(--c-text)'">{post.data.title}</a>
+                </h2>
+                {post.data.description && (
+                  <p style="font-size:14px; color:var(--c-text-sub); line-height:1.6; margin-bottom:16px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">{post.data.description}</p>
+                )}
+                <div style="display:flex; align-items:center; justify-content:space-between;">
+                  <time style="font-size:12px; color:var(--c-text-muted);">{fmtDate(post.data.date)}</time>
+                  <a href={`/blog/${post.slug}`} style="font-size:13px; font-weight:600; color:var(--c-brand);">Ler review →</a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</Layout>

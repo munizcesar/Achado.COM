@@ -1,3 +1,18 @@
-# Cloudflare Pages — Redirects 301
-# Preserva link equity de URLs antigas com extensão .html
+# Redireciona URLs antigas do site HTML para as novas rotas Astro
+/blog/cafeteira-italiana-inox.html /blog/cafeteira-italiana-inox 301
+/blog/colagen-ii-bionatus-saude-articular.html /blog/colagen-ii-bionatus-saude-articular 301
+/blog/comparativo-xiaomi-poco-2026.html /blog/comparativo-xiaomi-poco-2026 301
+/blog/creatina-soldiers-500g.html /blog/creatina-soldiers-500g 301
+/blog/guia-arginina.html /blog/guia-arginina 301
+/blog/guia-creatina-performance.html /blog/guia-creatina-performance 301
+/blog/guia-seguranca-mercado-livre.html /blog/guia-seguranca-mercado-livre 301
+/blog/jbl-wave-buds-2.html /blog/jbl-wave-buds-2 301
+/blog/legging-fitness-zero-transparencia-selene.html /blog/legging-fitness-zero-transparencia-selene 301
+/blog/melhor-tv-55-polegadas-2026.html /blog/melhor-tv-55-polegadas-2026 301
+/blog/whey-pro-max-titanium.html /blog/whey-pro-max-titanium 301
+/categorias/tech.html /categorias/tech 301
+/categorias/saude.html /categorias/saude 301
+/categorias/dicas.html /categorias/dicas 301
+/categorias/lar.html /categorias/casa 301
+/categorias/estilo.html /categorias/esportes 301
 /*.html /:splat 301
