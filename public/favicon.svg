@@ -1,14 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
-  <!-- Círculo externo -->
-  <circle cx="45" cy="45" r="40" stroke="#1A56DB" stroke-width="3.5" stroke-linecap="round"/>
-  <!-- Círculo médio -->
-  <circle cx="45" cy="45" r="28" stroke="#1A56DB" stroke-width="3.5" stroke-linecap="round"/>
-  <!-- Círculo interno -->
-  <circle cx="45" cy="45" r="17" stroke="#1A56DB" stroke-width="3.5" stroke-linecap="round"/>
-  <!-- Lente da lupa -->
-  <circle cx="45" cy="45" r="10" stroke="#1342A8" stroke-width="4" stroke-linecap="round"/>
+  <!-- Círculo externo - azul mais claro -->
+  <circle cx="44" cy="44" r="39" stroke="#5B8DEF" stroke-width="3" stroke-linecap="round"/>
+  <!-- Círculo médio - azul médio -->
+  <circle cx="44" cy="44" r="27" stroke="#2563EB" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Círculo interno - azul forte -->
+  <circle cx="44" cy="44" r="16" stroke="#1A56DB" stroke-width="4" stroke-linecap="round"/>
+  <!-- Lente da lupa - azul escuro/navy -->
+  <circle cx="44" cy="44" r="9.5" stroke="#1342A8" stroke-width="4.5" stroke-linecap="round"/>
   <!-- Reflexo dentro da lente -->
-  <path d="M40 41 Q42 39 45 40" stroke="#1A56DB" stroke-width="2.5" stroke-linecap="round"/>
-  <!-- Cabo da lupa (diagonal para baixo-direita) -->
-  <line x1="53" y1="53" x2="65" y2="65" stroke="#1342A8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M39.5 40.5 Q41.5 38.5 44.5 39.5" stroke="#5B8DEF" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Cabo da lupa - mais longo, grosso e saindo bem da borda -->
+  <line x1="51" y1="51" x2="68" y2="68" stroke="#1342A8" stroke-width="6.5" stroke-linecap="round"/>
+  <!-- Ponta do cabo com tom diferente -->
+  <line x1="63" y1="63" x2="69" y2="69" stroke="#0A2472" stroke-width="7" stroke-linecap="round"/>
 </svg>
