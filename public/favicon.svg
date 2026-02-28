@@ -1,19 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
 
-  <!-- Fundo branco em todo o alvo -->
-  <circle cx="44" cy="44" r="39" fill="white"/>
+  <!-- Circulo externo - azul claro, fino -->
+  <circle cx="44" cy="44" r="39" stroke="#7AB3F7" stroke-width="6" fill="none"/>
 
-  <!-- Circulo externo - azul claro -->
-  <circle cx="44" cy="44" r="39" stroke="#7AB3F7" stroke-width="8" fill="none"/>
+  <!-- Circulo medio - azul medio, médio -->
+  <circle cx="44" cy="44" r="28" stroke="#2563EB" stroke-width="11" fill="none"/>
 
-  <!-- Circulo medio - azul medio -->
-  <circle cx="44" cy="44" r="28" stroke="#2563EB" stroke-width="9" fill="none"/>
+  <!-- Anel branco divisorio, fino -->
+  <circle cx="44" cy="44" r="22" stroke="#FFFFFF" stroke-width="5" fill="none"/>
 
-  <!-- Anel branco divisorio -->
-  <circle cx="44" cy="44" r="22" stroke="#FFFFFF" stroke-width="8" fill="none"/>
-
-  <!-- Circulo interno - azul forte -->
-  <circle cx="44" cy="44" r="16" stroke="#1342A8" stroke-width="10" fill="none"/>
+  <!-- Circulo interno - azul forte, grosso -->
+  <circle cx="44" cy="44" r="16" stroke="#1342A8" stroke-width="14" fill="none"/>
 
   <!-- Lente da lupa - PRETA com centro BRANCO -->
   <circle cx="44" cy="44" r="9.5" fill="white"/>
