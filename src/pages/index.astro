@@ -14,7 +14,7 @@ function fmtDate(d) {
   return new Date(d).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
 }
 
-// Pega um post por categoria para o pool do hero
+// Um post por categoria para o pool rotativo
 const seen = new Set();
 const siloPosts = posts.filter(p => {
   const cat = p.data.category || 'Geral';
@@ -23,7 +23,7 @@ const siloPosts = posts.filter(p => {
   return true;
 });
 
-// Demais posts para o grid inferior
+// Restante para o grid inferior
 const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
 ---
 
@@ -34,15 +34,14 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
       <div class="container">
         <div class="hero-grid">
 
-          <!-- HERO PRINCIPAL: preenchido pelo JS com o post sorteado -->
-          <article class="hero-main" id="heroMain" style="opacity:0; transition: opacity 0.4s ease;">
+          <!-- Hero preenchido pelo JS -->
+          <article class="hero-main" id="heroMain" style="opacity:0; transition: opacity 0.45s ease;">
             <a id="heroImgLink" href="#" class="hero-main-img-wrap">
-              <img id="heroImg" src="" alt="" class="hero-main-img" width="820" height="461" loading="eager" fetchpriority="high" decoding="sync" />
+              <img id="heroImg" src="" alt="" class="hero-main-img" width="820" height="461"
+                loading="eager" fetchpriority="high" decoding="sync" />
             </a>
             <span id="heroCat" class="hero-cat"></span>
-            <h1 class="hero-title">
-              <a id="heroTitleLink" href="#"></a>
-            </h1>
+            <h1 class="hero-title"><a id="heroTitleLink" href="#"></a></h1>
             <p id="heroExcerpt" class="hero-excerpt"></p>
             <a id="heroBtn" href="#" class="btn-read-full">
               Ler análise completa
@@ -50,8 +49,8 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
             </a>
           </article>
 
-          <!-- SIDEBAR: preenchida pelo JS -->
-          <aside class="hero-sidebar" id="heroSidebar">
+          <!-- Sidebar preenchida pelo JS -->
+          <aside class="hero-sidebar">
             <div class="hero-sidebar-header">Outras análises</div>
             <div id="sidebarPosts"></div>
           </aside>
@@ -64,13 +63,13 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
       <div class="container">
         <div class="empty-state">
           <h2>Em breve: reviews e guias de compra</h2>
-          <p>Estamos preparando análises completas para você. Volte em breve!</p>
+          <p>Estamos preparando análises completas para você.</p>
         </div>
       </div>
     </section>
   )}
 
-  <!-- GRID inferior -->
+  <!-- Grid inferior -->
   {gridPosts.length > 0 && (
     <section class="section section-gray">
       <div class="container">
@@ -88,7 +87,8 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
           {gridPosts.map(post => (
             <article class="post-card">
               <a href={`/blog/${post.slug}`} class="post-card-img-wrap">
-                <img src={post.data.image || '/placeholder.webp'} alt={post.data.title} class="post-card-img" width="600" height="400" loading="lazy" />
+                <img src={post.data.image || '/placeholder.webp'} alt={post.data.title}
+                  class="post-card-img" width="600" height="400" loading="lazy" />
               </a>
               <div class="post-card-body">
                 <span class="post-card-cat">{post.data.category}</span>
@@ -96,7 +96,9 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
                 {post.data.description && <p class="post-card-excerpt">{post.data.description}</p>}
               </div>
               <div class="post-card-footer">
-                <time class="post-card-date" datetime={post.data.date?.toISOString?.() ?? ''}>{fmtDate(post.data.date)}</time>
+                <time class="post-card-date" datetime={post.data.date?.toISOString?.() ?? ''}>
+                  {fmtDate(post.data.date)}
+                </time>
                 <a href={`/blog/${post.slug}`} class="post-card-read">
                   Ler review
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -109,61 +111,72 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
     </section>
   )}
 
-  <!-- Pool de posts serializado para o JS -->
-  <script type="application/json" id="postsPool">
-    {JSON.stringify(siloPosts.map(p => ({
-      slug: p.slug,
-      title: p.data.title,
-      description: p.data.description || '',
-      category: p.data.category || '',
-      image: p.data.image || '/placeholder.webp',
-      url: `/blog/${p.slug}`,
-    })))}
-  </script>
+  <!-- Posts do pool como articles ocultos com data-* (sem JSON inline) -->
+  <div id="postsPool" style="display:none" aria-hidden="true">
+    {siloPosts.map((p, i) => (
+      <div
+        data-idx={i}
+        data-slug={p.slug}
+        data-title={p.data.title}
+        data-desc={p.data.description || ''}
+        data-cat={p.data.category || ''}
+        data-img={p.data.image || '/placeholder.webp'}
+        data-url={`/blog/${p.slug}`}
+      ></div>
+    ))}
+  </div>
 
   <script>
-    const pool = JSON.parse(document.getElementById('postsPool').textContent);
-    if (!pool || pool.length === 0) {
+    const container = document.getElementById('postsPool');
+    const items = container ? Array.from(container.children) : [];
+
+    const pool = items.map(el => ({
+      slug:  el.dataset.slug,
+      title: el.dataset.title,
+      desc:  el.dataset.desc,
+      cat:   el.dataset.cat,
+      img:   el.dataset.img,
+      url:   el.dataset.url,
+    }));
+
+    if (pool.length === 0) {
       document.getElementById('heroSection')?.remove();
     } else {
-      // Sorteia hero aleatório a cada refresh
-      const idx = Math.floor(Math.random() * pool.length);
-      const hero = pool[idx];
+      const idx     = Math.floor(Math.random() * pool.length);
+      const hero    = pool[idx];
       const sidebar = [...pool.slice(0, idx), ...pool.slice(idx + 1)].slice(0, 4);
 
-      // Preenche hero
-      const heroMain   = document.getElementById('heroMain');
-      const imgLink    = document.getElementById('heroImgLink');
-      const img        = document.getElementById('heroImg');
-      const cat        = document.getElementById('heroCat');
-      const titleLink  = document.getElementById('heroTitleLink');
-      const excerpt    = document.getElementById('heroExcerpt');
-      const btn        = document.getElementById('heroBtn');
+      const heroMain    = document.getElementById('heroMain');
+      const imgLink     = document.getElementById('heroImgLink');
+      const img         = document.getElementById('heroImg');
+      const cat         = document.getElementById('heroCat');
+      const titleLink   = document.getElementById('heroTitleLink');
+      const excerpt     = document.getElementById('heroExcerpt');
+      const btn         = document.getElementById('heroBtn');
 
-      imgLink.href     = hero.url;
-      img.src          = hero.image;
-      img.alt          = hero.title;
-      cat.textContent  = hero.category;
-      titleLink.href   = hero.url;
+      imgLink.href          = hero.url;
+      img.src               = hero.img;
+      img.alt               = hero.title;
+      cat.textContent       = hero.cat;
+      titleLink.href        = hero.url;
       titleLink.textContent = hero.title;
-      excerpt.textContent   = hero.description;
-      btn.href         = hero.url;
+      excerpt.textContent   = hero.desc;
+      btn.href              = hero.url;
 
-      // Fade in suave
       requestAnimationFrame(() => { heroMain.style.opacity = '1'; });
 
-      // Preenche sidebar
       const sidebarEl = document.getElementById('sidebarPosts');
       sidebar.forEach(post => {
-        sidebarEl.insertAdjacentHTML('beforeend', `
-          <a href="${post.url}" class="sidebar-post">
-            <img src="${post.image}" alt="${post.title}" class="sidebar-post-img" loading="lazy" width="72" height="54" />
-            <div>
-              <span class="sidebar-post-cat">${post.category}</span>
-              <span class="sidebar-post-title">${post.title}</span>
-            </div>
-          </a>
-        `);
+        const a = document.createElement('a');
+        a.href = post.url;
+        a.className = 'sidebar-post';
+        a.innerHTML = `
+          <img src="${post.img}" alt="" class="sidebar-post-img" loading="lazy" width="72" height="54" />
+          <div>
+            <span class="sidebar-post-cat">${post.cat}</span>
+            <span class="sidebar-post-title">${post.title}</span>
+          </div>`;
+        sidebarEl.appendChild(a);
       });
     }
   </script>
