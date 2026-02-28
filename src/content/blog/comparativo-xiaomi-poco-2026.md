@@ -6,7 +6,7 @@ category: "tech"
 image: "/images/imagesposts/produtos_xiaomi.jpg"
 productImage: "/images/imagesposts/produtos_xiaomi.jpg"
 tags: ["xiaomi", "poco", "smartphone", "android", "comparativo"]
-affiliateUrl: "https://meli.la/2r9w3CA"
+affiliateUrl: "https://meli.la/2DGy5Cr"
 draft: false
 ---
 
@@ -19,7 +19,7 @@ A família Xiaomi/Poco chegou em 2026 com quatro lançamentos que cobrem todas a
 | Modelo | Chip | Câmera Principal | Bateria | Carregamento | Foco |
 |:---|:---|:---:|:---:|:---:|:---|
 | [Poco X7 Pro](https://meli.la/2uC8bmd) | Dimensity 8400 | 50 MP | 6000 mAh | 90W | 🎮 Gamer |
-| [Redmi Note 14 Pro+](https://mercadolivre.com/sec/2r9w3CA) | Dimensity 1400 | 200 MP | 5110 mAh | 90W | 📸 Fotografia |
+| [Redmi Note 14 Pro+](https://meli.la/2DGy5Cr) | Dimensity 1400 | 200 MP | 5110 mAh | 90W | 📸 Fotografia |
 | [Xiaomi 15T Pro](https://meli.la/2fUEmTi) | Snapdragon 8s Gen 3 | 50 MP Leica | 5000 mAh | 120W | ⭐ Premium |
 | [Xiaomi 15T](https://meli.la/1qanv7Z) | Dimensity 8300 | 50 MP | 5000 mAh | 67W | ✅ Custo-benefício |
 
@@ -37,7 +37,7 @@ Com **Dimensity 8400**, tela AMOLED 144Hz e bateria de 6000 mAh com carregamento
 
 A câmera de **200 MP com OIS** e estabilização por IA é o grande diferencial. Fotos detalhadas mesmo em condições de baixa luz, com zoom digital competente até 10x.
 
-🛒 **[Ver preço do Redmi Note 14 Pro+ no Mercado Livre](https://mercadolivre.com/sec/2r9w3CA)**
+🛒 **[Ver preço do Redmi Note 14 Pro+ no Mercado Livre](https://meli.la/2DGy5Cr)**
 
 ## Xiaomi 15T Pro — Premium Acessível
 
