@@ -87,6 +87,16 @@ button { font-family: inherit; cursor: pointer; }
   flex-shrink: 0;
 }
 .logo-accent { color: var(--c-brand); }
+.logo-achado { color: var(--c-text); }
+.logo-certo  { color: var(--c-brand); }
+.logo-vip {
+  color: #F59E0B;
+  font-size: 0.75em;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  vertical-align: super;
+  margin-left: 1px;
+}
 
 /* Barra de busca */
 .header-search {
