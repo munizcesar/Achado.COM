@@ -2104,3 +2104,150 @@ footer a { color: #B0B0B0; margin: 0 10px; }
     }
     .cta-whatsapp-buttons a i { font-size: 14px; }
 }
+/* ═══════════════════════════════════════════════════════════════════
+   PADRÃO GLOBAL PARA ARTIGOS E POSTS
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Melhorias no layout dos cards de produtos */
+.produto-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.produto-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.spacer {
+    flex: 1;
+    min-height: 10px;
+}
+
+/* Botões de oferta sempre alinhados no final */
+.btn-oferta {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+}
+
+/* Tabelas responsivas - scroll horizontal em mobile */
+.tabela-comparativa {
+    width: 100%;
+    border-collapse: collapse;
+    background: #0a0e27;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tabela-comparativa th {
+    background: linear-gradient(135deg, #1A1F71, #2A2F81);
+    color: #D4AF37;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    word-wrap: break-word;
+}
+
+.tabela-comparativa td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #1A1F71;
+    font-size: 13px;
+}
+
+.tabela-comparativa tbody tr:hover {
+    background: rgba(26, 31, 113, 0.4);
+}
+
+.tabela-comparativa tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Container responsivo para tabelas */
+.table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+    .tabela-comparativa {
+        font-size: 12px;
+    }
+    
+    .tabela-comparativa th,
+    .tabela-comparativa td {
+        padding: 10px;
+        min-width: 80px;
+    }
+    
+    .tabela-comparativa th {
+        font-size: 11px;
+    }
+    
+    /* Grid produtos em mobile - 1 única coluna */
+    .grid-produtos {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Botão oferta ocupa largura total em mobile */
+    .btn-oferta {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 12px;
+        height: 44px;
+    }
+}
+
+/* Wrapper para conteúdo de artigo */
+.article-wrapper {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.article-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.article-header h1 {
+    font-size: 28px;
+    line-height: 1.3;
+    margin-bottom: 10px;
+    color: #D4AF37;
+}
+
+.article-header p {
+    color: #999;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Melhorias em tags e benefícios */
+.tags-beneficios {
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.tag-beneficio {
+    display: inline-block;
+    background: #1A1F71;
+    border: 1px solid #D4AF37;
+    color: #D4AF37;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+    .tag-beneficio {
+        font-size: 11px;
+        padding: 6px 12px;
+    }
+}
