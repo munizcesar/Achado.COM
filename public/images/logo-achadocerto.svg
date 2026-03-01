@@ -1,26 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300">
-  <!-- Background -->
-  <rect width="1200" height="300" fill="white" opacity="0"/>
-  
-  <!-- "Achad" text in bold navy-blue -->
-  <text x="40" y="155" font-family="Arial, sans-serif" font-size="130" font-weight="bold" fill="#142864" letter-spacing="-2">
-    Achad
-  </text>
-  
-  <!-- Magnifying glass replacing "O" -->
-  <circle cx="240" cy="125" r="40" fill="none" stroke="#1F90FF" stroke-width="9"/>
-  <line x1="268" y1="153" x2="340" y2="225" stroke="#1F90FF" stroke-width="9" stroke-linecap="round"/>
-  
-  <!-- "Certo" text in regular navy-blue -->
-  <text x="360" y="155" font-family="Arial, sans-serif" font-size="125" font-weight="normal" fill="#142864" letter-spacing="-2">
-    Certo
-  </text>
-  
-  <!-- VIP Badge with GOLD text -->
-  <rect x="815" y="85" width="95" height="70" rx="12" ry="12" fill="#142864" stroke="#D4AF37" stroke-width="3"/>
-  
-  <!-- VIP text in GOLD - much better contrast -->
-  <text x="862" y="135" font-family="Arial, sans-serif" font-size="35" font-weight="bold" fill="#D4AF37" text-anchor="middle">
-    VIP
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-label="AchadoCerto">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <rect width="520" height="120" rx="18" fill="white"/>
+  <g transform="translate(24,26)">
+    <circle cx="34" cy="34" r="34" fill="url(#g)"/>
+    <path d="M27 51l9-26 9 26" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M24 38h24" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <g font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="54" font-weight="800" transform="translate(98,76)">
+    <text x="0" y="0" fill="#111827">Achado</text>
+    <text x="190" y="0" fill="#2563EB">Certo</text>
+  </g>
 </svg>
