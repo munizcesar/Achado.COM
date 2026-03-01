@@ -86,16 +86,17 @@ button { font-family: inherit; cursor: pointer; }
   white-space: nowrap;
   flex-shrink: 0;
 }
-.logo-accent { color: var(--c-brand); }
-.logo-achado { color: var(--c-text); }
-.logo-certo  { color: var(--c-brand); }
+.logo-accent  { color: var(--c-brand); }
+.logo-achado  { color: var(--c-text); }
+.logo-certo   { color: var(--c-text); }
 .logo-vip {
   color: #F59E0B;
-  font-size: 0.75em;
+  font-size: 0.65em;
   font-weight: 900;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   vertical-align: super;
-  margin-left: 1px;
+  margin-left: 2px;
+  text-transform: uppercase;
 }
 
 /* Barra de busca */
@@ -667,7 +668,6 @@ body.drawer-open { overflow: hidden; }
   .hero-grid { grid-template-columns: 1fr; }
   .hero-sidebar { display: none; }
   .header-nav { display: none; }
-  /* Mobile header: hamburguer | logo | search */
   .header-inner { gap: 12px; }
   .drawer-toggle { display: flex; margin-left: 0; }
   .mobile-search-btn { display: flex; }
