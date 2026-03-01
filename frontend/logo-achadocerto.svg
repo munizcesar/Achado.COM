@@ -3,28 +3,28 @@
   <rect width="1200" height="300" fill="white"/>
   
   <!-- "Achad" text in bold navy-blue -->
-  <text x="50" y="140" font-family="Arial, sans-serif" font-size="100" font-weight="bold" fill="#142864">
+  <text x="50" y="150" font-family="Arial, sans-serif" font-size="120" font-weight="bold" fill="#142864">
     Achad
   </text>
   
   <!-- Magnifying glass replacing "O" -->
   <!-- Lens circle in bright blue -->
-  <circle cx="220" cy="115" r="35" fill="none" stroke="#1F90FF" stroke-width="8"/>
+  <circle cx="235" cy="120" r="40" fill="none" stroke="#1F90FF" stroke-width="9"/>
   
   <!-- Magnifying glass handle (45 degrees to bottom-right) -->
-  <line x1="245" y1="140" x2="305" y2="200" stroke="#1F90FF" stroke-width="8" stroke-linecap="round"/>
+  <line x1="265" y1="150" x2="335" y2="220" stroke="#1F90FF" stroke-width="9" stroke-linecap="round"/>
   
   <!-- "Certo" text in regular navy-blue -->
-  <text x="340" y="140" font-family="Arial, sans-serif" font-size="90" font-weight="normal" fill="#142864">
+  <text x="350" y="150" font-family="Arial, sans-serif" font-size="110" font-weight="normal" fill="#142864">
     Certo
   </text>
   
   <!-- VIP Badge (rounded rectangle) -->
   <!-- Badge background -->
-  <rect x="730" y="82" width="70" height="55" rx="8" ry="8" fill="#142864"/>
+  <rect x="800" y="85" width="90" height="65" rx="10" ry="10" fill="#142864"/>
   
   <!-- VIP text in white -->
-  <text x="765" y="115" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">
+  <text x="845" y="130" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="white" text-anchor="middle">
     VIP
   </text>
 </svg>
