@@ -1,33 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 130" width="520" height="130">
-  <defs>
-    <linearGradient id="vipGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1A56DB;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1342A8;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-
-  <!-- Texto Achad -->
-  <text x="10" y="92" font-family="'Arial Black', 'Helvetica Neue', sans-serif"
-        font-size="78" font-weight="900" fill="#1B2B5E" letter-spacing="-2">Achad</text>
-
-  <!-- Lupa no lugar do O -->
-  <g transform="translate(248, 55)">
-    <circle cx="0" cy="0" r="26" fill="none" stroke="#1B2B5E" stroke-width="11"/>
-    <line x1="18" y1="18" x2="36" y2="38" stroke="#1B2B5E" stroke-width="11" stroke-linecap="round"/>
-    <circle cx="-8" cy="-8" r="8" fill="none" stroke="#4A7FD4" stroke-width="3" opacity="0.6"/>
-  </g>
-
-  <!-- Texto Certo -->
-  <text x="295" y="92" font-family="'Arial Black', 'Helvetica Neue', sans-serif"
-        font-size="78" font-weight="900" fill="#1B2B5E" letter-spacing="-2">Certo</text>
-
-  <!-- Badge VIP -->
-  <g transform="translate(462, 20)">
-    <polygon points="-8,0 52,0 58,55 -2,55" fill="url(#vipGrad)"/>
-    <text x="24" y="39" font-family="'Arial Black', sans-serif"
-          font-size="26" font-weight="900" fill="white"
-          text-anchor="middle" letter-spacing="1">VIP</text>
-    <text x="46" y="14" font-size="12" fill="#7EB8FF">&#x2726;</text>
-    <text x="52" y="26" font-size="8" fill="#B0D4FF">&#x2726;</text>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300">
+  <!-- Background -->
+  <rect width="1200" height="300" fill="white" opacity="0"/>
+  
+  <!-- "Achad" text in bold navy-blue -->
+  <text x="40" y="155" font-family="Arial, sans-serif" font-size="130" font-weight="bold" fill="#142864" letter-spacing="-2">
+    Achad
+  </text>
+  
+  <!-- Magnifying glass replacing "O" -->
+  <circle cx="240" cy="125" r="40" fill="none" stroke="#1F90FF" stroke-width="9"/>
+  <line x1="268" y1="153" x2="340" y2="225" stroke="#1F90FF" stroke-width="9" stroke-linecap="round"/>
+  
+  <!-- "Certo" text in regular navy-blue -->
+  <text x="360" y="155" font-family="Arial, sans-serif" font-size="125" font-weight="normal" fill="#142864" letter-spacing="-2">
+    Certo
+  </text>
+  
+  <!-- VIP Badge with GOLD text -->
+  <rect x="815" y="85" width="95" height="70" rx="12" ry="12" fill="#142864" stroke="#D4AF37" stroke-width="3"/>
+  
+  <!-- VIP text in GOLD - much better contrast -->
+  <text x="862" y="135" font-family="Arial, sans-serif" font-size="35" font-weight="bold" fill="#D4AF37" text-anchor="middle">
+    VIP
+  </text>
 </svg>

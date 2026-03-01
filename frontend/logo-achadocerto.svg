@@ -1,30 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300">
   <!-- Background -->
-  <rect width="1200" height="300" fill="white"/>
+  <rect width="1200" height="300" fill="white" opacity="0"/>
   
   <!-- "Achad" text in bold navy-blue -->
   <text x="40" y="155" font-family="Arial, sans-serif" font-size="130" font-weight="bold" fill="#142864" letter-spacing="-2">
     Achad
   </text>
   
-  <!-- Magnifying glass replacing "O" (positioned right after "Achad") -->
-  <!-- Lens circle in bright blue -->
+  <!-- Magnifying glass replacing "O" -->
   <circle cx="240" cy="125" r="40" fill="none" stroke="#1F90FF" stroke-width="9"/>
-  
-  <!-- Magnifying glass handle (45 degrees to bottom-right) -->
   <line x1="268" y1="153" x2="340" y2="225" stroke="#1F90FF" stroke-width="9" stroke-linecap="round"/>
   
-  <!-- "Certo" text in regular navy-blue (positioned right after magnifying glass) -->
+  <!-- "Certo" text in regular navy-blue -->
   <text x="360" y="155" font-family="Arial, sans-serif" font-size="125" font-weight="normal" fill="#142864" letter-spacing="-2">
     Certo
   </text>
   
-  <!-- VIP Badge (rounded rectangle) -->
-  <!-- Badge background -->
-  <rect x="815" y="85" width="95" height="70" rx="12" ry="12" fill="#142864"/>
+  <!-- VIP Badge with GOLD text -->
+  <rect x="815" y="85" width="95" height="70" rx="12" ry="12" fill="#142864" stroke="#D4AF37" stroke-width="3"/>
   
-  <!-- VIP text in white -->
-  <text x="862" y="135" font-family="Arial, sans-serif" font-size="35" font-weight="bold" fill="white" text-anchor="middle">
+  <!-- VIP text in GOLD - much better contrast -->
+  <text x="862" y="135" font-family="Arial, sans-serif" font-size="35" font-weight="bold" fill="#D4AF37" text-anchor="middle">
     VIP
   </text>
 </svg>
