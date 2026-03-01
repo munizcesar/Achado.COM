@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300">
+  <!-- Background -->
+  <rect width="1200" height="300" fill="white"/>
+  
+  <!-- "Achad" text in bold navy-blue -->
+  <text x="50" y="140" font-family="Arial, sans-serif" font-size="100" font-weight="bold" fill="#142864">
+    Achad
+  </text>
+  
+  <!-- Magnifying glass replacing "O" -->
+  <!-- Lens circle in bright blue -->
+  <circle cx="220" cy="115" r="35" fill="none" stroke="#1F90FF" stroke-width="8"/>
+  
+  <!-- Magnifying glass handle (45 degrees to bottom-right) -->
+  <line x1="245" y1="140" x2="305" y2="200" stroke="#1F90FF" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- "Certo" text in regular navy-blue -->
+  <text x="340" y="140" font-family="Arial, sans-serif" font-size="90" font-weight="normal" fill="#142864">
+    Certo
+  </text>
+  
+  <!-- VIP Badge (rounded rectangle) -->
+  <!-- Badge background -->
+  <rect x="730" y="82" width="70" height="55" rx="8" ry="8" fill="#142864"/>
+  
+  <!-- VIP text in white -->
+  <text x="765" y="115" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">
+    VIP
+  </text>
+</svg>
