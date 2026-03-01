@@ -1,3 +1,9 @@
 [build]
 command = "npm run build"
 pages_build_output_dir = "dist"
+
+[env.production]
+name = "production"
+routes = [
+  { pattern = "*.svg", custom_domain = true }
+]
