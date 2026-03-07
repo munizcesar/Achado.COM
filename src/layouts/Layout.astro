@@ -24,7 +24,7 @@ const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 const defaultSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'AchadoCerto',
+  name: 'AchadoCertoVIP',
   url: siteUrl,
   description,
   potentialAction: {
@@ -48,7 +48,7 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="AchadoCerto" />
+  <meta property="og:site_name" content="AchadoCertoVIP" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={ogImage} />
@@ -100,8 +100,17 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
   <!-- DRAWER MOBILE -->
   <aside class="drawer" id="drawer" role="dialog" aria-label="Menu" aria-hidden="true">
     <div class="drawer-header">
-      <a href="/" class="brand" aria-label="AchadoCerto (Início)">
-        <img src="/images/logo-achadocerto.png" width="200" height="50" alt="AchadoCerto" loading="lazy" decoding="async" />
+      <a href="/" class="brand" aria-label="AchadoCertoVIP (Início)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 52" class="logo-svg" role="img" aria-label="AchadoCertoVIP">
+          <circle cx="22" cy="22" r="14" fill="none" stroke="#1A3A8F" stroke-width="4"/>
+          <line x1="32" y1="32" x2="42" y2="42" stroke="#1A3A8F" stroke-width="4" stroke-linecap="round"/>
+          <polyline points="14,22 20,28 30,14" fill="none" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="54" y="32" font-family="'Segoe UI',Arial,sans-serif" font-size="26" font-weight="800" fill="#1A3A8F">Achado</text>
+          <text x="168" y="32" font-family="'Segoe UI',Arial,sans-serif" font-size="26" font-weight="800" fill="#1565C0">Certo</text>
+          <rect x="268" y="8" width="58" height="30" rx="7" fill="#1A3A8F"/>
+          <rect x="268" y="8" width="58" height="30" rx="7" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+          <text x="297" y="28" font-family="'Segoe UI',Arial,sans-serif" font-size="14" font-weight="900" fill="#C9A84C" text-anchor="middle" letter-spacing="2">VIP</text>
+        </svg>
       </a>
       <button class="drawer-close" onclick="window.closeDrawer()" aria-label="Fechar menu">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -149,9 +158,18 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
           </svg>
         </button>
 
-        <!-- Logo -->
-        <a href="/" class="brand" aria-label="AchadoCerto (Início)">
-          <img src="/images/logo-achadocerto.png" width="220" height="55" alt="AchadoCerto" decoding="async" fetchpriority="high" />
+        <!-- Logo SVG inline -->
+        <a href="/" class="brand" aria-label="AchadoCertoVIP (Início)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 52" class="logo-svg" role="img" aria-label="AchadoCertoVIP">
+            <circle cx="22" cy="22" r="14" fill="none" stroke="#1A3A8F" stroke-width="4"/>
+            <line x1="32" y1="32" x2="42" y2="42" stroke="#1A3A8F" stroke-width="4" stroke-linecap="round"/>
+            <polyline points="14,22 20,28 30,14" fill="none" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="54" y="32" font-family="'Segoe UI',Arial,sans-serif" font-size="26" font-weight="800" fill="#1A3A8F">Achado</text>
+            <text x="168" y="32" font-family="'Segoe UI',Arial,sans-serif" font-size="26" font-weight="800" fill="#1565C0">Certo</text>
+            <rect x="268" y="8" width="58" height="30" rx="7" fill="#1A3A8F"/>
+            <rect x="268" y="8" width="58" height="30" rx="7" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+            <text x="297" y="28" font-family="'Segoe UI',Arial,sans-serif" font-size="14" font-weight="900" fill="#C9A84C" text-anchor="middle" letter-spacing="2">VIP</text>
+          </svg>
         </a>
 
         <!-- Search desktop -->
@@ -196,8 +214,17 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
     <div class="container">
       <div class="footer-grid">
         <div>
-          <a href="/" class="footer-logo brand" aria-label="AchadoCerto (Início)">
-            <img src="/images/logo-achadocerto.png" width="220" height="55" alt="AchadoCerto" loading="lazy" decoding="async" />
+          <a href="/" class="footer-logo brand" aria-label="AchadoCertoVIP (Início)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 52" class="logo-svg" role="img" aria-label="AchadoCertoVIP">
+              <circle cx="22" cy="22" r="14" fill="none" stroke="#1A3A8F" stroke-width="4"/>
+              <line x1="32" y1="32" x2="42" y2="42" stroke="#1A3A8F" stroke-width="4" stroke-linecap="round"/>
+              <polyline points="14,22 20,28 30,14" fill="none" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="54" y="32" font-family="'Segoe UI',Arial,sans-serif" font-size="26" font-weight="800" fill="#1A3A8F">Achado</text>
+              <text x="168" y="32" font-family="'Segoe UI',Arial,sans-serif" font-size="26" font-weight="800" fill="#1565C0">Certo</text>
+              <rect x="268" y="8" width="58" height="30" rx="7" fill="#1A3A8F"/>
+              <rect x="268" y="8" width="58" height="30" rx="7" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+              <text x="297" y="28" font-family="'Segoe UI',Arial,sans-serif" font-size="14" font-weight="900" fill="#C9A84C" text-anchor="middle" letter-spacing="2">VIP</text>
+            </svg>
           </a>
           <p class="footer-desc">Reviews independentes, comparativos honestos e guias de compra para você escolher com confiança.</p>
           <div class="footer-social">
@@ -243,7 +270,7 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; {new Date().getFullYear()} AchadoCerto. Todos os direitos reservados.</span>
+        <span>&copy; {new Date().getFullYear()} AchadoCertoVIP. Todos os direitos reservados.</span>
         <span>Feito com cuidado no Brasil 🇧🇷</span>
       </div>
       <p class="footer-disclaimer">Este site pode conter links de afiliados. Ao comprar via nossos links, recebemos uma comissão sem custo adicional para você.</p>
@@ -251,6 +278,15 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
   </footer>
 
   <style>
+    .logo-svg {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+    @media (max-width: 520px) {
+      .logo-svg { height: 34px; }
+    }
+
     .footer-social { display:flex; gap:10px; margin-top:18px; }
     .social-btn { width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; transition:transform .2s,opacity .2s; flex-shrink:0; }
     .social-btn:hover { transform:scale(1.1); opacity:.9; }
@@ -259,15 +295,9 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
     .social-instagram { background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%); }
 
     .brand { display:inline-flex; align-items:center; }
-    .brand img { display:block; height:auto; }
-
-    @media (max-width: 520px) {
-      .brand img { width: 140px; height: auto; }
-    }
   </style>
 
   <script is:inline>
-    // Drawer
     window.openDrawer = function() {
       document.body.classList.add('drawer-open');
       document.getElementById('drawer').setAttribute('aria-hidden', 'false');
@@ -284,8 +314,6 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
         window.closeMobileSearch();
       }
     });
-
-    // Search mobile
     window.openMobileSearch = function() {
       var overlay = document.getElementById('mobileSearchOverlay');
       overlay.classList.add('open');
