@@ -1,26 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300">
-  <!-- Background -->
-  <rect width="1200" height="300" fill="white" opacity="0"/>
-  
-  <!-- "Achad" text in bold navy-blue -->
-  <text x="40" y="155" font-family="Arial, sans-serif" font-size="130" font-weight="bold" fill="#142864" letter-spacing="-2">
-    Achad
-  </text>
-  
-  <!-- Magnifying glass replacing "O" -->
-  <circle cx="240" cy="125" r="40" fill="none" stroke="#1F90FF" stroke-width="9"/>
-  <line x1="268" y1="153" x2="340" y2="225" stroke="#1F90FF" stroke-width="9" stroke-linecap="round"/>
-  
-  <!-- "Certo" text in regular navy-blue -->
-  <text x="360" y="155" font-family="Arial, sans-serif" font-size="125" font-weight="normal" fill="#142864" letter-spacing="-2">
-    Certo
-  </text>
-  
-  <!-- VIP Badge with GOLD text -->
-  <rect x="815" y="85" width="95" height="70" rx="12" ry="12" fill="#142864" stroke="#D4AF37" stroke-width="3"/>
-  
-  <!-- VIP text in GOLD - much better contrast -->
-  <text x="862" y="135" font-family="Arial, sans-serif" font-size="35" font-weight="bold" fill="#D4AF37" text-anchor="middle">
-    VIP
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 280" width="1100" height="280">
+  <!-- Background transparente -->
+  <rect width="1100" height="280" fill="none"/>
+
+  <!-- Texto "Achad" em navy bold -->
+  <text x="30" y="200" font-family="Arial Black, Arial, sans-serif" font-size="150" font-weight="900" fill="#142864" letter-spacing="-3">Achad</text>
+
+  <!-- Lupa no lugar do "o" -->
+  <!-- Círculo externo da lupa (outline luminoso) -->
+  <circle cx="617" cy="135" r="54" fill="none" stroke="#1F90FF" stroke-width="13"/>
+  <!-- Reflexo dentro da lupa -->
+  <circle cx="602" cy="108" r="12" fill="#1F90FF" opacity="0.18"/>
+  <!-- Cabo da lupa -->
+  <line x1="655" y1="173" x2="720" y2="238" stroke="#1F90FF" stroke-width="14" stroke-linecap="round"/>
+
+  <!-- Texto "Certo" em navy bold -->
+  <text x="730" y="200" font-family="Arial Black, Arial, sans-serif" font-size="150" font-weight="900" fill="#142864" letter-spacing="-3">Certo</text>
+
+  <!-- Badge VIP -->
+  <rect x="1020" y="60" width="60" height="155" rx="10" ry="10" fill="#142864" stroke="#D4AF37" stroke-width="3"/>
+  <!-- Letras V I P verticais -->
+  <text x="1050" y="118" font-family="Arial Black, Arial, sans-serif" font-size="28" font-weight="900" fill="#D4AF37" text-anchor="middle">V</text>
+  <text x="1050" y="152" font-family="Arial Black, Arial, sans-serif" font-size="28" font-weight="900" fill="#D4AF37" text-anchor="middle">I</text>
+  <text x="1050" y="186" font-family="Arial Black, Arial, sans-serif" font-size="28" font-weight="900" fill="#D4AF37" text-anchor="middle">P</text>
 </svg>
