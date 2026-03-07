@@ -6,23 +6,13 @@
     </linearGradient>
   </defs>
 
-  <!-- AchadoCerto em azul escuro -->
   <text
     x="0" y="46"
     font-family="'Segoe UI Black','Arial Black',Arial,sans-serif"
     font-size="46"
     font-weight="900"
-    fill="#1e1150"
     letter-spacing="-1"
-  >AchadoCerto</text>
-
-  <!-- VIP colado, gradiente laranja/rosa -->
-  <text
-    x="334" y="46"
-    font-family="'Segoe UI Black','Arial Black',Arial,sans-serif"
-    font-size="46"
-    font-weight="900"
-    fill="url(#vipGrad)"
-    letter-spacing="-1"
-  >VIP</text>
+  >
+    <tspan fill="#1e1150">AchadoCerto</tspan><tspan fill="url(#vipGrad)">VIP</tspan>
+  </text>
 </svg>
