@@ -101,16 +101,7 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
   <aside class="drawer" id="drawer" role="dialog" aria-label="Menu" aria-hidden="true">
     <div class="drawer-header">
       <a href="/" class="brand" aria-label="AchadoCertoVIP (Início)">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 52" class="logo-svg" role="img" aria-label="AchadoCertoVIP">
-          <circle cx="22" cy="22" r="14" fill="none" stroke="#1A3A8F" stroke-width="4"/>
-          <line x1="32" y1="32" x2="42" y2="42" stroke="#1A3A8F" stroke-width="4" stroke-linecap="round"/>
-          <polyline points="14,22 20,28 30,14" fill="none" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="54" y="32" font-family="'Segoe UI',Arial,sans-serif" font-size="26" font-weight="800" fill="#1A3A8F">Achado</text>
-          <text x="168" y="32" font-family="'Segoe UI',Arial,sans-serif" font-size="26" font-weight="800" fill="#1565C0">Certo</text>
-          <rect x="268" y="8" width="58" height="30" rx="7" fill="#1A3A8F"/>
-          <rect x="268" y="8" width="58" height="30" rx="7" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
-          <text x="297" y="28" font-family="'Segoe UI',Arial,sans-serif" font-size="14" font-weight="900" fill="#C9A84C" text-anchor="middle" letter-spacing="2">VIP</text>
-        </svg>
+        <img src="/logo-achadocerto.svg" alt="AchadoCertoVIP" class="logo-img" width="200" height="40" loading="lazy" decoding="async" />
       </a>
       <button class="drawer-close" onclick="window.closeDrawer()" aria-label="Fechar menu">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -158,18 +149,9 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
           </svg>
         </button>
 
-        <!-- Logo SVG inline -->
+        <!-- Logo -->
         <a href="/" class="brand" aria-label="AchadoCertoVIP (Início)">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 52" class="logo-svg" role="img" aria-label="AchadoCertoVIP">
-            <circle cx="22" cy="22" r="14" fill="none" stroke="#1A3A8F" stroke-width="4"/>
-            <line x1="32" y1="32" x2="42" y2="42" stroke="#1A3A8F" stroke-width="4" stroke-linecap="round"/>
-            <polyline points="14,22 20,28 30,14" fill="none" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="54" y="32" font-family="'Segoe UI',Arial,sans-serif" font-size="26" font-weight="800" fill="#1A3A8F">Achado</text>
-            <text x="168" y="32" font-family="'Segoe UI',Arial,sans-serif" font-size="26" font-weight="800" fill="#1565C0">Certo</text>
-            <rect x="268" y="8" width="58" height="30" rx="7" fill="#1A3A8F"/>
-            <rect x="268" y="8" width="58" height="30" rx="7" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
-            <text x="297" y="28" font-family="'Segoe UI',Arial,sans-serif" font-size="14" font-weight="900" fill="#C9A84C" text-anchor="middle" letter-spacing="2">VIP</text>
-          </svg>
+          <img src="/logo-achadocerto.svg" alt="AchadoCertoVIP" class="logo-img" width="240" height="48" decoding="async" fetchpriority="high" />
         </a>
 
         <!-- Search desktop -->
@@ -215,16 +197,7 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
       <div class="footer-grid">
         <div>
           <a href="/" class="footer-logo brand" aria-label="AchadoCertoVIP (Início)">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 52" class="logo-svg" role="img" aria-label="AchadoCertoVIP">
-              <circle cx="22" cy="22" r="14" fill="none" stroke="#1A3A8F" stroke-width="4"/>
-              <line x1="32" y1="32" x2="42" y2="42" stroke="#1A3A8F" stroke-width="4" stroke-linecap="round"/>
-              <polyline points="14,22 20,28 30,14" fill="none" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              <text x="54" y="32" font-family="'Segoe UI',Arial,sans-serif" font-size="26" font-weight="800" fill="#1A3A8F">Achado</text>
-              <text x="168" y="32" font-family="'Segoe UI',Arial,sans-serif" font-size="26" font-weight="800" fill="#1565C0">Certo</text>
-              <rect x="268" y="8" width="58" height="30" rx="7" fill="#1A3A8F"/>
-              <rect x="268" y="8" width="58" height="30" rx="7" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
-              <text x="297" y="28" font-family="'Segoe UI',Arial,sans-serif" font-size="14" font-weight="900" fill="#C9A84C" text-anchor="middle" letter-spacing="2">VIP</text>
-            </svg>
+            <img src="/logo-achadocerto.svg" alt="AchadoCertoVIP" class="logo-img logo-img--footer" width="200" height="40" loading="lazy" decoding="async" />
           </a>
           <p class="footer-desc">Reviews independentes, comparativos honestos e guias de compra para você escolher com confiança.</p>
           <div class="footer-social">
@@ -278,13 +251,17 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
   </footer>
 
   <style>
-    .logo-svg {
+    .logo-img {
       height: 44px;
       width: auto;
       display: block;
     }
+    .logo-img--footer {
+      height: 36px;
+    }
     @media (max-width: 520px) {
-      .logo-svg { height: 34px; }
+      .logo-img { height: 32px; }
+      .logo-img--footer { height: 28px; }
     }
 
     .footer-social { display:flex; gap:10px; margin-top:18px; }
