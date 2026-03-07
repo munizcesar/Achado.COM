@@ -104,19 +104,49 @@ async function fetchMLScraping(inputUrl, itemId) {
   const res = await get(inputUrl);
   const body = res.body;
 
-  // Título
-  const titleM = 
-    body.match(/<h1[^>]*class="[^"]*title[^"]*"[^>]*>([^<]{5,200})<\/h1>/) ||
-    body.match(/<h1[^>]*>([^<]{5,200})<\/h1>/) ||
-    body.match(/"name":"([^"]{5,200})"/);
-  const title = titleM ? titleM[1].trim().replace(/\s+/g,' ') : 'Produto Mercado Livre';
+  // Título - múltiplas estratégias
+  let title = 'Produto Mercado Livre';
+  
+  // Tenta JSON-LD primeiro
+  const jsonLdMatch = body.match(/<script type="application\/ld\+json">({[^<]+product[^<]+})<\/script>/i);
+  if (jsonLdMatch) {
+    try {
+      const data = JSON.parse(jsonLdMatch[1]);
+      if (data.name) title = data.name;
+    } catch(e) {}
+  }
+  
+  // Tenta Open Graph
+  if (title === 'Produto Mercado Livre') {
+    const ogMatch = body.match(/<meta[^>]+property="og:title"[^>]+content="([^"]{5,200})"/);
+    if (ogMatch) title = ogMatch[1].trim().replace(/ \| Mercado Livre$/i, '');
+  }
+  
+  // Tenta title tag
+  if (title === 'Produto Mercado Livre') {
+    const titleMatch = body.match(/<title>([^<|]{5,200})/);
+    if (titleMatch) title = titleMatch[1].trim().replace(/ \| Mercado Livre$/i, '');
+  }
+  
+  // Tenta H1
+  if (title === 'Produto Mercado Livre') {
+    const h1Match = body.match(/<h1[^>]*>([^<]{5,200})<\/h1>/);
+    if (h1Match) title = h1Match[1].trim();
+  }
 
-  // Imagem
-  const imgM = 
-    body.match(/"image":"(https:\/\/[^"]+\.jpg)"/) ||
-    body.match(/<img[^>]+src="(https:\/\/[^"]+\.jpg)"[^>]*class="[^"]*product/i) ||
-    body.match(/<meta[^>]+property="og:image"[^>]+content="([^"]+)"/);
-  const imageUrl = imgM ? imgM[1].replace(/-[A-Z]\.jpg$/, '-D.jpg') : '';
+  // Imagem - múltiplas estratégias
+  let imageUrl = '';
+  const imgMatch = 
+    body.match(/"image":"(https:\/\/http2\.mlstatic\.com[^"]+\.(?:jpg|webp))"/) ||
+    body.match(/"secure_url":"(https:\/\/http2\.mlstatic\.com[^"]+\.(?:jpg|webp))"/) ||
+    body.match(/<meta[^>]+property="og:image"[^>]+content="([^"]+)"/) ||
+    body.match(/"url":"(https:\/\/http2\.mlstatic\.com[^"]+\.(?:jpg|webp))"/);
+  
+  if (imgMatch) {
+    imageUrl = imgMatch[1]
+      .replace(/-[A-Z]\.(?:jpg|webp)$/, '-D.jpg')
+      .replace(/\.webp$/, '.jpg');
+  }
 
   // Specs básicos
   const specs = [];
@@ -128,7 +158,7 @@ async function fetchMLScraping(inputUrl, itemId) {
   }
 
   return {
-    title,
+    title: title.replace(/\s+/g, ' ').slice(0, 150),
     description: `Conheça o ${title}. Disponível no Mercado Livre com entrega rápida para todo o Brasil.`,
     category: mapCategory(title),
     imageUrl, specs,
