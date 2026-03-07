@@ -1,159 +1,157 @@
 #!/usr/bin/env node
 /**
- * AchadoCertoVIP — Gerador de Posts
- * Uso: node scripts/novo-post.js "<url-afiliado>" [categoria]
+ * AchadoCertoVIP — Gerador automático de posts
  *
- * Suporte: Mercado Livre, Amazon (amzn.to ou amazon.com.br)
+ * USO (1 comando, só isso):
+ *   npm run post "https://url-afiliado"
+ *
+ * Faz tudo:
+ *  1. Detecta a plataforma (ML ou Amazon)
+ *  2. Busca nome, imagem e specs via API
+ *  3. Baixa a foto do produto
+ *  4. Gera o .md completo
+ *  5. Faz git add + commit + push automaticamente
  */
 
-const https = require('https');
-const http  = require('http');
-const fs    = require('fs');
-const path  = require('path');
-const url   = require('url');
+const https    = require('https');
+const http     = require('http');
+const fs       = require('fs');
+const path     = require('path');
+const { execSync } = require('child_process');
 
-// ─── Utilitários ─────────────────────────────────────────────────────────────
+// ── Helpers ────────────────────────────────────────────────────────────────
 
 function slugify(text) {
   return text
     .toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9\s-]/g, '')
-    .trim()
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
+    .trim().replace(/\s+/g, '-').replace(/-+/g, '-')
     .slice(0, 60);
 }
 
-function get(urlStr) {
+function get(urlStr, redirectCount = 0) {
+  if (redirectCount > 6) throw new Error('Muitos redirecionamentos');
   return new Promise((resolve, reject) => {
     const lib = urlStr.startsWith('https') ? https : http;
     const req = lib.get(urlStr, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; AchadoCertoBot/1.0)',
-        'Accept': 'application/json, text/html',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        'Accept': 'application/json,text/html,*/*',
       }
     }, (res) => {
-      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-        return resolve(get(res.headers.location));
+      if ([301,302,303,307,308].includes(res.statusCode) && res.headers.location) {
+        return resolve(get(res.headers.location, redirectCount + 1));
       }
       let data = '';
-      res.on('data', chunk => data += chunk);
+      res.on('data', c => data += c);
       res.on('end', () => resolve({ status: res.statusCode, body: data, headers: res.headers }));
     });
     req.on('error', reject);
-    req.setTimeout(10000, () => { req.destroy(); reject(new Error('Timeout')); });
+    req.setTimeout(12000, () => { req.destroy(); reject(new Error('Timeout')); });
   });
 }
 
-async function downloadImage(imageUrl, destPath) {
+async function downloadImage(imgUrl, destPath, redirectCount = 0) {
+  if (redirectCount > 6) throw new Error('Muitos redirecionamentos na imagem');
   return new Promise((resolve, reject) => {
-    const lib = imageUrl.startsWith('https') ? https : http;
+    const lib = imgUrl.startsWith('https') ? https : http;
     const file = fs.createWriteStream(destPath);
-    const req = lib.get(imageUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } }, (res) => {
-      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-        file.close();
-        fs.unlinkSync(destPath);
-        return resolve(downloadImage(res.headers.location, destPath));
+    const req = lib.get(imgUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } }, (res) => {
+      if ([301,302,303,307,308].includes(res.statusCode) && res.headers.location) {
+        file.close(); fs.unlinkSync(destPath);
+        return resolve(downloadImage(res.headers.location, destPath, redirectCount + 1));
       }
       res.pipe(file);
-      file.on('finish', () => { file.close(); resolve(true); });
+      file.on('finish', () => { file.close(); resolve(); });
     });
-    req.on('error', (err) => { fs.unlink(destPath, () => {}); reject(err); });
-    req.setTimeout(15000, () => { req.destroy(); reject(new Error('Timeout')); });
+    req.on('error', err => { try { fs.unlinkSync(destPath); } catch(_){} reject(err); });
+    req.setTimeout(15000, () => { req.destroy(); reject(new Error('Timeout imagem')); });
   });
 }
 
-function detectPlatform(inputUrl) {
-  if (inputUrl.includes('mercadolivre') || inputUrl.includes('mercadolibre') || inputUrl.includes('mlb')) return 'ml';
-  if (inputUrl.includes('amazon') || inputUrl.includes('amzn')) return 'amazon';
+function detectPlatform(u) {
+  if (/mercadolivre|mercadolibre|mlb/i.test(u)) return 'ml';
+  if (/amazon|amzn/i.test(u)) return 'amazon';
   return 'unknown';
 }
 
-// ─── Mercado Livre ────────────────────────────────────────────────────────────
-
-async function resolveMLId(inputUrl) {
-  // Resolve redirects (links curtos ml.shoplink etc)
-  const res = await get(inputUrl);
-  const finalUrl = res.headers['location'] || inputUrl;
-  // Extrai o ID do produto: MLB123456789
-  const match = (finalUrl + res.body).match(/MLB[\-]?(\d+)/i);
-  if (!match) throw new Error('Não consegui extrair o ID do Mercado Livre. Tente usar a URL completa do produto.');
-  return 'MLB' + match[1].replace('-','');
+function mapCategory(name) {
+  const n = (name || '').toLowerCase();
+  if (/celular|smartphone|tablet|notebook|tv|fone|áudio|audio|camera|câmera|monitor|pc|computador/.test(n)) return 'Tech';
+  if (/saúde|saude|suplemento|vitamina|proteína|proteina|creatina|colagem|colágen/.test(n)) return 'Saude';
+  if (/casa|cozinha|lar|móvel|movel|decora/.test(n)) return 'Casa';
+  if (/esporte|fitness|academia|legging|tênis|tenis|corrida/.test(n)) return 'Esportes';
+  if (/beleza|cosm|perfume|cabelo|pele|maquiagem/.test(n)) return 'Beleza';
+  return 'Tech';
 }
 
+// ── Mercado Livre ────────────────────────────────────────────────────────
+
 async function fetchML(inputUrl) {
-  console.log('🔍 Detectado: Mercado Livre');
-  const itemId = await resolveMLId(inputUrl);
-  console.log('📦 Item ID:', itemId);
+  console.log('\n🛒  Mercado Livre detectado...');
 
-  const res = await get(`https://api.mercadolibre.com/items/${itemId}`);
-  if (res.status !== 200) throw new Error(`API ML retornou ${res.status}`);
-  const item = JSON.parse(res.body);
+  // Resolve redirects e extrai o ID MLB
+  const res = await get(inputUrl);
+  const fullText = (res.headers.location || '') + res.body + inputUrl;
+  const match = fullText.match(/MLB-?(\d{6,12})/i);
+  if (!match) throw new Error('Não encontrei o ID do produto. Use a URL completa da página do produto.');
+  const itemId = 'MLB' + match[1];
+  console.log('📦  ID:', itemId);
 
-  // Categoria
-  const catRes = await get(`https://api.mercadolibre.com/categories/${item.category_id}`);
-  const catName = catRes.status === 200 ? JSON.parse(catRes.body).name : 'Geral';
+  const api = await get(`https://api.mercadolibre.com/items/${itemId}`);
+  if (api.status !== 200) throw new Error(`API retornou ${api.status}`);
+  const item = JSON.parse(api.body);
 
-  // Melhor imagem disponível
-  const images = item.pictures || [];
-  const bestImage = images.length > 0
-    ? (images[0].url || images[0].secure_url || '').replace('-O.jpg','-D.jpg')
+  // Melhor imagem (alta resolução)
+  const pics = item.pictures || [];
+  const imageUrl = pics.length
+    ? (pics[0].url || pics[0].secure_url || '').replace(/-[A-Z]\.jpg$/, '-D.jpg')
     : '';
 
-  // Atributos relevantes para specs
+  // Specs formatados
   const specs = (item.attributes || [])
-    .filter(a => a.value_name && a.name)
-    .slice(0, 8)
+    .filter(a => a.value_name && !['Linha', 'Cor', 'Modelo'].includes(a.name))
+    .slice(0, 6)
     .map(a => `- **${a.name}:** ${a.value_name}`);
+
+  // Categoria ML
+  let categoryName = 'Tech';
+  try {
+    const catRes = await get(`https://api.mercadolibre.com/categories/${item.category_id}`);
+    if (catRes.status === 200) categoryName = JSON.parse(catRes.body).name;
+  } catch(_) {}
 
   return {
     title: item.title,
-    description: `Conheça o ${item.title}. Produto disponível no Mercado Livre com entrega rápida.`,
-    category: mapCategory(catName),
-    imageUrl: bestImage,
+    description: `Conheça o ${item.title}. Disponível no Mercado Livre com entrega rápida para todo o Brasil.`,
+    category: mapCategory(categoryName),
+    imageUrl,
     specs,
     store: 'Mercado Livre',
     affiliateUrl: inputUrl,
   };
 }
 
-// ─── Amazon ───────────────────────────────────────────────────────────────────
+// ── Amazon ───────────────────────────────────────────────────────────────────
 
 async function fetchAmazon(inputUrl) {
-  console.log('🔍 Detectado: Amazon');
-  // Resolve link curto amzn.to → URL real
-  let finalUrl = inputUrl;
-  if (inputUrl.includes('amzn.to') || inputUrl.includes('amzn.com')) {
-    const res = await get(inputUrl);
-    finalUrl = res.headers['location'] || inputUrl;
-  }
-  console.log('🌐 URL final:', finalUrl.slice(0, 80) + '...');
-
-  // Scraping básico da página de produto
-  const res = await get(finalUrl);
+  console.log('\n📦  Amazon detectado...');
+  const res = await get(inputUrl);
   const body = res.body;
 
-  // Título
-  const titleMatch = body.match(/<span id="productTitle"[^>]*>([^<]+)<\/span>/);
-  const title = titleMatch ? titleMatch[1].trim() : 'Produto Amazon';
+  const titleM = body.match(/<span[^>]*id="productTitle"[^>]*>([\s\S]{1,300}?)<\/span>/);
+  const title = titleM ? titleM[1].trim().replace(/\s+/g,' ') : 'Produto Amazon';
 
-  // Imagem principal
-  const imgMatch = body.match(/"hiRes":"(https:\/\/[^"]+\.jpg)"/) ||
-                   body.match(/"large":"(https:\/\/[^"]+\.jpg)"/) ||
-                   body.match(/id="landingImage"[^>]+src="([^"]+)"/);
-  const imageUrl = imgMatch ? imgMatch[1] : '';
-
-  // Descrição dos bullet points
-  const bulletsMatch = body.match(/<div id="feature-bullets"[\s\S]{0,3000}?<\/div>/);
-  const description = bulletsMatch
-    ? bulletsMatch[0].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 200)
-    : `Conheça o ${title}. Disponível na Amazon com entrega Prime.`;
+  const imgM = body.match(/"hiRes":"(https:\/\/[^"]+\.jpg)"/) ||
+               body.match(/"large":"(https:\/\/[^"]+\.jpg)"/) ||
+               body.match(/id="landingImage"[^>]+src="([^"]+)"/);
+  const imageUrl = imgM ? imgM[1] : '';
 
   return {
     title,
-    description,
-    category: 'Tech',
+    description: `${title} disponível na Amazon com entrega Prime para todo o Brasil.`,
+    category: mapCategory(title),
     imageUrl,
     specs: [],
     store: 'Amazon',
@@ -161,139 +159,127 @@ async function fetchAmazon(inputUrl) {
   };
 }
 
-// ─── Mapeamento de categoria ──────────────────────────────────────────────────
+// ── Gera markdown ──────────────────────────────────────────────────────────
 
-function mapCategory(mlCat) {
-  const c = mlCat.toLowerCase();
-  if (c.includes('celular') || c.includes('smartphone') || c.includes('tablet') ||
-      c.includes('notebook') || c.includes('computador') || c.includes('tv') ||
-      c.includes('fone') || c.includes('áudio') || c.includes('câmera')) return 'Tech';
-  if (c.includes('saúde') || c.includes('suplemento') || c.includes('vitamina') ||
-      c.includes('beleza') || c.includes('perfume') || c.includes('cabelo')) return 'Saúde';
-  if (c.includes('casa') || c.includes('cozinha') || c.includes('lar') ||
-      c.includes('móveis') || c.includes('decoração')) return 'Casa';
-  if (c.includes('esporte') || c.includes('fitness') || c.includes('academia')) return 'Esportes';
-  if (c.includes('beleza') || c.includes('cosméticos')) return 'Beleza';
-  return 'Geral';
-}
-
-// ─── Gerador de Markdown ──────────────────────────────────────────────────────
-
-function generateMarkdown({ title, description, category, slug, imageFile, specs, store, affiliateUrl }) {
+function generateMarkdown({ title, description, category, imageFile, specs, store, affiliateUrl }) {
   const today = new Date().toISOString().split('T')[0];
-  const categorySlug = category.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'-');
-  const specsSection = specs.length > 0
-    ? `\n## Especificações\n\n${specs.join('\n')}\n`
+  const cat = category.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'-');
+  const storeEmoji = { 'Mercado Livre': '🛒', 'Amazon': '📦', 'Magalu': '🏪' }[store] || '🛍️';
+
+  const specsBlock = specs.length
+    ? `\n## Especificações Principais\n\n${specs.join('\n')}\n`
     : '';
 
   return `---
-title: "${title.replace(/"/g, "'")}"
-description: "${description.replace(/"/g, "'").slice(0, 155)}"
+title: "${title.replace(/"/g,"'")}"
+description: "${description.replace(/"/g,"'").slice(0,155)}"
 date: ${today}
 category: ${category}
 image: /images/posts/${imageFile}
-tags: [${categorySlug}]
+tags: [${cat}]
 draft: false
 affiliateUrl: "${affiliateUrl}"
 productImage: /images/posts/${imageFile}
 ---
 
-${title} é um produto disponível na loja ${store} com entrega rápida para todo o Brasil.
-Abaixo você encontra todas as informações e o link direto para a página do produto.
-${specsSection}
-## Onde Comprar
-
-<ProductBox
-  name="${title.replace(/"/g, "'")}"
-  image="/images/posts/${imageFile}"
-  store="${store}"
-  url="${affiliateUrl}"
-/>
-
+${title} é um produto disponível no ${store} com entrega rápida para todo o Brasil.
+Confira abaixo as principais informações e acesse a página do produto na loja.
+${specsBlock}
 ## Vale a Pena?
 
-${title} é uma ótima opção para quem busca qualidade e bom custo-benefício.
-Clique no botão acima para ver a disponibilidade e detalhes completos na loja ${store}.
+${title.split(' ').slice(0,4).join(' ')} é bem avaliado pelos compradores e se destaca pelo custo-benefício.
+Para ver a disponibilidade, fotos detalhadas e avaliações de quem já comprou, acesse a página oficial:
+
+${storeEmoji} Acesse o produto na loja ${store} pelo botão abaixo.
 
 ---
 
-*Links deste post são afiliados. Você não paga nada a mais, mas nos ajuda a manter o site.*
+*Links deste post são afiliados. Você não paga nada a mais, mas nos ajuda a manter o site gratuito.*
 `;
 }
 
-// ─── Main ─────────────────────────────────────────────────────────────────────
+// ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
   const inputUrl = process.argv[2];
-  const forceCategory = process.argv[3];
 
   if (!inputUrl) {
-    console.error('\n❌ Uso: node scripts/novo-post.js "<url-afiliado>" [categoria]\n');
-    console.error('Exemplos:');
-    console.error('  node scripts/novo-post.js "https://www.mercadolivre.com.br/..."');
-    console.error('  node scripts/novo-post.js "https://amzn.to/xyz" Tech\n');
-    process.exit(1);
+    console.log('\n✨  AchadoCertoVIP — Gerador de Posts\n');
+    console.log('Uso: npm run post "<url-afiliado>"\n');
+    console.log('Exemplos:');
+    console.log('  npm run post "https://www.mercadolivre.com.br/..."');
+    console.log('  npm run post "https://amzn.to/xyz"\n');
+    process.exit(0);
   }
 
   const platform = detectPlatform(inputUrl);
-
-  let product;
-  try {
-    if (platform === 'ml')     product = await fetchML(inputUrl);
-    else if (platform === 'amazon') product = await fetchAmazon(inputUrl);
-    else throw new Error('Plataforma não reconhecida. Use links do Mercado Livre ou Amazon.');
-  } catch (err) {
-    console.error('\n❌ Erro ao buscar produto:', err.message);
+  if (platform === 'unknown') {
+    console.error('\n❌ Plataforma não reconhecida.');
+    console.error('Use links do Mercado Livre (mercadolivre.com.br) ou Amazon (amzn.to / amazon.com.br)\n');
     process.exit(1);
   }
 
-  if (forceCategory) product.category = forceCategory;
+  // 1. Busca dados do produto
+  let product;
+  try {
+    product = platform === 'ml' ? await fetchML(inputUrl) : await fetchAmazon(inputUrl);
+  } catch (err) {
+    console.error('\n❌ Erro ao buscar produto:', err.message, '\n');
+    process.exit(1);
+  }
 
   const slug = slugify(product.title);
-  console.log('\n📝 Título:', product.title);
+  console.log('\n📝 Título  :', product.title);
   console.log('📂 Categoria:', product.category);
-  console.log('🔗 Slug:', slug);
+  console.log('🔗 Slug    :', slug);
 
-  // Baixa a imagem
-  const imgDir = path.join(process.cwd(), 'public', 'images', 'posts');
+  // 2. Baixa imagem
+  const imgDir  = path.join(process.cwd(), 'public', 'images', 'posts');
   if (!fs.existsSync(imgDir)) fs.mkdirSync(imgDir, { recursive: true });
 
   let imageFile = `${slug}.jpg`;
+  const imgPath = path.join(imgDir, imageFile);
+
   if (product.imageUrl) {
-    const imgPath = path.join(imgDir, imageFile);
     try {
-      console.log('🖼️  Baixando imagem...');
+      process.stdout.write('🖼️  Baixando imagem... ');
       await downloadImage(product.imageUrl, imgPath);
-      console.log('✅ Imagem salva:', imgPath);
+      console.log('✅');
     } catch (err) {
-      console.warn('⚠️  Não foi possível baixar a imagem:', err.message);
+      console.warn('\u26a0️ não foi possível baixar:', err.message);
       imageFile = 'placeholder.jpg';
     }
   } else {
-    console.warn('⚠️  Nenhuma imagem encontrada, usando placeholder.');
+    console.warn('⚠️  Nenhuma imagem encontrada.');
     imageFile = 'placeholder.jpg';
   }
 
-  // Gera o arquivo markdown
-  const md = generateMarkdown({ ...product, slug, imageFile });
-  const mdDir = path.join(process.cwd(), 'src', 'content', 'blog');
+  // 3. Gera o .md
+  const md     = generateMarkdown({ ...product, slug, imageFile });
+  const mdDir  = path.join(process.cwd(), 'src', 'content', 'blog');
   const mdPath = path.join(mdDir, `${slug}.md`);
 
   if (fs.existsSync(mdPath)) {
-    console.warn(`\n⚠️  Arquivo já existe: ${mdPath}`);
-    console.warn('Renomeando para evitar sobrescrita...');
-    fs.renameSync(mdPath, mdPath.replace('.md', `-backup-${Date.now()}.md`));
+    const bak = mdPath.replace('.md', `-bak-${Date.now()}.md`);
+    fs.renameSync(mdPath, bak);
+    console.log('⚠️  Post já existia, renomeado para backup.');
   }
 
   fs.writeFileSync(mdPath, md, 'utf8');
-  console.log('\n✅ Post gerado:', mdPath);
-  console.log('\n👉 Próximos passos:');
-  console.log('   1. Revise o arquivo gerado e adicione mais conteúdo se quiser');
-  console.log('   2. git add . && git commit -m "post: ' + slug + '" && git push');
-  console.log('   3. O deploy acontece automaticamente!\n');
+  console.log('📎  Post gerado :', mdPath);
+
+  // 4. Git: add + commit + push
+  console.log('\n🚀  Publicando no GitHub...');
+  try {
+    execSync('git add .', { stdio: 'inherit' });
+    execSync(`git commit -m "post: ${slug}"`, { stdio: 'inherit' });
+    execSync('git push', { stdio: 'inherit' });
+    console.log('\n✅ PRONTO! Post publicado com sucesso.');
+    console.log(`🌍 Vai ao ar em: https://achadocerto.vip/blog/${slug}\n`);
+  } catch (err) {
+    console.warn('\n⚠️ Git push falhou (talvez não tenha internet ou repositório não configurado).');
+    console.log('Faça manualmente: git add . && git commit -m "post: ' + slug + '" && git push\n');
+  }
 }
 
-main().catch(err => {
-  console.error('Erro fatal:', err);
-  process.exit(1);
-});
+main().catch(err => { console.error(err); process.exit(1); });

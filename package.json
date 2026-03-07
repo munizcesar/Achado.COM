@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "post": "node scripts/novo-post.js"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",
