@@ -18,11 +18,11 @@
  *  5. Faz git add + commit + push
  */
 
-const https        = require('https');
-const http         = require('http');
-const fs           = require('fs');
-const path         = require('path');
-const { execSync } = require('child_process');
+import https from 'https';
+import http from 'http';
+import fs from 'fs';
+import path from 'path';
+import { execSync } from 'child_process';
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -79,7 +79,7 @@ async function downloadImage(imgUrl, destPath, redirectCount = 0) {
 // ── Detecta plataforma ───────────────────────────────────────────────────
 
 function detectPlatform(u) {
-  if (/mercadolivre|mercadolibre|mercado livre|mlb/i.test(u)) return 'ml';
+  if (/mercadolivre|mercadolibre|mercado livre|mlb|meli\.la/i.test(u)) return 'ml';
   if (/amazon\.com\.br|amzn\.to|amzn\.com/i.test(u))          return 'amazon';
   if (/magazineluiza|magalu|maga\.lu/i.test(u))                return 'magalu';
   return 'unknown';
@@ -97,6 +97,46 @@ function mapCategory(name) {
   return 'Tech';
 }
 
+// ── Mercado Livre Scraping (fallback) ────────────────────────────────
+
+async function fetchMLScraping(inputUrl, itemId) {
+  console.log('   🔧 Usando scraping direto da página...');
+  const res = await get(inputUrl);
+  const body = res.body;
+
+  // Título
+  const titleM = 
+    body.match(/<h1[^>]*class="[^"]*title[^"]*"[^>]*>([^<]{5,200})<\/h1>/) ||
+    body.match(/<h1[^>]*>([^<]{5,200})<\/h1>/) ||
+    body.match(/"name":"([^"]{5,200})"/);
+  const title = titleM ? titleM[1].trim().replace(/\s+/g,' ') : 'Produto Mercado Livre';
+
+  // Imagem
+  const imgM = 
+    body.match(/"image":"(https:\/\/[^"]+\.jpg)"/) ||
+    body.match(/<img[^>]+src="(https:\/\/[^"]+\.jpg)"[^>]*class="[^"]*product/i) ||
+    body.match(/<meta[^>]+property="og:image"[^>]+content="([^"]+)"/);
+  const imageUrl = imgM ? imgM[1].replace(/-[A-Z]\.jpg$/, '-D.jpg') : '';
+
+  // Specs básicos
+  const specs = [];
+  const attrsMatches = body.matchAll(/<dt[^>]*>([^<]{2,50})<\/dt>\s*<dd[^>]*>([^<]{1,80})<\/dd>/g);
+  for (const m of attrsMatches) {
+    if (specs.length < 6 && !['Linha','Cor','Modelo','Marca'].includes(m[1].trim())) {
+      specs.push(`- **${m[1].trim()}:** ${m[2].trim()}`);
+    }
+  }
+
+  return {
+    title,
+    description: `Conheça o ${title}. Disponível no Mercado Livre com entrega rápida para todo o Brasil.`,
+    category: mapCategory(title),
+    imageUrl, specs,
+    store: 'Mercado Livre',
+    affiliateUrl: inputUrl,
+  };
+}
+
 // ── Mercado Livre (API oficial) ───────────────────────────────────────
 
 async function fetchML(inputUrl) {
@@ -109,7 +149,11 @@ async function fetchML(inputUrl) {
   console.log('   ID:', itemId);
 
   const api = await get(`https://api.mercadolibre.com/items/${itemId}`);
-  if (api.status !== 200) throw new Error(`API retornou ${api.status}`);
+  if (api.status !== 200) {
+    console.log(`   ⚠️  API retornou ${api.status}, tentando scraping direto...`);
+    // Fallback: scraping da página
+    return await fetchMLScraping(inputUrl, itemId);
+  }
   const item = JSON.parse(api.body);
 
   const pics = item.pictures || [];
