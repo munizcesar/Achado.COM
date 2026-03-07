@@ -1,15 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <!-- Fundo arredondado navy -->
+  <!-- Fundo navy arredondado -->
   <rect width="64" height="64" rx="14" ry="14" fill="#142864"/>
 
-  <!-- Círculo da lupa (branco) -->
-  <circle cx="26" cy="25" r="13" fill="none" stroke="#1F90FF" stroke-width="5"/>
-  <!-- Brilho interno da lupa -->
-  <circle cx="21" cy="19" r="4" fill="white" opacity="0.2"/>
+  <!-- Círculo da lupa -->
+  <circle cx="27" cy="26" r="14" fill="none" stroke="#4CA9FF" stroke-width="5"/>
 
   <!-- Cabo da lupa -->
-  <line x1="35" y1="34" x2="47" y2="47" stroke="#1F90FF" stroke-width="5" stroke-linecap="round"/>
+  <line x1="17" y1="37" x2="10" y2="48" stroke="#4CA9FF" stroke-width="5" stroke-linecap="round"/>
 
-  <!-- Ponto de check/visto dentro da lupa (simboliza "achado certo") -->
-  <polyline points="19,25 24,30 33,18" fill="none" stroke="#D4AF37" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Check dourado dentro da lupa -->
+  <polyline
+    points="19,26 25,33 36,18"
+    fill="none"
+    stroke="#D4AF37"
+    stroke-width="3.8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <!-- Spike dourado saindo da lupa -->
+  <line x1="36" y1="18" x2="41" y2="11" stroke="#D4AF37" stroke-width="3" stroke-linecap="round"/>
 </svg>

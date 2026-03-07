@@ -1,25 +1,49 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 280" width="1100" height="280">
-  <!-- Background transparente -->
-  <rect width="1100" height="280" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" width="900" height="280">
+  <!-- Fundo transparente -->
+  <rect width="900" height="280" fill="white" opacity="0"/>
 
-  <!-- Texto "Achad" em navy bold -->
-  <text x="30" y="200" font-family="Arial Black, Arial, sans-serif" font-size="150" font-weight="900" fill="#142864" letter-spacing="-3">Achad</text>
+  <!-- === LUPA === -->
+  <!-- Círculo externo da lupa -->
+  <circle cx="110" cy="120" r="72" fill="white" stroke="#142864" stroke-width="14"/>
 
-  <!-- Lupa no lugar do "o" -->
-  <!-- Círculo externo da lupa (outline luminoso) -->
-  <circle cx="617" cy="135" r="54" fill="none" stroke="#1F90FF" stroke-width="13"/>
-  <!-- Reflexo dentro da lupa -->
-  <circle cx="602" cy="108" r="12" fill="#1F90FF" opacity="0.18"/>
-  <!-- Cabo da lupa -->
-  <line x1="655" y1="173" x2="720" y2="238" stroke="#1F90FF" stroke-width="14" stroke-linecap="round"/>
+  <!-- Cabo da lupa (navy, arredondado, inclinado para baixo-esquerda) -->
+  <line x1="58" y1="175" x2="18" y2="245" stroke="#142864" stroke-width="18" stroke-linecap="round"/>
 
-  <!-- Texto "Certo" em navy bold -->
-  <text x="730" y="200" font-family="Arial Black, Arial, sans-serif" font-size="150" font-weight="900" fill="#142864" letter-spacing="-3">Certo</text>
+  <!-- Check dourado dentro da lupa -->
+  <!-- Traço esquerdo do check -->
+  <polyline
+    points="68,125 98,158 155,88"
+    fill="none"
+    stroke="#D4AF37"
+    stroke-width="13"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <!-- Ponta do check saindo da lupa para cima (spike) -->
+  <line x1="155" y1="88" x2="170" y2="42" stroke="#D4AF37" stroke-width="10" stroke-linecap="round"/>
 
-  <!-- Badge VIP -->
-  <rect x="1020" y="60" width="60" height="155" rx="10" ry="10" fill="#142864" stroke="#D4AF37" stroke-width="3"/>
-  <!-- Letras V I P verticais -->
-  <text x="1050" y="118" font-family="Arial Black, Arial, sans-serif" font-size="28" font-weight="900" fill="#D4AF37" text-anchor="middle">V</text>
-  <text x="1050" y="152" font-family="Arial Black, Arial, sans-serif" font-size="28" font-weight="900" fill="#D4AF37" text-anchor="middle">I</text>
-  <text x="1050" y="186" font-family="Arial Black, Arial, sans-serif" font-size="28" font-weight="900" fill="#D4AF37" text-anchor="middle">P</text>
+  <!-- === TEXTO === -->
+  <!-- "AchadoCerto" grande e bold -->
+  <text
+    x="220" y="155"
+    font-family="'Arial Black', 'Arial', sans-serif"
+    font-size="118"
+    font-weight="900"
+    fill="#142864"
+    letter-spacing="-2"
+  >AchadoCerto</text>
+
+  <!-- Linha divisória fina -->
+  <line x1="220" y1="172" x2="888" y2="172" stroke="#142864" stroke-width="2" opacity="0.4"/>
+
+  <!-- "VIP" dourado centralizado abaixo -->
+  <text
+    x="554" y="240"
+    font-family="'Arial Black', 'Arial', sans-serif"
+    font-size="70"
+    font-weight="900"
+    fill="#D4AF37"
+    text-anchor="middle"
+    letter-spacing="12"
+  >VIP</text>
 </svg>
