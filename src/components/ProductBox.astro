@@ -1,0 +1,197 @@
+---
+interface Props {
+  name: string;
+  image: string;
+  store: string;
+  url: string;
+  badge?: string;
+}
+const { name, image, store, url, badge } = Astro.props;
+
+const storeColors: Record<string, string> = {
+  'Mercado Livre': '#FFE600',
+  'Amazon':        '#FF9900',
+  'Magalu':        '#0086FF',
+};
+const storeColor = storeColors[store] || '#f97316';
+
+const storeIcons: Record<string, string> = {
+  'Mercado Livre': '🛒',
+  'Amazon':        '📦',
+  'Magalu':        '🏪',
+};
+const storeIcon = storeIcons[store] || '🛍️';
+---
+
+<div class="product-box">
+  {badge && <div class="product-badge">{badge}</div>}
+
+  <div class="product-box-inner">
+    <!-- Imagem -->
+    <div class="product-img-wrap">
+      <img
+        src={image}
+        alt={name}
+        class="product-img"
+        loading="lazy"
+        decoding="async"
+        onerror="this.src='/images/placeholder-product.svg'"
+      />
+    </div>
+
+    <!-- Info -->
+    <div class="product-info">
+      <p class="product-name">{name}</p>
+      <p class="product-store-label">
+        <span class="store-dot" style={`background:${storeColor}`}></span>
+        Disponível no {store}
+      </p>
+
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer sponsored"
+        class="product-cta"
+        data-affiliate
+        data-product={name}
+        data-category={store}
+      >
+        {storeIcon} Ver produto no {store}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+
+      <p class="product-disclaimer">🔗 Link de afiliado — você não paga nada a mais</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .product-box {
+    position: relative;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 2rem 0;
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .product-box:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    border-color: #c7d2fe;
+  }
+
+  .product-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: linear-gradient(135deg, #f97316, #ec4899);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 0.25rem 0.65rem;
+    border-radius: 100px;
+    letter-spacing: 0.03em;
+    z-index: 1;
+  }
+
+  .product-box-inner {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    align-items: center;
+  }
+
+  .product-img-wrap {
+    flex-shrink: 0;
+    width: 160px;
+    height: 160px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f9fafb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f3f4f6;
+  }
+  .product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 0.5rem;
+  }
+
+  .product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .product-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .product-store-label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin: 0;
+  }
+  .store-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .product-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    background: linear-gradient(135deg, #1e1150, #2e1155);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.92rem;
+    padding: 0.75rem 1.4rem;
+    border-radius: 10px;
+    text-decoration: none;
+    width: fit-content;
+    transition: opacity 0.2s, transform 0.2s;
+    box-shadow: 0 4px 14px rgba(30,17,80,0.25);
+  }
+  .product-cta:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+  }
+
+  .product-disclaimer {
+    font-size: 0.7rem;
+    color: #9ca3af;
+    margin: 0;
+  }
+
+  @media (max-width: 560px) {
+    .product-box-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.25rem;
+      gap: 1rem;
+    }
+    .product-img-wrap {
+      width: 100%;
+      height: 200px;
+    }
+    .product-cta {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
