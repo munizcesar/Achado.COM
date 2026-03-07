@@ -14,7 +14,14 @@ const currentPath = Astro.url.pathname;
   <div class="container">
     <div class="header-inner">
       <a href="/" class="logo" aria-label="AchadoCerto VIP">
-        <span class="logo-achado">Achado</span><span class="logo-certo">Certo</span><span class="logo-vip">VIP</span>
+        <img
+          src="/logo-achadocerto.svg"
+          alt="AchadoCerto VIP"
+          class="logo-img"
+          width="220"
+          height="68"
+          loading="eager"
+        />
       </a>
 
       <form class="header-search" role="search" action="/blog" method="get">
@@ -53,3 +60,13 @@ const currentPath = Astro.url.pathname;
     </div>
   </div>
 </nav>
+
+<style>
+  .logo-img {
+    display: block;
+    height: 52px;
+    width: auto;
+    max-width: 220px;
+    object-fit: contain;
+  }
+</style>
