@@ -144,7 +144,7 @@ async function fetchMLScraping(inputUrl, itemId) {
   
   if (imgMatch) {
     imageUrl = imgMatch[1]
-      .replace(/-[A-Z]\.(?:jpg|webp)$/, '-D.jpg')
+      .replace(/-[A-Z]\.(?:jpg|webp)$/, '-F.jpg')
       .replace(/\.webp$/, '.jpg');
   }
 
@@ -188,7 +188,7 @@ async function fetchML(inputUrl) {
 
   const pics = item.pictures || [];
   const imageUrl = pics.length
-    ? (pics[0].url || pics[0].secure_url || '').replace(/-[A-Z]\.jpg$/, '-D.jpg')
+    ? (pics[0].url || pics[0].secure_url || '').replace(/-[A-Z]\.jpg$/, '-F.jpg')
     : '';
 
   const specs = (item.attributes || [])
