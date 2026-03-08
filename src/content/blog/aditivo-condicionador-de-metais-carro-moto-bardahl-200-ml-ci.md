@@ -2,9 +2,9 @@
 title: "Aditivo Condicionador De Metais Carro Moto Bardahl 200 Ml Cinza"
 description: "Conheça o Aditivo Condicionador De Metais Carro Moto Bardahl 200 Ml Cinza. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-08
-category: Tech
+category: automotivo
 image: /images/posts/aditivo-condicionador-de-metais-carro-moto-bardahl-200-ml-ci.jpg
-tags: [tech]
+tags: [automotivo, aditivos, manutenção]
 draft: false
 affiliateUrl: "https://meli.la/2xT23zv"
 productImage: /images/posts/aditivo-condicionador-de-metais-carro-moto-bardahl-200-ml-ci.jpg
