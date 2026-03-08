@@ -17,3 +17,12 @@ Thumbs.db
 # Editor
 .vscode/settings.json
 *.log
+
+# Backups e arquivos de debug
+.backups/
+*.backup
+debug-*.html
+debug-*.png
+*-test-output.txt
+rapidapi-response.json
+regenerar-posts.ps1
