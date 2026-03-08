@@ -1,5 +1,5 @@
 {
-  "total": 12,
+  "total": 15,
   "mes_atual": 2,
   "logs": [
     {
@@ -20,6 +20,11 @@
     {
       "data": "2026-03-08T21:39:22.313Z",
       "produto": "Aditivo Condicionador De Metais Carro Moto Bardahl",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-08T23:44:18.429Z",
+      "produto": "Floratta Gold O Boticário Desodorante Colônia Spra",
       "consultas": 3
     }
   ]
