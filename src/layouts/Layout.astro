@@ -177,15 +177,27 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
     </div>
     <nav class="subnav" aria-label="Categorias">
       <div class="container">
-        <div class="subnav-inner">
-          <a href="/" class={`subnav-link${currentPath === '/' ? ' active' : ''}`}>Início</a>
-          <a href="/categorias/tech" class={`subnav-link${currentPath.startsWith('/categorias/tech') ? ' active' : ''}`}>Tech</a>
-          <a href="/categorias/saude" class={`subnav-link${currentPath.startsWith('/categorias/saude') ? ' active' : ''}`}>Saúde</a>
-          <a href="/categorias/casa" class={`subnav-link${currentPath.startsWith('/categorias/casa') ? ' active' : ''}`}>Casa &amp; Lar</a>
-          <a href="/categorias/beleza" class={`subnav-link${currentPath.startsWith('/categorias/beleza') ? ' active' : ''}`}>Beleza</a>
-          <a href="/categorias/esportes" class={`subnav-link${currentPath.startsWith('/categorias/esportes') ? ' active' : ''}`}>Esportes</a>
-          <a href="/categorias/automotivo" class={`subnav-link${currentPath.startsWith('/categorias/automotivo') ? ' active' : ''}`}>Automotivo</a>
-          <a href="/categorias/dicas" class={`subnav-link${currentPath.startsWith('/categorias/dicas') ? ' active' : ''}`}>Guias</a>
+        <div class="subnav-wrapper">
+          <button class="subnav-arrow subnav-arrow-left" id="subnavArrowLeft" aria-label="Rolar para esquerda">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+          <div class="subnav-inner" id="subnavInner">
+            <a href="/" class={`subnav-link${currentPath === '/' ? ' active' : ''}`}>Início</a>
+            <a href="/categorias/tech" class={`subnav-link${currentPath.startsWith('/categorias/tech') ? ' active' : ''}`}>Tech</a>
+            <a href="/categorias/saude" class={`subnav-link${currentPath.startsWith('/categorias/saude') ? ' active' : ''}`}>Saúde</a>
+            <a href="/categorias/casa" class={`subnav-link${currentPath.startsWith('/categorias/casa') ? ' active' : ''}`}>Casa &amp; Lar</a>
+            <a href="/categorias/beleza" class={`subnav-link${currentPath.startsWith('/categorias/beleza') ? ' active' : ''}`}>Beleza</a>
+            <a href="/categorias/esportes" class={`subnav-link${currentPath.startsWith('/categorias/esportes') ? ' active' : ''}`}>Esportes</a>
+            <a href="/categorias/automotivo" class={`subnav-link${currentPath.startsWith('/categorias/automotivo') ? ' active' : ''}`}>Automotivo</a>
+            <a href="/categorias/dicas" class={`subnav-link${currentPath.startsWith('/categorias/dicas') ? ' active' : ''}`}>Guias</a>
+          </div>
+          <button class="subnav-arrow subnav-arrow-right" id="subnavArrowRight" aria-label="Rolar para direita">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
         </div>
       </div>
     </nav>
@@ -305,6 +317,43 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
         document.getElementById('mobileSearchOverlay').classList.remove('open');
       }
     };
+
+    // Controle de navegação do subnav
+    (function() {
+      var subnavInner = document.getElementById('subnavInner');
+      var arrowLeft = document.getElementById('subnavArrowLeft');
+      var arrowRight = document.getElementById('subnavArrowRight');
+      
+      if (!subnavInner || !arrowLeft || !arrowRight) return;
+
+      function updateArrows() {
+        var scrollLeft = subnavInner.scrollLeft;
+        var maxScroll = subnavInner.scrollWidth - subnavInner.clientWidth;
+        
+        // Mostrar/ocultar setas baseado na posição e se tem scroll
+        if (maxScroll <= 0) {
+          arrowLeft.style.display = 'none';
+          arrowRight.style.display = 'none';
+        } else {
+          arrowLeft.style.display = scrollLeft > 5 ? 'flex' : 'none';
+          arrowRight.style.display = scrollLeft < maxScroll - 5 ? 'flex' : 'none';
+        }
+      }
+
+      arrowLeft.addEventListener('click', function() {
+        subnavInner.scrollBy({ left: -200, behavior: 'smooth' });
+      });
+
+      arrowRight.addEventListener('click', function() {
+        subnavInner.scrollBy({ left: 200, behavior: 'smooth' });
+      });
+
+      subnavInner.addEventListener('scroll', updateArrows);
+      window.addEventListener('resize', updateArrows);
+      
+      // Inicializar
+      updateArrows();
+    })();
   </script>
 </body>
 </html>

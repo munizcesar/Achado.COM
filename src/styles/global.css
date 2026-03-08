@@ -308,13 +308,89 @@ body.drawer-open { overflow: hidden; }
   background: var(--c-surface);
   border-bottom: 1px solid var(--c-border);
 }
+.subnav-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 .subnav-inner {
   display: flex;
   gap: 0;
   overflow-x: auto;
   scrollbar-width: none;
+  flex: 1;
+  position: relative;
 }
 .subnav-inner::-webkit-scrollbar { display: none; }
+
+/* Gradient fade indicando mais conteúdo */
+.subnav-wrapper::before,
+.subnav-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.subnav-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--c-surface), transparent);
+}
+.subnav-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--c-surface), transparent);
+}
+
+/* Setas de navegação */
+.subnav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-text);
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.subnav-arrow:hover {
+  background: var(--c-bg);
+  border-color: var(--c-brand);
+  color: var(--c-brand);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+.subnav-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+.subnav-arrow-left {
+  left: 8px;
+}
+.subnav-arrow-right {
+  right: 8px;
+}
+
+/* Mostrar setas e gradients apenas no mobile */
+@media (max-width: 768px) {
+  .subnav-arrow {
+    display: flex;
+  }
+  .subnav-wrapper::before,
+  .subnav-wrapper::after {
+    opacity: 0.95;
+  }
+}
+
 .subnav-link {
   font-size: 13.5px;
   font-weight: 500;
