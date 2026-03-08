@@ -28,6 +28,17 @@ const productImage = post.data.productImage || post.data.image || null;
 const hasAffiliate  = !!post.data.affiliateUrl;
 const price         = post.data.price || null;
 
+// Detectar loja pelo link de afiliado
+function detectStore(url) {
+  if (!url) return 'melhor preço';
+  const urlLower = url.toLowerCase();
+  if (urlLower.includes('mercadolivre.com') || urlLower.includes('meli.la')) return 'Mercado Livre';
+  if (urlLower.includes('amazon.com')) return 'Amazon';
+  if (urlLower.includes('magalu.com') || urlLower.includes('magazineluiza')) return 'Magalu';
+  return 'melhor preço';
+}
+const storeName = detectStore(post.data.affiliateUrl);
+
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -44,6 +55,17 @@ const shareText  = encodeURIComponent(`${post.data.title} — AchadoCerto`);
 const shareUrl   = encodeURIComponent(postUrl);
 const whatsappUrl = `https://wa.me/?text=${shareText}%20${shareUrl}`;
 const twitterUrl  = `https://x.com/intent/tweet?text=${shareText}&url=${shareUrl}`;
+
+// Artigos relacionados (mesma categoria, excluindo o atual, limitado a 3)
+const allPosts = await getCollection('blog');
+const relatedPosts = allPosts
+  .filter(p => p.slug !== post.slug && p.data.category === post.data.category)
+  .sort((a, b) => {
+    const dateA = a.data.date ? new Date(a.data.date).getTime() : 0;
+    const dateB = b.data.date ? new Date(b.data.date).getTime() : 0;
+    return dateB - dateA;
+  })
+  .slice(0, 3);
 ---
 
 <Layout
@@ -131,45 +153,6 @@ const twitterUrl  = `https://x.com/intent/tweet?text=${shareText}&url=${shareUrl
     )}
 
     <!-- ============================================================
-         BOX PRODUTO INLINE — POSIÇÃO 1 (logo após hero, antes do texto)
-         Aparece somente se tiver affiliateUrl
-    ============================================================ -->
-    {hasAffiliate && (
-      <div class="container" style="max-width:820px;margin-bottom:0;padding-bottom:0;">
-        <div class="product-box-inline">
-          {productImage && (
-            <div class="product-box-img-wrap">
-              <img
-                src={productImage}
-                alt={post.data.title}
-                class="product-box-img"
-                loading="lazy"
-              />
-            </div>
-          )}
-          <div class="product-box-info">
-            <p class="product-box-label">Produto em destaque</p>
-            <p class="product-box-name">{post.data.title}</p>
-            {price && <p class="product-box-price">{price}</p>}
-            <a
-              href={post.data.affiliateUrl}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              data-affiliate
-              data-product={post.data.title}
-              data-category={post.data.category}
-              class="product-box-btn"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-              Ver melhor preço
-            </a>
-            <p class="product-box-disclaimer">Link de afiliado — sem custo extra para você</p>
-          </div>
-        </div>
-      </div>
-    )}
-
-    <!-- ============================================================
          CONTEÚDO DO POST
     ============================================================ -->
     <div style="padding:32px 0 80px;background:var(--c-bg);">
@@ -204,7 +187,7 @@ const twitterUrl  = `https://x.com/intent/tweet?text=${shareText}&url=${shareUrl
                   class="product-box-final-btn"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                  Ver melhor preço
+                  Ver no {storeName}
                 </a>
                 <p style="font-size:11px;color:var(--c-text-light);text-align:center;margin-top:8px;">Link de afiliado — sem custo extra para você</p>
               </div>
@@ -242,7 +225,7 @@ const twitterUrl  = `https://x.com/intent/tweet?text=${shareText}&url=${shareUrl
                   class="product-box-sidebar-btn"
                 >
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                  Ver melhor preço
+                  Ver no {storeName}
                 </a>
                 <p class="product-box-sidebar-disclaimer">Link de afiliado — sem custo extra</p>
               </div>
@@ -282,6 +265,50 @@ const twitterUrl  = `https://x.com/intent/tweet?text=${shareText}&url=${shareUrl
         </aside>
       </div>
     </div>
+
+    <!-- ============================================================
+         ARTIGOS RELACIONADOS
+    ============================================================ -->
+    {relatedPosts.length > 0 && (
+      <div style="background:var(--c-bg);padding:0 0 80px;">
+        <div class="container" style="max-width:1240px;">
+          <h2 style="font-size:28px;font-weight:800;margin:0 0 32px;text-align:center;color:var(--c-text);">
+            📚 Artigos Relacionados
+          </h2>
+          <div class="related-grid">
+            {relatedPosts.map(related => {
+              const relImg = related.data.productImage || related.data.image || '/og-default.jpg';
+              const relUrl = `/blog/${related.slug}`;
+              return (
+                <a href={relUrl} class="related-card">
+                  <div class="related-img-wrap">
+                    <img
+                      src={relImg}
+                      alt={related.data.title}
+                      class="related-img"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="related-content">
+                    <span class="related-category">{related.data.category}</span>
+                    <h3 class="related-title">{related.data.title}</h3>
+                    {related.data.description && (
+                      <p class="related-desc">{related.data.description}</p>
+                    )}
+                    <span class="related-link">
+                      Ler artigo
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </span>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    )}
   </article>
 
   <style>
@@ -293,51 +320,6 @@ const twitterUrl  = `https://x.com/intent/tweet?text=${shareText}&url=${shareUrl
       align-items: start;
     }
     .post-sidebar { position: sticky; top: 88px; }
-
-    /* ===================== BOX INLINE (pos 1) ===================== */
-    .product-box-inline {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      background: linear-gradient(135deg, #fff8f0 0%, #fff3e0 100%);
-      border: 2px solid var(--c-brand);
-      border-radius: var(--r-lg);
-      padding: 20px 24px;
-      margin: 0 0 32px;
-      box-shadow: 0 4px 20px rgba(var(--c-brand-rgb, 220,80,30), .12);
-    }
-    .product-box-img-wrap {
-      flex-shrink: 0;
-      width: 110px;
-      height: 110px;
-      border-radius: var(--r-md);
-      overflow: hidden;
-      background: #fff;
-      border: 1px solid var(--c-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .product-box-img { width: 100%; height: 100%; object-fit: contain; }
-    .product-box-info { flex: 1; }
-    .product-box-label  { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--c-brand); margin-bottom: 4px; }
-    .product-box-name   { font-size: 16px; font-weight: 700; color: var(--c-text); margin-bottom: 6px; line-height: 1.3; }
-    .product-box-price  { font-size: 22px; font-weight: 800; color: var(--c-brand); margin-bottom: 12px; }
-    .product-box-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--c-brand);
-      color: #fff;
-      font-weight: 700;
-      font-size: 15px;
-      padding: 11px 22px;
-      border-radius: var(--r-sm);
-      transition: background .2s, transform .15s;
-      text-decoration: none;
-    }
-    .product-box-btn:hover { background: var(--c-brand-dark); transform: translateY(-1px); }
-    .product-box-disclaimer { font-size: 11px; color: var(--c-text-light); margin-top: 6px; }
 
     /* ===================== BOX CTA FINAL (pos 2) ===================== */
     .product-box-final {
@@ -373,11 +355,12 @@ const twitterUrl  = `https://x.com/intent/tweet?text=${shareText}&url=${shareUrl
       background: var(--c-brand);
       color: #fff !important;
       font-weight: 700;
-      font-size: 17px;
-      padding: 14px 32px;
+      font-size: 16px;
+      padding: 12px 28px;
       border-radius: var(--r-sm);
       transition: background .2s, transform .15s;
       text-decoration: none;
+      box-shadow: 0 2px 12px rgba(var(--c-brand-rgb, 220,80,30), .3);
     }
     .product-box-final-btn:hover { background: var(--c-brand-dark); transform: translateY(-2px); }
 
@@ -415,11 +398,12 @@ const twitterUrl  = `https://x.com/intent/tweet?text=${shareText}&url=${shareUrl
       background: var(--c-brand);
       color: #fff;
       font-weight: 700;
-      font-size: 14px;
-      padding: 12px 16px;
+      font-size: 13px;
+      padding: 10px 14px;
       border-radius: var(--r-sm);
       transition: background .2s;
       text-decoration: none;
+      box-shadow: 0 2px 8px rgba(var(--c-brand-rgb, 220,80,30), .2);
     }
     .product-box-sidebar-btn:hover { background: var(--c-brand-dark); }
     .product-box-sidebar-disclaimer { font-size: 10px; color: var(--c-text-light); text-align: center; margin-top: 8px; }
@@ -460,10 +444,96 @@ const twitterUrl  = `https://x.com/intent/tweet?text=${shareText}&url=${shareUrl
     @media (max-width: 768px) {
       .post-grid { display:block !important; }
       .post-sidebar { position:static; margin-top:40px; }
-      .product-box-inline { flex-direction:column; text-align:center; }
-      .product-box-img-wrap { width:140px; height:140px; margin:0 auto; }
-      .product-box-btn { width:100%; justify-content:center; }
+      .product-box-final-btn { font-size:14px; padding:10px 24px; }
       .share-buttons { margin-top:12px; }
+    }
+
+    /* ===================== ARTIGOS RELACIONADOS ===================== */
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .related-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+      text-decoration: none;
+      box-shadow: var(--shadow-sm);
+    }
+    .related-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+      border-color: var(--c-brand);
+    }
+    .related-img-wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--c-border);
+      overflow: hidden;
+    }
+    .related-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .related-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+    .related-category {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      color: var(--c-brand);
+    }
+    .related-title {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--c-text);
+      margin: 0;
+    }
+    .related-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--c-text-sub);
+      margin: 0;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .related-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--c-brand);
+      margin-top: auto;
+    }
+    .related-card:hover .related-link {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </Layout>
