@@ -113,6 +113,26 @@ function mapCategory(name) {
   return 'Tech';
 }
 
+function cleanTitle(title) {
+  // Remove cores comuns (no final da string)
+  const colors = [
+    'Cinza', 'Cinza-escuro', 'Preto', 'Branco', 'Azul', 'Verde', 'Vermelho', 
+    'Amarelo', 'Rosa', 'Roxo', 'Laranja', 'Marrom', 'Bege', 'Dourado',
+    'Prata', 'Prateado', 'Grafite', 'Chumbo', 'Cobre'
+  ];
+  
+  let cleaned = title;
+  
+  // Remove cores que aparecem no final (com ou sem espaço antes)
+  const colorPattern = new RegExp(`\\s+(${colors.join('|')})$`, 'i');
+  cleaned = cleaned.replace(colorPattern, '');
+  
+  // Remove tamanhos/unidades redundantes no final (ex: "200 Ml" se já está no meio do título)
+  cleaned = cleaned.replace(/\s+(ml|cm|mm|kg|g|l)$/i, '');
+  
+  return cleaned.trim();
+}
+
 // ── Mercado Livre Scraping (fallback) ────────────────────────────────
 
 async function fetchMLScraping(inputUrl, itemId) {
@@ -174,8 +194,8 @@ async function fetchMLScraping(inputUrl, itemId) {
   }
 
   return {
-    title: title.replace(/\s+/g, ' ').slice(0, 150),
-    description: `Conheça o ${title}. Disponível no Mercado Livre com entrega rápida para todo o Brasil.`,
+    title: cleanTitle(title.replace(/\s+/g, ' ')).slice(0, 150),
+    description: `Conheça o ${cleanTitle(title)}. Disponível no Mercado Livre com entrega rápida para todo o Brasil.`,
     category: mapCategory(title),
     imageUrl, specs,
     store: 'Mercado Livre',
@@ -219,8 +239,8 @@ async function fetchML(inputUrl) {
   } catch(_) {}
 
   return {
-    title: item.title,
-    description: `Conheça o ${item.title}. Disponível no Mercado Livre com entrega rápida para todo o Brasil.`,
+    title: cleanTitle(item.title),
+    description: `Conheça o ${cleanTitle(item.title)}. Disponível no Mercado Livre com entrega rápida para todo o Brasil.`,
     category: mapCategory(categoryName),
     imageUrl, specs,
     store: 'Mercado Livre',
@@ -255,8 +275,8 @@ async function fetchAmazon(inputUrl) {
   }
 
   return {
-    title,
-    description: `${title} disponível na Amazon com entrega Prime para todo o Brasil.`,
+    title: cleanTitle(title),
+    description: `${cleanTitle(title)} disponível na Amazon com entrega Prime para todo o Brasil.`,
     category: mapCategory(title),
     imageUrl, specs,
     store: 'Amazon',
@@ -302,7 +322,7 @@ async function fetchMagalu(inputUrl) {
     : `Conheça o ${title}. Disponível no Magalu com entrega rápida.`;
 
   return {
-    title,
+    title: cleanTitle(title),
     description,
     category: mapCategory(title),
     imageUrl, specs,
