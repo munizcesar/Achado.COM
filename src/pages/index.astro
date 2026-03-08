@@ -37,7 +37,7 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
           <!-- Hero preenchido pelo JS -->
           <article class="hero-main" id="heroMain" style="opacity:0; transition: opacity 0.45s ease;">
             <a id="heroImgLink" href="#" class="hero-main-img-wrap">
-              <img id="heroImg" src="" alt="" class="hero-main-img" width="820" height="461"
+              <img id="heroImg" src="" alt="" class="hero-main-img" width="820" height="547"
                 loading="eager" fetchpriority="high" decoding="sync" />
             </a>
             <span id="heroCat" class="hero-cat"></span>
@@ -171,7 +171,7 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
         a.href = post.url;
         a.className = 'sidebar-post';
         a.innerHTML = `
-          <img src="${post.img}" alt="" class="sidebar-post-img" loading="lazy" width="72" height="54" />
+          <img src="${post.img}" alt="" class="sidebar-post-img" loading="lazy" width="64" height="48" />
           <div>
             <span class="sidebar-post-cat">${post.cat}</span>
             <span class="sidebar-post-title">${post.title}</span>
