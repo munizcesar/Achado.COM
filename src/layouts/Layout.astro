@@ -5,7 +5,7 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
-  schema?: object;
+  schema?: object | object[];
 }
 
 const {
@@ -34,7 +34,9 @@ const defaultSchema = {
   },
 };
 
-const schemaData = JSON.stringify(schema ?? defaultSchema);
+// Suporta schema único ou array de schemas
+const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [defaultSchema];
+const schemaData = JSON.stringify(schemaArray);
 ---
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -53,7 +55,7 @@ const schemaData = JSON.stringify(schema ?? defaultSchema);
   <meta property="og:description" content={description} />
   <meta property="og:image" content={ogImage} />
   <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <meta property="og:image:height" content="1200" />
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:locale" content="pt_BR" />
 
