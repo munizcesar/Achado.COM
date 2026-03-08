@@ -62,6 +62,39 @@ const breadcrumbSchema = {
   ]
 };
 
+// FAQs genéricas para produtos
+const faqs = [
+  {
+    question: `O ${post.data.title} vale a pena?`,
+    answer: 'Sim, principalmente se você busca um produto com boas avaliações de compradores reais e custo-benefício competitivo. Sempre compare com outras opções da mesma categoria antes de decidir.'
+  },
+  {
+    question: 'Qual a melhor loja para comprar?',
+    answer: `Os principais marketplaces brasileiros (Mercado Livre, Amazon e Magalu) oferecem boas condições. Sempre veja as avaliações da loja, prazos de entrega e política de devolução antes de finalizar a compra.`
+  },
+  {
+    question: 'Como sei se o produto é original?',
+    answer: 'Compre sempre de vendedores oficiais ou com alta reputação (acima de 95% de avaliações positivas e milhares de vendas). Verifique se há garantia do fabricante e desconfie de preços muito abaixo do mercado.'
+  },
+  {
+    question: 'Posso devolver se não gostar?',
+    answer: 'Sim. Pela lei brasileira (Código de Defesa do Consumidor), você tem até 7 dias após receber o produto para desistir da compra, sem precisar justificar. O valor deve ser reembolsado integralmente, incluindo frete.'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(faq => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer
+    }
+  }))
+};
+
 const shareText  = encodeURIComponent(`${post.data.title} — AchadoCerto`);
 const shareUrl   = encodeURIComponent(postUrl);
 const whatsappUrl = `https://wa.me/?text=${shareText}%20${shareUrl}`;
@@ -83,7 +116,7 @@ const relatedPosts = allPosts
   title={`${post.data.title} — AchadoCerto`}
   description={post.data.description}
   image={ogImage}
-  schema={[articleSchema, breadcrumbSchema]}
+  schema={[articleSchema, breadcrumbSchema, faqSchema]}
 >
   <article>
 
@@ -278,6 +311,35 @@ const relatedPosts = allPosts
     </div>
 
     <!-- ============================================================
+         FAQ (PERGUNTAS FREQUENTES)
+    ============================================================ -->
+    <div style="background:var(--c-surface);padding:60px 0;border-top:1px solid var(--c-border);border-bottom:1px solid var(--c-border);">
+      <div class="container" style="max-width:820px;">
+        <h2 style="font-size:28px;font-weight:800;margin:0 0 12px;color:var(--c-text);">
+          ❓ Perguntas Frequentes
+        </h2>
+        <p style="font-size:15px;color:var(--c-text-sub);margin:0 0 32px;line-height:1.6;">
+          Dúvidas comuns ao comprar produtos online no Brasil
+        </p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          {faqs.map((faq, index) => (
+            <details class="faq-item" style="background:#fff;border:1px solid var(--c-border);border-radius:var(--r-md);padding:20px 24px;cursor:pointer;transition:all .2s;">
+              <summary style="font-size:16px;font-weight:700;color:var(--c-text);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+                <span>{faq.question}</span>
+                <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;transition:transform .2s;">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </summary>
+              <p style="font-size:15px;color:var(--c-text-sub);line-height:1.7;margin:16px 0 0;padding-top:16px;border-top:1px solid var(--c-border-light);">
+                {faq.answer}
+              </p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
          ARTIGOS RELACIONADOS
     ============================================================ -->
     {relatedPosts.length > 0 && (
@@ -331,6 +393,18 @@ const relatedPosts = allPosts
       align-items: start;
     }
     .post-sidebar { position: sticky; top: 88px; }
+
+    /* ===================== FAQ ===================== */
+    .faq-item:hover {
+      border-color: var(--c-brand);
+      box-shadow: 0 2px 12px rgba(var(--c-brand-rgb, 220,80,30), .1);
+    }
+    .faq-item[open] .faq-icon {
+      transform: rotate(180deg);
+    }
+    .faq-item[open] {
+      border-color: var(--c-brand);
+    }
 
     /* ===================== BOX CTA FINAL (pos 2) ===================== */
     .product-box-final {
