@@ -61,10 +61,16 @@ export const VARIACOES = {
   aberturas: [
     'Pesquisar muito antes de comprar faz parte do processo, e com razão...',
     'A dúvida não é se o produto é bom - é se ele é bom para o seu caso específico...',
-    'Tem uma diferença enorme entre um produto bem avaliado e um produto certo para você...',
     'Quem já errou em uma compra por falta de informação sabe como a sensação é frustrante...',
-    'Nos principais marketplaces brasileiros, esse produto acumula histórico consistente de compradores...',
-    'Antes de olhar o preço, vale entender o que você está de fato avaliando aqui...'
+    'Nos principais marketplaces brasileiros, esse item acumula histórico consistente entre compradores...',
+    'Antes de olhar o preço, vale entender o que você está de fato avaliando aqui...',
+    'Não faltam opções no mercado - o difícil é saber qual entrega o que você realmente precisa...',
+    'Entre tantas alternativas disponíveis, algumas escolhas acabam se destacando por motivos específicos...',
+    'Avaliar bem antes de comprar evita aquela frustração de quem percebe tarde demais que escolheu errado...',
+    'O que separa uma boa compra de uma compra que você celebra meses depois? Escolher com critério...',
+    'Fotos bonitas e descrições genéricas todo produto tem - o que importa mesmo está nos detalhes...',
+    'Comprar sem pesquisar pode funcionar, mas quem pesquisa raramente se arrepende...',
+    'Quando você olha várias opções parecidas, os diferenciais que realmente importam ficam mais claros...'
   ],
 
   transicoes: [
@@ -107,10 +113,12 @@ export function selecionarArquetipo(produtoNome) {
 }
 
 /**
- * Sorteia variação com seed
+ * Sorteia variação com seed melhorada
  */
 export function sortearVariacao(array, seed) {
-  return array[seed % array.length];
+  // Usa múltiplos fatores para melhor distribuição
+  const index = (seed * 7919 + 104729) % array.length;
+  return array[index];
 }
 
 /**
