@@ -116,26 +116,9 @@ function realizarBusca(termo) {
         const tituloPagina = document.querySelector('.review-content h2');
         if (tituloPagina) tituloPagina.innerHTML = `🔍 Resultados para: "${termo}"`;
         
-        renderizar(resultados, targetContainer, prefix);
-        
-        // Scroll inteligente com offset para não pular para o topo
-        setTimeout(() => {
-            const firstCard = targetContainer.querySelector('a');
-            if (firstCard) {
-                const headerHeight = document.querySelector('.topo').offsetHeight + document.querySelector('.menu-categorias').offsetHeight;
-                const cardPosition = firstCard.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
-                
-                window.scrollTo({
-                    top: cardPosition,
-                    behavior: 'smooth'
-                });
-            }
-        }, 100);
-        
-        // Esconde a busca mobile após pesquisar E fecha o overlay
+        // CORREÇÃO: Fechar busca mobile ANTES de renderizar e calcular scroll
         const searchForm = document.getElementById('main-search-form');
         const searchOverlay = document.getElementById('search-overlay');
-        const searchInput = document.querySelector('#main-search-form input');
         
         if (searchForm) {
             searchForm.classList.remove('mobile-visible');
@@ -143,6 +126,29 @@ function realizarBusca(termo) {
         }
         if (searchOverlay) searchOverlay.classList.remove('active');
         document.body.style.overflow = ''; // Restaura scroll
+        
+        // Aguarda o layout se estabilizar após fechar a busca
+        requestAnimationFrame(() => {
+            renderizar(resultados, targetContainer, prefix);
+            
+            // Scroll inteligente com offset para não pular para o topo
+            setTimeout(() => {
+                const firstCard = targetContainer.querySelector('a');
+                if (firstCard) {
+                    const topoEl = document.querySelector('.topo');
+                    const menuEl = document.querySelector('.menu-categorias');
+                    const headerHeight = (topoEl ? topoEl.offsetHeight : 0) + 
+                                       (menuEl ? menuEl.offsetHeight : 0);
+                    const cardPosition = firstCard.getBoundingClientRect().top + 
+                                       window.scrollY - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: Math.max(0, cardPosition), // Garante que não vai para valores negativos
+                        behavior: 'smooth'
+                    });
+                }
+            }, 150); // Tempo ligeiramente maior para garantir renderização completa
+        });
     }
 }
 
