@@ -10,6 +10,8 @@ affiliateUrl: "https://mercadolivre.com/sec/2KW8RB6"
 draft: false
 ---
 
+> **⚠️ Aviso Importante:** Este conteúdo é informativo e não substitui orientação médica ou nutricional. Consulte um profissional de saúde antes de iniciar qualquer suplementação, especialmente se você possui doenças renais, diabetes ou outras condições médicas.
+
 ## Creatina: O Suplemento Mais Estudado da História
 
 Com mais de 500 estudos clínicos publicados, a creatina monohidratada é o suplemento esportivo com maior respaldo científico do mundo. Funciona, é segura e é acessível.

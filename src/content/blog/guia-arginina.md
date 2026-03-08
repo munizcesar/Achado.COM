@@ -10,6 +10,8 @@ affiliateUrl: "https://mercadolivre.com/sec/2y9LCvd"
 draft: false
 ---
 
+> **⚠️ Aviso Importante:** Este conteúdo é informativo e não substitui orientação médica, nutricional ou farmacêutica. Consulte um profissional de saúde antes de iniciar qualquer suplementação, especialmente se você possui condições cardíacas ou usa medicamentos.
+
 ## O Que é a L-Arginina?
 
 A L-Arginina é um aminoácido semi-essencial que atua como precursor direto do **óxido nítrico (NO)** — a molécula responsável pela vasodilatação. Mais óxido nítrico = mais sangue chegando aos músculos = mais pump, nutrientes e oxigênio durante o treino.

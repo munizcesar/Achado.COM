@@ -10,6 +10,8 @@ affiliateUrl: "https://mercadolivre.com/sec/2KW8RB6"
 draft: false
 ---
 
+> **⚠️ Aviso Importante:** Este conteúdo é informativo e não substitui orientação médica ou nutricional. Consulte um profissional de saúde antes de iniciar qualquer suplementação.
+
 ## Soldiers Nutrition — Creatina com Laudo de Pureza
 
 A Soldiers Nutrition entrou no mercado de suplementos com uma proposta direta: creatina monohidratada pura, com laudo de pureza 99.8%, sem enchimentos e com preço competitivo. O resultado é um dos produtos mais bem avaliados no segmento.

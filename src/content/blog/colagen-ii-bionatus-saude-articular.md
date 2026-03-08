@@ -10,6 +10,8 @@ affiliateUrl: "https://www.mercadolivre.com.br/social/muc1576372"
 draft: false
 ---
 
+> **⚠️ Aviso Importante:** Este conteúdo é informativo e não substitui orientação médica, nutricional ou farmacêutica. Antes de iniciar o uso de qualquer suplemento, consulte um profissional de saúde qualificado, especialmente se você possui condições médicas pré-existentes, usa medicamentos ou está grávida.
+
 ## Bionatus — Referência em Saúde Articular
 
 O Colágeno Tipo II Bionatus combina três ativos em um único comprimido: Colágeno não hidrolisado (UC-II), Condroitina e Glucosamina. Essa tríade é a base dos suplementos articulares mais estudados da medicina esportiva e reumatológica.
