@@ -2,9 +2,9 @@
 title: "Floratta Gold O Boticário Desodorante Colônia Spray 75ml"
 description: "Conheça o Floratta Gold O Boticário Desodorante Colônia Spray 75ml. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-08
-category: Tech
+category: Beleza
 image: /images/posts/floratta-gold-o-boticario-desodorante-colonia-spray-75ml.jpg
-tags: [tech]
+tags: [beleza]
 draft: false
 affiliateUrl: "https://meli.la/2BzsSat"
 productImage: /images/posts/floratta-gold-o-boticario-desodorante-colonia-spray-75ml.jpg
