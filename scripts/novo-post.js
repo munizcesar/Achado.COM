@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * AchadoCertoVIP — Gerador automático de posts
+ * AchadoCertoVIP — Gerador automático de posts com IA
  *
  * USO (1 comando, só isso):
  *   npm run post "https://url-afiliado"
@@ -13,9 +13,12 @@
  * Faz tudo:
  *  1. Detecta a plataforma automaticamente
  *  2. Busca nome, imagem e specs
- *  3. Baixa a foto do produto
- *  4. Gera o .md completo
- *  5. Faz git add + commit + push
+ *  3. Busca contexto via Serper.dev (opcional)
+ *  4. Gera conteúdo rico via Groq AI (temperature 0.1)
+ *  5. Valida qualidade anti-genérico
+ *  6. Baixa a foto do produto
+ *  7. Gera o .md completo
+ *  8. Faz git add + commit + push
  */
 
 import https from 'https';
@@ -23,6 +26,19 @@ import http from 'http';
 import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
+import { config } from 'dotenv';
+import { fileURLToPath } from 'url';
+
+// Carrega .env do backend
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+config({ path: path.join(__dirname, '..', 'backend', '.env') });
+
+// Importa módulos personalizados
+import { selecionarArquetipo, gerarContextoVariacoes, ARQUETIPOS } from './content-archetypos.js';
+import { buscarContextoProduto, verificarStatusSerper } from './serper-service.js';
+import { gerarConteudoPost } from './groq-service.js';
+import { validarConteudo, corrigirAutomatico, analisarDetalhado } from './content-validator.js';
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -295,20 +311,64 @@ async function fetchMagalu(inputUrl) {
   };
 }
 
-// ── Gera markdown ─────────────────────────────────────────────────────────
+// ── Gera markdown com IA ──────────────────────────────────────────────────
 
-function generateMarkdown({ title, description, category, imageFile, specs, store, affiliateUrl }) {
+async function generateMarkdown(produto, imageFile, slug) {
+  const { title, description, category, store, affiliateUrl } = produto;
+  
   const today = new Date().toISOString().split('T')[0];
-  const cat   = category.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'-');
-  const emoji = { 'Mercado Livre':'🛒', 'Amazon':'📦', 'Magalu':'🏪' }[store] || '🛍️';
-
-  const specsBlock = specs.length
-    ? `\n## Especificações Principais\n\n${specs.join('\n')}\n`
-    : '';
-
+  const cat = category.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'-');
+  
+  // 1. Seleciona arquetipo baseado no produto
+  const arquetipo = selecionarArquetipo(title);
+  console.log(`   📚 Arquétipo: ${ARQUETIPOS[arquetipo].nome}`);
+  
+  // 2. Gera variações de conteúdo
+  const variacoes = gerarContextoVariacoes(produto, arquetipo);
+  
+  // 3. Busca contexto via Serper (opcional)
+  let contextoSerper = null;
+  const serperKey = process.env.SERPER_API_KEY;
+  if (serperKey && serperKey !== 'sua-key-serper-aqui') {
+    try {
+      contextoSerper = await buscarContextoProduto(title, category, serperKey);
+    } catch (e) {
+      console.log('   ⚠️  Serper indisponível, continuando sem contexto externo');
+    }
+  }
+  
+  // 4. Gera conteúdo via Groq
+  const groqKey = process.env.GROQ_API_KEY;
+  let conteudoGerado;
+  
+  try {
+    conteudoGerado = await gerarConteudoPost(
+      produto,
+      ARQUETIPOS[arquetipo],
+      variacoes,
+      contextoSerper,
+      groqKey
+    );
+  } catch (error) {
+    console.log(`   ⚠️  Erro no Groq: ${error.message}`);
+    // Fallback: conteúdo básico
+    conteudoGerado = gerarConteudoBasico(produto, variacoes);
+  }
+  
+  // 5. Valida e corrige conteúdo
+  let conteudoFinal = corrigirAutomatico(conteudoGerado);
+  const validacao = validarConteudo(conteudoFinal);
+  
+  if (!validacao.aprovado) {
+    console.log('   ⚠️  Conteúdo precisa de revisão manual');
+  }
+  
+  // 6. Monta markdown completo com frontmatter
+  const descricaoFinal = description.replace(/"/g, "'").slice(0, 155);
+  
   return `---
-title: "${title.replace(/"/g,"'")}"
-description: "${description.replace(/"/g,"'").slice(0,155)}"
+title: "${title.replace(/"/g, "'")}"
+description: "${descricaoFinal}"
 date: ${today}
 category: ${category}
 image: /images/posts/${imageFile}
@@ -318,20 +378,41 @@ affiliateUrl: "${affiliateUrl}"
 productImage: /images/posts/${imageFile}
 ---
 
-${title} é um produto disponível no ${store} com entrega rápida para todo o Brasil.
-Confira abaixo as principais informações e acesse a página oficial do produto.
-${specsBlock}
-## Vale a Pena?
-
-${title.split(' ').slice(0,5).join(' ')} se destaca pelo ótimo custo-benefício e pela avaliação positiva dos compradores.
-Clique no botão abaixo para ver fotos, avaliações completas e disponibilidade:
-
-${emoji} Acesse o produto na loja ${store} pelo botão abaixo.
+${conteudoFinal}
 
 ---
 
 *Links deste post são afiliados. Você não paga nada a mais, mas nos ajuda a manter o site gratuito.*
 `;
+}
+
+// ── Fallback: conteúdo básico ─────────────────────────────────────────────
+
+function gerarConteudoBasico(produto, variacoes) {
+  const { title, description, specs, store } = produto;
+  const emoji = { 'Mercado Livre': '🛒', 'Amazon': '📦', 'Magalu': '🏪' }[store] || '🛍️';
+  
+  const specsBlock = specs && specs.length > 0
+    ? `\n## Especificações Principais\n\n${specs.join('\n')}\n`
+    : '';
+  
+  return `${variacoes.abertura}
+
+${title} é um produto disponível no ${store} com entrega rápida para todo o Brasil.
+
+${specsBlock}
+
+## Vale a Pena?
+
+${variacoes.transicao}
+
+${description}
+
+## Como Comprar
+
+${variacoes.fechamento}. ${variacoes.cta.gatilho}.
+
+${emoji} ${variacoes.cta.texto}`;
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
@@ -393,8 +474,9 @@ async function main() {
     imageFile = 'placeholder.jpg';
   }
 
-  // 3. Gera .md
-  const md     = generateMarkdown({ ...product, slug, imageFile });
+  // 3. Gera .md com IA
+  console.log('🤖 Gerando conteúdo...');
+  const md     = await generateMarkdown(product, imageFile, slug);
   const mdDir  = path.join(process.cwd(), 'src', 'content', 'blog');
   const mdPath = path.join(mdDir, `${slug}.md`);
 
