@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",
-    "astro": "4.15.12"
+    "astro": "4.15.12",
+    "dotenv": "^17.3.1"
   }
 }

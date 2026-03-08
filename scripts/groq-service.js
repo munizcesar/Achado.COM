@@ -9,7 +9,7 @@ import https from 'https';
 /**
  * Requisição para Groq API
  */
-function groqRequest(messages, apiKey, model = 'mixtral-8x7b-32768') {
+function groqRequest(messages, apiKey, model = 'llama-3.3-70b-versatile') {
   return new Promise((resolve, reject) => {
     const postData = JSON.stringify({
       model,
