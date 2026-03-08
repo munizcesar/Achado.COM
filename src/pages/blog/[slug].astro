@@ -62,39 +62,6 @@ const breadcrumbSchema = {
   ]
 };
 
-// FAQs genéricas para produtos
-const faqs = [
-  {
-    question: `O ${post.data.title} vale a pena?`,
-    answer: 'Pode valer a pena se você busca um produto com boas avaliações de compradores reais e custo-benefício competitivo. Sempre compare com outras opções da mesma categoria antes de decidir. Esta é nossa opinião baseada em análise de reviews, não uma recomendação profissional.'
-  },
-  {
-    question: 'Qual a melhor loja para comprar?',
-    answer: `Os principais marketplaces brasileiros (Mercado Livre, Amazon e Magalu) oferecem boas condições. Sempre veja as avaliações da loja, prazos de entrega e política de devolução antes de finalizar a compra.`
-  },
-  {
-    question: 'Como sei se o produto é original?',
-    answer: 'Compre sempre de vendedores oficiais ou com alta reputação (acima de 95% de avaliações positivas e milhares de vendas). Verifique se há garantia do fabricante e desconfie de preços muito abaixo do mercado.'
-  },
-  {
-    question: 'Posso devolver se não gostar?',
-    answer: 'Sim. Pela lei brasileira (Código de Defesa do Consumidor), você tem até 7 dias após receber o produto para desistir da compra sem justificativa. O reembolso será feito conforme a política de cada loja - consulte as condições de devolução do vendedor antes de comprar.'
-  }
-];
-
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: faqs.map(faq => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.answer
-    }
-  }))
-};
-
 const shareText  = encodeURIComponent(`${post.data.title} — AchadoCerto`);
 const shareUrl   = encodeURIComponent(postUrl);
 const whatsappUrl = `https://wa.me/?text=${shareText}%20${shareUrl}`;
@@ -116,7 +83,7 @@ const relatedPosts = allPosts
   title={`${post.data.title} — AchadoCerto`}
   description={post.data.description}
   image={ogImage}
-  schema={[articleSchema, breadcrumbSchema, faqSchema]}
+  schema={[articleSchema, breadcrumbSchema]}
 >
   <article>
 
@@ -311,30 +278,80 @@ const relatedPosts = allPosts
     </div>
 
     <!-- ============================================================
-         FAQ (PERGUNTAS FREQUENTES)
+         ONDE COMPRAR COM SEGURANÇA
     ============================================================ -->
     <div style="background:var(--c-surface);padding:60px 0;border-top:1px solid var(--c-border);border-bottom:1px solid var(--c-border);">
       <div class="container" style="max-width:820px;">
         <h2 style="font-size:28px;font-weight:800;margin:0 0 12px;color:var(--c-text);">
-          ❓ Perguntas Frequentes
+          🛡️ Onde Comprar com Segurança
         </h2>
         <p style="font-size:15px;color:var(--c-text-sub);margin:0 0 32px;line-height:1.6;">
-          Dúvidas comuns ao comprar produtos online no Brasil
+          Dicas específicas para comprar {detectStore(post.data.affiliateUrl) === 'melhor preço' ? 'online' : `no ${detectStore(post.data.affiliateUrl)}`} com tranquilidade
         </p>
-        <div style="display:flex;flex-direction:column;gap:12px;">
-          {faqs.map((faq, index) => (
-            <details class="faq-item" style="background:#fff;border:1px solid var(--c-border);border-radius:var(--r-md);padding:20px 24px;cursor:pointer;transition:all .2s;">
-              <summary style="font-size:16px;font-weight:700;color:var(--c-text);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;">
-                <span>{faq.question}</span>
-                <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;transition:transform .2s;">
-                  <polyline points="6 9 12 15 18 9"/>
-                </svg>
-              </summary>
-              <p style="font-size:15px;color:var(--c-text-sub);line-height:1.7;margin:16px 0 0;padding-top:16px;border-top:1px solid var(--c-border-light);">
-                {faq.answer}
-              </p>
-            </details>
-          ))}
+        <div style="display:grid;gap:20px;">
+          
+          {/* Dica 1: Reputação do Vendedor */}
+          <div style="background:#fff;border:1px solid var(--c-border);border-left:4px solid var(--c-brand);border-radius:var(--r-md);padding:24px;">
+            <div style="display:flex;align-items:start;gap:16px;">
+              <div style="background:var(--c-brand-light);color:var(--c-brand);width:40px;height:40px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;font-weight:700;">
+                ⭐
+              </div>
+              <div style="flex:1;">
+                <h3 style="font-size:17px;font-weight:700;color:var(--c-text);margin:0 0 8px;">Verifique a reputação do vendedor</h3>
+                <p style="font-size:15px;color:var(--c-text-sub);line-height:1.7;margin:0;">
+                  {detectStore(post.data.affiliateUrl) === 'Mercado Livre' && 'Procure vendedores com selo MercadoLíder Platinum e mais de 95% de avaliações positivas. Veja o histórico de vendas e tempo de cadastro.'}
+                  {detectStore(post.data.affiliateUrl) === 'Amazon' && 'Prefira produtos vendidos e entregues pela Amazon ou vendedores com avaliação acima de 4.5 estrelas e milhares de avaliações.'}
+                  {detectStore(post.data.affiliateUrl) === 'Magalu' && 'Verifique a nota do vendedor (acima de 4 estrelas) e quantidade de avaliações. Vendedores oficiais têm o selo "Vendido e entregue por Magazine Luiza".'}
+                  {!['Mercado Livre', 'Amazon', 'Magalu'].includes(detectStore(post.data.affiliateUrl)) && 'Busque vendedores com alta reputação (acima de 95% de avaliações positivas), milhares de vendas e tempo significativo de cadastro na plataforma.'}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Dica 2: Política de Devolução */}
+          <div style="background:#fff;border:1px solid var(--c-border);border-left:4px solid var(--c-brand);border-radius:var(--r-md);padding:24px;">
+            <div style="display:flex;align-items:start;gap:16px;">
+              <div style="background:var(--c-brand-light);color:var(--c-brand);width:40px;height:40px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;font-weight:700;">
+                ↩️
+              </div>
+              <div style="flex:1;">
+                <h3 style="font-size:17px;font-weight:700;color:var(--c-text);margin:0 0 8px;">Leia a política de devolução</h3>
+                <p style="font-size:15px;color:var(--c-text-sub);line-height:1.7;margin:0;">
+                  Você tem 7 dias para desistir da compra (CDC), mas cada loja tem regras próprias sobre frete de devolução. Antes de finalizar, verifique se há "troca grátis" ou se você arcará com o custo do envio de retorno.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Dica 3: Pagamento Seguro */}
+          <div style="background:#fff;border:1px solid var(--c-border);border-left:4px solid var(--c-brand);border-radius:var(--r-md);padding:24px;">
+            <div style="display:flex;align-items:start;gap:16px;">
+              <div style="background:var(--c-brand-light);color:var(--c-brand);width:40px;height:40px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;font-weight:700;">
+                💳
+              </div>
+              <div style="flex:1;">
+                <h3 style="font-size:17px;font-weight:700;color:var(--c-text);margin:0 0 8px;">Use pagamento dentro da plataforma</h3>
+                <p style="font-size:15px;color:var(--c-text-sub);line-height:1.7;margin:0;">
+                  {detectStore(post.data.affiliateUrl) === 'Mercado Livre' && 'Sempre pague via Mercado Pago para ter proteção na compra. Parcelar no cartão de crédito oferece garantia extra contra fraudes.'}
+                  {detectStore(post.data.affiliateUrl) === 'Amazon' && 'Pague via sistema da Amazon para ter cobertura da Garantia A-Z. Cartão de crédito oferece proteção adicional contra cobranças indevidas.'}
+                  {detectStore(post.data.affiliateUrl) === 'Magalu' && 'Use o sistema de pagamento do Magalu para ter proteção contra fraudes. Cartão de crédito oferece chargeback em caso de problemas.'}
+                  {!['Mercado Livre', 'Amazon', 'Magalu'].includes(detectStore(post.data.affiliateUrl)) && 'Sempre utilize o sistema de pagamento oficial da plataforma. Cartão de crédito oferece proteção extra com possibilidade de contestação de cobranças.'}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Link para FAQ Geral */}
+          <div style="background:linear-gradient(135deg,#fff8f0,#fff3e0);border:1px solid var(--c-brand);border-radius:var(--r-md);padding:20px;text-align:center;">
+            <p style="font-size:14px;color:var(--c-text-sub);margin:0 0 12px;">Mais dúvidas sobre compras online?</p>
+            <a href="/faq" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:10px 20px;border-radius:var(--r-sm);text-decoration:none;transition:all .2s;">
+              Ver Perguntas Frequentes
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+
         </div>
       </div>
     </div>
