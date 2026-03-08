@@ -105,12 +105,60 @@ function detectPlatform(u) {
 
 function mapCategory(name) {
   const n = (name || '').toLowerCase();
-  if (/celular|smartphone|tablet|notebook|tv |tela|fone|audio|áudio|camera|câmera|monitor|pc |computador|headphone|earphone|smartwatch|relogio|relógio/.test(n)) return 'Tech';
-  if (/saúde|saude|suplemento|vitamina|proteína|proteina|creatina|colágen|colagen|whey|cápsulas|medicamento/.test(n)) return 'Saude';
-  if (/casa|cozinha|lar|móvel|movel|decora|panela|liquidificador|ventilador|aspirador|geladeira|fogão|fogao/.test(n)) return 'Casa';
-  if (/esporte|fitness|academia|legging|tênis|tenis|corrida|bicicleta|esteira|muscula/.test(n)) return 'Esportes';
-  if (/beleza|cosm|perfume|cabelo|pele|maquiagem|batom|hidratante|serum|sérum/.test(n)) return 'Beleza';
-  return 'Tech';
+  
+  // Sistema de pontuação para categorias (quando há ambiguidade)
+  const scores = {
+    Tech: 0,
+    Saude: 0,
+    Casa: 0,
+    Esportes: 0,
+    Beleza: 0,
+    Automotivo: 0
+  };
+  
+  // Tech - Eletrônicos e tecnologia
+  const techWords = /celular|smartphone|tablet|notebook|laptop|tv |tela|fone|audio|áudio|camera|câmera|monitor|pc |computador|headphone|earphone|smartwatch|relogio|relógio|mouse|teclado|webcam|microfone|caixa de som|alexa|echo|chromecast|kindle|console|playstation|xbox|nintendo|controle|joystick|ssd|hd |pendrive|carregador|cabo usb|bluetooth/;
+  if (techWords.test(n)) scores.Tech += 2;
+  
+  // Saúde - Suplementos e medicamentos
+  const saudeWords = /saúde|saude|suplemento|vitamina|proteína|proteina|creatina|colágen|colagen|whey|bcaa|amino|cápsulas|capsulas|medicamento|remédio|remedio|farmácia|farmacia|glutamina|pre.?treino|pré.?treino|arginina|cafeína|cafeina|omega|probiótico|multivitamínico/;
+  if (saudeWords.test(n)) scores.Saude += 2;
+  
+  // Casa - Eletrodomésticos e itens do lar
+  const casaWords = /casa|cozinha|lar|móvel|movel|decora|panela|liquidificador|ventilador|aspirador|geladeira|freezer|fogão|fogao|microondas|air ?fryer|fritadeira|batedeira|mixer|processador|cafeteira|chaleira|ferro de passar|secadora|lavadora|colchão|colchao|travesseiro|edredom|jogo de cama|tapete|cortina|luminária|luminaria/;
+  if (casaWords.test(n)) scores.Casa += 2;
+  
+  // Esportes - Fitness e atividades físicas
+  const esportesWords = /esporte|fitness|academia|legging|tênis|tenis|corrida|bicicleta|bike|esteira|muscula|halteres|peso|anilha|barra ?fixa|elástico|elastico|mat de yoga|kimono|luva de boxe|caneleira|tornozeleira|corda de pular|roda abdominal|kettlebell|top fitness|shorts de treino|meia de compressão|squeeze|garrafa de água|faixa de resistência/;
+  if (esportesWords.test(n)) scores.Esportes += 2;
+  
+  // Beleza - Cosméticos e cuidados pessoais
+  const belezaWords = /beleza|cosm|perfume|fragr|colônia|colonia|desodorante|deo |antiperspirante|cabelo|shampoo|condicionador|pele|maquiagem|make|batom|hidratante|serum|sérum|creme|loção|loçao|óleo|oleo corporal|sabonete|gel de banho|esmalte|base facial|corretivo|máscara|mascara facial|protetor solar|rosa mosqueta|boticário|boticario|natura|avon|eudora/;
+  if (belezaWords.test(n)) scores.Beleza += 2;
+  
+  // Automotivo - Peças e acessórios de veículos
+  const automotivoWords = /carro|moto|auto|veículo|veiculo|pneu|óleo de motor|oleo de motor|filtro|bateria automotiva|limpador de para.?brisa|parabrisa|vela de ignição|amortecedor|freio|pastilha|disco de freio|correia|radiador|alternador|motor de arranque|aditivo|fluido|aromatizante|tapete automotivo|capa de banco|suporte veicular|carregador veicular|dashcam|sensor de ré|alarme|trava|película|insulfilm|som automotivo|alto.?falante automotivo|bardahl|stp|castrol|shell|mobil|wynn/;
+  if (automotivoWords.test(n)) scores.Automotivo += 2;
+  
+  // Ajustes de priorização (evita ambiguidade)
+  // Ex: "fone de ouvido fitness" deve ser Tech, não Esportes
+  if (/celular|smartphone|notebook|tv/.test(n)) scores.Tech += 1;
+  if (/suplemento|whey|creatina/.test(n)) scores.Saude += 1;
+  if (/perfume|colônia|desodorante|shampoo/.test(n)) scores.Beleza += 1;
+  if (/carro|moto|motor|pneu/.test(n)) scores.Automotivo += 1;
+  
+  // Retorna a categoria com maior pontuação
+  let maxScore = -1;
+  let bestCategory = 'Casa'; // Fallback mais neutro que Tech
+  
+  for (const [cat, score] of Object.entries(scores)) {
+    if (score > maxScore) {
+      maxScore = score;
+      bestCategory = cat;
+    }
+  }
+  
+  return bestCategory;
 }
 
 function cleanTitle(title) {
