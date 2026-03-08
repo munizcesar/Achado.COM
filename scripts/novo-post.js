@@ -481,7 +481,10 @@ async function main() {
   const mdPath = path.join(mdDir, `${slug}.md`);
 
   if (fs.existsSync(mdPath)) {
-    const bak = mdPath.replace('.md', `-bak-${Date.now()}.md`);
+    // Move backup para pasta .backups/ (não commitada)
+    const backupDir = path.join(process.cwd(), '.backups');
+    if (!fs.existsSync(backupDir)) fs.mkdirSync(backupDir, { recursive: true });
+    const bak = path.join(backupDir, `${slug}-bak-${Date.now()}.md`);
     fs.renameSync(mdPath, bak);
     console.log('⚠️  Post já existia, backup criado.');
   }
