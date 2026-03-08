@@ -72,8 +72,8 @@ function fmtDate(d) {
           {posts.map(post => (
             <article style="background:var(--c-surface); border:1px solid var(--c-border); border-radius:var(--r-md); overflow:hidden; box-shadow:var(--shadow-sm); transition:box-shadow .2s;" onmouseover="this.style.boxShadow='var(--shadow-md)'" onmouseout="this.style.boxShadow='var(--shadow-sm)'">
               {post.data.image && (
-                <a href={`/blog/${post.slug}`}>
-                  <img src={post.data.image} alt={post.data.title} style="width:100%; aspect-ratio:16/9; object-fit:cover;" loading="lazy" width="400" height="225" />
+                <a href={`/blog/${post.slug}`} style="display:block;background:#fff;padding:12px;">
+                  <img src={post.data.image} alt={post.data.title} style="width:100%; aspect-ratio:1/1; object-fit:contain;" loading="lazy" width="400" height="400" />
                 </a>
               )}
               <div style="padding:20px;">

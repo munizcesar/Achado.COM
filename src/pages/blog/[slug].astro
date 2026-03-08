@@ -472,18 +472,19 @@ const relatedPosts = allPosts
     }
     .related-img-wrap {
       width: 100%;
-      aspect-ratio: 16/9;
+      aspect-ratio: 1/1;
       background: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       border-bottom: 1px solid var(--c-border);
       overflow: hidden;
+      padding: 12px;
     }
     .related-img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
     .related-content {
       padding: 20px;
