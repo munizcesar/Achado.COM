@@ -1,5 +1,5 @@
 {
-  "total": 33,
+  "total": 36,
   "mes_atual": 2,
   "logs": [
     {
@@ -55,6 +55,11 @@
     {
       "data": "2026-03-09T01:10:46.447Z",
       "produto": "O Boticário Malbec Desodorante Colônia 20 100ml",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-09T23:47:47.848Z",
+      "produto": "Militec-1 Condicionador De Metais Moto 40ml Origin",
       "consultas": 3
     }
   ]

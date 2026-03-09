@@ -52,6 +52,7 @@ function slugify(text) {
 }
 
 function get(urlStr, redirectCount = 0) {
+  console.log(`→ HTTP GET ${urlStr} (redirects=${redirectCount})`);
   if (redirectCount > 8) throw new Error('Muitos redirecionamentos');
   return new Promise((resolve, reject) => {
     const lib = urlStr.startsWith('https') ? https : http;
@@ -62,6 +63,7 @@ function get(urlStr, redirectCount = 0) {
         'Accept-Language': 'pt-BR,pt;q=0.9',
       }
     }, (res) => {
+      console.log(`  ← ${res.statusCode} ${res.headers.location || ''}`);
       if ([301,302,303,307,308].includes(res.statusCode) && res.headers.location) {
         return resolve(get(res.headers.location, redirectCount + 1));
       }
