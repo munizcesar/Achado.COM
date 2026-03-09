@@ -1,9 +1,6 @@
-[build]
-command = "npm run build"
-pages_build_output_dir = "dist"
+# Cloudflare Pages Configuration
+name = "achadocerto"
+compatibility_date = "2026-03-09"
 
-[env.production]
-name = "production"
-routes = [
-  { pattern = "*.svg", custom_domain = true }
-]
+# Pages-specific configuration
+pages_build_output_dir = "./dist"
