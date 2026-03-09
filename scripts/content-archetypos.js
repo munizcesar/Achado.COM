@@ -3,6 +3,100 @@
  * Sistema de variação para posts únicos e naturais
  */
 
+// Títulos de seção por categoria - máxima variabilidade
+export const TITULOS_SECOES = {
+  Tech: {
+    objecao: [
+      'Questões Práticas do Dia a Dia',
+      'Pontos de Atenção Antes de Decidir',
+      'O Que Costuma Gerar Dúvida',
+      'Aspectos Técnicos Relevantes',
+      'Considerações de Uso Prolongado'
+    ],
+    durabilidade: [
+      'Resistência e Vida Útil',
+      'Construção e Materiais',
+      'Sobre Durar Além da Garantia',
+      'Qualidade ao Longo do Tempo'
+    ]
+  },
+  Beleza: {
+    objecao: [
+      'Pontos Importantes Sobre Aplicação',
+      'Questões de Sensibilidade e Tipo de Pele',
+      'O Que Compradores Relatam',
+      'Aspectos Práticos do Uso Diário',
+      'Considerações Sobre Resultado'
+    ],
+    durabilidade: [
+      'Duração e Rendimento do Produto',
+      'Fixação e Resistência',
+      'Sobre Quanto Tempo Dura',
+      'Eficiência ao Longo do Uso'
+    ]
+  },
+  'Casa & Lar': {
+    objecao: [
+      'Questões de Espaço e Instalação',
+      'Pontos Práticos do Cotidiano',
+      'O Que Avaliar Antes de Comprar',
+      'Aspectos de Uso Real em Casa',
+      'Considerações Sobre Manutenção'
+    ],
+    durabilidade: [
+      'Durabilidade e Resistência',
+      'Materiais e Acabamento',
+      'Sobre Uso Frequente',
+      'Qualidade Construtiva'
+    ]
+  },
+  Esportes: {
+    objecao: [
+      'Pontos de Atenção no Treino',
+      'Questões de Desempenho Real',
+      'O Que Atletas Comentam',
+      'Aspectos Práticos de Uso',
+      'Considerações Sobre Performance'
+    ],
+    durabilidade: [
+      'Resistência ao Uso Intenso',
+      'Qualidade dos Materiais',
+      'Sobre Treinos Prolongados',
+      'Durabilidade em Prática'
+    ]
+  },
+  Automotivo: {
+    objecao: [
+      'Compatibilidade e Instalação',
+      'Questões Técnicas Importantes',
+      'O Que Motoristas Relatam',
+      'Aspectos de Uso no Dia a Dia',
+      'Considerações Antes da Compra'
+    ],
+    durabilidade: [
+      'Durabilidade e Resistência',
+      'Qualidade e Confiabilidade',
+      'Sobre Uso Prolongado',
+      'Performance ao Longo do Tempo'
+    ]
+  },
+  default: {
+    objecao: [
+      'Pontos Importantes a Considerar',
+      'Questões Práticas do Uso',
+      'O Que Compradores Relatam',
+      'Aspectos Relevantes',
+      'Considerações Antes de Decidir'
+    ],
+    durabilidade: [
+      'Durabilidade e Qualidade',
+      'Sobre Uso a Longo Prazo',
+      'Resistência e Materiais',
+      'Qualidade Construtiva'
+    ]
+  }
+};
+
 export const ARQUETIPOS = {
   A: {
     nome: 'A Dúvida do Comprador',
@@ -10,7 +104,7 @@ export const ARQUETIPOS = {
       abertura: 'duvida_paralisante',
       desenvolvimento: 'criterios_diferenciais',
       aplicacao: 'casos_uso_reais',
-      objecao: 'durabilidade_entrega',
+      objecao: 'pontos_praticos', // Mudado para ser mais genérico
       fechamento: 'proximo_passo'
     }
   },
@@ -30,7 +124,7 @@ export const ARQUETIPOS = {
       abertura: 'erros_comuns',
       desenvolvimento: 'criterios_importantes',
       aplicacao: 'atendimento_criterios',
-      objecao: 'faq_duvidas_reais',
+      objecao: 'duvidas_frequentes', // Mudado para variar
       fechamento: 'criterios_marcados'
     }
   },
@@ -55,7 +149,11 @@ export const VARIACOES = {
     '{produto}: análise completa para quem está em dúvida',
     'Antes de comprar {produto}, leia isso',
     '{produto} vs alternativas: qual faz mais sentido para você',
-    'Tudo sobre {produto}: do que importa ao que ignorar'
+    'Tudo sobre {produto}: do que importa ao que ignorar',
+    '{produto}: guia definitivo antes de decidir',
+    'Review completo: {produto} atende suas expectativas?',
+    'O que você precisa saber sobre {categoria}',
+    '{produto} - análise técnica e opinião de uso'
   ],
 
   aberturas: [
@@ -70,21 +168,35 @@ export const VARIACOES = {
     'O que separa uma boa compra de uma compra que você celebra meses depois? Escolher com critério...',
     'Fotos bonitas e descrições genéricas todo produto tem - o que importa mesmo está nos detalhes...',
     'Comprar sem pesquisar pode funcionar, mas quem pesquisa raramente se arrepende...',
-    'Quando você olha várias opções parecidas, os diferenciais que realmente importam ficam mais claros...'
+    'Quando você olha várias opções parecidas, os diferenciais que realmente importam ficam mais claros...',
+    'Decisões de compra bem informadas começam com perguntas certas, não com impulso...',
+    'No mercado atual de {categoria}, separar marketing de realidade exige atenção aos detalhes...',
+    'Investir tempo pesquisando antes economiza dinheiro e frustração depois...'
   ],
 
   transicoes: [
-    'É nesse ponto que o {produto} aparece com uma proposta diferente...',
-    'O que chama atenção nessa opção é a combinação entre {spec1} e {spec2}...',
+    'É nesse ponto que essa opção aparece com uma proposta diferente...',
+    'O que chama atenção é a combinação de características que poucas alternativas oferecem juntas...',
     'Segundo compradores que já passaram por essa mesma dúvida...',
-    'Dentro da faixa {posicao_preco}, poucos produtos entregam o que essa opção entrega em...'
+    'Dentro da categoria, poucos produtos entregam esse nível de especificação...',
+    'Comparando com alternativas na mesma faixa, os diferenciais ficam claros...',
+    'Avaliações de quem comprou apontam para um padrão consistente...',
+    'O histórico deste produto no mercado brasileiro mostra...',
+    'Entre as opções disponíveis, esse modelo se destaca por...',
+    'Compradores experientes nesta categoria identificam rapidamente...',
+    'A reputação consolidada deste item não é coincidência...'
   ],
 
   fechamentos: [
     'Para quem está pesquisando há algum tempo e não quer se arrepender, o próximo passo é conferir a disponibilidade e condições atuais',
     'Se os pontos levantados acima fazem sentido para o seu uso, vale conferir o produto diretamente na plataforma',
-    'Quem valoriza {beneficio} vai encontrar aqui uma escolha que justifica a pesquisa',
-    'A melhor forma de confirmar se faz sentido para você é ver as avaliações reais de compradores'
+    'Quem valoriza esses critérios vai encontrar aqui uma escolha que justifica a pesquisa',
+    'A melhor forma de confirmar se faz sentido para você é ver as avaliações reais de compradores',
+    'Compradores que valorizam esses aspectos costumam se satisfazer com essa escolha',
+    'O histórico de avaliações sugere que essa opção atende bem ao público que busca essas características',
+    'Se esses critérios conversam com suas necessidades, vale conferir as condições atuais',
+    'Decisões bem informadas começam com pesquisa - o próximo passo é verificar disponibilidade e feedback recente',
+    'Para quem leu até aqui e se identificou com os pontos, vale conferir o produto na prática'
   ],
 
   ctas_por_loja: {
@@ -127,6 +239,10 @@ export function sortearVariacao(array, seed) {
 export function gerarContextoVariacoes(produto, arquetipo) {
   const seed = produto.title.length + produto.category.length;
   
+  // Seleciona títulos de seção específicos da categoria
+  const categoria = produto.category in TITULOS_SECOES ? produto.category : 'default';
+  const titulosCategoria = TITULOS_SECOES[categoria];
+  
   return {
     arquetipo: ARQUETIPOS[arquetipo],
     titulo: sortearVariacao(VARIACOES.titulos, seed)
@@ -136,6 +252,8 @@ export function gerarContextoVariacoes(produto, arquetipo) {
     transicao: sortearVariacao(VARIACOES.transicoes, seed + 2)
       .replace('{produto}', produto.title.split(' ').slice(0, 3).join(' ')),
     fechamento: sortearVariacao(VARIACOES.fechamentos, seed + 3),
+    tituloObjecao: sortearVariacao(titulosCategoria.objecao, seed + 4),
+    tituloDurabilidade: sortearVariacao(titulosCategoria.durabilidade, seed + 5),
     cta: VARIACOES.ctas_por_loja[produto.store] || {
       texto: 'Ver produto na loja oficial',
       gatilho: 'avaliações de compradores reais'

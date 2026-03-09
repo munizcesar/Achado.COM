@@ -85,8 +85,9 @@ REGRAS DE INTEGRIDADE (ABSOLUTO):
 3. Se mencionar avaliações, cite "compradores relatam que..." ou "segundo avaliações..."
 4. Mantenha EVERGREEN: sem datas, sem "lançamento recente", sem versões específicas
 5. NUNCA use metalinguagem ("neste artigo", "vamos falar", "vou mostrar")
-6. Títulos de seção devem ser PRÁTICOS, sem genéricos como "Introdução" ou "Conclusão"
+6. Use os títulos de seção fornecidos - NUNCA use genéricos como "Introdução", "Conclusão", "Durabilidade e Entrega"
 7. Use dados REAIS dos dados do produto fornecidos
+8. Varie a estrutura dentro do arquétipo - nem todo post precisa ter todas as seções
 
 VARIAÇÕES A USAR:
 - Título sugerido: ${variacoes.titulo}
@@ -95,14 +96,17 @@ VARIAÇÕES A USAR:
 - Fechamento: ${variacoes.fechamento}
 - CTA: ${variacoes.cta.texto}
 - Gatilho de confiança: ${variacoes.cta.gatilho}
+${variacoes.tituloObjecao ? `- Título para seção de objeções/dúvidas: ${variacoes.tituloObjecao}` : ''}
+${variacoes.tituloDurabilidade ? `- Título para seção de durabilidade: ${variacoes.tituloDurabilidade}` : ''}
 
 FORMATO DE SAÍDA (Markdown sem frontmatter):
-- Use ## para títulos principais (práticos, não genéricos)
+- Use ## para títulos principais (use os títulos fornecidos ou crie similares específicos da categoria)
 - Use ### para subtítulos quando necessário
 - Parágrafos curtos e escaneáveis
 - Listas com - quando listar features
 - Negrito em **termos importantes**
 - SEMPRE termine com o CTA integrado naturalmente no texto
+- VARIE a ordem e presença das seções - nem todo post precisa seguir a mesma estrutura
 
 EXTENSÃO: 800-1200 palavras, denso mas legível.`;
 
