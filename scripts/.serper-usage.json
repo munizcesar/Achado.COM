@@ -1,5 +1,5 @@
 {
-  "total": 30,
+  "total": 33,
   "mes_atual": 2,
   "logs": [
     {
@@ -50,6 +50,11 @@
     {
       "data": "2026-03-09T01:03:52.946Z",
       "produto": "Egeo Choc High Colônia O Boticario 90ml",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-09T01:10:46.447Z",
+      "produto": "O Boticário Malbec Desodorante Colônia 20 100ml",
       "consultas": 3
     }
   ]
