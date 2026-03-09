@@ -550,10 +550,12 @@ body.drawer-open { overflow: hidden; }
 .sidebar-post-img {
   width: 64px;
   height: 48px;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   border-radius: var(--r-sm);
-  background: var(--c-border);
+  background: #FFFFFF;
+  padding: 4px;
+  border: 1px solid var(--c-border);
   flex-shrink: 0;
 }
 .sidebar-post-cat {
