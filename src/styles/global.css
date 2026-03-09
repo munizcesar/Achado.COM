@@ -548,13 +548,13 @@ body.drawer-open { overflow: hidden; }
 .sidebar-post:last-child { border-bottom: none; }
 .sidebar-post:hover { background: var(--c-bg); }
 .sidebar-post-img {
-  width: 64px;
-  height: 48px;
+  width: 88px;
+  height: 66px;
   object-fit: contain;
   object-position: center;
   border-radius: var(--r-sm);
   background: #FFFFFF;
-  padding: 4px;
+  padding: 6px;
   border: 1px solid var(--c-border);
   flex-shrink: 0;
 }
