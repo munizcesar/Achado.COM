@@ -1,5 +1,5 @@
 {
-  "total": 18,
+  "total": 21,
   "mes_atual": 2,
   "logs": [
     {
@@ -30,6 +30,11 @@
     {
       "data": "2026-03-09T00:08:42.014Z",
       "produto": "Floratta Gold O Boticário Desodorante Colônia Spra",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-09T00:37:51.555Z",
+      "produto": "O Boticário Leau De Lily Blanche Colônia 75ml",
       "consultas": 3
     }
   ]
