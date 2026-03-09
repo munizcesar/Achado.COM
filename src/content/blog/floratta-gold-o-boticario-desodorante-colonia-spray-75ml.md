@@ -16,7 +16,7 @@ Quem já fez uma compra sem informação suficiente sabe o tamanho da frustraç�
 
 ## Entendendo as necessidades
 
-Buscar o desodorante colônia ideal vai além da proteção. Esperamos uma fragrância agradável que se fixe na pele e no ambiente, com frescor equilibrado e um toque de sofisticação. Características como suavidade, elegância e durabilidade são decisivas para quem não abre mão de um aroma marcante, mas discreto.
+Apesar de o nome mencionar "desodorante", este produto é na prática um perfume feminino — ou seja, não busca combater o suor e sim oferecer um aroma refinado. Ao escolher uma fragrância como o Floratta Gold, queremos que ela envolva sem ser enjoativa, que permaneça na pele e no ar e que transmita elegância. Por isso, atenção à composição olfativa, à fixação e à sensação delicada são pontos-chave para quem procura um perfume de qualidade.
 
 ## O que chama atenção no Floratta Gold
 
