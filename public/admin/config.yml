@@ -4,7 +4,7 @@ backend:
   branch: main
   base_url: https://achadocerto.vip
   auth_endpoint: api/auth
-  app_id: Ov23liut527fMI71NRQR
+  app_id: Ov23liPIeZkvUln21Yjk
 
 media_library:
   name: cloudinary
