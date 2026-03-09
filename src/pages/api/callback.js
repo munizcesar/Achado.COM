@@ -7,6 +7,12 @@ export async function GET({ env, request }) {
   }
 
   try {
+    const clientId = env?.GITHUB_CLIENT_ID;
+    const clientSecret = env?.GITHUB_CLIENT_SECRET;
+    if (!clientId || !clientSecret) {
+      return new Response('Server misconfigured: missing GitHub OAuth credentials', { status: 500 });
+    }
+
     const tokenResponse = await fetch('https://github.com/login/oauth/access_token', {
       method: 'POST',
       headers: {
@@ -14,8 +20,8 @@ export async function GET({ env, request }) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        client_id: env.GITHUB_CLIENT_ID,
-        client_secret: env.GITHUB_CLIENT_SECRET,
+        client_id: clientId,
+        client_secret: clientSecret,
         code: code
       })
     });
