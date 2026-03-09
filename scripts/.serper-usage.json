@@ -1,5 +1,5 @@
 {
-  "total": 21,
+  "total": 24,
   "mes_atual": 2,
   "logs": [
     {
@@ -35,6 +35,11 @@
     {
       "data": "2026-03-09T00:37:51.555Z",
       "produto": "O Boticário Leau De Lily Blanche Colônia 75ml",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-09T00:41:08.268Z",
+      "produto": "O Boticário Uomini Desodorante Colônia 100ml",
       "consultas": 3
     }
   ]
