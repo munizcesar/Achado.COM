@@ -63,6 +63,18 @@ Página de divulgação de ofertas e produtos verificados de marketplaces confi�
 
 ## 🚀 Começar Agora
 
+## 🛠️ Administração via Decap CMS
+O site usa o **Decap CMS (antigo Netlify CMS)** para editar posts diretamente no GitHub. A interface está em `/admin/` e depende de rotas de autenticação GitHub.
+
+- **Plataforma de hospedagem:** as funções de login vivem em `/api/auth` e `/api/callback`.
+  - Se o deployment for no **Cloudflare Pages** mantenha `functions/api` e configure as variáveis de ambiente `GITHUB_CLIENT_ID` e `GITHUB_CLIENT_SECRET` no painel.
+  - Para usar **Vercel/Astro** (padrão local), crie `src/pages/api/auth.js` e `src/pages/api/callback.js` – já incluídas neste repositório – e defina as mesmas variáveis.
+- `public/admin/config.yml` aponta `auth_endpoint: "/api/auth"` e a collection `src/content/blog`.
+- Remova `app_id:` se não precisar; ele era apenas resquício do Netlify.
+
+Sem esses endpoints a tela de login exibirá `Cannot GET /api/auth`.
+
+
 ### Para Gerar Posts Automaticamente
 1. Abra: **http://localhost:3001/gerador-posts-ia.html**
 2. Cole um link do Mercado Livre

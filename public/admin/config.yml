@@ -3,8 +3,7 @@ backend:
   repo: munizcesar/AchadoCerto.VIP
   branch: main
   base_url: https://achadocerto.vip
-  auth_endpoint: api/auth
-  app_id: Ov23liPIeZkvUln21Yjk
+  auth_endpoint: "/api/auth"
 
 media_library:
   name: cloudinary
