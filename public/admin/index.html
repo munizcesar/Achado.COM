@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Content Manager — AchadoCerto.VIP</title>
+</head>
+<body>
+  <script src="https://unpkg.com/decap-cms@^3.10.0/dist/decap-cms.js"></script>
+  <script src="https://unpkg.com/netlify-cms-media-library-cloudinary@^3.0.0/dist/main.js"></script>
+  <script>
+    // =====================
+    // CALLOUT / TIP BOX
+    // =====================
+    CMS.registerEditorComponent({
+      id: 'callout',
+      label: '📢 Callout Box',
+      fields: [
+        { name: 'type', label: 'Tipo', widget: 'select', options: ['tip', 'warning', 'info', 'danger'], default: 'tip' },
+        { name: 'text', label: 'Texto', widget: 'text' }
+      ],
+      pattern: /^:::( tip| warning| info| danger)\n([\s\S]*?)\n:::$/,
+      fromBlock: function(match) {
+        return { type: match[1].trim(), text: match[2] };
+      },
+      toBlock: function(data) {
+        return ':::' + ' ' + (data.type || 'tip') + '\n' + data.text + '\n:::';
+      },
+      toPreview: function(data) {
+        var colors = { tip: '#d1fae5', warning: '#fef3c7', info: '#dbeafe', danger: '#fee2e2' };
+        var icons = { tip: '✅', warning: '⚠️', info: 'ℹ️', danger: '🚨' };
+        return '<div style="padding:1rem;border-radius:8px;background:' + (colors[data.type] || colors.tip) + ';margin:1rem 0"><strong>' + (icons[data.type] || '✅') + ' ' + (data.type || 'tip').toUpperCase() + '</strong><p>' + data.text + '</p></div>';
+      }
+    });
+
+    // =====================
+    // CTA BUTTON
+    // =====================
+    CMS.registerEditorComponent({
+      id: 'cta-button',
+      label: '🔗 Botão CTA',
+      fields: [
+        { name: 'text', label: 'Texto do Botão', widget: 'string' },
+        { name: 'url', label: 'URL', widget: 'string' },
+        { name: 'style', label: 'Estilo', widget: 'select', options: ['primary', 'secondary', 'outline'], default: 'primary' }
+      ],
+      pattern: /<a href="([^"]+)" class="btn btn-([^"]+)">([^<]+)<\/a>/,
+      fromBlock: function(match) {
+        return { url: match[1], style: match[2], text: match[3] };
+      },
+      toBlock: function(data) {
+        return '<a href="' + data.url + '" class="btn btn-' + (data.style || 'primary') + '">' + data.text + '</a>';
+      },
+      toPreview: function(data) {
+        var bg = data.style === 'outline' ? 'transparent' : data.style === 'secondary' ? '#2E1155' : 'linear-gradient(135deg,#f97316,#ec4899)';
+        var color = data.style === 'outline' ? '#2E1155' : 'white';
+        var border = data.style === 'outline' ? '2px solid #2E1155' : 'none';
+        return '<a href="' + data.url + '" style="display:inline-block;padding:.75rem 1.5rem;border-radius:8px;background:' + bg + ';color:' + color + ';border:' + border + ';font-weight:600;text-decoration:none">' + data.text + '</a>';
+      }
+    });
+
+    // =====================
+    // PROS & CONS
+    // =====================
+    CMS.registerEditorComponent({
+      id: 'pros-cons',
+      label: '✅ Prós & Contras',
+      fields: [
+        { name: 'pros', label: 'Prós (um por linha)', widget: 'text' },
+        { name: 'cons', label: 'Contras (um por linha)', widget: 'text' }
+      ],
+      pattern: /<!-- pros-cons pros="([^"]+)" cons="([^"]+)" -->/,
+      fromBlock: function(match) {
+        return { pros: match[1].replace(/\|/g, '\n'), cons: match[2].replace(/\|/g, '\n') };
+      },
+      toBlock: function(data) {
+        var pros = (data.pros || '').replace(/\n/g, '|');
+        var cons = (data.cons || '').replace(/\n/g, '|');
+        return '<!-- pros-cons pros="' + pros + '" cons="' + cons + '" -->';
+      },
+      toPreview: function(data) {
+        var pros = (data.pros || '').split('\n').filter(Boolean);
+        var cons = (data.cons || '').split('\n').filter(Boolean);
+        var prosHtml = pros.map(function(p){ return '<li style="color:#065f46">✅ ' + p + '</li>'; }).join('');
+        var consHtml = cons.map(function(c){ return '<li style="color:#991b1b">❌ ' + c + '</li>'; }).join('');
+        return '<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0"><div style="background:#d1fae5;padding:1rem;border-radius:8px"><strong>Prós</strong><ul>' + prosHtml + '</ul></div><div style="background:#fee2e2;padding:1rem;border-radius:8px"><strong>Contras</strong><ul>' + consHtml + '</ul></div></div>';
+      }
+    });
+
+    // =====================
+    // YOUTUBE EMBED
+    // =====================
+    CMS.registerEditorComponent({
+      id: 'youtube',
+      label: '▶️ Vídeo YouTube',
+      fields: [
+        { name: 'id', label: 'ID do Vídeo YouTube', widget: 'string', hint: 'Ex: dQw4w9WgXcQ (parte após ?v= na URL)' }
+      ],
+      pattern: /<!-- youtube id="([^"]+)" -->/,
+      fromBlock: function(match) {
+        return { id: match[1] };
+      },
+      toBlock: function(data) {
+        return '<!-- youtube id="' + data.id + '" -->';
+      },
+      toPreview: function(data) {
+        return '<iframe width="100%" height="315" src="https://www.youtube.com/embed/' + data.id + '" frameborder="0" allowfullscreen style="border-radius:8px"></iframe>';
+      }
+    });
+  </script>
+</body>
+</html>

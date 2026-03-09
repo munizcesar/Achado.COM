@@ -1,0 +1,60 @@
+backend:
+  name: github
+  repo: munizcesar/AchadoCerto.VIP
+  branch: main
+  base_url: https://achadocerto.vip
+  auth_endpoint: api/auth
+  app_id: Ov23liut527fMI71NRQR
+
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: drw9gzlgd
+    api_key: '946123924823294'
+
+media_folder: "public/images"
+public_folder: "/images"
+
+locale: pt
+
+collections:
+  - name: blog
+    label: Posts
+    folder: src/content/blog
+    create: true
+    slug: "{{year}}-{{slug}}"
+    fields:
+      - {label: Título, name: title, widget: string}
+      - {label: Data, name: date, widget: datetime}
+      - {label: Categoria, name: category, widget: select, options: ["Eletrônicos", "Casa e Cozinha", "Informática", "Celulares", "Games", "Moda", "Beleza", "Esporte", "Blog"]}
+      - {label: Tags, name: tags, widget: list, required: false}
+      - {label: Descrição, name: description, widget: text, required: false}
+      - {label: Imagem de Capa, name: image, widget: image, required: false}
+      - {label: Rascunho, name: draft, widget: boolean, required: false, default: false}
+      - {label: URL Afiliado, name: affiliateUrl, widget: string, required: false, hint: "Link de afiliado do produto"}
+      - {label: Imagem do Produto, name: productImage, widget: image, required: false}
+      - {label: Preço, name: price, widget: string, required: false, hint: "Ex: R$ 299,90"}
+      - label: Conteúdo
+        name: body
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+          - code
+          - link
+          - heading-one
+          - heading-two
+          - heading-three
+          - bulleted-list
+          - numbered-list
+          - quote
+        editor_components:
+          - image
+          - code-block
+          - callout
+          - cta-button
+          - pros-cons
+          - youtube
+        modes:
+          - rich_text
+          - raw
