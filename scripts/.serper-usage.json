@@ -1,5 +1,5 @@
 {
-  "total": 27,
+  "total": 30,
   "mes_atual": 2,
   "logs": [
     {
@@ -45,6 +45,11 @@
     {
       "data": "2026-03-09T00:52:41.783Z",
       "produto": "O Boticário Coffee Man Addictive Colônia 100ml",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-09T01:03:52.946Z",
+      "produto": "Egeo Choc High Colônia O Boticario 90ml",
       "consultas": 3
     }
   ]
