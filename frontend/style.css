@@ -1203,12 +1203,12 @@ a.post-preview-card:hover .post-image-wrapper img { transform: scale(1.07); }
 #latest-post .post-image-wrapper {
     width: 45%;
     height: auto;
-    min-height: 350px;
-    max-height: 500px;
+    min-height: 400px;
+    max-height: 600px;
     border-bottom: none;
     border-right: 2px solid rgba(212, 175, 55, 0.2);
     background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 100%);
-    padding: 16px;
+    padding: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1217,17 +1217,17 @@ a.post-preview-card:hover .post-image-wrapper img { transform: scale(1.07); }
 
 /* Badge exclusivo no canto da imagem */
 #latest-post .post-image-wrapper::after {
-    content: '⭐ DESTAQUE';
+    content: 'DESTAQUE';
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 16px;
+    right: 16px;
     background: linear-gradient(135deg, #D4AF37, #F4D03F);
     color: #1A1A2E;
     font-size: 10px;
     font-weight: 800;
-    padding: 6px 12px;
+    padding: 7px 14px;
     border-radius: 20px;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.8px;
     box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
     z-index: 2;
 }
@@ -1288,19 +1288,19 @@ a.post-preview-card:hover .post-image-wrapper img { transform: scale(1.07); }
     #latest-post .post-image-wrapper {
         width: 100%;
         height: auto;
-        min-height: 320px;
-        max-height: 450px;
+        min-height: 360px;
+        max-height: 500px;
         border-right: none;
         border-bottom: 2px solid rgba(212, 175, 55, 0.2);
-        padding: 20px;
+        padding: 30px;
         background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
     }
     
     #latest-post .post-image-wrapper::after {
-        top: 10px;
-        right: 10px;
+        top: 12px;
+        right: 12px;
         font-size: 9px;
-        padding: 5px 10px;
+        padding: 6px 12px;
     }
     
     #latest-post .post-image-wrapper img { 
