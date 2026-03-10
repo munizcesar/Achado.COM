@@ -1,6 +1,6 @@
 ---
-title: "Notebook Samsung Galaxy Book4 Pro, Windows 11 Home, Intel® Core Ultra 5 125h, 16gb, 512gb Ssd, 14&#x27;&#x27; Full Hd Amoled, Touchscreen, 1.23"
-description: "Conheça o Notebook Samsung Galaxy Book4 Pro, Windows 11 Home, Intel® Core Ultra 5 125h, 16gb, 512gb Ssd, 14&#x27;&#x27; Full Hd Amoled, Touchscreen, 1.23. "
+title: "Notebook Samsung Galaxy Book4 Pro, Windows 11 Home, Intel® Core Ultra 5 125h, 16gb, 512gb Ssd, 14'' Full Hd Amoled, Touchscreen, 1.23"
+description: "Conheça o Notebook Samsung Galaxy Book4 Pro, Windows 11 Home, Intel® Core Ultra 5 125h, 16gb, 512gb Ssd, 14'' Full Hd Amoled, Touchscreen, 1.23. "
 date: 2026-03-10
 category: Tech
 image: /images/posts/notebook-samsung-galaxy-book4-pro-windows-11-home-intel-core.jpg
