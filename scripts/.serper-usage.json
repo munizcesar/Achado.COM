@@ -1,5 +1,5 @@
 {
-  "total": 36,
+  "total": 39,
   "mes_atual": 2,
   "logs": [
     {
@@ -60,6 +60,11 @@
     {
       "data": "2026-03-09T23:47:47.848Z",
       "produto": "Militec-1 Condicionador De Metais Moto 40ml Origin",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-10T00:07:57.551Z",
+      "produto": "Samsung Galaxy Watch7 Smartwatch 44mm Bt Galaxy Ai",
       "consultas": 3
     }
   ]
