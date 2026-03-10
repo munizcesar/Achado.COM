@@ -1,5 +1,5 @@
 {
-  "total": 51,
+  "total": 54,
   "mes_atual": 2,
   "logs": [
     {
@@ -85,6 +85,11 @@
     {
       "data": "2026-03-10T00:58:16.976Z",
       "produto": "Tênis Nike Revolution 8 Feminino",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-10T01:05:14.051Z",
+      "produto": "Tênis Nike Precision 7 Unissex",
       "consultas": 3
     }
   ]
