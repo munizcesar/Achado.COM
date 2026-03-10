@@ -1,5 +1,5 @@
 {
-  "total": 48,
+  "total": 51,
   "mes_atual": 2,
   "logs": [
     {
@@ -80,6 +80,11 @@
     {
       "data": "2026-03-10T00:33:12.957Z",
       "produto": "Notebook Dell Alienware Ac16-c7240h-d30 Core7 16gb",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-10T00:58:16.976Z",
+      "produto": "Tênis Nike Revolution 8 Feminino",
       "consultas": 3
     }
   ]
