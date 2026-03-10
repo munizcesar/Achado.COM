@@ -1,5 +1,5 @@
 {
-  "total": 45,
+  "total": 48,
   "mes_atual": 2,
   "logs": [
     {
@@ -75,6 +75,11 @@
     {
       "data": "2026-03-10T00:30:27.700Z",
       "produto": "Notebook Gamer Acer Nitro V15 Anv15-52-737p Intel®",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-10T00:33:12.957Z",
+      "produto": "Notebook Dell Alienware Ac16-c7240h-d30 Core7 16gb",
       "consultas": 3
     }
   ]
