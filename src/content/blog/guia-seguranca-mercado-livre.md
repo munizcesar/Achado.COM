@@ -2,7 +2,7 @@
 title: "Mercado Livre é Seguro? Guia Completo para Comprar com Confiança"
 description: "Descubra por que a Compra Garantida e a entrega FULL fazem do Mercado Livre o marketplace favorito dos brasileiros. Dicas para comprar sem risco."
 date: 2026-02-05
-category: guias e dicas
+category: dicas
 image: "/images/imagesposts/seguranca-ml.jpg"
 tags: ["mercado-livre", "compra-segura", "ecommerce", "dicas", "marketplace"]
 afiliateUrl: "https://www.mercadolivre.com.br/social/muc1576372"
