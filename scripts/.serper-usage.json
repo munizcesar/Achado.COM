@@ -1,5 +1,5 @@
 {
-  "total": 54,
+  "total": 57,
   "mes_atual": 2,
   "logs": [
     {
@@ -90,6 +90,11 @@
     {
       "data": "2026-03-10T01:05:14.051Z",
       "produto": "Tênis Nike Precision 7 Unissex",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-11T00:56:52.755Z",
+      "produto": "Suplemento Em Pó Adaptogen Science Panic Pré Trein",
       "consultas": 3
     }
   ]
