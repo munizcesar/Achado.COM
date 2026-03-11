@@ -2,7 +2,7 @@
 title: "Melhor TV 55 Polegadas 2026: TCL vs Samsung vs LG"
 description: "Comparativo completo com as melhores opções custo-benefício, imagem premium e tecnologias que realmente importam. Qual TV 55 comprar em 2026?"
 date: 2026-02-18
-category: "guias"
+category: guias
 image: "/images/imagesposts/melhor-tv-55-2026.webp"
 productImage: "/images/imagesposts/melhor-tv-55-2026.webp"
 tags: ["tv", "televisao", "4k", "smart-tv", "comparativo"]
