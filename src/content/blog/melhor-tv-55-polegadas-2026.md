@@ -2,7 +2,7 @@
 title: "Melhor TV 55 Polegadas 2026: TCL vs Samsung vs LG"
 description: "Comparativo completo com as melhores opções custo-benefício, imagem premium e tecnologias que realmente importam. Qual TV 55 comprar em 2026?"
 date: 2026-02-18
-category: "tech"
+category: "guias"
 image: "/images/imagesposts/melhor-tv-55-2026.webp"
 productImage: "/images/imagesposts/melhor-tv-55-2026.webp"
 tags: ["tv", "televisao", "4k", "smart-tv", "comparativo"]
@@ -26,11 +26,11 @@ Em 2026, o mercado de TVs 55" está mais competitivo que nunca. Neste comparativ
 
 ## Comparativo Rápido
 
-| Modelo | Painel | Sistema | Destaque |
-|---|---|---|---|
-| TCL P755 | QLED 4K | Google TV | Custo-benefício |
-| Samsung Crystal 4K | LED 4K | Tizen | Processamento |
-| LG UR8750 | LED 4K | WebOS | Interface |
+| Modelo               | Painel   | Sistema   | Destaque         |
+|----------------------|-----------|-----------|------------------|
+| TCL P755             | QLED 4K   | Google TV | Custo-benefício  |
+| Samsung Crystal 4K   | LED 4K    | Tizen     | Processamento    |
+| LG UR8750            | LED 4K    | WebOS     | Interface        |
 
 ## TCL P755 55" — A Recomendação Principal
 
