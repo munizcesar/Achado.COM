@@ -36,7 +36,7 @@ const postsData = [
     "link": "blog/melhor-tv-55-polegadas-2026.html",
     "linkProduto": "https://www.mercadolivre.com.br/tcl-classic-4k-smart-tv-55-p755-google-tv-dolby/p/MLB36550067",
     "chamada": "Ver Comparativo Completo",
-    "categoria": "tech",
+    "categoria": "dicas",
     "keywords": "tv televisao 55 polegadas smart tv 4k uhd hdr qled oled nanocell tcl samsung lg comparativo melhor custo beneficio 2026 android google tv tizen webos netflix youtube prime video streaming games console ps5 xbox taxa atualizacao 120hz hdmi 2.1 dolby atmos som qualidade imagem brilho contraste"
   },
   {
