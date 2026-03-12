@@ -6,7 +6,7 @@ category: Esportes
 image: /images/posts/garrafa-termica-quick-flip-stanley-preto-710ml.jpg
 tags: [esportes]
 draft: false
-affiliateUrl: \https://meli.la/16UdwU2\
+affiliateUrl: "https://meli.la/16UdwU2"
 productImage: /images/posts/garrafa-termica-quick-flip-stanley-preto-710ml.jpg
 ---
 
