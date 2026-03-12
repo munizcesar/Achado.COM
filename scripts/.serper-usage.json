@@ -1,5 +1,5 @@
 {
-  "total": 66,
+  "total": 69,
   "mes_atual": 2,
   "logs": [
     {
@@ -110,6 +110,11 @@
     {
       "data": "2026-03-11T23:15:36.947Z",
       "produto": "Airfryer Forno Philips Walita Ai551/09 Preto 127v",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-12T00:09:32.954Z",
+      "produto": "Legging Fitness Corrida Com Bolso Selene Zero Tran",
       "consultas": 3
     }
   ]
