@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 60" width="340" height="60">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 60" width="360" height="60">
   <defs>
     <linearGradient id="gradIcon" x1="0%" y1="100%" x2="100%" y2="0%">
       <stop offset="0%"   stop-color="#F9A326"/>
@@ -12,7 +12,8 @@
       <stop offset="100%" stop-color="#405DE6"/>
     </linearGradient>
     <mask id="vipMask">
-      <text x="218" y="43"
+      <rect x="0" y="0" width="360" height="60" fill="black"/>
+      <text x="228" y="43"
         font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
         font-size="28"
         font-weight="800"
@@ -29,7 +30,7 @@
     fill="none" stroke="white" stroke-width="5.5"
     stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- "achadocerto" cinza escuro peso 600 -->
+  <!-- "achadocerto" -->
   <text x="70" y="43"
     font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
     font-size="28"
@@ -37,6 +38,6 @@
     letter-spacing="-0.5"
     fill="#2d2d2d">achadocerto</text>
 
-  <!-- "vip" colado, degradê, peso 800 -->
-  <rect x="216" y="14" width="80" height="36" fill="url(#gradVip)" mask="url(#vipMask)"/>
+  <!-- "vip" em degradê colado -->
+  <rect x="0" y="0" width="360" height="60" fill="url(#gradVip)" mask="url(#vipMask)"/>
 </svg>
