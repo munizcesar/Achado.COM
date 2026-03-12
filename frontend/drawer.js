@@ -89,7 +89,7 @@ class DrawerManager {
                     <p style="font-weight: 300;">Acompanhe nossas redes sociais para atualizações diárias.</p>
                     <a href="https://www.instagram.com/achadocertovip?igsh=Y2Rua2praTdha3dk" target="_blank" style="font-weight: 500;"><i class="fab fa-instagram"></i> Instagram</a>
                     <a href="https://www.tiktok.com/@achadocertovip?_r=1&_t=ZS-934lRAtLp1s" target="_blank" style="font-weight: 500;"><i class="fab fa-tiktok"></i> TikTok</a>
-                    <a href="https://x.com/AchadoCertoVIP" target="_blank" style="font-weight: 500;"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
+                    <a href="https://x.com/achadocertovip" target="_blank" style="font-weight: 500;"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
                 </div>
 
                 <div class="drawer-divider"></div>

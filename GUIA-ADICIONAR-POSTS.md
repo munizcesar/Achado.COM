@@ -484,7 +484,7 @@ const postsData = [
 <footer>
     <!-- Ícones de Redes Sociais -->
     <div class="social-icons">
-        <a href="https://www.instagram.com/achadocertovip?igsh=Y2Rua2praTdha3dk" target="_blank" title="Instagram">
+        <a href="https://www.instagram.com/achadocertovip/" target="_blank" title="Instagram">
             <i class="fab fa-instagram"></i>
         </a>
         <a href="https://www.tiktok.com/@achadocertovip?_r=1&_t=ZS-934lRAtLp1s" target="_blank" title="TikTok">
@@ -493,7 +493,7 @@ const postsData = [
         <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" title="WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
-        <a href="https://x.com/AchadoCertoVIP" target="_blank" title="X">
+        <a href="https://x.com/achadocertovip" target="_blank" title="X">
             <i class="fab fa-x-twitter"></i>
         </a>
     </div>
