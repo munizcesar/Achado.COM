@@ -89,10 +89,36 @@ const schemaData = JSON.stringify(schemaArray);
 <body>
   <div class="drawer-overlay" id="drawerOverlay" onclick="window.closeDrawer()"></div>
 
+  <!-- SVG logo inline reutilizável via <use> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="logo-gi" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#F9A326"/>
+        <stop offset="30%" stop-color="#E1306C"/>
+        <stop offset="65%" stop-color="#833AB4"/>
+        <stop offset="100%" stop-color="#405DE6"/>
+      </linearGradient>
+      <linearGradient id="logo-gv" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#E1306C"/>
+        <stop offset="55%" stop-color="#833AB4"/>
+        <stop offset="100%" stop-color="#405DE6"/>
+      </linearGradient>
+      <symbol id="logo-symbol" viewBox="0 0 295 52">
+        <circle cx="26" cy="26" r="25" fill="url(#logo-gi)"/>
+        <circle cx="26" cy="26" r="22.5" fill="none" stroke="white" stroke-width="2.2"/>
+        <circle cx="26" cy="26" r="21" fill="url(#logo-gi)"/>
+        <polyline points="14,26 22,36 38,15" fill="none" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="60" y="36" font-family="Inter,Helvetica Neue,Arial,sans-serif" font-size="26" letter-spacing="-0.3">
+          <tspan fill="#555" font-weight="600">achadocerto</tspan><tspan fill="url(#logo-gv)" font-weight="800" letter-spacing="0.5">vip</tspan>
+        </text>
+      </symbol>
+    </defs>
+  </svg>
+
   <aside class="drawer" id="drawer" role="dialog" aria-label="Menu" aria-hidden="true">
     <div class="drawer-header">
       <a href="/" class="brand" aria-label="AchadoCertoVIP (Início)">
-        <img src="/logo-achadocerto.svg" alt="AchadoCertoVIP" class="logo-img" width="180" height="36" loading="lazy" decoding="async" />
+        <svg class="logo-svg logo-svg--sm" role="img" aria-label="AchadoCertoVIP"><use href="#logo-symbol"/></svg>
       </a>
       <button class="drawer-close" onclick="window.closeDrawer()" aria-label="Fechar menu">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -139,7 +165,7 @@ const schemaData = JSON.stringify(schemaArray);
         </button>
 
         <a href="/" class="brand" aria-label="AchadoCertoVIP (Início)">
-          <img src="/logo-achadocerto.svg" alt="AchadoCertoVIP" class="logo-img" width="220" height="44" decoding="async" fetchpriority="high" />
+          <svg class="logo-svg" role="img" aria-label="AchadoCertoVIP"><use href="#logo-symbol"/></svg>
         </a>
 
         <form class="header-search" role="search" action="/blog" method="get">
@@ -190,7 +216,7 @@ const schemaData = JSON.stringify(schemaArray);
       <div class="footer-grid">
         <div>
           <a href="/" class="footer-logo brand" aria-label="AchadoCertoVIP (Início)">
-            <img src="/logo-achadocerto.svg" alt="AchadoCertoVIP" class="logo-img logo-img--footer" width="180" height="36" loading="lazy" decoding="async" />
+            <svg class="logo-svg logo-svg--sm" role="img" aria-label="AchadoCertoVIP"><use href="#logo-symbol"/></svg>
           </a>
           <p class="footer-desc">Reviews independentes, comparativos honestos e guias de compra para você escolher com confiança.</p>
           <div class="footer-social">
@@ -244,11 +270,11 @@ const schemaData = JSON.stringify(schemaArray);
   </footer>
 
   <style>
-    .logo-img { height: 40px; width: auto; display: block; }
-    .logo-img--footer { height: 32px; }
+    .logo-svg { width: 220px; height: 39px; display: block; overflow: visible; }
+    .logo-svg--sm { width: 180px; height: 32px; }
     @media (max-width: 520px) {
-      .logo-img { height: 30px; }
-      .logo-img--footer { height: 26px; }
+      .logo-svg { width: 170px; height: 30px; }
+      .logo-svg--sm { width: 150px; height: 27px; }
     }
     .footer-social { display:flex; gap:10px; margin-top:18px; }
     .social-btn { width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; transition:transform .2s,opacity .2s; flex-shrink:0; }
