@@ -10,7 +10,7 @@ affiliateUrl: "https://www.mercadolivre.com.br/tcl-classic-4k-smart-tv-55-p755-g
 draft: false
 ---
 
-## TCL, Samsung ou LG? A Batalha das TVs 55"
+## TCL, Samsung ou LG? A Batalha das TVs 55″
 
 Em 2026, o mercado de TVs 55" está mais competitivo que nunca. Neste comparativo analisamos as principais opções de custo-benefício, focando em quem quer imagem premium sem pagar preço de tela OLED.
 
@@ -27,7 +27,7 @@ Em 2026, o mercado de TVs 55" está mais competitivo que nunca. Neste comparativ
 ## Comparativo Rápido
 
 | Modelo               | Painel   | Sistema   | Destaque         |
-|----------------------|-----------|-----------|------------------|
+|----------------------|:---------:|:---------:|:----------------:|
 | TCL P755             | QLED 4K   | Google TV | Custo-benefício  |
 | Samsung Crystal 4K   | LED 4K    | Tizen     | Processamento    |
 | LG UR8750            | LED 4K    | WebOS     | Interface        |
