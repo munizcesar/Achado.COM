@@ -1,4 +1,3 @@
----
 import '../styles/global.css';
 
 interface Props {
@@ -66,8 +65,13 @@ const schemaData = JSON.stringify(schemaArray);
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
 
-  <!-- Favicon -->
+  <!-- Favicon & Icons -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/icon-180x180.svg" />
+  <link rel="icon" type="image/svg+xml" sizes="192x192" href="/icon-192x192.svg" />
+  <link rel="icon" type="image/svg+xml" sizes="512x512" href="/icon-512x512.svg" />
+  <meta name="theme-color" content="#E1306C" />
 
   <!-- Inter Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -332,7 +336,6 @@ const schemaData = JSON.stringify(schemaArray);
         var scrollLeft = subnavInner.scrollLeft;
         var maxScroll = subnavInner.scrollWidth - subnavInner.clientWidth;
         
-        // Mostrar/ocultar setas baseado na posição e se tem scroll
         if (maxScroll <= 0) {
           arrowLeft.style.display = 'none';
           arrowRight.style.display = 'none';
@@ -353,7 +356,6 @@ const schemaData = JSON.stringify(schemaArray);
       subnavInner.addEventListener('scroll', updateArrows);
       window.addEventListener('resize', updateArrows);
       
-      // Inicializar
       updateArrows();
     })();
   </script>
