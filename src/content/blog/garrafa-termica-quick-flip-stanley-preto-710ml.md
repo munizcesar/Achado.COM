@@ -2,7 +2,7 @@
 title: "Garrafa Térmica Quick Flip Stanley Preto 710ml"
 description: "Conheça o Garrafa Térmica Quick Flip Stanley Preto 710ml. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-12
-category: Casa
+category: Esportes
 image: /images/posts/garrafa-termica-quick-flip-stanley-preto-710ml.jpg
 tags: [casa]
 draft: false
