@@ -1,3 +1,4 @@
+---
 import '../styles/global.css';
 
 interface Props {
@@ -33,7 +34,6 @@ const defaultSchema = {
   },
 };
 
-// Suporta schema único ou array de schemas
 const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [defaultSchema];
 const schemaData = JSON.stringify(schemaArray);
 ---
@@ -149,19 +149,16 @@ const schemaData = JSON.stringify(schemaArray);
   <header class="site-header">
     <div class="container">
       <div class="header-inner">
-        <!-- Hamburguer (mobile: esquerda) -->
         <button class="drawer-toggle" onclick="window.openDrawer()" aria-label="Abrir menu" aria-expanded="false" id="drawerToggle">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
           </svg>
         </button>
 
-        <!-- Logo -->
         <a href="/" class="brand" aria-label="AchadoCertoVIP (Início)">
           <img src="/logo-achadocerto.svg" alt="AchadoCertoVIP" class="logo-img" width="240" height="48" decoding="async" fetchpriority="high" />
         </a>
 
-        <!-- Search desktop -->
         <form class="header-search" role="search" action="/blog" method="get">
           <input type="search" name="q" placeholder="Buscar reviews e guias..." aria-label="Buscar" autocomplete="off" />
           <button type="submit" class="header-search-btn" aria-label="Pesquisar">
@@ -169,13 +166,11 @@ const schemaData = JSON.stringify(schemaArray);
           </button>
         </form>
 
-        <!-- Nav desktop -->
         <nav class="header-nav">
           <a href="/blog" class={currentPath === '/blog' ? 'active' : ''}>Todos os Reviews</a>
           <a href="/sobre" class={currentPath === '/sobre' ? 'active' : ''}>Sobre</a>
         </nav>
 
-        <!-- Botão search mobile (lupa) -->
         <button class="mobile-search-btn" onclick="window.openMobileSearch()" aria-label="Buscar">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         </button>
@@ -185,9 +180,7 @@ const schemaData = JSON.stringify(schemaArray);
       <div class="container">
         <div class="subnav-wrapper">
           <button class="subnav-arrow subnav-arrow-left" id="subnavArrowLeft" aria-label="Rolar para esquerda">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-              <path d="M15 18l-6-6 6-6"/>
-            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
           </button>
           <div class="subnav-inner" id="subnavInner">
             <a href="/" class={`subnav-link${currentPath === '/' ? ' active' : ''}`}>Início</a>
@@ -200,9 +193,7 @@ const schemaData = JSON.stringify(schemaArray);
             <a href="/categorias/dicas" class={`subnav-link${currentPath.startsWith('/categorias/dicas') ? ' active' : ''}`}>Dicas</a>
           </div>
           <button class="subnav-arrow subnav-arrow-right" id="subnavArrowRight" aria-label="Rolar para direita">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-              <path d="M9 18l6-6-6-6"/>
-            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
           </button>
         </div>
       </div>
@@ -271,26 +262,18 @@ const schemaData = JSON.stringify(schemaArray);
   </footer>
 
   <style>
-    .logo-img {
-      height: 44px;
-      width: auto;
-      display: block;
-    }
-    .logo-img--footer {
-      height: 36px;
-    }
+    .logo-img { height: 44px; width: auto; display: block; }
+    .logo-img--footer { height: 36px; }
     @media (max-width: 520px) {
       .logo-img { height: 32px; }
       .logo-img--footer { height: 28px; }
     }
-
     .footer-social { display:flex; gap:10px; margin-top:18px; }
     .social-btn { width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; transition:transform .2s,opacity .2s; flex-shrink:0; }
     .social-btn:hover { transform:scale(1.1); opacity:.9; }
     .social-x         { background:#000; }
     .social-whatsapp  { background:#25D366; }
     .social-instagram { background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%); }
-
     .brand { display:inline-flex; align-items:center; }
   </style>
 
@@ -306,36 +289,26 @@ const schemaData = JSON.stringify(schemaArray);
       document.getElementById('drawerToggle').setAttribute('aria-expanded', 'false');
     };
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        window.closeDrawer();
-        window.closeMobileSearch();
-      }
+      if (e.key === 'Escape') { window.closeDrawer(); window.closeMobileSearch(); }
     });
     window.openMobileSearch = function() {
       var overlay = document.getElementById('mobileSearchOverlay');
       overlay.classList.add('open');
-      setTimeout(function() {
-        document.getElementById('mobileSearchInput').focus();
-      }, 100);
+      setTimeout(function() { document.getElementById('mobileSearchInput').focus(); }, 100);
     };
     window.closeMobileSearch = function(e) {
       if (!e || e.target === document.getElementById('mobileSearchOverlay')) {
         document.getElementById('mobileSearchOverlay').classList.remove('open');
       }
     };
-
-    // Controle de navegação do subnav
     (function() {
       var subnavInner = document.getElementById('subnavInner');
       var arrowLeft = document.getElementById('subnavArrowLeft');
       var arrowRight = document.getElementById('subnavArrowRight');
-      
       if (!subnavInner || !arrowLeft || !arrowRight) return;
-
       function updateArrows() {
         var scrollLeft = subnavInner.scrollLeft;
         var maxScroll = subnavInner.scrollWidth - subnavInner.clientWidth;
-        
         if (maxScroll <= 0) {
           arrowLeft.style.display = 'none';
           arrowRight.style.display = 'none';
@@ -344,18 +317,10 @@ const schemaData = JSON.stringify(schemaArray);
           arrowRight.style.display = scrollLeft < maxScroll - 5 ? 'flex' : 'none';
         }
       }
-
-      arrowLeft.addEventListener('click', function() {
-        subnavInner.scrollBy({ left: -200, behavior: 'smooth' });
-      });
-
-      arrowRight.addEventListener('click', function() {
-        subnavInner.scrollBy({ left: 200, behavior: 'smooth' });
-      });
-
+      arrowLeft.addEventListener('click', function() { subnavInner.scrollBy({ left: -200, behavior: 'smooth' }); });
+      arrowRight.addEventListener('click', function() { subnavInner.scrollBy({ left: 200, behavior: 'smooth' }); });
       subnavInner.addEventListener('scroll', updateArrows);
       window.addEventListener('resize', updateArrows);
-      
       updateArrows();
     })();
   </script>
