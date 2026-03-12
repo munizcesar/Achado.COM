@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#F9A326"/>
+      <stop offset="30%"  stop-color="#E1306C"/>
+      <stop offset="65%"  stop-color="#833AB4"/>
+      <stop offset="100%" stop-color="#405DE6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="96" cy="96" r="93" fill="url(#grad)"/>
+  <circle cx="96" cy="96" r="85" fill="none" stroke="white" stroke-width="7.5"/>
+  <circle cx="96" cy="96" r="81" fill="url(#grad)"/>
+  <polyline points="47,100 82,136 148,58"
+    fill="none" stroke="white" stroke-width="23"
+    stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
