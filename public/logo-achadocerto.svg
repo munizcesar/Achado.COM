@@ -1,43 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 60" width="360" height="60">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 52" width="300" height="52">
   <defs>
-    <linearGradient id="gradIcon" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%"   stop-color="#F9A326"/>
-      <stop offset="30%"  stop-color="#E1306C"/>
-      <stop offset="65%"  stop-color="#833AB4"/>
+    <linearGradient id="gi" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F9A326"/>
+      <stop offset="30%" stop-color="#E1306C"/>
+      <stop offset="65%" stop-color="#833AB4"/>
       <stop offset="100%" stop-color="#405DE6"/>
     </linearGradient>
-    <linearGradient id="gradVip" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%"   stop-color="#E1306C"/>
-      <stop offset="50%"  stop-color="#833AB4"/>
+    <linearGradient id="gv" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E1306C"/>
+      <stop offset="55%" stop-color="#833AB4"/>
       <stop offset="100%" stop-color="#405DE6"/>
     </linearGradient>
-    <mask id="vipMask">
-      <rect x="0" y="0" width="360" height="60" fill="black"/>
-      <text x="228" y="43"
-        font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
-        font-size="28"
-        font-weight="800"
-        letter-spacing="0.5"
-        fill="white">vip</text>
-    </mask>
   </defs>
 
-  <!-- Ícone -->
-  <circle cx="30" cy="30" r="29" fill="url(#gradIcon)"/>
-  <circle cx="30" cy="30" r="26.5" fill="none" stroke="white" stroke-width="2.5"/>
-  <circle cx="30" cy="30" r="25" fill="url(#gradIcon)"/>
-  <polyline points="16,30 25,41 44,17"
-    fill="none" stroke="white" stroke-width="5.5"
-    stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Icone -->
+  <circle cx="26" cy="26" r="25" fill="url(#gi)"/>
+  <circle cx="26" cy="26" r="22.5" fill="none" stroke="white" stroke-width="2.2"/>
+  <circle cx="26" cy="26" r="21" fill="url(#gi)"/>
+  <polyline points="14,26 22,36 38,15" fill="none" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- "achadocerto" cinza médio -->
-  <text x="70" y="43"
-    font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
-    font-size="28"
-    font-weight="600"
-    letter-spacing="-0.5"
-    fill="#555555">achadocerto</text>
+  <!-- achadocerto em cinza -->
+  <text x="60" y="36"
+    font-family="Inter,Helvetica Neue,Arial,sans-serif"
+    font-size="26" font-weight="600" letter-spacing="-0.3"
+    fill="#555">achadocerto</text>
 
-  <!-- "vip" em degradê -->
-  <rect x="0" y="0" width="360" height="60" fill="url(#gradVip)" mask="url(#vipMask)"/>
+  <!-- vip em gradiente -->
+  <text x="207" y="36"
+    font-family="Inter,Helvetica Neue,Arial,sans-serif"
+    font-size="26" font-weight="800" letter-spacing="0.3"
+    fill="url(#gv)">vip</text>
 </svg>

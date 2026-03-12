@@ -43,11 +43,8 @@ const schemaData = JSON.stringify(schemaArray);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="canonical" href={canonicalURL} />
-
   <title>{title}</title>
   <meta name="description" content={description} />
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="AchadoCertoVIP" />
   <meta property="og:title" content={title} />
@@ -57,28 +54,20 @@ const schemaData = JSON.stringify(schemaArray);
   <meta property="og:image:height" content="1200" />
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:locale" content="pt_BR" />
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@achadocerto" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
-
-  <!-- Favicon & Icons -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/icon-180x180.svg" />
   <link rel="icon" type="image/svg+xml" sizes="192x192" href="/icon-192x192.svg" />
   <link rel="icon" type="image/svg+xml" sizes="512x512" href="/icon-512x512.svg" />
   <meta name="theme-color" content="#E1306C" />
-
-  <!-- Inter Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-
-  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-B170HB38GJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -95,20 +84,15 @@ const schemaData = JSON.stringify(schemaArray);
       });
     });
   </script>
-
-  <!-- JSON-LD Schema -->
   <script type="application/ld+json" set:html={schemaData}></script>
 </head>
 <body>
-  <!-- DRAWER OVERLAY -->
   <div class="drawer-overlay" id="drawerOverlay" onclick="window.closeDrawer()"></div>
 
-  <!-- DRAWER MOBILE -->
   <aside class="drawer" id="drawer" role="dialog" aria-label="Menu" aria-hidden="true">
     <div class="drawer-header">
       <a href="/" class="brand" aria-label="AchadoCertoVIP (Início)">
-        <img src="/logo-achadocerto.svg" alt="AchadoCertoVIP" class="logo-img" width="200" height="40" loading="lazy" decoding="async" />
-        <span class="site-name">achadocerto.vip</span>
+        <img src="/logo-achadocerto.svg" alt="AchadoCertoVIP" class="logo-img" width="180" height="36" loading="lazy" decoding="async" />
       </a>
       <button class="drawer-close" onclick="window.closeDrawer()" aria-label="Fechar menu">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -136,7 +120,6 @@ const schemaData = JSON.stringify(schemaArray);
     </div>
   </aside>
 
-  <!-- SEARCH OVERLAY MOBILE -->
   <div class="mobile-search-overlay" id="mobileSearchOverlay" onclick="window.closeMobileSearch(event)">
     <form class="mobile-search-box" action="/blog" method="get" onclick="event.stopPropagation()">
       <input type="search" name="q" placeholder="Buscar reviews e guias..." aria-label="Buscar" autocomplete="off" id="mobileSearchInput" />
@@ -146,7 +129,6 @@ const schemaData = JSON.stringify(schemaArray);
     </form>
   </div>
 
-  <!-- HEADER PRINCIPAL -->
   <header class="site-header">
     <div class="container">
       <div class="header-inner">
@@ -157,8 +139,7 @@ const schemaData = JSON.stringify(schemaArray);
         </button>
 
         <a href="/" class="brand" aria-label="AchadoCertoVIP (Início)">
-          <img src="/logo-achadocerto.svg" alt="AchadoCertoVIP" class="logo-img" width="240" height="48" decoding="async" fetchpriority="high" />
-          <span class="site-name">achadocerto.vip</span>
+          <img src="/logo-achadocerto.svg" alt="AchadoCertoVIP" class="logo-img" width="220" height="44" decoding="async" fetchpriority="high" />
         </a>
 
         <form class="header-search" role="search" action="/blog" method="get">
@@ -204,13 +185,12 @@ const schemaData = JSON.stringify(schemaArray);
 
   <main id="main-content"><slot /></main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div>
           <a href="/" class="footer-logo brand" aria-label="AchadoCertoVIP (Início)">
-            <img src="/logo-achadocerto.svg" alt="AchadoCertoVIP" class="logo-img logo-img--footer" width="200" height="40" loading="lazy" decoding="async" />
+            <img src="/logo-achadocerto.svg" alt="AchadoCertoVIP" class="logo-img logo-img--footer" width="180" height="36" loading="lazy" decoding="async" />
           </a>
           <p class="footer-desc">Reviews independentes, comparativos honestos e guias de compra para você escolher com confiança.</p>
           <div class="footer-social">
@@ -264,19 +244,17 @@ const schemaData = JSON.stringify(schemaArray);
   </footer>
 
   <style>
-    .logo-img { height: 44px; width: auto; display: block; }
-    .logo-img--footer { height: 36px; }
+    .logo-img { height: 40px; width: auto; display: block; }
+    .logo-img--footer { height: 32px; }
     @media (max-width: 520px) {
-      .logo-img { height: 32px; }
-      .logo-img--footer { height: 28px; }
-      .site-name { font-size: 1.1rem; margin-left: 8px; font-weight: 700; text-transform: lowercase; color: var(--c-brand); }
-      @media (max-width: 600px) { .site-name { display: none; } }
+      .logo-img { height: 30px; }
+      .logo-img--footer { height: 26px; }
     }
     .footer-social { display:flex; gap:10px; margin-top:18px; }
     .social-btn { width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; transition:transform .2s,opacity .2s; flex-shrink:0; }
     .social-btn:hover { transform:scale(1.1); opacity:.9; }
-    .social-x         { background:#000; }
-    .social-whatsapp  { background:#25D366; }
+    .social-x { background:#000; }
+    .social-whatsapp { background:#25D366; }
     .social-instagram { background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%); }
     .brand { display:inline-flex; align-items:center; }
   </style>
@@ -306,26 +284,22 @@ const schemaData = JSON.stringify(schemaArray);
       }
     };
     (function() {
-      var subnavInner = document.getElementById('subnavInner');
-      var arrowLeft = document.getElementById('subnavArrowLeft');
-      var arrowRight = document.getElementById('subnavArrowRight');
-      if (!subnavInner || !arrowLeft || !arrowRight) return;
-      function updateArrows() {
-        var scrollLeft = subnavInner.scrollLeft;
-        var maxScroll = subnavInner.scrollWidth - subnavInner.clientWidth;
-        if (maxScroll <= 0) {
-          arrowLeft.style.display = 'none';
-          arrowRight.style.display = 'none';
-        } else {
-          arrowLeft.style.display = scrollLeft > 5 ? 'flex' : 'none';
-          arrowRight.style.display = scrollLeft < maxScroll - 5 ? 'flex' : 'none';
-        }
+      var inner = document.getElementById('subnavInner');
+      var left = document.getElementById('subnavArrowLeft');
+      var right = document.getElementById('subnavArrowRight');
+      if (!inner || !left || !right) return;
+      function upd() {
+        var s = inner.scrollLeft;
+        var m = inner.scrollWidth - inner.clientWidth;
+        if (m <= 0) { left.style.display='none'; right.style.display='none'; return; }
+        left.style.display = s > 5 ? 'flex' : 'none';
+        right.style.display = s < m - 5 ? 'flex' : 'none';
       }
-      arrowLeft.addEventListener('click', function() { subnavInner.scrollBy({ left: -200, behavior: 'smooth' }); });
-      arrowRight.addEventListener('click', function() { subnavInner.scrollBy({ left: 200, behavior: 'smooth' }); });
-      subnavInner.addEventListener('scroll', updateArrows);
-      window.addEventListener('resize', updateArrows);
-      updateArrows();
+      left.addEventListener('click', function() { inner.scrollBy({left:-200,behavior:'smooth'}); });
+      right.addEventListener('click', function() { inner.scrollBy({left:200,behavior:'smooth'}); });
+      inner.addEventListener('scroll', upd);
+      window.addEventListener('resize', upd);
+      upd();
     })();
   </script>
 </body>
