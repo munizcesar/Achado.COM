@@ -7,6 +7,7 @@ const h = size === 'sm' ? 32 : 39;
   xmlns="http://www.w3.org/2000/svg"
   role="img" aria-label="AchadoCertoVIP"
   style="display:block;overflow:visible;flex-shrink:0">
+  <!-- Ícone -->
   <defs>
     <linearGradient id={`gi-${size}`} x1="0%" y1="100%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#F9A326"/>
@@ -14,23 +15,16 @@ const h = size === 'sm' ? 32 : 39;
       <stop offset="65%" stop-color="#833AB4"/>
       <stop offset="100%" stop-color="#405DE6"/>
     </linearGradient>
-    <linearGradient id={`gv-${size}`} x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#E1306C"/>
-      <stop offset="55%" stop-color="#833AB4"/>
-      <stop offset="100%" stop-color="#405DE6"/>
-    </linearGradient>
   </defs>
-  <!-- Ícone -->
   <circle cx="26" cy="26" r="25" fill={`url(#gi-${size})`}/>
   <circle cx="26" cy="26" r="22.5" fill="none" stroke="white" stroke-width="2.2"/>
   <circle cx="26" cy="26" r="21" fill={`url(#gi-${size})`}/>
   <polyline points="14,26 22,36 38,15" fill="none" stroke="white"
     stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- Texto -->
+  <!-- Texto: três cores sólidas, sem url() -->
   <text x="60" y="36"
     font-family="Inter,Helvetica Neue,Arial,sans-serif"
     font-size="26" letter-spacing="-0.3">
-    <tspan fill="#555" font-weight="600">achadocerto</tspan><tspan
-      fill={`url(#gv-${size})`} font-weight="800" letter-spacing="0.5">vip</tspan>
+    <tspan fill="#555" font-weight="600">achado</tspan><tspan fill="#833AB4" font-weight="600">certo</tspan><tspan fill="#E1306C" font-weight="800" letter-spacing="0.5">vip</tspan>
   </text>
 </svg>
