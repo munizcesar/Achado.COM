@@ -2,29 +2,44 @@
 const { size = 'md' } = Astro.props;
 const w = size === 'sm' ? 180 : 220;
 const h = size === 'sm' ? 32 : 39;
+// Coordenadas do "vip" no viewBox 0 0 295 52
+// "achadocerto" tem ~175px de largura a partir de x=60
+// "vip" começa em ~x=237, termina em ~x=287
+const vipX1 = 237;
+const vipX2 = 287;
 ---
 <svg width={w} height={h} viewBox="0 0 295 52"
   xmlns="http://www.w3.org/2000/svg"
   role="img" aria-label="AchadoCertoVIP"
   style="display:block;overflow:visible;flex-shrink:0">
-  <!-- Ícone -->
   <defs>
+    <!-- Gradiente do ícone circular -->
     <linearGradient id={`gi-${size}`} x1="0%" y1="100%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#F9A326"/>
       <stop offset="30%" stop-color="#E1306C"/>
       <stop offset="65%" stop-color="#833AB4"/>
       <stop offset="100%" stop-color="#405DE6"/>
     </linearGradient>
+    <!-- Gradiente do "vip" com userSpaceOnUse = coords absolutas no SVG -->
+    <linearGradient id={`gv-${size}`}
+      x1={vipX1} y1="0" x2={vipX2} y2="0"
+      gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E1306C"/>
+      <stop offset="50%" stop-color="#833AB4"/>
+      <stop offset="100%" stop-color="#405DE6"/>
+    </linearGradient>
   </defs>
+  <!-- Ícone -->
   <circle cx="26" cy="26" r="25" fill={`url(#gi-${size})`}/>
   <circle cx="26" cy="26" r="22.5" fill="none" stroke="white" stroke-width="2.2"/>
   <circle cx="26" cy="26" r="21" fill={`url(#gi-${size})`}/>
   <polyline points="14,26 22,36 38,15" fill="none" stroke="white"
     stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- Texto: três cores sólidas, sem url() -->
+  <!-- Texto -->
   <text x="60" y="36"
     font-family="Inter,Helvetica Neue,Arial,sans-serif"
     font-size="26" letter-spacing="-0.3">
-    <tspan fill="#555" font-weight="600">achado</tspan><tspan fill="#833AB4" font-weight="600">certo</tspan><tspan fill="#E1306C" font-weight="800" letter-spacing="0.5">vip</tspan>
+    <tspan fill="#555" font-weight="600">achadocerto</tspan><tspan
+      fill={`url(#gv-${size})`} font-weight="800" letter-spacing="0.5">vip</tspan>
   </text>
 </svg>
