@@ -1,5 +1,5 @@
 {
-  "total": 75,
+  "total": 78,
   "mes_atual": 2,
   "logs": [
     {
@@ -125,6 +125,11 @@
     {
       "data": "2026-03-12T02:07:01.403Z",
       "produto": "Fone Headphone Jbl Tune 520bt Bluetooth",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-13T00:39:53.146Z",
+      "produto": "L-glutamina 500g - 100% Pura Importada - Soldiers ",
       "consultas": 3
     }
   ]
