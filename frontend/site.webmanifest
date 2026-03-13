@@ -9,33 +9,9 @@
   "scope": "/",
   "icons": [
     {
-      "src": "/images/favicon-16x16.png",
-      "sizes": "16x16",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/images/favicon-32x32.png",
-      "sizes": "32x32",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/images/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/images/favicon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/images/favicon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
+      "src": "/images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ],
@@ -46,14 +22,14 @@
       "short_name": "Blog",
       "description": "Leia nossos artigos e guias de compra",
       "url": "/blog.html",
-      "icons": [{ "src": "/images/favicon-32x32.png", "sizes": "32x32" }]
+      "icons": [{ "src": "/images/favicon.svg", "sizes": "any" }]
     },
     {
       "name": "Tech",
       "short_name": "Tech",
       "description": "Últimas em tecnologia",
       "url": "/categorias/tech.html",
-      "icons": [{ "src": "/images/favicon-32x32.png", "sizes": "32x32" }]
+      "icons": [{ "src": "/images/favicon.svg", "sizes": "any" }]
     }
   ]
 }

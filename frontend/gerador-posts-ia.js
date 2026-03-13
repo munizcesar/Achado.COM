@@ -176,7 +176,6 @@ class GeradorPostsIA {
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <meta name="theme-color" content="#D4AF37">
     
     <!-- Schema.org -->
