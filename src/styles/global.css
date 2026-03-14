@@ -470,10 +470,10 @@ body.drawer-open { overflow: hidden; }
   border-radius: var(--r-md);
   background: #FFFFFF;
   display: block;
-  transition: transform .4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform .4s var(--ease);
   padding: 12px;
 }
-.hero-main-img:hover { transform: scale(1.15); }
+.hero-main-img:hover { transform: scale(1.05); }
 .hero-main-img-wrap {
   overflow: hidden;
   border-radius: var(--r-md);
