@@ -6,7 +6,7 @@ category: Beleza
 image: /images/posts/3-perfume-capilar-barbourx27s-alter-ego-living-grace-very-se.jpg
 tags: [beleza]
 draft: false
-affiliateUrl: "https://meli.la/2esEmbw"
+affiliateUrl: "https://meli.la/2iyK7Tm"
 productImage: /images/posts/3-perfume-capilar-barbourx27s-alter-ego-living-grace-very-se.jpg
 ---
 
@@ -189,8 +189,5 @@ A linha Barbour’s Beauty combina essas funções com fragrâncias sofisticadas
 ✔ Dica: se você gosta de descobrir novos aromas, vale conhecer também outras fragrâncias da linha — cada uma possui uma personalidade olfativa diferente e pode combinar melhor com determinados momentos ou estilos.
 
 ---
-
-[🔗 Comprar agora no Mercado Livre](https://meli.la/2esEmbw)
-
 
 *Links deste post são afiliados. Você não paga nada a mais, mas nos ajuda a manter o site gratuito.*
