@@ -10,8 +10,6 @@ affiliateUrl: "https://meli.la/2nsfiWQ"
 productImage: /images/posts/barboursBeauty.webp
 ---
 
-<img src="/images/posts/barboursBeauty.webp" alt="Body Splashes Barbour's Beauty" style="width:100%;border-radius:18px;margin:0 0 2rem;box-shadow:0 16px 40px rgba(15,23,42,.12);display:block;" />
-
 Se você ama o cheiro de perfume caro mas quer praticidade no dia a dia, os **Body Splashes Barbour's Beauty** são a sua nova descoberta favorita. Com mais de 20 fragrâncias em frascos de 200ml, veganos e com fixação surpreendente, eles viralizaram por um motivo: chegam incrivelmente perto dos grandes importados.
 
 <div style="margin:1.5rem 0 2rem;padding:1rem 1.2rem;border-radius:14px;background:linear-gradient(135deg,#fff7ed,#ffffff);border:1px solid #fed7aa;box-shadow:0 8px 24px rgba(249,115,22,.07);">
