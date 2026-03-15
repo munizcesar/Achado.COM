@@ -10,9 +10,25 @@ affiliateUrl: "https://meli.la/2nsfiWQ"
 productImage: /images/posts/barboursBeauty.webp
 ---
 
+<img src="/images/posts/barboursBeauty.webp" alt="Body Splashes Barbour's Beauty" style="width:100%;border-radius:18px;margin:0 0 1.5rem;box-shadow:0 16px 40px rgba(15,23,42,.12);" />
+
 Se você ama o cheiro de perfume caro mas quer praticidade no dia a dia, os **Body Splashes Barbour's Beauty** são a sua nova descoberta favorita. Com mais de 20 fragrâncias em frascos de 200ml, veganos e com fixação surpreendente, eles viralizaram por um motivo: chegam incrivelmente perto dos grandes importados.
 
-**Compre agora:** [Mercado Livre](https://meli.la/2nsfiWQ) · [Magazine Luiza](https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/) · [Amazon](https://amzn.to/4uwYgR8)
+<div class="summary-box">
+  <p>✨ Resumo rápido</p>
+  <ul>
+    <li>Mais de 20 fragrâncias inspiradas nos maiores importados do mundo</li>
+    <li>Fixação surpreendente para a categoria body splash</li>
+    <li>100% veganos e cruelty-free, frascos de 200ml</li>
+    <li>Encontre a fragrância certa pelo guia de famílias olfativas abaixo</li>
+  </ul>
+</div>
+
+<div class="cta-grid">
+  <a class="btn-ml" href="https://meli.la/2nsfiWQ" target="_blank" rel="nofollow sponsored noopener">🛒 Ver ofertas no Mercado Livre</a>
+  <a class="btn-magalu" href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/" target="_blank" rel="nofollow sponsored noopener">🛍️ Ver ofertas no Magazine Luiza</a>
+  <a class="btn-amazon" href="https://amzn.to/4uwYgR8" target="_blank" rel="nofollow sponsored noopener">📦 Ver ofertas na Amazon</a>
+</div>
 
 ---
 
@@ -48,49 +64,39 @@ Essas são as fragrâncias que consolidaram a marca e seguem sendo as favoritas 
 
 Inspirada em notas similares a criações da **Tom Ford e YSL**, o Alter Ego é sofisticado, envolvente e marcante. Ideal para quem quer causar impacto com um aroma de personalidade forte, seja no trabalho ou em um jantar.
 
-[Comprar Alter Ego no Mercado Livre](https://meli.la/2nsfiWQ)
-
 ### Very Sexy — Floral Amadeirado Frutado
 
 Inspirado no DNA olfativo do clássico **Good Girl da Carolina Herrera**, o Very Sexy entrega o rastro sensual e irresistível que fez o original famoso. Frutas vermelhas no topo, jasmim no coração e âmbar no fundo — combinação vencedora.
-
-[Comprar Very Sexy na Amazon](https://amzn.to/4uwYgR8)
 
 ### La Vie — Oriental Floral
 
 Inspirado no inesquecível **La Vie Est Belle da Lancôme**, traz a doçura elegante e o toque feminino clássico que conquistou o mundo. Perfeito para o dia a dia de quem gosta de um aroma aconchegante e sofisticado.
 
-[Comprar La Vie no Mercado Livre](https://meli.la/2nsfiWQ)
-
 ### My Sweet Delight — Floral Rose
 
 Inspirado no explosivo **Delina da Parfums de Marly** — um dos perfumes niche mais desejados do mundo —, o My Sweet Delight entrega um floral rosado intenso e feminino. Quem já tem o original diz que esse body splash chega assustadoramente perto.
-
-[Comprar My Sweet Delight na Magazine Luiza](https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/)
 
 ### Affair — Floral Oriental
 
 Com ADN do **Scandal da Jean Paul Gaultier**, o Affair mistura mel, gardênia e patchouli em uma composição sensual e sofisticada. Uma das mais elogiadas para uso noturno.
 
-[Comprar Affair no Mercado Livre](https://meli.la/2nsfiWQ)
-
 ### Roses — Floral Oriental
 
 Inspirado no universo do **212 VIP Rosé da Carolina Herrera**, o Roses combina mel, gardênia e caramelo em um floral chique e luminoso. Elegante sem ser pesado.
-
-[Comprar Roses na Amazon](https://amzn.to/4uwYgR8)
 
 ### Angelical — Floral Frutado Amadeirado
 
 Inspirado no icônico **Angel da Thierry Mugler**, o Angelical traz champanhe rosé, flor de pêssego e madeira em um aroma celestial e único. Um dos mais marcantes da linha.
 
-[Comprar Angelical na Magazine Luiza](https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/)
-
 ### Supreme — Oriental Baunilha
 
 Com inspiração em notas que lembram o lendário **Baccarat Rouge 540**, o Supreme é intenso, sofisticado e viciante. Baunilha, cacau e lavanda formam uma composição única e inesquecível.
 
-[Comprar Supreme no Mercado Livre](https://meli.la/2nsfiWQ)
+<div class="cta-grid">
+  <a class="btn-ml" href="https://meli.la/2nsfiWQ" target="_blank" rel="nofollow sponsored noopener">🛒 Comprar no Mercado Livre</a>
+  <a class="btn-magalu" href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/" target="_blank" rel="nofollow sponsored noopener">🛍️ Comprar no Magazine Luiza</a>
+  <a class="btn-amazon" href="https://amzn.to/4uwYgR8" target="_blank" rel="nofollow sponsored noopener">📦 Comprar na Amazon</a>
+</div>
 
 ---
 
@@ -102,31 +108,21 @@ Para quem prefere aromas mais leves, florais e elegantes no dia a dia.
 
 Inspirado no estilo de **L'Interdit da Givenchy**, combina lichia, rosa turca e cedro em um floral vibrante e moderno.
 
-[Comprar Flowers na Amazon](https://amzn.to/4uwYgR8)
-
 ### Sienna Glow — Floral Oriental
 
 Inspirado no glamour do **J'adore da Dior**, traz rosa, jasmim e patchouli em uma composição luxuosa e feminina.
-
-[Comprar Sienna Glow no Mercado Livre](https://meli.la/2nsfiWQ)
 
 ### Icon — Floral Amadeirado
 
 Inspirado no clássico sofisticado da **Chloé Eau de Parfum**, com rosa, jasmim e patchouli. Elegante e atemporal.
 
-[Comprar Icon na Magazine Luiza](https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/)
-
 ### Alter Ego Rose — Floral Oriental
 
 Versão rosada e orientalizada do Alter Ego, com peônia, baunilha e ylang ylang. Para quem ama o estilo do original mas prefere algo mais floral e adocicado.
 
-[Comprar Alter Ego Rose na Amazon](https://amzn.to/4uwYgR8)
-
 ### Endless Soul — Floral Frutal
 
 Um floral romântico com rosa, peônia e baunilha — delicado e feminino para o uso diário.
-
-[Comprar Endless Soul no Mercado Livre](https://meli.la/2nsfiWQ)
 
 ---
 
@@ -138,19 +134,13 @@ Fragrâncias leves, aquáticas e frutadas ideais para o verão ou para quem pref
 
 Frescor aquático clássico — leve, limpo e refrescante. Perfeito para usar durante o trabalho ou em dias quentes.
 
-[Comprar Soft Breeze na Magazine Luiza](https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/)
-
 ### My Journey — Floral Amadeirado
 
 Orientação floral elegante com tuberosa, jasmim e baunilha. Leve durante o dia, envolvente ao cair da tarde.
 
-[Comprar My Journey no Mercado Livre](https://meli.la/2nsfiWQ)
-
 ### Good Graces — Cyprus Floral
 
 Com a vibe refrescante do **Light Blue da Dolce & Gabbana**, combina frésia, pêra e patchouli em um aroma clean e sofisticado.
-
-[Comprar Good Graces na Amazon](https://amzn.to/4uwYgR8)
 
 ---
 
@@ -162,19 +152,13 @@ Para quem ama aquele rastro adocicado e marcante que fica no ar.
 
 Inspiração praiana com pistache, caramelo, sal e baunilha. Parece o cheiro de férias em um frasco — viciante e único.
 
-[Comprar Tropic Sun no Mercado Livre](https://meli.la/2nsfiWQ)
-
 ### Popsicle — Frutal Gourmand
 
 Jovem, divertido e delicioso: chiclete, pêssego e mirtilo em um aroma que lembra verão e alegria. Muito elogiado pelo público mais jovem.
 
-[Comprar Popsicle na Magazine Luiza](https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/)
-
 ### Rich — Oriental Amadeirado
 
 Notas quentes e envolventes em um oriental rico e intenso. Para quem gosta de aromas profundos e marcantes.
-
-[Comprar Rich na Amazon](https://amzn.to/4uwYgR8)
 
 ---
 
@@ -186,25 +170,17 @@ A linha viral chegou para atender quem acompanha os perfumes niche e árabes mai
 
 Inspirado no luxuoso **Palatine da Parfums de Marly** — uma das casas de perfumaria mais exclusivas da França.
 
-[Comprar Palatine no Mercado Livre](https://meli.la/2nsfiWQ)
-
 ### Valaya
 
 Inspirado no cobiçado **Valaya da Parfums de Marly**, traz aquela sofisticação niche ao alcance de todos.
-
-[Comprar Valaya na Amazon](https://amzn.to/4uwYgR8)
 
 ### My Sweet
 
 Inspirado no cult **Love Don't Be Shy da By Kilian** — mel, marshmallow e flor de laranjeira em um adocicado irresistível.
 
-[Comprar My Sweet na Magazine Luiza](https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/)
-
 ### English Pear
 
 Inspirado no delicado **English Pear & Freesia da Jo Malone London** — pera fresca, fresia e âmbar em perfeito equilíbrio.
-
-[Comprar English Pear no Mercado Livre](https://meli.la/2nsfiWQ)
 
 ---
 
@@ -230,13 +206,14 @@ Seguindo essas três etapas, você extrai o máximo de cada fragrância:
 
 ---
 
-## Onde Comprar com Segurança
-
-Você encontra toda a linha em canais confiáveis com entrega garantida:
-
-- [**Mercado Livre**](https://meli.la/2nsfiWQ) — entrega rápida, avaliações verificadas e parcelamento
-- [**Magazine Luiza**](https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/) — retirada em loja disponível e parcelamento facilitado
-- [**Amazon**](https://amzn.to/4uwYgR8) — entrega expressa e política de devolução confiável
+<div class="cta-stack">
+  <p class="cta-title">🔒 Compre com segurança — lojas oficiais</p>
+  <div class="cta-grid">
+    <a class="btn-ml" href="https://meli.la/2nsfiWQ" target="_blank" rel="nofollow sponsored noopener">🛒 Mercado Livre — ofertas verificadas</a>
+    <a class="btn-magalu" href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/" target="_blank" rel="nofollow sponsored noopener">🛍️ Magazine Luiza — parcelamento fácil</a>
+    <a class="btn-amazon" href="https://amzn.to/4uwYgR8" target="_blank" rel="nofollow sponsored noopener">📦 Amazon — entrega expressa</a>
+  </div>
+</div>
 
 ---
 
