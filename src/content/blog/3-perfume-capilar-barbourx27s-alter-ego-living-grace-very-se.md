@@ -6,7 +6,7 @@ category: Beleza
 image: /images/posts/3-perfume-capilar-barbourx27s-alter-ego-living-grace-very-se.jpg
 tags: [beleza]
 draft: false
-affiliateUrl: "https://meli.la/2iyK7Tm"
+affiliateUrl: "https://meli.la/2NbroFv"
 productImage: /images/posts/3-perfume-capilar-barbourx27s-alter-ego-living-grace-very-se.jpg
 ---
 
