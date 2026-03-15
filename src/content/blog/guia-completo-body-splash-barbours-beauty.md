@@ -10,24 +10,24 @@ affiliateUrl: "https://meli.la/2nsfiWQ"
 productImage: /images/posts/barboursBeauty.webp
 ---
 
-<img src="/images/posts/barboursBeauty.webp" alt="Body Splashes Barbour's Beauty" style="width:100%;border-radius:18px;margin:0 0 1.5rem;box-shadow:0 16px 40px rgba(15,23,42,.12);" />
+<img src="/images/posts/barboursBeauty.webp" alt="Body Splashes Barbour's Beauty" style="width:100%;border-radius:18px;margin:0 0 2rem;box-shadow:0 16px 40px rgba(15,23,42,.12);display:block;" />
 
 Se você ama o cheiro de perfume caro mas quer praticidade no dia a dia, os **Body Splashes Barbour's Beauty** são a sua nova descoberta favorita. Com mais de 20 fragrâncias em frascos de 200ml, veganos e com fixação surpreendente, eles viralizaram por um motivo: chegam incrivelmente perto dos grandes importados.
 
-<div class="summary-box">
-  <p>✨ Resumo rápido</p>
-  <ul>
-    <li>Mais de 20 fragrâncias inspiradas nos maiores importados do mundo</li>
-    <li>Fixação surpreendente para a categoria body splash</li>
-    <li>100% veganos e cruelty-free, frascos de 200ml</li>
-    <li>Encontre a fragrância certa pelo guia de famílias olfativas abaixo</li>
+<div style="margin:1.5rem 0 2rem;padding:1.1rem 1.3rem;border-radius:14px;background:linear-gradient(135deg,#fff7ed,#ffffff);border:1px solid #fed7aa;box-shadow:0 10px 28px rgba(249,115,22,.08);">
+  <p style="margin:0 0 0.75rem;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#9a3412;">Resumo rápido</p>
+  <ul style="margin:0 0 0 1.2rem;padding:0;">
+    <li style="margin-bottom:.45rem;">Mais de 20 fragrâncias inspiradas nos maiores importados do mundo</li>
+    <li style="margin-bottom:.45rem;">Fixação surpreendente para um body splash — horas de duração na pele</li>
+    <li style="margin-bottom:.45rem;">100% veganos e cruelty-free, frascos generosos de 200ml</li>
+    <li>Use o guia abaixo para encontrar a fragrância certa para o seu estilo</li>
   </ul>
 </div>
 
-<div class="cta-grid">
-  <a class="btn-ml" href="https://meli.la/2nsfiWQ" target="_blank" rel="nofollow sponsored noopener">🛒 Ver ofertas no Mercado Livre</a>
-  <a class="btn-magalu" href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/" target="_blank" rel="nofollow sponsored noopener">🛍️ Ver ofertas no Magazine Luiza</a>
-  <a class="btn-amazon" href="https://amzn.to/4uwYgR8" target="_blank" rel="nofollow sponsored noopener">📦 Ver ofertas na Amazon</a>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:1.5rem 0 2.5rem;">
+  <a href="https://meli.la/2nsfiWQ" target="_blank" rel="nofollow sponsored noopener" style="display:flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:999px;background:linear-gradient(135deg,#ffe767,#ffd400);color:#3b2f00;font-size:14px;font-weight:700;letter-spacing:.03em;text-decoration:none;border:1px solid rgba(234,179,8,.8);box-shadow:0 8px 22px rgba(234,179,8,.25);transition:transform .15s,box-shadow .15s;">Ver ofertas no Mercado Livre</a>
+  <a href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/" target="_blank" rel="nofollow sponsored noopener" style="display:flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:999px;background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#f9fafb;font-size:14px;font-weight:700;letter-spacing:.03em;text-decoration:none;border:1px solid rgba(59,130,246,.8);box-shadow:0 8px 22px rgba(37,99,235,.25);transition:transform .15s,box-shadow .15s;">Ver ofertas no Magazine Luiza</a>
+  <a href="https://amzn.to/4uwYgR8" target="_blank" rel="nofollow sponsored noopener" style="display:flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:999px;background:linear-gradient(135deg,#f97316,#ea580c);color:#fff7ed;font-size:14px;font-weight:700;letter-spacing:.03em;text-decoration:none;border:1px solid rgba(249,115,22,.8);box-shadow:0 8px 22px rgba(249,115,22,.25);transition:transform .15s,box-shadow .15s;">Ver ofertas na Amazon</a>
 </div>
 
 ---
@@ -92,10 +92,10 @@ Inspirado no icônico **Angel da Thierry Mugler**, o Angelical traz champanhe ro
 
 Com inspiração em notas que lembram o lendário **Baccarat Rouge 540**, o Supreme é intenso, sofisticado e viciante. Baunilha, cacau e lavanda formam uma composição única e inesquecível.
 
-<div class="cta-grid">
-  <a class="btn-ml" href="https://meli.la/2nsfiWQ" target="_blank" rel="nofollow sponsored noopener">🛒 Comprar no Mercado Livre</a>
-  <a class="btn-magalu" href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/" target="_blank" rel="nofollow sponsored noopener">🛍️ Comprar no Magazine Luiza</a>
-  <a class="btn-amazon" href="https://amzn.to/4uwYgR8" target="_blank" rel="nofollow sponsored noopener">📦 Comprar na Amazon</a>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:2rem 0 2.5rem;">
+  <a href="https://meli.la/2nsfiWQ" target="_blank" rel="nofollow sponsored noopener" style="display:flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:999px;background:linear-gradient(135deg,#ffe767,#ffd400);color:#3b2f00;font-size:14px;font-weight:700;letter-spacing:.03em;text-decoration:none;border:1px solid rgba(234,179,8,.8);box-shadow:0 8px 22px rgba(234,179,8,.25);">Comprar no Mercado Livre</a>
+  <a href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/" target="_blank" rel="nofollow sponsored noopener" style="display:flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:999px;background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#f9fafb;font-size:14px;font-weight:700;letter-spacing:.03em;text-decoration:none;border:1px solid rgba(59,130,246,.8);box-shadow:0 8px 22px rgba(37,99,235,.25);">Comprar no Magazine Luiza</a>
+  <a href="https://amzn.to/4uwYgR8" target="_blank" rel="nofollow sponsored noopener" style="display:flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:999px;background:linear-gradient(135deg,#f97316,#ea580c);color:#fff7ed;font-size:14px;font-weight:700;letter-spacing:.03em;text-decoration:none;border:1px solid rgba(249,115,22,.8);box-shadow:0 8px 22px rgba(249,115,22,.25);">Comprar na Amazon</a>
 </div>
 
 ---
@@ -206,15 +206,13 @@ Seguindo essas três etapas, você extrai o máximo de cada fragrância:
 
 ---
 
-<div class="cta-stack">
-  <p class="cta-title">🔒 Compre com segurança — lojas oficiais</p>
-  <div class="cta-grid">
-    <a class="btn-ml" href="https://meli.la/2nsfiWQ" target="_blank" rel="nofollow sponsored noopener">🛒 Mercado Livre — ofertas verificadas</a>
-    <a class="btn-magalu" href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/" target="_blank" rel="nofollow sponsored noopener">🛍️ Magazine Luiza — parcelamento fácil</a>
-    <a class="btn-amazon" href="https://amzn.to/4uwYgR8" target="_blank" rel="nofollow sponsored noopener">📦 Amazon — entrega expressa</a>
+<div style="margin:2rem 0;padding:1.75rem 1.5rem;border-radius:16px;background:linear-gradient(135deg,#0f172a,#1e293b);box-shadow:0 20px 50px rgba(15,23,42,.5);border:1px solid rgba(148,163,184,.2);">
+  <p style="margin:0 0 1rem;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#94a3b8;">Onde comprar com segurança</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;">
+    <a href="https://meli.la/2nsfiWQ" target="_blank" rel="nofollow sponsored noopener" style="display:flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:999px;background:linear-gradient(135deg,#ffe767,#ffd400);color:#3b2f00;font-size:14px;font-weight:700;letter-spacing:.03em;text-decoration:none;border:1px solid rgba(234,179,8,.8);box-shadow:0 8px 22px rgba(234,179,8,.3);">Mercado Livre</a>
+    <a href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/" target="_blank" rel="nofollow sponsored noopener" style="display:flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:999px;background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#f9fafb;font-size:14px;font-weight:700;letter-spacing:.03em;text-decoration:none;border:1px solid rgba(59,130,246,.8);box-shadow:0 8px 22px rgba(37,99,235,.3);">Magazine Luiza</a>
+    <a href="https://amzn.to/4uwYgR8" target="_blank" rel="nofollow sponsored noopener" style="display:flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:999px;background:linear-gradient(135deg,#f97316,#ea580c);color:#fff7ed;font-size:14px;font-weight:700;letter-spacing:.03em;text-decoration:none;border:1px solid rgba(249,115,22,.8);box-shadow:0 8px 22px rgba(249,115,22,.3);">Amazon</a>
   </div>
 </div>
-
----
 
 *Links deste post são afiliados. Você não paga nada a mais, mas nos ajuda a manter o site gratuito.*
