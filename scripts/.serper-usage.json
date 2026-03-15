@@ -1,5 +1,5 @@
 {
-  "total": 78,
+  "total": 81,
   "mes_atual": 2,
   "logs": [
     {
@@ -130,6 +130,11 @@
     {
       "data": "2026-03-13T00:39:53.146Z",
       "produto": "L-glutamina 500g - 100% Pura Importada - Soldiers ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-15T19:14:48.099Z",
+      "produto": "3 Perfume Capilar Barbour&#x27;s Alter Ego Living ",
       "consultas": 3
     }
   ]
