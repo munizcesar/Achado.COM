@@ -1,5 +1,5 @@
 {
-  "total": 81,
+  "total": 84,
   "mes_atual": 2,
   "logs": [
     {
@@ -135,6 +135,11 @@
     {
       "data": "2026-03-15T19:14:48.099Z",
       "produto": "3 Perfume Capilar Barbour&#x27;s Alter Ego Living ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-15T20:00:56.193Z",
+      "produto": "Kit 3 Body Splash Good Graces Delight Very Sexy Ba",
       "consultas": 3
     }
   ]
