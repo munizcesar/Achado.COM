@@ -102,7 +102,7 @@ const postsData = [
   {
     "titulo": "⚡ Creatina: Guia Completo para Máxima Performance",
     "resumo": "Aprenda tudo sobre creatina: como funciona, qual é a melhor marca, dosagem correta e efeitos colaterais. Aumentar força nunca foi tão simples.",
-    "imagem": "images/imagesposts/creatina-soldiers-500g.jpeg",
+    "imagem": "images/imagesposts/creatina-soldiers-500g.webp",
     "link": "blog/guia-creatina-performance.html",
     "linkProduto": "https://mercadolivre.com/sec/2KW8RB6",
     "chamada": "Ver Guia Completo",

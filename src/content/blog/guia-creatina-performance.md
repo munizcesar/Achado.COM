@@ -3,8 +3,8 @@ title: "Creatina: Guia Completo para Máxima Performance"
 description: "Aprenda tudo sobre creatina: como funciona, qual é a melhor marca, dosagem correta e efeitos colaterais. Aumentar força nunca foi tão simples."
 date: 2026-02-03
 category: "saude"
-image: "/images/imagesposts/creatina-soldiers-500g.jpeg"
-productImage: "/images/imagesposts/creatina-soldiers-500g.jpeg"
+image: "/images/imagesposts/creatina-soldiers-500g.webp"
+productImage: "/images/imagesposts/creatina-soldiers-500g.webp"
 tags: ["creatina", "suplemento", "performance", "musculacao", "guia"]
 affiliateUrl: "https://mercadolivre.com/sec/2KW8RB6"
 draft: false
@@ -17,7 +17,7 @@ draft: false
 Com mais de 500 estudos clínicos publicados, a creatina monohidratada é o suplemento esportivo com maior respaldo científico do mundo. Funciona, é segura e é acessível.
 
 <div style="display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#fff8f0,#fff3e0);border:2px solid var(--c-brand);border-radius:12px;padding:20px 24px;margin:24px 0;box-shadow:0 4px 20px rgba(220,80,30,.12);">
-  <img src="/images/imagesposts/creatina-soldiers-500g.jpeg" alt="Creatina Soldiers 500g" style="width:110px;height:110px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
+  <img src="/images/imagesposts/creatina-soldiers-500g.webp" alt="Creatina Soldiers 500g" style="width:110px;height:110px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
   <div style="flex:1;">
     <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);margin-bottom:4px;">💪 Creatina Recomendada no Guia</p>
     <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">Creatina Soldiers Nutrition 500g</p>
