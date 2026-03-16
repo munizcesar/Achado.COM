@@ -2,7 +2,7 @@
 title: "Kit de Body Splash Barbour’s Beauty: fragrâncias Good Graces, Delight e Very Sexy (guia completo de aromas, famílias olfativas e inspirações)"
 description: "Descubra como aproveitar o kit de body splashes Barbour’s Beauty (Good Graces, Delight e Very Sexy) para variar fragrâncias no dia a dia com elegância."
 date: 2026-03-15
-category: Saude
+category: Beleza
 image: /images/posts/kit-3-body-splash-good-graces-delight-very-sexy-barbourx27s.jpg
 tags: [saude]
 draft: false
