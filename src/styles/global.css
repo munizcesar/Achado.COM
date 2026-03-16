@@ -745,6 +745,14 @@ body.drawer-open { overflow: hidden; }
   font-weight: 700;
 }
 
+.prose tr:nth-child(even) {
+  background: rgba(26, 86, 219, 0.06);
+}
+
+.prose tr:hover {
+  background: rgba(26, 86, 219, 0.12);
+}
+
 .prose tr:last-child td {
   border-bottom: none;
 }
@@ -752,6 +760,21 @@ body.drawer-open { overflow: hidden; }
 .prose table {
   display: block;
   overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(26, 86, 219, 0.35) rgba(0,0,0,0.05);
+}
+
+.prose table::-webkit-scrollbar {
+  height: 8px;
+}
+
+.prose table::-webkit-scrollbar-thumb {
+  background: rgba(26, 86, 219, 0.35);
+  border-radius: 999px;
+}
+
+.prose table::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.04);
 }
 .footer-disclaimer {
   font-size: 12px;
