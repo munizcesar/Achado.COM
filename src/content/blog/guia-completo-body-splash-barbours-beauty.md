@@ -22,12 +22,6 @@ Se você ama o cheiro de perfume caro mas quer praticidade no dia a dia, os **Bo
   </ul>
 </div>
 
-<div style="display:flex;gap:8px;margin:1.5rem 0 2.5rem;">
-  <a href="https://meli.la/2nsfiWQ" target="_blank" rel="nofollow sponsored noopener" style="flex:1 1 0;display:flex;align-items:center;justify-content:center;padding:7px 6px;border-radius:999px;background:linear-gradient(160deg,#fff176 0%,#fdd835 45%,#f9a825 100%);color:#3b2f00;font-size:12px;font-weight:700;letter-spacing:.03em;text-decoration:none;border:1px solid rgba(249,168,37,.7);box-shadow:0 3px 10px rgba(253,216,53,.35);text-align:center;line-height:1.3;">Ver no Mercado Livre</a>
-  <a href="https://www.magazinevoce.com.br/magazinevantagensmax/busca/barbours+body+splash/" target="_blank" rel="nofollow sponsored noopener" style="flex:1 1 0;display:flex;align-items:center;justify-content:center;padding:7px 6px;border-radius:999px;background:linear-gradient(160deg,#60a5fa 0%,#2563eb 45%,#1d4ed8 100%);color:#f0f9ff;font-size:12px;font-weight:700;letter-spacing:.03em;text-decoration:none;border:1px solid rgba(37,99,235,.6);box-shadow:0 3px 10px rgba(37,99,235,.35);text-align:center;line-height:1.3;">Ver no Magalu</a>
-  <a href="https://amzn.to/4uwYgR8" target="_blank" rel="nofollow sponsored noopener" style="flex:1 1 0;display:flex;align-items:center;justify-content:center;padding:7px 6px;border-radius:999px;background:linear-gradient(160deg,#fdba74 0%,#f97316 45%,#c2410c 100%);color:#fff7ed;font-size:12px;font-weight:700;letter-spacing:.03em;text-decoration:none;border:1px solid rgba(249,115,22,.6);box-shadow:0 3px 10px rgba(249,115,22,.35);text-align:center;line-height:1.3;">Ver na Amazon</a>
-</div>
-
 ---
 
 ## Por que Todo Mundo Está Elogiando?
