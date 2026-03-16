@@ -3,11 +3,11 @@ title: "Guia Completo dos Pneus Pirelli: Modelos, Tecnologias, Vantagens e Como 
 description: "Descubra os melhores pneus Pirelli, modelos como P Zero, Cinturato e Scorpion, vantagens da marca e como entender as especificações para escolher o pneu ideal."
 date: 2026-03-16
 category: Automotivo
-image: /images/posts/pneus-pireli.jpg
+image: /images/posts/pneus-pireli.webp
 tags: [automotivo]
 draft: false
-affiliateUrl: "https://divulgador.magalu.com/wffXEzhk"
-productImage: /images/posts/pneus-pireli.jpg
+affiliateUrl: "https://divulgador.magalu.com/dyHPZJkD"
+productImage: /images/posts/pneus-pireli.webp
 ---
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
