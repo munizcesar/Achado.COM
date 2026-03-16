@@ -62,7 +62,7 @@ const postsData = [
   {
     "titulo": "💪 Creatina Monohidratada 500g Pura: Potencialize seu Desempenho",
     "resumo": "Descubra por que a creatina monohidratada é o suplemento mais comprovado para ganho de força e massa muscular. Qualidade importada 99.8% pura com laudo de pureza garantido.",
-    "imagem": "images/imagesposts/creatinarefil.webp",
+    "imagem": "images/imagesposts/creatina-soldiers-500g.jpeg",
     "link": "blog/creatina-soldiers-500g.html",
     "linkProduto": "https://mercadolivre.com/sec/2KW8RB6",
     "chamada": "Ler Artigo Completo",
