@@ -1,5 +1,5 @@
 ---
-title: "Pneus Pirelli: guia completo, modelos, vantagens e como escolher"
+title: "Guia Completo dos Pneus Pirelli: Modelos, Tecnologias, Vantagens e Como Escolher o Ideal"
 description: "Descubra os melhores pneus Pirelli, modelos como P Zero, Cinturato e Scorpion, vantagens da marca e como entender as especificações para escolher o pneu ideal."
 date: 2026-03-16
 category: Automotivo
