@@ -1,5 +1,5 @@
 {
-  "total": 84,
+  "total": 87,
   "mes_atual": 2,
   "logs": [
     {
@@ -140,6 +140,11 @@
     {
       "data": "2026-03-15T20:00:56.193Z",
       "produto": "Kit 3 Body Splash Good Graces Delight Very Sexy Ba",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-16T22:47:23.853Z",
+      "produto": "pneus pireli",
       "consultas": 3
     }
   ]
