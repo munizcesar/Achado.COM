@@ -52,7 +52,7 @@ const postsData = [
   {
     "titulo": "⚡ Arginina: O Segredo da Potência e Vascularização",
     "resumo": "Acelere sua recuperação e maximize o 'pump' muscular. O suplemento essencial para performance esportiva.",
-    "imagem": "images/imagesposts/arginina.png",
+    "imagem": "images/imagesposts/arginina.webp",
     "link": "blog/guia-arginina.html",
     "linkProduto": "https://mercadolivre.com/sec/2y9LCvd",
     "chamada": "Ver Materia Completa",

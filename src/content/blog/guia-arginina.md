@@ -3,8 +3,8 @@ title: "L-Arginina: Guia Completo de Potência e Vascularização"
 description: "Acelere sua recuperação e maximize o pump muscular. O suplemento essencial para performance esportiva — tudo que você precisa saber sobre a L-Arginina."
 date: 2026-02-12
 category: "saude"
-image: "/images/imagesposts/arginina.png"
-productImage: "/images/imagesposts/arginina.png"
+image: "/images/imagesposts/arginina.webp"
+productImage: "/images/imagesposts/arginina.webp"
 tags: ["arginina", "suplemento", "pump", "pre-treino", "fitness"]
 affiliateUrl: "https://mercadolivre.com/sec/2y9LCvd"
 draft: false
@@ -17,7 +17,7 @@ draft: false
 A L-Arginina é um aminoácido semi-essencial que atua como precursor direto do **óxido nítrico (NO)** — a molécula responsável pela vasodilatação. Mais óxido nítrico = mais sangue chegando aos músculos = mais pump, nutrientes e oxigênio durante o treino.
 
 <div style="display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#fff8f0,#fff3e0);border:2px solid var(--c-brand);border-radius:12px;padding:20px 24px;margin:24px 0;box-shadow:0 4px 20px rgba(220,80,30,.12);">
-  <img src="/images/imagesposts/arginina.png" alt="L-Arginina" style="width:110px;height:110px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
+  <img src="/images/imagesposts/arginina.webp" alt="L-Arginina" style="width:110px;height:110px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
   <div style="flex:1;">
     <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);margin-bottom:4px;">🔥 Melhor Custo-Benefício em Pump</p>
     <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">L-Arginina Pura</p>

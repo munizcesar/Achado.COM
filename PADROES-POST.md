@@ -980,7 +980,7 @@ A animação pulsante em ouro continua no `.offers-box` (caixa de destaques/víd
 | cafeteira-italiana-inox | cafeteira-italiana-inox-fundo-colorido.webp | 923 KB | ✅ |
 | comparativo-xiaomi-poco-2026 | produtos_xiaomi.jpg | 8.68 KB | ✅ |
 | creatina-soldiers-500g | creatina-soldiers-500g.webp | 557 KB | ✅ |
-| guia-arginina | arginina.png | 1679 KB | ✅ |
+| guia-arginina | arginina.webp | 1679 KB | ✅ |
 | guia-creatina-performance | creatina-soldiers-500g.jpeg | 557 KB | ✅ |
 | guia-seguranca-mercado-livre | seguranca-ml.jpg | 61 KB | ✅ |
 | legging-fitness-selene | legging-fitness-zero-transparencia-selene.webp | 98 KB | ✅ |
