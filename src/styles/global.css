@@ -718,6 +718,41 @@ body.drawer-open { overflow: hidden; }
   font-size: 13px;
   color: var(--c-text-muted);
 }
+
+/* Table styling for post content */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  overflow: hidden;
+  border-radius: var(--r-md);
+  border: 1px solid var(--c-border);
+  background: var(--c-surface);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.prose th,
+.prose td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--c-border);
+  vertical-align: top;
+}
+
+.prose th {
+  background: var(--c-brand-soft);
+  color: var(--c-brand);
+  font-weight: 700;
+}
+
+.prose tr:last-child td {
+  border-bottom: none;
+}
+
+.prose table {
+  display: block;
+  overflow-x: auto;
+}
 .footer-disclaimer {
   font-size: 12px;
   color: var(--c-text-light);
