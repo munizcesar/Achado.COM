@@ -90,6 +90,17 @@ const relatedPosts = (relatedByCategory.length >= 3
   ? relatedByCategory
   : [...relatedByCategory, ...others]
 ).slice(0, 3);
+
+const relatedPlaceholders = Array.from({ length: Math.max(0, 3 - relatedPosts.length) }, () => ({
+  placeholder: true,
+  title: 'Ver mais artigos',
+  description: 'Explore mais reviews e guias no blog.',
+  category: 'Explorar',
+  slug: '/blog',
+  image: '/og-default.jpg',
+}));
+
+const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
 ---
 
 <Layout
@@ -300,27 +311,28 @@ const relatedPosts = (relatedByCategory.length >= 3
             📚 Artigos Relacionados
           </h2>
           <div class="related-grid">
-            {relatedPosts.map(related => {
-              const relImg = related.data.productImage || related.data.image || '/og-default.jpg';
-              const relUrl = `/blog/${related.slug}`;
+            {relatedDisplay.map(related => {
+              const isPlaceholder = related.placeholder;
+              const relImg = isPlaceholder ? related.image : (related.data.productImage || related.data.image || '/og-default.jpg');
+              const relUrl = isPlaceholder ? related.slug : `/blog/${related.slug}`;
               return (
-                <a href={relUrl} class="related-card">
+                <a href={relUrl} class="related-card" style={isPlaceholder ? 'opacity:0.82;' : ''}>
                   <div class="related-img-wrap">
                     <img
                       src={relImg}
-                      alt={related.data.title}
+                      alt={isPlaceholder ? 'Mais artigos' : related.data.title}
                       class="related-img"
                       loading="lazy"
                     />
                   </div>
                   <div class="related-content">
-                    <span class="related-category">{related.data.category}</span>
-                    <h3 class="related-title">{related.data.title}</h3>
-                    {related.data.description && (
-                      <p class="related-desc">{related.data.description}</p>
+                    <span class="related-category">{related.category}</span>
+                    <h3 class="related-title">{related.title}</h3>
+                    {related.description && (
+                      <p class="related-desc">{related.description}</p>
                     )}
                     <span class="related-link">
-                      Ler artigo
+                      {isPlaceholder ? 'Ver mais' : 'Ler artigo'}
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                       </svg>
