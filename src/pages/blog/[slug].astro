@@ -78,8 +78,17 @@ function shuffleArray(arr) {
   return copy;
 }
 
-const relatedPosts = shuffleArray(
+const relatedByCategory = shuffleArray(
   allPosts.filter(p => p.slug !== post.slug && p.data.category === post.data.category)
+);
+
+const others = shuffleArray(
+  allPosts.filter(p => p.slug !== post.slug && p.data.category !== post.data.category)
+);
+
+const relatedPosts = (relatedByCategory.length >= 3
+  ? relatedByCategory
+  : [...relatedByCategory, ...others]
 ).slice(0, 3);
 ---
 
