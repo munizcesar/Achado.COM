@@ -100,6 +100,7 @@ function detectPlatform(u) {
   if (/mercadolivre|mercadolibre|mercado livre|mlb|meli\.la/i.test(u)) return 'ml';
   if (/amazon\.com\.br|amzn\.to|amzn\.com/i.test(u))          return 'amazon';
   if (/magazineluiza|magalu|maga\.lu/i.test(u))                return 'magalu';
+  if (/shopee\.com\.br|shopee\.com/i.test(u))                return 'shopee';
   return 'unknown';
 }
 
@@ -394,6 +395,43 @@ async function fetchMagalu(inputUrl) {
   };
 }
 
+// ── Shopee (scraping) ──────────────────────────────────────────────────
+
+async function fetchShopee(inputUrl) {
+  console.log('🛍️  Shopee detectado...');
+  const res = await get(inputUrl);
+  const body = res.body || '';
+
+  let title = 'Produto Shopee';
+  const ogTitle = body.match(/<meta[^>]+property="og:title"[^>]+content="([^"]+)"/i);
+  if (ogTitle && ogTitle[1]) title = ogTitle[1].trim();
+  else {
+    const titleTag = body.match(/<title>([^<]{5,250})<\/title>/i);
+    if (titleTag) title = titleTag[1].trim();
+  }
+
+  let imageUrl = '';
+  const ogImage = body.match(/<meta[^>]+property="og:image"[^>]+content="([^"]+)"/i);
+  if (ogImage && ogImage[1]) imageUrl = ogImage[1].replace(/\\s/g, '%20');
+
+  const descTag = body.match(/<meta[^>]+name="description"[^>]+content="([^"]{10,200})"/i);
+  const description = descTag
+    ? descTag[1].trim().replace(/"/g, "'")
+    : `Conheça o ${cleanTitle(title)}. Disponível na Shopee com entrega rápida para todo o Brasil.`;
+
+  const specs = [];
+
+  return {
+    title: cleanTitle(title),
+    description,
+    category: mapCategory(title),
+    imageUrl,
+    specs,
+    store: 'Shopee',
+    affiliateUrl: inputUrl,
+  };
+}
+
 // ── Gera markdown com IA ──────────────────────────────────────────────────
 
 async function generateMarkdown(produto, imageFile, slug) {
@@ -525,7 +563,9 @@ async function main() {
   try {
     if      (platform === 'ml')     product = await fetchML(inputUrl);
     else if (platform === 'amazon') product = await fetchAmazon(inputUrl);
-    else                             product = await fetchMagalu(inputUrl);
+    else if (platform === 'magalu') product = await fetchMagalu(inputUrl);
+    else if (platform === 'shopee') product = await fetchShopee(inputUrl);
+    else                             throw new Error('Plataforma desconhecida');
   } catch (err) {
     console.error('\n❌ Erro ao buscar produto:', err.message, '\n');
     process.exit(1);

@@ -1,5 +1,5 @@
 {
-  "total": 90,
+  "total": 93,
   "mes_atual": 2,
   "logs": [
     {
@@ -150,6 +150,11 @@
     {
       "data": "2026-03-19T23:21:23.178Z",
       "produto": "Lava E Seca 10,5kg Healthguard Titanium Conectada ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-19T23:34:53.147Z",
+      "produto": "Produto Shopee",
       "consultas": 3
     }
   ]
