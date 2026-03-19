@@ -1,5 +1,5 @@
 {
-  "total": 87,
+  "total": 90,
   "mes_atual": 2,
   "logs": [
     {
@@ -145,6 +145,11 @@
     {
       "data": "2026-03-16T22:47:23.853Z",
       "produto": "pneus pireli",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-19T23:21:23.178Z",
+      "produto": "Lava E Seca 10,5kg Healthguard Titanium Conectada ",
       "consultas": 3
     }
   ]
