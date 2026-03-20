@@ -188,7 +188,3 @@ E quando a prática se torna simples, o resultado deixa de ser exceção e passa
 ---
 
 *Links deste post são afiliados. Você não paga nada a mais, mas nos ajuda a manter o site gratuito.*
-
----
-
-*Links deste post são afiliados. Você não paga nada a mais, mas nos ajuda a manter o site gratuito.*

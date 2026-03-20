@@ -126,7 +126,3 @@ A escolha ideal é aquela que acompanha seu ritmo e simplifica sua rotina — e 
 ---
 
 *Links deste post são afiliados. Você não paga nada a mais, mas nos ajuda a manter o site gratuito.*
-
----
-
-*Links deste post são afiliados. Você não paga nada a mais, mas nos ajuda a manter o site gratuito.*
