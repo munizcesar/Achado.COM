@@ -100,7 +100,6 @@ function detectPlatform(u) {
   if (/mercadolivre|mercadolibre|mercado livre|mlb|meli\.la/i.test(u)) return 'ml';
   if (/amazon\.com\.br|amzn\.to|amzn\.com/i.test(u))          return 'amazon';
   if (/magazineluiza|magalu|maga\.lu/i.test(u))                return 'magalu';
-  if (/shopee\.com\.br|shopee\.com/i.test(u))                return 'shopee';
   return 'unknown';
 }
 
@@ -175,19 +174,6 @@ function mapCategory(name) {
   }
   
   return bestCategory;
-}
-
-async function resolveShopeeShortUrl(path) {
-  const normalized = path.replace(/^\//, '');
-  const api = `https://shopee.com.br/api/v4/pages/is_short_url/?path=${encodeURIComponent(normalized)}`;
-  try {
-    const res = await get(api);
-    if (res.status === 200) {
-      const data = JSON.parse(res.body || '{}');
-      if (data?.data?.url) return data.data.url;
-    }
-  } catch (_) {}
-  return null;
 }
 
 function cleanTitle(title) {
@@ -408,108 +394,6 @@ async function fetchMagalu(inputUrl) {
   };
 }
 
-// ── Shopee (scraping) ──────────────────────────────────────────────────
-
-async function fetchShopee(inputUrl) {
-  console.log('🛍️  Shopee detectado...');
-  let res = await get(inputUrl);
-  let body = res.body || '';
-  let currentUrl = res.url || inputUrl;
-
-  // short links (opaanlp) podem ser resolvidos via endpoint interno
-  const shortPath = currentUrl.replace(/^https?:\/\//, '').replace(/^shopee\.com\.br\//, '');
-  if (/^opaanlp\//.test(shortPath)) {
-    const resolved = await resolveShopeeShortUrl(shortPath);
-    if (resolved) {
-      currentUrl = resolved;
-      const next = await get(currentUrl);
-      body = next.body || '';
-    }
-  }
-
-  // Extrai IDs shop/item para tentar API direta (fallback)
-  let shopId = null;
-  let itemId = null;
-
-  const apiIdMatch = (currentUrl.match(/\/product\/(\d+)\/(\d+)/i) || currentUrl.match(/\/opaanlp\/(\d+)\/(\d+)/i));
-  if (apiIdMatch) {
-    shopId = apiIdMatch[1];
-    itemId = apiIdMatch[2];
-  } else {
-    const aliasMatch = currentUrl.match(/-i\.(\d+)\.(\d+)/i);
-    if (aliasMatch) {
-      shopId = aliasMatch[1];
-      itemId = aliasMatch[2];
-    }
-  }
-
-  let title = '';
-  let imageUrl = '';
-  const specs = [];
-
-  if (shopId && itemId) {
-    try {
-      const apiUrl = `https://shopee.com.br/api/v4/item/get?itemid=${itemId}&shopid=${shopId}`;
-      const apiRes = await get(apiUrl);
-      if (apiRes.status === 200) {
-        const data = JSON.parse(apiRes.body);
-        if (data?.item) {
-          title = data.item.name || title;
-          if (Array.isArray(data.item.images) && data.item.images.length > 0) {
-            imageUrl = `https://down-br.img.susercontent.com/${data.item.images[0]}`;
-          }
-          if (Array.isArray(data.item.attributes) && data.item.attributes.length > 0) {
-            specs.push(...data.item.attributes.slice(0, 6).map(a => `- **${a.name}:** ${a.value}`));
-          }
-        }
-      }
-    } catch (e) {
-      console.log('   ⚠️  API Shopee não disponível:', e.message);
-    }
-  }
-
-  // fallback a partir da página HTML
-  const ogTitle = body.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i);
-  if (ogTitle && ogTitle[1]) title = ogTitle[1].trim();
-  const titleTag = body.match(/<title>([^<]{5,250})<\/title>/i);
-  if (!title && titleTag) title = titleTag[1].trim();
-
-  const ogImage = body.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i);
-  if (!imageUrl && ogImage && ogImage[1]) imageUrl = ogImage[1].replace(/\s/g, '%20');
-
-  if (!imageUrl) {
-    const jsonImage = body.match(/"image"\s*:\s*"(https?:\/\/down-br\.img\.susercontent\.com\/[^"\\]+)"/i);
-    if (jsonImage) imageUrl = jsonImage[1].replace(/\\u002F/g, '/');
-  }
-  if (!title) {
-    // Tenta derivar título do próprio URL (quando não há metadata)
-    try {
-      const u = new URL(currentUrl);
-      const last = u.pathname.split('/').filter(Boolean).pop();
-      if (last) {
-        const fromUrl = last.replace(/[-_]+/g, ' ').replace(/\d+/, '').trim();
-        if (fromUrl) title = fromUrl[0].toUpperCase() + fromUrl.slice(1);
-      }
-    } catch (_){ }
-  }
-
-  if (!title) title = 'Oferta Shopee';
-  const descTag = body.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']{10,200})["']/i);
-  const description = descTag
-    ? descTag[1].trim().replace(/"/g, "'")
-    : `Conheça o ${cleanTitle(title || 'Oferta Shopee')}. Disponível na Shopee com entrega rápida para todo o Brasil.`;
-
-  return {
-    title: cleanTitle(title),
-    description,
-    category: mapCategory(title),
-    imageUrl,
-    specs,
-    store: 'Shopee',
-    affiliateUrl: inputUrl,
-  };
-}
-
 // ── Gera markdown com IA ──────────────────────────────────────────────────
 
 async function generateMarkdown(produto, imageFile, slug) {
@@ -642,7 +526,6 @@ async function main() {
     if      (platform === 'ml')     product = await fetchML(inputUrl);
     else if (platform === 'amazon') product = await fetchAmazon(inputUrl);
     else if (platform === 'magalu') product = await fetchMagalu(inputUrl);
-    else if (platform === 'shopee') product = await fetchShopee(inputUrl);
     else                             throw new Error('Plataforma desconhecida');
   } catch (err) {
     console.error('\n❌ Erro ao buscar produto:', err.message, '\n');
