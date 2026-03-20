@@ -443,7 +443,7 @@ async function fetchShopee(inputUrl) {
     }
   }
 
-  let title = 'Produto Shopee';
+  let title = '';
   let imageUrl = '';
   const specs = [];
 
@@ -481,11 +481,23 @@ async function fetchShopee(inputUrl) {
     const jsonImage = body.match(/"image"\s*:\s*"(https?:\/\/down-br\.img\.susercontent\.com\/[^"\\]+)"/i);
     if (jsonImage) imageUrl = jsonImage[1].replace(/\\u002F/g, '/');
   }
+  if (!title) {
+    // Tenta derivar título do próprio URL (quando não há metadata)
+    try {
+      const u = new URL(currentUrl);
+      const last = u.pathname.split('/').filter(Boolean).pop();
+      if (last) {
+        const fromUrl = last.replace(/[-_]+/g, ' ').replace(/\d+/, '').trim();
+        if (fromUrl) title = fromUrl[0].toUpperCase() + fromUrl.slice(1);
+      }
+    } catch (_){ }
+  }
 
+  if (!title) title = 'Oferta Shopee';
   const descTag = body.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']{10,200})["']/i);
   const description = descTag
     ? descTag[1].trim().replace(/"/g, "'")
-    : `Conheça o ${cleanTitle(title)}. Disponível na Shopee com entrega rápida para todo o Brasil.`;
+    : `Conheça o ${cleanTitle(title || 'Oferta Shopee')}. Disponível na Shopee com entrega rápida para todo o Brasil.`;
 
   return {
     title: cleanTitle(title),

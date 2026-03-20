@@ -1,5 +1,5 @@
 {
-  "total": 99,
+  "total": 102,
   "mes_atual": 2,
   "logs": [
     {
@@ -165,6 +165,11 @@
     {
       "data": "2026-03-20T00:06:42.085Z",
       "produto": "Bicicleta Ergométrica Para Spinning Mecanica 8kg O",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-20T00:13:13.989Z",
+      "produto": "Oferta Shopee",
       "consultas": 3
     }
   ]
