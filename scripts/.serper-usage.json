@@ -1,5 +1,5 @@
 {
-  "total": 117,
+  "total": 120,
   "mes_atual": 2,
   "logs": [
     {
@@ -195,6 +195,11 @@
     {
       "data": "2026-03-21T00:06:03.056Z",
       "produto": "Zaad Intense De O Boticário Eau De Parfume 95ml",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-21T00:08:49.418Z",
+      "produto": "Perfume Jean Paul Gaultier Le Male Eau De Toilette",
       "consultas": 3
     }
   ]
