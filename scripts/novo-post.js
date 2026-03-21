@@ -296,15 +296,18 @@ async function fetchML(inputUrl) {
     .map(a => `- **${a.name}:** ${a.value_name}`);
 
   let categoryName = item.title;
+  let categoryNameFromApi = '';
   try {
     const c = await get(`https://api.mercadolibre.com/categories/${item.category_id}`);
-    if (c.status === 200) categoryName = JSON.parse(c.body).name;
+    if (c.status === 200) categoryNameFromApi = JSON.parse(c.body).name;
   } catch(_) {}
+
+  const combinedCategoryText = `${item.title} ${categoryNameFromApi}`.trim();
 
   return {
     title: cleanTitle(item.title),
     description: `Conheça o ${cleanTitle(item.title)}. Disponível no Mercado Livre com entrega rápida para todo o Brasil.`,
-    category: mapCategory(categoryName),
+    category: mapCategory(combinedCategoryText),
     imageUrl, specs,
     store: 'Mercado Livre',
     affiliateUrl: inputUrl,

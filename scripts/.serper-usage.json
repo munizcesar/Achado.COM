@@ -1,5 +1,5 @@
 {
-  "total": 120,
+  "total": 123,
   "mes_atual": 2,
   "logs": [
     {
@@ -199,6 +199,11 @@
     },
     {
       "data": "2026-03-21T00:08:49.418Z",
+      "produto": "Perfume Jean Paul Gaultier Le Male Eau De Toilette",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-21T00:24:51.212Z",
       "produto": "Perfume Jean Paul Gaultier Le Male Eau De Toilette",
       "consultas": 3
     }
