@@ -1,0 +1,24 @@
+---
+interface Props {
+  slot: string;
+  format?: string;
+  fullWidth?: boolean;
+}
+
+const {
+  slot,
+  format = "auto",
+  fullWidth = true,
+} = Astro.props;
+---
+
+<ins class="adsbygoogle"
+  style="display:block; min-height:90px;"
+  data-ad-client="ca-pub-8532820173012599"
+  data-ad-slot={slot}
+  data-ad-format={format}
+  data-full-width-responsive={fullWidth ? "true" : "false"}>
+</ins>
+<script is:inline>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
