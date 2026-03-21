@@ -1,5 +1,5 @@
 {
-  "total": 132,
+  "total": 135,
   "mes_atual": 2,
   "logs": [
     {
@@ -220,6 +220,11 @@
     {
       "data": "2026-03-21T21:56:17.654Z",
       "produto": "Perfume Jean Paul Gaultier Le Male Le Parfum Eau D",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-21T21:57:29.510Z",
+      "produto": "Perfume Jean Paul Gaultier Scandal Eau De Parfum 8",
       "consultas": 3
     }
   ]
