@@ -123,7 +123,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
           <a href="/blog" style="color:var(--c-brand);">Reviews</a><span>›</span>
           {post.data.category && <a href={`/categorias/${post.data.category.toLowerCase()}`} style="color:var(--c-brand);">{post.data.category}</a>}
           {post.data.category && <span>›</span>}
-          <span style="color:var(--c-text-light);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:200px;">{post.data.title}</span>
+          <span style="color:var(--c-text-light);overflow:hidden;text-overflow:ellipsis;max-width:260px;display:inline-block;word-break:break-word;">{post.data.title}</span>
         </nav>
 
         <span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);display:block;margin-bottom:10px;">
@@ -191,7 +191,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
          CONTEÚDO DO POST
     ============================================================ -->
     <div style="padding:32px 0 80px;background:var(--c-bg);">
-      <div class="container post-grid" style="max-width:820px;">
+      <div class="container post-content-grid" style="max-width:820px;">
 
         <!-- Texto principal -->
         <div class="prose">
@@ -428,13 +428,21 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
 
   <style>
     /* ===================== GRID ===================== */
-    .post-grid {
+    .post-content-grid {
       display: grid;
       grid-template-columns: 1fr 280px;
       gap: 48px;
       align-items: start;
     }
     .post-sidebar { position: sticky; top: 88px; }
+
+    /* CONTROLA POSTS EM MÍDIAS PEQUENAS */
+    @media (max-width: 768px) {
+      .post-content-grid { display: block !important; }
+      .prose { padding: 0 4px; }
+      .share-buttons { width: 100%; justify-content: flex-start; }
+      .product-box-final { padding: 24px 16px; }
+    }
 
     /* ===================== FAQ ===================== */
     .faq-item:hover {
@@ -569,7 +577,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
 
     /* ===================== MOBILE ===================== */
     @media (max-width: 768px) {
-      .post-grid { display:block !important; }
+      .post-content-grid { display:block !important; }
       .post-sidebar { position:static; margin-top:40px; }
       .product-box-final-btn { font-size:14px; padding:10px 24px; }
       .share-buttons { margin-top:12px; }
