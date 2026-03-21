@@ -1,5 +1,5 @@
 {
-  "total": 123,
+  "total": 126,
   "mes_atual": 2,
   "logs": [
     {
@@ -205,6 +205,11 @@
     {
       "data": "2026-03-21T00:24:51.212Z",
       "produto": "Perfume Jean Paul Gaultier Le Male Eau De Toilette",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-21T02:19:16.735Z",
+      "produto": "Ar-condicionado Split Samsung Inverter Windfree Ai",
       "consultas": 3
     }
   ]
