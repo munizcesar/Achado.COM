@@ -1,5 +1,5 @@
 {
-  "total": 135,
+  "total": 138,
   "mes_atual": 2,
   "logs": [
     {
@@ -225,6 +225,11 @@
     {
       "data": "2026-03-21T21:57:29.510Z",
       "produto": "Perfume Jean Paul Gaultier Scandal Eau De Parfum 8",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-21T21:58:32.162Z",
+      "produto": "Perfume Jean Paul Gaultier Le Male Elixir Parfum 1",
       "consultas": 3
     }
   ]
