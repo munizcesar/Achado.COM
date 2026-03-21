@@ -1,5 +1,5 @@
 {
-  "total": 114,
+  "total": 117,
   "mes_atual": 2,
   "logs": [
     {
@@ -190,6 +190,11 @@
     {
       "data": "2026-03-21T00:03:27.439Z",
       "produto": "O Boticário Zaad Expedition Edp 95ml Para Masculin",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-21T00:06:03.056Z",
+      "produto": "Zaad Intense De O Boticário Eau De Parfume 95ml",
       "consultas": 3
     }
   ]
