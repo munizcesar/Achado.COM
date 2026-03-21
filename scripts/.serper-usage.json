@@ -1,5 +1,5 @@
 {
-  "total": 111,
+  "total": 114,
   "mes_atual": 2,
   "logs": [
     {
@@ -185,6 +185,11 @@
     {
       "data": "2026-03-20T01:01:52.189Z",
       "produto": "Geladeira Electrolux Frost Free 431l Autosense Ino",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-21T00:03:27.439Z",
+      "produto": "O Boticário Zaad Expedition Edp 95ml Para Masculin",
       "consultas": 3
     }
   ]
