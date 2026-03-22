@@ -1,6 +1,6 @@
 ---
 title: "Guia Completo de Whey Protein: Tipos, Benefícios, Como Usar e Por Que Você Deveria Considerar Hoje"
-description: "Conheça o Whey Protein Zero Lactose Beef 900g Morango C/kiwi Shark Pro Morango Com Kiwi. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
+description: "Guia prático de whey protein para iniciantes, atletas e pessoas com mais de 50 anos. Saiba como escolher entre concentrado, isolado e hidrolisado, usar com segurança e obter resultados eficientes."
 date: 2026-03-22
 category: Saude
 image: /images/posts/wheyProtein.webp
