@@ -176,14 +176,18 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     {post.data.image && (
       <div style="background:var(--c-bg);padding:0 0 40px;">
         <div class="container" style="max-width:820px;">
-          <img
-            src={post.data.image}
-            alt={post.data.title}
-            style="width:100%;height:auto;max-height:500px;object-fit:contain;object-position:center;border-radius:var(--r-lg);box-shadow:var(--shadow-md);margin-top:-1px;background:#fff;"
-            width="820" height="461"
-            loading="eager"
-            fetchpriority="high"
-          />
+          <picture>
+            <source srcset={post.data.image} type="image/webp" />
+            <img
+              src={post.data.image}
+              alt={post.data.title}
+              style="width:100%;height:auto;max-height:500px;object-fit:contain;object-position:center;border-radius:var(--r-lg);box-shadow:var(--shadow-md);margin-top:-1px;background:#fff;"
+              width="820" height="461"
+              loading="eager"
+              fetchpriority="high"
+              onerror="this.style.display='none';"
+            />
+          </picture>
         </div>
       </div>
     )}
