@@ -1,5 +1,5 @@
 {
-  "total": 174,
+  "total": 177,
   "mes_atual": 2,
   "logs": [
     {
@@ -290,6 +290,11 @@
     {
       "data": "2026-03-22T23:22:02.570Z",
       "produto": "Multivitamínico 12 Vitaminas 5 Minerais 60 Cápsula",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-22T23:25:14.586Z",
+      "produto": "Vitamina C Em Pó Ácido Ascóbico 500g 100% Puro Sol",
       "consultas": 3
     }
   ]
