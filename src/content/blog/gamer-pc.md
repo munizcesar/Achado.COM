@@ -1,5 +1,5 @@
 ---
-title: "gamer pc"
+title: "Melhor Gamer PC 2026: Guia de Compra, Desempenho e Ofertas Magalu"
 description: "Procurando por gamer pc? Confira as ofertas que a Magalu separou para você. Facilidade no pagamento e entrega rápida. Vem ser feliz!"
 date: 2026-03-22
 category: Tech
