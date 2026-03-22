@@ -1,5 +1,5 @@
 {
-  "total": 141,
+  "total": 144,
   "mes_atual": 2,
   "logs": [
     {
@@ -235,6 +235,11 @@
     {
       "data": "2026-03-22T00:18:05.756Z",
       "produto": "Cooktop Mueller 5 Bocas Com Queimador Ultra Chama ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-22T00:19:26.898Z",
+      "produto": "Cadeira Escritório Ergonômica Genebra B500 Luvinco",
       "consultas": 3
     }
   ]
