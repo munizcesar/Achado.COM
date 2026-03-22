@@ -167,7 +167,7 @@ Descubra tudo sobre whey protein: tipos (concentrado, isolado, hidrolisado), qua
     <h3>Receita 1 — Shake Básico com Frutas</h3>
     <p>Ingredientes: 1 scoop de whey (baunilha ou morango), 200ml de leite desnatado ou bebida vegetal, ½ banana congelada ou 5 morangos, gelo a gosto.</p>
     <p>Modo de preparo: bater no liquidificador por 30 segundos.</p>
-    <img src="https://images.unsplash.com/photo-1604908177527-5c50e92b2d7f?auto=format&fit=crop&w=1200&q=80" alt="Shake de whey protein com frutas" />
+    <img src="/images/posts/whey-protein-zero-lactose-beef-900g-morango-ckiwi-shark-pro--.jpg" alt="Shake de whey protein com frutas" />
   </div>
   <div class="recipe-box">
     <h3>Receita 2 — Panqueca Proteica</h3>
@@ -178,7 +178,7 @@ Descubra tudo sobre whey protein: tipos (concentrado, isolado, hidrolisado), qua
   <div class="recipe-box">
     <h3>Receita 3 — Smoothie Verde Detox</h3>
     <p>Ingredientes: 1 scoop de whey neutro ou baunilha, 1 xícara de espinafre, ½ maçã verde, 200ml de água de coco, gelo. Bater e consumir imediatamente.</p>
-    <img src="https://images.unsplash.com/photo-1549261423-0d7a8b0f1bca?auto=format&fit=crop&w=1200&q=80" alt="Smoothie verde detox com whey protein" />
+    <img src="/images/posts/whey-protein-zero-lactose-beef-900g-morango-ckiwi-shark-pro---1.jpg" alt="Smoothie verde detox com whey protein" />
   </div>
   <div class="recipe-box">
     <h3>Receita 4 — Iogurte Proteico</h3>
