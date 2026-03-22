@@ -4,6 +4,10 @@
         "Get-NetTCPConnection": true,
         "git add": true,
         "git commit": true,
-        "git push": true
+        "git push": true,
+        "/^node scripts/novo-post\\.js \"https://meli\\.la/1uSPh5t\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
     }
 }

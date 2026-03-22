@@ -1,5 +1,5 @@
 {
-  "total": 168,
+  "total": 171,
   "mes_atual": 2,
   "logs": [
     {
@@ -280,6 +280,11 @@
     {
       "data": "2026-03-22T20:13:56.490Z",
       "produto": "Whey Protein Zero Lactose Beef 900g Morango C/kiwi",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-22T23:18:23.560Z",
+      "produto": "Ômega 3 1000mg 60 Cápsulas Soldiers Nutrition Cora",
       "consultas": 3
     }
   ]
