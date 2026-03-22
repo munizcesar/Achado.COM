@@ -1,5 +1,5 @@
 {
-  "total": 195,
+  "total": 198,
   "mes_atual": 2,
   "logs": [
     {
@@ -325,6 +325,11 @@
     {
       "data": "2026-03-22T23:39:03.589Z",
       "produto": "Coenzima Q10 Íntera Daily Soldiers Nutrition - Nat",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-22T23:42:02.183Z",
+      "produto": "Colágeno Tipo 2 Íntera Daily Soldiers Nutrition Na",
       "consultas": 3
     }
   ]
