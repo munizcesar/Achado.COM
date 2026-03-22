@@ -1,5 +1,5 @@
 {
-  "total": 171,
+  "total": 174,
   "mes_atual": 2,
   "logs": [
     {
@@ -285,6 +285,11 @@
     {
       "data": "2026-03-22T23:18:23.560Z",
       "produto": "Ômega 3 1000mg 60 Cápsulas Soldiers Nutrition Cora",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-22T23:22:02.570Z",
+      "produto": "Multivitamínico 12 Vitaminas 5 Minerais 60 Cápsula",
       "consultas": 3
     }
   ]
