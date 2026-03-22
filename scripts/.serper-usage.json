@@ -1,5 +1,5 @@
 {
-  "total": 186,
+  "total": 189,
   "mes_atual": 2,
   "logs": [
     {
@@ -310,6 +310,11 @@
     {
       "data": "2026-03-22T23:34:12.582Z",
       "produto": "Multivitamínico Az Homem Premium Íntera Daily Sold",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-22T23:36:12.270Z",
+      "produto": "Suplemento Alimentar Vitasay A-z Mulher 30 Comprim",
       "consultas": 3
     }
   ]
