@@ -1,5 +1,5 @@
 {
-  "total": 159,
+  "total": 162,
   "mes_atual": 2,
   "logs": [
     {
@@ -264,6 +264,11 @@
     },
     {
       "data": "2026-03-22T02:37:21.531Z",
+      "produto": "Ventilador De Mesa 30cm Super Power Mondial 60w Vs",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-22T02:37:55.884Z",
       "produto": "Ventilador De Mesa 30cm Super Power Mondial 60w Vs",
       "consultas": 3
     }
