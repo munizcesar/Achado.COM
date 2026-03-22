@@ -4,7 +4,10 @@ import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
-  const categorias = [...new Set(posts.map(p => p.data.category.toLowerCase()))];
+  const categorias = [...new Set(posts.map(p => {
+    const slug = p.data.category.toLowerCase();
+    return slug === 'lar' ? 'casa' : slug;
+  }))];
   return categorias.map(cat => ({
     params: { categoria: cat },
     props: {
@@ -21,8 +24,8 @@ const { categoria, posts } = Astro.props;
 const nomes = {
   tech: 'Tech & Eletrônicos',
   saude: 'Saúde & Bem-estar',
-  casa: 'Casa',
-  lar: 'Casa',
+  casa: 'Casa e Lar',
+  lar: 'Casa e Lar',
   esportes: 'Esportes',
   beleza: 'Beleza & Cuidados',
   dicas: 'Dicas',
