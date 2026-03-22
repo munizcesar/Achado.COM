@@ -1,5 +1,5 @@
 {
-  "total": 180,
+  "total": 183,
   "mes_atual": 2,
   "logs": [
     {
@@ -300,6 +300,11 @@
     {
       "data": "2026-03-22T23:29:28.510Z",
       "produto": "Vitamina D Íntera Daily Imunidade Soldiers Nutriti",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-22T23:31:11.067Z",
+      "produto": "Colágeno Hidrolisado 1kg Tipo 1 100% Puro Soldiers",
       "consultas": 3
     }
   ]
