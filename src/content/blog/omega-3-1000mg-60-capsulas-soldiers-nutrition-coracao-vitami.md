@@ -1,14 +1,4 @@
 ---
-title: "Ômega 3 1000mg 60 Cápsulas Soldiers Nutrition Coração Vitamina Sem Sabor"
-description: "Conheça o Ômega 3 1000mg 60 Cápsulas Soldiers Nutrition Coração Vitamina Sem Sabor. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
-date: 2026-03-22
-category: Saude
-image: /images/posts/omega-3-1000mg-60-capsulas-soldiers-nutrition-coracao-vitami.jpg
-tags: [saude]
-draft: false
-affiliateUrl: "https://meli.la/1uSPh5t"
-productImage: /images/posts/omega-3-1000mg-60-capsulas-soldiers-nutrition-coracao-vitami.jpg
-
 title: "Ômega 3 1000mg Soldiers Nutrition: Guia Completo para Escolher com Segurança e Confiança"
 description: "Descubra por que o Ômega 3 1000mg Soldiers Nutrition é uma das melhores escolhas para saúde cardiovascular, cerebral e imunológica. Veja benefícios, diferenciais e como tomar."
 date: 2026-03-22
