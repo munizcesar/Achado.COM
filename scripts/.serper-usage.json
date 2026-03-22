@@ -1,5 +1,5 @@
 {
-  "total": 192,
+  "total": 195,
   "mes_atual": 2,
   "logs": [
     {
@@ -320,6 +320,11 @@
     {
       "data": "2026-03-22T23:37:36.629Z",
       "produto": "Complexo B Premium Íntera Daily Energia Soldiers N",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-22T23:39:03.589Z",
+      "produto": "Coenzima Q10 Íntera Daily Soldiers Nutrition - Nat",
       "consultas": 3
     }
   ]
