@@ -167,23 +167,23 @@ Descubra tudo sobre whey protein: tipos (concentrado, isolado, hidrolisado), qua
     <h3>Receita 1 — Shake Básico com Frutas</h3>
     <p>Ingredientes: 1 scoop de whey (baunilha ou morango), 200ml de leite desnatado ou bebida vegetal, ½ banana congelada ou 5 morangos, gelo a gosto.</p>
     <p>Modo de preparo: bater no liquidificador por 30 segundos.</p>
-    <img src="" alt="Shake de whey protein com frutas" />
+    <img src="/images/posts/wheyProtein.webp" alt="Shake de whey protein com frutas" />
   </div>
   <div class="recipe-box">
     <h3>Receita 2 — Panqueca Proteica</h3>
     <p>Ingredientes: 1 banana amassada, 1 ovo, 1 scoop de whey, canela. Misturar e grelhar em frigideira antiaderente.</p>
     <p>Ótima para café da manhã, alta proteína e sem glúten.</p>
-    <img src="" alt="Panqueca proteica com whey protein" />
+    <img src="/images/posts/wheyProtein.webp" alt="Panqueca proteica com whey protein" />
   </div>
   <div class="recipe-box">
     <h3>Receita 3 — Smoothie Verde Detox</h3>
     <p>Ingredientes: 1 scoop de whey neutro ou baunilha, 1 xícara de espinafre, ½ maçã verde, 200ml de água de coco, gelo. Bater e consumir imediatamente.</p>
-    <img src="" alt="Smoothie verde detox com whey protein" />
+    <img src="/images/posts/wheyProtein.webp" alt="Smoothie verde detox com whey protein" />
   </div>
   <div class="recipe-box">
     <h3>Receita 4 — Iogurte Proteico</h3>
     <p>Ingredientes: 1 pote de iogurte grego natural (170g), 1 scoop de whey sabor frutas vermelhas. Misturar e consumir como lanche.</p>
-    <img src="" alt="Iogurte proteico com whey protein" />
+    <img src="/images/posts/wheyProtein.webp" alt="Iogurte proteico com whey protein" />
   </div>
 </section>
 
