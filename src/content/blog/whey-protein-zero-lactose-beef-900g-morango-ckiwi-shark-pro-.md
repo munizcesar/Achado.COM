@@ -3,11 +3,11 @@ title: "Whey Protein Zero Lactose Beef 900g Morango C/kiwi Shark Pro Morango Com
 description: "Conheça o Whey Protein Zero Lactose Beef 900g Morango C/kiwi Shark Pro Morango Com Kiwi. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-22
 category: Saude
-image: /images/posts/whey-protein-zero-lactose-beef-900g-morango-ckiwi-shark-pro-.jpg
+image: /images/posts/wheyProtein.webp
 tags: [saude]
 draft: false
 affiliateUrl: "https://meli.la/2ju67ue"
-productImage: /images/posts/whey-protein-zero-lactose-beef-900g-morango-ckiwi-shark-pro-.jpg
+productImage: /images/posts/wheyProtein.webp
 ---
 
 ## Tudo sobre Whey Protein Zero Lactose: do que importa ao que ignorar
