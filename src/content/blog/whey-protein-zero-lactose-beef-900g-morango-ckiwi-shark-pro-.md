@@ -203,7 +203,7 @@ Descubra tudo sobre whey protein: tipos (concentrado, isolado, hidrolisado), qua
 
 <div class="cta-box">
   <p>Pronto para escolher o whey certo para você? Confira nossa seleção completa com as melhores opções de whey protein, de todas as marcas e tipos, com os melhores preços:</p>
-  <a href="[COLE_SEU_LINK_AQUI]" target="_blank" rel="sponsored noopener">Ver Ofertas de Whey Protein →</a>
+  <a href="https://meli.la/2fhdDRv" target="_blank" rel="sponsored noopener">Ver Ofertas de Whey Protein →</a>
 </div>
 
 <style>
