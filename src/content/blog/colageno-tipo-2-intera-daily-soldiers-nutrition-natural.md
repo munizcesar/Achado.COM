@@ -1,3 +1,4 @@
+---
 title: "Colágeno Tipo 2 Íntera Daily Soldiers Nutrition: Guia Completo para Saúde das Articulações e Ossos"
 description: "Descubra como o Colágeno Tipo 2 Íntera Daily Soldiers Nutrition pode fortalecer suas articulações, melhorar a saúde óssea e elevar sua qualidade de vida. Veja benefícios, diferenciais, dúvidas respondidas e como escolher o melhor suplemento."
 date: 2026-03-22
