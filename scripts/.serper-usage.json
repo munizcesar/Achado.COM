@@ -1,5 +1,5 @@
 {
-  "total": 207,
+  "total": 210,
   "mes_atual": 2,
   "logs": [
     {
@@ -345,6 +345,11 @@
     {
       "data": "2026-03-23T23:39:53.468Z",
       "produto": "Lavadora De Alta Pressão Kärcher Compacta 1500 Psi",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-23T23:43:36.780Z",
+      "produto": "Lavadora De Alta Pressão Electrolux 1850psi 1500w ",
       "consultas": 3
     }
   ]
