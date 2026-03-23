@@ -3,8 +3,8 @@ title: "Creatina: Guia Completo para Máxima Performance"
 description: "Aprenda tudo sobre creatina: como funciona, qual é a melhor marca, dosagem correta e efeitos colaterais. Aumentar força nunca foi tão simples."
 date: 2026-02-03
 category: "saude"
-image: "/images/imagesposts/creatina-soldiers-500g.webp"
-productImage: "/images/imagesposts/creatina-soldiers-500g.webp"
+image: "/images/posts/guiaCreatina.webp"
+productImage: "/images/posts/guiaCreatina.webp"
 tags: ["creatina", "suplemento", "performance", "musculacao", "guia"]
 affiliateUrl: "https://mercadolivre.com/sec/2KW8RB6"
 draft: false
