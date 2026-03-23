@@ -1,3 +1,4 @@
+---
 title: "Vitamina D Íntera Daily Soldiers Nutrition: Guia Completo para Imunidade, Ossos e Bem-estar"
 description: "Descubra como a Vitamina D Íntera Daily Soldiers Nutrition pode fortalecer sua imunidade, saúde óssea e qualidade de vida. Veja benefícios, diferenciais, dúvidas respondidas e como escolher o melhor suplemento."
 date: 2026-03-22

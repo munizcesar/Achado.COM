@@ -1,3 +1,4 @@
+---
 title: "Complexo B Premium Íntera Daily Soldiers Nutrition: Guia Completo para Energia, Saúde Neurológica e Bem-estar"
 description: "Descubra como o Complexo B Premium Íntera Daily Soldiers Nutrition pode transformar sua energia, saúde neurológica e qualidade de vida. Veja benefícios, diferenciais, dúvidas respondidas e como escolher o melhor suplemento."
 date: 2026-03-22

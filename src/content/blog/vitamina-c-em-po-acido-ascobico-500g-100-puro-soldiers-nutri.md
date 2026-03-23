@@ -1,3 +1,4 @@
+---
 title: "Vitamina C em Pó 100% Puro Soldiers Nutrition: Guia Completo para Imunidade, Energia e Saúde"
 description: "Descubra como a Vitamina C em Pó 100% Puro Soldiers Nutrition pode fortalecer sua imunidade, aumentar energia e melhorar o bem-estar. Veja benefícios, diferenciais, dúvidas respondidas e como escolher o melhor suplemento."
 date: 2026-03-22
