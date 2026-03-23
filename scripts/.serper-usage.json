@@ -1,5 +1,5 @@
 {
-  "total": 204,
+  "total": 207,
   "mes_atual": 2,
   "logs": [
     {
@@ -340,6 +340,11 @@
     {
       "data": "2026-03-23T23:34:43.455Z",
       "produto": "Playstation 5 Slim Cor Branco 1 Tb Versão Mídia Fí",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-23T23:39:53.468Z",
+      "produto": "Lavadora De Alta Pressão Kärcher Compacta 1500 Psi",
       "consultas": 3
     }
   ]
