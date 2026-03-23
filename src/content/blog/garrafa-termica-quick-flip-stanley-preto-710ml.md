@@ -1,5 +1,4 @@
 ---
-﻿---
 title: "Garrafa Térmica Stanley Quick Flip 710ml: Guia Completo Antes de Comprar"
 description: "Entenda o que considerar ao escolher uma garrafa térmica e conheça os diferenciais da Stanley Quick Flip 710ml."
 date: 2026-03-12
