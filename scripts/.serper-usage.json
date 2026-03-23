@@ -1,5 +1,5 @@
 {
-  "total": 201,
+  "total": 204,
   "mes_atual": 2,
   "logs": [
     {
@@ -335,6 +335,11 @@
     {
       "data": "2026-03-23T23:25:22.686Z",
       "produto": "Colágeno Hidrolisado Collagen Renew Morango 300g N",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-23T23:34:43.455Z",
+      "produto": "Playstation 5 Slim Cor Branco 1 Tb Versão Mídia Fí",
       "consultas": 3
     }
   ]
