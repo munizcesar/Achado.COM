@@ -1,3 +1,4 @@
+---
 title: "Colágeno Hidrolisado 1kg Soldiers Nutrition: Guia Completo para Pele, Articulações e Saúde"
 description: "Descubra como o Colágeno Hidrolisado 1kg Soldiers Nutrition pode fortalecer suas articulações, melhorar a saúde da pele e elevar sua qualidade de vida. Veja benefícios, diferenciais, dúvidas respondidas e como escolher o melhor suplemento."
 date: 2026-03-22
