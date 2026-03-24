@@ -4,8 +4,7 @@ date: 2026-03-23
 pubDate: "2026-03-23"
 category: Beleza
 tags: ["perfume masculino", "acqua di giò", "armani", "beleza"]
-image: "/images/armani-beauty-perfume-masculino-acqua-di-gio-profondo-eau-de.jpg"
----
+image: "/images/posts/armani-beauty-perfume-masculino-acqua-di-gio-profondo-eau-de.jpg"
 
 
 
