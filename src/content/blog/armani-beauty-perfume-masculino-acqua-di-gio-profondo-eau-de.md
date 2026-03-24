@@ -1,6 +1,7 @@
 ---
 title: "Acqua Di Giò Profondo Eau de Toilette 100ml: Análise Completa, Fixação, Notas e Dúvidas Respondidas"
 description: "Descubra tudo sobre o perfume masculino Acqua Di Giò Profondo Eau de Toilette 100ml: notas, fixação, avaliações e dicas para escolher seu próximo aroma."
+date: 2026-03-23
 pubDate: "2026-03-23"
 tags: ["perfume masculino", "acqua di giò", "armani", "beleza"]
 image: "/images/armani-beauty-perfume-masculino-acqua-di-gio-profondo-eau-de.jpg"
