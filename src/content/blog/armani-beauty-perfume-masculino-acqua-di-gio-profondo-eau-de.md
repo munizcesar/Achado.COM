@@ -83,7 +83,4 @@ O Acqua Di Giò Profondo é amplamente recomendado por especialistas em perfumar
 
 ---
 
-*Este post contém links afiliados. Ao comprar por eles, você apoia nosso trabalho sem pagar nada a mais por isso. Obrigado por ajudar a manter o site gratuito e com conteúdo de qualidade!*
----
-
 *Links deste post são afiliados. Você não paga nada a mais, mas nos ajuda a manter o site gratuito.*
