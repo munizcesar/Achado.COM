@@ -1,0 +1,2552 @@
+﻿node.exe : 2026-03-24T01:01:48.197Z astro:cli --verbose flag enabled! 
+Enabling: DEBUG="astro:*,vite:*"
+No linha:1 caractere:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-03-24T01:0...astro:*,vite:*" 
+   :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+2026-03-24T01:01:48.198Z astro:cli Tip: Set the DEBUG env variable directly 
+for more control. Example: "DEBUG=astro:*,vite:* astro build".
+2026-03-24T01:01:50.985Z astro:telemetry [notify] last notified on 
+1770510858239
+2026-03-24T01:01:54.909Z astro:telemetry {
+  context: {
+    isGit: true,
+    anonymousProjectId: 
+'663ec35fbef4fa752d62a2b12ab6979a3f9e39c3978a7639c92e47d1ef1cf4e8',
+    packageManager: 'npm',
+    packageManagerVersion: '11.6.2',
+    anonymousId: 
+'220917f8c7e5207d05b75b4694655d46545ab51737cb7a0bc75b9e4fe9ae9267',
+    anonymousSessionId: 
+'46bfba6e3baaa349e7987de5b8a991400adb161f3f10fb2fa39ad7a9e73af9e1'
+  },
+  meta: {
+    nodeVersion: '24.13.0',
+    viteVersion: '5.4.21',
+    astroVersion: '4.15.12',
+    systemPlatform: 'win32',
+    systemRelease: '10.0.19045',
+    systemArchitecture: 'x64',
+    cpuCount: 4,
+    cpuModel: 'AMD A12-9720P RADEON R7, 12 COMPUTE CORES 4C+8G',
+    cpuSpeed: 2695,
+    memoryInMb: 7637,
+    isDocker: false,
+    isTTY: undefined,
+    isWSL: false,
+    isCI: false,
+    ciName: null
+  }
+}
+2026-03-24T01:01:54.909Z astro:telemetry [
+  {
+    "eventName": "ASTRO_CLI_SESSION_STARTED",
+    "payload": {
+      "cliCommand": "build",
+      "config": {
+        "site": true,
+        "build": {
+          "assets": true
+        },
+        "server": true,
+        "image": {},
+        "markdown": {},
+        "experimental": {},
+        "legacy": {}
+      }
+    }
+  }
+]
+2026-03-24T01:01:54.939Z astro:build Initial setup...
+2026-03-24T01:01:55.046Z vite:config using resolved config: {
+  configFile: undefined,
+  cacheDir: 'C:/Users/Cesar 
+Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/.vite',
+  clearScreen: false,
+  customLogger: {
+    hasWarned: false,
+    info: [Function: info],
+    warn: [Function: warn],
+    warnOnce: [Function: warnOnce],
+    error: [Function: error],
+    clearScreen: [Function: clearScreen],
+    hasErrorLogged: [Function: hasErrorLogged]
+  },
+  appType: 'custom',
+  optimizeDeps: {
+    holdUntilCrawlEnd: true,
+    entries: [
+      'C:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/**/*.{
+jsx,tsx,vue,svelte,html,astro}',
+      'C:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/**/*.{
+jsx,tsx,vue,svelte,html,astro}'
+    ],
+    exclude: [ 'astro', 'node-fetch', 'astro', 'node-fetch' ],
+    noDiscovery: true,
+    include: [
+      'astro > cssesc',
+      'astro > aria-query',
+      'astro > axobject-query'
+    ],
+    esbuildOptions: { preserveSymlinks: false }
+  },
+  plugins: [
+    'vite:optimized-deps',
+    'vite:watch-package-data',
+    'vite:pre-alias',
+    'alias',
+    'astro:build',
+    'astro:markdown',
+    'astro:jsx',
+    'astro:head-metadata',
+    'astro-content-virtual-mod-plugin',
+    'astro:content-asset-propagation',
+    'astro:assets:esm',
+    'astro:vite-plugin-file-url',
+    'astro:i18n',
+    'astro:actions',
+    'astro:container',
+    'vite:modulepreload-polyfill',
+    'vite:resolve',
+    'vite:html-inline-proxy',
+    'vite:css',
+    'vite:esbuild',
+    'vite:json',
+    'vite:wasm-helper',
+    'vite:worker',
+    'vite:asset',
+    'astro:build:normal',
+    'astro:scripts',
+    'astro:html',
+    'astro:postprocess',
+    'astro:integration-container',
+    'astro:content-imports',
+    '@astro/plugin-middleware',
+    'astro:assets',
+    'astro:prefetch',
+    'astro:transitions',
+    'astro:dev-toolbar',
+    '@astro/plugin-actions',
+    'vite:wasm-fallback',
+    'astro:vite-plugin-env',
+    'vite:define',
+    'vite:css-post',
+    'vite:worker-import-meta-url',
+    'vite:asset-import-meta-url',
+    'vite:dynamic-import-vars',
+    'vite:import-glob',
+    'astro:scripts:page-ssr',
+    'astro:scanner',
+    '@astrojs/vite-plugin-astro-ssr-manifest',
+    'vite:client-inject',
+    'vite:css-analysis',
+    'vite:import-analysis'
+  ],
+  publicDir: 'C:/Users/Cesar 
+Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/public',
+  root: 'C:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP',
+  envPrefix: 'PUBLIC_',
+  define: {
+    'import.meta.env.SITE': '"https://achadocerto.vip"',
+    'import.meta.env.BASE_URL': '"/"',
+    'import.meta.env.ASSETS_PREFIX': 'undefined',
+    __ASTRO_INTERNAL_I18N_CONFIG__: '{"base":"/","format":"directory","site":"h
+ttps://achadocerto.vip","trailingSlash":"ignore","isBuild":false}'
+  },
+  server: {
+    preTransformRequests: true,
+    hmr: false,
+    watch: { ignored: [Array] },
+    middlewareMode: true,
+    ws: false,
+    sourcemapIgnoreList: [Function: isInNodeModules$1],
+    fs: {
+      strict: true,
+      allow: [Array],
+      deny: [Array],
+      cachedChecks: undefined
+    }
+  },
+  resolve: {
+    mainFields: [ 'browser', 'module', 'jsnext:main', 'jsnext' ],
+    conditions: [ 'astro', 'astro' ],
+    extensions: [
+      '.mjs',  '.js',
+      '.mts',  '.ts',
+      '.jsx',  '.tsx',
+      '.json'
+    ],
+    dedupe: [ 'astro', 'astro' ],
+    preserveSymlinks: false,
+    alias: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object]
+    ]
+  },
+  ssr: {
+    target: 'node',
+    noExternal: [
+      'astro',
+      'astro/components',
+      '@nanostores/preact',
+      '@fontsource/*',
+      'astro',
+      'astro/components',
+      '@nanostores/preact',
+      '@fontsource/*'
+    ],
+    external: [],
+    optimizeDeps: { noDiscovery: true, esbuildOptions: [Object] }
+  },
+  build: {
+    target: [ 'es2020', 'edge88', 'firefox78', 'chrome87', 'safari14' ],
+    cssTarget: [ 'es2020', 'edge88', 'firefox78', 'chrome87', 'safari14' ],
+    outDir: 'dist',
+    assetsDir: '_assets',
+    assetsInlineLimit: 4096,
+    cssCodeSplit: true,
+    sourcemap: false,
+    rollupOptions: {},
+    minify: 'esbuild',
+    terserOptions: {},
+    write: true,
+    emptyOutDir: null,
+    copyPublicDir: true,
+    manifest: false,
+    lib: false,
+    ssr: false,
+    ssrManifest: false,
+    ssrEmitAssets: false,
+    reportCompressedSize: true,
+    chunkSizeWarningLimit: 500,
+    watch: null,
+    commonjsOptions: { include: [Array], extensions: [Array] },
+    dynamicImportVarsOptions: { warnOnError: true, exclude: [Array] },
+    modulePreload: { polyfill: true },
+    cssMinify: true
+  },
+  logLevel: 'silent',
+  configFileDependencies: [],
+  inlineConfig: {
+    configFile: false,
+    cacheDir: 'C:\\Users\\Cesar 
+Victor\\Desktop\\AchadoCerto.Vip\\AchadoCerto.VIP\\node_modules\\.vite\\',
+    clearScreen: false,
+    customLogger: {
+      hasWarned: false,
+      info: [Function: info],
+      warn: [Function: warn],
+      warnOnce: [Function: warnOnce],
+      error: [Function: error],
+      clearScreen: [Function: clearScreen],
+      hasErrorLogged: [Function: hasErrorLogged]
+    },
+    appType: 'custom',
+    optimizeDeps: { entries: [Array], exclude: [Array], noDiscovery: true },
+    plugins: [
+      null,      false,    [Array],
+      [Object],  false,    [Object],
+      undefined, [Object], [Object],
+      [Object],  [Object], [Object],
+      [Object],  [Object], [Object],
+      [Object],  [Array],  [Object],
+      [Object],  [Object], [Array],
+      [Object],  [Object], [Object],
+      [Object],  [Object], [Object],
+      [Object],  false,    [Object]
+    ],
+    publicDir: 'C:\\Users\\Cesar 
+Victor\\Desktop\\AchadoCerto.Vip\\AchadoCerto.VIP\\public\\',
+    root: 'C:\\Users\\Cesar 
+Victor\\Desktop\\AchadoCerto.Vip\\AchadoCerto.VIP\\',
+    envPrefix: 'PUBLIC_',
+    define: {
+      'import.meta.env.SITE': '"https://achadocerto.vip"',
+      'import.meta.env.BASE_URL': '"/"',
+      'import.meta.env.ASSETS_PREFIX': 'undefined'
+    },
+    server: { hmr: false, watch: [Object], middlewareMode: true, ws: false },
+    resolve: { alias: [Array], conditions: [Array], dedupe: [Array] },
+    ssr: { noExternal: [Array], external: [] },
+    build: { assetsDir: '_assets' },
+    logLevel: 'silent'
+  },
+  base: '/',
+  decodedBase: '/',
+  rawBase: '/',
+  command: 'serve',
+  mode: 'development',
+  isWorker: false,
+  mainConfig: null,
+  bundleChain: [],
+  isProduction: true,
+  css: { lightningcss: undefined },
+  esbuild: { jsxDev: false },
+  preview: {
+    port: undefined,
+    strictPort: undefined,
+    host: undefined,
+    allowedHosts: undefined,
+    https: undefined,
+    open: undefined,
+    proxy: undefined,
+    cors: undefined,
+    headers: undefined
+  },
+  envDir: 'C:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP',
+  env: { BASE_URL: '/', MODE: 'development', DEV: false, PROD: true },
+  assetsInclude: [Function: assetsInclude],
+  logger: {
+    hasWarned: false,
+    info: [Function: info],
+    warn: [Function: warn],
+    warnOnce: [Function: warnOnce],
+    error: [Function: error],
+    clearScreen: [Function: clearScreen],
+    hasErrorLogged: [Function: hasErrorLogged]
+  },
+  packageCache: Map(1) {
+    'fnpd_C:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP' => {
+      dir: 'C:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP',
+      data: [Object],
+      hasSideEffects: [Function: hasSideEffects],
+      webResolvedImports: {},
+      nodeResolvedImports: {},
+      setResolvedCache: [Function: setResolvedCache],
+      getResolvedCache: [Function: getResolvedCache]
+    },
+    set: [Function (anonymous)]
+  },
+  createResolver: [Function: createResolver],
+  worker: { format: 'iife', plugins: '() => plugins', rollupOptions: {} },
+  experimental: { importGlobRestoreExtension: false, hmrPartialAccept: false },
+  webSocketToken: 'RnKCMuGvwOT9',
+  additionalAllowedHosts: [],
+  getSortedPlugins: [Function: getSortedPlugins],
+  getSortedPluginHooks: [Function: getSortedPluginHooks]
+}
+2026-03-24T01:01:55.149Z vite:deps Hash is consistent. Skipping. Use --force 
+to override.
+2026-03-24T01:01:55.232Z vite:resolve [33m38.56ms[39m [36mC:\Users\Cesar 
+Victor\Desktop\AchadoCerto.Vip\AchadoCerto.VIP\src\content\config.ts[39m -> 
+[2mC:/Users/Cesar 
+Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/config.ts[22m
+2026-03-24T01:01:55.247Z vite:load [33m10.82ms[39m [fs] [2mC:\Users\Cesar 
+Victor\Desktop\AchadoCerto.Vip\AchadoCerto.VIP\src\content\config.ts[22m
+2026-03-24T01:01:55.386Z vite:resolve [32m0.14ms[39m [36mastro:content[39m 
+-> [2m astro:content[22m
+2026-03-24T01:01:55.391Z vite:resolve [32m1.55ms[39m 
+[36m astro:content[39m -> [2mnull[22m
+2026-03-24T01:01:55.393Z vite:import-analysis [33m20.37ms[39m [2m[1 imports 
+rewritten] [2msrc/content/config.ts[22m[2m[22m
+2026-03-24T01:01:55.394Z vite:transform [31m144.92ms[39m [2mC:\Users\Cesar 
+Victor\Desktop\AchadoCerto.Vip\AchadoCerto.VIP\src\content\config.ts[22m
+2026-03-24T01:01:55.568Z vite:load [31m171.74ms[39m [plugin] 
+[2m astro:content[22m
+2026-03-24T01:01:55.696Z vite:resolve [31m62.23ms[39m 
+[36mastro/content/runtime[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCert
+o.Vip/AchadoCerto.VIP/node_modules/astro/dist/content/runtime.js[22m
+2026-03-24T01:01:55.696Z vite:resolve [31m62.48ms[39m [36mastro/zod[39m -> 
+[2mC:/Users/Cesar 
+Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/zod.mjs[22m
+2026-03-24T01:01:55.696Z vite:resolve [31m62.55ms[39m [36m/src/content/blog/
+3-perfume-capilar-barbourx27s-alter-ego-living-grace-very-se.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/3-perfume-capilar-barbourx27s-alter-ego-living-gr
+ace-very-se.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.696Z vite:resolve [31m62.61ms[39m [36m/src/content/blog/
+aditivo-condicionador-de-metais-carro-moto-bardahl-200-ml-ci.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/aditivo-condicionador-de-metais-carro-moto-bardah
+l-200-ml-ci.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.696Z vite:resolve [31m62.61ms[39m [36m/src/content/blog/
+ar-condicionado-split-samsung-inverter-windfree-ai-12000-btu.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/ar-condicionado-split-samsung-inverter-windfree-a
+i-12000-btu.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.696Z vite:resolve [31m62.65ms[39m [36m/src/content/blog/
+armani-beauty-perfume-masculino-acqua-di-gio-profondo-eau-de.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/armani-beauty-perfume-masculino-acqua-di-gio-prof
+ondo-eau-de.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.696Z vite:resolve [31m62.69ms[39m [36m/src/content/blog/
+bicicleta-ergometrica-para-spinning-mecanica-8kg-odin-fit-co.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/bicicleta-ergometrica-para-spinning-mecanica-8kg-
+odin-fit-co.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m62.73ms[39m [36m/src/content/blog/
+cadeira-escritorio-ergonomica-genebra-b500-luvinco-cor-preto.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/cadeira-escritorio-ergonomica-genebra-b500-luvinc
+o-cor-preto.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m62.76ms[39m [36m/src/content/blog/
+cafeteira-italiana-inox.md?astroContentCollectionEntry=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/cafeteira-italiana-inox.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m62.80ms[39m [36m/src/content/blog/
+coenzima-q10-intera-daily-soldiers-nutrition-natural.md?astroContentCollectionE
+ntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/coenzima-q10-intera-daily-soldiers-nutrition-natural.md?a
+stroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m62.84ms[39m [36m/src/content/blog/
+colagen-ii-bionatus-saude-articular.md?astroContentCollectionEntry=true[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/conten
+t/blog/colagen-ii-bionatus-saude-articular.md?astroContentCollectionEntry=true
+[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m62.88ms[39m [36m/src/content/blog/
+colageno-hidrolisado-1kg-tipo-1-100-puro-soldiers-nutrition-.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/colageno-hidrolisado-1kg-tipo-1-100-puro-soldiers
+-nutrition-.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m62.92ms[39m [36m/src/content/blog/
+colageno-hidrolisado-collagen-renew-morango-300g-nutrify.md?astroContentCollect
+ionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoC
+erto.VIP/src/content/blog/colageno-hidrolisado-collagen-renew-morango-300g-nutr
+ify.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m62.96ms[39m [36m/src/content/blog/
+colageno-tipo-2-intera-daily-soldiers-nutrition-natural.md?astroContentCollecti
+onEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCe
+rto.VIP/src/content/blog/colageno-tipo-2-intera-daily-soldiers-nutrition-natura
+l.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m63.00ms[39m [36m/src/content/blog/
+comparativo-xiaomi-poco-2026.md?astroContentCollectionEntry=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/comparativo-xiaomi-poco-2026.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m63.04ms[39m [36m/src/content/blog/
+complexo-b-premium-intera-daily-energia-soldiers-nutrition-n.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/complexo-b-premium-intera-daily-energia-soldiers-
+nutrition-n.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m63.08ms[39m [36m/src/content/blog/
+cooktop-mueller-5-bocas-com-queimador-ultra-chama-preto-1272.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/cooktop-mueller-5-bocas-com-queimador-ultra-chama
+-preto-1272.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m63.11ms[39m [36m/src/content/blog/
+creatina-soldiers-500g.md?astroContentCollectionEntry=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/creatina-soldiers-500g.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m63.15ms[39m [36m/src/content/blog/
+egeo-choc-high-colonia-o-boticario-90ml.md?astroContentCollectionEntry=true[39
+m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/cont
+ent/blog/egeo-choc-high-colonia-o-boticario-90ml.md?astroContentCollectionEntry
+=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m63.19ms[39m [36m/src/content/blog/
+floratta-gold-o-boticario-desodorante-colonia-spray-75ml.md?astroContentCollect
+ionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoC
+erto.VIP/src/content/blog/floratta-gold-o-boticario-desodorante-colonia-spray-7
+5ml.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m63.22ms[39m [36m/src/content/blog/
+fone-headphone-jbl-tune-520bt-bluetooth.md?astroContentCollectionEntry=true[39
+m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/cont
+ent/blog/fone-headphone-jbl-tune-520bt-bluetooth.md?astroContentCollectionEntry
+=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m63.26ms[39m 
+[36m/src/content/blog/gamer-pc.md?astroContentCollectionEntry=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/gamer-pc.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m63.29ms[39m [36m/src/content/blog/
+garrafa-termica-quick-flip-stanley-preto-710ml.md?astroContentCollectionEntry=t
+rue[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/s
+rc/content/blog/garrafa-termica-quick-flip-stanley-preto-710ml.md?astroContentC
+ollectionEntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m63.33ms[39m [36m/src/content/blog/
+geladeira-electrolux-frost-free-431l-autosense-inox-tf70s.md?astroContentCollec
+tionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Achado
+Certo.VIP/src/content/blog/geladeira-electrolux-frost-free-431l-autosense-inox-
+tf70s.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m63.36ms[39m 
+[36m/src/content/blog/guia-arginina.md?astroContentCollectionEntry=true[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/conten
+t/blog/guia-arginina.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m63.40ms[39m [36m/src/content/blog/
+guia-completo-body-splash-barbours-beauty.md?astroContentCollectionEntry=true[
+39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/co
+ntent/blog/guia-completo-body-splash-barbours-beauty.md?astroContentCollectionE
+ntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m63.43ms[39m [36m/src/content/blog/
+guia-creatina-performance.md?astroContentCollectionEntry=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/guia-creatina-performance.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.697Z vite:resolve [31m63.46ms[39m [36m/src/content/blog/
+guia-seguranca-mercado-livre.md?astroContentCollectionEntry=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/guia-seguranca-mercado-livre.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.698Z vite:resolve [31m63.50ms[39m [36m/src/content/blog/
+jbl-wave-buds-2.md?astroContentCollectionEntry=true[39m -> [2mC:/Users/Cesar 
+Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/blog/jbl-wave-buds-2
+.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.698Z vite:resolve [31m63.53ms[39m [36m/src/content/blog/
+kit-3-body-splash-good-graces-delight-very-sexy-barbourx27s.md?astroContentColl
+ectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Acha
+doCerto.VIP/src/content/blog/kit-3-body-splash-good-graces-delight-very-sexy-ba
+rbourx27s.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.698Z vite:resolve [31m63.56ms[39m [36m/src/content/blog/
+l-glutamina-500g-100-pura-importada-soldiers-nutrition.md?astroContentCollectio
+nEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCer
+to.VIP/src/content/blog/l-glutamina-500g-100-pura-importada-soldiers-nutrition.
+md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.698Z vite:resolve [31m63.60ms[39m [36m/src/content/blog/
+lava-e-seca-105kg-healthguard-titanium-conectada-midea.md?astroContentCollectio
+nEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCer
+to.VIP/src/content/blog/lava-e-seca-105kg-healthguard-titanium-conectada-midea.
+md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.698Z vite:resolve [31m63.64ms[39m [36m/src/content/blog/
+lavadora-de-alta-pressao-electrolux-1850psi-1500w-potencia-c.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/lavadora-de-alta-pressao-electrolux-1850psi-1500w
+-potencia-c.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.698Z vite:resolve [31m63.67ms[39m [36m/src/content/blog/
+lavadora-de-alta-pressao-karcher-compacta-1500-psilibras-140.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/lavadora-de-alta-pressao-karcher-compacta-1500-ps
+ilibras-140.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.698Z vite:resolve [31m63.71ms[39m [36m/src/content/blog/
+melhor-tv-55-polegadas-2026.md?astroContentCollectionEntry=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/melhor-tv-55-polegadas-2026.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.698Z vite:resolve [31m63.74ms[39m [36m/src/content/blog/
+militec-1-condicionador-de-metais-moto-40ml-original.md?astroContentCollectionE
+ntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/militec-1-condicionador-de-metais-moto-40ml-original.md?a
+stroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.698Z vite:resolve [31m63.77ms[39m [36m/src/content/blog/
+multivitaminico-12-vitaminas-5-minerais-60-capsulas-soldiers.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/multivitaminico-12-vitaminas-5-minerais-60-capsul
+as-soldiers.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.698Z vite:resolve [31m63.81ms[39m [36m/src/content/blog/
+multivitaminico-az-homem-premium-intera-daily-soldiers-nutri.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/multivitaminico-az-homem-premium-intera-daily-sol
+diers-nutri.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.698Z vite:resolve [31m63.84ms[39m [36m/src/content/blog/
+notebook-dell-alienware-ac16-c7240h-d30-core7-16gb-rtx-linux.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/notebook-dell-alienware-ac16-c7240h-d30-core7-16g
+b-rtx-linux.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.698Z vite:resolve [31m63.88ms[39m [36m/src/content/blog/
+notebook-gamer-acer-nitro-v15-anv15-52-737p-intel-core-i7-13.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/notebook-gamer-acer-nitro-v15-anv15-52-737p-intel
+-core-i7-13.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.698Z vite:resolve [31m63.91ms[39m [36m/src/content/blog/
+notebook-samsung-galaxy-book4-pro-windows-11-home-intel-core.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/notebook-samsung-galaxy-book4-pro-windows-11-home
+-intel-core.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.698Z vite:resolve [31m63.95ms[39m [36m/src/content/blog/
+o-boticario-coffee-man-addictive-colonia-100ml.md?astroContentCollectionEntry=t
+rue[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/s
+rc/content/blog/o-boticario-coffee-man-addictive-colonia-100ml.md?astroContentC
+ollectionEntry=true[22m
+2026-03-24T01:01:55.698Z vite:resolve [31m64.05ms[39m [36m/src/content/blog/
+o-boticario-leau-de-lily-blanche-colonia-75ml.md?astroContentCollectionEntry=tr
+ue[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/sr
+c/content/blog/o-boticario-leau-de-lily-blanche-colonia-75ml.md?astroContentCol
+lectionEntry=true[22m
+2026-03-24T01:01:55.698Z vite:resolve [31m64.22ms[39m [36m/src/content/blog/
+o-boticario-malbec-desodorante-colonia-20-100ml.md?astroContentCollectionEntry=
+true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/
+src/content/blog/o-boticario-malbec-desodorante-colonia-20-100ml.md?astroConten
+tCollectionEntry=true[22m
+2026-03-24T01:01:55.699Z vite:resolve [31m64.39ms[39m [36m/src/content/blog/
+o-boticario-uomini-desodorante-colonia-100ml.md?astroContentCollectionEntry=tru
+e[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src
+/content/blog/o-boticario-uomini-desodorante-colonia-100ml.md?astroContentColle
+ctionEntry=true[22m
+2026-03-24T01:01:55.699Z vite:resolve [31m64.71ms[39m [36m/src/content/blog/
+o-boticario-zaad-expedition-edp-95ml-para-masculino.md?astroContentCollectionEn
+try=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.
+VIP/src/content/blog/o-boticario-zaad-expedition-edp-95ml-para-masculino.md?ast
+roContentCollectionEntry=true[22m
+2026-03-24T01:01:55.699Z vite:resolve [31m64.90ms[39m [36m/src/content/blog/
+omega-3-1000mg-60-capsulas-soldiers-nutrition-coracao-vitami.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/omega-3-1000mg-60-capsulas-soldiers-nutrition-cor
+acao-vitami.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.699Z vite:resolve [31m64.97ms[39m [36m/src/content/blog/
+perfume-jean-paul-gaultier-le-male-eau-de-toilette-200-ml-ma.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/perfume-jean-paul-gaultier-le-male-eau-de-toilett
+e-200-ml-ma.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.699Z vite:resolve [31m65.03ms[39m [36m/src/content/blog/
+perfume-jean-paul-gaultier-le-male-elixir-parfum-125-ml-masc.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/perfume-jean-paul-gaultier-le-male-elixir-parfum-
+125-ml-masc.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.699Z vite:resolve [31m65.08ms[39m [36m/src/content/blog/
+perfume-jean-paul-gaultier-le-male-le-parfum-eau-de-parfum-i.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/perfume-jean-paul-gaultier-le-male-le-parfum-eau-
+de-parfum-i.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.699Z vite:resolve [31m65.14ms[39m [36m/src/content/blog/
+perfume-jean-paul-gaultier-scandal-eau-de-parfum-80-ml-femin.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/perfume-jean-paul-gaultier-scandal-eau-de-parfum-
+80-ml-femin.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.699Z vite:resolve [31m65.19ms[39m [36m/src/content/blog/
+playstation-5-slim-cor-branco-1-tb-versao-midia-fisica.md?astroContentCollectio
+nEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCer
+to.VIP/src/content/blog/playstation-5-slim-cor-branco-1-tb-versao-midia-fisica.
+md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.700Z vite:resolve [31m65.22ms[39m 
+[36m/src/content/blog/pneus-pireli.md?astroContentCollectionEntry=true[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/conten
+t/blog/pneus-pireli.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.700Z vite:resolve [31m65.27ms[39m [36m/src/content/blog/
+purificador-de-agua-gelada-ibbl-e-due-full-range-branco-1272.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/purificador-de-agua-gelada-ibbl-e-due-full-range-
+branco-1272.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.700Z vite:resolve [31m65.33ms[39m [36m/src/content/blog/
+robo-aspirador-robot-w90-varre-aspira-e-passa-pano-30w-wap-c.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/robo-aspirador-robot-w90-varre-aspira-e-passa-pan
+o-30w-wap-c.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.700Z vite:resolve [31m65.36ms[39m [36m/src/content/blog/
+samsung-galaxy-watch7-smartwatch-44mm-bt-galaxy-ai-prata.md?astroContentCollect
+ionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoC
+erto.VIP/src/content/blog/samsung-galaxy-watch7-smartwatch-44mm-bt-galaxy-ai-pr
+ata.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.700Z vite:resolve [31m65.39ms[39m [36m/src/content/blog/
+smart-tv-4k-50-lg-nanocell-50nanoa-processador-7-ai-ger8-4k-.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/smart-tv-4k-50-lg-nanocell-50nanoa-processador-7-
+ai-ger8-4k-.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.700Z vite:resolve [31m65.43ms[39m [36m/src/content/blog/
+smart-tv-profissional-lg-43-full-hd-processador-a5-ger6-ai-a.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/smart-tv-profissional-lg-43-full-hd-processador-a
+5-ger6-ai-a.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.700Z vite:resolve [31m65.46ms[39m [36m/src/content/blog/
+smartphone-motorola-moto-g06-128gb-12gb-4gb-ram-8gb-ram-boos.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/smartphone-motorola-moto-g06-128gb-12gb-4gb-ram-8
+gb-ram-boos.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.700Z vite:resolve [31m65.49ms[39m [36m/src/content/blog/
+suplemento-alimentar-vitasay-a-z-mulher-30-comprimidos-reves.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/suplemento-alimentar-vitasay-a-z-mulher-30-compri
+midos-reves.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.700Z vite:resolve [31m65.52ms[39m [36m/src/content/blog/
+suplemento-em-po-adaptogen-science-panic-pre-treino-com-crea.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/suplemento-em-po-adaptogen-science-panic-pre-trei
+no-com-crea.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.700Z vite:resolve [31m65.55ms[39m [36m/src/content/blog/
+tenis-nike-precision-7-unissex.md?astroContentCollectionEntry=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/tenis-nike-precision-7-unissex.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.700Z vite:resolve [31m65.58ms[39m [36m/src/content/blog/
+tenis-nike-revolution-8-feminino.md?astroContentCollectionEntry=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/tenis-nike-revolution-8-feminino.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.700Z vite:resolve [31m65.63ms[39m [36m/src/content/blog/
+ventilador-de-mesa-30cm-super-power-mondial-60w-vsp-30-b-30-.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/ventilador-de-mesa-30cm-super-power-mondial-60w-v
+sp-30-b-30-.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.700Z vite:resolve [31m65.66ms[39m [36m/src/content/blog/
+vitamina-c-em-po-acido-ascobico-500g-100-puro-soldiers-nutri.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/vitamina-c-em-po-acido-ascobico-500g-100-puro-sol
+diers-nutri.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.700Z vite:resolve [31m65.69ms[39m [36m/src/content/blog/
+vitamina-d-intera-daily-imunidade-soldiers-nutrition-natural.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/vitamina-d-intera-daily-imunidade-soldiers-nutrit
+ion-natural.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.703Z vite:resolve [31m68.40ms[39m [36m/src/content/blog/
+whey-pro-max-titanium.md?astroContentCollectionEntry=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/whey-pro-max-titanium.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.703Z vite:resolve [31m68.59ms[39m [36m/src/content/blog/
+whey-protein-zero-lactose-beef-900g-morango-ckiwi-shark-pro-.md?astroContentCol
+lectionEntry=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/Ach
+adoCerto.VIP/src/content/blog/whey-protein-zero-lactose-beef-900g-morango-ckiwi
+-shark-pro-.md?astroContentCollectionEntry=true[22m
+2026-03-24T01:01:55.703Z vite:resolve [31m68.64ms[39m [36m/src/content/blog/
+zaad-intense-de-o-boticario-eau-de-parfume-95ml.md?astroContentCollectionEntry=
+true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/
+src/content/blog/zaad-intense-de-o-boticario-eau-de-parfume-95ml.md?astroConten
+tCollectionEntry=true[22m
+2026-03-24T01:01:55.754Z vite:resolve [31m114.64ms[39m [36m/src/content/blog
+/3-perfume-capilar-barbourx27s-alter-ego-living-grace-very-se.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/3-perfume-capilar-barbourx27s-alter-ego-living-grace-very-s
+e.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.754Z vite:resolve [31m114.84ms[39m [36m/src/content/blog
+/aditivo-condicionador-de-metais-carro-moto-bardahl-200-ml-ci.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/aditivo-condicionador-de-metais-carro-moto-bardahl-200-ml-c
+i.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.754Z vite:resolve [31m114.96ms[39m [36m/src/content/blog
+/ar-condicionado-split-samsung-inverter-windfree-ai-12000-btu.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/ar-condicionado-split-samsung-inverter-windfree-ai-12000-bt
+u.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.754Z vite:resolve [31m115.01ms[39m [36m/src/content/blog
+/armani-beauty-perfume-masculino-acqua-di-gio-profondo-eau-de.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/armani-beauty-perfume-masculino-acqua-di-gio-profondo-eau-d
+e.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.755Z vite:resolve [31m115.05ms[39m [36m/src/content/blog
+/bicicleta-ergometrica-para-spinning-mecanica-8kg-odin-fit-co.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/bicicleta-ergometrica-para-spinning-mecanica-8kg-odin-fit-c
+o.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.755Z vite:resolve [31m115.12ms[39m [36m/src/content/blog
+/cadeira-escritorio-ergonomica-genebra-b500-luvinco-cor-preto.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/cadeira-escritorio-ergonomica-genebra-b500-luvinco-cor-pret
+o.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.755Z vite:resolve [31m115.21ms[39m 
+[36m/src/content/blog/cafeteira-italiana-inox.md?astroPropagatedAssets[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/conten
+t/blog/cafeteira-italiana-inox.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.755Z vite:resolve [31m115.25ms[39m [36m/src/content/blog
+/coenzima-q10-intera-daily-soldiers-nutrition-natural.md?astroPropagatedAssets
+[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/c
+ontent/blog/coenzima-q10-intera-daily-soldiers-nutrition-natural.md?astroPropag
+atedAssets[22m
+2026-03-24T01:01:55.755Z vite:resolve [31m115.19ms[39m [36m/src/content/blog
+/colagen-ii-bionatus-saude-articular.md?astroPropagatedAssets[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/colagen-ii-bionatus-saude-articular.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.755Z vite:resolve [31m115.21ms[39m [36m/src/content/blog
+/colageno-hidrolisado-1kg-tipo-1-100-puro-soldiers-nutrition-.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/colageno-hidrolisado-1kg-tipo-1-100-puro-soldiers-nutrition
+-.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.755Z vite:resolve [31m115.29ms[39m [36m/src/content/blog
+/colageno-hidrolisado-collagen-renew-morango-300g-nutrify.md?astroPropagatedAss
+ets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/s
+rc/content/blog/colageno-hidrolisado-collagen-renew-morango-300g-nutrify.md?ast
+roPropagatedAssets[22m
+2026-03-24T01:01:55.755Z vite:resolve [31m115.37ms[39m [36m/src/content/blog
+/colageno-tipo-2-intera-daily-soldiers-nutrition-natural.md?astroPropagatedAsse
+ts[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/sr
+c/content/blog/colageno-tipo-2-intera-daily-soldiers-nutrition-natural.md?astro
+PropagatedAssets[22m
+2026-03-24T01:01:55.755Z vite:resolve [31m115.39ms[39m [36m/src/content/blog
+/comparativo-xiaomi-poco-2026.md?astroPropagatedAssets[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/comparativo-xiaomi-poco-2026.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.755Z vite:resolve [31m115.43ms[39m [36m/src/content/blog
+/complexo-b-premium-intera-daily-energia-soldiers-nutrition-n.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/complexo-b-premium-intera-daily-energia-soldiers-nutrition-
+n.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.755Z vite:resolve [31m115.47ms[39m [36m/src/content/blog
+/cooktop-mueller-5-bocas-com-queimador-ultra-chama-preto-1272.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/cooktop-mueller-5-bocas-com-queimador-ultra-chama-preto-127
+2.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.755Z vite:resolve [31m115.49ms[39m 
+[36m/src/content/blog/creatina-soldiers-500g.md?astroPropagatedAssets[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/creatina-soldiers-500g.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.755Z vite:resolve [31m115.51ms[39m [36m/src/content/blog
+/egeo-choc-high-colonia-o-boticario-90ml.md?astroPropagatedAssets[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/egeo-choc-high-colonia-o-boticario-90ml.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.755Z vite:resolve [31m115.53ms[39m [36m/src/content/blog
+/floratta-gold-o-boticario-desodorante-colonia-spray-75ml.md?astroPropagatedAss
+ets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/s
+rc/content/blog/floratta-gold-o-boticario-desodorante-colonia-spray-75ml.md?ast
+roPropagatedAssets[22m
+2026-03-24T01:01:55.755Z vite:resolve [31m115.55ms[39m [36m/src/content/blog
+/fone-headphone-jbl-tune-520bt-bluetooth.md?astroPropagatedAssets[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/fone-headphone-jbl-tune-520bt-bluetooth.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.756Z vite:resolve [31m115.57ms[39m 
+[36m/src/content/blog/gamer-pc.md?astroPropagatedAssets[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/gamer-pc.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.756Z vite:resolve [31m115.59ms[39m [36m/src/content/blog
+/garrafa-termica-quick-flip-stanley-preto-710ml.md?astroPropagatedAssets[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/conten
+t/blog/garrafa-termica-quick-flip-stanley-preto-710ml.md?astroPropagatedAssets
+[22m
+2026-03-24T01:01:55.756Z vite:resolve [31m115.62ms[39m [36m/src/content/blog
+/geladeira-electrolux-frost-free-431l-autosense-inox-tf70s.md?astroPropagatedAs
+sets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/
+src/content/blog/geladeira-electrolux-frost-free-431l-autosense-inox-tf70s.md?a
+stroPropagatedAssets[22m
+2026-03-24T01:01:55.756Z vite:resolve [31m115.64ms[39m 
+[36m/src/content/blog/guia-arginina.md?astroPropagatedAssets[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/guia-arginina.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.756Z vite:resolve [31m115.66ms[39m [36m/src/content/blog
+/guia-completo-body-splash-barbours-beauty.md?astroPropagatedAssets[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/guia-completo-body-splash-barbours-beauty.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.756Z vite:resolve [31m115.67ms[39m 
+[36m/src/content/blog/guia-creatina-performance.md?astroPropagatedAssets[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/conten
+t/blog/guia-creatina-performance.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.756Z vite:resolve [31m115.69ms[39m [36m/src/content/blog
+/guia-seguranca-mercado-livre.md?astroPropagatedAssets[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/guia-seguranca-mercado-livre.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.756Z vite:resolve [31m115.71ms[39m 
+[36m/src/content/blog/jbl-wave-buds-2.md?astroPropagatedAssets[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/jbl-wave-buds-2.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.756Z vite:resolve [31m115.72ms[39m [36m/src/content/blog
+/kit-3-body-splash-good-graces-delight-very-sexy-barbourx27s.md?astroPropagated
+Assets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VI
+P/src/content/blog/kit-3-body-splash-good-graces-delight-very-sexy-barbourx27s.
+md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.756Z vite:resolve [31m115.75ms[39m [36m/src/content/blog
+/l-glutamina-500g-100-pura-importada-soldiers-nutrition.md?astroPropagatedAsset
+s[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src
+/content/blog/l-glutamina-500g-100-pura-importada-soldiers-nutrition.md?astroPr
+opagatedAssets[22m
+2026-03-24T01:01:55.756Z vite:resolve [31m115.76ms[39m [36m/src/content/blog
+/lava-e-seca-105kg-healthguard-titanium-conectada-midea.md?astroPropagatedAsset
+s[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src
+/content/blog/lava-e-seca-105kg-healthguard-titanium-conectada-midea.md?astroPr
+opagatedAssets[22m
+2026-03-24T01:01:55.756Z vite:resolve [31m115.78ms[39m [36m/src/content/blog
+/lavadora-de-alta-pressao-electrolux-1850psi-1500w-potencia-c.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/lavadora-de-alta-pressao-electrolux-1850psi-1500w-potencia-
+c.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.756Z vite:resolve [31m115.80ms[39m [36m/src/content/blog
+/lavadora-de-alta-pressao-karcher-compacta-1500-psilibras-140.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/lavadora-de-alta-pressao-karcher-compacta-1500-psilibras-14
+0.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.756Z vite:resolve [31m115.82ms[39m [36m/src/content/blog
+/melhor-tv-55-polegadas-2026.md?astroPropagatedAssets[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/melhor-tv-55-polegadas-2026.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.756Z vite:resolve [31m115.83ms[39m [36m/src/content/blog
+/militec-1-condicionador-de-metais-moto-40ml-original.md?astroPropagatedAssets
+[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/c
+ontent/blog/militec-1-condicionador-de-metais-moto-40ml-original.md?astroPropag
+atedAssets[22m
+2026-03-24T01:01:55.756Z vite:resolve [31m115.84ms[39m [36m/src/content/blog
+/multivitaminico-12-vitaminas-5-minerais-60-capsulas-soldiers.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/multivitaminico-12-vitaminas-5-minerais-60-capsulas-soldier
+s.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.756Z vite:resolve [31m115.86ms[39m [36m/src/content/blog
+/multivitaminico-az-homem-premium-intera-daily-soldiers-nutri.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/multivitaminico-az-homem-premium-intera-daily-soldiers-nutr
+i.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.757Z vite:resolve [31m117.00ms[39m [36m/src/content/blog
+/notebook-dell-alienware-ac16-c7240h-d30-core7-16gb-rtx-linux.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/notebook-dell-alienware-ac16-c7240h-d30-core7-16gb-rtx-linu
+x.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.15ms[39m [36m/src/content/blog
+/notebook-gamer-acer-nitro-v15-anv15-52-737p-intel-core-i7-13.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/notebook-gamer-acer-nitro-v15-anv15-52-737p-intel-core-i7-1
+3.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.18ms[39m [36m/src/content/blog
+/notebook-samsung-galaxy-book4-pro-windows-11-home-intel-core.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/notebook-samsung-galaxy-book4-pro-windows-11-home-intel-cor
+e.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.21ms[39m [36m/src/content/blog
+/o-boticario-coffee-man-addictive-colonia-100ml.md?astroPropagatedAssets[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/conten
+t/blog/o-boticario-coffee-man-addictive-colonia-100ml.md?astroPropagatedAssets
+[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.24ms[39m [36m/src/content/blog
+/o-boticario-leau-de-lily-blanche-colonia-75ml.md?astroPropagatedAssets[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/conten
+t/blog/o-boticario-leau-de-lily-blanche-colonia-75ml.md?astroPropagatedAssets[
+22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.27ms[39m [36m/src/content/blog
+/o-boticario-malbec-desodorante-colonia-20-100ml.md?astroPropagatedAssets[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/conten
+t/blog/o-boticario-malbec-desodorante-colonia-20-100ml.md?astroPropagatedAssets
+[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.30ms[39m [36m/src/content/blog
+/o-boticario-uomini-desodorante-colonia-100ml.md?astroPropagatedAssets[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/o-boticario-uomini-desodorante-colonia-100ml.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.33ms[39m [36m/src/content/blog
+/o-boticario-zaad-expedition-edp-95ml-para-masculino.md?astroPropagatedAssets[
+39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/co
+ntent/blog/o-boticario-zaad-expedition-edp-95ml-para-masculino.md?astroPropagat
+edAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.35ms[39m [36m/src/content/blog
+/omega-3-1000mg-60-capsulas-soldiers-nutrition-coracao-vitami.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/omega-3-1000mg-60-capsulas-soldiers-nutrition-coracao-vitam
+i.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.37ms[39m [36m/src/content/blog
+/perfume-jean-paul-gaultier-le-male-eau-de-toilette-200-ml-ma.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/perfume-jean-paul-gaultier-le-male-eau-de-toilette-200-ml-m
+a.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.40ms[39m [36m/src/content/blog
+/perfume-jean-paul-gaultier-le-male-elixir-parfum-125-ml-masc.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/perfume-jean-paul-gaultier-le-male-elixir-parfum-125-ml-mas
+c.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.42ms[39m [36m/src/content/blog
+/perfume-jean-paul-gaultier-le-male-le-parfum-eau-de-parfum-i.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/perfume-jean-paul-gaultier-le-male-le-parfum-eau-de-parfum-
+i.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.44ms[39m [36m/src/content/blog
+/perfume-jean-paul-gaultier-scandal-eau-de-parfum-80-ml-femin.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/perfume-jean-paul-gaultier-scandal-eau-de-parfum-80-ml-femi
+n.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.47ms[39m [36m/src/content/blog
+/playstation-5-slim-cor-branco-1-tb-versao-midia-fisica.md?astroPropagatedAsset
+s[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src
+/content/blog/playstation-5-slim-cor-branco-1-tb-versao-midia-fisica.md?astroPr
+opagatedAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.50ms[39m 
+[36m/src/content/blog/pneus-pireli.md?astroPropagatedAssets[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/pneus-pireli.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.53ms[39m [36m/src/content/blog
+/purificador-de-agua-gelada-ibbl-e-due-full-range-branco-1272.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/purificador-de-agua-gelada-ibbl-e-due-full-range-branco-127
+2.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.55ms[39m [36m/src/content/blog
+/robo-aspirador-robot-w90-varre-aspira-e-passa-pano-30w-wap-c.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/robo-aspirador-robot-w90-varre-aspira-e-passa-pano-30w-wap-
+c.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.58ms[39m [36m/src/content/blog
+/samsung-galaxy-watch7-smartwatch-44mm-bt-galaxy-ai-prata.md?astroPropagatedAss
+ets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/s
+rc/content/blog/samsung-galaxy-watch7-smartwatch-44mm-bt-galaxy-ai-prata.md?ast
+roPropagatedAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.60ms[39m [36m/src/content/blog
+/smart-tv-4k-50-lg-nanocell-50nanoa-processador-7-ai-ger8-4k-.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/smart-tv-4k-50-lg-nanocell-50nanoa-processador-7-ai-ger8-4k
+-.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.63ms[39m [36m/src/content/blog
+/smart-tv-profissional-lg-43-full-hd-processador-a5-ger6-ai-a.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/smart-tv-profissional-lg-43-full-hd-processador-a5-ger6-ai-
+a.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.65ms[39m [36m/src/content/blog
+/smartphone-motorola-moto-g06-128gb-12gb-4gb-ram-8gb-ram-boos.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/smartphone-motorola-moto-g06-128gb-12gb-4gb-ram-8gb-ram-boo
+s.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.758Z vite:resolve [31m117.69ms[39m [36m/src/content/blog
+/suplemento-alimentar-vitasay-a-z-mulher-30-comprimidos-reves.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/suplemento-alimentar-vitasay-a-z-mulher-30-comprimidos-reve
+s.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.759Z vite:resolve [31m117.72ms[39m [36m/src/content/blog
+/suplemento-em-po-adaptogen-science-panic-pre-treino-com-crea.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/suplemento-em-po-adaptogen-science-panic-pre-treino-com-cre
+a.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.759Z vite:resolve [31m117.75ms[39m [36m/src/content/blog
+/tenis-nike-precision-7-unissex.md?astroPropagatedAssets[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/tenis-nike-precision-7-unissex.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.759Z vite:resolve [31m117.77ms[39m [36m/src/content/blog
+/tenis-nike-revolution-8-feminino.md?astroPropagatedAssets[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/tenis-nike-revolution-8-feminino.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.759Z vite:resolve [31m117.80ms[39m [36m/src/content/blog
+/ventilador-de-mesa-30cm-super-power-mondial-60w-vsp-30-b-30-.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/ventilador-de-mesa-30cm-super-power-mondial-60w-vsp-30-b-30
+-.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.759Z vite:resolve [31m117.82ms[39m [36m/src/content/blog
+/vitamina-c-em-po-acido-ascobico-500g-100-puro-soldiers-nutri.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/vitamina-c-em-po-acido-ascobico-500g-100-puro-soldiers-nutr
+i.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.759Z vite:resolve [31m117.84ms[39m [36m/src/content/blog
+/vitamina-d-intera-daily-imunidade-soldiers-nutrition-natural.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/vitamina-d-intera-daily-imunidade-soldiers-nutrition-natura
+l.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.759Z vite:resolve [31m117.86ms[39m 
+[36m/src/content/blog/whey-pro-max-titanium.md?astroPropagatedAssets[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/whey-pro-max-titanium.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.759Z vite:resolve [31m117.89ms[39m [36m/src/content/blog
+/whey-protein-zero-lactose-beef-900g-morango-ckiwi-shark-pro-.md?astroPropagate
+dAssets[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.V
+IP/src/content/blog/whey-protein-zero-lactose-beef-900g-morango-ckiwi-shark-pro
+-.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.759Z vite:resolve [31m117.91ms[39m [36m/src/content/blog
+/zaad-intense-de-o-boticario-eau-de-parfume-95ml.md?astroPropagatedAssets[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/conten
+t/blog/zaad-intense-de-o-boticario-eau-de-parfume-95ml.md?astroPropagatedAssets
+[22m
+2026-03-24T01:01:55.759Z vite:resolve [31m124.62ms[39m [36m/src/content/blog
+/3-perfume-capilar-barbourx27s-alter-ego-living-grace-very-se.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/3-perfume-capilar-barbourx27s-alter-ego-living-grace-very
+-se.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.759Z vite:resolve [31m124.68ms[39m [36m/src/content/blog
+/aditivo-condicionador-de-metais-carro-moto-bardahl-200-ml-ci.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/aditivo-condicionador-de-metais-carro-moto-bardahl-200-ml
+-ci.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.759Z vite:resolve [31m124.72ms[39m [36m/src/content/blog
+/ar-condicionado-split-samsung-inverter-windfree-ai-12000-btu.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/ar-condicionado-split-samsung-inverter-windfree-ai-12000-
+btu.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.759Z vite:resolve [31m124.76ms[39m [36m/src/content/blog
+/armani-beauty-perfume-masculino-acqua-di-gio-profondo-eau-de.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/armani-beauty-perfume-masculino-acqua-di-gio-profondo-eau
+-de.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.759Z vite:resolve [31m124.79ms[39m [36m/src/content/blog
+/bicicleta-ergometrica-para-spinning-mecanica-8kg-odin-fit-co.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/bicicleta-ergometrica-para-spinning-mecanica-8kg-odin-fit
+-co.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.759Z vite:resolve [31m124.83ms[39m [36m/src/content/blog
+/cadeira-escritorio-ergonomica-genebra-b500-luvinco-cor-preto.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/cadeira-escritorio-ergonomica-genebra-b500-luvinco-cor-pr
+eto.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.759Z vite:resolve [31m124.87ms[39m 
+[36m/src/content/blog/cafeteira-italiana-inox.md?astroRenderContent=true[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/conten
+t/blog/cafeteira-italiana-inox.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.759Z vite:resolve [31m124.90ms[39m [36m/src/content/blog
+/coenzima-q10-intera-daily-soldiers-nutrition-natural.md?astroRenderContent=tru
+e[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src
+/content/blog/coenzima-q10-intera-daily-soldiers-nutrition-natural.md?astroProp
+agatedAssets[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m124.93ms[39m [36m/src/content/blog
+/colagen-ii-bionatus-saude-articular.md?astroRenderContent=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/colagen-ii-bionatus-saude-articular.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m124.96ms[39m [36m/src/content/blog
+/colageno-hidrolisado-1kg-tipo-1-100-puro-soldiers-nutrition-.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/colageno-hidrolisado-1kg-tipo-1-100-puro-soldiers-nutriti
+on-.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m125.00ms[39m [36m/src/content/blog
+/colageno-hidrolisado-collagen-renew-morango-300g-nutrify.md?astroRenderContent
+=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP
+/src/content/blog/colageno-hidrolisado-collagen-renew-morango-300g-nutrify.md?a
+stroPropagatedAssets[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m125.05ms[39m [36m/src/content/blog
+/colageno-tipo-2-intera-daily-soldiers-nutrition-natural.md?astroRenderContent=
+true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/
+src/content/blog/colageno-tipo-2-intera-daily-soldiers-nutrition-natural.md?ast
+roPropagatedAssets[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m125.08ms[39m [36m/src/content/blog
+/comparativo-xiaomi-poco-2026.md?astroRenderContent=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/comparativo-xiaomi-poco-2026.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m125.12ms[39m [36m/src/content/blog
+/complexo-b-premium-intera-daily-energia-soldiers-nutrition-n.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/complexo-b-premium-intera-daily-energia-soldiers-nutritio
+n-n.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m125.15ms[39m [36m/src/content/blog
+/cooktop-mueller-5-bocas-com-queimador-ultra-chama-preto-1272.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/cooktop-mueller-5-bocas-com-queimador-ultra-chama-preto-1
+272.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m125.19ms[39m 
+[36m/src/content/blog/creatina-soldiers-500g.md?astroRenderContent=true[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/conten
+t/blog/creatina-soldiers-500g.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m125.30ms[39m [36m/src/content/blog
+/egeo-choc-high-colonia-o-boticario-90ml.md?astroRenderContent=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/egeo-choc-high-colonia-o-boticario-90ml.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m125.36ms[39m [36m/src/content/blog
+/floratta-gold-o-boticario-desodorante-colonia-spray-75ml.md?astroRenderContent
+=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP
+/src/content/blog/floratta-gold-o-boticario-desodorante-colonia-spray-75ml.md?a
+stroPropagatedAssets[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m125.40ms[39m [36m/src/content/blog
+/fone-headphone-jbl-tune-520bt-bluetooth.md?astroRenderContent=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/fone-headphone-jbl-tune-520bt-bluetooth.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m125.45ms[39m 
+[36m/src/content/blog/gamer-pc.md?astroRenderContent=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/gamer-pc.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m125.50ms[39m [36m/src/content/blog
+/garrafa-termica-quick-flip-stanley-preto-710ml.md?astroRenderContent=true[39m
+ -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/conte
+nt/blog/garrafa-termica-quick-flip-stanley-preto-710ml.md?astroPropagatedAssets
+[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m125.58ms[39m [36m/src/content/blog
+/geladeira-electrolux-frost-free-431l-autosense-inox-tf70s.md?astroRenderConten
+t=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VI
+P/src/content/blog/geladeira-electrolux-frost-free-431l-autosense-inox-tf70s.md
+?astroPropagatedAssets[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m125.63ms[39m 
+[36m/src/content/blog/guia-arginina.md?astroRenderContent=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/guia-arginina.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m125.66ms[39m [36m/src/content/blog
+/guia-completo-body-splash-barbours-beauty.md?astroRenderContent=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/guia-completo-body-splash-barbours-beauty.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m125.70ms[39m [36m/src/content/blog
+/guia-creatina-performance.md?astroRenderContent=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/guia-creatina-performance.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.760Z vite:resolve [31m125.74ms[39m [36m/src/content/blog
+/guia-seguranca-mercado-livre.md?astroRenderContent=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/guia-seguranca-mercado-livre.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.761Z vite:resolve [31m125.77ms[39m 
+[36m/src/content/blog/jbl-wave-buds-2.md?astroRenderContent=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/jbl-wave-buds-2.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.761Z vite:resolve [31m125.81ms[39m [36m/src/content/blog
+/kit-3-body-splash-good-graces-delight-very-sexy-barbourx27s.md?astroRenderCont
+ent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.
+VIP/src/content/blog/kit-3-body-splash-good-graces-delight-very-sexy-barbourx27
+s.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.761Z vite:resolve [31m125.84ms[39m [36m/src/content/blog
+/l-glutamina-500g-100-pura-importada-soldiers-nutrition.md?astroRenderContent=t
+rue[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/s
+rc/content/blog/l-glutamina-500g-100-pura-importada-soldiers-nutrition.md?astro
+PropagatedAssets[22m
+2026-03-24T01:01:55.761Z vite:resolve [31m125.90ms[39m [36m/src/content/blog
+/lava-e-seca-105kg-healthguard-titanium-conectada-midea.md?astroRenderContent=t
+rue[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/s
+rc/content/blog/lava-e-seca-105kg-healthguard-titanium-conectada-midea.md?astro
+PropagatedAssets[22m
+2026-03-24T01:01:55.761Z vite:resolve [31m126.02ms[39m [36m/src/content/blog
+/lavadora-de-alta-pressao-electrolux-1850psi-1500w-potencia-c.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/lavadora-de-alta-pressao-electrolux-1850psi-1500w-potenci
+a-c.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.761Z vite:resolve [31m126.07ms[39m [36m/src/content/blog
+/lavadora-de-alta-pressao-karcher-compacta-1500-psilibras-140.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/lavadora-de-alta-pressao-karcher-compacta-1500-psilibras-
+140.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.761Z vite:resolve [31m126.13ms[39m [36m/src/content/blog
+/melhor-tv-55-polegadas-2026.md?astroRenderContent=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/melhor-tv-55-polegadas-2026.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.761Z vite:resolve [31m126.20ms[39m [36m/src/content/blog
+/militec-1-condicionador-de-metais-moto-40ml-original.md?astroRenderContent=tru
+e[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src
+/content/blog/militec-1-condicionador-de-metais-moto-40ml-original.md?astroProp
+agatedAssets[22m
+2026-03-24T01:01:55.761Z vite:resolve [31m126.30ms[39m [36m/src/content/blog
+/multivitaminico-12-vitaminas-5-minerais-60-capsulas-soldiers.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/multivitaminico-12-vitaminas-5-minerais-60-capsulas-soldi
+ers.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.762Z vite:resolve [31m126.60ms[39m [36m/src/content/blog
+/multivitaminico-az-homem-premium-intera-daily-soldiers-nutri.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/multivitaminico-az-homem-premium-intera-daily-soldiers-nu
+tri.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.762Z vite:resolve [31m126.71ms[39m [36m/src/content/blog
+/notebook-dell-alienware-ac16-c7240h-d30-core7-16gb-rtx-linux.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/notebook-dell-alienware-ac16-c7240h-d30-core7-16gb-rtx-li
+nux.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.762Z vite:resolve [31m126.76ms[39m [36m/src/content/blog
+/notebook-gamer-acer-nitro-v15-anv15-52-737p-intel-core-i7-13.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/notebook-gamer-acer-nitro-v15-anv15-52-737p-intel-core-i7
+-13.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.762Z vite:resolve [31m126.81ms[39m [36m/src/content/blog
+/notebook-samsung-galaxy-book4-pro-windows-11-home-intel-core.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/notebook-samsung-galaxy-book4-pro-windows-11-home-intel-c
+ore.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.762Z vite:resolve [31m126.93ms[39m [36m/src/content/blog
+/o-boticario-coffee-man-addictive-colonia-100ml.md?astroRenderContent=true[39m
+ -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/conte
+nt/blog/o-boticario-coffee-man-addictive-colonia-100ml.md?astroPropagatedAssets
+[22m
+2026-03-24T01:01:55.762Z vite:resolve [31m126.98ms[39m [36m/src/content/blog
+/o-boticario-leau-de-lily-blanche-colonia-75ml.md?astroRenderContent=true[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/conten
+t/blog/o-boticario-leau-de-lily-blanche-colonia-75ml.md?astroPropagatedAssets[
+22m
+2026-03-24T01:01:55.762Z vite:resolve [31m127.04ms[39m [36m/src/content/blog
+/o-boticario-malbec-desodorante-colonia-20-100ml.md?astroRenderContent=true[39
+m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/cont
+ent/blog/o-boticario-malbec-desodorante-colonia-20-100ml.md?astroPropagatedAsse
+ts[22m
+2026-03-24T01:01:55.762Z vite:resolve [31m127.08ms[39m [36m/src/content/blog
+/o-boticario-uomini-desodorante-colonia-100ml.md?astroRenderContent=true[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/conten
+t/blog/o-boticario-uomini-desodorante-colonia-100ml.md?astroPropagatedAssets[2
+2m
+2026-03-24T01:01:55.762Z vite:resolve [31m127.12ms[39m [36m/src/content/blog
+/o-boticario-zaad-expedition-edp-95ml-para-masculino.md?astroRenderContent=true
+[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/
+content/blog/o-boticario-zaad-expedition-edp-95ml-para-masculino.md?astroPropag
+atedAssets[22m
+2026-03-24T01:01:55.762Z vite:resolve [31m127.26ms[39m [36m/src/content/blog
+/omega-3-1000mg-60-capsulas-soldiers-nutrition-coracao-vitami.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/omega-3-1000mg-60-capsulas-soldiers-nutrition-coracao-vit
+ami.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.762Z vite:resolve [31m127.40ms[39m [36m/src/content/blog
+/perfume-jean-paul-gaultier-le-male-eau-de-toilette-200-ml-ma.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/perfume-jean-paul-gaultier-le-male-eau-de-toilette-200-ml
+-ma.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.762Z vite:resolve [31m127.46ms[39m [36m/src/content/blog
+/perfume-jean-paul-gaultier-le-male-elixir-parfum-125-ml-masc.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/perfume-jean-paul-gaultier-le-male-elixir-parfum-125-ml-m
+asc.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.763Z vite:resolve [31m127.54ms[39m [36m/src/content/blog
+/perfume-jean-paul-gaultier-le-male-le-parfum-eau-de-parfum-i.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/perfume-jean-paul-gaultier-le-male-le-parfum-eau-de-parfu
+m-i.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.763Z vite:resolve [31m127.64ms[39m [36m/src/content/blog
+/perfume-jean-paul-gaultier-scandal-eau-de-parfum-80-ml-femin.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/perfume-jean-paul-gaultier-scandal-eau-de-parfum-80-ml-fe
+min.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.763Z vite:resolve [31m127.77ms[39m [36m/src/content/blog
+/playstation-5-slim-cor-branco-1-tb-versao-midia-fisica.md?astroRenderContent=t
+rue[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/s
+rc/content/blog/playstation-5-slim-cor-branco-1-tb-versao-midia-fisica.md?astro
+PropagatedAssets[22m
+2026-03-24T01:01:55.763Z vite:resolve [31m127.83ms[39m 
+[36m/src/content/blog/pneus-pireli.md?astroRenderContent=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/pneus-pireli.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.763Z vite:resolve [31m127.92ms[39m [36m/src/content/blog
+/purificador-de-agua-gelada-ibbl-e-due-full-range-branco-1272.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/purificador-de-agua-gelada-ibbl-e-due-full-range-branco-1
+272.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.763Z vite:resolve [31m127.97ms[39m [36m/src/content/blog
+/robo-aspirador-robot-w90-varre-aspira-e-passa-pano-30w-wap-c.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/robo-aspirador-robot-w90-varre-aspira-e-passa-pano-30w-wa
+p-c.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.763Z vite:resolve [31m128.02ms[39m [36m/src/content/blog
+/samsung-galaxy-watch7-smartwatch-44mm-bt-galaxy-ai-prata.md?astroRenderContent
+=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP
+/src/content/blog/samsung-galaxy-watch7-smartwatch-44mm-bt-galaxy-ai-prata.md?a
+stroPropagatedAssets[22m
+2026-03-24T01:01:55.763Z vite:resolve [31m128.08ms[39m [36m/src/content/blog
+/smart-tv-4k-50-lg-nanocell-50nanoa-processador-7-ai-ger8-4k-.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/smart-tv-4k-50-lg-nanocell-50nanoa-processador-7-ai-ger8-
+4k-.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.763Z vite:resolve [31m128.14ms[39m [36m/src/content/blog
+/smart-tv-profissional-lg-43-full-hd-processador-a5-ger6-ai-a.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/smart-tv-profissional-lg-43-full-hd-processador-a5-ger6-a
+i-a.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.763Z vite:resolve [31m128.19ms[39m [36m/src/content/blog
+/smartphone-motorola-moto-g06-128gb-12gb-4gb-ram-8gb-ram-boos.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/smartphone-motorola-moto-g06-128gb-12gb-4gb-ram-8gb-ram-b
+oos.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.763Z vite:resolve [31m128.23ms[39m [36m/src/content/blog
+/suplemento-alimentar-vitasay-a-z-mulher-30-comprimidos-reves.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/suplemento-alimentar-vitasay-a-z-mulher-30-comprimidos-re
+ves.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.763Z vite:resolve [31m128.28ms[39m [36m/src/content/blog
+/suplemento-em-po-adaptogen-science-panic-pre-treino-com-crea.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/suplemento-em-po-adaptogen-science-panic-pre-treino-com-c
+rea.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.763Z vite:resolve [31m128.32ms[39m [36m/src/content/blog
+/tenis-nike-precision-7-unissex.md?astroRenderContent=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/tenis-nike-precision-7-unissex.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.763Z vite:resolve [31m128.36ms[39m [36m/src/content/blog
+/tenis-nike-revolution-8-feminino.md?astroRenderContent=true[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content/b
+log/tenis-nike-revolution-8-feminino.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.764Z vite:resolve [31m128.40ms[39m [36m/src/content/blog
+/ventilador-de-mesa-30cm-super-power-mondial-60w-vsp-30-b-30-.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/ventilador-de-mesa-30cm-super-power-mondial-60w-vsp-30-b-
+30-.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.764Z vite:resolve [31m128.45ms[39m [36m/src/content/blog
+/vitamina-c-em-po-acido-ascobico-500g-100-puro-soldiers-nutri.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/vitamina-c-em-po-acido-ascobico-500g-100-puro-soldiers-nu
+tri.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.764Z vite:resolve [31m128.49ms[39m [36m/src/content/blog
+/vitamina-d-intera-daily-imunidade-soldiers-nutrition-natural.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/vitamina-d-intera-daily-imunidade-soldiers-nutrition-natu
+ral.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.764Z vite:resolve [31m128.53ms[39m 
+[36m/src/content/blog/whey-pro-max-titanium.md?astroRenderContent=true[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/conten
+t/blog/whey-pro-max-titanium.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.764Z vite:resolve [31m128.57ms[39m [36m/src/content/blog
+/whey-protein-zero-lactose-beef-900g-morango-ckiwi-shark-pro-.md?astroRenderCon
+tent=true[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto
+.VIP/src/content/blog/whey-protein-zero-lactose-beef-900g-morango-ckiwi-shark-p
+ro-.md?astroPropagatedAssets[22m
+2026-03-24T01:01:55.764Z vite:resolve [31m128.62ms[39m [36m/src/content/blog
+/zaad-intense-de-o-boticario-eau-de-parfume-95ml.md?astroRenderContent=true[39
+m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/cont
+ent/blog/zaad-intense-de-o-boticario-eau-de-parfume-95ml.md?astroPropagatedAsse
+ts[22m
+2026-03-24T01:01:55.780Z vite:resolve [33m15.27ms[39m 
+[36m/node_modules/astro/dist/content/runtime.js[39m -> [2mC:/Users/Cesar Vic
+tor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/content/run
+time.js[22m
+2026-03-24T01:01:55.780Z vite:resolve [33m15.46ms[39m 
+[36m/node_modules/astro/zod.mjs[39m -> [2mC:/Users/Cesar 
+Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/zod.mjs[22m
+2026-03-24T01:01:55.878Z vite:import-analysis [31m257.48ms[39m [2m[136 
+imports rewritten] [2m astro:content[22m[2m[22m
+2026-03-24T01:01:55.879Z vite:transform [31m310.18ms[39m 
+[2m astro:content[22m
+2026-03-24T01:01:55.913Z vite:load [33m30.85ms[39m [fs] 
+[2m/node_modules/astro/dist/content/runtime.js[22m
+2026-03-24T01:01:55.961Z vite:resolve [32m0.97ms[39m 
+[36mastro:asset-imports[39m -> [2m astro:asset-imports[22m
+2026-03-24T01:01:55.961Z vite:resolve [32m1.14ms[39m 
+[36mastro:content-module-imports[39m -> 
+[2m astro:content-module-imports[22m
+2026-03-24T01:01:55.970Z vite:resolve [33m10.12ms[39m 
+[36m../assets/utils/resolveImports.js[39m -> [2mC:/Users/Cesar Victor/Deskto
+p/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/assets/utils/resolveI
+mports.js[22m
+2026-03-24T01:01:55.970Z vite:resolve [33m10.27ms[39m 
+[36m../core/errors/index.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCe
+rto.Vip/AchadoCerto.VIP/node_modules/astro/dist/core/errors/index.js[22m
+2026-03-24T01:01:55.970Z vite:resolve [33m10.33ms[39m 
+[36m../core/path.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/
+AchadoCerto.VIP/node_modules/astro/dist/core/path.js[22m
+2026-03-24T01:01:55.970Z vite:resolve [33m10.36ms[39m 
+[36m../runtime/server/index.js[39m -> [2mC:/Users/Cesar Victor/Desktop/Achad
+oCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/index.js[22m
+2026-03-24T01:01:55.970Z vite:resolve [33m10.39ms[39m [36m./consts.js[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modul
+es/astro/dist/content/consts.js[22m
+2026-03-24T01:01:55.970Z vite:resolve [33m10.41ms[39m 
+[36m./data-store.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/
+AchadoCerto.VIP/node_modules/astro/dist/content/data-store.js[22m
+2026-03-24T01:01:55.971Z vite:resolve [33m11.16ms[39m [36mastro:assets[39m 
+-> [2m astro:assets[22m
+2026-03-24T01:01:55.976Z vite:resolve [32m5.34ms[39m 
+[36m/node_modules/astro/dist/assets/utils/resolveImports.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/assets/utils/resolveImports.js[22m
+2026-03-24T01:01:55.977Z vite:resolve [32m5.51ms[39m 
+[36m/node_modules/astro/dist/core/errors/index.js[39m -> [2mC:/Users/Cesar V
+ictor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/core/erro
+rs/index.js[22m
+2026-03-24T01:01:55.977Z vite:resolve [32m5.57ms[39m 
+[36m/node_modules/astro/dist/core/path.js[39m -> [2mC:/Users/Cesar Victor/De
+sktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/core/path.js[22m
+2026-03-24T01:01:55.977Z vite:resolve [32m5.61ms[39m 
+[36m/node_modules/astro/dist/runtime/server/index.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/index.js[22m
+2026-03-24T01:01:55.977Z vite:resolve [32m5.67ms[39m 
+[36m/node_modules/astro/dist/content/consts.js[39m -> [2mC:/Users/Cesar Vict
+or/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/content/cons
+ts.js[22m
+2026-03-24T01:01:55.977Z vite:resolve [32m5.76ms[39m 
+[36m/node_modules/astro/dist/content/data-store.js[39m -> [2mC:/Users/Cesar 
+Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/content/
+data-store.js[22m
+2026-03-24T01:01:55.988Z vite:resolve [33m15.54ms[39m 
+[36m astro:asset-imports[39m -> [2mnull[22m
+2026-03-24T01:01:55.988Z vite:resolve [33m15.68ms[39m 
+[36m astro:assets[39m -> [2mnull[22m
+2026-03-24T01:01:55.988Z vite:resolve [33m15.72ms[39m 
+[36m astro:content-module-imports[39m -> [2mnull[22m
+2026-03-24T01:01:55.989Z vite:import-analysis [31m58.08ms[39m [2m[9 imports 
+rewritten] [2mnode_modules/astro/dist/content/runtime.js[22m[2m[22m
+2026-03-24T01:01:55.990Z vite:transform [31m76.61ms[39m 
+[2m/node_modules/astro/dist/content/runtime.js[22m
+2026-03-24T01:01:55.991Z vite:load [31m109.08ms[39m [fs] 
+[2m/node_modules/astro/zod.mjs[22m
+2026-03-24T01:01:55.992Z vite:import-analysis [32m0.29ms[39m [2m[0 imports 
+rewritten] [2mnode_modules/astro/zod.mjs[22m[2m[22m
+2026-03-24T01:01:55.992Z vite:transform [32m1.16ms[39m 
+[2m/node_modules/astro/zod.mjs[22m
+2026-03-24T01:01:56.072Z vite:load [31m83.28ms[39m [fs] 
+[2m/node_modules/astro/dist/core/errors/index.js[22m
+2026-03-24T01:01:56.076Z vite:resolve [32m3.34ms[39m 
+[36m./errors-data.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip
+/AchadoCerto.VIP/node_modules/astro/dist/core/errors/errors-data.js[22m
+2026-03-24T01:01:56.076Z vite:resolve [32m3.50ms[39m [36m./errors.js[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modul
+es/astro/dist/core/errors/errors.js[22m
+2026-03-24T01:01:56.076Z vite:resolve [32m3.54ms[39m [36m./printer.js[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modul
+es/astro/dist/core/errors/printer.js[22m
+2026-03-24T01:01:56.076Z vite:resolve [32m3.59ms[39m [36m./utils.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/core/errors/utils.js[22m
+2026-03-24T01:01:56.076Z vite:resolve [32m3.63ms[39m 
+[36m./zod-error-map.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.V
+ip/AchadoCerto.VIP/node_modules/astro/dist/core/errors/zod-error-map.js[22m
+2026-03-24T01:01:56.085Z vite:resolve [32m7.66ms[39m 
+[36m/node_modules/astro/dist/core/errors/errors-data.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/core/errors/errors-data.js[22m
+2026-03-24T01:01:56.085Z vite:resolve [32m7.81ms[39m 
+[36m/node_modules/astro/dist/core/errors/errors.js[39m -> [2mC:/Users/Cesar 
+Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/core/err
+ors/errors.js[22m
+2026-03-24T01:01:56.085Z vite:resolve [32m7.85ms[39m 
+[36m/node_modules/astro/dist/core/errors/printer.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/core/errors/printer.js[22m
+2026-03-24T01:01:56.085Z vite:resolve [32m7.88ms[39m 
+[36m/node_modules/astro/dist/core/errors/utils.js[39m -> [2mC:/Users/Cesar V
+ictor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/core/erro
+rs/utils.js[22m
+2026-03-24T01:01:56.085Z vite:resolve [32m7.92ms[39m 
+[36m/node_modules/astro/dist/core/errors/zod-error-map.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/core/errors/zod-error-map.js[22m
+2026-03-24T01:01:56.085Z vite:import-analysis [33m13.18ms[39m [2m[5 imports 
+rewritten] [2mnode_modules/astro/dist/core/errors/index.js[22m[2m[22m
+2026-03-24T01:01:56.086Z vite:transform [33m13.77ms[39m 
+[2m/node_modules/astro/dist/core/errors/index.js[22m
+2026-03-24T01:01:56.090Z vite:load [31m101.95ms[39m [fs] 
+[2m/node_modules/astro/dist/core/path.js[22m
+2026-03-24T01:01:56.097Z vite:import-analysis [32m5.84ms[39m [2m[0 imports 
+rewritten] [2mnode_modules/astro/dist/core/path.js[22m[2m[22m
+2026-03-24T01:01:56.097Z vite:transform [32m6.56ms[39m 
+[2m/node_modules/astro/dist/core/path.js[22m
+2026-03-24T01:01:56.097Z vite:load [31m109.01ms[39m [fs] 
+[2m/node_modules/astro/dist/assets/utils/resolveImports.js[22m
+2026-03-24T01:01:56.100Z vite:resolve [32m2.26ms[39m 
+[36m../../content/consts.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCe
+rto.Vip/AchadoCerto.VIP/node_modules/astro/dist/content/consts.js[22m
+2026-03-24T01:01:56.101Z vite:resolve [32m2.41ms[39m 
+[36m../../runtime/server/shorthash.js[39m -> [2mC:/Users/Cesar Victor/Deskto
+p/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/shorth
+ash.js[22m
+2026-03-24T01:01:56.101Z vite:resolve [32m2.46ms[39m [36m../consts.js[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modul
+es/astro/dist/assets/consts.js[22m
+2026-03-24T01:01:56.104Z vite:resolve [32m3.19ms[39m 
+[36m/node_modules/astro/dist/runtime/server/shorthash.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/shorthash.js[22m
+2026-03-24T01:01:56.105Z vite:resolve [32m3.37ms[39m 
+[36m/node_modules/astro/dist/assets/consts.js[39m -> [2mC:/Users/Cesar Victo
+r/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/assets/consts
+.js[22m
+2026-03-24T01:01:56.105Z vite:import-analysis [32m6.99ms[39m [2m[3 imports 
+rewritten] 
+[2mnode_modules/astro/dist/assets/utils/resolveImports.js[22m[2m[22m
+2026-03-24T01:01:56.105Z vite:transform [32m7.54ms[39m 
+[2m/node_modules/astro/dist/assets/utils/resolveImports.js[22m
+2026-03-24T01:01:56.107Z vite:load [31m118.88ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/index.js[22m
+2026-03-24T01:01:56.116Z vite:resolve [32m7.57ms[39m 
+[36m./astro-component.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto
+.Vip/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/astro-component.js
+[22m
+2026-03-24T01:01:56.116Z vite:resolve [32m7.73ms[39m 
+[36m./astro-global.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vi
+p/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/astro-global.js[22m
+2026-03-24T01:01:56.116Z vite:resolve [32m7.78ms[39m [36m./endpoint.js[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modul
+es/astro/dist/runtime/server/endpoint.js[22m
+2026-03-24T01:01:56.116Z vite:resolve [32m7.81ms[39m [36m./escape.js[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modul
+es/astro/dist/runtime/server/escape.js[22m
+2026-03-24T01:01:56.116Z vite:resolve [32m7.85ms[39m [36m./jsx.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/jsx.js[22m
+2026-03-24T01:01:56.116Z vite:resolve [32m7.87ms[39m 
+[36m./render/index.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vi
+p/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/render/index.js[22m
+2026-03-24T01:01:56.116Z vite:resolve [32m7.96ms[39m 
+[36m./transition.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/
+AchadoCerto.VIP/node_modules/astro/dist/runtime/server/transition.js[22m
+2026-03-24T01:01:56.130Z vite:resolve [33m11.94ms[39m 
+[36m/node_modules/astro/dist/runtime/server/astro-component.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/astro-component.js[22m
+2026-03-24T01:01:56.130Z vite:resolve [33m12.12ms[39m 
+[36m/node_modules/astro/dist/runtime/server/astro-global.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/astro-global.js[22m
+2026-03-24T01:01:56.130Z vite:resolve [33m12.19ms[39m 
+[36m/node_modules/astro/dist/runtime/server/endpoint.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/endpoint.js[22m
+2026-03-24T01:01:56.130Z vite:resolve [33m12.25ms[39m 
+[36m/node_modules/astro/dist/runtime/server/escape.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/escape.js[22m
+2026-03-24T01:01:56.130Z vite:resolve [33m12.29ms[39m 
+[36m/node_modules/astro/dist/runtime/server/jsx.js[39m -> [2mC:/Users/Cesar 
+Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/runtime/
+server/jsx.js[22m
+2026-03-24T01:01:56.130Z vite:resolve [33m12.33ms[39m 
+[36m/node_modules/astro/dist/runtime/server/render/index.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/index.js[22m
+2026-03-24T01:01:56.130Z vite:resolve [33m12.37ms[39m 
+[36m/node_modules/astro/dist/runtime/server/transition.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/transition.js[22m
+2026-03-24T01:01:56.131Z vite:import-analysis [33m23.01ms[39m [2m[7 imports 
+rewritten] [2mnode_modules/astro/dist/runtime/server/index.js[22m[2m[22m
+2026-03-24T01:01:56.131Z vite:transform [33m23.64ms[39m 
+[2m/node_modules/astro/dist/runtime/server/index.js[22m
+2026-03-24T01:01:56.138Z vite:load [31m149.43ms[39m [fs] 
+[2m/node_modules/astro/dist/content/consts.js[22m
+2026-03-24T01:01:56.139Z vite:import-analysis [32m0.11ms[39m [2m[no 
+imports] [2mnode_modules/astro/dist/content/consts.js[22m[2m[22m
+2026-03-24T01:01:56.139Z vite:transform [32m0.79ms[39m 
+[2m/node_modules/astro/dist/content/consts.js[22m
+2026-03-24T01:01:56.139Z vite:load [31m150.63ms[39m [fs] 
+[2m/node_modules/astro/dist/content/data-store.js[22m
+2026-03-24T01:01:56.149Z vite:resolve [32m0.05ms[39m 
+[36mastro:data-layer-content[39m -> [2m astro:data-layer-content[22m
+2026-03-24T01:01:56.150Z vite:resolve [32m0.11ms[39m 
+[36m astro:data-layer-content[39m -> [2mnull[22m
+2026-03-24T01:01:56.150Z vite:import-analysis [32m9.99ms[39m [2m[1 imports 
+rewritten] [2mnode_modules/astro/dist/content/data-store.js[22m[2m[22m
+2026-03-24T01:01:56.150Z vite:transform [33m10.61ms[39m 
+[2m/node_modules/astro/dist/content/data-store.js[22m
+2026-03-24T01:01:56.170Z vite:load [31m80.68ms[39m [fs] 
+[2m/node_modules/astro/dist/core/errors/errors-data.js[22m
+2026-03-24T01:01:56.185Z vite:import-analysis [32m0.73ms[39m [2m[no 
+imports] [2mnode_modules/astro/dist/core/errors/errors-data.js[22m[2m[22m
+2026-03-24T01:01:56.185Z vite:transform [33m14.52ms[39m 
+[2m/node_modules/astro/dist/core/errors/errors-data.js[22m
+2026-03-24T01:01:56.185Z vite:load [31m95.97ms[39m [fs] 
+[2m/node_modules/astro/dist/core/errors/printer.js[22m
+2026-03-24T01:01:56.189Z vite:import-analysis [32m2.29ms[39m [2m[1 imports 
+rewritten] [2mnode_modules/astro/dist/core/errors/printer.js[22m[2m[22m
+2026-03-24T01:01:56.189Z vite:transform [32m3.03ms[39m 
+[2m/node_modules/astro/dist/core/errors/printer.js[22m
+2026-03-24T01:01:56.189Z vite:load [31m99.86ms[39m [fs] 
+[2m/node_modules/astro/dist/core/errors/utils.js[22m
+2026-03-24T01:01:56.191Z vite:import-analysis [32m0.53ms[39m [2m[no 
+imports] [2mnode_modules/astro/dist/core/errors/utils.js[22m[2m[22m
+2026-03-24T01:01:56.191Z vite:transform [32m1.41ms[39m 
+[2m/node_modules/astro/dist/core/errors/utils.js[22m
+2026-03-24T01:01:56.191Z vite:load [31m101.90ms[39m [fs] 
+[2m/node_modules/astro/dist/core/errors/errors.js[22m
+2026-03-24T01:01:56.195Z vite:import-analysis [32m2.35ms[39m [2m[1 imports 
+rewritten] [2mnode_modules/astro/dist/core/errors/errors.js[22m[2m[22m
+2026-03-24T01:01:56.195Z vite:transform [32m3.64ms[39m 
+[2m/node_modules/astro/dist/core/errors/errors.js[22m
+2026-03-24T01:01:56.196Z vite:load [31m106.33ms[39m [fs] 
+[2m/node_modules/astro/dist/core/errors/zod-error-map.js[22m
+2026-03-24T01:01:56.197Z vite:import-analysis [32m0.12ms[39m [2m[no 
+imports] [2mnode_modules/astro/dist/core/errors/zod-error-map.js[22m[2m[22m
+2026-03-24T01:01:56.197Z vite:transform [32m0.79ms[39m 
+[2m/node_modules/astro/dist/core/errors/zod-error-map.js[22m
+2026-03-24T01:01:56.197Z vite:load [31m90.31ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/shorthash.js[22m
+2026-03-24T01:01:56.198Z vite:import-analysis [32m0.08ms[39m [2m[no 
+imports] [2mnode_modules/astro/dist/runtime/server/shorthash.js[22m[2m[22m
+2026-03-24T01:01:56.198Z vite:transform [32m0.86ms[39m 
+[2m/node_modules/astro/dist/runtime/server/shorthash.js[22m
+2026-03-24T01:01:56.199Z vite:load [31m91.80ms[39m [fs] 
+[2m/node_modules/astro/dist/assets/consts.js[22m
+2026-03-24T01:01:56.199Z vite:import-analysis [32m0.07ms[39m [2m[no 
+imports] [2mnode_modules/astro/dist/assets/consts.js[22m[2m[22m
+2026-03-24T01:01:56.200Z vite:transform [32m0.77ms[39m 
+[2m/node_modules/astro/dist/assets/consts.js[22m
+2026-03-24T01:01:56.200Z vite:load [31m63.16ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/astro-component.js[22m
+2026-03-24T01:01:56.202Z vite:resolve [32m1.28ms[39m 
+[36m../../core/errors/index.js[39m -> [2mC:/Users/Cesar Victor/Desktop/Achad
+oCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/core/errors/index.js[22m
+2026-03-24T01:01:56.202Z vite:cache [memory] 
+[2m/node_modules/astro/dist/core/errors/index.js[22m
+2026-03-24T01:01:56.203Z vite:import-analysis [32m2.25ms[39m [2m[1 imports 
+rewritten] 
+[2mnode_modules/astro/dist/runtime/server/astro-component.js[22m[2m[22m
+2026-03-24T01:01:56.203Z vite:transform [32m2.87ms[39m 
+[2m/node_modules/astro/dist/runtime/server/astro-component.js[22m
+2026-03-24T01:01:56.203Z vite:load [31m66.34ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/escape.js[22m
+2026-03-24T01:01:56.211Z vite:resolve [32m1.14ms[39m [36m./util.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/util.js[22m
+2026-03-24T01:01:56.214Z vite:resolve [32m2.78ms[39m 
+[36m/node_modules/astro/dist/runtime/server/util.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/util.js[22m
+2026-03-24T01:01:56.215Z vite:import-analysis [33m10.66ms[39m [2m[1 imports 
+rewritten] [2mnode_modules/astro/dist/runtime/server/escape.js[22m[2m[22m
+2026-03-24T01:01:56.215Z vite:transform [33m11.57ms[39m 
+[2m/node_modules/astro/dist/runtime/server/escape.js[22m
+2026-03-24T01:01:56.217Z vite:load [31m80.31ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/endpoint.js[22m
+2026-03-24T01:01:56.225Z vite:resolve [32m2.15ms[39m 
+[36m../../core/constants.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCe
+rto.Vip/AchadoCerto.VIP/node_modules/astro/dist/core/constants.js[22m
+2026-03-24T01:01:56.225Z vite:resolve [32m2.31ms[39m 
+[36m../../core/errors/errors-data.js[39m -> [2mC:/Users/Cesar Victor/Desktop
+/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/core/errors/errors-dat
+a.js[22m
+2026-03-24T01:01:56.225Z vite:resolve [32m2.36ms[39m 
+[36m../../core/errors/errors.js[39m -> [2mC:/Users/Cesar Victor/Desktop/Acha
+doCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/core/errors/errors.js[22m
+2026-03-24T01:01:56.228Z vite:resolve [32m2.11ms[39m 
+[36m/node_modules/astro/dist/core/constants.js[39m -> [2mC:/Users/Cesar Vict
+or/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/core/constan
+ts.js[22m
+2026-03-24T01:01:56.229Z vite:import-analysis [33m11.14ms[39m [2m[3 imports 
+rewritten] [2mnode_modules/astro/dist/runtime/server/endpoint.js[22m[2m[22m
+2026-03-24T01:01:56.229Z vite:transform [33m12.01ms[39m 
+[2m/node_modules/astro/dist/runtime/server/endpoint.js[22m
+2026-03-24T01:01:56.231Z vite:load [31m94.12ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/astro-global.js[22m
+2026-03-24T01:01:56.234Z vite:cache [memory] 
+[2m/node_modules/astro/dist/core/errors/index.js[22m
+2026-03-24T01:01:56.234Z vite:import-analysis [32m2.43ms[39m [2m[2 imports 
+rewritten] 
+[2mnode_modules/astro/dist/runtime/server/astro-global.js[22m[2m[22m
+2026-03-24T01:01:56.234Z vite:transform [32m2.97ms[39m 
+[2m/node_modules/astro/dist/runtime/server/astro-global.js[22m
+2026-03-24T01:01:56.234Z vite:load [31m97.38ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/render/index.js[22m
+2026-03-24T01:01:56.242Z vite:resolve [32m6.74ms[39m 
+[36m./astro/index.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip
+/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/render/astro/index.js[
+22m
+2026-03-24T01:01:56.242Z vite:resolve [32m6.90ms[39m [36m./common.js[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modul
+es/astro/dist/runtime/server/render/common.js[22m
+2026-03-24T01:01:56.242Z vite:resolve [32m6.97ms[39m 
+[36m./component.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/A
+chadoCerto.VIP/node_modules/astro/dist/runtime/server/render/component.js[22m
+2026-03-24T01:01:56.242Z vite:resolve [32m7.03ms[39m [36m./script.js[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modul
+es/astro/dist/runtime/server/render/script.js[22m
+2026-03-24T01:01:56.242Z vite:resolve [32m7.07ms[39m [36m./dom.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/dom.js[22m
+2026-03-24T01:01:56.242Z vite:resolve [32m7.12ms[39m [36m./head.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/head.js[22m
+2026-03-24T01:01:56.242Z vite:resolve [32m7.16ms[39m [36m./page.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/page.js[22m
+2026-03-24T01:01:56.242Z vite:resolve [32m7.19ms[39m [36m./slot.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/slot.js[22m
+2026-03-24T01:01:56.242Z vite:resolve [32m7.23ms[39m [36m./tags.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/tags.js[22m
+2026-03-24T01:01:56.242Z vite:resolve [32m7.27ms[39m [36m./util.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/util.js[22m
+2026-03-24T01:01:56.258Z vite:resolve [33m14.38ms[39m 
+[36m/node_modules/astro/dist/runtime/server/render/astro/index.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/astro/index.js[22m
+2026-03-24T01:01:56.258Z vite:resolve [33m14.57ms[39m 
+[36m/node_modules/astro/dist/runtime/server/render/common.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/common.js[22m
+2026-03-24T01:01:56.258Z vite:resolve [33m14.61ms[39m 
+[36m/node_modules/astro/dist/runtime/server/render/component.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/component.js[22m
+2026-03-24T01:01:56.258Z vite:resolve [33m14.65ms[39m 
+[36m/node_modules/astro/dist/runtime/server/render/script.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/script.js[22m
+2026-03-24T01:01:56.258Z vite:resolve [33m14.69ms[39m 
+[36m/node_modules/astro/dist/runtime/server/render/dom.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/dom.js[22m
+2026-03-24T01:01:56.258Z vite:resolve [33m14.73ms[39m 
+[36m/node_modules/astro/dist/runtime/server/render/head.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/head.js[22m
+2026-03-24T01:01:56.258Z vite:resolve [33m14.77ms[39m 
+[36m/node_modules/astro/dist/runtime/server/render/page.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/page.js[22m
+2026-03-24T01:01:56.258Z vite:resolve [33m14.81ms[39m 
+[36m/node_modules/astro/dist/runtime/server/render/slot.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/slot.js[22m
+2026-03-24T01:01:56.258Z vite:resolve [33m14.86ms[39m 
+[36m/node_modules/astro/dist/runtime/server/render/tags.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/tags.js[22m
+2026-03-24T01:01:56.258Z vite:resolve [33m14.90ms[39m 
+[36m/node_modules/astro/dist/runtime/server/render/util.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/util.js[22m
+2026-03-24T01:01:56.259Z vite:import-analysis [33m24.58ms[39m [2m[10 
+imports rewritten] 
+[2mnode_modules/astro/dist/runtime/server/render/index.js[22m[2m[22m
+2026-03-24T01:01:56.259Z vite:transform [33m25.12ms[39m 
+[2m/node_modules/astro/dist/runtime/server/render/index.js[22m
+2026-03-24T01:01:56.270Z vite:load [31m133.49ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/jsx.js[22m
+2026-03-24T01:01:56.273Z vite:resolve [32m2.18ms[39m 
+[36m../../jsx-runtime/index.js[39m -> [2mC:/Users/Cesar Victor/Desktop/Achad
+oCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/jsx-runtime/index.js[22m
+2026-03-24T01:01:56.273Z vite:resolve [32m2.34ms[39m [36m./index.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/index.js[22m
+2026-03-24T01:01:56.274Z vite:resolve [32m2.40ms[39m 
+[36m./render/component.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCert
+o.Vip/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/render/component.j
+s[22m
+2026-03-24T01:01:56.274Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/index.js[22m
+2026-03-24T01:01:56.276Z vite:resolve [32m1.51ms[39m 
+[36m/node_modules/astro/dist/jsx-runtime/index.js[39m -> [2mC:/Users/Cesar V
+ictor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/jsx-runti
+me/index.js[22m
+2026-03-24T01:01:56.276Z vite:import-analysis [32m5.15ms[39m [2m[3 imports 
+rewritten] [2mnode_modules/astro/dist/runtime/server/jsx.js[22m[2m[22m
+2026-03-24T01:01:56.276Z vite:transform [32m5.71ms[39m 
+[2m/node_modules/astro/dist/runtime/server/jsx.js[22m
+2026-03-24T01:01:56.278Z vite:load [31m141.15ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/transition.js[22m
+2026-03-24T01:01:56.286Z vite:resolve [32m1.47ms[39m 
+[36m../../transitions/index.js[39m -> [2mC:/Users/Cesar Victor/Desktop/Achad
+oCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/transitions/index.js[22m
+2026-03-24T01:01:56.288Z vite:resolve [32m1.51ms[39m 
+[36m/node_modules/astro/dist/transitions/index.js[39m -> [2mC:/Users/Cesar V
+ictor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/transitio
+ns/index.js[22m
+2026-03-24T01:01:56.288Z vite:import-analysis [32m9.13ms[39m [2m[2 imports 
+rewritten] 
+[2mnode_modules/astro/dist/runtime/server/transition.js[22m[2m[22m
+2026-03-24T01:01:56.288Z vite:transform [32m9.74ms[39m 
+[2m/node_modules/astro/dist/runtime/server/transition.js[22m
+2026-03-24T01:01:56.348Z vite:load [31m131.12ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/util.js[22m
+2026-03-24T01:01:56.349Z vite:import-analysis [32m0.06ms[39m [2m[no 
+imports] [2mnode_modules/astro/dist/runtime/server/util.js[22m[2m[22m
+2026-03-24T01:01:56.349Z vite:transform [32m0.75ms[39m 
+[2m/node_modules/astro/dist/runtime/server/util.js[22m
+2026-03-24T01:01:56.349Z vite:load [31m118.51ms[39m [fs] 
+[2m/node_modules/astro/dist/core/constants.js[22m
+2026-03-24T01:01:56.350Z vite:import-analysis [32m0.09ms[39m [2m[no 
+imports] [2mnode_modules/astro/dist/core/constants.js[22m[2m[22m
+2026-03-24T01:01:56.350Z vite:transform [32m0.79ms[39m 
+[2m/node_modules/astro/dist/core/constants.js[22m
+2026-03-24T01:01:56.350Z vite:load [31m81.32ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/render/astro/index.js[22m
+2026-03-24T01:01:56.355Z vite:resolve [32m3.62ms[39m [36m./factory.js[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modul
+es/astro/dist/runtime/server/render/astro/factory.js[22m
+2026-03-24T01:01:56.355Z vite:resolve [32m3.77ms[39m 
+[36m./head-and-content.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCert
+o.Vip/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/render/astro/head-
+and-content.js[22m
+2026-03-24T01:01:56.355Z vite:resolve [32m3.81ms[39m [36m./instance.js[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modul
+es/astro/dist/runtime/server/render/astro/instance.js[22m
+2026-03-24T01:01:56.355Z vite:resolve [32m3.87ms[39m 
+[36m./render-template.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto
+.Vip/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/render/astro/render
+-template.js[22m
+2026-03-24T01:01:56.355Z vite:resolve [32m3.99ms[39m [36m./render.js[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modul
+es/astro/dist/runtime/server/render/astro/render.js[22m
+2026-03-24T01:01:56.364Z vite:resolve [32m8.17ms[39m 
+[36m/node_modules/astro/dist/runtime/server/render/astro/factory.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/astro/factory.js[22m
+2026-03-24T01:01:56.365Z vite:resolve [32m8.38ms[39m [36m/node_modules/astro
+/dist/runtime/server/render/astro/head-and-content.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/astro/head-and-content.js[22m
+2026-03-24T01:01:56.365Z vite:resolve [32m8.44ms[39m 
+[36m/node_modules/astro/dist/runtime/server/render/astro/instance.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/astro/instance.js[22m
+2026-03-24T01:01:56.365Z vite:resolve [32m8.49ms[39m [36m/node_modules/astro
+/dist/runtime/server/render/astro/render-template.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/astro/render-template.js[22m
+2026-03-24T01:01:56.365Z vite:resolve [32m8.57ms[39m 
+[36m/node_modules/astro/dist/runtime/server/render/astro/render.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/astro/render.js[22m
+2026-03-24T01:01:56.366Z vite:import-analysis [33m14.69ms[39m [2m[5 imports 
+rewritten] 
+[2mnode_modules/astro/dist/runtime/server/render/astro/index.js[22m[2m[22m
+2026-03-24T01:01:56.366Z vite:transform [33m15.51ms[39m 
+[2m/node_modules/astro/dist/runtime/server/render/astro/index.js[22m
+2026-03-24T01:01:56.371Z vite:load [31m102.09ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/render/common.js[22m
+2026-03-24T01:01:56.377Z vite:resolve [32m4.63ms[39m [36m../escape.js[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modul
+es/astro/dist/runtime/server/escape.js[22m
+2026-03-24T01:01:56.377Z vite:resolve [32m4.75ms[39m [36m../scripts.js[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modul
+es/astro/dist/runtime/server/scripts.js[22m
+2026-03-24T01:01:56.377Z vite:resolve [32m4.81ms[39m 
+[36m./instruction.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip
+/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/render/instruction.js[
+22m
+2026-03-24T01:01:56.378Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/escape.js[22m
+2026-03-24T01:01:56.382Z vite:resolve [32m4.06ms[39m 
+[36m/node_modules/astro/dist/runtime/server/scripts.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/scripts.js[22m
+2026-03-24T01:01:56.382Z vite:resolve [32m4.22ms[39m 
+[36m/node_modules/astro/dist/runtime/server/render/instruction.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/instruction.js[22m
+2026-03-24T01:01:56.382Z vite:import-analysis [33m10.83ms[39m [2m[5 imports 
+rewritten] 
+[2mnode_modules/astro/dist/runtime/server/render/common.js[22m[2m[22m
+2026-03-24T01:01:56.383Z vite:transform [33m11.36ms[39m 
+[2m/node_modules/astro/dist/runtime/server/render/common.js[22m
+2026-03-24T01:01:56.385Z vite:load [31m115.82ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/render/component.js[22m
+2026-03-24T01:01:56.403Z vite:resolve [33m12.34ms[39m 
+[36m../../../core/errors/index.js[39m -> [2mC:/Users/Cesar Victor/Desktop/Ac
+hadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/core/errors/index.js[22m
+2026-03-24T01:01:56.403Z vite:resolve [33m12.52ms[39m 
+[36m../hydration.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/
+AchadoCerto.VIP/node_modules/astro/dist/runtime/server/hydration.js[22m
+2026-03-24T01:01:56.403Z vite:resolve [33m12.56ms[39m 
+[36m../serialize.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/
+AchadoCerto.VIP/node_modules/astro/dist/runtime/server/serialize.js[22m
+2026-03-24T01:01:56.404Z vite:resolve [33m12.60ms[39m 
+[36m../shorthash.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/
+AchadoCerto.VIP/node_modules/astro/dist/runtime/server/shorthash.js[22m
+2026-03-24T01:01:56.404Z vite:resolve [33m12.68ms[39m [36m../util.js[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modul
+es/astro/dist/runtime/server/util.js[22m
+2026-03-24T01:01:56.404Z vite:resolve [33m12.75ms[39m 
+[36m./astro/factory.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.V
+ip/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/render/astro/factory.
+js[22m
+2026-03-24T01:01:56.404Z vite:resolve [33m12.89ms[39m 
+[36m./astro/instance.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.
+Vip/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/render/astro/instanc
+e.js[22m
+2026-03-24T01:01:56.404Z vite:resolve [33m12.98ms[39m 
+[36m./server-islands.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.
+Vip/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/render/server-island
+s.js[22m
+2026-03-24T01:01:56.405Z vite:cache [memory] 
+[2m/node_modules/astro/dist/core/errors/index.js[22m
+2026-03-24T01:01:56.405Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/escape.js[22m
+2026-03-24T01:01:56.405Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/shorthash.js[22m
+2026-03-24T01:01:56.410Z vite:resolve [32m4.23ms[39m 
+[36m/node_modules/astro/dist/runtime/server/hydration.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/hydration.js[22m
+2026-03-24T01:01:56.410Z vite:resolve [32m4.41ms[39m 
+[36m/node_modules/astro/dist/runtime/server/serialize.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/serialize.js[22m
+2026-03-24T01:01:56.410Z vite:resolve [32m4.46ms[39m 
+[36m/node_modules/astro/dist/runtime/server/render/server-islands.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/server-islands.js[22m
+2026-03-24T01:01:56.411Z vite:import-analysis [33m25.16ms[39m [2m[16 
+imports rewritten] 
+[2mnode_modules/astro/dist/runtime/server/render/component.js[22m[2m[22m
+2026-03-24T01:01:56.411Z vite:transform [33m25.96ms[39m 
+[2m/node_modules/astro/dist/runtime/server/render/component.js[22m
+2026-03-24T01:01:56.416Z vite:load [31m146.99ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/render/script.js[22m
+2026-03-24T01:01:56.418Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/escape.js[22m
+2026-03-24T01:01:56.418Z vite:import-analysis [32m1.36ms[39m [2m[1 imports 
+rewritten] 
+[2mnode_modules/astro/dist/runtime/server/render/script.js[22m[2m[22m
+2026-03-24T01:01:56.418Z vite:transform [32m1.89ms[39m 
+[2m/node_modules/astro/dist/runtime/server/render/script.js[22m
+2026-03-24T01:01:56.418Z vite:load [31m149.22ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/render/dom.js[22m
+2026-03-24T01:01:56.422Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/escape.js[22m
+2026-03-24T01:01:56.422Z vite:import-analysis [32m3.26ms[39m [2m[3 imports 
+rewritten] 
+[2mnode_modules/astro/dist/runtime/server/render/dom.js[22m[2m[22m
+2026-03-24T01:01:56.422Z vite:transform [32m3.95ms[39m 
+[2m/node_modules/astro/dist/runtime/server/render/dom.js[22m
+2026-03-24T01:01:56.422Z vite:load [31m153.53ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/render/head.js[22m
+2026-03-24T01:01:56.426Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/escape.js[22m
+2026-03-24T01:01:56.426Z vite:import-analysis [32m3.35ms[39m [2m[3 imports 
+rewritten] 
+[2mnode_modules/astro/dist/runtime/server/render/head.js[22m[2m[22m
+2026-03-24T01:01:56.427Z vite:transform [32m3.98ms[39m 
+[2m/node_modules/astro/dist/runtime/server/render/head.js[22m
+2026-03-24T01:01:56.427Z vite:load [31m157.87ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/render/page.js[22m
+2026-03-24T01:01:56.434Z vite:resolve [32m3.70ms[39m 
+[36m./astro/render.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vi
+p/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/render/astro/render.js
+[22m
+2026-03-24T01:01:56.435Z vite:import-analysis [32m5.16ms[39m [2m[5 imports 
+rewritten] 
+[2mnode_modules/astro/dist/runtime/server/render/page.js[22m[2m[22m
+2026-03-24T01:01:56.436Z vite:transform [32m8.55ms[39m 
+[2m/node_modules/astro/dist/runtime/server/render/page.js[22m
+2026-03-24T01:01:56.436Z vite:load [31m167.13ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/render/slot.js[22m
+2026-03-24T01:01:56.440Z vite:resolve [32m2.68ms[39m 
+[36m./astro/render-template.js[39m -> [2mC:/Users/Cesar Victor/Desktop/Achad
+oCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/render/astro/
+render-template.js[22m
+2026-03-24T01:01:56.440Z vite:resolve [32m2.84ms[39m [36m./any.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/any.js[22m
+2026-03-24T01:01:56.440Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/escape.js[22m
+2026-03-24T01:01:56.442Z vite:resolve [32m1.92ms[39m 
+[36m/node_modules/astro/dist/runtime/server/render/any.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/any.js[22m
+2026-03-24T01:01:56.443Z vite:import-analysis [32m6.14ms[39m [2m[4 imports 
+rewritten] 
+[2mnode_modules/astro/dist/runtime/server/render/slot.js[22m[2m[22m
+2026-03-24T01:01:56.443Z vite:transform [32m6.62ms[39m 
+[2m/node_modules/astro/dist/runtime/server/render/slot.js[22m
+2026-03-24T01:01:56.444Z vite:load [31m175.29ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/render/tags.js[22m
+2026-03-24T01:01:56.447Z vite:import-analysis [32m1.48ms[39m [2m[1 imports 
+rewritten] 
+[2mnode_modules/astro/dist/runtime/server/render/tags.js[22m[2m[22m
+2026-03-24T01:01:56.447Z vite:transform [32m2.30ms[39m 
+[2m/node_modules/astro/dist/runtime/server/render/tags.js[22m
+2026-03-24T01:01:56.447Z vite:load [31m177.91ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/render/util.js[22m
+2026-03-24T01:01:56.449Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/escape.js[22m
+2026-03-24T01:01:56.449Z vite:import-analysis [32m1.71ms[39m [2m[1 imports 
+rewritten] 
+[2mnode_modules/astro/dist/runtime/server/render/util.js[22m[2m[22m
+2026-03-24T01:01:56.449Z vite:transform [32m2.15ms[39m 
+[2m/node_modules/astro/dist/runtime/server/render/util.js[22m
+2026-03-24T01:01:56.449Z vite:load [31m171.65ms[39m [fs] 
+[2m/node_modules/astro/dist/jsx-runtime/index.js[22m
+2026-03-24T01:01:56.451Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/index.js[22m
+2026-03-24T01:01:56.451Z vite:import-analysis [32m1.58ms[39m [2m[1 imports 
+rewritten] [2mnode_modules/astro/dist/jsx-runtime/index.js[22m[2m[22m
+2026-03-24T01:01:56.451Z vite:transform [32m2.03ms[39m 
+[2m/node_modules/astro/dist/jsx-runtime/index.js[22m
+2026-03-24T01:01:56.452Z vite:load [31m161.86ms[39m [fs] 
+[2m/node_modules/astro/dist/transitions/index.js[22m
+2026-03-24T01:01:56.453Z vite:resolve [32m0.90ms[39m 
+[36m../runtime/server/transition.js[39m -> [2mC:/Users/Cesar Victor/Desktop/
+AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/transiti
+on.js[22m
+2026-03-24T01:01:56.453Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/transition.js[22m
+2026-03-24T01:01:56.453Z vite:import-analysis [32m1.59ms[39m [2m[1 imports 
+rewritten] [2mnode_modules/astro/dist/transitions/index.js[22m[2m[22m
+2026-03-24T01:01:56.454Z vite:transform [32m1.95ms[39m 
+[2m/node_modules/astro/dist/transitions/index.js[22m
+2026-03-24T01:01:56.501Z vite:load [31m130.75ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/render/astro/factory.js[22m
+2026-03-24T01:01:56.501Z vite:import-analysis [32m0.06ms[39m [2m[no 
+imports] [2mnode_modules/astro/dist/runtime/server/render/astro/factory.js[22
+m[2m[22m
+2026-03-24T01:01:56.502Z vite:transform [32m0.70ms[39m 
+[2m/node_modules/astro/dist/runtime/server/render/astro/factory.js[22m
+2026-03-24T01:01:56.502Z vite:load [31m131.83ms[39m [fs] [2m/node_modules/as
+tro/dist/runtime/server/render/astro/render-template.js[22m
+2026-03-24T01:01:56.506Z vite:resolve [32m3.02ms[39m 
+[36m../../escape.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/
+AchadoCerto.VIP/node_modules/astro/dist/runtime/server/escape.js[22m
+2026-03-24T01:01:56.506Z vite:resolve [32m3.22ms[39m [36m../../util.js[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modul
+es/astro/dist/runtime/server/util.js[22m
+2026-03-24T01:01:56.506Z vite:resolve [32m3.26ms[39m [36m../any.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/any.js[22m
+2026-03-24T01:01:56.506Z vite:resolve [32m3.29ms[39m [36m../util.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/render/util.js[22m
+2026-03-24T01:01:56.507Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/escape.js[22m
+2026-03-24T01:01:56.507Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/util.js[22m
+2026-03-24T01:01:56.507Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/render/util.js[22m
+2026-03-24T01:01:56.507Z vite:import-analysis [32m4.67ms[39m [2m[4 imports 
+rewritten] [2mnode_modules/astro/dist/runtime/server/render/astro/render-templ
+ate.js[22m[2m[22m
+2026-03-24T01:01:56.507Z vite:transform [32m5.32ms[39m [2m/node_modules/astr
+o/dist/runtime/server/render/astro/render-template.js[22m
+2026-03-24T01:01:56.508Z vite:load [31m137.53ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/render/astro/instance.js[22m
+2026-03-24T01:01:56.515Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/util.js[22m
+2026-03-24T01:01:56.515Z vite:import-analysis [32m6.83ms[39m [2m[4 imports 
+rewritten] [2mnode_modules/astro/dist/runtime/server/render/astro/instance.js
+[22m[2m[22m
+2026-03-24T01:01:56.515Z vite:transform [32m7.59ms[39m 
+[2m/node_modules/astro/dist/runtime/server/render/astro/instance.js[22m
+2026-03-24T01:01:56.516Z vite:load [31m145.60ms[39m [fs] [2m/node_modules/as
+tro/dist/runtime/server/render/astro/head-and-content.js[22m
+2026-03-24T01:01:56.516Z vite:import-analysis [32m0.05ms[39m [2m[no 
+imports] [2mnode_modules/astro/dist/runtime/server/render/astro/head-and-conte
+nt.js[22m[2m[22m
+2026-03-24T01:01:56.516Z vite:transform [32m0.46ms[39m [2m/node_modules/astr
+o/dist/runtime/server/render/astro/head-and-content.js[22m
+2026-03-24T01:01:56.516Z vite:load [31m146.27ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/render/astro/render.js[22m
+2026-03-24T01:01:56.521Z vite:resolve [32m3.27ms[39m 
+[36m../../../../core/errors/index.js[39m -> [2mC:/Users/Cesar Victor/Desktop
+/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/core/errors/index.js[
+22m
+2026-03-24T01:01:56.521Z vite:resolve [32m3.44ms[39m [36m../common.js[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modul
+es/astro/dist/runtime/server/render/common.js[22m
+2026-03-24T01:01:56.521Z vite:cache [memory] 
+[2m/node_modules/astro/dist/core/errors/index.js[22m
+2026-03-24T01:01:56.521Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/render/common.js[22m
+2026-03-24T01:01:56.521Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/render/util.js[22m
+2026-03-24T01:01:56.522Z vite:import-analysis [32m4.89ms[39m [2m[5 imports 
+rewritten] 
+[2mnode_modules/astro/dist/runtime/server/render/astro/render.js[22m[2m[22m
+2026-03-24T01:01:56.522Z vite:transform [32m5.40ms[39m 
+[2m/node_modules/astro/dist/runtime/server/render/astro/render.js[22m
+2026-03-24T01:01:56.522Z vite:load [31m137.65ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/scripts.js[22m
+2026-03-24T01:01:56.525Z vite:resolve [32m2.01ms[39m 
+[36m./astro-island.prebuilt-dev.js[39m -> [2mC:/Users/Cesar Victor/Desktop/A
+chadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/astro-isl
+and.prebuilt-dev.js[22m
+2026-03-24T01:01:56.525Z vite:resolve [32m2.18ms[39m 
+[36m./astro-island.prebuilt.js[39m -> [2mC:/Users/Cesar Victor/Desktop/Achad
+oCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/runtime/server/astro-island.
+prebuilt.js[22m
+2026-03-24T01:01:56.531Z vite:resolve [32m4.90ms[39m 
+[36m/node_modules/astro/dist/runtime/server/astro-island.prebuilt-dev.js[39m 
+-> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modul
+es/astro/dist/runtime/server/astro-island.prebuilt-dev.js[22m
+2026-03-24T01:01:56.531Z vite:resolve [32m5.15ms[39m 
+[36m/node_modules/astro/dist/runtime/server/astro-island.prebuilt.js[39m -> 
+[2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/
+astro/dist/runtime/server/astro-island.prebuilt.js[22m
+2026-03-24T01:01:56.531Z vite:import-analysis [32m8.69ms[39m [2m[2 imports 
+rewritten] [2mnode_modules/astro/dist/runtime/server/scripts.js[22m[2m[22m
+2026-03-24T01:01:56.531Z vite:transform [32m9.29ms[39m 
+[2m/node_modules/astro/dist/runtime/server/scripts.js[22m
+2026-03-24T01:01:56.535Z vite:load [31m150.07ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/render/instruction.js[22m
+2026-03-24T01:01:56.535Z vite:import-analysis [32m0.05ms[39m [2m[no 
+imports] 
+[2mnode_modules/astro/dist/runtime/server/render/instruction.js[22m[2m[22m
+2026-03-24T01:01:56.535Z vite:transform [32m0.79ms[39m 
+[2m/node_modules/astro/dist/runtime/server/render/instruction.js[22m
+2026-03-24T01:01:56.536Z vite:load [31m120.38ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/hydration.js[22m
+2026-03-24T01:01:56.539Z vite:resolve [32m2.28ms[39m 
+[36m./serialize.js[39m -> [2mC:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/A
+chadoCerto.VIP/node_modules/astro/dist/runtime/server/serialize.js[22m
+2026-03-24T01:01:56.540Z vite:cache [memory] 
+[2m/node_modules/astro/dist/core/errors/index.js[22m
+2026-03-24T01:01:56.540Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/escape.js[22m
+2026-03-24T01:01:56.540Z vite:import-analysis [32m3.34ms[39m [2m[3 imports 
+rewritten] 
+[2mnode_modules/astro/dist/runtime/server/hydration.js[22m[2m[22m
+2026-03-24T01:01:56.540Z vite:transform [32m3.79ms[39m 
+[2m/node_modules/astro/dist/runtime/server/hydration.js[22m
+2026-03-24T01:01:56.540Z vite:load [31m124.59ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/serialize.js[22m
+2026-03-24T01:01:56.541Z vite:import-analysis [32m0.10ms[39m [2m[no 
+imports] [2mnode_modules/astro/dist/runtime/server/serialize.js[22m[2m[22m
+2026-03-24T01:01:56.541Z vite:transform [32m0.66ms[39m 
+[2m/node_modules/astro/dist/runtime/server/serialize.js[22m
+2026-03-24T01:01:56.541Z vite:load [31m125.65ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/render/server-islands.js[22m
+2026-03-24T01:01:56.544Z vite:resolve [32m2.15ms[39m 
+[36m../../../core/encryption.js[39m -> [2mC:/Users/Cesar Victor/Desktop/Acha
+doCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/core/encryption.js[22m
+2026-03-24T01:01:56.545Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/render/slot.js[22m
+2026-03-24T01:01:56.547Z vite:resolve [32m1.60ms[39m 
+[36m/node_modules/astro/dist/core/encryption.js[39m -> [2mC:/Users/Cesar Vic
+tor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/core/encryp
+tion.js[22m
+2026-03-24T01:01:56.548Z vite:import-analysis [32m6.22ms[39m [2m[3 imports 
+rewritten] [2mnode_modules/astro/dist/runtime/server/render/server-islands.js
+[22m[2m[22m
+2026-03-24T01:01:56.548Z vite:transform [32m6.88ms[39m 
+[2m/node_modules/astro/dist/runtime/server/render/server-islands.js[22m
+2026-03-24T01:01:56.550Z vite:load [31m106.35ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/render/any.js[22m
+2026-03-24T01:01:56.556Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/escape.js[22m
+2026-03-24T01:01:56.556Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/util.js[22m
+2026-03-24T01:01:56.556Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/render/astro/index.js[22m
+2026-03-24T01:01:56.556Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/render/common.js[22m
+2026-03-24T01:01:56.556Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/render/slot.js[22m
+2026-03-24T01:01:56.556Z vite:cache [memory] 
+[2m/node_modules/astro/dist/runtime/server/render/util.js[22m
+2026-03-24T01:01:56.556Z vite:import-analysis [32m5.40ms[39m [2m[6 imports 
+rewritten] 
+[2mnode_modules/astro/dist/runtime/server/render/any.js[22m[2m[22m
+2026-03-24T01:01:56.556Z vite:transform [32m5.96ms[39m 
+[2m/node_modules/astro/dist/runtime/server/render/any.js[22m
+2026-03-24T01:01:56.585Z vite:load [31m50.73ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/astro-island.prebuilt-dev.js[22m
+2026-03-24T01:01:56.585Z vite:import-analysis [32m0.11ms[39m [2m[no 
+imports] [2mnode_modules/astro/dist/runtime/server/astro-island.prebuilt-dev.j
+s[22m[2m[22m
+2026-03-24T01:01:56.585Z vite:transform [32m0.68ms[39m 
+[2m/node_modules/astro/dist/runtime/server/astro-island.prebuilt-dev.js[22m
+2026-03-24T01:01:56.586Z vite:load [31m51.97ms[39m [fs] 
+[2m/node_modules/astro/dist/runtime/server/astro-island.prebuilt.js[22m
+2026-03-24T01:01:56.587Z vite:import-analysis [32m0.11ms[39m [2m[no 
+imports] [2mnode_modules/astro/dist/runtime/server/astro-island.prebuilt.js[2
+2m[2m[22m
+2026-03-24T01:01:56.587Z vite:transform [32m0.76ms[39m 
+[2m/node_modules/astro/dist/runtime/server/astro-island.prebuilt.js[22m
+2026-03-24T01:01:56.587Z vite:load [33m36.99ms[39m [fs] 
+[2m/node_modules/astro/dist/core/encryption.js[22m
+2026-03-24T01:01:56.593Z vite:import-analysis [32m4.87ms[39m [2m[0 imports 
+rewritten] [2mnode_modules/astro/dist/core/encryption.js[22m[2m[22m
+2026-03-24T01:01:56.593Z vite:transform [32m5.53ms[39m 
+[2m/node_modules/astro/dist/core/encryption.js[22m
+2026-03-24T01:01:56.636Z astro:content blog collection added
+22:01:56 [types] Generated 1.74s
+22:01:56 [build] output: "static"
+22:01:56 [build] directory: C:\Users\Cesar Victor\Desktop\AchadoCerto.Vip\AchadoCerto.VIP\dist\
+22:01:56 [build] Collecting build info...
+2026-03-24T01:01:56.739Z astro:build Ôö£ÔöÇÔöÇ Ô£ö src/pages/api/auth.js ÔåÆ 
+/api/auth/index.html
+2026-03-24T01:01:56.739Z astro:build Ôö£ÔöÇÔöÇ Ô£ö src/pages/api/callback.js 
+ÔåÆ /api/callback/index.html
+2026-03-24T01:01:56.740Z astro:build Ôö£ÔöÇÔöÇ Ô£ö src/pages/blog/index.astro 
+ÔåÆ /blog/index.html
+2026-03-24T01:01:56.740Z astro:build Ôö£ÔöÇÔöÇ Ô£ö src/pages/faq.astro ÔåÆ 
+/faq/index.html
+2026-03-24T01:01:56.740Z astro:build Ôö£ÔöÇÔöÇ Ô£ö src/pages/politica.astro 
+ÔåÆ /politica/index.html
+2026-03-24T01:01:56.740Z astro:build Ôö£ÔöÇÔöÇ Ô£ö src/pages/robots.txt.ts ÔåÆ 
+/robots.txt/index.html
+2026-03-24T01:01:56.740Z astro:build Ôö£ÔöÇÔöÇ Ô£ö src/pages/sitemap.xml.ts 
+ÔåÆ /sitemap.xml/index.html
+2026-03-24T01:01:56.740Z astro:build Ôö£ÔöÇÔöÇ Ô£ö src/pages/sobre.astro ÔåÆ 
+/sobre/index.html
+2026-03-24T01:01:56.740Z astro:build Ôö£ÔöÇÔöÇ Ô£ö src/pages/termos.astro ÔåÆ 
+/termos/index.html
+2026-03-24T01:01:56.740Z astro:build Ôö£ÔöÇÔöÇ Ô£ö src/pages/index.astro ÔåÆ 
+/index.html
+2026-03-24T01:01:56.740Z astro:build All pages loaded   1774314107.8s
+22:01:56 [build] Ô£ô Completed in 1.80s.
+22:01:56 [build] Building static entrypoints...
+2026-03-24T01:01:56.774Z vite:config using resolved config: {
+  configFile: undefined,
+  cacheDir: 'C:/Users/Cesar 
+Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/node_modules/.vite',
+  clearScreen: false,
+  customLogger: {
+    hasWarned: false,
+    info: [Function: info],
+    warn: [Function: warn],
+    warnOnce: [Function: warnOnce],
+    error: [Function: error],
+    clearScreen: [Function: clearScreen],
+    hasErrorLogged: [Function: hasErrorLogged]
+  },
+  appType: 'custom',
+  optimizeDeps: {
+    holdUntilCrawlEnd: true,
+    entries: [
+      'C:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/**/*.{
+jsx,tsx,vue,svelte,html,astro}',
+      'C:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/**/*.{
+jsx,tsx,vue,svelte,html,astro}'
+    ],
+    exclude: [ 'astro', 'node-fetch', 'astro', 'node-fetch' ],
+    include: [
+      'astro > cssesc',
+      'astro > aria-query',
+      'astro > axobject-query'
+    ],
+    esbuildOptions: { preserveSymlinks: false }
+  },
+  plugins: [
+    'vite:build-metadata',
+    'vite:watch-package-data',
+    'vite:pre-alias',
+    'alias',
+    'astro:build',
+    'astro:markdown',
+    'astro:jsx',
+    'astro-content-virtual-mod-plugin',
+    'astro:content-asset-propagation',
+    'astro:assets:esm',
+    'astro:vite-plugin-file-url',
+    'astro:i18n',
+    'astro:actions',
+    'astro:container',
+    'vite:resolve',
+    'vite:html-inline-proxy',
+    'vite:css',
+    'vite:esbuild',
+    'vite:json',
+    'vite:wasm-helper',
+    'vite:worker',
+    'vite:asset',
+    '@astro/rollup-plugin-astro-analyzer',
+    '@astro/plugin-build-internals',
+    '@astro/plugin-renderers',
+    '@astro/plugin-middleware-build',
+    '@astro/plugin-build-pages',
+    'astro:rollup-plugin-build-css',
+    'astro:rollup-plugin-css-scope-to',
+    'astro:head-metadata-build',
+    'astro:chunks',
+    'astro:build:normal',
+    'astro:scripts',
+    'astro:html',
+    'astro:postprocess',
+    'astro:integration-container',
+    'astro:content-imports',
+    '@astro/plugin-middleware',
+    'astro:assets',
+    'astro:prefetch',
+    'astro:transitions',
+    'astro:dev-toolbar',
+    '@astro/plugin-actions',
+    'vite:wasm-fallback',
+    'astro:vite-plugin-env',
+    'vite:define',
+    'vite:css-post',
+    'vite:build-html',
+    'vite:worker-import-meta-url',
+    'vite:asset-import-meta-url',
+    'vite:force-systemjs-wrap-complete',
+    'commonjs',
+    'vite:data-uri',
+    'vite:dynamic-import-vars',
+    'vite:import-glob',
+    '@astro/plugin-build-manifest',
+    'astro:rollup-plugin-single-css',
+    'astro:rollup-plugin-inline-stylesheets',
+    '@astrojs/vite-plugin-astro-adapter',
+    '@astrojs/vite-plugin-astro-adapter',
+    'astro:scripts:page-ssr',
+    'astro:scanner',
+    '@astrojs/vite-plugin-astro-ssr-manifest',
+    'vite:build-import-analysis',
+    'vite:esbuild-transpile',
+    'vite:reporter',
+    'vite:load-fallback'
+  ],
+  publicDir: 'C:/Users/Cesar 
+Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/public',
+  root: 'C:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP',
+  envPrefix: 'PUBLIC_',
+  define: {
+    'import.meta.env.SITE': '"https://achadocerto.vip"',
+    'import.meta.env.BASE_URL': '"/"',
+    'import.meta.env.ASSETS_PREFIX': 'undefined',
+    __ASTRO_INTERNAL_I18N_CONFIG__: '{"base":"/","format":"directory","site":"h
+ttps://achadocerto.vip","trailingSlash":"ignore","isBuild":true}'
+  },
+  server: {
+    preTransformRequests: true,
+    hmr: false,
+    watch: { ignored: [Array] },
+    middlewareMode: true,
+    sourcemapIgnoreList: [Function: isInNodeModules$1],
+    fs: {
+      strict: true,
+      allow: [Array],
+      deny: [Array],
+      cachedChecks: undefined
+    }
+  },
+  resolve: {
+    mainFields: [ 'browser', 'module', 'jsnext:main', 'jsnext' ],
+    conditions: [ 'astro', 'astro' ],
+    extensions: [
+      '.mjs',  '.js',
+      '.mts',  '.ts',
+      '.jsx',  '.tsx',
+      '.json'
+    ],
+    dedupe: [ 'astro', 'astro' ],
+    preserveSymlinks: false,
+    alias: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object]
+    ]
+  },
+  ssr: {
+    target: 'node',
+    noExternal: [
+      'astro',
+      'astro/components',
+      '@nanostores/preact',
+      '@fontsource/*',
+      'astro',
+      'astro',
+      'astro/components',
+      '@nanostores/preact',
+      '@fontsource/*',
+      'astro'
+    ],
+    external: [ 'sharp', 'sharp' ],
+    optimizeDeps: { noDiscovery: true, esbuildOptions: [Object] }
+  },
+  build: {
+    target: 'esnext',
+    cssTarget: 'esnext',
+    outDir: 'C:\\Users\\Cesar 
+Victor\\Desktop\\AchadoCerto.Vip\\AchadoCerto.VIP\\dist\\',
+    assetsDir: '_assets',
+    assetsInlineLimit: 4096,
+    cssCodeSplit: true,
+    sourcemap: false,
+    rollupOptions: {
+      preserveEntrySignatures: 'exports-only',
+      input: [],
+      output: [Object]
+    },
+    minify: false,
+    terserOptions: {},
+    write: true,
+    emptyOutDir: false,
+    copyPublicDir: true,
+    manifest: false,
+    lib: false,
+    ssr: true,
+    ssrManifest: false,
+    ssrEmitAssets: true,
+    reportCompressedSize: false,
+    chunkSizeWarningLimit: 500,
+    watch: null,
+    cssMinify: true,
+    modulePreload: { polyfill: false },
+    commonjsOptions: { include: [Array], extensions: [Array] },
+    dynamicImportVarsOptions: { warnOnError: true, exclude: [Array] }
+  },
+  mode: 'production',
+  logLevel: 'error',
+  base: '/',
+  configFileDependencies: [],
+  inlineConfig: {
+    configFile: false,
+    cacheDir: 'C:\\Users\\Cesar 
+Victor\\Desktop\\AchadoCerto.Vip\\AchadoCerto.VIP\\node_modules\\.vite\\',
+    clearScreen: false,
+    customLogger: {
+      hasWarned: false,
+      info: [Function: info],
+      warn: [Function: warn],
+      warnOnce: [Function: warnOnce],
+      error: [Function: error],
+      clearScreen: [Function: clearScreen],
+      hasErrorLogged: [Function: hasErrorLogged]
+    },
+    appType: 'custom',
+    optimizeDeps: { entries: [Array], exclude: [Array] },
+    plugins: [
+      [Object], [Object],  [Object], [Object],
+      [Object], [Object],  [Array],  [Object],
+      [Array],  [Array],   [Object], null,
+      false,    [Array],   [Object], false,
+      [Object], undefined, [Object], [Object],
+      [Object], [Object],  [Object], [Object],
+      [Object], [Object],  [Object], [Array],
+      [Object], [Object],  [Object], [Array],
+      [Object], [Object],  [Object], [Object],
+      [Object], [Object],  [Object], false,
+      [Object]
+    ],
+    publicDir: 'C:\\Users\\Cesar 
+Victor\\Desktop\\AchadoCerto.Vip\\AchadoCerto.VIP\\public\\',
+    root: 'C:\\Users\\Cesar 
+Victor\\Desktop\\AchadoCerto.Vip\\AchadoCerto.VIP\\',
+    envPrefix: 'PUBLIC_',
+    define: {
+      'import.meta.env.SITE': '"https://achadocerto.vip"',
+      'import.meta.env.BASE_URL': '"/"',
+      'import.meta.env.ASSETS_PREFIX': 'undefined'
+    },
+    server: { hmr: false, watch: [Object], middlewareMode: true },
+    resolve: { alias: [Array], conditions: [Array], dedupe: [Array] },
+    ssr: { noExternal: [Array], external: [] },
+    build: {
+      target: 'esnext',
+      cssMinify: true,
+      assetsDir: '_assets',
+      emptyOutDir: false,
+      manifest: false,
+      outDir: 'C:\\Users\\Cesar 
+Victor\\Desktop\\AchadoCerto.Vip\\AchadoCerto.VIP\\dist\\',
+      copyPublicDir: true,
+      rollupOptions: [Object],
+      ssr: true,
+      ssrEmitAssets: true,
+      minify: false,
+      modulePreload: [Object],
+      reportCompressedSize: false
+    },
+    mode: 'production',
+    logLevel: 'error',
+    base: '/'
+  },
+  decodedBase: '/',
+  rawBase: '/',
+  command: 'build',
+  isWorker: false,
+  mainConfig: null,
+  bundleChain: [],
+  isProduction: true,
+  css: { lightningcss: undefined },
+  esbuild: { jsxDev: false },
+  preview: {
+    port: undefined,
+    strictPort: undefined,
+    host: undefined,
+    allowedHosts: undefined,
+    https: undefined,
+    open: undefined,
+    proxy: undefined,
+    cors: undefined,
+    headers: undefined
+  },
+  envDir: 'C:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP',
+  env: { BASE_URL: '/', MODE: 'production', DEV: false, PROD: true },
+  assetsInclude: [Function: assetsInclude],
+  logger: {
+    hasWarned: false,
+    info: [Function: info],
+    warn: [Function: warn],
+    warnOnce: [Function: warnOnce],
+    error: [Function: error],
+    clearScreen: [Function: clearScreen],
+    hasErrorLogged: [Function: hasErrorLogged]
+  },
+  packageCache: Map(1) {
+    'fnpd_C:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP' => {
+      dir: 'C:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP',
+      data: [Object],
+      hasSideEffects: [Function: hasSideEffects],
+      webResolvedImports: {},
+      nodeResolvedImports: {},
+      setResolvedCache: [Function: setResolvedCache],
+      getResolvedCache: [Function: getResolvedCache]
+    },
+    set: [Function (anonymous)]
+  },
+  createResolver: [Function: createResolver],
+  worker: { format: 'iife', plugins: '() => plugins', rollupOptions: {} },
+  experimental: { importGlobRestoreExtension: false, hmrPartialAccept: false },
+  webSocketToken: '5zR6Kt7Vbqw_',
+  additionalAllowedHosts: [],
+  getSortedPlugins: [Function: getSortedPlugins],
+  getSortedPluginHooks: [Function: getSortedPluginHooks]
+}
+22:01:59 [ERROR] [vite] [31mx[39m Build failed in 2.41s
+2026-03-24T01:01:59.271Z astro:telemetry {
+  context: {
+    isGit: true,
+    anonymousProjectId: 
+'663ec35fbef4fa752d62a2b12ab6979a3f9e39c3978a7639c92e47d1ef1cf4e8',
+    packageManager: 'npm',
+    packageManagerVersion: '11.6.2',
+    anonymousId: 
+'220917f8c7e5207d05b75b4694655d46545ab51737cb7a0bc75b9e4fe9ae9267',
+    anonymousSessionId: 
+'46bfba6e3baaa349e7987de5b8a991400adb161f3f10fb2fa39ad7a9e73af9e1'
+  },
+  meta: {
+    nodeVersion: '24.13.0',
+    viteVersion: '5.4.21',
+    astroVersion: '4.15.12',
+    systemPlatform: 'win32',
+    systemRelease: '10.0.19045',
+    systemArchitecture: 'x64',
+    cpuCount: 4,
+    cpuModel: 'AMD A12-9720P RADEON R7, 12 COMPUTE CORES 4C+8G',
+    cpuSpeed: 2695,
+    memoryInMb: 7637,
+    isDocker: false,
+    isTTY: undefined,
+    isWSL: false,
+    isCI: false,
+    ciName: null
+  }
+}
+2026-03-24T01:01:59.271Z astro:telemetry [
+  {
+    "eventName": "ASTRO_CLI_ERROR",
+    "payload": {
+      "name": "InvalidContentEntryFrontmatterError",
+      "plugin": "astro:content-imports",
+      "cliCommand": "build",
+      "isFatal": true,
+      "anonymousMessageHint": "odError.message)\n    ].join(\"\\n\");\n  "
+    }
+  }
+]
+[InvalidContentEntryFrontmatterError] [astro:content-imports] blog ÔåÆ 
+armani-beauty-perfume-masculino-acqua-di-gio-profondo-eau-de.md frontmatter 
+does not match collection schema.
+title: Required
+date: Required
+file: C:/Users/Cesar Victor/Desktop/AchadoCerto.Vip/AchadoCerto.VIP/src/content
+/blog/armani-beauty-perfume-masculino-acqua-di-gio-profondo-eau-de.md?astroCont
+entCollectionEntry=true:0:0
+  Hint:
+    See https://docs.astro.build/en/guides/content-collections/ for more 
+information on content schemas.
+  Error reference:
+    https://docs.astro.build/en/reference/errors/invalid-content-entry-frontmat
+ter-error/
+  Stack trace:
+    at getEntryDataAndImages (file:///C:/Users/Cesar%20Victor/Desktop/AchadoCer
+to.Vip/AchadoCerto.VIP/node_modules/astro/dist/content/utils.js:137:26)
+    at async getContentEntryModule (file:///C:/Users/Cesar%20Victor/Desktop/Ach
+adoCerto.Vip/AchadoCerto.VIP/node_modules/astro/dist/content/vite-plugin-conten
+t-imports.js:171:35)
+    at async transform (file:///C:/Users/Cesar%20Victor/Desktop/AchadoCerto.Vip
+/AchadoCerto.VIP/node_modules/rollup/dist/es/shared/node-entry.js:21269:16)
