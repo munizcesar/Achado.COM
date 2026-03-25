@@ -1,5 +1,5 @@
 {
-  "total": 228,
+  "total": 231,
   "mes_atual": 2,
   "logs": [
     {
@@ -379,6 +379,11 @@
     },
     {
       "data": "2026-03-25T01:09:24.906Z",
+      "produto": "Capacete Moto Fechado Pro Tork Evolution 788 G8 Ev",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-25T01:13:31.122Z",
       "produto": "Capacete Moto Fechado Pro Tork Evolution 788 G8 Ev",
       "consultas": 3
     }
