@@ -47,22 +47,22 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
 
           <div class="trust-cats">
             <a href="/categorias/tech" class="trust-pill">
-              <span class="pill-icon">💻</span>Tech
+              <span class="pill-icon">&#128187;</span>Tech
             </a>
             <a href="/categorias/automotivo" class="trust-pill">
-              <span class="pill-icon">🚗</span>Auto
+              <span class="pill-icon">&#128663;</span>Auto
             </a>
             <a href="/categorias/casa" class="trust-pill">
-              <span class="pill-icon">🏠</span>Casa
+              <span class="pill-icon">&#127968;</span>Casa
             </a>
             <a href="/categorias/saude" class="trust-pill">
-              <span class="pill-icon">💊</span>Sa&#250;de
+              <span class="pill-icon">&#128138;</span>Sa&#250;de
             </a>
             <a href="/categorias/beleza" class="trust-pill">
-              <span class="pill-icon">✨</span>Beleza
+              <span class="pill-icon">&#10024;</span>Beleza
             </a>
             <a href="/categorias/esportes" class="trust-pill">
-              <span class="pill-icon">⚽</span>Esportes
+              <span class="pill-icon">&#9917;</span>Esportes
             </a>
             <a href="/blog" class="trust-pill trust-pill-all">
               Ver todos
@@ -161,16 +161,10 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
     /* ---- PILLS ---- */
     .trust-cats {
       display: flex;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
       gap: 8px;
       margin-top: 12px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      padding-bottom: 4px;
     }
-    .trust-cats::-webkit-scrollbar { display: none; }
-
     .trust-pill {
       display: inline-flex;
       align-items: center;
@@ -184,7 +178,6 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
       border-radius: 20px;
       text-decoration: none;
       white-space: nowrap;
-      flex-shrink: 0;
       transition: background .18s, border-color .18s, color .18s, transform .15s;
     }
     .trust-pill:hover {
@@ -214,7 +207,6 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
       .trust-banner { padding: 56px 0 48px; }
       .trust-inner { flex-direction: row; align-items: center; justify-content: space-between; gap: 40px; }
       .trust-actions { flex-shrink: 0; width: 100%; max-width: 480px; }
-      .trust-cats { flex-wrap: nowrap; overflow-x: visible; }
     }
   </style>
   <!-- =================== /TRUST BANNER =================== -->
