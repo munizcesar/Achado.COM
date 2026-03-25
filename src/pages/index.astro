@@ -35,7 +35,7 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
       <div class="trust-inner">
 
         <div class="trust-copy">
-          <span class="trust-badge">✓ Reviews independentes</span>
+          <span class="trust-badge">&#10003; Reviews independentes</span>
           <h2 class="trust-headline">Encontre o produto certo <em>antes</em> de comprar</h2>
           <p class="trust-sub">Curadoria honesta, comparativos reais e links diretos nas melhores lojas do Brasil.</p>
         </div>
@@ -43,18 +43,20 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
         <div class="trust-actions">
           <form class="trust-search" action="/blog" method="get" role="search">
             <svg class="trust-search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            <input type="search" name="q" placeholder="O que você está procurando?" aria-label="Buscar produto" autocomplete="off" />
+            <input type="search" name="q" placeholder="O que voc&#234; est&#225; procurando?" aria-label="Buscar produto" autocomplete="off" />
             <button type="submit" aria-label="Pesquisar">Buscar</button>
           </form>
 
           <div class="trust-cats">
-            <a href="/categorias/tech" class="trust-pill">📱 Tech</a>
-            <a href="/categorias/automotivo" class="trust-pill">🏍️ Automotivo</a>
-            <a href="/categorias/casa" class="trust-pill">🏠 Casa</a>
-            <a href="/categorias/saude" class="trust-pill">💊 Saúde</a>
-            <a href="/categorias/beleza" class="trust-pill">✨ Beleza</a>
-            <a href="/categorias/esportes" class="trust-pill">🏃 Esportes</a>
-            <a href="/blog" class="trust-pill trust-pill-all">Ver todos →</a>
+            <a href="/categorias/tech" class="trust-pill">Tech</a>
+            <a href="/categorias/automotivo" class="trust-pill">Automotivo</a>
+            <a href="/categorias/casa" class="trust-pill">Casa</a>
+            <a href="/categorias/saude" class="trust-pill">Sa&#250;de</a>
+            <a href="/categorias/beleza" class="trust-pill">Beleza</a>
+            <a href="/categorias/esportes" class="trust-pill">Esportes</a>
+            <a href="/blog" class="trust-pill trust-pill-all">Ver todos
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
           </div>
         </div>
 
@@ -118,7 +120,7 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
       border-color: #E1306C;
       background: rgba(255,255,255,.1);
     }
-    .trust-search-icon { color: #a0aec0; flex-shrink:0; }
+    .trust-search-icon { color: #a0aec0; flex-shrink: 0; }
     .trust-search input {
       flex: 1;
       background: none;
@@ -159,9 +161,10 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
       color: #e2e8f0;
       font-size: .82rem;
       font-weight: 500;
-      padding: 6px 14px;
+      padding: 6px 16px;
       border-radius: 20px;
       text-decoration: none;
+      letter-spacing: .01em;
       transition: background .18s, border-color .18s, color .18s;
       white-space: nowrap;
     }
@@ -205,14 +208,14 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
             <h1 class="hero-title"><a id="heroTitleLink" href="#"></a></h1>
             <p id="heroExcerpt" class="hero-excerpt"></p>
             <a id="heroBtn" href="#" class="btn-read-full">
-              Ler análise completa
+              Ler an&#225;lise completa
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </article>
 
           <!-- Sidebar preenchida pelo JS -->
           <aside class="hero-sidebar">
-            <div class="hero-sidebar-header">Outras análises</div>
+            <div class="hero-sidebar-header">Outras an&#225;lises</div>
             <div id="sidebarPosts"></div>
           </aside>
 
@@ -224,7 +227,7 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
       <div class="container">
         <div class="empty-state">
           <h2>Em breve: reviews e guias de compra</h2>
-          <p>Estamos preparando análises completas para você.</p>
+          <p>Estamos preparando an&#225;lises completas para voc&#234;.</p>
         </div>
       </div>
     </section>
