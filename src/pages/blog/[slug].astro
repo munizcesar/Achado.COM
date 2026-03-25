@@ -119,12 +119,12 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       <div class="container" style="max-width: 820px;">
 
         <!-- Breadcrumb -->
-        <nav style="font-size:13px;color:var(--c-text-muted);margin-bottom:20px;display:flex;gap:6px;align-items:center;">
-          <a href="/" style="color:var(--c-brand);">Início</a><span>›</span>
-          <a href="/blog" style="color:var(--c-brand);">Reviews</a><span>›</span>
-          {post.data.category && <a href={`/categorias/${post.data.category.toLowerCase()}`} style="color:var(--c-brand);">{post.data.category}</a>}
-          {post.data.category && <span>›</span>}
-          <span style="color:var(--c-text-light);overflow:hidden;text-overflow:ellipsis;max-width:260px;display:inline-block;word-break:break-word;">{post.data.title}</span>
+        <nav style="font-size:13px;color:var(--c-text-muted);margin-bottom:20px;display:flex;gap:6px;align-items:center;flex-wrap:nowrap;overflow:hidden;">
+          <a href="/" style="color:var(--c-brand);white-space:nowrap;">Início</a><span style="flex-shrink:0;">›</span>
+          <a href="/blog" style="color:var(--c-brand);white-space:nowrap;">Reviews</a><span style="flex-shrink:0;">›</span>
+          {post.data.category && <a href={`/categorias/${post.data.category.toLowerCase()}`} style="color:var(--c-brand);white-space:nowrap;">{post.data.category}</a>}
+          {post.data.category && <span style="flex-shrink:0;">›</span>}
+          <span style="color:var(--c-text-light);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;">{post.data.title}</span>
         </nav>
 
         <span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);display:block;margin-bottom:10px;">
