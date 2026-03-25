@@ -1,5 +1,5 @@
 {
-  "total": 216,
+  "total": 219,
   "mes_atual": 2,
   "logs": [
     {
@@ -360,6 +360,11 @@
     {
       "data": "2026-03-25T00:20:07.966Z",
       "produto": "Capacete Norisk Razor Black Edition Com 2 Viseiras",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-25T00:42:19.652Z",
+      "produto": "Capacete Bieffe B12 Phanton Esportivo Preto Moto A",
       "consultas": 3
     }
   ]
