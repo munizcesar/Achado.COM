@@ -14,7 +14,6 @@ function fmtDate(d) {
   return new Date(d).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
 }
 
-// Um post por categoria para o pool rotativo
 const seen = new Set();
 const siloPosts = posts.filter(p => {
   const cat = p.data.category || 'Geral';
@@ -23,7 +22,6 @@ const siloPosts = posts.filter(p => {
   return true;
 });
 
-// Restante para o grid inferior
 const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
 ---
 
@@ -48,13 +46,26 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
           </form>
 
           <div class="trust-cats">
-            <a href="/categorias/tech" class="trust-pill">Tech</a>
-            <a href="/categorias/automotivo" class="trust-pill">Automotivo</a>
-            <a href="/categorias/casa" class="trust-pill">Casa</a>
-            <a href="/categorias/saude" class="trust-pill">Sa&#250;de</a>
-            <a href="/categorias/beleza" class="trust-pill">Beleza</a>
-            <a href="/categorias/esportes" class="trust-pill">Esportes</a>
-            <a href="/blog" class="trust-pill trust-pill-all">Ver todos
+            <a href="/categorias/tech" class="trust-pill">
+              <span class="pill-icon">💻</span>Tech
+            </a>
+            <a href="/categorias/automotivo" class="trust-pill">
+              <span class="pill-icon">🚗</span>Auto
+            </a>
+            <a href="/categorias/casa" class="trust-pill">
+              <span class="pill-icon">🏠</span>Casa
+            </a>
+            <a href="/categorias/saude" class="trust-pill">
+              <span class="pill-icon">💊</span>Sa&#250;de
+            </a>
+            <a href="/categorias/beleza" class="trust-pill">
+              <span class="pill-icon">✨</span>Beleza
+            </a>
+            <a href="/categorias/esportes" class="trust-pill">
+              <span class="pill-icon">⚽</span>Esportes
+            </a>
+            <a href="/blog" class="trust-pill trust-pill-all">
+              Ver todos
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
@@ -146,12 +157,20 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
       transition: background .2s;
     }
     .trust-search button:hover { background: #c2185b; }
+
+    /* ---- PILLS ---- */
     .trust-cats {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 8px;
-      margin-top: 16px;
+      margin-top: 12px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 4px;
     }
+    .trust-cats::-webkit-scrollbar { display: none; }
+
     .trust-pill {
       display: inline-flex;
       align-items: center;
@@ -161,17 +180,22 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
       color: #e2e8f0;
       font-size: .82rem;
       font-weight: 500;
-      padding: 6px 16px;
+      padding: 6px 14px;
       border-radius: 20px;
       text-decoration: none;
-      letter-spacing: .01em;
-      transition: background .18s, border-color .18s, color .18s;
       white-space: nowrap;
+      flex-shrink: 0;
+      transition: background .18s, border-color .18s, color .18s, transform .15s;
     }
     .trust-pill:hover {
       background: rgba(225,48,108,.18);
       border-color: rgba(225,48,108,.5);
       color: #fff;
+      transform: translateY(-1px);
+    }
+    .pill-icon {
+      font-size: .9rem;
+      line-height: 1;
     }
     .trust-pill-all {
       background: rgba(225,48,108,.12);
@@ -183,11 +207,14 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
       background: #E1306C;
       border-color: #E1306C;
       color: #fff;
+      transform: translateY(-1px);
     }
+
     @media (min-width: 768px) {
       .trust-banner { padding: 56px 0 48px; }
       .trust-inner { flex-direction: row; align-items: center; justify-content: space-between; gap: 40px; }
       .trust-actions { flex-shrink: 0; width: 100%; max-width: 480px; }
+      .trust-cats { flex-wrap: nowrap; overflow-x: visible; }
     }
   </style>
   <!-- =================== /TRUST BANNER =================== -->
@@ -198,7 +225,6 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
       <div class="container">
         <div class="hero-grid">
 
-          <!-- Hero preenchido pelo JS -->
           <article class="hero-main" id="heroMain" style="opacity:0; transition: opacity 0.45s ease;">
             <a id="heroImgLink" href="#" class="hero-main-img-wrap">
               <img id="heroImg" src="" alt="" class="hero-main-img" width="820" height="547"
@@ -213,7 +239,6 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
             </a>
           </article>
 
-          <!-- Sidebar preenchida pelo JS -->
           <aside class="hero-sidebar">
             <div class="hero-sidebar-header">Outras an&#225;lises</div>
             <div id="sidebarPosts"></div>
@@ -233,7 +258,6 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
     </section>
   )}
 
-  <!-- Grid inferior -->
   {gridPosts.length > 0 && (
     <section class="section section-gray">
       <div class="container">
@@ -275,7 +299,6 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
     </section>
   )}
 
-  <!-- Posts do pool como articles ocultos com data-* (sem JSON inline) -->
   <div id="postsPool" style="display:none" aria-hidden="true">
     {siloPosts.map((p, i) => (
       <div
