@@ -5,15 +5,11 @@ const siteUrl = 'https://achadocerto.vip';
 
 const faqs = [
   {
-    category: '🛒 Compras Online',
+    category: '🛍️ Compras Online',
     questions: [
       {
         q: 'Como funciona o AchadoCerto.VIP?',
         a: 'Somos um site de curadoria de ofertas e reviews. Analisamos produtos, selecionamos as melhores ofertas e compartilhamos links diretos para Mercado Livre, Amazon e Magalu. Recebemos comissão quando você compra através dos nossos links, sem custo adicional para você.'
-      },
-      {
-        q: 'Os preços mostrados estão sempre atualizados?',
-        a: 'Os preços são verificados no momento da publicação do conteúdo, mas podem sofrer alterações sem aviso prévio pelas lojas. Sempre confira o preço final no site do fornecedor antes de finalizar a compra.'
       },
       {
         q: 'Vocês vendem os produtos?',
@@ -96,7 +92,7 @@ const faqSchema = {
       name: faq.q,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: faq.a.replace(/<[^>]*>/g, '') // Remove HTML tags for schema
+        text: faq.a.replace(/<[^>]*>/g, '')
       }
     }))
   )
@@ -110,7 +106,6 @@ const faqSchema = {
 >
   <div style="background:var(--c-bg);min-height:100vh;">
     
-    <!-- Hero -->
     <div style="background:var(--c-surface);border-bottom:1px solid var(--c-border);padding:60px 0;">
       <div class="container" style="max-width:900px;text-align:center;">
         <span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);display:block;margin-bottom:12px;">
@@ -125,7 +120,6 @@ const faqSchema = {
       </div>
     </div>
 
-    <!-- FAQ Content -->
     <div style="padding:60px 0 100px;">
       <div class="container" style="max-width:900px;">
         
@@ -150,7 +144,6 @@ const faqSchema = {
           </div>
         ))}
 
-        <!-- CTA Final -->
         <div style="margin-top:60px;background:linear-gradient(135deg,#fff8f0,#fff3e0);border:2px solid var(--c-brand);border-radius:var(--r-lg);padding:40px;text-align:center;">
           <h3 style="font-size:22px;font-weight:800;color:var(--c-text);margin:0 0 12px;">
             Não encontrou sua resposta?
@@ -183,20 +176,12 @@ const faqSchema = {
       cursor: pointer;
       transition: all .2s;
     }
-
     .faq-item:hover {
       border-color: var(--c-brand);
       box-shadow: 0 2px 12px rgba(var(--c-brand-rgb, 220,80,30), .1);
     }
-
-    .faq-item[open] {
-      border-color: var(--c-brand);
-    }
-
-    .faq-item[open] .faq-icon {
-      transform: rotate(180deg);
-    }
-
+    .faq-item[open] { border-color: var(--c-brand); }
+    .faq-item[open] .faq-icon { transform: rotate(180deg); }
     .faq-summary {
       font-size: 16px;
       font-weight: 700;
@@ -208,16 +193,8 @@ const faqSchema = {
       gap: 12px;
       user-select: none;
     }
-
-    .faq-summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .faq-icon {
-      flex-shrink: 0;
-      transition: transform .2s;
-    }
-
+    .faq-summary::-webkit-details-marker { display: none; }
+    .faq-icon { flex-shrink: 0; transition: transform .2s; }
     .faq-answer {
       font-size: 15px;
       color: var(--c-text-sub);
@@ -226,26 +203,12 @@ const faqSchema = {
       padding-top: 16px;
       border-top: 1px solid var(--c-border-light);
     }
-
-    .faq-answer a {
-      color: var(--c-brand);
-      text-decoration: underline;
-    }
-
-    .faq-answer a:hover {
-      color: var(--c-brand-dark);
-    }
-
+    .faq-answer a { color: var(--c-brand); text-decoration: underline; }
+    .faq-answer a:hover { color: var(--c-brand-dark); }
     @media (max-width: 768px) {
-      .faq-item {
-        padding: 16px 20px;
-      }
-      .faq-summary {
-        font-size: 15px;
-      }
-      .faq-answer {
-        font-size: 14px;
-      }
+      .faq-item { padding: 16px 20px; }
+      .faq-summary { font-size: 15px; }
+      .faq-answer { font-size: 14px; }
     }
   </style>
 </Layout>
