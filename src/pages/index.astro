@@ -29,6 +29,167 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
 
 <Layout>
 
+  <!-- ===================== TRUST BANNER ===================== -->
+  <section class="trust-banner">
+    <div class="container">
+      <div class="trust-inner">
+
+        <div class="trust-copy">
+          <span class="trust-badge">✓ Reviews independentes</span>
+          <h2 class="trust-headline">Encontre o produto certo <em>antes</em> de comprar</h2>
+          <p class="trust-sub">Curadoria honesta, comparativos reais e links diretos nas melhores lojas do Brasil.</p>
+        </div>
+
+        <div class="trust-actions">
+          <form class="trust-search" action="/blog" method="get" role="search">
+            <svg class="trust-search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="search" name="q" placeholder="O que você está procurando?" aria-label="Buscar produto" autocomplete="off" />
+            <button type="submit" aria-label="Pesquisar">Buscar</button>
+          </form>
+
+          <div class="trust-cats">
+            <a href="/categorias/tech" class="trust-pill">📱 Tech</a>
+            <a href="/categorias/automotivo" class="trust-pill">🏍️ Automotivo</a>
+            <a href="/categorias/casa" class="trust-pill">🏠 Casa</a>
+            <a href="/categorias/saude" class="trust-pill">💊 Saúde</a>
+            <a href="/categorias/beleza" class="trust-pill">✨ Beleza</a>
+            <a href="/categorias/esportes" class="trust-pill">🏃 Esportes</a>
+            <a href="/blog" class="trust-pill trust-pill-all">Ver todos →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .trust-banner {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      padding: 48px 0 40px;
+      border-bottom: 3px solid #E1306C;
+    }
+    .trust-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .trust-badge {
+      display: inline-block;
+      background: rgba(225,48,108,.15);
+      color: #f48fb1;
+      border: 1px solid rgba(225,48,108,.35);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    .trust-headline {
+      font-size: clamp(1.5rem, 4vw, 2.1rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      margin: 0 0 10px;
+    }
+    .trust-headline em {
+      font-style: normal;
+      color: #E1306C;
+    }
+    .trust-sub {
+      color: #a0aec0;
+      font-size: .95rem;
+      margin: 0;
+      max-width: 520px;
+    }
+    .trust-search {
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,.07);
+      border: 1.5px solid rgba(255,255,255,.15);
+      border-radius: 10px;
+      padding: 0 6px 0 14px;
+      gap: 8px;
+      max-width: 520px;
+      transition: border-color .2s;
+    }
+    .trust-search:focus-within {
+      border-color: #E1306C;
+      background: rgba(255,255,255,.1);
+    }
+    .trust-search-icon { color: #a0aec0; flex-shrink:0; }
+    .trust-search input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-size: .95rem;
+      padding: 12px 0;
+      font-family: inherit;
+    }
+    .trust-search input::placeholder { color: #718096; }
+    .trust-search button {
+      background: #E1306C;
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      padding: 8px 18px;
+      font-size: .85rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: inherit;
+      transition: background .2s;
+    }
+    .trust-search button:hover { background: #c2185b; }
+    .trust-cats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      color: #e2e8f0;
+      font-size: .82rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: background .18s, border-color .18s, color .18s;
+      white-space: nowrap;
+    }
+    .trust-pill:hover {
+      background: rgba(225,48,108,.18);
+      border-color: rgba(225,48,108,.5);
+      color: #fff;
+    }
+    .trust-pill-all {
+      background: rgba(225,48,108,.12);
+      border-color: rgba(225,48,108,.3);
+      color: #f48fb1;
+      font-weight: 700;
+    }
+    .trust-pill-all:hover {
+      background: #E1306C;
+      border-color: #E1306C;
+      color: #fff;
+    }
+    @media (min-width: 768px) {
+      .trust-banner { padding: 56px 0 48px; }
+      .trust-inner { flex-direction: row; align-items: center; justify-content: space-between; gap: 40px; }
+      .trust-actions { flex-shrink: 0; width: 100%; max-width: 480px; }
+    }
+  </style>
+  <!-- =================== /TRUST BANNER =================== -->
+
+
   {siloPosts.length > 0 ? (
     <section class="hero" id="heroSection">
       <div class="container">
