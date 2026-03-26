@@ -11,6 +11,16 @@ draft: false
 
 Com mais de 100 milhões de usuários no Brasil, o Mercado Livre é o maior marketplace da América Latina. A pergunta "Mercado Livre é seguro?" é uma das mais buscadas por quem ainda não comprou na plataforma — e a resposta é sim, desde que você saiba o que observar. Este guia explica exatamente como funciona a proteção ao comprador e quais práticas eliminam praticamente todo o risco.
 
+<div style="display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#fff8e1,#fff3cd);border:2px solid #f5a623;border-radius:12px;padding:20px 24px;margin:24px 0;box-shadow:0 4px 20px rgba(245,166,35,.15);">
+  <div style="font-size:48px;flex-shrink:0;">🛒</div>
+  <div style="flex:1;">
+    <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#f5a623;margin-bottom:4px;">MARKETPLACE N°1 DA AMÉRICA LATINA</p>
+    <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">Explore milhares de ofertas com proteção total da Compra Garantida</p>
+    <a href="https://www.mercadolivre.com.br/social/muc1576372" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:#f5a623;color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🔎 Ver ofertas no Mercado Livre</a>
+    <p style="font-size:11px;color:#999;margin-top:6px;">Link de afiliado — sem custo extra para você</p>
+  </div>
+</div>
+
 ## O Que Garante a Segurança no Mercado Livre
 
 A plataforma opera com um sistema de proteção em camadas que cobre o comprador em praticamente todas as situações:
@@ -67,7 +77,7 @@ A grande maioria dos golpes no Mercado Livre envolve tentativas de tirar o compr
 - Vendedor pede **Pix, TED ou depósito direto** fora do site → nunca aceite
 - Preço **muito abaixo do mercado** sem justificativa → sinal clássico de fraude
 - Mensagens pedindo para continuar a conversa por **WhatsApp ou e-mail** → recuse
-- Anuncio sem fotos reais ou com imagens genéricas de fábrica → desconfie
+- Anúncio sem fotos reais ou com imagens genéricas de fábrica → desconfie
 - Vendedor sem histórico ou com cadastro recente e nota zerada → evite
 
 ### Boas práticas
@@ -99,6 +109,12 @@ Muita gente desconhece que o Código de Defesa do Consumidor garante direitos in
 - A devolução pelo ML é **gratuita** quando o problema é com o produto ou com a entrega
 - O reembolso retorna para o mesmo método de pagamento utilizado
 
+---
+
+👉 Pronto para comprar com segurança? [Acesse o Mercado Livre aqui](https://www.mercadolivre.com.br/social/muc1576372) e aproveite milhares de ofertas com Compra Garantida.
+
+---
+
 ## Perguntas Frequentes (FAQ)
 
 **O Mercado Livre é uma empresa confiável?**
@@ -120,3 +136,7 @@ Com cautela. Vendedores novos não têm histórico para avaliar. Prefira produto
 **O Pix pelo Mercado Livre é seguro?**
 
 Sim, desde que feito dentro da plataforma. O dinheiro vai para o Mercado Pago, não diretamente ao vendedor, e fica retido até a confirmação de entrega. O risco só existe se o vendedor pedir Pix fora do site.
+
+---
+
+*Links deste post são afiliados. Você não paga nada a mais, mas nos ajuda a manter o site gratuito.*
