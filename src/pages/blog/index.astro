@@ -116,7 +116,6 @@ const schema = {
 
       function doSearch() {
         var q = input.value.trim().toLowerCase();
-        // Atualiza URL sem recarregar
         var url = new URL(window.location.href);
         if (q) { url.searchParams.set('q', q); } else { url.searchParams.delete('q'); }
         history.replaceState(null, '', url);
@@ -141,39 +140,37 @@ const schema = {
         emptyState.style.display = visible === 0 ? 'block' : 'none';
       }
 
-      // Expoe globalmente para o botao onclick
       window.doSearch = doSearch;
 
-      // Busca ao digitar (debounce 250ms)
       var timer;
       input.addEventListener('input', function() {
         clearTimeout(timer);
         timer = setTimeout(doSearch, 250);
       });
 
-      // Busca ao pressionar Enter
       input.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') { clearTimeout(timer); doSearch(); }
       });
 
-      // Le ?q= da URL, preenche o campo e executa busca
-      // SEM chamar input.focus() para não abrir o teclado mobile
+      // Le ?q= da URL, preenche e filtra SEM abrir teclado mobile
       var params = new URLSearchParams(window.location.search);
       var q = params.get('q') || '';
       if (q) {
         input.value = q;
         doSearch();
-        // Scroll suave até os resultados após breve delay (aguarda render)
+        // Scroll preciso: desconta a altura real do header fixo (site-header + subnav)
         setTimeout(function() {
           var grid = document.getElementById('postGrid');
-          if (grid) {
-            grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }, 120);
+          var header = document.querySelector('.site-header');
+          if (!grid) return;
+          var headerH = header ? header.getBoundingClientRect().height : 0;
+          var gridTop = grid.getBoundingClientRect().top + window.pageYOffset;
+          var offset = 16; // respiro visual de 16px abaixo do header
+          window.scrollTo({ top: gridTop - headerH - offset, behavior: 'smooth' });
+        }, 150);
       }
     }
 
-    // Compativel com navegacao normal E com Astro View Transitions
     document.addEventListener('DOMContentLoaded', initSearch);
     document.addEventListener('astro:page-load', initSearch);
   </script>
