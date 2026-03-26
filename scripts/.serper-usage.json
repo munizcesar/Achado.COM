@@ -1,5 +1,5 @@
 {
-  "total": 234,
+  "total": 237,
   "mes_atual": 2,
   "logs": [
     {
@@ -390,6 +390,11 @@
     {
       "data": "2026-03-26T00:29:52.699Z",
       "produto": "Raquete Beach Tennis Total Pro Produzida Em Carbon",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-26T00:44:55.049Z",
+      "produto": "Óculos De Natação Speedo Classic Starters + Touca ",
       "consultas": 3
     }
   ]
