@@ -1,5 +1,5 @@
 {
-  "total": 243,
+  "total": 246,
   "mes_atual": 2,
   "logs": [
     {
@@ -404,6 +404,11 @@
     },
     {
       "data": "2026-03-26T00:58:06.091Z",
+      "produto": "Kit Luva Impact Evo Muay Thai Boxe Venum + Bandage",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-26T01:02:41.021Z",
       "produto": "Kit Luva Impact Evo Muay Thai Boxe Venum + Bandage",
       "consultas": 3
     }
