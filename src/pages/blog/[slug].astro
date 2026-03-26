@@ -110,6 +110,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
 >
   <article>
 
+    <!-- HERO -->
     <div style="background: var(--c-surface); border-bottom: 1px solid var(--c-border); padding: 12px 0 0;" >
       <div class="container" style="max-width: 820px;">
         <nav style="font-size:13px;color:var(--c-text-muted);margin-bottom:20px;display:flex;gap:6px;align-items:center;flex-wrap:nowrap;overflow:hidden;">
@@ -162,6 +163,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       </div>
     </div>
 
+    <!-- IMAGEM PRINCIPAL -->
     {post.data.image && (
       <div style="background:var(--c-bg);padding:0 0 40px;">
         <div class="container" style="max-width:820px;">
@@ -181,22 +183,26 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       </div>
     )}
 
-    <div style="padding:4px 0; background:var(--c-bg);">
-      <div class="container" style="max-width:820px;">
-        <AdSense slot="2844415754" format="auto" maxWidth="728px" />
-      </div>
-    </div>
-
+    <!-- CONTEÚDO + SIDEBAR -->
     <div style="padding:32px 0 80px;background:var(--c-bg);">
       <div class="container post-content-grid" style="max-width:820px;">
 
         <div class="prose">
           <Content />
 
-          <div style="margin:32px 0;">
-            <AdSense slot="3873859149" format="fluid" maxWidth="580px" />
+          <!-- AD 1: sandwich editorial —  após o conteúdo -->
+          <div style="margin:40px 0 32px;border-top:1px solid var(--c-border);padding-top:32px;">
+            <p style="font-size:10px;text-align:center;color:var(--c-text-light);margin-bottom:6px;letter-spacing:.5px;text-transform:uppercase;">Publicidade</p>
+            <AdSense slot="2844415754" format="auto" maxWidth="680px" minHeight="90px" />
           </div>
 
+          <!-- AD 2: in-article -->
+          <div style="margin:32px 0;">
+            <p style="font-size:10px;text-align:center;color:var(--c-text-light);margin-bottom:6px;letter-spacing:.5px;text-transform:uppercase;">Publicidade</p>
+            <AdSense slot="3873859149" format="fluid" maxWidth="580px" minHeight="90px" />
+          </div>
+
+          <!-- BOX CTA FINAL -->
           {hasAffiliate && (
             <div class="product-box-final">
               {productImage && (
@@ -218,7 +224,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
                   data-affiliate
                   data-product={post.data.title}
                   data-category={post.data.category}
-                  class="product-box-final-btn"
+                  class="btn-cta-large"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                   Ver no {storeName}
@@ -229,6 +235,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
           )}
         </div>
 
+        <!-- SIDEBAR -->
         <aside class="post-sidebar">
           {hasAffiliate && (
             <div class="product-box-sidebar">
@@ -253,7 +260,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
                   data-affiliate
                   data-product={post.data.title}
                   data-category={post.data.category}
-                  class="product-box-sidebar-btn"
+                  class="btn-cta-sidebar"
                 >
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                   Ver no {storeName}
@@ -278,8 +285,10 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
             </div>
           </div>
 
+          <!-- AD SIDEBAR -->
           <div style="margin-bottom:16px;">
-            <AdSense slot="7473925904" format="auto" maxWidth="280px" />
+            <p style="font-size:10px;text-align:center;color:var(--c-text-light);margin-bottom:6px;letter-spacing:.5px;text-transform:uppercase;">Publicidade</p>
+            <AdSense slot="7473925904" format="auto" maxWidth="280px" minHeight="250px" />
           </div>
 
           <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--r-md);padding:20px;box-shadow:var(--shadow-sm);">
@@ -299,13 +308,10 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       </div>
     </div>
 
-    <!-- ============================================================
-         ARTIGOS RELACIONADOS — redesigned
-    ============================================================ -->
+    <!-- ARTIGOS RELACIONADOS -->
     {relatedPosts.length > 0 && (
       <section class="related-section">
         <div class="container">
-
           <div class="related-header">
             <div>
               <span class="related-eyebrow">Continue lendo</span>
@@ -316,7 +322,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
-
           <div class="related-grid">
             {relatedDisplay.map(related => {
               const isPlaceholder = related.placeholder;
@@ -328,14 +333,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
               return (
                 <a href={relUrl} class="related-card">
                   <div class="related-img-wrap">
-                    <img
-                      src={relImg}
-                      alt={relTitle}
-                      class="related-img"
-                      loading="lazy"
-                      width="320"
-                      height="200"
-                    />
+                    <img src={relImg} alt={relTitle} class="related-img" loading="lazy" width="320" height="200" />
                   </div>
                   <div class="related-body">
                     <span class="related-cat">{relCat}</span>
@@ -350,60 +348,58 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
               );
             })}
           </div>
-
         </div>
       </section>
     )}
 
+    <!-- ONDE COMPRAR COM SEGURANÇA -->
     <div style="background:var(--c-surface);padding:40px 0;border-top:1px solid var(--c-border);border-bottom:1px solid var(--c-border);">
       <div class="container" style="max-width:820px;">
-        <h2 style="font-size:22px;font-weight:800;margin:0 0 8px;color:var(--c-text);">
-          🛡️ Onde Comprar com Segurança
-        </h2>
+        <h2 style="font-size:22px;font-weight:800;margin:0 0 8px;color:var(--c-text);">🛡️ Onde Comprar com Segurança</h2>
         <p style="font-size:14px;color:var(--c-text-sub);margin:0 0 20px;line-height:1.6;">
           Dicas específicas para comprar {detectStore(post.data.affiliateUrl) === 'melhor preço' ? 'online' : `no ${detectStore(post.data.affiliateUrl)}`} com tranquilidade
         </p>
         <div style="display:grid;gap:12px;">
           <div style="background:#fff;border:1px solid var(--c-border);border-left:4px solid var(--c-brand);border-radius:var(--r-md);padding:16px 20px;">
             <div style="display:flex;align-items:start;gap:12px;">
-              <div style="background:var(--c-brand-light);color:var(--c-brand);width:36px;height:36px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;font-weight:700;">⭐</div>
+              <div style="background:var(--c-brand-soft);color:var(--c-brand);width:36px;height:36px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">⭐</div>
               <div style="flex:1;">
                 <h3 style="font-size:15px;font-weight:700;color:var(--c-text);margin:0 0 6px;">Verifique a reputação do vendedor</h3>
                 <p style="font-size:14px;color:var(--c-text-sub);line-height:1.6;margin:0;">
-                  {detectStore(post.data.affiliateUrl) === 'Mercado Livre' && 'Procure vendedores com selo MercadoLíder Platinum e mais de 95% de avaliações positivas. Veja o histórico de vendas e tempo de cadastro.'}
-                  {detectStore(post.data.affiliateUrl) === 'Amazon' && 'Prefira produtos vendidos e entregues pela Amazon ou vendedores com avaliação acima de 4.5 estrelas e milhares de avaliações.'}
-                  {detectStore(post.data.affiliateUrl) === 'Magalu' && 'Verifique a nota do vendedor (acima de 4 estrelas) e quantidade de avaliações. Vendedores oficiais têm o selo "Vendido e entregue por Magazine Luiza".'}
-                  {!['Mercado Livre', 'Amazon', 'Magalu'].includes(detectStore(post.data.affiliateUrl)) && 'Busque vendedores com alta reputação (acima de 95% de avaliações positivas), milhares de vendas e tempo significativo de cadastro na plataforma.'}
+                  {detectStore(post.data.affiliateUrl) === 'Mercado Livre' && 'Procure vendedores com selo MercadoLíder Platinum e mais de 95% de avaliações positivas.'}
+                  {detectStore(post.data.affiliateUrl) === 'Amazon' && 'Prefira produtos vendidos e entregues pela Amazon ou vendedores com avaliação acima de 4.5 estrelas.'}
+                  {detectStore(post.data.affiliateUrl) === 'Magalu' && 'Verifique a nota do vendedor (acima de 4 estrelas). Vendedores oficiais têm o selo "Vendido e entregue por Magazine Luiza".'}
+                  {!['Mercado Livre', 'Amazon', 'Magalu'].includes(detectStore(post.data.affiliateUrl)) && 'Busque vendedores com alta reputação, milhares de vendas e tempo significativo de cadastro na plataforma.'}
                 </p>
               </div>
             </div>
           </div>
           <div style="background:#fff;border:1px solid var(--c-border);border-left:4px solid var(--c-brand);border-radius:var(--r-md);padding:16px 20px;">
             <div style="display:flex;align-items:start;gap:12px;">
-              <div style="background:var(--c-brand-light);color:var(--c-brand);width:36px;height:36px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;font-weight:700;">↩️</div>
+              <div style="background:var(--c-brand-soft);color:var(--c-brand);width:36px;height:36px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">↩️</div>
               <div style="flex:1;">
                 <h3 style="font-size:15px;font-weight:700;color:var(--c-text);margin:0 0 6px;">Leia a política de devolução</h3>
-                <p style="font-size:14px;color:var(--c-text-sub);line-height:1.6;margin:0;">Você tem 7 dias para desistir da compra (CDC), mas cada loja tem regras próprias sobre frete de devolução. Antes de finalizar, verifique se há "troca grátis" ou se você arcará com o custo do envio de retorno.</p>
+                <p style="font-size:14px;color:var(--c-text-sub);line-height:1.6;margin:0;">Você tem 7 dias para desistir da compra (CDC). Verifique se há "troca grátis" ou se você arcará com o frete de retorno antes de finalizar.</p>
               </div>
             </div>
           </div>
           <div style="background:#fff;border:1px solid var(--c-border);border-left:4px solid var(--c-brand);border-radius:var(--r-md);padding:16px 20px;">
             <div style="display:flex;align-items:start;gap:12px;">
-              <div style="background:var(--c-brand-light);color:var(--c-brand);width:36px;height:36px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;font-weight:700;">💳</div>
+              <div style="background:var(--c-brand-soft);color:var(--c-brand);width:36px;height:36px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">💳</div>
               <div style="flex:1;">
                 <h3 style="font-size:15px;font-weight:700;color:var(--c-text);margin:0 0 6px;">Use pagamento dentro da plataforma</h3>
                 <p style="font-size:14px;color:var(--c-text-sub);line-height:1.6;margin:0;">
-                  {detectStore(post.data.affiliateUrl) === 'Mercado Livre' && 'Sempre pague via Mercado Pago para ter proteção na compra. Parcelar no cartão de crédito oferece garantia extra contra fraudes.'}
-                  {detectStore(post.data.affiliateUrl) === 'Amazon' && 'Pague via sistema da Amazon para ter cobertura da Garantia A-Z. Cartão de crédito oferece proteção adicional contra cobranças indevidas.'}
-                  {detectStore(post.data.affiliateUrl) === 'Magalu' && 'Use o sistema de pagamento do Magalu para ter proteção contra fraudes. Cartão de crédito oferece chargeback em caso de problemas.'}
-                  {!['Mercado Livre', 'Amazon', 'Magalu'].includes(detectStore(post.data.affiliateUrl)) && 'Sempre utilize o sistema de pagamento oficial da plataforma. Cartão de crédito oferece proteção extra com possibilidade de contestação de cobranças.'}
+                  {detectStore(post.data.affiliateUrl) === 'Mercado Livre' && 'Sempre pague via Mercado Pago para ter proteção na compra.'}
+                  {detectStore(post.data.affiliateUrl) === 'Amazon' && 'Pague via sistema da Amazon para ter cobertura da Garantia A-Z.'}
+                  {detectStore(post.data.affiliateUrl) === 'Magalu' && 'Use o sistema de pagamento do Magalu — cartão de crédito oferece chargeback em caso de problemas.'}
+                  {!['Mercado Livre', 'Amazon', 'Magalu'].includes(detectStore(post.data.affiliateUrl)) && 'Sempre pague pelo sistema oficial da plataforma. Cartão de crédito oferece proteção extra com possibilidade de contestação.'}
                 </p>
               </div>
             </div>
           </div>
-          <div style="background:linear-gradient(135deg,#fff8f0,#fff3e0);border:1px solid var(--c-brand);border-radius:var(--r-md);padding:16px;text-align:center;margin-top:8px;">
+          <div style="background:linear-gradient(135deg,#f0f4ff,#e8f0fe);border:1px solid var(--c-brand);border-radius:var(--r-md);padding:16px;text-align:center;margin-top:8px;">
             <p style="font-size:13px;color:var(--c-text-sub);margin:0 0 10px;">Mais dúvidas sobre compras online?</p>
-            <a href="/faq" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:14px;padding:8px 18px;border-radius:var(--r-sm);text-decoration:none;transition:all .2s;">
+            <a href="/faq" class="btn-cta-primary">
               Ver Perguntas Frequentes
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -414,7 +410,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
   </article>
 
   <style>
-    /* ===================== GRID ===================== */
     .post-content-grid {
       display: grid;
       grid-template-columns: 1fr 280px;
@@ -423,25 +418,18 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     }
     .post-sidebar { position: sticky; top: 88px; }
 
-    @media (max-width: 768px) {
-      .post-content-grid { display: block !important; }
-      .prose { padding: 0 4px; }
-      .share-buttons { width: 100%; justify-content: flex-start; }
-      .product-box-final { padding: 24px 16px; }
-    }
-
-    /* ===================== BOX CTA FINAL ===================== */
+    /* BOX CTA FINAL */
     .product-box-final {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      background: linear-gradient(135deg, #fff8f0 0%, #fff3e0 100%);
+      background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
       border: 2px solid var(--c-brand);
       border-radius: var(--r-lg);
       padding: 32px 28px;
       margin: 48px 0 0;
-      box-shadow: 0 6px 28px rgba(var(--c-brand-rgb, 220,80,30), .14);
+      box-shadow: 0 6px 28px rgba(26,86,219,.12);
     }
     .product-box-final-img {
       width: 140px; height: 140px;
@@ -456,18 +444,8 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .product-box-final-label { font-size: 13px; font-weight: 700; color: var(--c-brand); margin-bottom: 6px; }
     .product-box-final-name  { font-size: 20px; font-weight: 800; color: var(--c-text) !important; margin-bottom: 8px; line-height: 1.3; }
     .product-box-final-price { font-size: 28px; font-weight: 800; color: var(--c-brand); margin-bottom: 16px; }
-    .product-box-final-btn {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--c-brand); color: #fff !important;
-      font-weight: 700; font-size: 16px;
-      padding: 12px 28px; border-radius: var(--r-sm);
-      transition: background .2s, transform .15s;
-      text-decoration: none;
-      box-shadow: 0 2px 12px rgba(var(--c-brand-rgb, 220,80,30), .3);
-    }
-    .product-box-final-btn:hover { background: var(--c-brand-dark); transform: translateY(-2px); }
 
-    /* ===================== BOX SIDEBAR ===================== */
+    /* BOX SIDEBAR */
     .product-box-sidebar {
       background: var(--c-surface);
       border: 1px solid var(--c-border);
@@ -489,17 +467,9 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .product-box-sidebar-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--c-text-muted); margin-bottom: 4px; }
     .product-box-sidebar-name  { font-size: 14px; font-weight: 700; color: var(--c-text); margin-bottom: 8px; line-height: 1.4; }
     .product-box-sidebar-price { font-size: 20px; font-weight: 800; color: var(--c-brand); margin-bottom: 12px; }
-    .product-box-sidebar-btn {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      width: 100%; background: var(--c-brand); color: #fff;
-      font-weight: 700; font-size: 13px;
-      padding: 10px 14px; border-radius: var(--r-sm);
-      transition: background .2s; text-decoration: none;
-    }
-    .product-box-sidebar-btn:hover { background: var(--c-brand-dark); }
     .product-box-sidebar-disclaimer { font-size: 10px; color: var(--c-text-light); text-align: center; margin-top: 8px; }
 
-    /* ===================== SHARE ===================== */
+    /* SHARE */
     .share-buttons { display:flex; align-items:center; gap:8px; }
     .share-label   { font-size:12px; font-weight:600; color:var(--c-text-muted); white-space:nowrap; }
     .share-btn {
@@ -512,7 +482,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .share-whatsapp  { background:#25D366; }
     .share-instagram { background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%); }
 
-    /* ===================== PROSE ===================== */
+    /* PROSE */
     .prose { color:var(--c-text); font-size:17px; line-height:1.8; }
     .prose h2 { font-size:26px; font-weight:800; letter-spacing:-.4px; margin:40px 0 16px; color:var(--c-text); }
     .prose h3 { font-size:20px; font-weight:700; margin:32px 0 12px; color:var(--c-text); }
@@ -531,147 +501,37 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .prose td { padding:10px 14px; border:1px solid var(--c-border); }
     .prose tr:nth-child(even) td { background:var(--c-bg); }
 
+    /* RELATED */
+    .related-section { background:var(--c-surface); border-top:1px solid var(--c-border); padding:48px 0 56px; }
+    .related-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:28px; gap:16px; }
+    .related-eyebrow { display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.9px; color:var(--c-brand); margin-bottom:4px; }
+    .related-heading { font-size:clamp(20px,3vw,26px); font-weight:800; letter-spacing:-.4px; color:var(--c-text); margin:0; }
+    .related-see-all { display:inline-flex; align-items:center; gap:5px; font-size:13.5px; font-weight:600; color:var(--c-brand); white-space:nowrap; transition:gap .18s; }
+    .related-see-all:hover { gap:9px; text-decoration:underline; }
+    .related-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .related-card { display:flex; flex-direction:column; background:var(--c-surface); border:1px solid var(--c-border); border-radius:var(--r-md); overflow:hidden; text-decoration:none; box-shadow:var(--shadow-sm); transition:transform .2s,box-shadow .2s,border-color .2s; }
+    .related-card:hover { transform:translateY(-3px); box-shadow:var(--shadow-lg); border-color:var(--c-brand); }
+    .related-img-wrap { width:100%; aspect-ratio:16/10; background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden; border-bottom:1px solid var(--c-border); padding:16px; }
+    .related-img { max-width:100%; max-height:100%; object-fit:contain; transition:transform .35s; }
+    .related-card:hover .related-img { transform:scale(1.04); }
+    .related-body { padding:16px 18px 18px; display:flex; flex-direction:column; gap:6px; flex:1; }
+    .related-cat { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.7px; color:var(--c-brand); }
+    .related-title { font-size:15px; font-weight:700; line-height:1.35; color:var(--c-text); margin:0; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+    .related-desc { font-size:13px; color:var(--c-text-muted); line-height:1.5; margin:0; flex:1; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+    .related-cta { display:inline-flex; align-items:center; gap:5px; font-size:13px; font-weight:600; color:var(--c-brand); margin-top:6px; transition:gap .18s; }
+    .related-card:hover .related-cta { gap:9px; }
+
     @media (max-width: 768px) {
       .post-content-grid { display:block !important; }
       .post-sidebar { position:static; margin-top:40px; }
-      .product-box-final-btn { font-size:14px; padding:10px 24px; }
-      .share-buttons { margin-top:12px; }
-    }
-
-    /* ===================== ARTIGOS RELACIONADOS ===================== */
-    .related-section {
-      background: var(--c-surface);
-      border-top: 1px solid var(--c-border);
-      padding: 48px 0 56px;
-    }
-    .related-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 28px;
-      gap: 16px;
-    }
-    .related-eyebrow {
-      display: block;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .9px;
-      color: var(--c-brand);
-      margin-bottom: 4px;
-    }
-    .related-heading {
-      font-size: clamp(20px, 3vw, 26px);
-      font-weight: 800;
-      letter-spacing: -.4px;
-      color: var(--c-text);
-      margin: 0;
-    }
-    .related-see-all {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--c-brand);
-      white-space: nowrap;
-      transition: gap .18s;
-    }
-    .related-see-all:hover { gap: 9px; text-decoration: underline; }
-
-    .related-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .related-card {
-      display: flex;
-      flex-direction: column;
-      background: var(--c-surface);
-      border: 1px solid var(--c-border);
-      border-radius: var(--r-md);
-      overflow: hidden;
-      text-decoration: none;
-      box-shadow: var(--shadow-sm);
-      transition: transform .2s, box-shadow .2s, border-color .2s;
-    }
-    .related-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--c-brand);
-    }
-    .related-img-wrap {
-      width: 100%;
-      aspect-ratio: 16/10;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border-bottom: 1px solid var(--c-border);
-      padding: 16px;
-    }
-    .related-img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      transition: transform .35s;
-    }
-    .related-card:hover .related-img { transform: scale(1.04); }
-    .related-body {
-      padding: 16px 18px 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      flex: 1;
-    }
-    .related-cat {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .7px;
-      color: var(--c-brand);
-    }
-    .related-title {
-      font-size: 15px;
-      font-weight: 700;
-      line-height: 1.35;
-      color: var(--c-text);
-      margin: 0;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .related-desc {
-      font-size: 13px;
-      color: var(--c-text-muted);
-      line-height: 1.5;
-      margin: 0;
-      flex: 1;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .related-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--c-brand);
-      margin-top: 6px;
-      transition: gap .18s;
-    }
-    .related-card:hover .related-cta { gap: 9px; }
-
-    @media (max-width: 768px) {
-      .related-grid { grid-template-columns: 1fr; }
-      .related-header { flex-direction: column; align-items: flex-start; }
+      .prose { padding:0 4px; }
+      .share-buttons { width:100%; justify-content:flex-start; margin-top:12px; }
+      .product-box-final { padding:24px 16px; }
+      .related-grid { grid-template-columns:1fr; }
+      .related-header { flex-direction:column; align-items:flex-start; }
     }
     @media (min-width: 480px) and (max-width: 768px) {
-      .related-grid { grid-template-columns: repeat(2, 1fr); }
+      .related-grid { grid-template-columns:repeat(2,1fr); }
     }
   </style>
 </Layout>

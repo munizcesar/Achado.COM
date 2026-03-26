@@ -6,7 +6,7 @@ category: Automotivo
 image: /images/posts/capacete-norisk-razor-black-edition-com-2-viseiras-spoiler.jpg
 tags: [automotivo, capacetes, moto, seguranca, norisk]
 draft: false
-affiliateUrl: "https://meli.la/1GyxUhe"
+affiliateUrl: "https://meli.la/1jziCAS"
 productImage: /images/posts/capacete-norisk-razor-black-edition-com-2-viseiras-spoiler.jpg
 ---
 
@@ -32,10 +32,10 @@ A força da Norisk está na variedade pensada para diferentes estilos de pilotag
 
 Não adianta capacete bonito que não protege. Os modelos Norisk carregam recursos que fazem diferença na prática:
 
-- **Sistema micrométrico de fixação** — regulagem fina da jugular sem perda de firmeza, muito superior ao fecho simples de D-ring para o uso cotidiano
+- **Sistema micrométrico de fixação** — regulação fina da jugular sem perda de firmeza, muito superior ao fecho simples de D-ring para o uso cotidiano
 - **Viseira de acionamento rápido** (nos modelos compatíveis) — troca sem ferramentas em segundos
 - **EPS multi-densidade** — absorção de impacto em camadas, reduz a transmissão de energia para o crânio em quedas
-- **Aerodinámica ativa** — entrada e saída de ar nas posições corretas para não criar turbulência em alta velocidade
+- **Aerodinâmica ativa** — entrada e saída de ar nas posições corretas para não criar turbulência em alta velocidade
 - **Peso reduzido** — a maioria dos modelos fica abaixo de 1,4 kg, o que faz diferença real depois de 2 horas na estrada
 
 ## O Que Dizem Quem Usa
@@ -48,7 +48,7 @@ Sim — e com segurança. O Mercado Livre conta com vendedores oficiais da Noris
 
 Ver modelos disponíveis, tamanhos e preços atualizados:
 
-👉 [Ver capacetes Norisk no Mercado Livre](https://meli.la/1GyxUhe)
+👉 [Ver capacetes Norisk no Mercado Livre](https://meli.la/1jziCAS)
 
 ---
 

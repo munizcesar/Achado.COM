@@ -6,7 +6,7 @@ category: esporte
 image: /images/posts/oculos-de-natacao-speedo-classic-starters-touca-silicone.jpg
 tags: ["natação", "óculos de natação", "speedo", "touca silicone", "esporte aquático"]
 draft: false
-affiliateUrl: "https://meli.la/21JT7fK"
+affiliateUrl: "https://meli.la/1bmPhSB"
 productImage: /images/posts/oculos-de-natacao-speedo-classic-starters-touca-silicone.jpg
 ---
 
@@ -21,7 +21,7 @@ Fundada em 1914, a Speedo é hoje a marca de natação mais reconhecida do mundo
   <div style="flex:1;">
     <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);margin-bottom:4px;">🏆 Destaque em Esportes Aquáticos</p>
     <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">Kit Speedo Classic Starters — Óculos + Touca de Silicone</p>
-    <a href="https://meli.la/21JT7fK" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
+    <a href="https://meli.la/1bmPhSB" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
     <p style="font-size:11px;color:#999;margin-top:6px;">Link de afiliado — sem custo extra para você</p>
   </div>
 </div>
