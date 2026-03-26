@@ -6,14 +6,20 @@ export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
   const categorias = [...new Set(posts.map(p => {
     const slug = p.data.category.toLowerCase();
-    return slug === 'lar' ? 'casa' : slug;
+    if (slug === 'lar') return 'casa';
+    if (slug === 'esporte') return 'esportes';
+    return slug;
   }))];
   return categorias.map(cat => ({
     params: { categoria: cat },
     props: {
       categoria: cat,
       posts: posts
-        .filter(p => p.data.category.toLowerCase() === cat)
+        .filter(p => {
+          const s = p.data.category.toLowerCase();
+          const mapped = s === 'lar' ? 'casa' : s === 'esporte' ? 'esportes' : s;
+          return mapped === cat;
+        })
         .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
     },
   }));
@@ -27,6 +33,7 @@ const nomes = {
   casa: 'Casa',
   lar: 'Casa',
   esportes: 'Esportes',
+  esporte: 'Esportes',
   beleza: 'Beleza & Cuidados',
   dicas: 'Dicas',
   guias: 'Dicas',
