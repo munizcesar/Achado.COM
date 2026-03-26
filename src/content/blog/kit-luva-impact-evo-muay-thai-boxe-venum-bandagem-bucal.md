@@ -6,7 +6,7 @@ category: esporte
 image: /images/posts/kit-luva-impact-evo-muay-thai-boxe-venum-bandagem-bucal.jpg
 tags: ["muay thai", "boxe", "luva de boxe", "venum", "artes marciais", "luta"]
 draft: false
-affiliateUrl: "https://meli.la/1WMUE2E"
+affiliateUrl: "https://meli.la/1cjZ48M"
 productImage: /images/posts/kit-luva-impact-evo-muay-thai-boxe-venum-bandagem-bucal.jpg
 ---
 
@@ -21,7 +21,7 @@ Fundada em 2005, a Venum se tornou uma das marcas mais reconhecidas no universo 
   <div style="flex:1;">
     <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);margin-bottom:4px;">🏆 Destaque em Artes Marciais</p>
     <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">Kit Venum Impact EVO — Luva + Bandagem + Protetor Bucal</p>
-    <a href="https://meli.la/1WMUE2E" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
+    <a href="https://meli.la/1cjZ48M" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
     <p style="font-size:11px;color:#999;margin-top:6px;">Link de afiliado — sem custo extra para você</p>
   </div>
 </div>
