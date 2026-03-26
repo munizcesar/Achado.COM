@@ -6,7 +6,7 @@ category: "saude"
 image: "/images/imagesposts/colagen-ii-bionatus-30-comprimidos.webp"
 productImage: "/images/imagesposts/colagen-ii-bionatus-30-comprimidos.webp"
 tags: ["colageno", "articular", "suplemento", "bionatus", "saude"]
-affiliateUrl: "https://www.mercadolivre.com.br/social/muc1576372"
+affiliateUrl: "https://meli.la/2ztzau3"
 draft: false
 ---
 
@@ -21,7 +21,7 @@ O Colágeno Tipo II Bionatus combina três ativos em um único comprimido: Colá
   <div style="flex:1;">
     <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);margin-bottom:4px;">🦴 Melhor para Saúde Articular</p>
     <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">Colágeno II Bionatus 30 Comprimidos</p>
-    <a href="https://www.mercadolivre.com.br/social/muc1576372" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
+    <a href="https://meli.la/2ztzau3" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
     <p style="font-size:11px;color:#999;margin-top:6px;">Link de afiliado — sem custo extra para você</p>
   </div>
 </div>
