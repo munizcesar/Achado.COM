@@ -43,6 +43,9 @@ const schema = {
           type="search"
           placeholder="Buscar reviews e guias..."
           autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
           style="flex:1; padding:10px 14px; border:1.5px solid var(--c-border); border-radius:8px; font-size:15px; outline:none;"
         />
         <button onclick="doSearch()" style="padding:10px 18px; background:var(--c-primary); color:#fff; border:none; border-radius:8px; font-weight:600; cursor:pointer; font-size:15px;">
@@ -153,13 +156,20 @@ const schema = {
         if (e.key === 'Enter') { clearTimeout(timer); doSearch(); }
       });
 
-      // Le ?q= da URL e preenche o campo + executa busca imediatamente
+      // Le ?q= da URL, preenche o campo e executa busca
+      // SEM chamar input.focus() para não abrir o teclado mobile
       var params = new URLSearchParams(window.location.search);
       var q = params.get('q') || '';
       if (q) {
         input.value = q;
         doSearch();
-        input.focus();
+        // Scroll suave até os resultados após breve delay (aguarda render)
+        setTimeout(function() {
+          var grid = document.getElementById('postGrid');
+          if (grid) {
+            grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 120);
       }
     }
 
