@@ -81,14 +81,14 @@ Os carboidratos são fundamentais para manter o desempenho e acelerar a recupera
 - Priorizar **carboidratos complexos** no dia a dia para energia sustentada
 - Utilizar **carboidratos rápidos** próximos ao treino para reposição rápida de glicogênio
 
-### Exemplos
+### Carboidratos complexos
 
-**Carboidratos complexos:**
 - Arroz integral
 - Batata doce
 - Aveia
 
-**Carboidratos rápidos:**
+### Carboidratos rápidos
+
 - Banana
 - Mel
 - Pão branco
@@ -159,19 +159,25 @@ Ganhar massa muscular é resultado da combinação de hábitos bem executados. N
 ## Perguntas Frequentes (FAQ)
 
 **2g de proteína por kg é obrigatório?**
+
 Não. É um exemplo eficaz e prático, mas a faixa ideal segundo a ciência varia entre 1,6g e 2,2g/kg. O mais importante é atingir o mínimo de 1,6g de forma consistente.
 
 **Preciso treinar todos os dias?**
+
 Não. O mais importante é manter consistência e volume adequado ao longo da semana. O descanso entre sessões é parte do processo — é no repouso que o músculo cresce.
 
 **Posso ganhar massa sem dieta?**
+
 Dificilmente. A alimentação é um dos pilares principais da hipertrofia. Treino sem suporte nutricional gera pouco ou nenhum resultado em termos de massa muscular real.
 
 **Suplementos são necessários para ganhar massa?**
+
 Não são obrigatórios, mas podem ser úteis. O whey protein, por exemplo, é simplesmente uma fonte prática de proteína — não um mágico. A alimentação sólida bem estruturada pode suprir tudo sem suplementação.
 
-**Quanto tempo leva para ver resultado?
-**Com consistência real em treino, proteína e sono, resultados visíveis costumam aparecer entre 8 e 12 semanas. Resultados expressivos de compostura corporal levam de 6 a 12 meses.
+**Quanto tempo leva para ver resultado?**
+
+Com consistência real em treino, proteína e sono, resultados visíveis costumam aparecer entre 8 e 12 semanas. Resultados expressivos de compostura corporal levam de 6 a 12 meses.
 
 **Cardio atrapalha o ganho de massa?**
+
 Não necessariamente. Cardio moderado (2–3x por semana) não prejudica a hipertrofia e ainda melhora a capacidade cardiovascular e a recuperação. O problema é o excesso de cardio combinado com déficit calórico severo.
