@@ -9,6 +9,8 @@ affiliateUrl: "https://www.mercadolivre.com.br/social/muc1576372"
 draft: false
 ---
 
+> 🔄 **Conteúdo revisado e atualizado regularmente** para refletir as políticas vigentes do Mercado Livre.
+
 Com mais de 100 milhões de usuários no Brasil, o Mercado Livre é o maior marketplace da América Latina. A pergunta "Mercado Livre é seguro?" é uma das mais buscadas por quem ainda não comprou na plataforma — e a resposta é sim, desde que você saiba o que observar. Este guia explica exatamente como funciona a proteção ao comprador e quais práticas eliminam praticamente todo o risco.
 
 <div style="display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#fff8e1,#fff3cd);border:2px solid #f5a623;border-radius:12px;padding:20px 24px;margin:24px 0;box-shadow:0 4px 20px rgba(245,166,35,.15);">
@@ -48,7 +50,7 @@ A Compra Garantida é o principal mecanismo de proteção do Mercado Livre. Ela 
 2. Clique no pedido com problema
 3. Selecione **Tenho um problema com minha compra**
 4. Descreva a situação e envie fotos se necessário
-5. O reembolso via Mercado Pago ocorre em até **48 horas** após a aprovação
+5. O reembolso via Mercado Pago ocorre em poucos dias úteis, conforme a política vigente da plataforma
 
 ## Como Identificar Vendedores Confiáveis
 
@@ -119,7 +121,7 @@ Muita gente desconhece que o Código de Defesa do Consumidor garante direitos in
 
 **O Mercado Livre é uma empresa confiável?**
 
-Sim. O Mercado Livre é uma empresa de capital aberto listada na Nasdaq (MELI), fundada em 1999, com operações em 18 países da América Latina e receita anual superior a US$ 10 bilhões.
+Sim. O Mercado Livre é uma empresa de capital aberto listada na Nasdaq (MELI), fundada em 1999, com operações em 18 países da América Latina e bilhões em receita anual. É uma das maiores empresas de tecnologia da América Latina.
 
 **O que fazer se cair em um golpe mesmo assim?**
 
