@@ -53,12 +53,19 @@ const siloPosts = posts.filter(p => {
             <button type="submit" aria-label="Pesquisar">Buscar</button>
           </form>
           <div class="trust-cats">
-            <a href="/categorias/beleza"     class="trust-pill">Beleza</a>
-            <a href="/categorias/saude"      class="trust-pill">Sa&#250;de</a>
-            <a href="/categorias/casa"       class="trust-pill">Casa</a>
-            <a href="/categorias/tech"       class="trust-pill">Tech</a>
-            <a href="/categorias/esportes"   class="trust-pill">Esportes</a>
-            <a href="/categorias/automotivo" class="trust-pill">Automotivo</a>
+            <!-- Apenas os 3 pilares: foco total na identidade do site -->
+            <a href="/categorias/beleza" class="trust-pill trust-pill-pilar">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+              Beleza
+            </a>
+            <a href="/categorias/saude" class="trust-pill trust-pill-pilar">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="M8.5 8.5 16 16"/></svg>
+              Sa&#250;de
+            </a>
+            <a href="/categorias/casa" class="trust-pill trust-pill-pilar">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Casa
+            </a>
             <a href="/blog" class="trust-pill trust-pill-all">
               Ver todos
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -82,7 +89,6 @@ const siloPosts = posts.filter(p => {
         <!-- BELEZA -->
         <a href="/categorias/beleza" class="pilar-card">
           <div class="pilar-icon-wrap pilar-icon-beleza">
-            <!-- Lucide: sparkles -->
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
               <path d="M20 3v4M22 5h-4M4 17v2M5 18H3"/>
@@ -94,10 +100,9 @@ const siloPosts = posts.filter(p => {
           <span class="pilar-cta">Ver todos &#8594;</span>
         </a>
 
-        <!-- SA\u00daDE -->
+        <!-- SAÚDE -->
         <a href="/categorias/saude" class="pilar-card">
           <div class="pilar-icon-wrap pilar-icon-saude">
-            <!-- Lucide: pill -->
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/>
               <path d="M8.5 8.5 16 16"/>
@@ -112,7 +117,6 @@ const siloPosts = posts.filter(p => {
         <!-- CASA -->
         <a href="/categorias/casa" class="pilar-card">
           <div class="pilar-icon-wrap pilar-icon-casa">
-            <!-- Lucide: home -->
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
               <polyline points="9 22 9 12 15 12 15 22"/>
@@ -129,7 +133,7 @@ const siloPosts = posts.filter(p => {
   </section>
 
 
-  <!-- ===================== SE\u00c7\u00d5ES POR PILAR ===================== -->
+  <!-- ===================== SEÇÕES POR PILAR ===================== -->
   {postsByPilar.map((pilar, i) => pilar.posts.length > 0 && (
     <section class={`pilar-section ${i % 2 === 0 ? 'pilar-section-alt' : ''}`}>
       <div class="container">
@@ -285,10 +289,30 @@ const siloPosts = posts.filter(p => {
   .trust-search button { background:#E1306C; color:#fff; border:none; border-radius:7px; padding:8px 18px; font-size:.85rem; font-weight:700; cursor:pointer; white-space:nowrap; font-family:inherit; transition:background .2s; }
   .trust-search button:hover { background:#c2185b; }
   .trust-cats { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-  .trust-pill { display:inline-flex; align-items:center; gap:5px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); color:#e2e8f0; font-size:.82rem; font-weight:500; padding:6px 16px; border-radius:20px; text-decoration:none; white-space:nowrap; letter-spacing:.02em; transition:background .18s,border-color .18s,color .18s,transform .15s; }
+
+  /* Pill base */
+  .trust-pill {
+    display:inline-flex; align-items:center; gap:6px;
+    background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12);
+    color:#e2e8f0; font-size:.82rem; font-weight:500; padding:7px 16px;
+    border-radius:20px; text-decoration:none; white-space:nowrap;
+    letter-spacing:.02em; transition:background .18s,border-color .18s,color .18s,transform .15s;
+  }
   .trust-pill:hover { background:rgba(225,48,108,.18); border-color:rgba(225,48,108,.5); color:#fff; transform:translateY(-1px); }
+
+  /* Pills dos pilares: ligeiramente mais destacados */
+  .trust-pill-pilar {
+    background: rgba(255,255,255,.1);
+    border-color: rgba(255,255,255,.22);
+    font-weight: 600;
+    color: #fff;
+  }
+  .trust-pill-pilar:hover { background:rgba(225,48,108,.25); border-color:rgba(225,48,108,.6); }
+
+  /* Pill Ver todos */
   .trust-pill-all { background:rgba(225,48,108,.12); border-color:rgba(225,48,108,.3); color:#f48fb1; font-weight:700; }
   .trust-pill-all:hover { background:#E1306C; border-color:#E1306C; color:#fff; transform:translateY(-1px); }
+
   @media (min-width:768px) {
     .trust-banner { padding:56px 0 48px; }
     .trust-inner { flex-direction:row; align-items:center; justify-content:space-between; gap:40px; }
@@ -306,18 +330,16 @@ const siloPosts = posts.filter(p => {
   .pilar-card:hover { border-color:var(--c-brand,#E1306C); box-shadow:0 8px 32px rgba(225,48,108,.12); transform:translateY(-3px); }
   .pilar-card:hover::before { opacity:1; }
   .pilar-card:hover .pilar-icon-wrap { background:var(--c-brand,#E1306C); color:#fff; }
-
   .pilar-icon-wrap { width:56px; height:56px; border-radius:14px; display:flex; align-items:center; justify-content:center; margin-bottom:6px; transition:background .2s,color .2s; }
   .pilar-icon-beleza { background:#fce7f3; color:#be185d; }
   .pilar-icon-saude  { background:#dcfce7; color:#15803d; }
   .pilar-icon-casa   { background:#eff6ff; color:#1d4ed8; }
-
   .pilar-label { font-size:1.15rem; font-weight:800; color:var(--c-text,#1a202c); margin:0; }
   .pilar-desc  { font-size:.88rem; color:var(--c-text-sub,#4a5568); margin:0; line-height:1.55; flex:1; }
   .pilar-count { font-size:.76rem; font-weight:700; color:var(--c-text-muted,#718096); text-transform:uppercase; letter-spacing:.06em; }
   .pilar-cta   { font-size:.9rem; font-weight:700; color:var(--c-brand,#E1306C); }
 
-  /* ===== SE\u00c7\u00d5ES POR PILAR ===== */
+  /* ===== SEÇÕES POR PILAR ===== */
   .pilar-section { padding:48px 0; border-bottom:1px solid var(--c-border,#e2e8f0); background:var(--c-surface,#fff); }
   .pilar-section-alt { background:var(--c-bg,#f8f9fa); }
   .section-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; gap:16px; flex-wrap:wrap; }
