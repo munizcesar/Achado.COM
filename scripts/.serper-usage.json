@@ -1,5 +1,5 @@
 {
-  "total": 255,
+  "total": 258,
   "mes_atual": 2,
   "logs": [
     {
@@ -425,6 +425,11 @@
     {
       "data": "2026-03-27T23:35:26.665Z",
       "produto": "Nutri Whey Protein Morango Pote 900g Integralmédic",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-27T23:59:01.524Z",
+      "produto": "Esfoliante Facial Purified Skin 100g Neutrogena No",
       "consultas": 3
     }
   ]
