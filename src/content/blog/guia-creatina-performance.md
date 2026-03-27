@@ -6,7 +6,7 @@ category: "saude"
 image: "/images/posts/guiaCreatina.webp"
 productImage: "/images/posts/guiaCreatina.webp"
 tags: ["creatina", "suplemento", "performance", "musculacao", "guia"]
-affiliateUrl: "https://mercadolivre.com/sec/2KW8RB6"
+affiliateUrl: "https://meli.la/1KHyT4H"
 draft: false
 ---
 
@@ -90,11 +90,11 @@ Consistência é mais importante que timing.
 **Mitos**
 - Danos renais em pessoas saudáveis
 - Problemas hepáticos
-- Necessidade de “ciclar” o uso
+- Necessidade de "ciclar" o uso
 
 **Real**
 - Leve ganho de peso por retenção hídrica intracelular
-- Sensação de músculos mais “cheios”
+- Sensação de músculos mais "cheios"
 
 ## Para quem a creatina é indicada
 
@@ -112,4 +112,3 @@ Consistência é mais importante que timing.
 A creatina monohidratada se destaca por eficácia comprovada, segurança e excelente custo-benefício. Ela não substitui treino ou dieta, mas potencializa resultados quando esses pilares estão bem ajustados.
 
 **Resultado final:** se seu objetivo é performance, creatina continua sendo a melhor escolha disponível.
-
