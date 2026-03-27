@@ -1,5 +1,5 @@
 {
-  "total": 252,
+  "total": 255,
   "mes_atual": 2,
   "logs": [
     {
@@ -420,6 +420,11 @@
     {
       "data": "2026-03-26T23:37:07.991Z",
       "produto": "lava e seca",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-27T23:35:26.665Z",
+      "produto": "Nutri Whey Protein Morango Pote 900g Integralmédic",
       "consultas": 3
     }
   ]
