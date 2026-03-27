@@ -2,7 +2,7 @@
 title: "Colágeno II Bionatus 30 Comprimidos: Review Completo"
 description: "Colágeno II + Condroitina + Glucosamina Bionatus: a solução completa para saúde articular. Vegano, sem glúten, 649 avaliações 4.8★. Análise completa."
 date: 2026-02-19
-category: "saude"
+category: saude
 image: "/images/imagesposts/colagen-ii-bionatus-30-comprimidos.webp"
 productImage: "/images/imagesposts/colagen-ii-bionatus-30-comprimidos.webp"
 tags: ["colageno", "articular", "suplemento", "bionatus", "saude"]

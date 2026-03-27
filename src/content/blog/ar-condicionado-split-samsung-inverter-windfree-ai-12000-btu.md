@@ -2,7 +2,7 @@
 title: "Ar-condicionado Split Samsung Inverter Windfree Ai 12.000 Btus Frio Sem Vento Ar12dyfaawknaz Branco 220v"
 description: "Conheça o Ar-condicionado Split Samsung Inverter Windfree Ai 12.000 Btus Frio Sem Vento Ar12dyfaawknaz Branco 220v. Disponível no Mercado Livre com entrega"
 date: 2026-03-21
-category: Tech
+category: casa
 image: /images/posts/ar-condicionado-split-samsung-inverter-windfree-ai-12000-btu.jpg
 tags: [tech]
 draft: false

@@ -2,7 +2,7 @@
 title: "Lava E Seca 10,5kg Healthguard Titanium Conectada Midea"
 description: "Conheça o Lava E Seca 10,5kg Healthguard Titanium Conectada Midea. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-19
-category: Casa
+category: casa
 image: /images/posts/lava-e-seca-105kg-healthguard-titanium-conectada-midea.jpg
 tags: [casa]
 draft: false

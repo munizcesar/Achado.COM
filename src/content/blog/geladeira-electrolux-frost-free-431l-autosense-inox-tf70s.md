@@ -2,7 +2,7 @@
 title: "Geladeira Electrolux Frost Free 431l Autosense Inox (tf70s)"
 description: "Conheça o Geladeira Electrolux Frost Free 431l Autosense Inox (tf70s). Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-20
-category: Casa
+category: casa
 image: /images/posts/geladeira-electrolux-frost-free-431l-autosense-inox-tf70s.jpg
 tags: [casa]
 draft: false

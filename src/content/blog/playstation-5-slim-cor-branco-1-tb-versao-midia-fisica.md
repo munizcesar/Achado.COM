@@ -2,7 +2,7 @@
 title: "Playstation 5 Slim Branco 1TB Mídia Física: Guia Completo, Vantagens, Dúvidas e Como Escolher o Console Ideal"
 description: "Descubra tudo sobre o Playstation 5 Slim Branco 1TB Mídia Física: diferenciais, análise de mercado, dúvidas frequentes, comparativo com concorrentes e dicas para acertar na escolha do seu console."
 date: 2026-03-23
-category: Tech
+category: tech
 image: /images/posts/playstation-5-slim-cor-branco-1-tb-versao-midia-fisica.jpg
 tags: [tech]
 draft: false

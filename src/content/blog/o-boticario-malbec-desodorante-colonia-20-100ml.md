@@ -2,7 +2,7 @@
 title: "O Boticário Malbec Desodorante Colônia 20 100ml"
 description: "Conheça o O Boticário Malbec Desodorante Colônia 20 100ml. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-09
-category: Beleza
+category: beleza
 image: /images/posts/o-boticario-malbec-desodorante-colonia-20-100ml.jpg
 tags: [beleza]
 draft: false

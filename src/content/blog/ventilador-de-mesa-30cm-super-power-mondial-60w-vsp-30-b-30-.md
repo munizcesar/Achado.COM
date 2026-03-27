@@ -2,7 +2,7 @@
 title: "Ventilador De Mesa 30cm Super Power Mondial 60w Vsp-30-b 30 Cm Preto 127v Prata Polipropileno 6"
 description: "Conheça o Ventilador De Mesa 30cm Super Power Mondial 60w Vsp-30-b 30 Cm Preto 127v Prata Polipropileno 6. Disponível no Mercado Livre com entrega rápida p"
 date: 2026-03-22
-category: Casa
+category: casa
 image: /images/posts/ventilador-de-mesa-30cm-super-power-mondial-60w-vsp-30-b-30-.jpg
 tags: [casa]
 draft: false

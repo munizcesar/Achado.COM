@@ -2,7 +2,7 @@
 title: "L-Arginina: Guia Completo de Potência e Vascularização"
 description: "Acelere sua recuperação e maximize o pump muscular. O suplemento essencial para performance esportiva — tudo que você precisa saber sobre a L-Arginina."
 date: 2026-02-12
-category: "saude"
+category: dicas
 image: "/images/imagesposts/arginina.webp"
 productImage: "/images/imagesposts/arginina.webp"
 tags: ["arginina", "suplemento", "pump", "pre-treino", "fitness"]

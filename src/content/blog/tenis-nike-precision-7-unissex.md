@@ -2,7 +2,7 @@
 title: "Tênis Nike Precision 7 Unissex"
 description: "Conheça o Tênis Nike Precision 7 Unissex. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-10
-category: Esportes
+category: esportes
 image: /images/posts/tenis-nike-precision-7-unissex.jpg
 tags: [esportes]
 draft: false

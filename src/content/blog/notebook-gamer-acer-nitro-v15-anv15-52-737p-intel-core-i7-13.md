@@ -2,7 +2,7 @@
 title: "Notebook Gamer Acer Nitro V15 Anv15-52-737p Intel® Core I7-13620h 13ªg 16gb Ram 512gb Ssd Rtx4050 Fhd 15.6"
 description: "Conheça o Notebook Gamer Acer Nitro V15 Anv15-52-737p Intel® Core I7-13620h 13ªg 16gb Ram 512gb Ssd Rtx4050 Fhd 15.6. Disponível no Mercado Livre com entre"
 date: 2026-03-10
-category: Tech
+category: tech
 image: /images/posts/notebook-gamer-acer-nitro-v15-anv15-52-737p-intel-core-i7-13.jpg
 tags: [tech]
 draft: false

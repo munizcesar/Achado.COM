@@ -2,7 +2,7 @@
 title: "Smart Tv 4k 50 LG Nanocell 50nanoa Processador 7 Ai Ger8 4k Super Upscaling Google Cast Alexa Integrado Controle Ai Smart Magic Webos 25"
 description: "Conheça o Smart Tv 4k 50  LG Nanocell 50nanoa Processador 7 Ai Ger8 4k Super Upscaling Google Cast Alexa Integrado Controle Ai Smart Magic Webos 25. Dispon"
 date: 2026-03-22
-category: Tech
+category: tech
 image: /images/posts/smart-tv-4k-50-lg-nanocell-50nanoa-processador-7-ai-ger8-4k-.jpg
 tags: [tech]
 draft: false

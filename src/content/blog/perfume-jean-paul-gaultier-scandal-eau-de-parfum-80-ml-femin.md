@@ -2,7 +2,7 @@
 title: "Perfume Jean Paul Gaultier Scandal Eau De Parfum 80 Ml Feminino"
 description: "Conheça o Perfume Jean Paul Gaultier Scandal Eau De Parfum 80 Ml Feminino. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-21
-category: Beleza
+category: beleza
 image: /images/posts/perfume-jean-paul-gaultier-scandal-eau-de-parfum-80-ml-femin.jpg
 tags: [beleza]
 draft: false

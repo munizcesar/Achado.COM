@@ -2,7 +2,7 @@
 title: "Egeo Choc High Colônia O Boticario 90ml"
 description: "Conheça o Egeo Choc High Colônia O Boticario 90ml. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-09
-category: Beleza
+category: beleza
 image: /images/posts/egeo-choc-high-colonia-o-boticario-90ml.jpg
 tags: [beleza]
 draft: false

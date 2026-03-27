@@ -2,7 +2,7 @@
 title: "Cooktop Mueller 5 Bocas Com Queimador Ultra Chama Preto 127/220v"
 description: "Conheça o Cooktop Mueller 5 Bocas Com Queimador Ultra Chama Preto 127/220v. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-22
-category: Casa
+category: casa
 image: /images/posts/cooktop-mueller-5-bocas-com-queimador-ultra-chama-preto-1272.jpg
 tags: [saude]
 draft: false

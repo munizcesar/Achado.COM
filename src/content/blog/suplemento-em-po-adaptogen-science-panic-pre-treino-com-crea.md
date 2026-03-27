@@ -2,7 +2,7 @@
 title: "Suplemento Em Pó Adaptogen Science Panic Pré Treino Com Creatina Pote 300g Sabor Melancia"
 description: "Conheça o Suplemento Em Pó Adaptogen Science Panic Pré Treino Com Creatina Pote 300g Sabor Melancia. Disponível no Mercado Livre com entrega rápida para to"
 date: 2026-03-11
-category: Saude
+category: saude
 image: /images/posts/suplemento-em-po-adaptogen-science-panic-pre-treino-com-crea.jpg
 tags: [saude]
 draft: false

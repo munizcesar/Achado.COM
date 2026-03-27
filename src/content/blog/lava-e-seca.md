@@ -2,7 +2,7 @@
 title: "Lava e Seca Vale a Pena? Guia Completo para Comprar com Confiança"
 description: "Lava e seca realmente compensa? Veja vantagens reais, capacidade ideal e o que observar antes de comprar o modelo certo para a sua casa."
 date: 2026-03-26
-category: Casa
+category: casa
 image: /images/posts/LavaSeca.webp
 tags: [casa, eletrodomesticos, lava-e-seca, apartamento, lavanderia]
 draft: false

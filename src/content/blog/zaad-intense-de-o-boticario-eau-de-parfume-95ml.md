@@ -2,7 +2,7 @@
 title: "Zaad Intense De O Boticário Eau De Parfume 95ml"
 description: "Conheça o Zaad Intense De O Boticário Eau De Parfume 95ml. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-21
-category: Beleza
+category: beleza
 image: /images/posts/zaad-intense-de-o-boticario-eau-de-parfume-95ml.jpg
 tags: [beleza]
 draft: false

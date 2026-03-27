@@ -2,7 +2,7 @@
 title: "Colágeno Tipo 2 Íntera Daily Soldiers Nutrition: vale a pena? Guia completo antes de comprar"
 description: "Tomar decisões certas no mercado de suplementos evita perda de dinheiro e resultado. Veja análise completa do Colágeno Tipo 2 Íntera Daily Soldiers Nutrition Natural antes de comprar."
 date: 2026-03-22
-category: Saude
+category: saude
 image: /images/posts/colageno-tipo-2-intera-daily-soldiers-nutrition-natural.jpg
 tags: [saude]
 draft: false

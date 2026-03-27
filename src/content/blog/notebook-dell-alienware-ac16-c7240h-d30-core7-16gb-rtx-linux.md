@@ -2,7 +2,7 @@
 title: "Notebook Dell Alienware Ac16-c7240h-d30 Core7 16gb Rtx Linux"
 description: "Conheça o Notebook Dell Alienware Ac16-c7240h-d30 Core7 16gb Rtx Linux. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-10
-category: Tech
+category: tech
 image: /images/posts/notebook-dell-alienware-ac16-c7240h-d30-core7-16gb-rtx-linux.jpg
 tags: [tech]
 draft: false

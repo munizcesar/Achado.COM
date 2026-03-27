@@ -2,7 +2,7 @@
 title: "Poco X7 Pro vs Redmi Note 14 Pro+ vs Xiaomi 15T: Comparativo 2026"
 description: "Os 4 últimos lançamentos Xiaomi e Poco comparados! Descubra qual smartphone é perfeito para você: gamer, fotógrafo ou quem busca custo-benefício."
 date: 2026-02-22
-category: "tech"
+category: tech
 image: "/images/imagesposts/produtos_xiaomi.jpg"
 productImage: "/images/imagesposts/produtos_xiaomi.jpg"
 tags: ["xiaomi", "poco", "smartphone", "android", "comparativo"]

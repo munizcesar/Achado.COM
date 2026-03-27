@@ -2,7 +2,7 @@
 title: "O Boticário Zaad Expedition Edp 95ml Para Masculino"
 description: "Conheça o O Boticário Zaad Expedition Edp 95ml Para Masculino. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-21
-category: Beleza
+category: beleza
 image: /images/posts/o-boticario-zaad-expedition-edp-95ml-para-masculino.jpg
 tags: [beleza]
 draft: false

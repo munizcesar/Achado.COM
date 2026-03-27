@@ -2,7 +2,7 @@
 title: "Guia Completo dos Body Splashes Barbour's Beauty: Qual Importado Cada Um Parece?"
 description: "Descubra todas as fragrâncias Barbour's Beauty, suas famílias olfativas e qual perfume importado cada uma se inspira. O guia definitivo para escolher o seu."
 date: 2026-03-15
-category: Beleza
+category: beleza
 image: /images/posts/barboursBeauty.webp
 tags: [beleza, dicas, perfume, body-splash, fragrancias]
 draft: false

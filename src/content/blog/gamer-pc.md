@@ -2,7 +2,7 @@
 title: "Gamer PC Definitivo: Como Escolher e Onde Comprar com Melhor Custo-Benefício"
 description: "Procurando por gamer pc? Confira as ofertas que a Magalu separou para você. Facilidade no pagamento e entrega rápida. Vem ser feliz!"
 date: 2026-03-22
-category: Tech
+category: tech
 image: /images/posts/gamer-pc.webp
 tags: [tech]
 draft: false

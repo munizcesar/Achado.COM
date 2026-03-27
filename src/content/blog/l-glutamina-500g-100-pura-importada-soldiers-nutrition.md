@@ -2,7 +2,7 @@
 title: "L-Glutamina 500g Soldiers Nutrition: Guia Completo para Recuperação, Imunidade e Saúde Intestinal"
 description: "Descubra como a L-Glutamina 500g Soldiers Nutrition pode potencializar sua recuperação muscular, fortalecer o sistema imunológico e melhorar a saúde intestinal. Veja benefícios, diferenciais, dúvidas respondidas e como escolher o melhor suplemento."
 date: 2026-03-13
-category: Saude
+category: saude
 image: /images/posts/l-glutamina-500g-100-pura-importada-soldiers-nutrition.jpg
 tags: [saude]
 draft: false

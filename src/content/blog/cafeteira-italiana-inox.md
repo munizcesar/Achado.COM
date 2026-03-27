@@ -2,7 +2,7 @@
 title: "Cafeteira Italiana Inox: O Segredo do Café Perfeito em Casa"
 description: "Descubra como elevar o nível do seu café matinal com a praticidade e o sabor incomparável da prensa italiana em aço inox. Review completo."
 date: 2026-02-20
-category: "casa"
+category: casa
 image: "/images/imagesposts/cafeteira-italiana-inox-fundo-colorido.webp"
 productImage: "/images/imagesposts/cafeteira-italiana-inox-fundo-colorido.webp"
 tags: ["cafeteira", "moka", "inox", "cafe", "cozinha"]

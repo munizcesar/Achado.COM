@@ -2,7 +2,7 @@
 title: "Perfume Jean Paul Gaultier Le Male Le Parfum Eau De Parfum Intense 125 Ml Masculino"
 description: "Conheça o Perfume Jean Paul Gaultier Le Male Le Parfum Eau De Parfum Intense 125 Ml Masculino. Disponível no Mercado Livre com entrega rápida para todo o B"
 date: 2026-03-21
-category: Beleza
+category: beleza
 image: /images/posts/perfume-jean-paul-gaultier-le-male-le-parfum-eau-de-parfum-i.jpg
 tags: [beleza]
 draft: false

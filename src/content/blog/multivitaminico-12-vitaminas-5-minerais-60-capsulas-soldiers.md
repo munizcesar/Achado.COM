@@ -2,7 +2,7 @@
 title: "Multivitamínico 12 Vitaminas 5 Minerais Soldiers Nutrition: Guia Completo para Energia, Imunidade e Bem-estar"
 description: "Descubra como o Multivitamínico 12 Vitaminas 5 Minerais Soldiers Nutrition pode transformar sua saúde, energia e imunidade. Veja benefícios, diferenciais, dúvidas respondidas e como escolher o melhor suplemento."
 date: 2026-03-22
-category: Saude
+category: saude
 image: /images/posts/multivitaminico-12-vitaminas-5-minerais-60-capsulas-soldiers.jpg
 tags: [saude]
 draft: false

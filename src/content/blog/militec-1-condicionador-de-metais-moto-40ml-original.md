@@ -2,7 +2,7 @@
 title: "Militec-1 Condicionador De Metais Moto 40ml Original"
 description: "Conheça o Militec-1 Condicionador De Metais Moto 40ml Original. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-09
-category: Automotivo
+category: automotivo
 image: /images/posts/militec-1-condicionador-de-metais-moto-40ml-original.jpg
 tags: [automotivo]
 draft: false

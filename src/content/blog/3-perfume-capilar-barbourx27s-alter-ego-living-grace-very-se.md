@@ -2,7 +2,7 @@
 title: "Perfume Capilar Barbour’s Beauty (Alter Ego, Living Grace e Very Sexy): Como Perfumar o Cabelo com Elegância"
 description: "Perfume Capilar Barbour’s Beauty: saiba por que essa linha é a escolha certa para deixar o cabelo perfumado com elegância e proteção capilar."
 date: 2026-03-15
-category: Beleza
+category: beleza
 image: /images/posts/3-perfume-capilar-barbourx27s-alter-ego-living-grace-very-se.jpg
 tags: [beleza]
 draft: false

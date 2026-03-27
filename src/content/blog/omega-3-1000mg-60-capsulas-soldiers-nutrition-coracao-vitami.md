@@ -2,7 +2,7 @@
 title: "Ômega 3 1000mg Soldiers Nutrition: Guia Completo para Saúde do Coração, Cérebro e Imunidade"
 description: "Entenda como o Ômega 3 1000mg Soldiers Nutrition pode transformar sua saúde cardiovascular, cerebral e imunológica. Veja benefícios, diferenciais, dúvidas respondidas e como escolher o melhor suplemento."
 date: 2026-03-22
-category: Saude
+category: saude
 image: /images/posts/omega-3-1000mg-60-capsulas-soldiers-nutrition-coracao-vitami.jpg
 tags: [saude, omega 3, suplemento, coracao, soldados nutrition]
 draft: false

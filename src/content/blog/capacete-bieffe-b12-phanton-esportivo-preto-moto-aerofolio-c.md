@@ -2,7 +2,7 @@
 title: "Capacetes Bieffe: Proteção Homologada, Conforto e Estilo para Motociclistas"
 description: "Descubra por que os capacetes Bieffe são referencia de segurança e custo-beneficio no Brasil. Linhas esportivas, urbanas e infantis com homologação INMETRO — veja todas as opções no Mercado Livre."
 date: 2026-03-25
-category: Automotivo
+category: automotivo
 image: /images/posts/capacete-bieffe-b12-phanton-esportivo-preto-moto-aerofolio-c.jpg
 tags: [automotivo, capacetes, moto, seguranca, bieffe]
 draft: false

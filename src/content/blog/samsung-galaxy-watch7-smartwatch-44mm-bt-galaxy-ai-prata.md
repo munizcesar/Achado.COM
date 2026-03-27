@@ -2,7 +2,7 @@
 title: "Samsung Galaxy Watch7 Smartwatch 44mm Bt Galaxy Ai - Prata"
 description: "Conheça o Samsung Galaxy Watch7 Smartwatch 44mm Bt Galaxy Ai - Prata. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-10
-category: Tech
+category: tech
 image: /images/posts/samsung-galaxy-watch7-smartwatch-44mm-bt-galaxy-ai-prata.jpg
 tags: [tech]
 draft: false

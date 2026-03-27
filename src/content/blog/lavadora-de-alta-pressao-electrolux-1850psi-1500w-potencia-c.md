@@ -2,7 +2,7 @@
 title: "Lavadora de Alta Pressão Electrolux 1850psi 1500W PowerWash: Guia Completo, Vantagens, Dúvidas e Como Escolher a Melhor para Sua Limpeza"
 description: "Descubra tudo sobre a Lavadora de Alta Pressão Electrolux 1850psi 1500W PowerWash: diferenciais, análise de mercado, dúvidas frequentes, comparativo com concorrentes e dicas para acertar na escolha da sua lavadora."
 date: 2026-03-23
-category: Casa
+category: casa
 image: /images/posts/lavadora-de-alta-pressao-electrolux-1850psi-1500w-potencia-c.jpg
 tags: [casa]
 draft: false

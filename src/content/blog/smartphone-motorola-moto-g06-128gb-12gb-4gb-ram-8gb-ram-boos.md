@@ -2,7 +2,7 @@
 title: "Smartphone Motorola Moto G06 - 128gb 12gb (4gb Ram + 8gb Ram Boost) E Camera 50mp Com Ai Bateria De 5200 Mah Tela 6.9 - Azul Marinho"
 description: "Conheça o Smartphone Motorola Moto G06 - 128gb 12gb (4gb Ram + 8gb Ram Boost) E Camera 50mp Com Ai Bateria De 5200 Mah Tela 6.9 - Azul Marinho. Disponível "
 date: 2026-03-08
-category: Tech
+category: tech
 image: /images/posts/smartphone-motorola-moto-g06-128gb-12gb-4gb-ram-8gb-ram-boos.jpg
 tags: [tech]
 draft: false

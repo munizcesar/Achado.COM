@@ -2,7 +2,7 @@
 title: "Raquete Beach Tennis Total Pro Carbono 12k: Vale a Pena?"
 description: "Review completo da Raquete Beach Tennis Total Pro em Carbono 12k + Capa Azul. Leve, equilibrada e com excelente custo-benefício. Confira ficha técnica, pontos fortes e para quem é indicada."
 date: 2026-03-26
-category: esporte
+category: esportes
 image: /images/posts/raquete-beach-tennis-total-pro-produzida-em-carbono-12k-capa.jpg
 tags: ["beach tennis", "raquete", "carbono", "esporte", "total pro"]
 draft: false

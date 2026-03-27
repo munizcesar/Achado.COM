@@ -2,7 +2,7 @@
 title: "Bola Suíça 55cm para Pilates, Yoga e Fisioterapia — Suporte até 200kg"
 description: "Review completo da bola suíça 55cm com suporte de 200kg: material anti-estouro, versátil para Pilates, Yoga, Fisioterapia e ginástica. Ficha técnica, exercícios e para quem é indicado."
 date: 2026-03-26
-category: esporte
+category: esportes
 image: /images/posts/bola-pilates-yoga-fisioterapia-suica-ginastica-55cm-200kg-al.jpg
 tags: ["pilates", "yoga", "fisioterapia", "bola suíça", "ginástica", "treino em casa"]
 draft: false

@@ -2,7 +2,7 @@
 title: "Robô Aspirador WAP Robot W90: Guia Completo Antes de Comprar"
 description: "Entenda como o WAP Robot W90 funciona, seus benefícios e quando ele faz sentido para sua casa. Ideal para quem busca praticidade na limpeza diária."
 date: 2026-03-11
-category: Casa
+category: casa
 image: /images/posts/robo-aspirador-robot-w90-varre-aspira-e-passa-pano-30w-wap-c.jpg
 tags: [casa]
 draft: false

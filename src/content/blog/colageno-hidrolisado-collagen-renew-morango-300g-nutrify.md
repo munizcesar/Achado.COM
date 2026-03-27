@@ -2,7 +2,7 @@
 title: "Colágeno Hidrolisado Collagen Renew Nutrify Morango 300g: Guia Completo, Benefícios e Como Escolher o Melhor Suplemento para Sua Pele"
 description: "Descubra tudo sobre o Colágeno Hidrolisado Collagen Renew Morango 300g Nutrify: benefícios, diferenciais, como escolher, dúvidas respondidas e dicas para potencializar seus resultados."
 date: 2026-03-23
-category: Saude
+category: saude
 image: /images/posts/colageno-hidrolisado-collagen-renew-morango-300g-nutrify.jpg
 tags: [saude]
 draft: false

@@ -2,7 +2,7 @@
 title: "Bicicleta de Spinning em casa: por que esse equipamento pode transformar sua rotina"
 description: "Descubra por que ter uma bicicleta de spinning em casa pode transformar sua rotina, trazendo consistência, praticidade e resultados reais."
 date: 2026-03-20
-category: Esportes
+category: esportes
 image: /images/posts/bicicleta-ergometrica-para-spinning-mecanica-8kg-odin-fit-co.jpg
 tags: [esportes]
 draft: false

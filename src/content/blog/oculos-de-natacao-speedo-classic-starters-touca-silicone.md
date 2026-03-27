@@ -2,7 +2,7 @@
 title: "Kit Óculos de Natação Speedo Classic Starters + Touca de Silicone"
 description: "Review completo do kit Speedo Classic Starters: óculos de natação com lente antifog + touca de silicone. Descubra ficha técnica, para quem é indicado e se o kit compensa."
 date: 2026-03-26
-category: esporte
+category: esportes
 image: /images/posts/oculos-de-natacao-speedo-classic-starters-touca-silicone.jpg
 tags: ["natação", "óculos de natação", "speedo", "touca silicone", "esporte aquático"]
 draft: false

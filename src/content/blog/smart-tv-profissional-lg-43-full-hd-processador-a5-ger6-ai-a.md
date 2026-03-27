@@ -2,7 +2,7 @@
 title: "Smart TV 43” LG Full HD - Guia prático de escolha"
 description: 'Guia definitivo de como escolher a Smart TV 43" LG Full HD com processador A5 Gen6, webOS 23 e integração inteligente. Saiba como decidir sem erro.'
 date: 2026-03-20
-category: Tech
+category: tech
 image: /images/posts/smart-tv-profissional-lg-43-full-hd-processador-a5-ger6-ai-a.jpg
 tags: [tech]
 draft: false

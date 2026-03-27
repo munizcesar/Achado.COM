@@ -2,7 +2,7 @@
 title: "O Boticário Leau De Lily Blanche Colônia 75ml"
 description: "Conheça o O Boticário Leau De Lily Blanche Colônia 75ml. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-09
-category: Beleza
+category: beleza
 image: /images/posts/o-boticario-leau-de-lily-blanche-colonia-75ml.jpg
 tags: [beleza]
 draft: false

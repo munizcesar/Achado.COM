@@ -2,7 +2,7 @@
 title: "Tênis Nike Revolution 8 Feminino"
 description: "Conheça o Tênis Nike Revolution 8 Feminino. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-10
-category: Esportes
+category: esportes
 image: /images/posts/tenis-nike-revolution-8-feminino.jpg
 tags: [esportes]
 draft: false

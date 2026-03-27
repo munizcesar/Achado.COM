@@ -2,7 +2,7 @@
 title: "Fone Headphone Jbl Tune 520bt Bluetooth"
 description: "Conheça o Fone Headphone Jbl Tune 520bt Bluetooth. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-12
-category: Tech
+category: tech
 image: /images/posts/fone-headphone-jbl-tune-520bt-bluetooth.jpg
 tags: [tech]
 draft: false

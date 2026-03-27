@@ -2,7 +2,7 @@
 title: "Cadeira Escritório Ergonômica Genebra B500 Luvinco Cor Preto Com Suporte Lombar Estofado Mesh Malha"
 description: "Conheça o Cadeira Escritório Ergonômica Genebra B500 Luvinco Cor Preto Com Suporte Lombar Estofado Mesh Malha. Disponível no Mercado Livre com entrega rápi"
 date: 2026-03-22
-category: Casa
+category: casa
 image: /images/posts/cadeira-escritorio-ergonomica-genebra-b500-luvinco-cor-preto.jpg
 tags: [tech]
 draft: false

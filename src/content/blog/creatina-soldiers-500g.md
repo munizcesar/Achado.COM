@@ -2,7 +2,7 @@
 title: "Creatina Soldiers Nutrition 500g: Review Completo"
 description: "Creatina monohidratada 500g pura da Soldiers Nutrition. Analisamos pureza, solubilidade, custo por dose e resultado real de quem usa."
 date: 2026-02-08
-category: "saude"
+category: saude
 image: "/images/imagesposts/creatina-soldiers-500g.webp"
 productImage: "/images/imagesposts/creatina-soldiers-500g.webp"
 tags: ["creatina", "suplemento", "soldiers", "musculacao", "fitness"]

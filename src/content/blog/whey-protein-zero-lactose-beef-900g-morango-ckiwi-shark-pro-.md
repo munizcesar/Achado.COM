@@ -2,7 +2,7 @@
 title: "Guia Completo de Whey Protein: Tipos, Benefícios, Como Usar e Por Que Você Deveria Considerar Hoje"
 description: "Guia prático de whey protein para iniciantes, atletas e pessoas com mais de 50 anos. Saiba como escolher entre concentrado, isolado e hidrolisado, usar com segurança e obter resultados eficientes."
 date: 2026-03-22
-category: Saude
+category: saude
 image: /images/posts/wheyProtein.webp
 tags: [saude]
 draft: false

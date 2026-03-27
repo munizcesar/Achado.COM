@@ -2,7 +2,7 @@
 title: "JBL Wave Buds 2 Review: Fone Bluetooth Premium com Som Incomparável"
 description: "Análise completa do JBL Wave Buds 2 preto. Som de qualidade premium, bateria de 8 horas, Bluetooth 5.3 e design confortável. Descubra por que é a escolha ideal."
 date: 2026-02-25
-category: "tech"
+category: tech
 image: "/images/imagesposts/jbl-wave-buds-2.webp"
 productImage: "/images/imagesposts/jbl-wave-buds-2.webp"
 tags: ["jbl", "fone", "bluetooth", "earbuds", "audio"]

@@ -2,7 +2,7 @@
 title: "Capacete Moto Fechado Pro Tork Evolution 788 G8 Evo Cristal"
 description: "Conheça o Capacete Moto Fechado Pro Tork Evolution 788 G8 Evo Cristal. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-25
-category: Automotivo
+category: automotivo
 image: /images/posts/capacete-moto-fechado-pro-tork-evolution-788-g8-evo-cristal.jpg
 tags: [automotivo]
 draft: false

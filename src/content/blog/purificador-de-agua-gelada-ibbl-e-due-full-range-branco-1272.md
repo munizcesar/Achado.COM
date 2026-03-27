@@ -2,7 +2,7 @@
 title: "Purificador De Água Gelada Ibbl E-due Full Range Branco 127/220v"
 description: "Conheça o Purificador De Água Gelada Ibbl E-due Full Range Branco 127/220v. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-11
-category: Casa
+category: casa
 image: /images/posts/purificador-de-agua-gelada-ibbl-e-due-full-range-branco-1272.jpg
 tags: [casa]
 draft: false

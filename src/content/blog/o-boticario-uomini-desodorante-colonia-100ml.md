@@ -2,7 +2,7 @@
 title: "O Boticário Uomini Desodorante Colônia 100ml"
 description: "Conheça o O Boticário Uomini Desodorante Colônia 100ml. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-09
-category: Beleza
+category: beleza
 image: /images/posts/o-boticario-uomini-desodorante-colonia-100ml.jpg
 tags: [beleza]
 draft: false

@@ -2,7 +2,7 @@
 title: "Perfume Jean Paul Gaultier Le Male Elixir Parfum 125 Ml Masculino"
 description: "Conheça o Perfume Jean Paul Gaultier Le Male Elixir Parfum 125 Ml Masculino. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-03-21
-category: Beleza
+category: beleza
 image: /images/posts/perfume-jean-paul-gaultier-le-male-elixir-parfum-125-ml-masc.jpg
 tags: [beleza]
 draft: false

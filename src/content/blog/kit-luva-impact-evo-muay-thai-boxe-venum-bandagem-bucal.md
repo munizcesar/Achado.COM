@@ -2,7 +2,7 @@
 title: "Kit Luva Venum Impact EVO Muay Thai e Boxe + Bandagem + Bucal"
 description: "Review completo do kit Venum Impact EVO: luva de Muay Thai e Boxe com bandagem e protetor bucal incluso. Ficha técnica, para quem é indicado, pontos fortes e de atenção."
 date: 2026-03-26
-category: esporte
+category: esportes
 image: /images/posts/kit-luva-impact-evo-muay-thai-boxe-venum-bandagem-bucal.jpg
 tags: ["muay thai", "boxe", "luva de boxe", "venum", "artes marciais", "luta"]
 draft: false

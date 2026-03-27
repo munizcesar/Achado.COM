@@ -2,7 +2,7 @@
 title: "Capacetes Norisk: Qualidade, Segurança e Estilo para Motociclistas"
 description: "Descubra por que os capacetes Norisk são a escolha preferida de motociclistas exigentes no Brasil. Segurança homologada, conforto superior e design arrojado em diversas linhas — veja as melhores opções no Mercado Livre."
 date: 2026-03-25
-category: Automotivo
+category: automotivo
 image: /images/posts/capacete-norisk-razor-black-edition-com-2-viseiras-spoiler.jpg
 tags: [automotivo, capacetes, moto, seguranca, norisk]
 draft: false
