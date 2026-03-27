@@ -35,8 +35,10 @@ const defaultSchema = {
   },
 };
 
-const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [defaultSchema];
-const schemaData = JSON.stringify(schemaArray);
+// Um <script> por schema — formato preferido pelo Google
+const schemaItems: object[] = schema
+  ? (Array.isArray(schema) ? schema : [schema])
+  : [defaultSchema];
 ---
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -88,7 +90,10 @@ const schemaData = JSON.stringify(schemaArray);
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8532820173012599"
     crossorigin="anonymous"></script>
-  <script type="application/ld+json" set:html={schemaData}></script>
+  <!-- Schema.org: um bloco por item para melhor leitura pelo Google -->
+  {schemaItems.map(item => (
+    <script type="application/ld+json" set:html={JSON.stringify(item)}></script>
+  ))}
 </head>
 <body>
   <div class="drawer-overlay" id="drawerOverlay" onclick="window.closeDrawer()"></div>
@@ -103,22 +108,28 @@ const schemaData = JSON.stringify(schemaArray);
       </button>
     </div>
     <div class="drawer-section">
-      <p class="drawer-section-label">Categorias</p>
+      <p class="drawer-section-label">Principais</p>
       <nav class="drawer-links">
-        <a href="/categorias/tech" class="drawer-link">Tech &amp; Eletrônicos</a>
-        <a href="/categorias/saude" class="drawer-link">Saúde &amp; Bem-estar</a>
-        <a href="/categorias/casa" class="drawer-link">Casa</a>
-        <a href="/categorias/beleza" class="drawer-link">Beleza &amp; Cuidados</a>
-        <a href="/categorias/esportes" class="drawer-link">Esportes</a>
+        <a href="/categorias/beleza"    class="drawer-link drawer-link-pilar">Beleza &amp; Fragrâncias</a>
+        <a href="/categorias/saude"     class="drawer-link drawer-link-pilar">Saúde &amp; Suplementos</a>
+        <a href="/categorias/casa"      class="drawer-link drawer-link-pilar">Casa &amp; Bem-Estar</a>
+      </nav>
+    </div>
+    <div class="drawer-section">
+      <p class="drawer-section-label">Outras categorias</p>
+      <nav class="drawer-links">
+        <a href="/categorias/tech"      class="drawer-link">Tech &amp; Eletrônicos</a>
+        <a href="/categorias/esportes"  class="drawer-link">Esportes</a>
         <a href="/categorias/automotivo" class="drawer-link">Automotivo</a>
-        <a href="/categorias/dicas" class="drawer-link">Dicas</a>
+        <a href="/categorias/dicas"     class="drawer-link">Dicas</a>
       </nav>
     </div>
     <div class="drawer-section">
       <p class="drawer-section-label">Site</p>
       <nav class="drawer-links">
-        <a href="/blog" class="drawer-link">Todos os Reviews</a>
-        <a href="/sobre" class="drawer-link">Sobre Nós</a>
+        <a href="/blog"     class="drawer-link">Todos os Reviews</a>
+        <a href="/faq"      class="drawer-link">Perguntas Frequentes</a>
+        <a href="/sobre"    class="drawer-link">Sobre Nós</a>
         <a href="/politica" class="drawer-link">Privacidade</a>
       </nav>
     </div>
@@ -154,7 +165,7 @@ const schemaData = JSON.stringify(schemaArray);
         </form>
 
         <nav class="header-nav">
-          <a href="/blog" class={currentPath === '/blog' ? 'active' : ''}>Todos os Reviews</a>
+          <a href="/blog"  class={currentPath === '/blog'  ? 'active' : ''}>Todos os Reviews</a>
           <a href="/sobre" class={currentPath === '/sobre' ? 'active' : ''}>Sobre</a>
         </nav>
 
@@ -163,6 +174,8 @@ const schemaData = JSON.stringify(schemaArray);
         </button>
       </div>
     </div>
+
+    <!-- SUBNAV -->
     <nav class="subnav" aria-label="Categorias">
       <div class="container">
         <div class="subnav-wrapper">
@@ -171,13 +184,14 @@ const schemaData = JSON.stringify(schemaArray);
           </button>
           <div class="subnav-inner" id="subnavInner">
             <a href="/" class={`subnav-link${currentPath === '/' ? ' active' : ''}`}>Início</a>
-            <a href="/categorias/tech" class={`subnav-link${currentPath.startsWith('/categorias/tech') ? ' active' : ''}`}>Tech</a>
-            <a href="/categorias/saude" class={`subnav-link${currentPath.startsWith('/categorias/saude') ? ' active' : ''}`}>Saúde</a>
-            <a href="/categorias/casa" class={`subnav-link${currentPath.startsWith('/categorias/casa') ? ' active' : ''}`}>Casa</a>
-            <a href="/categorias/beleza" class={`subnav-link${currentPath.startsWith('/categorias/beleza') ? ' active' : ''}`}>Beleza</a>
-            <a href="/categorias/esportes" class={`subnav-link${currentPath.startsWith('/categorias/esportes') ? ' active' : ''}`}>Esportes</a>
-            <a href="/categorias/automotivo" class={`subnav-link${currentPath.startsWith('/categorias/automotivo') ? ' active' : ''}`}>Automotivo</a>
-            <a href="/categorias/dicas" class={`subnav-link${currentPath.startsWith('/categorias/dicas') ? ' active' : ''}`}>Dicas</a>
+            <a href="/categorias/beleza"    class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/beleza')    ? ' active' : ''}`}>Beleza</a>
+            <a href="/categorias/saude"     class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/saude')     ? ' active' : ''}`}>Saúde</a>
+            <a href="/categorias/casa"      class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/casa')      ? ' active' : ''}`}>Casa</a>
+            <span class="subnav-sep" aria-hidden="true"></span>
+            <a href="/categorias/tech"       class={`subnav-link subnav-sat${currentPath.startsWith('/categorias/tech')       ? ' active' : ''}`}>Tech</a>
+            <a href="/categorias/esportes"   class={`subnav-link subnav-sat${currentPath.startsWith('/categorias/esportes')   ? ' active' : ''}`}>Esportes</a>
+            <a href="/categorias/automotivo" class={`subnav-link subnav-sat${currentPath.startsWith('/categorias/automotivo') ? ' active' : ''}`}>Automotivo</a>
+            <a href="/categorias/dicas"      class={`subnav-link subnav-sat${currentPath.startsWith('/categorias/dicas')      ? ' active' : ''}`}>Dicas</a>
           </div>
           <button class="subnav-arrow subnav-arrow-right" id="subnavArrowRight" aria-label="Rolar para direita">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
@@ -211,16 +225,17 @@ const schemaData = JSON.stringify(schemaArray);
         </div>
         <div class="footer-col">
           <h4>Categorias</h4>
+          <a href="/categorias/beleza">Beleza &amp; Fragrâncias</a>
+          <a href="/categorias/saude">Saúde &amp; Suplementos</a>
+          <a href="/categorias/casa">Casa &amp; Bem-Estar</a>
           <a href="/categorias/tech">Tech &amp; Eletrônicos</a>
-          <a href="/categorias/saude">Saúde &amp; Bem-estar</a>
-          <a href="/categorias/casa">Casa</a>
-          <a href="/categorias/beleza">Beleza</a>
           <a href="/categorias/esportes">Esportes</a>
           <a href="/categorias/dicas">Guias</a>
         </div>
         <div class="footer-col">
           <h4>Site</h4>
           <a href="/blog">Todos os Reviews</a>
+          <a href="/faq">Perguntas Frequentes</a>
           <a href="/sobre">Sobre Nós</a>
           <a href="/politica">Privacidade</a>
           <a href="/termos">Termos</a>
@@ -260,6 +275,11 @@ const schemaData = JSON.stringify(schemaArray);
     .social-whatsapp { background:#25D366; }
     .social-instagram { background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%); }
     .brand { display:inline-flex; align-items:center; }
+    .drawer-link-pilar { font-weight: 700; color: var(--c-brand, #E1306C) !important; }
+    .subnav-pilar { font-weight: 700; }
+    .subnav-sat { opacity: 0.78; }
+    .subnav-sat:hover, .subnav-sat.active { opacity: 1; }
+    .subnav-sep { display:inline-block; width:1px; height:16px; background:var(--c-border,#e2e8f0); margin:0 4px; align-self:center; flex-shrink:0; }
   </style>
 
   <script is:inline>
@@ -288,18 +308,18 @@ const schemaData = JSON.stringify(schemaArray);
     };
     (function() {
       var inner = document.getElementById('subnavInner');
-      var left = document.getElementById('subnavArrowLeft');
+      var left  = document.getElementById('subnavArrowLeft');
       var right = document.getElementById('subnavArrowRight');
       if (!inner || !left || !right) return;
       function upd() {
         var s = inner.scrollLeft;
         var m = inner.scrollWidth - inner.clientWidth;
         if (m <= 0) { left.style.display='none'; right.style.display='none'; return; }
-        left.style.display = s > 5 ? 'flex' : 'none';
+        left.style.display  = s > 5     ? 'flex' : 'none';
         right.style.display = s < m - 5 ? 'flex' : 'none';
       }
-      left.addEventListener('click', function() { inner.scrollBy({left:-200,behavior:'smooth'}); });
-      right.addEventListener('click', function() { inner.scrollBy({left:200,behavior:'smooth'}); });
+      left.addEventListener ('click', function() { inner.scrollBy({left:-200,behavior:'smooth'}); });
+      right.addEventListener('click', function() { inner.scrollBy({left: 200,behavior:'smooth'}); });
       inner.addEventListener('scroll', upd);
       window.addEventListener('resize', upd);
       upd();

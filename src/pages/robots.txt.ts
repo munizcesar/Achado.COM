@@ -2,11 +2,9 @@ export async function GET() {
   const content = `User-agent: *
 Allow: /
 
-Disallow: /backend/
-Disallow: /debug-*
-Disallow: /teste-*
-Disallow: /validador-*
-Disallow: /relatorio-*
+Disallow: /api/
+
+Crawl-delay: 2
 
 Sitemap: https://achadocerto.vip/sitemap.xml
 `;

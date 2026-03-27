@@ -6,17 +6,23 @@ export async function GET() {
   const now = new Date().toISOString().split('T')[0];
 
   const staticPages = [
-    { url: base, priority: '1.0', changefreq: 'daily', lastmod: now },
-    { url: `${base}/blog`, priority: '0.9', changefreq: 'daily', lastmod: now },
-    { url: `${base}/sobre`, priority: '0.6', changefreq: 'monthly' },
+    // Core
+    { url: base,              priority: '1.0', changefreq: 'daily',   lastmod: now },
+    { url: `${base}/blog`,   priority: '0.9', changefreq: 'daily',   lastmod: now },
+    // Pilares (prioridade maxima entre categorias)
+    { url: `${base}/categorias/beleza`,    priority: '0.9', changefreq: 'weekly', lastmod: now },
+    { url: `${base}/categorias/saude`,     priority: '0.9', changefreq: 'weekly', lastmod: now },
+    { url: `${base}/categorias/casa`,      priority: '0.9', changefreq: 'weekly', lastmod: now },
+    // Categorias satelite
+    { url: `${base}/categorias/tech`,      priority: '0.7', changefreq: 'weekly', lastmod: now },
+    { url: `${base}/categorias/esportes`,  priority: '0.7', changefreq: 'weekly', lastmod: now },
+    { url: `${base}/categorias/automotivo`,priority: '0.7', changefreq: 'weekly', lastmod: now },
+    { url: `${base}/categorias/dicas`,     priority: '0.6', changefreq: 'weekly', lastmod: now },
+    // Institucionais
+    { url: `${base}/faq`,      priority: '0.6', changefreq: 'monthly', lastmod: now },
+    { url: `${base}/sobre`,    priority: '0.5', changefreq: 'monthly' },
     { url: `${base}/politica`, priority: '0.3', changefreq: 'yearly' },
-    { url: `${base}/termos`, priority: '0.3', changefreq: 'yearly' },
-    { url: `${base}/categorias/tech`, priority: '0.8', changefreq: 'weekly', lastmod: now },
-    { url: `${base}/categorias/saude`, priority: '0.8', changefreq: 'weekly', lastmod: now },
-    { url: `${base}/categorias/casa`, priority: '0.7', changefreq: 'weekly', lastmod: now },
-    { url: `${base}/categorias/esportes`, priority: '0.7', changefreq: 'weekly', lastmod: now },
-    { url: `${base}/categorias/dicas`, priority: '0.7', changefreq: 'weekly', lastmod: now },
-    { url: `${base}/categorias/automotivo`, priority: '0.8', changefreq: 'weekly', lastmod: now },
+    { url: `${base}/termos`,   priority: '0.3', changefreq: 'yearly' },
   ];
 
   const postPages = posts.map(post => ({
