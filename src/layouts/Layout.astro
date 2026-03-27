@@ -35,8 +35,10 @@ const defaultSchema = {
   },
 };
 
-const schemaArray = schema ? (Array.isArray(schema) ? schema : [schema]) : [defaultSchema];
-const schemaData = JSON.stringify(schemaArray);
+// Um <script> por schema — formato preferido pelo Google
+const schemaItems: object[] = schema
+  ? (Array.isArray(schema) ? schema : [schema])
+  : [defaultSchema];
 ---
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -88,7 +90,10 @@ const schemaData = JSON.stringify(schemaArray);
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8532820173012599"
     crossorigin="anonymous"></script>
-  <script type="application/ld+json" set:html={schemaData}></script>
+  <!-- Schema.org: um bloco por item para melhor leitura pelo Google -->
+  {schemaItems.map(item => (
+    <script type="application/ld+json" set:html={JSON.stringify(item)}></script>
+  ))}
 </head>
 <body>
   <div class="drawer-overlay" id="drawerOverlay" onclick="window.closeDrawer()"></div>
@@ -122,8 +127,9 @@ const schemaData = JSON.stringify(schemaArray);
     <div class="drawer-section">
       <p class="drawer-section-label">Site</p>
       <nav class="drawer-links">
-        <a href="/blog"    class="drawer-link">Todos os Reviews</a>
-        <a href="/sobre"   class="drawer-link">Sobre Nós</a>
+        <a href="/blog"     class="drawer-link">Todos os Reviews</a>
+        <a href="/faq"      class="drawer-link">Perguntas Frequentes</a>
+        <a href="/sobre"    class="drawer-link">Sobre Nós</a>
         <a href="/politica" class="drawer-link">Privacidade</a>
       </nav>
     </div>
@@ -169,7 +175,7 @@ const schemaData = JSON.stringify(schemaArray);
       </div>
     </div>
 
-    <!-- SUBNAV: pilares primeiro, depois separador e satélites -->
+    <!-- SUBNAV -->
     <nav class="subnav" aria-label="Categorias">
       <div class="container">
         <div class="subnav-wrapper">
@@ -178,16 +184,10 @@ const schemaData = JSON.stringify(schemaArray);
           </button>
           <div class="subnav-inner" id="subnavInner">
             <a href="/" class={`subnav-link${currentPath === '/' ? ' active' : ''}`}>Início</a>
-
-            <!-- PILARES (destaque) -->
             <a href="/categorias/beleza"    class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/beleza')    ? ' active' : ''}`}>Beleza</a>
             <a href="/categorias/saude"     class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/saude')     ? ' active' : ''}`}>Saúde</a>
             <a href="/categorias/casa"      class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/casa')      ? ' active' : ''}`}>Casa</a>
-
-            <!-- separador visual -->
             <span class="subnav-sep" aria-hidden="true"></span>
-
-            <!-- SATÉLITES (discretos) -->
             <a href="/categorias/tech"       class={`subnav-link subnav-sat${currentPath.startsWith('/categorias/tech')       ? ' active' : ''}`}>Tech</a>
             <a href="/categorias/esportes"   class={`subnav-link subnav-sat${currentPath.startsWith('/categorias/esportes')   ? ' active' : ''}`}>Esportes</a>
             <a href="/categorias/automotivo" class={`subnav-link subnav-sat${currentPath.startsWith('/categorias/automotivo') ? ' active' : ''}`}>Automotivo</a>
@@ -235,6 +235,7 @@ const schemaData = JSON.stringify(schemaArray);
         <div class="footer-col">
           <h4>Site</h4>
           <a href="/blog">Todos os Reviews</a>
+          <a href="/faq">Perguntas Frequentes</a>
           <a href="/sobre">Sobre Nós</a>
           <a href="/politica">Privacidade</a>
           <a href="/termos">Termos</a>
@@ -274,27 +275,11 @@ const schemaData = JSON.stringify(schemaArray);
     .social-whatsapp { background:#25D366; }
     .social-instagram { background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%); }
     .brand { display:inline-flex; align-items:center; }
-
-    /* Pilares no drawer */
     .drawer-link-pilar { font-weight: 700; color: var(--c-brand, #E1306C) !important; }
-
-    /* Pilares no subnav */
     .subnav-pilar { font-weight: 700; }
-
-    /* Satélites no subnav: levemente mais discretos */
     .subnav-sat { opacity: 0.78; }
     .subnav-sat:hover, .subnav-sat.active { opacity: 1; }
-
-    /* Separador vertical entre pilares e satélites */
-    .subnav-sep {
-      display: inline-block;
-      width: 1px;
-      height: 16px;
-      background: var(--c-border, #e2e8f0);
-      margin: 0 4px;
-      align-self: center;
-      flex-shrink: 0;
-    }
+    .subnav-sep { display:inline-block; width:1px; height:16px; background:var(--c-border,#e2e8f0); margin:0 4px; align-self:center; flex-shrink:0; }
   </style>
 
   <script is:inline>
