@@ -15,9 +15,9 @@ function fmtDate(d) {
 }
 
 const pilares = [
-  { slug: 'beleza', label: 'Beleza & Fragr\u00e2ncias', emoji: '\u2728', desc: 'Perfumes, col\u00f4nias e body splash que valem cada centavo.' },
-  { slug: 'saude',  label: 'Sa\u00fade & Suplementos',  emoji: '\ud83d\udcaa', desc: 'Vitaminas, prote\u00ednas e suplementos testados e aprovados.' },
-  { slug: 'casa',   label: 'Casa & Bem-Estar',        emoji: '\ud83c\udfe0', desc: 'Eletrodom\u00e9sticos e utilit\u00e1rios que facilitam sua rotina.' },
+  { slug: 'beleza', label: 'Beleza & Fragr\u00e2ncias', desc: 'Perfumes, col\u00f4nias e body splash com curadoria independente.' },
+  { slug: 'saude',  label: 'Sa\u00fade & Suplementos',  desc: 'Vitaminas, prote\u00ednas e suplementos testados e aprovados.' },
+  { slug: 'casa',   label: 'Casa & Bem-Estar',        desc: 'Eletrodom\u00e9sticos e utilit\u00e1rios que facilitam sua rotina.' },
 ];
 
 const postsByPilar = pilares.map(p => ({
@@ -53,11 +53,11 @@ const siloPosts = posts.filter(p => {
             <button type="submit" aria-label="Pesquisar">Buscar</button>
           </form>
           <div class="trust-cats">
-            <a href="/categorias/beleza"   class="trust-pill">Beleza</a>
-            <a href="/categorias/saude"    class="trust-pill">Sa&#250;de</a>
-            <a href="/categorias/casa"     class="trust-pill">Casa</a>
-            <a href="/categorias/tech"     class="trust-pill">Tech</a>
-            <a href="/categorias/esportes" class="trust-pill">Esportes</a>
+            <a href="/categorias/beleza"     class="trust-pill">Beleza</a>
+            <a href="/categorias/saude"      class="trust-pill">Sa&#250;de</a>
+            <a href="/categorias/casa"       class="trust-pill">Casa</a>
+            <a href="/categorias/tech"       class="trust-pill">Tech</a>
+            <a href="/categorias/esportes"   class="trust-pill">Esportes</a>
             <a href="/categorias/automotivo" class="trust-pill">Automotivo</a>
             <a href="/blog" class="trust-pill trust-pill-all">
               Ver todos
@@ -68,7 +68,6 @@ const siloPosts = posts.filter(p => {
       </div>
     </div>
   </section>
-  <!-- =================== /TRUST BANNER =================== -->
 
 
   <!-- ===================== CARDS DE PILARES ===================== -->
@@ -79,28 +78,83 @@ const siloPosts = posts.filter(p => {
         <p class="pilares-sub">Escolha seu tema e encontre o melhor produto</p>
       </div>
       <div class="pilares-grid">
-        {postsByPilar.map(p => (
-          <a href={`/categorias/${p.slug}`} class="pilar-card">
-            <span class="pilar-emoji">{p.emoji}</span>
-            <h3 class="pilar-label">{p.label}</h3>
-            <p class="pilar-desc">{p.desc}</p>
-            <span class="pilar-count">{p.total} reviews</span>
-            <span class="pilar-cta">Ver todos &#8594;</span>
-          </a>
-        ))}
+
+        <!-- BELEZA -->
+        <a href="/categorias/beleza" class="pilar-card">
+          <div class="pilar-icon-wrap pilar-icon-beleza">
+            <!-- Lucide: sparkles -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+              <path d="M20 3v4M22 5h-4M4 17v2M5 18H3"/>
+            </svg>
+          </div>
+          <h3 class="pilar-label">{postsByPilar[0].label}</h3>
+          <p class="pilar-desc">{postsByPilar[0].desc}</p>
+          <span class="pilar-count">{postsByPilar[0].total} reviews publicados</span>
+          <span class="pilar-cta">Ver todos &#8594;</span>
+        </a>
+
+        <!-- SA\u00daDE -->
+        <a href="/categorias/saude" class="pilar-card">
+          <div class="pilar-icon-wrap pilar-icon-saude">
+            <!-- Lucide: pill -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/>
+              <path d="M8.5 8.5 16 16"/>
+            </svg>
+          </div>
+          <h3 class="pilar-label">{postsByPilar[1].label}</h3>
+          <p class="pilar-desc">{postsByPilar[1].desc}</p>
+          <span class="pilar-count">{postsByPilar[1].total} reviews publicados</span>
+          <span class="pilar-cta">Ver todos &#8594;</span>
+        </a>
+
+        <!-- CASA -->
+        <a href="/categorias/casa" class="pilar-card">
+          <div class="pilar-icon-wrap pilar-icon-casa">
+            <!-- Lucide: home -->
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <h3 class="pilar-label">{postsByPilar[2].label}</h3>
+          <p class="pilar-desc">{postsByPilar[2].desc}</p>
+          <span class="pilar-count">{postsByPilar[2].total} reviews publicados</span>
+          <span class="pilar-cta">Ver todos &#8594;</span>
+        </a>
+
       </div>
     </div>
   </section>
-  <!-- =================== /CARDS DE PILARES =================== -->
 
 
   <!-- ===================== SE\u00c7\u00d5ES POR PILAR ===================== -->
-  {postsByPilar.map(pilar => pilar.posts.length > 0 && (
-    <section class="pilar-section">
+  {postsByPilar.map((pilar, i) => pilar.posts.length > 0 && (
+    <section class={`pilar-section ${i % 2 === 0 ? 'pilar-section-alt' : ''}`}>
       <div class="container">
         <div class="section-header">
           <div class="section-header-left">
-            <span class="section-emoji">{pilar.emoji}</span>
+            <div class="section-icon-wrap">
+              {pilar.slug === 'beleza' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+                  <path d="M20 3v4M22 5h-4M4 17v2M5 18H3"/>
+                </svg>
+              )}
+              {pilar.slug === 'saude' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/>
+                  <path d="M8.5 8.5 16 16"/>
+                </svg>
+              )}
+              {pilar.slug === 'casa' && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              )}
+            </div>
             <div>
               <span class="section-label">Categoria</span>
               <h2 class="section-title">{pilar.label}</h2>
@@ -138,7 +192,6 @@ const siloPosts = posts.filter(p => {
       </div>
     </section>
   ))}
-  <!-- =================== /SE\u00c7\u00d5ES POR PILAR =================== -->
 
 
   <!-- ===================== HERO ROTATIVO ===================== -->
@@ -148,14 +201,13 @@ const siloPosts = posts.filter(p => {
         <div class="section-header" style="margin-bottom:24px;">
           <div>
             <span class="section-label">Destaques</span>
-            <h2 class="section-title">An\u00e1lise em destaque</h2>
+            <h2 class="section-title">An&#225;lise em destaque</h2>
           </div>
         </div>
         <div class="hero-grid">
           <article class="hero-main" id="heroMain" style="opacity:0; transition: opacity 0.45s ease;">
             <a id="heroImgLink" href="#" class="hero-main-img-wrap">
-              <img id="heroImg" src="" alt="" class="hero-main-img" width="820" height="547"
-                loading="lazy" decoding="async" />
+              <img id="heroImg" src="" alt="" class="hero-main-img" width="820" height="547" loading="lazy" decoding="async" />
             </a>
             <span id="heroCat" class="hero-cat"></span>
             <h2 class="hero-title"><a id="heroTitleLink" href="#"></a></h2>
@@ -173,7 +225,6 @@ const siloPosts = posts.filter(p => {
       </div>
     </section>
   )}
-  <!-- =================== /HERO ROTATIVO =================== -->
 
 
   <div id="postsPool" style="display:none" aria-hidden="true">
@@ -193,35 +244,23 @@ const siloPosts = posts.filter(p => {
   <script>
     const container = document.getElementById('postsPool');
     const items = container ? Array.from(container.children) : [];
-    const pool = items.map(el => ({
-      slug:  el.dataset.slug,
-      title: el.dataset.title,
-      desc:  el.dataset.desc,
-      cat:   el.dataset.cat,
-      img:   el.dataset.img,
-      url:   el.dataset.url,
-    }));
+    const pool = items.map(el => ({ slug: el.dataset.slug, title: el.dataset.title, desc: el.dataset.desc, cat: el.dataset.cat, img: el.dataset.img, url: el.dataset.url }));
     if (pool.length === 0) {
       document.getElementById('heroSection')?.remove();
     } else {
-      const idx     = Math.floor(Math.random() * pool.length);
-      const hero    = pool[idx];
+      const idx = Math.floor(Math.random() * pool.length);
+      const hero = pool[idx];
       const sidebar = [...pool.slice(0, idx), ...pool.slice(idx + 1)].slice(0, 4);
-      const heroMain  = document.getElementById('heroMain');
-      const imgLink   = document.getElementById('heroImgLink');
-      const img       = document.getElementById('heroImg');
-      const cat       = document.getElementById('heroCat');
-      const titleLink = document.getElementById('heroTitleLink');
-      const excerpt   = document.getElementById('heroExcerpt');
-      const btn       = document.getElementById('heroBtn');
-      imgLink.href = hero.url; img.src = hero.img; img.alt = hero.title;
-      cat.textContent = hero.cat; titleLink.href = hero.url;
-      titleLink.textContent = hero.title; excerpt.textContent = hero.desc; btn.href = hero.url;
-      requestAnimationFrame(() => { heroMain.style.opacity = '1'; });
+      document.getElementById('heroImgLink').href = hero.url;
+      const img = document.getElementById('heroImg'); img.src = hero.img; img.alt = hero.title;
+      document.getElementById('heroCat').textContent = hero.cat;
+      const tl = document.getElementById('heroTitleLink'); tl.href = hero.url; tl.textContent = hero.title;
+      document.getElementById('heroExcerpt').textContent = hero.desc;
+      document.getElementById('heroBtn').href = hero.url;
+      requestAnimationFrame(() => { document.getElementById('heroMain').style.opacity = '1'; });
       const sidebarEl = document.getElementById('sidebarPosts');
       sidebar.forEach(post => {
-        const a = document.createElement('a');
-        a.href = post.url; a.className = 'sidebar-post';
+        const a = document.createElement('a'); a.href = post.url; a.className = 'sidebar-post';
         a.innerHTML = `<img src="${post.img}" alt="" class="sidebar-post-img" loading="lazy" width="64" height="48" /><div><span class="sidebar-post-cat">${post.cat}</span><span class="sidebar-post-title">${post.title}</span></div>`;
         sidebarEl.appendChild(a);
       });
@@ -232,114 +271,60 @@ const siloPosts = posts.filter(p => {
 
 <style>
   /* ===== TRUST BANNER ===== */
-  .trust-banner {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
-    padding: 48px 0 40px;
-    border-bottom: 3px solid var(--c-brand, #E1306C);
-  }
-  .trust-inner { display: flex; flex-direction: column; gap: 28px; }
-  .trust-badge {
-    display: inline-block;
-    background: rgba(225,48,108,.15); color: #f48fb1;
-    border: 1px solid rgba(225,48,108,.35);
-    font-size: .72rem; font-weight: 700; letter-spacing: .08em;
-    text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 10px;
-  }
-  .trust-headline { font-size: clamp(1.5rem,4vw,2.1rem); font-weight: 800; color: #fff; line-height: 1.2; margin: 0 0 10px; }
-  .trust-headline em { font-style: normal; color: #E1306C; }
-  .trust-sub { color: #a0aec0; font-size: .95rem; margin: 0; max-width: 520px; }
-  .trust-search {
-    display: flex; align-items: center;
-    background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.15);
-    border-radius: 10px; padding: 0 6px 0 14px; gap: 8px; max-width: 520px; transition: border-color .2s;
-  }
-  .trust-search:focus-within { border-color: #E1306C; background: rgba(255,255,255,.1); }
-  .trust-search-icon { color: #a0aec0; flex-shrink: 0; }
+  .trust-banner { background: linear-gradient(135deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%); padding:48px 0 40px; border-bottom:3px solid var(--c-brand,#E1306C); }
+  .trust-inner { display:flex; flex-direction:column; gap:28px; }
+  .trust-badge { display:inline-block; background:rgba(225,48,108,.15); color:#f48fb1; border:1px solid rgba(225,48,108,.35); font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:4px 12px; border-radius:20px; margin-bottom:10px; }
+  .trust-headline { font-size:clamp(1.5rem,4vw,2.1rem); font-weight:800; color:#fff; line-height:1.2; margin:0 0 10px; }
+  .trust-headline em { font-style:normal; color:#E1306C; }
+  .trust-sub { color:#a0aec0; font-size:.95rem; margin:0; max-width:520px; }
+  .trust-search { display:flex; align-items:center; background:rgba(255,255,255,.07); border:1.5px solid rgba(255,255,255,.15); border-radius:10px; padding:0 6px 0 14px; gap:8px; max-width:520px; transition:border-color .2s; }
+  .trust-search:focus-within { border-color:#E1306C; background:rgba(255,255,255,.1); }
+  .trust-search-icon { color:#a0aec0; flex-shrink:0; }
   .trust-search input { flex:1; background:none; border:none; outline:none; color:#fff; font-size:.95rem; padding:12px 0; font-family:inherit; }
-  .trust-search input::placeholder { color: #718096; }
-  .trust-search button {
-    background: #E1306C; color: #fff; border: none; border-radius: 7px;
-    padding: 8px 18px; font-size: .85rem; font-weight: 700; cursor: pointer;
-    white-space: nowrap; font-family: inherit; transition: background .2s;
-  }
-  .trust-search button:hover { background: #c2185b; }
-  .trust-cats { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-  .trust-pill {
-    display: inline-flex; align-items: center; gap: 5px;
-    background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
-    color: #e2e8f0; font-size: .82rem; font-weight: 500; padding: 6px 16px;
-    border-radius: 20px; text-decoration: none; white-space: nowrap; letter-spacing: .02em;
-    transition: background .18s, border-color .18s, color .18s, transform .15s;
-  }
-  .trust-pill:hover { background: rgba(225,48,108,.18); border-color: rgba(225,48,108,.5); color: #fff; transform: translateY(-1px); }
-  .trust-pill-all { background: rgba(225,48,108,.12); border-color: rgba(225,48,108,.3); color: #f48fb1; font-weight: 700; }
-  .trust-pill-all:hover { background: #E1306C; border-color: #E1306C; color: #fff; transform: translateY(-1px); }
-  @media (min-width: 768px) {
-    .trust-banner { padding: 56px 0 48px; }
-    .trust-inner { flex-direction: row; align-items: center; justify-content: space-between; gap: 40px; }
-    .trust-actions { flex-shrink: 0; width: 100%; max-width: 480px; }
+  .trust-search input::placeholder { color:#718096; }
+  .trust-search button { background:#E1306C; color:#fff; border:none; border-radius:7px; padding:8px 18px; font-size:.85rem; font-weight:700; cursor:pointer; white-space:nowrap; font-family:inherit; transition:background .2s; }
+  .trust-search button:hover { background:#c2185b; }
+  .trust-cats { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  .trust-pill { display:inline-flex; align-items:center; gap:5px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); color:#e2e8f0; font-size:.82rem; font-weight:500; padding:6px 16px; border-radius:20px; text-decoration:none; white-space:nowrap; letter-spacing:.02em; transition:background .18s,border-color .18s,color .18s,transform .15s; }
+  .trust-pill:hover { background:rgba(225,48,108,.18); border-color:rgba(225,48,108,.5); color:#fff; transform:translateY(-1px); }
+  .trust-pill-all { background:rgba(225,48,108,.12); border-color:rgba(225,48,108,.3); color:#f48fb1; font-weight:700; }
+  .trust-pill-all:hover { background:#E1306C; border-color:#E1306C; color:#fff; transform:translateY(-1px); }
+  @media (min-width:768px) {
+    .trust-banner { padding:56px 0 48px; }
+    .trust-inner { flex-direction:row; align-items:center; justify-content:space-between; gap:40px; }
+    .trust-actions { flex-shrink:0; width:100%; max-width:480px; }
   }
 
   /* ===== CARDS DE PILARES ===== */
-  .pilares-section {
-    background: var(--c-bg, #f8f9fa);
-    padding: 56px 0 48px;
-    border-bottom: 1px solid var(--c-border, #e2e8f0);
-  }
-  .pilares-header { text-align: center; margin-bottom: 36px; }
-  .pilares-title { font-size: clamp(1.4rem,3vw,1.9rem); font-weight: 800; color: var(--c-text,#1a202c); margin: 0 0 8px; }
-  .pilares-sub { color: var(--c-text-sub,#4a5568); font-size: .95rem; margin: 0; }
-  .pilares-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
-  }
-  .pilar-card {
-    display: flex; flex-direction: column; gap: 8px;
-    background: var(--c-surface,#fff);
-    border: 2px solid var(--c-border,#e2e8f0);
-    border-radius: 16px;
-    padding: 32px 28px;
-    text-decoration: none;
-    transition: border-color .2s, box-shadow .2s, transform .2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .pilar-card::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(225,48,108,.04) 0%, transparent 60%);
-    opacity: 0; transition: opacity .2s;
-  }
-  .pilar-card:hover { border-color: var(--c-brand,#E1306C); box-shadow: 0 8px 32px rgba(225,48,108,.12); transform: translateY(-3px); }
-  .pilar-card:hover::before { opacity: 1; }
-  .pilar-emoji { font-size: 2.2rem; line-height: 1; margin-bottom: 4px; }
-  .pilar-label { font-size: 1.15rem; font-weight: 800; color: var(--c-text,#1a202c); margin: 0; }
-  .pilar-desc { font-size: .88rem; color: var(--c-text-sub,#4a5568); margin: 0; line-height: 1.5; flex: 1; }
-  .pilar-count { font-size: .78rem; font-weight: 700; color: var(--c-brand,#E1306C); text-transform: uppercase; letter-spacing: .06em; }
-  .pilar-cta { font-size: .9rem; font-weight: 700; color: var(--c-brand,#E1306C); margin-top: 4px; }
+  .pilares-section { background:var(--c-bg,#f8f9fa); padding:56px 0 48px; border-bottom:1px solid var(--c-border,#e2e8f0); }
+  .pilares-header { text-align:center; margin-bottom:36px; }
+  .pilares-title { font-size:clamp(1.4rem,3vw,1.9rem); font-weight:800; color:var(--c-text,#1a202c); margin:0 0 8px; }
+  .pilares-sub { color:var(--c-text-sub,#4a5568); font-size:.95rem; margin:0; }
+  .pilares-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; }
+  .pilar-card { display:flex; flex-direction:column; gap:10px; background:var(--c-surface,#fff); border:2px solid var(--c-border,#e2e8f0); border-radius:16px; padding:32px 28px; text-decoration:none; transition:border-color .2s,box-shadow .2s,transform .2s; position:relative; overflow:hidden; }
+  .pilar-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(225,48,108,.04) 0%,transparent 60%); opacity:0; transition:opacity .2s; }
+  .pilar-card:hover { border-color:var(--c-brand,#E1306C); box-shadow:0 8px 32px rgba(225,48,108,.12); transform:translateY(-3px); }
+  .pilar-card:hover::before { opacity:1; }
+  .pilar-card:hover .pilar-icon-wrap { background:var(--c-brand,#E1306C); color:#fff; }
+
+  .pilar-icon-wrap { width:56px; height:56px; border-radius:14px; display:flex; align-items:center; justify-content:center; margin-bottom:6px; transition:background .2s,color .2s; }
+  .pilar-icon-beleza { background:#fce7f3; color:#be185d; }
+  .pilar-icon-saude  { background:#dcfce7; color:#15803d; }
+  .pilar-icon-casa   { background:#eff6ff; color:#1d4ed8; }
+
+  .pilar-label { font-size:1.15rem; font-weight:800; color:var(--c-text,#1a202c); margin:0; }
+  .pilar-desc  { font-size:.88rem; color:var(--c-text-sub,#4a5568); margin:0; line-height:1.55; flex:1; }
+  .pilar-count { font-size:.76rem; font-weight:700; color:var(--c-text-muted,#718096); text-transform:uppercase; letter-spacing:.06em; }
+  .pilar-cta   { font-size:.9rem; font-weight:700; color:var(--c-brand,#E1306C); }
 
   /* ===== SE\u00c7\u00d5ES POR PILAR ===== */
-  .pilar-section {
-    padding: 48px 0;
-    border-bottom: 1px solid var(--c-border,#e2e8f0);
-  }
-  .pilar-section:nth-child(even) { background: var(--c-surface,#fff); }
-  .pilar-section:nth-child(odd)  { background: var(--c-bg,#f8f9fa); }
-  .section-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 28px; gap: 16px; flex-wrap: wrap;
-  }
-  .section-header-left { display: flex; align-items: center; gap: 14px; }
-  .section-emoji { font-size: 2rem; line-height: 1; }
-  .section-label { display: block; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--c-brand,#E1306C); margin-bottom: 2px; }
-  .section-title { font-size: clamp(1.2rem,2.5vw,1.6rem); font-weight: 800; color: var(--c-text,#1a202c); margin: 0; }
-  .section-link {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: .88rem; font-weight: 700; color: var(--c-brand,#E1306C);
-    text-decoration: none; white-space: nowrap;
-    padding: 8px 18px; border: 2px solid var(--c-brand,#E1306C);
-    border-radius: 8px; transition: background .2s, color .2s;
-  }
-  .section-link:hover { background: var(--c-brand,#E1306C); color: #fff; }
+  .pilar-section { padding:48px 0; border-bottom:1px solid var(--c-border,#e2e8f0); background:var(--c-surface,#fff); }
+  .pilar-section-alt { background:var(--c-bg,#f8f9fa); }
+  .section-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; gap:16px; flex-wrap:wrap; }
+  .section-header-left { display:flex; align-items:center; gap:14px; }
+  .section-icon-wrap { width:44px; height:44px; border-radius:10px; background:rgba(225,48,108,.08); color:var(--c-brand,#E1306C); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .section-label { display:block; font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--c-brand,#E1306C); margin-bottom:2px; }
+  .section-title { font-size:clamp(1.2rem,2.5vw,1.6rem); font-weight:800; color:var(--c-text,#1a202c); margin:0; }
+  .section-link { display:inline-flex; align-items:center; gap:6px; font-size:.88rem; font-weight:700; color:var(--c-brand,#E1306C); text-decoration:none; white-space:nowrap; padding:8px 18px; border:2px solid var(--c-brand,#E1306C); border-radius:8px; transition:background .2s,color .2s; }
+  .section-link:hover { background:var(--c-brand,#E1306C); color:#fff; }
 </style>
