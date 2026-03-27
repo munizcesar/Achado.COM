@@ -40,30 +40,29 @@ const nomes: Record<string, string> = {
   automotivo: 'Automotivo',
 };
 
-// Conte\u00fado editorial exclusivo dos 3 pilares
 const editorial: Record<string, { intro: string; bullets: string[] }> = {
   beleza: {
-    intro: 'Perfumes, col\u00f4nias e body splash t\u00eam o poder de marcar momentos e definir identidades. Aqui voc\u00ea encontra an\u00e1lises honestas e independentes para escolher a fragr\u00e2ncia certa — sem cair em marketing vazio ou lan\u00e7amentos superfaturados.',
+    intro: 'Perfumes, col\u00f4nias e body splash t\u00eam o poder de marcar momentos e definir identidades. Aqui voc\u00ea encontra an\u00e1lises honestas e independentes para escolher a fragr\u00e2ncia certa \u2014 sem cair em marketing vazio ou lan\u00e7amentos superfaturados.',
     bullets: [
-      'Testamos dura\u00e7\u00e3o, proje\u00e7\u00e3o e fixidez de cada produto',
+      'Avaliamos dura\u00e7\u00e3o, proje\u00e7\u00e3o e fixidez de cada produto',
       'Comparamos op\u00e7\u00f5es premium e custo-benef\u00edcio',
-      'Links diretos nas melhores lojas com pre\u00e7os atualizados',
+      'Links diretos nas principais lojas com pre\u00e7os atualizados',
     ],
   },
   saude: {
-    intro: 'Suplementos e vitaminas inundam o mercado com promessas exageradas. Nossa curadoria filtra o que realmente funciona: analisamos f\u00f3rmulas, dosagens, procedência e custo por dose para que voc\u00ea invista com intelig\u00eancia na sua sa\u00fade.',
+    intro: 'Suplementos e vitaminas inundam o mercado com promessas exageradas. Nossa curadoria filtra o que realmente funciona: analisamos f\u00f3rmulas, dosagens, proced\u00eancia e custo por dose para que voc\u00ea invista com intelig\u00eancia na sua sa\u00fade.',
     bullets: [
-      'An\u00e1lise de ingredientes e evid\u00eancia cient\u00edfica',
-      'Compara\u00e7\u00e3o de marcas nacionais e importadas',
+      'Verificamos f\u00f3rmula, dosagem e proced\u00eancia de cada produto',
+      'Compara\u00e7\u00e3o entre marcas nacionais e importadas',
       'Foco em custo por dose, n\u00e3o apenas pre\u00e7o de embalagem',
     ],
   },
   casa: {
-    intro: 'Eletrodom\u00e9sticos e utilit\u00e1rios de qualidade transformam a rotina em casa. Avaliamos desempenho real, durabilidade e facilidade de uso para que cada compra traga valor de longo prazo — e n\u00e3o apenas no unboxing.',
+    intro: 'Eletrodom\u00e9sticos e utilit\u00e1rios de qualidade transformam a rotina em casa. Avaliamos desempenho real, durabilidade e facilidade de uso para que cada compra traga valor de longo prazo \u2014 e n\u00e3o apenas no unboxing.',
     bullets: [
-      'Testes de desempenho em condi\u00e7\u00f5es reais de uso',
-      'Aten\u00e7\u00e3o \u00e0 garantia e ao suporte p\u00f3s-venda',
-      'Destaque para op\u00e7\u00f5es que equilibram pre\u00e7o e qualidade',
+      'Avaliamos desempenho, consumo de energia e facilidade de uso',
+      'Comparamos custo-benef\u00edcio entre marcas e modelos similares',
+      'Indicamos onde comprar com melhor pre\u00e7o e menor risco',
     ],
   },
 };
@@ -181,7 +180,6 @@ const collectionSchema = {
 </Layout>
 
 <style>
-  /* ===== HERO ===== */
   .cat-hero {
     background: var(--c-surface, #fff);
     border-bottom: 1px solid var(--c-border, #e2e8f0);
@@ -218,7 +216,6 @@ const collectionSchema = {
     line-height: 1.7; margin: 0; max-width: 580px;
   }
 
-  /* Bullets de curadoria */
   .cat-hero-bullets {
     list-style: none; margin: 0; padding: 0;
     display: flex; flex-direction: column; gap: 12px;
@@ -236,7 +233,6 @@ const collectionSchema = {
     color: var(--c-brand, #E1306C); flex-shrink: 0; margin-top: 2px;
   }
 
-  /* ===== GRID ===== */
   .cat-grid-section { padding: 48px 0 80px; background: var(--c-bg, #f8f9fa); }
   .cat-grid {
     display: grid;
@@ -279,7 +275,6 @@ const collectionSchema = {
   .cat-card-read { font-size: .82rem; font-weight: 600; color: var(--c-brand, #E1306C); text-decoration: none; }
   .cat-card-read:hover { text-decoration: underline; }
 
-  /* Empty state */
   .cat-empty { text-align: center; padding: 80px 0; color: var(--c-text-muted, #718096); }
   .cat-empty p { font-size: 1.1rem; margin-bottom: 16px; }
   .cat-empty a { color: var(--c-brand, #E1306C); }
