@@ -14,6 +14,18 @@ function fmtDate(d) {
   return new Date(d).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
 }
 
+const pilares = [
+  { slug: 'beleza', label: 'Beleza & Fragr\u00e2ncias', emoji: '\u2728', desc: 'Perfumes, col\u00f4nias e body splash que valem cada centavo.' },
+  { slug: 'saude',  label: 'Sa\u00fade & Suplementos',  emoji: '\ud83d\udcaa', desc: 'Vitaminas, prote\u00ednas e suplementos testados e aprovados.' },
+  { slug: 'casa',   label: 'Casa & Bem-Estar',        emoji: '\ud83c\udfe0', desc: 'Eletrodom\u00e9sticos e utilit\u00e1rios que facilitam sua rotina.' },
+];
+
+const postsByPilar = pilares.map(p => ({
+  ...p,
+  posts: posts.filter(post => post.data.category === p.slug).slice(0, 3),
+  total: posts.filter(post => post.data.category === p.slug).length,
+}));
+
 const seen = new Set();
 const siloPosts = posts.filter(p => {
   const cat = p.data.category || 'Geral';
@@ -21,8 +33,6 @@ const siloPosts = posts.filter(p => {
   seen.add(cat);
   return true;
 });
-
-const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
 ---
 
 <Layout>
@@ -31,225 +41,78 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
   <section class="trust-banner">
     <div class="container">
       <div class="trust-inner">
-
         <div class="trust-copy">
           <span class="trust-badge">&#10003; Reviews independentes</span>
           <h2 class="trust-headline">Encontre o produto certo <em>antes</em> de comprar</h2>
           <p class="trust-sub">Curadoria honesta, comparativos reais e links diretos nas melhores lojas do Brasil.</p>
         </div>
-
         <div class="trust-actions">
           <form class="trust-search" action="/blog" method="get" role="search">
             <svg class="trust-search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
             <input type="search" name="q" placeholder="O que voc&#234; est&#225; procurando?" aria-label="Buscar produto" autocomplete="off" />
             <button type="submit" aria-label="Pesquisar">Buscar</button>
           </form>
-
           <div class="trust-cats">
-            <a href="/categorias/tech" class="trust-pill">Tech</a>
-            <a href="/categorias/automotivo" class="trust-pill">Automotivo</a>
-            <a href="/categorias/casa" class="trust-pill">Casa</a>
-            <a href="/categorias/saude" class="trust-pill">Sa&#250;de</a>
-            <a href="/categorias/beleza" class="trust-pill">Beleza</a>
+            <a href="/categorias/beleza"   class="trust-pill">Beleza</a>
+            <a href="/categorias/saude"    class="trust-pill">Sa&#250;de</a>
+            <a href="/categorias/casa"     class="trust-pill">Casa</a>
+            <a href="/categorias/tech"     class="trust-pill">Tech</a>
             <a href="/categorias/esportes" class="trust-pill">Esportes</a>
+            <a href="/categorias/automotivo" class="trust-pill">Automotivo</a>
             <a href="/blog" class="trust-pill trust-pill-all">
               Ver todos
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
           </div>
         </div>
-
       </div>
     </div>
   </section>
-
-  <style>
-    .trust-banner {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
-      padding: 48px 0 40px;
-      border-bottom: 3px solid #E1306C;
-    }
-    .trust-inner {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-    .trust-badge {
-      display: inline-block;
-      background: rgba(225,48,108,.15);
-      color: #f48fb1;
-      border: 1px solid rgba(225,48,108,.35);
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-bottom: 10px;
-    }
-    .trust-headline {
-      font-size: clamp(1.5rem, 4vw, 2.1rem);
-      font-weight: 800;
-      color: #fff;
-      line-height: 1.2;
-      margin: 0 0 10px;
-    }
-    .trust-headline em {
-      font-style: normal;
-      color: #E1306C;
-    }
-    .trust-sub {
-      color: #a0aec0;
-      font-size: .95rem;
-      margin: 0;
-      max-width: 520px;
-    }
-    .trust-search {
-      display: flex;
-      align-items: center;
-      background: rgba(255,255,255,.07);
-      border: 1.5px solid rgba(255,255,255,.15);
-      border-radius: 10px;
-      padding: 0 6px 0 14px;
-      gap: 8px;
-      max-width: 520px;
-      transition: border-color .2s;
-    }
-    .trust-search:focus-within {
-      border-color: #E1306C;
-      background: rgba(255,255,255,.1);
-    }
-    .trust-search-icon { color: #a0aec0; flex-shrink: 0; }
-    .trust-search input {
-      flex: 1;
-      background: none;
-      border: none;
-      outline: none;
-      color: #fff;
-      font-size: .95rem;
-      padding: 12px 0;
-      font-family: inherit;
-    }
-    .trust-search input::placeholder { color: #718096; }
-    .trust-search button {
-      background: #E1306C;
-      color: #fff;
-      border: none;
-      border-radius: 7px;
-      padding: 8px 18px;
-      font-size: .85rem;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-      font-family: inherit;
-      transition: background .2s;
-    }
-    .trust-search button:hover { background: #c2185b; }
-
-    /* ---- PILLS ---- */
-    .trust-cats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
-    }
-    .trust-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.12);
-      color: #e2e8f0;
-      font-size: .82rem;
-      font-weight: 500;
-      padding: 6px 16px;
-      border-radius: 20px;
-      text-decoration: none;
-      white-space: nowrap;
-      letter-spacing: .02em;
-      transition: background .18s, border-color .18s, color .18s, transform .15s;
-    }
-    .trust-pill:hover {
-      background: rgba(225,48,108,.18);
-      border-color: rgba(225,48,108,.5);
-      color: #fff;
-      transform: translateY(-1px);
-    }
-    .trust-pill-all {
-      background: rgba(225,48,108,.12);
-      border-color: rgba(225,48,108,.3);
-      color: #f48fb1;
-      font-weight: 700;
-    }
-    .trust-pill-all:hover {
-      background: #E1306C;
-      border-color: #E1306C;
-      color: #fff;
-      transform: translateY(-1px);
-    }
-
-    @media (min-width: 768px) {
-      .trust-banner { padding: 56px 0 48px; }
-      .trust-inner { flex-direction: row; align-items: center; justify-content: space-between; gap: 40px; }
-      .trust-actions { flex-shrink: 0; width: 100%; max-width: 480px; }
-    }
-  </style>
   <!-- =================== /TRUST BANNER =================== -->
 
 
-  {siloPosts.length > 0 ? (
-    <section class="hero" id="heroSection">
-      <div class="container">
-        <div class="hero-grid">
-
-          <article class="hero-main" id="heroMain" style="opacity:0; transition: opacity 0.45s ease;">
-            <a id="heroImgLink" href="#" class="hero-main-img-wrap">
-              <img id="heroImg" src="" alt="" class="hero-main-img" width="820" height="547"
-                loading="eager" fetchpriority="high" decoding="sync" />
-            </a>
-            <span id="heroCat" class="hero-cat"></span>
-            <h1 class="hero-title"><a id="heroTitleLink" href="#"></a></h1>
-            <p id="heroExcerpt" class="hero-excerpt"></p>
-            <a id="heroBtn" href="#" class="btn-read-full">
-              Ler an&#225;lise completa
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </article>
-
-          <aside class="hero-sidebar">
-            <div class="hero-sidebar-header">Outras an&#225;lises</div>
-            <div id="sidebarPosts"></div>
-          </aside>
-
-        </div>
+  <!-- ===================== CARDS DE PILARES ===================== -->
+  <section class="pilares-section">
+    <div class="container">
+      <div class="pilares-header">
+        <h2 class="pilares-title">Explore por categoria</h2>
+        <p class="pilares-sub">Escolha seu tema e encontre o melhor produto</p>
       </div>
-    </section>
-  ) : (
-    <section class="section section-white">
-      <div class="container">
-        <div class="empty-state">
-          <h2>Em breve: reviews e guias de compra</h2>
-          <p>Estamos preparando an&#225;lises completas para voc&#234;.</p>
-        </div>
+      <div class="pilares-grid">
+        {postsByPilar.map(p => (
+          <a href={`/categorias/${p.slug}`} class="pilar-card">
+            <span class="pilar-emoji">{p.emoji}</span>
+            <h3 class="pilar-label">{p.label}</h3>
+            <p class="pilar-desc">{p.desc}</p>
+            <span class="pilar-count">{p.total} reviews</span>
+            <span class="pilar-cta">Ver todos &#8594;</span>
+          </a>
+        ))}
       </div>
-    </section>
-  )}
+    </div>
+  </section>
+  <!-- =================== /CARDS DE PILARES =================== -->
 
-  {gridPosts.length > 0 && (
-    <section class="section section-gray">
+
+  <!-- ===================== SE\u00c7\u00d5ES POR PILAR ===================== -->
+  {postsByPilar.map(pilar => pilar.posts.length > 0 && (
+    <section class="pilar-section">
       <div class="container">
         <div class="section-header">
-          <div>
-            <span class="section-label">Mais Categorias</span>
-            <h2 class="section-title">Explore por assunto</h2>
+          <div class="section-header-left">
+            <span class="section-emoji">{pilar.emoji}</span>
+            <div>
+              <span class="section-label">Categoria</span>
+              <h2 class="section-title">{pilar.label}</h2>
+            </div>
           </div>
-          <a href="/blog" class="section-link">
-            Ver todos
+          <a href={`/categorias/${pilar.slug}`} class="section-link">
+            Ver todos ({pilar.total})
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
         <div class="post-grid">
-          {gridPosts.map(post => (
+          {pilar.posts.map(post => (
             <article class="post-card">
               <a href={`/blog/${post.slug}`} class="post-card-img-wrap">
                 <img src={post.data.image || '/placeholder.webp'} alt={post.data.title}
@@ -274,7 +137,44 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
         </div>
       </div>
     </section>
+  ))}
+  <!-- =================== /SE\u00c7\u00d5ES POR PILAR =================== -->
+
+
+  <!-- ===================== HERO ROTATIVO ===================== -->
+  {siloPosts.length > 0 && (
+    <section class="hero" id="heroSection">
+      <div class="container">
+        <div class="section-header" style="margin-bottom:24px;">
+          <div>
+            <span class="section-label">Destaques</span>
+            <h2 class="section-title">An\u00e1lise em destaque</h2>
+          </div>
+        </div>
+        <div class="hero-grid">
+          <article class="hero-main" id="heroMain" style="opacity:0; transition: opacity 0.45s ease;">
+            <a id="heroImgLink" href="#" class="hero-main-img-wrap">
+              <img id="heroImg" src="" alt="" class="hero-main-img" width="820" height="547"
+                loading="lazy" decoding="async" />
+            </a>
+            <span id="heroCat" class="hero-cat"></span>
+            <h2 class="hero-title"><a id="heroTitleLink" href="#"></a></h2>
+            <p id="heroExcerpt" class="hero-excerpt"></p>
+            <a id="heroBtn" href="#" class="btn-read-full">
+              Ler an&#225;lise completa
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+          <aside class="hero-sidebar">
+            <div class="hero-sidebar-header">Outras an&#225;lises</div>
+            <div id="sidebarPosts"></div>
+          </aside>
+        </div>
+      </div>
+    </section>
   )}
+  <!-- =================== /HERO ROTATIVO =================== -->
+
 
   <div id="postsPool" style="display:none" aria-hidden="true">
     {siloPosts.map((p, i) => (
@@ -293,7 +193,6 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
   <script>
     const container = document.getElementById('postsPool');
     const items = container ? Array.from(container.children) : [];
-
     const pool = items.map(el => ({
       slug:  el.dataset.slug,
       title: el.dataset.title,
@@ -302,47 +201,145 @@ const gridPosts = posts.filter(p => !siloPosts.includes(p)).slice(0, 6);
       img:   el.dataset.img,
       url:   el.dataset.url,
     }));
-
     if (pool.length === 0) {
       document.getElementById('heroSection')?.remove();
     } else {
       const idx     = Math.floor(Math.random() * pool.length);
       const hero    = pool[idx];
       const sidebar = [...pool.slice(0, idx), ...pool.slice(idx + 1)].slice(0, 4);
-
-      const heroMain    = document.getElementById('heroMain');
-      const imgLink     = document.getElementById('heroImgLink');
-      const img         = document.getElementById('heroImg');
-      const cat         = document.getElementById('heroCat');
-      const titleLink   = document.getElementById('heroTitleLink');
-      const excerpt     = document.getElementById('heroExcerpt');
-      const btn         = document.getElementById('heroBtn');
-
-      imgLink.href          = hero.url;
-      img.src               = hero.img;
-      img.alt               = hero.title;
-      cat.textContent       = hero.cat;
-      titleLink.href        = hero.url;
-      titleLink.textContent = hero.title;
-      excerpt.textContent   = hero.desc;
-      btn.href              = hero.url;
-
+      const heroMain  = document.getElementById('heroMain');
+      const imgLink   = document.getElementById('heroImgLink');
+      const img       = document.getElementById('heroImg');
+      const cat       = document.getElementById('heroCat');
+      const titleLink = document.getElementById('heroTitleLink');
+      const excerpt   = document.getElementById('heroExcerpt');
+      const btn       = document.getElementById('heroBtn');
+      imgLink.href = hero.url; img.src = hero.img; img.alt = hero.title;
+      cat.textContent = hero.cat; titleLink.href = hero.url;
+      titleLink.textContent = hero.title; excerpt.textContent = hero.desc; btn.href = hero.url;
       requestAnimationFrame(() => { heroMain.style.opacity = '1'; });
-
       const sidebarEl = document.getElementById('sidebarPosts');
       sidebar.forEach(post => {
         const a = document.createElement('a');
-        a.href = post.url;
-        a.className = 'sidebar-post';
-        a.innerHTML = `
-          <img src="${post.img}" alt="" class="sidebar-post-img" loading="lazy" width="64" height="48" />
-          <div>
-            <span class="sidebar-post-cat">${post.cat}</span>
-            <span class="sidebar-post-title">${post.title}</span>
-          </div>`;
+        a.href = post.url; a.className = 'sidebar-post';
+        a.innerHTML = `<img src="${post.img}" alt="" class="sidebar-post-img" loading="lazy" width="64" height="48" /><div><span class="sidebar-post-cat">${post.cat}</span><span class="sidebar-post-title">${post.title}</span></div>`;
         sidebarEl.appendChild(a);
       });
     }
   </script>
 
 </Layout>
+
+<style>
+  /* ===== TRUST BANNER ===== */
+  .trust-banner {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+    padding: 48px 0 40px;
+    border-bottom: 3px solid var(--c-brand, #E1306C);
+  }
+  .trust-inner { display: flex; flex-direction: column; gap: 28px; }
+  .trust-badge {
+    display: inline-block;
+    background: rgba(225,48,108,.15); color: #f48fb1;
+    border: 1px solid rgba(225,48,108,.35);
+    font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 10px;
+  }
+  .trust-headline { font-size: clamp(1.5rem,4vw,2.1rem); font-weight: 800; color: #fff; line-height: 1.2; margin: 0 0 10px; }
+  .trust-headline em { font-style: normal; color: #E1306C; }
+  .trust-sub { color: #a0aec0; font-size: .95rem; margin: 0; max-width: 520px; }
+  .trust-search {
+    display: flex; align-items: center;
+    background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.15);
+    border-radius: 10px; padding: 0 6px 0 14px; gap: 8px; max-width: 520px; transition: border-color .2s;
+  }
+  .trust-search:focus-within { border-color: #E1306C; background: rgba(255,255,255,.1); }
+  .trust-search-icon { color: #a0aec0; flex-shrink: 0; }
+  .trust-search input { flex:1; background:none; border:none; outline:none; color:#fff; font-size:.95rem; padding:12px 0; font-family:inherit; }
+  .trust-search input::placeholder { color: #718096; }
+  .trust-search button {
+    background: #E1306C; color: #fff; border: none; border-radius: 7px;
+    padding: 8px 18px; font-size: .85rem; font-weight: 700; cursor: pointer;
+    white-space: nowrap; font-family: inherit; transition: background .2s;
+  }
+  .trust-search button:hover { background: #c2185b; }
+  .trust-cats { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .trust-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+    color: #e2e8f0; font-size: .82rem; font-weight: 500; padding: 6px 16px;
+    border-radius: 20px; text-decoration: none; white-space: nowrap; letter-spacing: .02em;
+    transition: background .18s, border-color .18s, color .18s, transform .15s;
+  }
+  .trust-pill:hover { background: rgba(225,48,108,.18); border-color: rgba(225,48,108,.5); color: #fff; transform: translateY(-1px); }
+  .trust-pill-all { background: rgba(225,48,108,.12); border-color: rgba(225,48,108,.3); color: #f48fb1; font-weight: 700; }
+  .trust-pill-all:hover { background: #E1306C; border-color: #E1306C; color: #fff; transform: translateY(-1px); }
+  @media (min-width: 768px) {
+    .trust-banner { padding: 56px 0 48px; }
+    .trust-inner { flex-direction: row; align-items: center; justify-content: space-between; gap: 40px; }
+    .trust-actions { flex-shrink: 0; width: 100%; max-width: 480px; }
+  }
+
+  /* ===== CARDS DE PILARES ===== */
+  .pilares-section {
+    background: var(--c-bg, #f8f9fa);
+    padding: 56px 0 48px;
+    border-bottom: 1px solid var(--c-border, #e2e8f0);
+  }
+  .pilares-header { text-align: center; margin-bottom: 36px; }
+  .pilares-title { font-size: clamp(1.4rem,3vw,1.9rem); font-weight: 800; color: var(--c-text,#1a202c); margin: 0 0 8px; }
+  .pilares-sub { color: var(--c-text-sub,#4a5568); font-size: .95rem; margin: 0; }
+  .pilares-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .pilar-card {
+    display: flex; flex-direction: column; gap: 8px;
+    background: var(--c-surface,#fff);
+    border: 2px solid var(--c-border,#e2e8f0);
+    border-radius: 16px;
+    padding: 32px 28px;
+    text-decoration: none;
+    transition: border-color .2s, box-shadow .2s, transform .2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .pilar-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(225,48,108,.04) 0%, transparent 60%);
+    opacity: 0; transition: opacity .2s;
+  }
+  .pilar-card:hover { border-color: var(--c-brand,#E1306C); box-shadow: 0 8px 32px rgba(225,48,108,.12); transform: translateY(-3px); }
+  .pilar-card:hover::before { opacity: 1; }
+  .pilar-emoji { font-size: 2.2rem; line-height: 1; margin-bottom: 4px; }
+  .pilar-label { font-size: 1.15rem; font-weight: 800; color: var(--c-text,#1a202c); margin: 0; }
+  .pilar-desc { font-size: .88rem; color: var(--c-text-sub,#4a5568); margin: 0; line-height: 1.5; flex: 1; }
+  .pilar-count { font-size: .78rem; font-weight: 700; color: var(--c-brand,#E1306C); text-transform: uppercase; letter-spacing: .06em; }
+  .pilar-cta { font-size: .9rem; font-weight: 700; color: var(--c-brand,#E1306C); margin-top: 4px; }
+
+  /* ===== SE\u00c7\u00d5ES POR PILAR ===== */
+  .pilar-section {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--c-border,#e2e8f0);
+  }
+  .pilar-section:nth-child(even) { background: var(--c-surface,#fff); }
+  .pilar-section:nth-child(odd)  { background: var(--c-bg,#f8f9fa); }
+  .section-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; gap: 16px; flex-wrap: wrap;
+  }
+  .section-header-left { display: flex; align-items: center; gap: 14px; }
+  .section-emoji { font-size: 2rem; line-height: 1; }
+  .section-label { display: block; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--c-brand,#E1306C); margin-bottom: 2px; }
+  .section-title { font-size: clamp(1.2rem,2.5vw,1.6rem); font-weight: 800; color: var(--c-text,#1a202c); margin: 0; }
+  .section-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: .88rem; font-weight: 700; color: var(--c-brand,#E1306C);
+    text-decoration: none; white-space: nowrap;
+    padding: 8px 18px; border: 2px solid var(--c-brand,#E1306C);
+    border-radius: 8px; transition: background .2s, color .2s;
+  }
+  .section-link:hover { background: var(--c-brand,#E1306C); color: #fff; }
+</style>
