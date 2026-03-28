@@ -1,5 +1,5 @@
 {
-  "total": 267,
+  "total": 270,
   "mes_atual": 2,
   "logs": [
     {
@@ -445,6 +445,11 @@
     {
       "data": "2026-03-28T00:22:31.743Z",
       "produto": "Máscara De Reconstrução Profunda Para Cabelos Dani",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-28T00:44:25.961Z",
+      "produto": "Shampoo Antiqueda Fortificante Com Células Nativas",
       "consultas": 3
     }
   ]
