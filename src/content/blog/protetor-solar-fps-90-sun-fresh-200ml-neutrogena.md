@@ -2,9 +2,9 @@
 title: "Protetor Solar FPS 90 Sun Fresh 200ml Neutrogena — Vale a Pena?"
 description: "Review completo do Protetor Solar FPS 90 Sun Fresh 200ml da Neutrogena: proteção UVA/UVB, textura leve, resistente ao suor e ideal para o dia a dia. Confira!"
 date: 2026-03-28
-category: saude
+category: beleza
 image: /images/posts/protetor-solar-fps-90-sun-fresh-200ml-neutrogena.jpg
-tags: [saude, protetor-solar, skincare, neutrogena, cuidados-com-a-pele]
+tags: [beleza, protetor-solar, skincare, neutrogena, cuidados-com-a-pele]
 draft: false
 affiliateUrl: "https://meli.la/1fTjTv7"
 productImage: /images/posts/protetor-solar-fps-90-sun-fresh-200ml-neutrogena.jpg
