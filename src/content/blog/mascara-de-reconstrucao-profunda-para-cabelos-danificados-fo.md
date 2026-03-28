@@ -2,9 +2,9 @@
 title: "Máscara De Reconstrução Profunda Para Cabelos Danificados, Força E Elasticidade Résistance Thérapiste Kérastase 200ml"
 description: "Conheça o Máscara De Reconstrução Profunda Para Cabelos Danificados, Força E Elasticidade Résistance Thérapiste Kérastase 200ml. Disponível no Mercado Livr"
 date: 2026-03-28
-category: Casa
+category: beleza
 image: /images/posts/mascara-de-reconstrucao-profunda-para-cabelos-danificados-fo.jpg
-tags: [casa]
+tags: [beleza, cabelo, mascara-capilar, kerastase, reconstrucao]
 draft: false
 affiliateUrl: "https://meli.la/2RhDQ3W"
 productImage: /images/posts/mascara-de-reconstrucao-profunda-para-cabelos-danificados-fo.jpg
