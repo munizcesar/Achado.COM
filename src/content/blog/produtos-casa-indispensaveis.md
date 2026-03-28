@@ -1,7 +1,7 @@
 ---
 title: "5 Produtos para Casa que Valem Muito o Investimento"
 description: "Itens que tornam a casa mais organizada, confortável e eficiente. Produtos práticos com excelente custo-benefício para o lar."
-pubDate: 2026-03-28
+date: 2026-03-28
 category: "dicas"
 tags: ["casa", "organizacao", "utilidades domesticas"]
 image: "/images/blog/produtos-casa-indispensaveis.jpg"

@@ -1,7 +1,7 @@
 ---
 title: "5 Produtos de Beleza que Todo Mundo Deveria Ter em Casa"
 description: "Descubra os produtos de beleza indispensáveis para cuidar da pele, cabelo e visual sem gastar uma fortuna. Os melhores custo-benefício selecionados."
-pubDate: 2026-03-28
+date: 2026-03-28
 category: "dicas"
 tags: ["beleza", "skincare", "cuidados pessoais"]
 image: "/images/blog/produtos-beleza-essenciais.jpg"

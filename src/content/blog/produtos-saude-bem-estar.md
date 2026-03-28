@@ -1,7 +1,7 @@
 ---
 title: "5 Produtos de Saúde que Fazem Diferença no Dia a Dia"
 description: "Pequenos investimentos em saúde e bem-estar que têm grande impacto na qualidade de vida. Confira os produtos mais recomendados."
-pubDate: 2026-03-28
+date: 2026-03-28
 category: "dicas"
 tags: ["saude", "bem-estar", "qualidade de vida"]
 image: "/images/blog/produtos-saude-bem-estar.jpg"
