@@ -1,5 +1,5 @@
 {
-  "total": 270,
+  "total": 273,
   "mes_atual": 2,
   "logs": [
     {
@@ -449,6 +449,11 @@
     },
     {
       "data": "2026-03-28T00:44:25.961Z",
+      "produto": "Shampoo Antiqueda Fortificante Com Células Nativas",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-28T00:45:18.726Z",
       "produto": "Shampoo Antiqueda Fortificante Com Células Nativas",
       "consultas": 3
     }
