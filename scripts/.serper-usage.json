@@ -1,5 +1,5 @@
 {
-  "total": 258,
+  "total": 261,
   "mes_atual": 2,
   "logs": [
     {
@@ -430,6 +430,11 @@
     {
       "data": "2026-03-27T23:59:01.524Z",
       "produto": "Esfoliante Facial Purified Skin 100g Neutrogena No",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-28T00:03:32.581Z",
+      "produto": "Protetor Solar Fps 90 Sun Fresh 200ml Neutrogena",
       "consultas": 3
     }
   ]
