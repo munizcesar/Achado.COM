@@ -1,5 +1,5 @@
 {
-  "total": 273,
+  "total": 276,
   "mes_atual": 2,
   "logs": [
     {
@@ -455,6 +455,11 @@
     {
       "data": "2026-03-28T00:45:18.726Z",
       "produto": "Shampoo Antiqueda Fortificante Com Células Nativas",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-28T01:03:53.448Z",
+      "produto": "Poltrona Cadeira Do Papai Com Encosto Macio Reclin",
       "consultas": 3
     }
   ]
