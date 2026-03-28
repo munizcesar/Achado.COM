@@ -2,9 +2,9 @@
 title: "Esfoliante Facial Purified Skin 100g Neutrogena — Review Completo"
 description: "Review do Esfoliante Facial Purified Skin 100g Neutrogena: ideal para pele normal a oleosa, elimina impurezas, desobstrói poros e pode ser usado dia e noite. Confira!"
 date: 2026-03-27
-category: saude
+category: beleza
 image: /images/posts/esfoliante-facial-purified-skin-100g-neutrogena-normal-a-ole.jpg
-tags: [saude, skincare, esfoliante, neutrogena, cuidados-com-a-pele]
+tags: [beleza, skincare, esfoliante, neutrogena, cuidados-com-a-pele]
 draft: false
 affiliateUrl: "https://meli.la/1GZhoru"
 productImage: /images/posts/esfoliante-facial-purified-skin-100g-neutrogena-normal-a-ole.jpg
@@ -19,7 +19,7 @@ O Purified Skin é formulado para **pele normal a oleosa** e pode ser usado tant
 - **Tipo de pele**: normal a oleosa
 - **Frequência de uso**: diário (dia e noite)
 - **Ação principal**: esfoliação, limpeza profunda e controle de oleosidade
-- **Contéudo**: 100g
+- **Conteúdo**: 100g
 
 ## Como usar corretamente
 
@@ -27,7 +27,7 @@ Aplique uma pequena quantidade no rosto úmido, massageie suavemente com movimen
 
 ## O que compradores destacam
 
-As avaliações dos compradores são bastante positivas em pontos consistentes: a **textura leve**, o **aroma agradável**, a facilidade de enxágue e, principalmente, o resultado visível após algumas semanas de uso continuado. Quem tem pele oleosa relata redução na apariência dos poros e menos cravos com o uso regular.
+As avaliações dos compradores são bastante positivas em pontos consistentes: a **textura leve**, o **aroma agradável**, a facilidade de enxágue e, principalmente, o resultado visível após algumas semanas de uso continuado. Quem tem pele oleosa relata redução na aparência dos poros e menos cravos com o uso regular.
 
 > *"Produto incrível! Minha pele ficou muito mais lisa e os poros diminuíram visivelmente. Uso toda noite e já comprei três vezes."* — avaliação de comprador
 
