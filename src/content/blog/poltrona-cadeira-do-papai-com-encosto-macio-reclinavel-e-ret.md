@@ -16,7 +16,7 @@ Se você está montando uma sala de descanso, um cantinho para ler, ou precisa d
 
 A chamada **"Cadeira do Papai"** é um estilo de poltrona de uso doméstico que se popularizou no Brasil pela combinação de três funções: **reclinamento do encosto**, **extensão do repousor de pés (retrátil)** e **estofamento macio** para longas horas sentado. O design é voltado para quem passa muito tempo sentado lendo, assistindo TV, descansando ou amamentando.
 
-Este modelo vem revestido em **Corino** — couro sintético de alta durabilidade — o que facilita a limpeza, resistênte à umidade e ao desgaste do uso diário, sendo especialmente vantajoso em casas com crianças ou animais domésticos.
+Este modelo vem revestido em **Corino** — couro sintético de alta durabilidade — o que facilita a limpeza, resistente à umidade e ao desgaste do uso diário, sendo especialmente vantajoso em casas com crianças ou animais domésticos.
 
 ## Por que Corino e não Tecido?
 
@@ -78,9 +78,9 @@ Para garantir longa vida útil ao produto:
 ✅ Ótima escolha para **casas com bebês ou crianças** — o corino facilita muito a limpeza
 ✅ Preço acessível frente a modelos importados com as mesmas funções
 ✅ Design neutro que combina com diversos estilos de decoração
-✅ Revestimento duravel que conserva o visual novo por mais tempo
+✅ Revestimento durável que conserva o visual novo por mais tempo
 
-[🛒 Ver cores disponíveis, medidas e avaliações no Mercado Livre](https://meli.la/1uvVSAb)
+[🛒 Ver preço e avaliações no Mercado Livre](https://meli.la/1uvVSAb)
 
 ---
 
