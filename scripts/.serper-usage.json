@@ -1,5 +1,5 @@
 {
-  "total": 261,
+  "total": 264,
   "mes_atual": 2,
   "logs": [
     {
@@ -435,6 +435,11 @@
     {
       "data": "2026-03-28T00:03:32.581Z",
       "produto": "Protetor Solar Fps 90 Sun Fresh 200ml Neutrogena",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-28T00:20:41.464Z",
+      "produto": "Máscara De Reconstrução Profunda Para Cabelos Dani",
       "consultas": 3
     }
   ]
