@@ -1,5 +1,5 @@
 {
-  "total": 279,
+  "total": 282,
   "mes_atual": 2,
   "logs": [
     {
@@ -465,6 +465,11 @@
     {
       "data": "2026-03-29T22:06:35.738Z",
       "produto": "Armani Beauty Perfume Feminino My Way Eau De Parfu",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-29T22:07:28.704Z",
+      "produto": "Perfume Carolina Herrera Bad Boy Le Parfum Eau De ",
       "consultas": 3
     }
   ]
