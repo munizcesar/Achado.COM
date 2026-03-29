@@ -2,7 +2,7 @@ const postsData = [
   {
     "titulo": "🏠 5 Produtos para Casa que Valem Muito o Investimento",
     "resumo": "Descubra os produtos para casa que realmente fazem diferença no dia a dia. Praticidade, qualidade e custo-benefício imbatíveis para o seu lar.",
-    "imagem": "images/imagesposts/Bancada-de-cozinha-iluminada-e-acolhedora.jpg",
+    "imagem": "images/imagesposts/Bancada-de-cozinha-iluminada-e-acolhedora.webp",
     "link": "blog/5-produtos-para-casa-que-valem-o-investimento.html",
     "linkProduto": "https://www.mercadolivre.com.br/social/muc1576372",
     "chamada": "Ver Produtos",
@@ -12,7 +12,7 @@ const postsData = [
   {
     "titulo": "💄 5 Produtos de Beleza que Todo Mundo Deveria Ter em Casa",
     "resumo": "Selecionamos os produtos de skincare e beleza essenciais para uma rotina de cuidados eficiente. Sérum, protetor solar e hidratante que fazem toda a diferença.",
-    "imagem": "images/imagesposts/Produtos-de-skincare-e-folhagem-verde-2.jpg",
+    "imagem": "images/imagesposts/Produtos-de-skincare-e-folhagem-verde-2.webp",
     "link": "blog/5-produtos-de-beleza-essenciais.html",
     "linkProduto": "https://www.mercadolivre.com.br/social/muc1576372",
     "chamada": "Ver Produtos",
@@ -22,7 +22,7 @@ const postsData = [
   {
     "titulo": "💊 5 Produtos de Saúde que Fazem Diferença no Dia a Dia",
     "resumo": "Conheça os produtos de saúde mais recomendados para ter em casa. De vitaminas a termômetros digitais, itens que garantem bem-estar para toda a família.",
-    "imagem": "images/imagesposts/Termometro-digital-e-suplemento-vitaminico-3.jpg",
+    "imagem": "images/imagesposts/Termometro-digital-e-suplemento-vitaminico-3.webp",
     "link": "blog/5-produtos-de-saude-essenciais.html",
     "linkProduto": "https://www.mercadolivre.com.br/social/muc1576372",
     "chamada": "Ver Produtos",
@@ -102,7 +102,7 @@ const postsData = [
   {
     "titulo": "💪 Whey Pro Max Titanium: O Guia Definitivo para sua Evolução",
     "resumo": "Descubra por que o Whey Pro é o aliado perfeito para ganhar massa magra e acelerar sua recuperação muscular com o melhor custo-benefício.",
-    "imagem": "images/imagesposts/whey-pro-max-titanium-premium.jpg",
+    "imagem": "images/imagesposts/whey-pro-max-titanium-premium.webp",
     "link": "blog/whey-pro-max-titanium.html",
     "linkProduto": "https://mercadolivre.com/sec/2UuxwxW",
     "chamada": "Ler Materia Completa",
@@ -112,7 +112,7 @@ const postsData = [
   {
     "titulo": "🛡️ Mercado Livre é Seguro? Veja como comprar com confiança",
     "resumo": "Descubra por que a Compra Garantida e a entrega FULL fazem deste marketplace o lugar favorito.",
-    "imagem": "images/imagesposts/seguranca-ml.jpg",
+    "imagem": "images/imagesposts/seguranca-ml.webp",
     "link": "blog/guia-seguranca-mercado-livre.html",
     "linkProduto": "https://www.mercadolivre.com.br/social/muc1576372",
     "chamada": "Ver Guia de Seguranca",
@@ -122,7 +122,7 @@ const postsData = [
   {
     "titulo": "📱 Comparativo: Poco X7 Pro vs Redmi Note 14 Pro+ vs Xiaomi 15T Pro e 15T",
     "resumo": "Os 4 últimos lançamentos Xiaomi e Poco comparados! Descubra qual smartphone é perfeito para você: gamer, fotógrafo ou quem busca custo-benefício.",
-    "imagem": "images/imagesposts/produtos_xiaomi.jpg",
+    "imagem": "images/imagesposts/produtos_xiaomi.webp",
     "link": "blog/comparativo-xiaomi-poco-2026.html",
     "linkProduto": "https://mercadolivre.com/sec/2r9w3CA",
     "chamada": "Ver Comparativo Completo",

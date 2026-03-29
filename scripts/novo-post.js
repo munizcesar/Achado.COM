@@ -303,8 +303,8 @@ async function fetchMLScraping(inputUrl, itemId) {
   
   if (imgMatch) {
     imageUrl = imgMatch[1]
-      .replace(/-[A-Z]\.(?:jpg|webp)$/, '-F.jpg')
-      .replace(/\.webp$/, '.jpg');
+      .replace(/-[A-Z]\.(?:jpg|webp)$/, '-F.webp')
+      .replace(/\.webp$/, '.webp');
   }
 
   // Specs básicos
@@ -349,7 +349,7 @@ async function fetchML(inputUrl) {
 
   const pics = item.pictures || [];
   const imageUrl = pics.length
-    ? (pics[0].url || pics[0].secure_url || '').replace(/-[A-Z]\.jpg$/, '-F.jpg')
+    ? (pics[0].url || pics[0].secure_url || '').replace(/-[A-Z]\.webp$/, '-F.webp')
     : '';
 
   const specs = (item.attributes || [])
@@ -389,10 +389,10 @@ async function fetchAmazon(inputUrl) {
 
   // Tenta vários padrões de imagem
   const imgM =
-    body.match(/"hiRes":"(https:\/\/[^"]+\.jpg)"/) ||
-    body.match(/"large":"(https:\/\/[^"]+\.jpg)"/) ||
+    body.match(/"hiRes":"(https:\/\/[^"]+\.webp)"/) ||
+    body.match(/"large":"(https:\/\/[^"]+\.webp)"/) ||
     body.match(/id="landingImage"[^>]+src="([^"]+)"/) ||
-    body.match(/data-old-hires="(https:\/\/[^"]+\.jpg)"/);
+    body.match(/data-old-hires="(https:\/\/[^"]+\.webp)"/);
   const imageUrl = imgM ? imgM[1] : '';
 
   // Specs dos bullet points
@@ -613,7 +613,7 @@ async function main() {
   const imgDir  = path.join(process.cwd(), 'public', 'images', 'posts');
   if (!fs.existsSync(imgDir)) fs.mkdirSync(imgDir, { recursive: true });
 
-  let imageFile = `${slug}.jpg`;
+  let imageFile = `${slug}.webp`;
   const imgPath = path.join(imgDir, imageFile);
 
   if (product.imageUrl) {
@@ -623,11 +623,11 @@ async function main() {
       console.log('✅');
     } catch (err) {
       console.warn('⚠️  Não foi possível baixar a imagem:', err.message);
-      imageFile = 'placeholder.jpg';
+      imageFile = 'placeholder.webp';
     }
   } else {
     console.warn('⚠️  Nenhuma imagem encontrada, usando placeholder.');
-    imageFile = 'placeholder.jpg';
+    imageFile = 'placeholder.webp';
   }
 
   // 3. Gera .md com IA
