@@ -12,7 +12,7 @@ const postsData = [
   {
     "titulo": "💄 5 Produtos de Beleza que Todo Mundo Deveria Ter em Casa",
     "resumo": "Selecionamos os produtos de skincare e beleza essenciais para uma rotina de cuidados eficiente. Sérum, protetor solar e hidratante que fazem toda a diferença.",
-    "imagem": "images/imagesposts/Produtos-de-skincare-e-folhagem-verde-3.jpg",
+    "imagem": "images/imagesposts/Produtos-de-skincare-e-folhagem-verde-2.jpg",
     "link": "blog/5-produtos-de-beleza-essenciais.html",
     "linkProduto": "https://www.mercadolivre.com.br/social/muc1576372",
     "chamada": "Ver Produtos",
@@ -22,7 +22,7 @@ const postsData = [
   {
     "titulo": "💊 5 Produtos de Saúde que Fazem Diferença no Dia a Dia",
     "resumo": "Conheça os produtos de saúde mais recomendados para ter em casa. De vitaminas a termômetros digitais, itens que garantem bem-estar para toda a família.",
-    "imagem": "images/imagesposts/Termometro-digital-e-suplemento-vitaminico-2.jpg",
+    "imagem": "images/imagesposts/Termometro-digital-e-suplemento-vitaminico-3.jpg",
     "link": "blog/5-produtos-de-saude-essenciais.html",
     "linkProduto": "https://www.mercadolivre.com.br/social/muc1576372",
     "chamada": "Ver Produtos",
