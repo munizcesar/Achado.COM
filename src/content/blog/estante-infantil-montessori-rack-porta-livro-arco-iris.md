@@ -3,11 +3,11 @@ title: "Estante Infantil Montessori Rack Porta-Livros Arco-Íris: Organização,
 description: "A Estante Infantil Montessori Rack Porta-Livros Arco-Íris organiza o quarto infantil com estilo, incentiva a leitura autônoma e o desenvolvimento da criança. Confira por que ela vale cada centavo."
 date: 2026-03-29
 category: casa
-image: /images/posts/estante-infantil-montessori-rack-porta-livro-arco-iris.webp
+image: /images/posts/estante-infantil-montessori-rack-porta-livro-arco-iris.jpg
 tags: [casa]
 draft: false
 affiliateUrl: "https://meli.la/2GPJVhW"
-productImage: /images/posts/estante-infantil-montessori-rack-porta-livro-arco-iris.webp
+productImage: /images/posts/estante-infantil-montessori-rack-porta-livro-arco-iris.jpg
 ---
 
 A **Estante Infantil Montessori Rack Porta-Livros Arco-Íris** é uma das melhores escolhas para quem quer transformar o quarto da criança em um espaço organizado, bonito e que realmente estimula o amor pelos livros. Com design acessível e colorido, ela une funcionalidade e decoração de forma que poucas peças de mobília conseguem.
