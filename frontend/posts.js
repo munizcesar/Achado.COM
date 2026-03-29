@@ -1,5 +1,35 @@
 const postsData = [
   {
+    "titulo": "🏠 5 Produtos para Casa que Valem Muito o Investimento",
+    "resumo": "Descubra os produtos para casa que realmente fazem diferença no dia a dia. Praticidade, qualidade e custo-benefício imbatíveis para o seu lar.",
+    "imagem": "images/imagesposts/Bancada-de-cozinha-iluminada-e-acolhedora.jpg",
+    "link": "blog/5-produtos-para-casa-que-valem-o-investimento.html",
+    "linkProduto": "https://www.mercadolivre.com.br/social/muc1576372",
+    "chamada": "Ver Produtos",
+    "categoria": "dicas",
+    "keywords": "produtos para casa lar utilidades domesticas cozinha ar fryer fritadeira airfryer bancada decoracao investimento custo beneficio pratico utilidades"
+  },
+  {
+    "titulo": "💄 5 Produtos de Beleza que Todo Mundo Deveria Ter em Casa",
+    "resumo": "Selecionamos os produtos de skincare e beleza essenciais para uma rotina de cuidados eficiente. Sérum, protetor solar e hidratante que fazem toda a diferença.",
+    "imagem": "images/imagesposts/Produtos-de-skincare-e-folhagem-verde-3.jpg",
+    "link": "blog/5-produtos-de-beleza-essenciais.html",
+    "linkProduto": "https://www.mercadolivre.com.br/social/muc1576372",
+    "chamada": "Ver Produtos",
+    "categoria": "dicas",
+    "keywords": "produtos beleza skincare serum protetor solar hidratante rotina cuidados pele cosmeticos essenciais casa feminino masculino anti-idade vitamina c retinol acne oleosidade"
+  },
+  {
+    "titulo": "💊 5 Produtos de Saúde que Fazem Diferença no Dia a Dia",
+    "resumo": "Conheça os produtos de saúde mais recomendados para ter em casa. De vitaminas a termômetros digitais, itens que garantem bem-estar para toda a família.",
+    "imagem": "images/imagesposts/Termometro-digital-e-suplemento-vitaminico-2.jpg",
+    "link": "blog/5-produtos-de-saude-essenciais.html",
+    "linkProduto": "https://www.mercadolivre.com.br/social/muc1576372",
+    "chamada": "Ver Produtos",
+    "categoria": "dicas",
+    "keywords": "produtos saude termometro digital vitaminas suplementos bem-estar familia saude em casa primeiros socorros medicamentos vitamina d zinc magnesio imunidade cuidados diarios"
+  },
+  {
     "titulo": "🎧 JBL Wave Buds 2 - Fone Bluetooth Premium com Som Incomparável",
     "resumo": "Análise completa do JBL Wave Buds 2 preto. Som de qualidade premium, bateria de 8 horas, Bluetooth 5.3 e design confortável. Descubra por que é a escolha ideal.",
     "imagem": "images/imagesposts/jbl-wave-buds-2.webp",
@@ -82,7 +112,7 @@ const postsData = [
   {
     "titulo": "🛡️ Mercado Livre é Seguro? Veja como comprar com confiança",
     "resumo": "Descubra por que a Compra Garantida e a entrega FULL fazem deste marketplace o lugar favorito.",
-    "imagem": "images/imagesposts/seguranca-ml.jpg", 
+    "imagem": "images/imagesposts/seguranca-ml.jpg",
     "link": "blog/guia-seguranca-mercado-livre.html",
     "linkProduto": "https://www.mercadolivre.com.br/social/muc1576372",
     "chamada": "Ver Guia de Seguranca",
