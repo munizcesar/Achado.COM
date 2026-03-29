@@ -3,11 +3,11 @@ title: "Armani Beauty My Way Eau de Parfum Refilável 30ml — Vale a Pena?"
 description: "Descubra tudo sobre o perfume feminino Armani My Way EDP 30ml refilável: notas olfativas, duração, sillage, para quem é ideal e onde comprar com o melhor preço."
 date: 2026-03-29
 category: beleza
-image: /images/armani-my-way-edp-30ml.webp
+image: /images/posts/armani-beauty-perfume-feminino-my-way-eau-de-parfum-refilave.jpg
 tags: [perfume feminino, armani beauty, my way, eau de parfum, refilável, presente]
 draft: false
 affiliateUrl: "https://meli.la/1HoH7fL"
-productImage: /images/posts/armani-my-way-edp-30ml.webp
+productImage: /images/posts/armani-beauty-perfume-feminino-my-way-eau-de-parfum-refilave.jpg
 ---
 
 # Armani Beauty My Way Eau de Parfum Refilável 30ml

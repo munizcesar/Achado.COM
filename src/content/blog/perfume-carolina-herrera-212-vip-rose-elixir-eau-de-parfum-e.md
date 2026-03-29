@@ -3,11 +3,11 @@ title: "212 VIP Rosé Elixir 80ml Carolina Herrera — Review Completo 2026"
 description: "Tudo sobre o 212 VIP Rosé Elixir feminino 80ml da Carolina Herrera: notas olfativas, fixação, comparativo com o 212 VIP Rosé original e onde encontrar."
 date: 2026-03-29
 category: beleza
-image: /images/212-vip-rose-elixir-80ml.webp
+image: /images/posts/perfume-carolina-herrera-212-vip-rose-elixir-eau-de-parfum-e.jpg
 tags: [perfume feminino, carolina herrera, 212 vip, rosé elixir, eau de parfum, intenso]
 draft: false
 affiliateUrl: "https://meli.la/1HqVPVV"
-productImage: /images/212-vip-rose-elixir-80ml.webp
+productImage: /images/posts/perfume-carolina-herrera-212-vip-rose-elixir-eau-de-parfum-e.jpg
 ---
 
 # Carolina Herrera 212 VIP Rosé Elixir 80ml — A Versão Mais Intensa do Ícone
