@@ -22,8 +22,20 @@ const pilares = [
 
 const postsByPilar = pilares.map(p => ({
   ...p,
-  posts: posts.filter(post => post.data.category === p.slug).slice(0, 3),
+  posts: posts.filter(post => post.data.category === p.slug),
   total: posts.filter(post => post.data.category === p.slug).length,
+}));
+
+const pilaresData = postsByPilar.map(pilar => ({
+  slug: pilar.slug,
+  posts: pilar.posts.map(post => ({
+    slug: post.slug,
+    title: post.data.title,
+    image: post.data.image || '/placeholder.webp',
+    category: post.data.category,
+    description: post.data.description || '',
+    date: post.data.date ? new Date(post.data.date).toISOString() : null,
+  })),
 }));
 
 const seen = new Set();
@@ -169,8 +181,8 @@ const siloPosts = posts.filter(p => {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
-        <div class="post-grid">
-          {pilar.posts.map(post => (
+        <div class="post-grid" data-pilar-grid={pilar.slug}>
+          {pilar.posts.slice(0, 3).map(post => (
             <article class="post-card">
               <a href={`/blog/${post.slug}`} class="post-card-img-wrap">
                 <img src={post.data.image || '/placeholder.webp'} alt={post.data.title}
@@ -269,6 +281,113 @@ const siloPosts = posts.filter(p => {
         sidebarEl.appendChild(a);
       });
     }
+  </script>
+
+  <script type="application/json" id="pilares-data" set:text={JSON.stringify(pilaresData)}></script>
+
+  <script>
+    (function () {
+      function shuffle(array) {
+        const a = array.slice();
+        for (let i = a.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      }
+
+      const dataScript = document.getElementById('pilares-data');
+      if (!dataScript) return;
+
+      let pilaresDataClient;
+      try {
+        pilaresDataClient = JSON.parse(dataScript.textContent || '[]');
+      } catch (error) {
+        console.error('Erro ao parsear pilares-data:', error);
+        return;
+      }
+
+      document.querySelectorAll('[data-pilar-grid]').forEach(grid => {
+        const pilarSlug = grid.getAttribute('data-pilar-grid');
+        if (!pilarSlug) return;
+
+        const pilarObj = pilaresDataClient.find(p => p.slug === pilarSlug);
+        if (!pilarObj || !Array.isArray(pilarObj.posts) || pilarObj.posts.length <= 3) return;
+
+        const randomPosts = shuffle(pilarObj.posts).slice(0, 3);
+        grid.innerHTML = '';
+
+        randomPosts.forEach(post => {
+          const article = document.createElement('article');
+          article.className = 'post-card';
+
+          const link = document.createElement('a');
+          link.href = `/blog/${post.slug}`;
+          link.className = 'post-card-img-wrap';
+
+          const img = document.createElement('img');
+          img.src = post.image || '/placeholder.webp';
+          img.alt = post.title || '';
+          img.className = 'post-card-img';
+          img.width = 600;
+          img.height = 400;
+          img.loading = 'lazy';
+
+          link.appendChild(img);
+          article.appendChild(link);
+
+          const body = document.createElement('div');
+          body.className = 'post-card-body';
+
+          const cat = document.createElement('span');
+          cat.className = 'post-card-cat';
+          cat.textContent = post.category || '';
+
+          const title = document.createElement('h3');
+          title.className = 'post-card-title';
+          const titleAnchor = document.createElement('a');
+          titleAnchor.href = `/blog/${post.slug}`;
+          titleAnchor.textContent = post.title || '';
+          title.appendChild(titleAnchor);
+
+          body.appendChild(cat);
+          body.appendChild(title);
+
+          if (post.description) {
+            const excerpt = document.createElement('p');
+            excerpt.className = 'post-card-excerpt';
+            excerpt.textContent = post.description;
+            body.appendChild(excerpt);
+          }
+
+          article.appendChild(body);
+
+          const footer = document.createElement('div');
+          footer.className = 'post-card-footer';
+
+          const timeEl = document.createElement('time');
+          timeEl.className = 'post-card-date';
+          if (post.date) {
+            const date = new Date(post.date);
+            if (!Number.isNaN(date.getTime())) {
+              timeEl.dateTime = date.toISOString();
+              timeEl.textContent = date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+            }
+          }
+
+          const readLink = document.createElement('a');
+          readLink.href = `/blog/${post.slug}`;
+          readLink.className = 'post-card-read';
+          readLink.textContent = 'Ler review';
+
+          footer.appendChild(timeEl);
+          footer.appendChild(readLink);
+
+          article.appendChild(footer);
+          grid.appendChild(article);
+        });
+      });
+    })();
   </script>
 
 </Layout>
