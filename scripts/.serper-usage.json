@@ -1,5 +1,5 @@
 {
-  "total": 276,
+  "total": 279,
   "mes_atual": 2,
   "logs": [
     {
@@ -460,6 +460,11 @@
     {
       "data": "2026-03-28T01:03:53.448Z",
       "produto": "Poltrona Cadeira Do Papai Com Encosto Macio Reclin",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-29T22:06:35.738Z",
+      "produto": "Armani Beauty Perfume Feminino My Way Eau De Parfu",
       "consultas": 3
     }
   ]
