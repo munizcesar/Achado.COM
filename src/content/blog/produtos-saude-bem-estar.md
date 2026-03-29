@@ -4,7 +4,7 @@ description: "Pequenos investimentos em saúde e bem-estar que têm grande impac
 date: 2026-03-28
 category: "dicas"
 tags: ["saude", "bem-estar", "qualidade de vida"]
-image: "/images/blog/produtos-saude-bem-estar.jpg"
+image: "/images/imagesposts/Termometro-digital-e-suplemento-vitaminico-3.jpg"
 author: "Equipe AchadoCerto"
 ---
 

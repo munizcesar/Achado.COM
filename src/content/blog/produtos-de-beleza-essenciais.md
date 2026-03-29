@@ -4,7 +4,7 @@ description: "Descubra os produtos de beleza indispensáveis para cuidar da pele
 date: 2026-03-28
 category: "dicas"
 tags: ["beleza", "skincare", "cuidados pessoais"]
-image: "/images/blog/produtos-beleza-essenciais.jpg"
+image: "/images/imagesposts/Produtos-de-skincare-e-folhagem-verde-2.jpg"
 author: "Equipe AchadoCerto"
 ---
 

@@ -4,7 +4,7 @@ description: "Itens que tornam a casa mais organizada, confortável e eficiente.
 date: 2026-03-28
 category: "dicas"
 tags: ["casa", "organizacao", "utilidades domesticas"]
-image: "/images/blog/produtos-casa-indispensaveis.jpg"
+image: "/images/imagesposts/Bancada-de-cozinha-iluminada-e-acolhedora.jpg"
 author: "Equipe AchadoCerto"
 ---
 
