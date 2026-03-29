@@ -613,7 +613,7 @@ async function main() {
   const imgDir  = path.join(process.cwd(), 'public', 'images', 'posts');
   if (!fs.existsSync(imgDir)) fs.mkdirSync(imgDir, { recursive: true });
 
-  let imageFile = `${slug}.jpg`;
+  let imageFile = `${slug}.webp`;
   const imgPath = path.join(imgDir, imageFile);
 
   if (product.imageUrl) {
@@ -623,11 +623,11 @@ async function main() {
       console.log('✅');
     } catch (err) {
       console.warn('⚠️  Não foi possível baixar a imagem:', err.message);
-      imageFile = 'placeholder.jpg';
+      imageFile = 'placeholder.webp';
     }
   } else {
     console.warn('⚠️  Nenhuma imagem encontrada, usando placeholder.');
-    imageFile = 'placeholder.jpg';
+    imageFile = 'placeholder.webp';
   }
 
   // 3. Gera .md com IA
