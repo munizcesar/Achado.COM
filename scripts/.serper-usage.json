@@ -1,5 +1,5 @@
 {
-  "total": 300,
+  "total": 303,
   "mes_atual": 2,
   "logs": [
     {
@@ -500,6 +500,11 @@
     {
       "data": "2026-03-29T23:14:28.195Z",
       "produto": "Sofá Retrátil Reclinável King House Verona 2,00m V",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-30T00:01:24.194Z",
+      "produto": "Beta Alanina Pura Em Pó 123g Integralmédica Sem Sa",
       "consultas": 3
     }
   ]
