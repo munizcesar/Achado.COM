@@ -1,5 +1,5 @@
 {
-  "total": 303,
+  "total": 306,
   "mes_atual": 2,
   "logs": [
     {
@@ -505,6 +505,11 @@
     {
       "data": "2026-03-30T00:01:24.194Z",
       "produto": "Beta Alanina Pura Em Pó 123g Integralmédica Sem Sa",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-30T00:22:40.671Z",
+      "produto": "Suplemento Creatina Hardcore Sabor Limão 350g Inte",
       "consultas": 3
     }
   ]
