@@ -1,4 +1,3 @@
----
 import Layout from '../layouts/Layout.astro';
 
 let posts = [];
@@ -65,7 +64,6 @@ const siloPosts = posts.filter(p => {
             <button type="submit" aria-label="Pesquisar">Buscar</button>
           </form>
           <div class="trust-cats">
-            <!-- Apenas os 3 pilares: foco total na identidade do site -->
             <a href="/categorias/beleza" class="trust-pill trust-pill-pilar">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
               Beleza
@@ -409,28 +407,62 @@ const siloPosts = posts.filter(p => {
   .trust-search button:hover { background:#c2185b; }
   .trust-cats { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
 
-  /* Pill base */
+  /* ===== PILLS DE CATEGORIA — tamanho uniforme ===== */
   .trust-pill {
-    display:inline-flex; align-items:center; gap:6px;
-    background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12);
-    color:#e2e8f0; font-size:.82rem; font-weight:500; padding:7px 16px;
-    border-radius:20px; text-decoration:none; white-space:nowrap;
-    letter-spacing:.02em; transition:background .18s,border-color .18s,color .18s,transform .15s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    /* largura mínima garante que todos fiquem do mesmo tamanho */
+    min-width: 108px;
+    height: 38px;
+    padding: 0 16px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.12);
+    color: #e2e8f0;
+    font-size: .82rem;
+    font-weight: 500;
+    border-radius: 20px;
+    text-decoration: none;
+    white-space: nowrap;
+    letter-spacing: .02em;
+    transition: background .18s, border-color .18s, color .18s, transform .15s, box-shadow .18s;
   }
-  .trust-pill:hover { background:rgba(225,48,108,.18); border-color:rgba(225,48,108,.5); color:#fff; transform:translateY(-1px); }
+  .trust-pill:hover {
+    background: rgba(225,48,108,.18);
+    border-color: rgba(225,48,108,.5);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(225,48,108,.2);
+  }
 
-  /* Pills dos pilares: ligeiramente mais destacados */
+  /* Pills dos pilares */
   .trust-pill-pilar {
     background: rgba(255,255,255,.1);
     border-color: rgba(255,255,255,.22);
     font-weight: 600;
     color: #fff;
   }
-  .trust-pill-pilar:hover { background:rgba(225,48,108,.25); border-color:rgba(225,48,108,.6); }
+  .trust-pill-pilar:hover {
+    background: rgba(225,48,108,.25);
+    border-color: rgba(225,48,108,.6);
+  }
 
-  /* Pill Ver todos */
-  .trust-pill-all { background:rgba(225,48,108,.12); border-color:rgba(225,48,108,.3); color:#f48fb1; font-weight:700; }
-  .trust-pill-all:hover { background:#E1306C; border-color:#E1306C; color:#fff; transform:translateY(-1px); }
+  /* Pill "Ver todos" — destaque especial */
+  .trust-pill-all {
+    min-width: 120px;
+    background: rgba(225,48,108,.15);
+    border-color: rgba(225,48,108,.4);
+    color: #f48fb1;
+    font-weight: 700;
+  }
+  .trust-pill-all:hover {
+    background: #E1306C;
+    border-color: #E1306C;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(225,48,108,.35);
+  }
 
   @media (min-width:768px) {
     .trust-banner { padding:56px 0 48px; }
@@ -441,7 +473,6 @@ const siloPosts = posts.filter(p => {
   /* ===== CARDS DE PILARES ===== */
   .pilares-section { background:var(--c-bg,#f8f9fa); padding:32px 0 28px; border-bottom:1px solid var(--c-border,#e2e8f0); }
 
-  /* Header compacto: horizontal em desktop, empilhado em mobile */
   .pilares-header {
     display: flex;
     align-items: center;
@@ -456,7 +487,6 @@ const siloPosts = posts.filter(p => {
     color: var(--c-text, #1a202c);
     margin: 0;
     line-height: 1.15;
-    /* barra lateral decorativa no lugar do bloco de título centrado */
     display: flex;
     align-items: center;
     gap: 10px;
@@ -475,12 +505,10 @@ const siloPosts = posts.filter(p => {
     font-size: clamp(0.78rem, 1.4vw, 0.88rem);
     margin: 0;
     line-height: 1.4;
-    /* separa visualmente do título com um pipe sutil */
     padding-left: 12px;
     border-left: 1px solid var(--c-border, #e2e8f0);
   }
 
-  /* Em mobile: empilha e remove o pipe */
   @media (max-width: 600px) {
     .pilares-header { flex-direction: column; align-items: flex-start; gap: 4px; margin-bottom: 20px; }
     .pilares-sub { padding-left: 14px; border-left: none; }
