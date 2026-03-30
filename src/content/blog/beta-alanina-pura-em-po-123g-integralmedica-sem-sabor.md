@@ -54,12 +54,6 @@ A suplementação com beta-alanina funciona melhor em **doses fracionadas ao lon
 - ✅ **Embasamento científico** — um dos suplementos mais estudados e validados por pesquisas
 - ✅ **Para homens e mulheres** — eficaz em qualquer modalidade de alta intensidade
 
-## Pontos de Atenção
-
-- ⚠️ **Parestesia (formigamento)** — efeito normal e inofensivo, mas pode incomodar; doses fracionadas reduzem o desconforto
-- ⚠️ **Não age de forma imediata** — os benefícios surgem após semanas de uso constante
-- ⚠️ **Não é estimulante** — não substitui cafena ou pré-treino; age de forma diferente, na resistência e não na energia
-
 ## Para Quem é Indicado?
 
 A beta-alanina é ideal para quem pratica:
@@ -88,7 +82,7 @@ Usuários que usam a Beta Alanina Integralmédica relatam melhora perceptível n
 
 **Sim, especialmente se você já usa creatina e quer o próximo nível de suplementação.** A beta-alanina e a creatina são suplementos complementares — um age na energia (ATP), o outro na resistência ao ácido. Juntos, formam uma das combinações mais respaldadas pela ciência para ganho de performance.
 
-A versão Integralmédica oferece 100% de pureza, marca confiável e prçeo justo. Para atletas amadores e praticantes regulares de academia, é um investimento que faz sentido.
+A versão Integralmédica oferece 100% de pureza, marca confiável e preço justo. Para atletas amadores e praticantes regulares de academia, é um investimento que faz sentido.
 
 Confira o preço atual e a disponibilidade no Mercado Livre clicando no botão abaixo.
 
