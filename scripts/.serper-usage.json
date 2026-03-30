@@ -1,5 +1,5 @@
 {
-  "total": 312,
+  "total": 315,
   "mes_atual": 2,
   "logs": [
     {
@@ -520,6 +520,11 @@
     {
       "data": "2026-03-30T00:34:01.817Z",
       "produto": "Vo2 Energy Gel C30 450g Integralmédica 10 Unid Pin",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-30T00:43:10.461Z",
+      "produto": "Go! Isotonic Drink 900g Atlhetica Nutrition Sabor ",
       "consultas": 3
     }
   ]
