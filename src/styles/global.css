@@ -58,7 +58,17 @@ button { font-family: inherit; cursor: pointer; }
   width: 100%;
   max-width: 1160px;
   margin: 0 auto;
-  padding: 0 24px;
+  /* padding lateral via padding-inline para garantir box-sizing correto no mobile */
+  padding-inline: 1rem;
+  box-sizing: border-box;
+}
+
+/* Grid do post: sem padding duplo, centralizado */
+.post-content-grid {
+  max-width: 820px;
+  margin-inline: auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* ── HEADER ── */
@@ -890,6 +900,39 @@ body.drawer-open { overflow: hidden; }
   .header-search { display: none; }
   .post-grid { grid-template-columns: 1fr; }
   .section { padding: 36px 0; }
+
+  /* ── MOBILE FIX: texto afunilado ── */
+
+  /* Prose: remove padding próprio — o container pai já fornece o espaçamento lateral */
+  .prose {
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Garante que filhos do prose não estourem a largura */
+  .prose > * {
+    max-width: 100%;
+  }
+  .prose img,
+  .prose pre,
+  .prose code,
+  .prose iframe {
+    max-width: 100%;
+  }
+
+  /* Cards "Onde Comprar": troca border-left por border-top no mobile
+     Evita que a borda lateral some no layout em coluna única */
+  .buy-card,
+  .store-card {
+    border-left: none !important;
+    border-top: 3px solid var(--c-brand);
+    padding-left: 1rem !important;
+    padding-top: 1rem !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 @media (max-width: 480px) {
