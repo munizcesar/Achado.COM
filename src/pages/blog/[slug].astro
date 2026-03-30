@@ -400,8 +400,12 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
   </article>
 
   <style>
-    /* Desktop: narrow containers cap at 820px */
-    .post-narrow { max-width: 820px; }
+    /* Desktop: narrow containers cap at 820px, centralizados */
+    .post-narrow {
+      max-width: 820px;
+      margin: 0 auto;
+      width: 100%;
+    }
 
     .post-content-grid {
       display: grid;
@@ -409,6 +413,8 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       gap: 48px;
       align-items: start;
       max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
     }
     .post-sidebar { position: sticky; top: 88px; }
 
