@@ -1,5 +1,5 @@
 {
-  "total": 324,
+  "total": 327,
   "mes_atual": 2,
   "logs": [
     {
@@ -540,6 +540,11 @@
     {
       "data": "2026-03-30T01:48:04.419Z",
       "produto": "Escova Oval Secadora Taiff Easy Lilás 1200w 127v",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-30T23:39:04.904Z",
+      "produto": "Produto Mercado Livre",
       "consultas": 3
     }
   ]
