@@ -1,5 +1,5 @@
 {
-  "total": 318,
+  "total": 321,
   "mes_atual": 2,
   "logs": [
     {
@@ -530,6 +530,11 @@
     {
       "data": "2026-03-30T01:43:11.724Z",
       "produto": "Echo Dot 5ª Geração Alto-falante De 1,73 Azul Amaz",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-30T01:45:11.627Z",
+      "produto": "Aparelho De Pressão Digital Automático Pulso G-tec",
       "consultas": 3
     }
   ]
