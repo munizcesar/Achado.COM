@@ -1,5 +1,5 @@
 {
-  "total": 309,
+  "total": 312,
   "mes_atual": 2,
   "logs": [
     {
@@ -515,6 +515,11 @@
     {
       "data": "2026-03-30T00:28:47.071Z",
       "produto": "Iso Triple Zero Whey Protein Isolado 900g - Integr",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-30T00:34:01.817Z",
+      "produto": "Vo2 Energy Gel C30 450g Integralmédica 10 Unid Pin",
       "consultas": 3
     }
   ]
