@@ -435,6 +435,13 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       .product-box-final { padding:24px 16px; }
       .related-grid { grid-template-columns:1fr; }
       .related-header { flex-direction:column; align-items:flex-start; }
+
+      /* ── FIX: bullets não podem ser cortados na borda esquerda no mobile ── */
+      .prose ul,
+      .prose ol {
+        margin-left: 1.5rem;  /* 24px → aumentado de 24px para garantir espaço para o bullet */
+        padding-left: 0.25rem; /* espaço extra de segurança */
+      }
     }
     @media (min-width: 480px) and (max-width: 768px) {
       .related-grid { grid-template-columns:repeat(2,1fr); }
@@ -492,7 +499,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .prose p  { margin-bottom: 20px; }
     .prose a  { color: var(--c-brand); text-decoration: underline; }
     .prose a:hover { color: var(--c-brand-dark); }
-    .prose ul, .prose ol { margin: 0 0 20px 24px; }
+    .prose ul, .prose ol { margin: 0 0 20px 1.75rem; }
     .prose li { margin-bottom: 8px; }
     .prose blockquote {
       border-left: 3px solid var(--c-brand);
