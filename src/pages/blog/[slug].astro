@@ -303,7 +303,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       <section class="related-section">
         <div class="container">
           <div class="related-header">
-            <div>
+            <div class="related-header-titles">
               <span class="related-eyebrow">Continue lendo</span>
               <h2 class="related-heading">Artigos Relacionados</h2>
             </div>
@@ -432,8 +432,12 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       .share-buttons { width:100%; justify-content:flex-start; margin-top:12px; }
       .product-box-final { padding:24px 16px; }
       .related-grid { grid-template-columns:1fr !important; gap:16px !important; }
-      .related-header { flex-direction:column; align-items:flex-start; gap:10px; }
-      .related-img-wrap { aspect-ratio:16/9 !important; padding:12px !important; }
+      .related-header { flex-direction:column !important; align-items:flex-start !important; gap:10px !important; }
+      .related-header-titles { text-align:left !important; }
+      .related-eyebrow { text-align:left !important; }
+      .related-heading { text-align:left !important; }
+      .related-see-all { align-self:flex-start !important; }
+      .related-img-wrap { height:160px !important; padding:16px !important; }
       .related-title { font-size:15px !important; -webkit-line-clamp:3 !important; }
       .related-desc { display:none !important; }
 
@@ -522,13 +526,52 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
 
     /* ── ARTIGOS RELACIONADOS ── */
     .related-section { background:var(--c-surface);border-top:1px solid var(--c-border);padding:48px 0 56px; }
-    .related-header { display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;gap:16px; }
-    .related-eyebrow { display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.9px;color:var(--c-brand);margin-bottom:4px; }
-    .related-heading { font-size:clamp(20px,3vw,26px);font-weight:800;letter-spacing:-.4px;color:var(--c-text);margin:0; }
-    .related-see-all { display:inline-flex;align-items:center;gap:5px;font-size:13.5px;font-weight:600;color:var(--c-brand);white-space:nowrap;transition:gap .18s; }
-    .related-see-all:hover { gap:9px;text-decoration:underline; }
 
-    /* Grid: 3 colunas em desktop, 2 em tablet, 1 em mobile */
+    /* Header: título à esquerda, link à direita — sempre alinhado ao baseline */
+    .related-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      gap: 16px;
+    }
+    .related-header-titles {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .related-eyebrow {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .9px;
+      color: var(--c-brand);
+      margin-bottom: 4px;
+      text-align: left;
+    }
+    .related-heading {
+      font-size: clamp(20px,3vw,26px);
+      font-weight: 800;
+      letter-spacing: -.4px;
+      color: var(--c-text);
+      margin: 0;
+      text-align: left;
+    }
+    .related-see-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--c-brand);
+      white-space: nowrap;
+      transition: gap .18s;
+      flex-shrink: 0;
+    }
+    .related-see-all:hover { gap:9px; text-decoration:underline; }
+
+    /* Grid: 3 colunas desktop, 2 tablet, 1 mobile */
     .related-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:24px; }
 
     .related-card {
@@ -543,7 +586,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     }
     .related-card:hover { transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--c-brand); }
 
-    /* Imagem: altura fixa generosa para não ficar espremida */
     .related-img-wrap {
       width:100%;
       height:180px;
@@ -568,7 +610,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
 
     .related-body { padding:16px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1; }
     .related-cat { font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--c-brand); }
-
     .related-title {
       font-size:15px;
       font-weight:700;
