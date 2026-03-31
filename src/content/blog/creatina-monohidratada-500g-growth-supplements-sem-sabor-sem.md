@@ -2,7 +2,7 @@
 title: "Creatina Monohidratada Growth Supplements 500g: O Suplemento Que Melhora Qualquer Esporte"
 description: "Descubra como a Creatina Monohidratada 500g da Growth Supplements potencializa sua performance na musculação, corrida, natação, ciclismo, futebol e muito mais. Pura, sem sabor, comprovada pela ciência."
 date: 2026-03-31
-category: Suplementos
+category: saude
 image: /images/posts/creatina-monohidratada-500g-growth-supplements-sem-sabor-sem.webp
 tags: [creatina, growth supplements, creatina monohidratada, suplemento esportivo, ganho de massa, performance, musculacao, corrida, natacao, ciclismo, futebol, crossfit]
 draft: false
