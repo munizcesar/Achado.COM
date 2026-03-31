@@ -1,5 +1,5 @@
 {
-  "total": 336,
+  "total": 339,
   "mes_atual": 2,
   "logs": [
     {
@@ -560,6 +560,11 @@
     {
       "data": "2026-03-31T01:49:20.915Z",
       "produto": "Suplemento Academia Creatina Max Titanium Em Pó Po",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-31T01:50:24.650Z",
+      "produto": "Creatina Monohidratada 500g Growth Supplements - S",
       "consultas": 3
     }
   ]
