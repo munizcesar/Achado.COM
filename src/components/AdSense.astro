@@ -16,13 +16,13 @@ const {
 } = Astro.props;
 ---
 
-<div style={`max-width:${maxWidth}; margin:0 auto; width:100%; min-height:${minHeight}; max-height:280px; overflow:hidden;`}>
+<div style={`max-width:${maxWidth}; margin:0 auto; width:100%; min-height:${minHeight}; max-height:280px; overflow:hidden; box-sizing:border-box;`}>
   <ins class="adsbygoogle"
-    style="display:block; min-height:inherit;"
+    style="display:block; width:100%; min-height:inherit; overflow:hidden;"
     data-ad-client="ca-pub-8532820173012599"
     data-ad-slot={slot}
     data-ad-format={format}
-    data-full-width-responsive={fullWidth ? "true" : "false"}>
+    data-full-width-responsive="false">
   </ins>
 </div>
 <script is:inline>
