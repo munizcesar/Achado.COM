@@ -2,7 +2,7 @@
 title: "Creatina Max Titanium 150g: O Suplemento Mais Estudado do Mundo"
 description: "Creatina Max Titanium 150g em pó, sem sabor: descubra os benefícios comprovados por mais de 1.000 estudos científicos, como tomar corretamente e por que a creatina monohidratada é o suplemento mais seguro e eficaz da nutrição esportiva."
 date: 2026-03-31
-category: Suplementos
+category: saude
 image: /images/posts/suplemento-academia-creatina-max-titanium-em-po-pote-150g-cr.webp
 tags: [creatina, creatina max titanium, titanium nutrition, creatina monohidratada, suplemento creatina, creatina sem sabor, ganho de massa, aumento de forca, suplemento esportivo, pre treino, pos treino, creatina 150g]
 draft: false
