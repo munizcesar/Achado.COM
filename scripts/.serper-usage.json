@@ -1,5 +1,5 @@
 {
-  "total": 330,
+  "total": 333,
   "mes_atual": 2,
   "logs": [
     {
@@ -550,6 +550,11 @@
     {
       "data": "2026-03-31T01:18:35.554Z",
       "produto": "Balança Digital Corporal Bioimpedância Aplicativo ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-31T01:33:44.894Z",
+      "produto": "Umidificador De Ar Ultrassônico Umi Pop Health 2,3",
       "consultas": 3
     }
   ]
