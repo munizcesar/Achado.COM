@@ -1,5 +1,5 @@
 {
-  "total": 333,
+  "total": 336,
   "mes_atual": 2,
   "logs": [
     {
@@ -555,6 +555,11 @@
     {
       "data": "2026-03-31T01:33:44.894Z",
       "produto": "Umidificador De Ar Ultrassônico Umi Pop Health 2,3",
+      "consultas": 3
+    },
+    {
+      "data": "2026-03-31T01:49:20.915Z",
+      "produto": "Suplemento Academia Creatina Max Titanium Em Pó Po",
       "consultas": 3
     }
   ]
