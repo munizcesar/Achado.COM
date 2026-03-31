@@ -7,7 +7,7 @@ image: /images/posts/creatina-monohidratada-500g-growth-supplements-sem-sabor-se
 tags: [creatina, growth supplements, creatina monohidratada, suplemento esportivo, ganho de massa, performance, musculacao, corrida, natacao, ciclismo, futebol, crossfit]
 draft: false
 rating: 5
-affiliateUrl: "https://meli.la/1vrp5Ag"
+affiliateUrl: "https://meli.la/1epHPes"
 productImage: /images/posts/creatina-monohidratada-500g-growth-supplements-sem-sabor-sem.webp
 ---
 
