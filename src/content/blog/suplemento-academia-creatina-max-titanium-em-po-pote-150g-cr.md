@@ -1,5 +1,5 @@
 ---
-title: "Creatina Max Titanium 150g: O Suplemento Mais Estudado do Mundo Vale a Pena?"
+title: "Creatina Max Titanium 150g: O Suplemento Mais Estudado do Mundo"
 description: "Creatina Max Titanium 150g em pó, sem sabor: descubra os benefícios comprovados por mais de 1.000 estudos científicos, como tomar corretamente e por que a creatina monohidratada é o suplemento mais seguro e eficaz da nutrição esportiva."
 date: 2026-03-31
 category: Suplementos
@@ -62,7 +62,7 @@ Pesquisas com populações mais velhas mostram que a creatina ajuda a **frear a 
 
 ## ✅ Por que a Creatina Max Titanium é uma ótima escolha?
 
-- **Titanium Nutrition** é uma marca consolidada no mercado brasile iro de suplementos, com anos de experiência e credibilidade
+- **Titanium Nutrition** é uma marca consolidada no mercado brasileiro de suplementos, com anos de experiência e credibilidade
 - **Creatina monohidratada pura** — a forma mais estudada, mais barata e mais eficaz entre todas as versões de creatina
 - **Sem sabor** — mistura com qualquer líquido sem alterar gosto ou odor: água, suco, whey ou pré-treino
 - **Pó fino e fácil de dissolver** — sem grumos, sem resíduo no copo
