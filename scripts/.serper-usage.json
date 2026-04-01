@@ -1,5 +1,5 @@
 {
-  "total": 339,
+  "total": 342,
   "mes_atual": 2,
   "logs": [
     {
@@ -565,6 +565,11 @@
     {
       "data": "2026-03-31T01:50:24.650Z",
       "produto": "Creatina Monohidratada 500g Growth Supplements - S",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-01T01:58:10.920Z",
+      "produto": "Creatina Creapure 200g Darkness Sem Sabor",
       "consultas": 3
     }
   ]
