@@ -1,5 +1,5 @@
 {
-  "total": 342,
+  "total": 345,
   "mes_atual": 2,
   "logs": [
     {
@@ -570,6 +570,11 @@
     {
       "data": "2026-04-01T01:58:10.920Z",
       "produto": "Creatina Creapure 200g Darkness Sem Sabor",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-01T02:07:30.927Z",
+      "produto": "Creatina Pura + Beta Alanina 300g Dark Lab Sem Sab",
       "consultas": 3
     }
   ]
