@@ -7,7 +7,7 @@ image: /images/posts/creatina-creapure-200g-darkness-sem-sabor.webp
 tags: [creatina, creapure, darkness, creatina monohidratada, treino pesado, musculacao, ganho de massa, forca, suplemento premium, creatina pura, hipertrofia, pre treino]
 draft: false
 rating: 5
-affiliateUrl: "https://meli.la/1vrp5Ag"
+affiliateUrl: "https://meli.la/2NzUpVd"
 productImage: /images/posts/creatina-creapure-200g-darkness-sem-sabor.webp
 ---
 
@@ -44,7 +44,7 @@ Ao suplementar com creatina de alta pureza, você **satura os músculos acima do
 A creatina monohidratada é um dos suplementos mais pesquisados da história, com mais de **1.000 estudos publicados**. Os resultados são consistentes e expressivos:
 
 ### 💪 Força Máxima
-Meta-análises mostram aumento médio de **8% a 14% na força máximo** em exercícios como supino, agachamento e levantamento terra. Para quem já treina há anos, esse ganho representa meses de progresso entregues em semanas.
+Meta-análises mostram aumento médio de **8% a 14% na força máxima** em exercícios como supino, agachamento e levantamento terra. Para quem já treina há anos, esse ganho representa meses de progresso entregues em semanas.
 
 ### 📈 Hipertrofia Acelerada
 A creatina potencializa o crescimento muscular por dois mecanismos simultâneos:
