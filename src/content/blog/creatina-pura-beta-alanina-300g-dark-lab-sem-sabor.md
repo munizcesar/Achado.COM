@@ -7,7 +7,7 @@ image: /images/posts/creatina-pura-beta-alanina-300g-dark-lab-sem-sabor.webp
 tags: [creatina, beta alanina, dark lab, creatina com beta alanina, combo suplemento, musculação, luta, ciclismo, crossfit, natação, corrida, futebol, força, resistência, suplemento esportivo, pre treino natural, hipertrofia, endurance]
 draft: false
 rating: 5
-affiliateUrl: "https://meli.la/LINK_AQUI"
+affiliateUrl: "https://meli.la/1ayXepq"
 productImage: /images/posts/creatina-pura-beta-alanina-300g-dark-lab-sem-sabor.webp
 ---
 
@@ -74,7 +74,7 @@ A corrida de velocidade depende quase inteiramente dos sistemas que creatina e b
 Futebol é um esporte de esforços intermitentes: sprints, disputas físicas, chutes e saltos intercalados com corrida moderada durante 90 minutos. A creatina melhora a qualidade de cada disputa individual; a beta alanina aumenta a capacidade de repetir esses esforços intensos até os acréscimos sem queda visível de rendimento.
 
 ### 🔁 CrossFit e Treinos Funcionais de Alta Intensidade
-O CrossFit é o ambiente onde a combinação brilha mais. WODs com movimentos pesados ​​(clean, snatch, thrusters) seguidos de trabalho metabólico contínuo (box jumps, rope climbs, burpees) ativam exatamente os dois sistemas. A creatina protege a potência nos levantamentos; a beta alanina sustenta a capacidade de continuar em movimento sob fadiga metabólica intensa.
+O CrossFit é o ambiente onde a combinação brilha mais. WODs com movimentos pesados (clean, snatch, thrusters) seguidos de trabalho metabólico contínuo (box jumps, rope climbs, burpees) ativam exatamente os dois sistemas. A creatina protege a potência nos levantamentos; a beta alanina sustenta a capacidade de continuar em movimento sob fadiga metabólica intensa.
 
 ### 🎾 Tênis, Beach Tennis e Raquetes
 Esportes de raquete exigem trocas explosivas de direção, saltos e golpes potentes em sequências rápidas e imprevisíveis. A creatina melhora a qualidade e potência de cada troca; a beta alanina permite manter esse nível de explosão por mais sets, sem queda aparente nos pontos decisivos.
