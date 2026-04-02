@@ -1,10 +1,15 @@
 {
-  "total": 3,
+  "total": 6,
   "mes_atual": 3,
   "logs": [
     {
       "data": "2026-04-02T22:17:55.789Z",
       "produto": "O Boticário Nativa Spa Ameixa Dourada Loção Corpor",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-02T22:25:05.358Z",
+      "produto": "Aparador E Raspador Oneblade Com 2 Pentes, À Prova",
       "consultas": 3
     }
   ]
