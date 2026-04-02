@@ -1,5 +1,5 @@
 {
-  "total": 24,
+  "total": 27,
   "mes_atual": 3,
   "logs": [
     {
@@ -40,6 +40,11 @@
     {
       "data": "2026-04-02T23:14:03.647Z",
       "produto": "Creatina Monohidratada Ronnie Coleman Neutra 1kg P",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-02T23:17:05.130Z",
+      "produto": "Magnésio Quelato Trio Vhita 3 Em 1 - 60 Caps Sem S",
       "consultas": 3
     }
   ]
