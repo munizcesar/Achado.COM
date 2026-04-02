@@ -2,9 +2,9 @@
 title: "Máquina De Cortar Cabelo Fazer Barba Barbeador Acabamento Pelo B-max Bmc036 5 Em 1 Cor Preto 127/220v"
 description: "Conheça o Máquina De Cortar Cabelo Fazer Barba Barbeador Acabamento Pelo B-max Bmc036 5 Em 1 Cor Preto 127/220v. Disponível no Mercado Livre com entrega rá"
 date: 2026-04-02
-category: casa
+category: beleza
 image: /images/posts/maquina-de-cortar-cabelo-fazer-barba-barbeador-acabamento-pe.webp
-tags: [casa, cabelo]
+tags: [beleza, cabelo]
 draft: false
 affiliateUrl: "https://meli.la/2sXqaS5"
 productImage: /images/posts/maquina-de-cortar-cabelo-fazer-barba-barbeador-acabamento-pe.webp
