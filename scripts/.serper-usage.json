@@ -1,5 +1,5 @@
 {
-  "total": 27,
+  "total": 30,
   "mes_atual": 3,
   "logs": [
     {
@@ -45,6 +45,11 @@
     {
       "data": "2026-04-02T23:17:05.130Z",
       "produto": "Magnésio Quelato Trio Vhita 3 Em 1 - 60 Caps Sem S",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-02T23:18:47.463Z",
+      "produto": "Multivitaminico De A A Zinco - Polivitamínico Com ",
       "consultas": 3
     }
   ]
