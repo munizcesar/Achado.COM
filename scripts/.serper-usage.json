@@ -1,5 +1,5 @@
 {
-  "total": 21,
+  "total": 24,
   "mes_atual": 3,
   "logs": [
     {
@@ -35,6 +35,11 @@
     {
       "data": "2026-04-02T23:10:44.958Z",
       "produto": "Testo Hard For Man Pre Treino Pre Workout + Energi",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-02T23:14:03.647Z",
+      "produto": "Creatina Monohidratada Ronnie Coleman Neutra 1kg P",
       "consultas": 3
     }
   ]
