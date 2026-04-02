@@ -1,5 +1,5 @@
 {
-  "total": 15,
+  "total": 18,
   "mes_atual": 3,
   "logs": [
     {
@@ -24,6 +24,11 @@
     },
     {
       "data": "2026-04-02T23:04:53.313Z",
+      "produto": "Whey Protein Concentrado 100% 900g Refil Dark Lab ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-02T23:07:36.263Z",
       "produto": "Whey Protein Concentrado 100% 900g Refil Dark Lab ",
       "consultas": 3
     }
