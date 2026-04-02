@@ -1,5 +1,5 @@
 {
-  "total": 9,
+  "total": 12,
   "mes_atual": 3,
   "logs": [
     {
@@ -15,6 +15,11 @@
     {
       "data": "2026-04-02T22:28:08.616Z",
       "produto": "Loção Desodorante Hidratante Corporal Deleite 200 ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-02T22:31:15.652Z",
+      "produto": "Máquina De Cortar Cabelo Fazer Barba Barbeador Aca",
       "consultas": 3
     }
   ]
