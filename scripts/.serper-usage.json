@@ -1,5 +1,5 @@
 {
-  "total": 12,
+  "total": 15,
   "mes_atual": 3,
   "logs": [
     {
@@ -20,6 +20,11 @@
     {
       "data": "2026-04-02T22:31:15.652Z",
       "produto": "Máquina De Cortar Cabelo Fazer Barba Barbeador Aca",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-02T23:04:53.313Z",
+      "produto": "Whey Protein Concentrado 100% 900g Refil Dark Lab ",
       "consultas": 3
     }
   ]
