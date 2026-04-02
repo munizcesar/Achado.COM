@@ -2,9 +2,9 @@
 title: "O Boticário Nativa Spa Ameixa Dourada Loção Corporal 200ml"
 description: "Conheça o O Boticário Nativa Spa Ameixa Dourada Loção Corporal 200ml. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-04-02
-category: casa
+category: beleza
 image: /images/posts/o-boticario-nativa-spa-ameixa-dourada-locao-corporal-200ml.webp
-tags: [casa]
+tags: [beleza]
 draft: false
 affiliateUrl: "https://meli.la/2Hzv5kH"
 productImage: /images/posts/o-boticario-nativa-spa-ameixa-dourada-locao-corporal-200ml.webp
