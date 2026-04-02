@@ -2,9 +2,9 @@
 title: "Aparador E Raspador Oneblade Com 2 Pentes, À Prova Dágua, Bivolt Qp1424/10 Philips Preto 127/220v"
 description: "Conheça o Aparador E Raspador Oneblade Com 2 Pentes, À Prova Dágua, Bivolt  Qp1424/10 Philips Preto 127/220v. Disponível no Mercado Livre com entrega rápid"
 date: 2026-04-02
-category: casa
+category: beleza
 image: /images/posts/aparador-e-raspador-oneblade-com-2-pentes-a-prova-dagua-bivo.webp
-tags: [casa]
+tags: [beleza]
 draft: false
 affiliateUrl: "https://meli.la/2GSCfv4"
 productImage: /images/posts/aparador-e-raspador-oneblade-com-2-pentes-a-prova-dagua-bivo.webp
