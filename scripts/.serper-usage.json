@@ -1,5 +1,5 @@
 {
-  "total": 78,
+  "total": 81,
   "mes_atual": 3,
   "logs": [
     {
@@ -130,6 +130,11 @@
     {
       "data": "2026-04-03T21:24:13.673Z",
       "produto": "Principia Gel De Limpeza Facial Gl-02 350g Sensíve",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T21:25:26.161Z",
+      "produto": "Creamy Skincare Ácido Glicólico 30g | Reduz Poros ",
       "consultas": 3
     }
   ]
