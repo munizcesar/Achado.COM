@@ -1,5 +1,5 @@
 {
-  "total": 33,
+  "total": 36,
   "mes_atual": 3,
   "logs": [
     {
@@ -55,6 +55,11 @@
     {
       "data": "2026-04-03T00:08:49.958Z",
       "produto": "Colchão Casal Luuna Support, 2 Espumas Ortopédica ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T00:10:42.898Z",
+      "produto": "Colchão Emma Original Casal - Tecnologia Alemã Cor",
       "consultas": 3
     }
   ]
