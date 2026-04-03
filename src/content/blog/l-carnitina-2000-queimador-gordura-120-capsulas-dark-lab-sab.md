@@ -26,18 +26,6 @@ A fórmula combina L-carnitina tartarato (forma com maior estabilidade e absorç
 
 A Dark Lab é uma marca consolidada no mercado brasileiro de suplementos, com produtos presentes em grandes redes como Drogasil, Magazine Luiza, Netshoes e Americanas. O produto é gluten free e não possui sabor — o que facilita a ingestão para quem tem sensibilidade a aromas artificiais.
 
-<div style="display:flex;gap:16px;align-items:flex-start;background:linear-gradient(135deg,#f5f5ff,#ede7f6);border:2px solid var(--c-brand);border-radius:12px;padding:16px;margin:24px 0;box-shadow:0 4px 20px rgba(100,60,200,.10);">
-  <img src="/images/posts/l-carnitina-2000-queimador-gordura-120-capsulas-dark-lab-sab.webp" alt="L-Carnitina 2000 Dark Lab 120 cápsulas" width="90" height="90" loading="lazy" style="width:90px;height:90px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
-  <div style="flex:1;min-width:0;">
-    <div style="font-size:11px;font-weight:700;color:var(--c-brand);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">Suplementos | Queimador de Gordura</div>
-    <div style="font-size:15px;font-weight:800;color:#1a1a1a;margin-bottom:12px;line-height:1.3;">L-Carnitina 2000mg 120 Cápsulas — Dark Lab</div>
-    <a href="https://meli.la/2zDbQfx" target="_blank" rel="noopener noreferrer sponsored" style="display:block;width:100%;text-align:center;background:var(--c-brand);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:8px;text-decoration:none;box-sizing:border-box;">🛒 Ver produto no Mercado Livre</a>
-    <div style="font-size:11px;color:#888;margin-top:8px;text-align:center;">Link de afiliado — sem custo extra para você</div>
-  </div>
-</div>
-
-Vale conferir a disponibilidade atual [aqui](https://meli.la/2zDbQfx).
-
 ## O que ele entrega — e o que não entrega
 
 **O que funciona:**
