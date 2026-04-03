@@ -1,5 +1,5 @@
 {
-  "total": 87,
+  "total": 90,
   "mes_atual": 3,
   "logs": [
     {
@@ -145,6 +145,11 @@
     {
       "data": "2026-04-03T21:29:02.009Z",
       "produto": "Kit C/2 Séruns De Renovação E Hidratação Ácidos Hi",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T22:31:15.853Z",
+      "produto": "Whey Protein Isolado Isofort Frutas Vermelhas Pote",
       "consultas": 3
     }
   ]
