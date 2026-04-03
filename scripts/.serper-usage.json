@@ -1,5 +1,5 @@
 {
-  "total": 93,
+  "total": 96,
   "mes_atual": 3,
   "logs": [
     {
@@ -155,6 +155,11 @@
     {
       "data": "2026-04-03T22:31:47.126Z",
       "produto": "Whey Protein Concentrado 1kg Growth Supplements - ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T23:05:53.150Z",
+      "produto": "Pré-treino Evolution Workout 300g Termogênico Sabo",
       "consultas": 3
     }
   ]
