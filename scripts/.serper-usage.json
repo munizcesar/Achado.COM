@@ -1,5 +1,5 @@
 {
-  "total": 96,
+  "total": 99,
   "mes_atual": 3,
   "logs": [
     {
@@ -160,6 +160,11 @@
     {
       "data": "2026-04-03T23:05:53.150Z",
       "produto": "Pré-treino Evolution Workout 300g Termogênico Sabo",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T23:08:24.275Z",
+      "produto": "L-carnitina 2000 Queimador Gordura 120 Cápsulas - ",
       "consultas": 3
     }
   ]
