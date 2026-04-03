@@ -1,5 +1,5 @@
 {
-  "total": 84,
+  "total": 87,
   "mes_atual": 3,
   "logs": [
     {
@@ -140,6 +140,11 @@
     {
       "data": "2026-04-03T21:27:53.177Z",
       "produto": "Principia Creme Hidratante Corporal Ch-02 250g Sem",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T21:29:02.009Z",
+      "produto": "Kit C/2 Séruns De Renovação E Hidratação Ácidos Hi",
       "consultas": 3
     }
   ]
