@@ -1,5 +1,5 @@
 {
-  "total": 60,
+  "total": 63,
   "mes_atual": 3,
   "logs": [
     {
@@ -99,6 +99,11 @@
     },
     {
       "data": "2026-04-03T01:29:28.849Z",
+      "produto": "Bardahl Flex Aditivo Para Combustivel Motores Flex",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T01:43:27.691Z",
       "produto": "Bardahl Flex Aditivo Para Combustivel Motores Flex",
       "consultas": 3
     }
