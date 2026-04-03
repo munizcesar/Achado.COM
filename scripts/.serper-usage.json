@@ -1,5 +1,5 @@
 {
-  "total": 69,
+  "total": 72,
   "mes_atual": 3,
   "logs": [
     {
@@ -114,6 +114,11 @@
     },
     {
       "data": "2026-04-03T01:56:04.322Z",
+      "produto": "O Boticário Lily Eau De Parfum 75ml Volume Da Unid",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T01:59:52.936Z",
       "produto": "O Boticário Lily Eau De Parfum 75ml Volume Da Unid",
       "consultas": 3
     }
