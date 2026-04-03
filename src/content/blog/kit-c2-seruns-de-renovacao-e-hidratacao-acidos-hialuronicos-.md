@@ -2,9 +2,9 @@
 title: "Kit C/2 Séruns De Renovação E Hidratação Ácidos Hialurônicos Todo Tipo De Pele"
 description: "Conheça o Kit C/2 Séruns De Renovação E Hidratação Ácidos Hialurônicos Todo Tipo De Pele. Disponível no Mercado Livre com entrega rápida para todo o Brasil"
 date: 2026-04-03
-category: saude
+category: beleza
 image: /images/posts/kit-c2-seruns-de-renovacao-e-hidratacao-acidos-hialuronicos-.webp
-tags: [saude, hidratacao, skincare]
+tags: [beleza, hidratacao, skincare]
 draft: false
 affiliateUrl: "https://meli.la/24uqNXS"
 productImage: /images/posts/kit-c2-seruns-de-renovacao-e-hidratacao-acidos-hialuronicos-.webp

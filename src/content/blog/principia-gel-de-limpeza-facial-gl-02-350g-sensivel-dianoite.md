@@ -2,9 +2,9 @@
 title: "Principia Gel De Limpeza Facial Gl-02 350g Sensível Dia/noite"
 description: "Conheça o Principia Gel De Limpeza Facial Gl-02 350g Sensível Dia/noite. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-04-03
-category: esportes
+category: beleza
 image: /images/posts/principia-gel-de-limpeza-facial-gl-02-350g-sensivel-dianoite.webp
-tags: [esportes, skincare]
+tags: [beleza, skincare]
 draft: false
 affiliateUrl: "https://meli.la/1XYVzQw"
 productImage: /images/posts/principia-gel-de-limpeza-facial-gl-02-350g-sensivel-dianoite.webp

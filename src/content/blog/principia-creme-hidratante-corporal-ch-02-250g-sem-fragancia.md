@@ -2,9 +2,9 @@
 title: "Principia Creme Hidratante Corporal Ch-02 250g Sem Fragância"
 description: "Conheça o Principia Creme Hidratante Corporal Ch-02 250g Sem Fragância. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-04-03
-category: casa
+category: beleza
 image: /images/posts/principia-creme-hidratante-corporal-ch-02-250g-sem-fragancia.webp
-tags: [casa]
+tags: [beleza]
 draft: false
 affiliateUrl: "https://meli.la/1NbsT81"
 productImage: /images/posts/principia-creme-hidratante-corporal-ch-02-250g-sem-fragancia.webp

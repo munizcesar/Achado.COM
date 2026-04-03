@@ -2,9 +2,9 @@
 title: "Creamy Skincare Ácido Glicólico 30g | Reduz Poros Dilatados, Melhora A Pele, Hidratação Profunda E Intensa, Controla O Brilho Excessivo | Todos Os Tip"
 description: "Conheça o Creamy Skincare Ácido Glicólico 30g | Reduz Poros Dilatados, Melhora A Pele, Hidratação Profunda E Intensa, Controla O Brilho Excessivo | Todos O"
 date: 2026-04-03
-category: saude
+category: beleza
 image: /images/posts/creamy-skincare-acido-glicolico-30g-reduz-poros-dilatados-me.webp
-tags: [saude, hidratacao, skincare]
+tags: [beleza, hidratacao, skincare]
 draft: false
 affiliateUrl: "https://meli.la/2ipqxGt"
 productImage: /images/posts/creamy-skincare-acido-glicolico-30g-reduz-poros-dilatados-me.webp
