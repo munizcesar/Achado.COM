@@ -12,7 +12,7 @@ productImage: /images/posts/kit-halteres-6-em-1-peso-musculacao-ate-40kg-ajustav
 
 ## 6 equipamentos em 1 — treino completo em casa
 
-Montar uma academia em casa não precisa custar caro nem ocupar muito espaço. O **Kit Halteres 6 em 1 Ajustável até 40kg** resolve isso com um único equipamento que funciona como halter, kettlebell, anilha, barra e mais — tudo com ajuste de carga para acompanhar sua evolução. Para quem quer result ado real treinando em casa, é uma das opções mais completas do mercado.
+Montar uma academia em casa não precisa custar caro nem ocupar muito espaço. O **Kit Halteres 6 em 1 Ajustável até 40kg** resolve isso com um único equipamento que funciona como halter, kettlebell, anilha, barra e mais — tudo com ajuste de carga para acompanhar sua evolução. Para quem quer resultado real treinando em casa, é uma das opções mais completas do mercado.
 
 <div style="display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#fff8f0,#fff3e0);border:2px solid var(--c-brand);border-radius:12px;padding:20px 24px;margin:24px 0;box-shadow:0 4px 20px rgba(220,80,30,.12);">
   <img src="/images/posts/kit-halteres-6-em-1-peso-musculacao-ate-40kg-ajustavel-halte.webp" alt="Kit Halteres 6 em 1 Ajustável até 40kg" style="width:110px;height:110px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
@@ -77,7 +77,7 @@ O ajuste de peso é feito adicionando ou removendo anilhas, com trava de seguran
 
 ## Vale a Pena Comprar?
 
-Sim — especialmente pela relação custo-benefício. Comprar um kettlebell, um par de halteres e uma barra separados custaria muito mais. Aqui você tem tudo isso em uma só compra, com ajuste de carga e ainda leva um e-book de treinos. Para quem quer result ado treinando em casa com praticidade, é uma escolha sólida.
+Sim — especialmente pela relação custo-benefício. Comprar um kettlebell, um par de halteres e uma barra separados custaria muito mais. Aqui você tem tudo isso em uma só compra, com ajuste de carga e ainda leva um e-book de treinos. Para quem quer resultado treinando em casa com praticidade, é uma escolha sólida.
 
 ---
 
