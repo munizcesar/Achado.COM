@@ -1,5 +1,5 @@
 {
-  "total": 75,
+  "total": 78,
   "mes_atual": 3,
   "logs": [
     {
@@ -125,6 +125,11 @@
     {
       "data": "2026-04-03T21:22:09.879Z",
       "produto": "Natura Homem Sagaz 100 Ml Deo Parfum",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T21:24:13.673Z",
+      "produto": "Principia Gel De Limpeza Facial Gl-02 350g Sensíve",
       "consultas": 3
     }
   ]

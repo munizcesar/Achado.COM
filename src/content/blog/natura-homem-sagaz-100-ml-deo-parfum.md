@@ -2,9 +2,9 @@
 title: "Natura Homem Sagaz 100 Ml Deo Parfum"
 description: "Conheça o Natura Homem Sagaz 100 Ml Deo Parfum. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-04-03
-category: casa
+category: beleza
 image: /images/posts/natura-homem-sagaz-100-ml-deo-parfum.webp
-tags: [casa]
+tags: [beleza]
 draft: false
 affiliateUrl: "https://meli.la/1PVV5rB"
 productImage: /images/posts/natura-homem-sagaz-100-ml-deo-parfum.webp
