@@ -12,7 +12,7 @@ productImage: /images/posts/perfume-rabane-1-million-eau-de-toilette-100-ml-masc
 
 ## Um dos perfumes masculinos mais vendidos do mundo
 
-O **Paco Rabanne 1 Million** é um dos perfumes masculinos mais icônicos e reconhecíveis do planeta — lançado em 2008, continua entre os mais vendidos globalmente. Com um frasco em formato de barra de ouro, ele é tão marcante na aparencia quanto no aroma: uma combinação irresistível de frutas cítricas frescas, canela quente, couro e âmbar que cria uma assinatura olfativa única, sensual e de alta projecão.
+O **Paco Rabanne 1 Million** é um dos perfumes masculinos mais icônicos e reconhecíveis do planeta — lançado em 2008, continua entre os mais vendidos globalmente. Com um frasco em formato de barra de ouro, ele é tão marcante na aparência quanto no aroma: uma combinação irresistível de frutas cítricas frescas, canela quente, couro e âmbar que cria uma assinatura olfativa única, sensual e de alta projeção.
 
 <div style="display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#fff8f0,#fff3e0);border:2px solid var(--c-brand);border-radius:12px;padding:20px 24px;margin:24px 0;box-shadow:0 4px 20px rgba(220,80,30,.12);">
   <img src="/images/posts/perfume-rabane-1-million-eau-de-toilette-100-ml-masculino.webp" alt="Paco Rabanne 1 Million EDT 100ml" style="width:110px;height:110px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
@@ -49,7 +49,7 @@ No geral, é uma fragrância **quente, sedutora e com alta projeção**, que fun
 ## Duração e Projeção
 
 - **Duração:** 6 a 8 horas na pele (varia conforme o tipo de pele e clima)
-- **Projeção:** Alta — o sillãge é generoso, as pessoas ao redor percebem com facilidade
+- **Projeção:** Alta — o sillage é generoso, as pessoas ao redor percebem com facilidade
 - **Melhor época:** Outono e inverno — o calor intenso pode exagerar a projeção
 - **Melhor ocasião:** Noite, eventos, encontros, baladas
 
@@ -60,7 +60,7 @@ No geral, é uma fragrância **quente, sedutora e com alta projeção**, que fun
 **✔ Por que comprar:**
 - Um dos perfumes masculinos mais reconhecidos e elogiados do mundo
 - Frasco icônico em formato de barra de ouro — ótimo para presente
-- Aroma extremamente sedutores e marcante
+- Aroma extremamente sedutor e marcante
 - Alta projeção e duração satisfatória
 - Versão EDT tem boa relação custo-benefício frente à EDP
 
@@ -75,14 +75,14 @@ No geral, é uma fragrância **quente, sedutora e com alta projeção**, que fun
 
 - **Quem quer um clássico garantido** — difícil errar com o 1 Million
 - **Presente para homens** — o frasco e o nome já impressionam antes de abrir
-- **Quem gosta de fragrâncias quentes e sensuais** no estilo oriental-espíciado
+- **Quem gosta de fragrâncias quentes e sensuais** no estilo oriental-apimentado
 - **Uso noturno e outono/inverno** — é onde ele brilha de verdade
 
 ---
 
 ## Vale a Pena Comprar?
 
-Sim — especialmente se você ainda não tem o 1 Million na coleção. É um perfume que resistiu ao tempo justamente porque funciona: o aroma é sedutores, a projeção é forte e o frasco é memoravel. Para quem busca um perfume masculino com impacto real e reconhecimento imediato, é uma das melhores escolhas do mercado nessa faixa.
+Sim — especialmente se você ainda não tem o 1 Million na coleção. É um perfume que resistiu ao tempo justamente porque funciona: o aroma é sedutor, a projeção é forte e o frasco é memorável. Para quem busca um perfume masculino com impacto real e reconhecimento imediato, é uma das melhores escolhas do mercado nessa faixa.
 
 ---
 

@@ -34,13 +34,13 @@ O **O Boticário Lily Eau de Parfum** é uma fragrância feminina floral que tra
 - **Família olfativa:** Floral branco
 - **Notas de topo:** Lírio branco, bergamota, pêra
 - **Notas de coração:** Lírio do vale, magnólia, rósula
-- **Notas de fundo:** Múscio branco, sândalo, almiscar
+- **Notas de fundo:** Múscio branco, sândalo, almíscar
 
 ---
 
 ## Como é o Aroma?
 
-O Lily abre com a frescura da **bergamota e pêra**, criando uma abertura cítrica, feminina e imediatamente agradable. O coração revela o **lírio do vale e a magnólia** — floral branco limpo, sem doce artificial, muito elegante. Na base, o **múscio branco e sândalo** deixam um rastro quentinho e aconchegante que permanece na pele por horas.
+O Lily abre com a frescura da **bergamota e pêra**, criando uma abertura cítrica, feminina e imediatamente agradável. O coração revela o **lírio do vale e a magnólia** — floral branco limpo, sem doce artificial, muito elegante. Na base, o **múscio branco e sândalo** deixam um rastro quentinho e aconchegante que permanece na pele por horas.
 
 O resultado é uma fragrância **limpa, delicada e sofisticada** — aquele tipo que as pessoas ao redor notam sutilmente e inevitavelmente perguntam "que perfume é esse?". Não é pesada, não é enjoativa, não é infantil: é um floral feminino maduro e bem resolvido.
 
@@ -50,7 +50,7 @@ O resultado é uma fragrância **limpa, delicada e sofisticada** — aquele tipo
 
 - **Duração:** 5 a 7 horas na pele (EDP supera a Colônia)
 - **Projeção:** Média-discreta — elegante, sem exagero
-- **Sillãge:** Presente, mas não invasivo
+- **Sillage:** Presente, mas não invasivo
 - **Melhor época:** Primavera e verão — florais leves brilham no calor
 - **Melhor ocasião:** Uso diário, trabalho, encontros diurnos, eventos
 
