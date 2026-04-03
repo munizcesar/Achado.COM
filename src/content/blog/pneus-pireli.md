@@ -66,7 +66,7 @@ como pregos ou parafusos.
 
 <p>
 Permite rodar mesmo com perda de pressão no pneu por uma distância limitada,
-manterndo o controle do veículo até chegar a um local seguro.
+mantendo o controle do veículo até chegar a um local seguro.
 </p>
 
 <h3>PNCS (Pirelli Noise Cancelling System)</h3>

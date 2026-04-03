@@ -2,7 +2,7 @@
 title: "Rack Para Tv Giga Moveis 49627 Até 55 Polegadas Malbec Wood Retrô 1 Porta Cor"
 description: "Conheça o Rack Para Tv Giga Moveis 49627 Até 55 Polegadas Malbec Wood Retrô 1 Porta Cor. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-04-03
-category: tech
+category: casa
 image: /images/posts/rack-para-tv-giga-moveis-49627-ate-55-polegadas-malbec-wood-.webp
 tags: [tech, smart-tv]
 draft: false
