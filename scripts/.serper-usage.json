@@ -1,5 +1,5 @@
 {
-  "total": 36,
+  "total": 39,
   "mes_atual": 3,
   "logs": [
     {
@@ -60,6 +60,11 @@
     {
       "data": "2026-04-03T00:10:42.898Z",
       "produto": "Colchão Emma Original Casal - Tecnologia Alemã Cor",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T00:12:26.430Z",
+      "produto": "Poltrona Inflável Ultra Lounge Com Pufe Sofá Pregu",
       "consultas": 3
     }
   ]
