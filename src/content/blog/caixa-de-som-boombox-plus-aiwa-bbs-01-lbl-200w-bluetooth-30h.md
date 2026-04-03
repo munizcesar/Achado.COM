@@ -41,7 +41,7 @@ A **Aiwa Boombox Plus BBS-01** é uma caixa de som portátil de alto desempenho 
 
 ## Sistema de Som 3 Vias
 
-A grande diferencial da Aiwa BBS-01 em relação a caixas simples é o **sistema de 3 vias com drivers dedicados**: o subwoofer cuida dos graves profundos, os midranges reproduzem vozes e instrumentos com clareza, e os tweeters garantem os agudos sem distorção. Com 3 amplificadores separados, cada faixa de frequência recebe potência própria — resultado: som equilibrado mesmo no volume máximo.
+O grande diferencial da Aiwa BBS-01 em relação a caixas simples é o **sistema de 3 vias com drivers dedicados**: o subwoofer cuida dos graves profundos, os midranges reproduzem vozes e instrumentos com clareza, e os tweeters garantem os agudos sem distorção. Com 3 amplificadores separados, cada faixa de frequência recebe potência própria — resultado: som equilibrado mesmo no volume máximo.
 
 ---
 
@@ -77,7 +77,7 @@ A grande diferencial da Aiwa BBS-01 em relação a caixas simples é o **sistema
 
 - **Quem organiza festas e reuniões** e precisa de som alto sem depender de tomada
 - **Usuários de praia, piscina ou camping** que precisam de certificação à prova d'água
-- **Quem quer substitur um home theater simples** com uma caixa única e potente
+- **Quem quer substituir um home theater simples** com uma caixa única e potente
 - **Fãs de graves** que não abrem mão de subwoofer dedicado
 
 ---
