@@ -1,5 +1,5 @@
 {
-  "total": 81,
+  "total": 84,
   "mes_atual": 3,
   "logs": [
     {
@@ -135,6 +135,11 @@
     {
       "data": "2026-04-03T21:25:26.161Z",
       "produto": "Creamy Skincare Ácido Glicólico 30g | Reduz Poros ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T21:27:53.177Z",
+      "produto": "Principia Creme Hidratante Corporal Ch-02 250g Sem",
       "consultas": 3
     }
   ]
