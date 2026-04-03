@@ -2,9 +2,9 @@
 title: "O Boticário Lily Eau De Parfum 75ml Volume Da Unidade 75"
 description: "Conheça o O Boticário Lily Eau De Parfum 75ml Volume Da Unidade 75. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-04-03
-category: casa
+category: beleza
 image: /images/posts/o-boticario-lily-eau-de-parfum-75ml-volume-da-unidade-75.webp
-tags: [casa]
+tags: [beleza]
 draft: false
 affiliateUrl: "https://meli.la/1gYy8Y7"
 productImage: /images/posts/o-boticario-lily-eau-de-parfum-75ml-volume-da-unidade-75.webp
