@@ -1,5 +1,5 @@
 {
-  "total": 54,
+  "total": 57,
   "mes_atual": 3,
   "logs": [
     {
@@ -89,6 +89,11 @@
     },
     {
       "data": "2026-04-03T01:24:33.801Z",
+      "produto": "Caixa De Som Boombox Plus Aiwa Bbs-01-lbl 200w Blu",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T01:26:26.695Z",
       "produto": "Caixa De Som Boombox Plus Aiwa Bbs-01-lbl 200w Blu",
       "consultas": 3
     }
