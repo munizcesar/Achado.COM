@@ -1,5 +1,5 @@
 {
-  "total": 42,
+  "total": 45,
   "mes_atual": 3,
   "logs": [
     {
@@ -70,6 +70,11 @@
     {
       "data": "2026-04-03T00:13:45.070Z",
       "produto": "Apoio Para Pés Ergonômico Multivisão Apoio-pr Apoi",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T00:17:40.911Z",
+      "produto": "Apoio Ergonômico Para Pés Escritório 5 Alturas Res",
       "consultas": 3
     }
   ]
