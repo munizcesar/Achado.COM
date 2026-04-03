@@ -13,7 +13,7 @@ productImage: /images/posts/colchao-casal-luuna-support-2-espumas-ortopedica-e-t
 
 Escolher o colchão certo é uma das decisões mais importantes para a saúde — passamos cerca de um terço da nossa vida dormindo, e a qualidade do suporte postural durante o sono impacta diretamente as costas, o humor e a disposição durante o dia. O **Colchão Casal Luuna Support** foi desenvolvido para casais que não querem abrir mão de suporte ortopédico real: com **2 camadas de espuma** — ortopédica e térmica — firmeza firme e **18 cm de altura**, ele entrega estabilidade postural, conforto térmico e durabilidade para anos de uso.
 
-## 🚿 Por Que a Escolha do Colchão é Tão Importante?
+## 🛁 Por Que a Escolha do Colchão é Tão Importante?
 
 Um colchão inadequado não apenas prejudica o sono — ele compromete a saúde postural de forma acumulativa:
 
@@ -52,7 +52,7 @@ A camada de **espuma térmica** com tecnologia Aircell atua na regulação da te
 - 💤 **Sono mais profundo e reparador** — a combinação de suporte e conforto térmico reduz as interrupções
 - 🌡️ **Noites mais frescas** — a espuma térmica Aircell dissipa o calor e evita o desconforto térmico noturno
 - 💪 **Mais disposição ao acordar** — sono reparador se traduz em mais energia e foco durante o dia
-- 👫 **Conforto para os dois** — a firmeza firme e a distribuição uniforme de suporte funcionam bem para diferentes biotípos
+- 👫 **Conforto para os dois** — a firmeza firme e a distribuição uniforme de suporte funcionam bem para diferentes biotipos
 - ⏳ **Durabilidade da espuma** — espumas ortopédicas de qualidade mantêm o suporte por muitos anos sem afundar
 
 ## 📊 Firmeza Firme: Para Quem é Ideal?
@@ -61,10 +61,10 @@ A camada de **espuma térmica** com tecnologia Aircell atua na regulação da te
 |---|---|
 | Dorme de costas | ✅ Firme (excelente) |
 | Dorme de lado | ⚠️ Firme funciona, mas média também agrada |
-| Dorme de brucos | ✅ Firme (evita afundamento do abdome) |
+| Dorme de bruços | ✅ Firme (evita afundamento do abdome) |
 | Tem dores lombares | ✅ Firme (suporte constante) |
 | Peso acima de 90kg | ✅ Firme (evita afundamento excessivo) |
-| Prefere sensação de “flutuar” | ❌ Prefira médio ou macio |
+| Prefere sensação de "flutuar" | ❌ Prefira médio ou macio |
 
 ## 📖 Dicas para Aproveitar ao Máximo
 
@@ -85,7 +85,7 @@ A camada de **espuma térmica** com tecnologia Aircell atua na regulação da te
 
 ## ✅ Vale a Pena Comprar?
 
-O **Colchão Casal Luuna Support** entrega o que um colchão firme de qualidade deve oferecer: suporte ortopédico sólido para a coluna, conforto térmico com a espuma Aircell e construção em camadas que garante durabilidade. Com **18 cm de altura** e firmeza firme, é uma escolha especialmente acertada para quem já tem queixas de dor nas costas ou simplesmente prefere a sensação de um colchão que “sustenta” em vez de afundar.
+O **Colchão Casal Luuna Support** entrega o que um colchão firme de qualidade deve oferecer: suporte ortopédico sólido para a coluna, conforto térmico com a espuma Aircell e construção em camadas que garante durabilidade. Com **18 cm de altura** e firmeza firme, é uma escolha especialmente acertada para quem já tem queixas de dor nas costas ou simplesmente prefere a sensação de um colchão que "sustenta" em vez de afundar.
 
 A Luuna é uma marca especializada em sono com foco em qualidade de materiais e conforto real — e o modelo Support reflete essa proposta com uma fórmula de camadas bem equilibrada para o uso diário de casais.
 
