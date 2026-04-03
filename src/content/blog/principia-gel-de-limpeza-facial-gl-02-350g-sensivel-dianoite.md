@@ -1,5 +1,5 @@
 ---
-title: "Principia GL-02: Gel de Limpeza Facial para Pele Sensível Vale a Pena?"
+title: "Principia GL-02: Gel de Limpeza Facial Gentil para Pele Sensível"
 description: "Principia GL-02: gel de limpeza facial 350g com 11,5% de tensoativos suaves, 10% de glicerina e PCA sódio. Indicado para pele sensível, uso dia e noite. Review completo."
 date: 2026-04-03
 category: beleza
@@ -39,7 +39,7 @@ O **Principia GL-02** é um gel de limpeza facial desenvolvido pela Principia Sk
 
 ## O que Há na Fórmula?
 
-**Mix de tensoativos suaves (11,5%):** Os tensoativos são os responsáveis por remover sujo, óleo e impurezas da pele. Limpadores comuns usam sulfatos agressivos (como o SLS) que limpam muito bem mas irritam e ressecam. O GL-02 usa tensoativos de baixa irritabilidade, que limpam com eficácia sem comprometer a barreira de proteção da pele.
+**Mix de tensoativos suaves (11,5%):** Os tensoativos são os responsáveis por remover sujeira, óleo e impurezas da pele. Limpadores comuns usam sulfatos agressivos (como o SLS) que limpam muito bem mas irritam e ressecam. O GL-02 usa tensoativos de baixa irritabilidade, que limpam com eficácia sem comprometer a barreira de proteção da pele.
 
 **Glicerina 10%:** Umectante clássico da dermatologia. Atrai e retém umidade na pele durante e após a limpeza, evitando a sensação de repuxamento típica de limpadores convencionais.
 
@@ -91,16 +91,14 @@ O **Principia GL-02** é um gel de limpeza facial desenvolvido pela Principia Sk
 ## Para Quem é Indicado?
 
 - **Pele sensível ou reativa** — fórmula suave que não compromete a barreira cutânea
-- **Pele mista ou oleosa** — limpa sem resseca, mantendo o equilíbrio sebáceo
+- **Pele mista ou oleosa** — limpa sem ressecar, mantendo o equilíbrio sebáceo
 - **Quem usa ativos na rotina** (retinol, AHAs, vitamina C) — um limpador gentil é essencial para não agravar a sensibilidade gerada pelos ácidos
 - **Iniciantes em skincare** — fácil de usar e compatível com qualquer rotina
 - **Quem busca clean beauty nacional** — fórmula enxuta, transparente e eficaz
 
 ---
 
-## Vale a Pena?
-
-Sim — o **Principia GL-02** resolve um dos problemas mais comuns no skincare: a limpeza facial que resseca ou irrita. Com uma fórmula transparente, ativos em concentrações reais e foco total em gentileza com a pele sensível, ele é uma base sólida para qualquer rotina de skincare — do mais simples ao mais completo.
+O **Principia GL-02** resolve um dos problemas mais comuns no skincare: a limpeza facial que resseca ou irrita. Com fórmula transparente, ativos em concentrações reais e foco total em gentileza com a pele sensível, é uma base sólida para qualquer rotina — do mais simples ao mais completo.
 
 ---
 

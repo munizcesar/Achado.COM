@@ -41,7 +41,7 @@ O **Principia CH-02** é um creme hidratante corporal desenvolvido pela marca br
 
 Fragrâncias são uma das principais causas de irritação, alergias e dermatites de contato em produtos cosméticos. Para peles sensíveis, atópicas ou reativas, eliminar a fragrância não é apenas uma preferência — é uma necessidade.
 
-O CH-02 adota essa abordagem sem comprometer a textura ou a eficácia: a fórmula hidrata, acalma e protege a barreira cutânea sem adicionar potênciais irritantes, sendo uma opção segura também para quem simplesmente prefere produtos mais neutros no dia a dia.
+O CH-02 adota essa abordagem sem comprometer a textura ou a eficácia: a fórmula hidrata, acalma e protege a barreira cutânea sem adicionar potenciais irritantes, sendo uma opção segura também para quem simplesmente prefere produtos mais neutros no dia a dia.
 
 ---
 
@@ -93,9 +93,7 @@ O CH-02 adota essa abordagem sem comprometer a textura ou a eficácia: a fórmul
 
 ---
 
-## Vale a Pena?
-
-Sim — o **Principia CH-02** é uma das opções mais sólidas no segmento de hidratantes corporais sem fragrância do mercado nacional. A abordagem da Principia Skin, baseada em ciência e formulação limpa, resulta em um produto eficaz, seguro e adequado para os perfis de pele mais exigentes. Para quem já sofreu com irritações causadas por hidratantes convencionais, é um upgrade real.
+O **Principia CH-02** é uma das opções mais sólidas no segmento de hidratantes corporais sem fragrância do mercado nacional. A abordagem da Principia Skin, baseada em ciência e formulação limpa, resulta em um produto eficaz, seguro e adequado para os perfis de pele mais exigentes. Para quem já sofreu com irritações causadas por hidratantes convencionais, é um upgrade real.
 
 ---
 
