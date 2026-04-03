@@ -14,12 +14,12 @@ productImage: /images/posts/principia-creme-hidratante-corporal-ch-02-250g-sem-f
 
 O **Principia CH-02** é um creme hidratante corporal desenvolvido pela marca brasileira Principia Skin com foco em eficácia e segurança. Sem fragrâncias artificiais, corantes ou ingredientes desnecessários, ele foi formulado especialmente para peles sensíveis, ressecadas ou que reagem mal a produtos convencionais — sem abrir mão de uma hidratação intensa e duradoura.
 
-<div style="display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#f5f5ff,#ede7f6);border:2px solid var(--c-brand);border-radius:12px;padding:20px 24px;margin:24px 0;box-shadow:0 4px 20px rgba(100,60,200,.10);">
-  <img src="/images/posts/principia-creme-hidratante-corporal-ch-02-250g-sem-fragancia.webp" alt="Principia Creme Hidratante Corporal CH-02 250g" style="width:110px;height:110px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
-  <div style="flex:1;">
+<div style="display:flex;gap:16px;align-items:flex-start;background:linear-gradient(135deg,#f5f5ff,#ede7f6);border:2px solid var(--c-brand);border-radius:12px;padding:16px;margin:24px 0;box-shadow:0 4px 20px rgba(100,60,200,.10);">
+  <img src="/images/posts/principia-creme-hidratante-corporal-ch-02-250g-sem-fragancia.webp" alt="Principia Creme Hidratante Corporal CH-02 250g" style="width:90px;height:90px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
+  <div style="flex:1;min-width:0;">
     <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);margin-bottom:4px;">🧔 Skincare Corporal | Pele Sensível</p>
-    <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">Principia CH-02 — Hidratante Corporal 250g</p>
-    <a href="https://meli.la/1NbsT81" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
+    <p style="font-size:15px;font-weight:800;color:#1a1a1a;margin-bottom:12px;line-height:1.3;">Principia CH-02 — Hidratante Corporal 250g</p>
+    <a href="https://meli.la/1NbsT81" target="_blank" rel="noopener noreferrer sponsored" style="display:block;width:100%;text-align:center;background:var(--c-brand);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:8px;text-decoration:none;box-sizing:border-box;">🛒 Ver preço</a>
     <p style="font-size:11px;color:#999;margin-top:6px;">Link de afiliado — sem custo extra para você</p>
   </div>
 </div>
