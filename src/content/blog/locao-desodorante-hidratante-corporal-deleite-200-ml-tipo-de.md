@@ -15,20 +15,20 @@ Se você já sentiu o perfume Deleite de O Boticário, sabe que ele é imediatam
 
 ## 🌸 O Que é a Linha Deleite?
 
-Deleite é uma das fragrâncias mais amadas e duradouras do portfólio de **O Boticário** — marca brasileira com mais de 40 anos de trajetória e presença global. A linha Deleite tem como assinatura olfativa uma composição floral e frutada com notas adocicadas, que remete a carinho, femininidade e bem-estar.
+Deleite é uma das fragrâncias mais amadas e duradouras do portfólio de **O Boticário** — marca brasileira com mais de 40 anos de trajetória e presença global. A linha Deleite tem como assinatura olfativa uma composição floral e frutada com notas adocicadas, que remete a carinho, **feminilidade** e bem-estar.
 
 A loção corporal é um dos produtos mais práticos dessa linha: ela combina cuidado efetivo com a pele e a experiência sensorial da fragrância, tornando o momento do banho ou da hidratação um ritual prazeroso.
 
 ## ✨ Benefícios e Diferenciais do Produto
 
 ### 💧 Hidratação Intensa
-A fórmula é enriquecida com ingredientes ativos que promovem **hidratação profunda e duradoura**, deixando a pele macia e aveludada logo na primeira aplicação. Com uso regular, a pele ganha uma aparenêtarce mais saudável, uniforme e bem nutrida.
+A fórmula é enriquecida com ingredientes ativos que promovem **hidratação profunda e duradoura**, deixando a pele macia e aveludada logo na primeira aplicação. Com uso regular, a pele ganha uma **aparência** mais saudável, uniforme e bem nutrida.
 
 ### 🌿 Ação Desodorante
 Além de hidratar, o produto tem **ação desodorante** que ajuda a neutralizar o odor corporal ao longo do dia. Isso significa menos produtos para usar: a loção sozinha já cuida da pele e do frescor.
 
 ### 🌸 Fragrância Deleite
-A fragrância Deleite é o grande destaque do produto. Com notas adocicadas, florais e frutadas, ela permanece na pele por horas após a aplicação. Para quem gosta de complementar com o perfume ou desodorante da mesma linha, o efeito de **camadas olfativas** potencializa a durância do cheiro ao longo do dia.
+A fragrância Deleite é o grande destaque do produto. Com notas adocicadas, florais e frutadas, ela permanece na pele por horas após a aplicação. Para quem gosta de complementar com o perfume ou desodorante da mesma linha, o efeito de **camadas olfativas** potencializa a duração do cheiro ao longo do dia.
 
 ### 🌱 Fórmula Vegana e Consciente
 A fórmula é **vegana**, **livre de parabenos**, **livre de silicones** e **livre de petrolatos** — uma escolha mais limpa e sustentável para quem se preocupa com o que coloca na pele e no planeta.
@@ -65,7 +65,7 @@ A embalagem em **bisnaga de 200ml** facilita o uso e o controle da quantidade ap
 - Quem tem **pele seca ou desidratada** e precisa de hidratação consistente
 - Quem busca um **produto 2 em 1**: hidratar e desodorizar na mesma etapa
 - Fãs da fragrância Deleite que querem **complementar a rotina olfativa** com a loção
-- Quem prefere produtos com **ingredientes mais naturais**, veganos e sem componentes controversos
+- Quem prefere produtos com **ingredientes mais naturais**, veganos e sem componentes contróversos
 - **Presente feminino** para aniversário, Dia das Mães ou qualquer ocasião especial
 - Quem quer um **ritual de autocuidado** simples, cheiroso e eficaz no dia a dia
 

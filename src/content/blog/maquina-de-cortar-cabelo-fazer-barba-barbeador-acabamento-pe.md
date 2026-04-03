@@ -41,10 +41,10 @@ A cabeça principal de corte é voltada para o cabelo, com lâminas de aço inox
 Para aparar e moldar a barba com precisão, a cabeça de barba permite definir contornos, ajustar o comprimento e manter o estilo desejado — seja barba curta, meia-barba ou cavanhaque.
 
 ### 3️⃣ Acabamento e Detalhes
-A cabeça de acabamento é mais fina e precisa, perfeita para desenhar linhas, definir o "pezinho", fazer disfarces e criar detalhes que exigem máxima precisão na borda do corte.
+A cabeça de acabamento é mais fina e precisa, perfeita para desenhar linhas, definir o “pezinho”, fazer disfarces e criar detalhes que exigem máxima precisão na borda do corte.
 
 ### 4️⃣ Aparador de Nariz e Orelha
-A cabeça giratória para nariz e orelha remove pelos indesejados com segurança, sem irritar ou machucar a pele interna — um detalhe que faz grande diferença no cuidado completo do visual.
+A cabeça gиратória para nariz e orelha remove pelos indesejados com segurança, sem irritar ou machucar a pele interna — um detalhe que faz grande diferença no cuidado completo do visual.
 
 ### 5️⃣ Aparador de Sobrancelha / Corpo
 A quinta função cobre acabamentos corporais e sobrancelhas, completando o kit para um grooming completo do rosto e corpo sem precisar de nenhum outro aparelho.
@@ -61,7 +61,7 @@ A operação sem fio dá liberdade de movimento durante o corte, sem o incômodo
 As cabeças podem ser lavadas em água corrente, facilitando a limpeza e mantendo a higiene do aparelho entre os usos. Isso aumenta a vida útil das lâminas e garante que o próximo corte seja sempre com um aparelho limpo.
 
 ### ✅ Kit Completo em Uma Única Embalagem
-Tudo que você precisa já vem incluso: diferentes cabeças, pentes guía, cabo de carregamento, escova de limpeza e, em alguns kits, tesoura e pente. Não é preciso comprar acessórios separados para começar a usar.
+Tudo que você precisa já vem incluso: diferentes cabeças, pentes **guia**, cabo de carregamento, escova de limpeza e, em alguns kits, tesoura e pente. Não é preciso comprar acessórios separados para começar a usar.
 
 ### ✅ Design Compacto e Portátil
 O formato slim e leve facilita o uso em ângulos difíceis, além de caber facilmente em uma necessaire ou mala de viagem.
