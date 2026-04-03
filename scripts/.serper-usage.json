@@ -1,5 +1,5 @@
 {
-  "total": 45,
+  "total": 48,
   "mes_atual": 3,
   "logs": [
     {
@@ -75,6 +75,11 @@
     {
       "data": "2026-04-03T00:17:40.911Z",
       "produto": "Apoio Ergonômico Para Pés Escritório 5 Alturas Res",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T00:19:03.347Z",
+      "produto": "Rack Para Tv Giga Moveis 49627 Até 55 Polegadas Ma",
       "consultas": 3
     }
   ]
