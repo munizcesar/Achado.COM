@@ -1,5 +1,5 @@
 {
-  "total": 72,
+  "total": 75,
   "mes_atual": 3,
   "logs": [
     {
@@ -120,6 +120,11 @@
     {
       "data": "2026-04-03T01:59:52.936Z",
       "produto": "O Boticário Lily Eau De Parfum 75ml Volume Da Unid",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T21:22:09.879Z",
+      "produto": "Natura Homem Sagaz 100 Ml Deo Parfum",
       "consultas": 3
     }
   ]
