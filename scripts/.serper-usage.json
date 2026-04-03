@@ -1,5 +1,5 @@
 {
-  "total": 63,
+  "total": 66,
   "mes_atual": 3,
   "logs": [
     {
@@ -105,6 +105,11 @@
     {
       "data": "2026-04-03T01:43:27.691Z",
       "produto": "Bardahl Flex Aditivo Para Combustivel Motores Flex",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T01:44:39.921Z",
+      "produto": "Perfume Rabane 1 Million Eau De Toilette 100 Ml Ma",
       "consultas": 3
     }
   ]
