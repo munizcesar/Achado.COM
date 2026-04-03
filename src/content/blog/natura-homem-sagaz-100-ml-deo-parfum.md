@@ -12,16 +12,6 @@ productImage: /images/posts/natura-homem-sagaz-100-ml-deo-parfum.webp
 
 Quem procura um perfume masculino com personalidade marcante sem gastar muito acaba esbarrando no **Natura Homem Sagaz**. Ele não é novidade no mercado — e justamente por isso acumula um histórico real de avaliações que vale analisar antes de decidir.
 
-<div style="display:flex;gap:16px;align-items:flex-start;background:linear-gradient(135deg,#f5f5ff,#ede7f6);border:2px solid var(--c-brand);border-radius:12px;padding:16px;margin:24px 0;box-shadow:0 4px 20px rgba(100,60,200,.10);">
-  <img src="/images/posts/natura-homem-sagaz-100-ml-deo-parfum.webp" alt="Natura Homem Sagaz 100 ml Deo Parfum" width="90" height="90" loading="lazy" style="width:90px;height:90px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
-  <div style="flex:1;min-width:0;">
-    <div style="font-size:11px;font-weight:700;color:var(--c-brand);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;">✨ BELEZA | PERFUME MASCULINO</div>
-    <div style="font-size:15px;font-weight:800;color:#1a1a1a;margin-bottom:12px;line-height:1.3;">Natura Homem Sagaz — Deo Parfum 100 ml</div>
-    <a href="https://meli.la/1PVV5rB" target="_blank" rel="noopener noreferrer sponsored" style="display:block;width:100%;text-align:center;background:var(--c-brand);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:8px;text-decoration:none;box-sizing:border-box;">🛒 Ver produto</a>
-    <div style="font-size:11px;color:#888;margin-top:8px;text-align:center;">Link de afiliado — sem custo extra para você</div>
-  </div>
-</div>
-
 ## O que é o Natura Homem Sagaz
 
 O Sagaz faz parte da linha **Natura Homem**, voltada para quem quer fragrâncias de qualidade a um preço acessível. Trata-se de um **deo parfum** — concentração intermediária entre o eau de toilette e o eau de parfum — com **100 ml** de conteúdo.
