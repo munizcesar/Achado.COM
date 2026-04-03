@@ -1,5 +1,5 @@
 {
-  "total": 39,
+  "total": 42,
   "mes_atual": 3,
   "logs": [
     {
@@ -65,6 +65,11 @@
     {
       "data": "2026-04-03T00:12:26.430Z",
       "produto": "Poltrona Inflável Ultra Lounge Com Pufe Sofá Pregu",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T00:13:45.070Z",
+      "produto": "Apoio Para Pés Ergonômico Multivisão Apoio-pr Apoi",
       "consultas": 3
     }
   ]
