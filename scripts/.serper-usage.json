@@ -1,5 +1,5 @@
 {
-  "total": 57,
+  "total": 60,
   "mes_atual": 3,
   "logs": [
     {
@@ -95,6 +95,11 @@
     {
       "data": "2026-04-03T01:26:26.695Z",
       "produto": "Caixa De Som Boombox Plus Aiwa Bbs-01-lbl 200w Blu",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T01:29:28.849Z",
+      "produto": "Bardahl Flex Aditivo Para Combustivel Motores Flex",
       "consultas": 3
     }
   ]
