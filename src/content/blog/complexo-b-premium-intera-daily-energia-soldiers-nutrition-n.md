@@ -17,11 +17,11 @@ productImage: /images/posts/complexo-b-premium-intera-daily-energia-soldiers-nut
 As vitaminas do Complexo B são oito nutrientes hidrossolúveis essenciais que o organismo não armazena com eficiência — ou seja, precisam ser repostos regularmente pela dieta ou suplemetação. Elas atuam de forma interdependente em processos fundamentais como **produção de energia celular**, **formação de glóbulos vermelhos**, **síntese de neurotransmissores** e **manutenção da bainha de mielina** (proteção dos nervos). Deficiências mesmo que leves — comuns em veganos, vegetarianos, pessoas com estresse crônico e idosos — se manifestam como cansaço, falta de foco, irritãbilidade e formigamentos.
 
 <div style="display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#fffbf0,#fff8e1);border:2px solid var(--c-brand);border-radius:12px;padding:20px 24px;margin:24px 0;box-shadow:0 4px 20px rgba(200,150,0,.10);">
-  <img src="/images/posts/complexo-b-premium-intera-daily-energia-soldiers-nutrition-n.jpg" alt="Complexo B Premium Íntera Daily Soldiers Nutrition" style="width:110px;height:110px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
-  <div style="flex:1;">
+  <img src="/images/posts/complexo-b-premium-intera-daily-energia-soldiers-nutrition-n.jpg" alt="Complexo B Premium Íntera Daily Soldiers Nutrition" style="width:90px;height:90px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
+  <div style="flex:1;min-width:0;">
     <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);margin-bottom:4px;">🏆 Destaque em Saúde e Suplementação</p>
-    <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">Complexo B Premium Íntera Daily — Soldiers Nutrition</p>
-    <a href="https://meli.la/2KSE3eZ" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
+    <p style="font-size:15px;font-weight:800;color:#1a1a1a;margin-bottom:12px;line-height:1.3;">Complexo B Premium Íntera Daily — Soldiers Nutrition</p>
+    <a href="https://meli.la/2KSE3eZ" target="_blank" rel="noopener noreferrer sponsored" style="display:block;width:100%;text-align:center;background:var(--c-brand);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:8px;text-decoration:none;box-sizing:border-box;">🛒 Ver produto</a>
     <p style="font-size:11px;color:#999;margin-top:6px;">Link de afiliado — sem custo extra para você</p>
   </div>
 </div>

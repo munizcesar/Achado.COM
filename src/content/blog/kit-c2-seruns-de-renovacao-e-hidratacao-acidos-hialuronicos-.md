@@ -15,11 +15,11 @@ productImage: /images/posts/kit-c2-seruns-de-renovacao-e-hidratacao-acidos-hialu
 O **ácido hialurônico** e o **alfa-arbutin** são dois dos ingredientes mais recomendados pela dermatologia para quem busca pele hidratada, firme e com tom uniforme. Usados juntos, eles cobrem duas das principais queixas de quem cuida da pele: ressecamento e manchas. Esses séruns combinam esses dois ativos em fórmulas leves, gentis e indicadas para todos os tipos de pele.
 
 <div style="display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#f0f8ff,#e3f2fd);border:2px solid var(--c-brand);border-radius:12px;padding:20px 24px;margin:24px 0;box-shadow:0 4px 20px rgba(30,100,200,.10);">
-  <img src="/images/posts/kit-c2-seruns-de-renovacao-e-hidratacao-acidos-hialuronicos-.webp" alt="Séruns Ácido Hialurônico e Alfa-Arbutin" style="width:110px;height:110px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
-  <div style="flex:1;">
+  <img src="/images/posts/kit-c2-seruns-de-renovacao-e-hidratacao-acidos-hialuronicos-.webp" alt="Séruns Ácido Hialurônico e Alfa-Arbutin" style="width:90px;height:90px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
+  <div style="flex:1;min-width:0;">
     <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);margin-bottom:4px;">✨ Skincare | Séruns com Ativos</p>
-    <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">Séruns Ác. Hialurônico 2% + Alfa-Arbutin 2%</p>
-    <a href="https://meli.la/24uqNXS" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
+    <p style="font-size:15px;font-weight:800;color:#1a1a1a;margin-bottom:12px;line-height:1.3;">Séruns Ác. Hialurônico 2% + Alfa-Arbutin 2%</p>
+    <a href="https://meli.la/24uqNXS" target="_blank" rel="noopener noreferrer sponsored" style="display:block;width:100%;text-align:center;background:var(--c-brand);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:8px;text-decoration:none;box-sizing:border-box;">🛒 Ver produto</a>
     <p style="font-size:11px;color:#999;margin-top:6px;">Link de afiliado — sem custo extra para você</p>
   </div>
 </div>

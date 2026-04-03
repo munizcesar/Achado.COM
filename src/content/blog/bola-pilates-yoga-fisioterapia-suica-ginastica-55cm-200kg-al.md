@@ -17,11 +17,11 @@ productImage: /images/posts/bola-pilates-yoga-fisioterapia-suica-ginastica-55cm-
 A bola suíça — também chamada de bola de pilates, swiss ball ou fitball — surgiu nos anos 60 na reabilitação fisioterapêutica europeia e hoje é um dos equipamentos de treino mais versáteis do mercado. Ao contrário de aparelhos que isolam um músculo, ela **recruta músculos estabilizadores** em praticamente todo exercício, tornando cada movimento mais eficiente e funcional. Essa característica a faz presente em clínicas de fisioterapia, estúdios de yoga, academias de pilates e treinos funcionais em casa.
 
 <div style="display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#f0fff4,#e6ffed);border:2px solid var(--c-brand);border-radius:12px;padding:20px 24px;margin:24px 0;box-shadow:0 4px 20px rgba(0,160,80,.10);">
-  <img src="/images/posts/bola-pilates-yoga-fisioterapia-suica-ginastica-55cm-200kg-al.jpg" alt="Bola Suíça 55cm para Pilates Yoga e Fisioterapia" style="width:110px;height:110px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
-  <div style="flex:1;">
+  <img src="/images/posts/bola-pilates-yoga-fisioterapia-suica-ginastica-55cm-200kg-al.jpg" alt="Bola Suíça 55cm para Pilates Yoga e Fisioterapia" style="width:90px;height:90px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
+  <div style="flex:1;min-width:0;">
     <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);margin-bottom:4px;">🏆 Destaque em Equipamentos de Treino</p>
-    <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">Bola Suíça 55cm — Pilates, Yoga, Fisioterapia e Ginástica</p>
-    <a href="https://meli.la/1X47GHA" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
+    <p style="font-size:15px;font-weight:800;color:#1a1a1a;margin-bottom:12px;line-height:1.3;">Bola Suíça 55cm — Pilates, Yoga, Fisioterapia e Ginástica</p>
+    <a href="https://meli.la/1X47GHA" target="_blank" rel="noopener noreferrer sponsored" style="display:block;width:100%;text-align:center;background:var(--c-brand);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:8px;text-decoration:none;box-sizing:border-box;">🛒 Ver produto</a>
     <p style="font-size:11px;color:#999;margin-top:6px;">Link de afiliado — sem custo extra para você</p>
   </div>
 </div>

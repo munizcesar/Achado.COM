@@ -15,9 +15,9 @@ Com mais de 100 milhões de usuários no Brasil, o Mercado Livre é o maior mark
 
 <div style="display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#fff8e1,#fff3cd);border:2px solid #f5a623;border-radius:12px;padding:20px 24px;margin:24px 0;box-shadow:0 4px 20px rgba(245,166,35,.15);">
   <div style="font-size:48px;flex-shrink:0;">🛒</div>
-  <div style="flex:1;">
+  <div style="flex:1;min-width:0;">
     <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#f5a623;margin-bottom:4px;">MARKETPLACE N°1 DA AMÉRICA LATINA</p>
-    <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">Explore milhares de ofertas com proteção total da Compra Garantida</p>
+    <p style="font-size:15px;font-weight:800;color:#1a1a1a;margin-bottom:12px;line-height:1.3;">Explore milhares de ofertas com proteção total da Compra Garantida</p>
     <a href="https://www.mercadolivre.com.br/social/muc1576372" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:#f5a623;color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🔎 Ver ofertas no Mercado Livre</a>
     <p style="font-size:11px;color:#999;margin-top:6px;">Link de afiliado — sem custo extra para você</p>
   </div>

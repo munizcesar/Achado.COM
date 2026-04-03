@@ -15,11 +15,11 @@ productImage: /images/posts/creamy-skincare-acido-glicolico-30g-reduz-poros-dila
 O **Creamy Skincare Ácido Glicólico 30g** é um esfoliante químico de alta performance que combina o poder do ácido glicólico — um dos AHAs mais estudados da dermatologia — com uma fórmula hidratante e de uso diário. Indicado para todos os tipos de pele, promete reduzir poros dilatados, controlar o brilho excessivo, melhorar a textura e proporcionar hidratação profunda com uso regular.
 
 <div style="display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#f0fff4,#e6f7ef);border:2px solid var(--c-brand);border-radius:12px;padding:20px 24px;margin:24px 0;box-shadow:0 4px 20px rgba(30,160,80,.10);">
-  <img src="/images/posts/creamy-skincare-acido-glicolico-30g-reduz-poros-dilatados-me.webp" alt="Creamy Skincare Ácido Glicólico 30g" style="width:110px;height:110px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
-  <div style="flex:1;">
+  <img src="/images/posts/creamy-skincare-acido-glicolico-30g-reduz-poros-dilatados-me.webp" alt="Creamy Skincare Ácido Glicólico 30g" style="width:90px;height:90px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
+  <div style="flex:1;min-width:0;">
     <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);margin-bottom:4px;">✨ Skincare | Esfoliante Químico</p>
-    <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">Creamy Skincare Ácido Glicólico — 30g</p>
-    <a href="https://meli.la/2ipqxGt" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
+    <p style="font-size:15px;font-weight:800;color:#1a1a1a;margin-bottom:12px;line-height:1.3;">Creamy Skincare Ácido Glicólico — 30g</p>
+    <a href="https://meli.la/2ipqxGt" target="_blank" rel="noopener noreferrer sponsored" style="display:block;width:100%;text-align:center;background:var(--c-brand);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:8px;text-decoration:none;box-sizing:border-box;">🛒 Ver produto</a>
     <p style="font-size:11px;color:#999;margin-top:6px;">Link de afiliado — sem custo extra para você</p>
   </div>
 </div>

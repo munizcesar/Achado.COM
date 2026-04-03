@@ -29,11 +29,11 @@ Xiaomi e Poco são marcas do mesmo grupo, mas com propostas distintas. A **Poco*
 ## Poco X7 Pro — O Rei dos Games
 
 <div style="display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#fff8f0,#fff3e0);border:2px solid var(--c-brand);border-radius:12px;padding:20px 24px;margin:24px 0;box-shadow:0 4px 20px rgba(220,80,30,.12);">
-  <img src="https://http2.mlstatic.com/D_NQ_NP_2X_968456-MLA95494975582_102025-F.webp" alt="Poco X7 Pro" style="width:110px;height:110px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
-  <div style="flex:1;">
+  <img src="https://http2.mlstatic.com/D_NQ_NP_2X_968456-MLA95494975582_102025-F.webp" alt="Poco X7 Pro" style="width:90px;height:90px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
+  <div style="flex:1;min-width:0;">
     <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);margin-bottom:4px;">🎮 Melhor para Games</p>
-    <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">Poco X7 Pro</p>
-    <a href="https://meli.la/2uC8bmd" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
+    <p style="font-size:15px;font-weight:800;color:#1a1a1a;margin-bottom:12px;line-height:1.3;">Poco X7 Pro</p>
+    <a href="https://meli.la/2uC8bmd" target="_blank" rel="noopener noreferrer sponsored" style="display:block;width:100%;text-align:center;background:var(--c-brand);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:8px;text-decoration:none;box-sizing:border-box;">🛒 Ver produto</a>
     <p style="font-size:11px;color:#999;margin-top:6px;">Link de afiliado — sem custo extra para você</p>
   </div>
 </div>
@@ -48,11 +48,11 @@ Com **Dimensity 8400**, tela AMOLED 144Hz e bateria de **6000 mAh** com carregam
 ## Redmi Note 14 Pro+ — O Fotógrafo
 
 <div style="display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#fff8f0,#fff3e0);border:2px solid var(--c-brand);border-radius:12px;padding:20px 24px;margin:24px 0;box-shadow:0 4px 20px rgba(220,80,30,.12);">
-  <img src="https://http2.mlstatic.com/D_NQ_NP_2X_648082-MLA81873454364_012025-F.webp" alt="Redmi Note 14 Pro+" style="width:110px;height:110px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
-  <div style="flex:1;">
+  <img src="https://http2.mlstatic.com/D_NQ_NP_2X_648082-MLA81873454364_012025-F.webp" alt="Redmi Note 14 Pro+" style="width:90px;height:90px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
+  <div style="flex:1;min-width:0;">
     <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);margin-bottom:4px;">📸 Melhor para Fotos</p>
-    <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">Redmi Note 14 Pro+</p>
-    <a href="https://meli.la/2DGy5Cr" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
+    <p style="font-size:15px;font-weight:800;color:#1a1a1a;margin-bottom:12px;line-height:1.3;">Redmi Note 14 Pro+</p>
+    <a href="https://meli.la/2DGy5Cr" target="_blank" rel="noopener noreferrer sponsored" style="display:block;width:100%;text-align:center;background:var(--c-brand);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:8px;text-decoration:none;box-sizing:border-box;">🛒 Ver produto</a>
     <p style="font-size:11px;color:#999;margin-top:6px;">Link de afiliado — sem custo extra para você</p>
   </div>
 </div>
@@ -67,11 +67,11 @@ A câmera principal de **200 MP com OIS** e estabilização por IA é o grande d
 ## Xiaomi 15T Pro — Premium Acessível
 
 <div style="display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#fff8f0,#fff3e0);border:2px solid var(--c-brand);border-radius:12px;padding:20px 24px;margin:24px 0;box-shadow:0 4px 20px rgba(220,80,30,.12);">
-  <img src="https://http2.mlstatic.com/D_NQ_NP_2X_640395-MLA93401011273_092025-F.webp" alt="Xiaomi 15T Pro" style="width:110px;height:110px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
-  <div style="flex:1;">
+  <img src="https://http2.mlstatic.com/D_NQ_NP_2X_640395-MLA93401011273_092025-F.webp" alt="Xiaomi 15T Pro" style="width:90px;height:90px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
+  <div style="flex:1;min-width:0;">
     <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);margin-bottom:4px;">⭐ Premium Acessível</p>
-    <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">Xiaomi 15T Pro</p>
-    <a href="https://meli.la/2fUEmTi" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
+    <p style="font-size:15px;font-weight:800;color:#1a1a1a;margin-bottom:12px;line-height:1.3;">Xiaomi 15T Pro</p>
+    <a href="https://meli.la/2fUEmTi" target="_blank" rel="noopener noreferrer sponsored" style="display:block;width:100%;text-align:center;background:var(--c-brand);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:8px;text-decoration:none;box-sizing:border-box;">🛒 Ver produto</a>
     <p style="font-size:11px;color:#999;margin-top:6px;">Link de afiliado — sem custo extra para você</p>
   </div>
 </div>
@@ -86,11 +86,11 @@ Câmeras com sistema **Leica**, Snapdragon 8s Gen 3 e carregamento **120W** colo
 ## Xiaomi 15T — Equilíbrio Total
 
 <div style="display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#fff8f0,#fff3e0);border:2px solid var(--c-brand);border-radius:12px;padding:20px 24px;margin:24px 0;box-shadow:0 4px 20px rgba(220,80,30,.12);">
-  <img src="https://http2.mlstatic.com/D_NQ_NP_2X_935426-MLA103756136909_012026-F.webp" alt="Xiaomi 15T" style="width:110px;height:110px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
-  <div style="flex:1;">
+  <img src="https://http2.mlstatic.com/D_NQ_NP_2X_935426-MLA103756136909_012026-F.webp" alt="Xiaomi 15T" style="width:90px;height:90px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
+  <div style="flex:1;min-width:0;">
     <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);margin-bottom:4px;">✅ Melhor Custo-Benefício</p>
-    <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">Xiaomi 15T</p>
-    <a href="https://meli.la/1qanv7Z" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
+    <p style="font-size:15px;font-weight:800;color:#1a1a1a;margin-bottom:12px;line-height:1.3;">Xiaomi 15T</p>
+    <a href="https://meli.la/1qanv7Z" target="_blank" rel="noopener noreferrer sponsored" style="display:block;width:100%;text-align:center;background:var(--c-brand);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:8px;text-decoration:none;box-sizing:border-box;">🛒 Ver produto</a>
     <p style="font-size:11px;color:#999;margin-top:6px;">Link de afiliado — sem custo extra para você</p>
   </div>
 </div>

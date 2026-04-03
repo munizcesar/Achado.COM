@@ -15,11 +15,11 @@ productImage: /images/posts/perfume-rabane-1-million-eau-de-toilette-100-ml-masc
 O **Paco Rabanne 1 Million** é um dos perfumes masculinos mais icônicos e reconhecíveis do planeta — lançado em 2008, continua entre os mais vendidos globalmente. Com um frasco em formato de barra de ouro, ele é tão marcante na aparência quanto no aroma: uma combinação irresistível de frutas cítricas frescas, canela quente, couro e âmbar que cria uma assinatura olfativa única, sensual e de alta projeção.
 
 <div style="display:flex;gap:20px;align-items:center;background:linear-gradient(135deg,#fff8f0,#fff3e0);border:2px solid var(--c-brand);border-radius:12px;padding:20px 24px;margin:24px 0;box-shadow:0 4px 20px rgba(220,80,30,.12);">
-  <img src="/images/posts/perfume-rabane-1-million-eau-de-toilette-100-ml-masculino.webp" alt="Paco Rabanne 1 Million EDT 100ml" style="width:110px;height:110px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
-  <div style="flex:1;">
+  <img src="/images/posts/perfume-rabane-1-million-eau-de-toilette-100-ml-masculino.webp" alt="Paco Rabanne 1 Million EDT 100ml" style="width:90px;height:90px;object-fit:contain;border-radius:8px;background:#fff;border:1px solid #eee;flex-shrink:0;" />
+  <div style="flex:1;min-width:0;">
     <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);margin-bottom:4px;">👜 Perfume Masculino Icônico</p>
-    <p style="font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:14px;line-height:1.3;">Paco Rabanne 1 Million — EDT 100ml</p>
-    <a href="https://meli.la/1xR37Nj" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:15px;padding:11px 22px;border-radius:8px;text-decoration:none;">🛒 Ver melhor preço</a>
+    <p style="font-size:15px;font-weight:800;color:#1a1a1a;margin-bottom:12px;line-height:1.3;">Paco Rabanne 1 Million — EDT 100ml</p>
+    <a href="https://meli.la/1xR37Nj" target="_blank" rel="noopener noreferrer sponsored" style="display:block;width:100%;text-align:center;background:var(--c-brand);color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:8px;text-decoration:none;box-sizing:border-box;">🛒 Ver produto</a>
     <p style="font-size:11px;color:#999;margin-top:6px;">Link de afiliado — sem custo extra para você</p>
   </div>
 </div>
