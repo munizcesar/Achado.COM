@@ -1,5 +1,5 @@
 {
-  "total": 90,
+  "total": 93,
   "mes_atual": 3,
   "logs": [
     {
@@ -150,6 +150,11 @@
     {
       "data": "2026-04-03T22:31:15.853Z",
       "produto": "Whey Protein Isolado Isofort Frutas Vermelhas Pote",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-03T22:31:47.126Z",
+      "produto": "Whey Protein Concentrado 1kg Growth Supplements - ",
       "consultas": 3
     }
   ]
