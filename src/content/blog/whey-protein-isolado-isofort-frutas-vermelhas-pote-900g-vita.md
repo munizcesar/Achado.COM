@@ -2,7 +2,7 @@
 title: "Isofort Vitafor Vale a Pena? O Whey Isolado que Virou Referência Nacional"
 description: "Isofort Vitafor 900g entrega 27g de proteína isolada por dose, sem lactose, com alta digestibilidade e sabor frutas vermelhas aprovado. Veja a análise completa."
 date: 2026-04-03
-category: fitness
+category: saude
 image: /images/posts/whey-protein-isolado-isofort-frutas-vermelhas-pote-900g-vita.webp
 tags: [whey-isolado, isofort, vitafor, proteina, sem-lactose]
 draft: false

@@ -2,7 +2,7 @@
 title: "Horus Max Titanium Vale a Pena? O Pré-Treino Nacional Mais Honesto do Mercado"
 description: "Horus Max Titanium entrega energia real, foco e resistência com beta-alanina e cafeína. Descubra se a fórmula e o sabor amora justificam a compra."
 date: 2026-04-03
-category: fitness
+category: saude
 image: /images/posts/suplemento-em-po-max-titanium-pre-treino-horus-sabor-amora-e.webp
 tags: [pre-treino, max-titanium, horus, suplemento, musculacao]
 draft: false
