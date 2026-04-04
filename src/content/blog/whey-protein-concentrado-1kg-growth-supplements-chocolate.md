@@ -2,7 +2,7 @@
 title: "Whey Protein Growth Concentrado 1kg Vale a Pena? Análise Honesta do Chocolate"
 description: "Whey Protein Concentrado Growth 1kg entrega 23g de proteína por dose com BCAAs naturais e sabor chocolate aprovado. Descubra por que é referência nacional."
 date: 2026-04-03
-category: fitness
+category: saude
 image: /images/posts/whey-protein-concentrado-1kg-growth-supplements-chocolate.webp
 tags: [whey-protein, growth-supplements, proteina, musculacao, ganho-de-massa]
 draft: false
