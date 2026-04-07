@@ -1,15 +1,7 @@
 #!/usr/bin/env node
 /**
  * scripts/postbuild.js
- *
- * Executa após o build do Astro.
- * Lê o post mais recente de src/content/blog/ e notifica o canal do Telegram.
- *
- * Uso: node scripts/postbuild.js
- *
- * Variáveis de ambiente necessárias (Cloudflare Pages Secrets):
- *   TELEGRAM_TOKEN   = token do bot
- *   SITE_URL         = URL do site (ex: https://achadocerto.vip) [opcional]
+ * Executa após o build do Astro e notifica o Telegram com o post mais recente.
  */
 
 import fs from 'fs';
@@ -17,52 +9,55 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const BLOG_DIR = path.join(__dirname, '..', 'src', 'content', 'blog');
-const SITE_URL = process.env.SITE_URL || 'https://achadocerto.vip';
+const BLOG_DIR   = path.join(__dirname, '..', 'src', 'content', 'blog');
+const SITE_URL   = process.env.SITE_URL   || 'https://achadocerto.vip';
 const NOTIFY_URL = `${SITE_URL}/api/notify-telegram`;
 
-// Lê o frontmatter de um arquivo markdown
+/**
+ * Parser de frontmatter robusto:
+ * suporta valores com e sem aspas, incluindo datas YAML nativas (2026-02-08)
+ */
 function parseFrontmatter(content) {
-  const match = content.match(/^---\n([\s\S]*?)\n---/);
+  const match = content.match(/^---[\r\n]+([\s\S]*?)[\r\n]+---/);
   if (!match) return {};
   const fm = {};
-  for (const line of match[1].split('\n')) {
+  for (const line of match[1].split(/\r?\n/)) {
     const colonIdx = line.indexOf(':');
     if (colonIdx === -1) continue;
-    const key = line.slice(0, colonIdx).trim();
-    let value = line.slice(colonIdx + 1).trim();
-    // Remove aspas simples ou duplas
-    value = value.replace(/^["']|["']$/g, '');
-    fm[key] = value;
+    const key   = line.slice(0, colonIdx).trim();
+    let   value = line.slice(colonIdx + 1).trim();
+    // Remove aspas simples ou duplas envolvendo o valor
+    value = value.replace(/^(["'])(.*?)\1$/, '$2');
+    if (key) fm[key] = value;
   }
   return fm;
 }
 
-// Encontra o post mais recente por pubDate
 function getLatestPost() {
   const files = fs.readdirSync(BLOG_DIR).filter(f => f.endsWith('.md'));
-  let latest = null;
+  let latest     = null;
   let latestDate = null;
 
   for (const file of files) {
-    const filePath = path.join(BLOG_DIR, file);
-    const content = fs.readFileSync(filePath, 'utf-8');
-    const fm = parseFrontmatter(content);
+    const content = fs.readFileSync(path.join(BLOG_DIR, file), 'utf-8');
+    const fm      = parseFrontmatter(content);
 
-    if (!fm.pubDate && !fm.date) continue;
+    // Aceita tanto "date" quanto "pubDate"
+    const dateStr = (fm.pubDate || fm.date || '').trim();
+    if (!dateStr) continue;
 
-    const dateStr = fm.pubDate || fm.date;
     const date = new Date(dateStr);
+    if (isNaN(date.getTime())) continue; // data inválida, pula
 
     if (!latestDate || date > latestDate) {
       latestDate = date;
       latest = {
-        slug: file.replace(/\.md$/, ''),
-        title: fm.title || fm.name || file.replace(/\.md$/, ''),
-        description: fm.description || fm.excerpt || '',
-        category: fm.category || fm.categories || '',
-        image: fm.image || fm.heroImage || fm.thumbnail || '',
-        pubDate: dateStr,
+        slug:        file.replace(/\.md$/, ''),
+        title:       fm.title       || file.replace(/\.md$/, ''),
+        description: fm.description || '',
+        category:    fm.category    || '',
+        image:       fm.image       || fm.heroImage || fm.thumbnail || '',
+        pubDate:     dateStr,
       };
     }
   }
@@ -82,35 +77,25 @@ async function main() {
 
   console.log(`📌 Post mais recente: "${post.title}" (${post.pubDate})`);
 
-  // Verifica se o post é recente (publicado nas últimas 24h)
-  const postDate = new Date(post.pubDate);
-  const now = new Date();
-  const diffHours = (now - postDate) / (1000 * 60 * 60);
-
+  // Só notifica se o post foi publicado nas últimas 24h
+  const diffHours = (Date.now() - new Date(post.pubDate).getTime()) / 36e5;
   if (diffHours > 24) {
-    console.log(`⏱️  Post tem ${Math.round(diffHours)}h. Pulando notificação (só notifica posts das últimas 24h).`);
+    console.log(`⏱️  Post tem ${Math.round(diffHours)}h — pulando notificação (limite: 24h).`);
     process.exit(0);
   }
 
-  console.log(`🚀 Enviando notificação para o Telegram...`);
+  console.log('🚀 Enviando notificação para o Telegram...');
 
   try {
-    const response = await fetch(NOTIFY_URL, {
-      method: 'POST',
+    const res    = await fetch(NOTIFY_URL, {
+      method:  'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        title: post.title,
-        slug: post.slug,
-        description: post.description,
-        category: post.category,
-        image: post.image,
-      }),
+      body:    JSON.stringify(post),
     });
-
-    const result = await response.json();
+    const result = await res.json();
 
     if (result.success) {
-      console.log(`✅ Notificação enviada com sucesso! Message ID: ${result.message_id}`);
+      console.log(`✅ Notificação enviada! Message ID: ${result.message_id}`);
     } else {
       console.error('❌ Erro ao enviar:', result);
       process.exit(1);
