@@ -1,5 +1,5 @@
 {
-  "total": 102,
+  "total": 105,
   "mes_atual": 3,
   "logs": [
     {
@@ -170,6 +170,11 @@
     {
       "data": "2026-04-03T23:10:25.527Z",
       "produto": "Suplemento Em Pó Max Titanium Pré Treino Horus Sab",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-07T01:48:57.447Z",
+      "produto": "Espelho 100x50 Orgânico Corpo Inteiro Grande Moldu",
       "consultas": 3
     }
   ]
