@@ -4,8 +4,8 @@
  * Recebe POST do scripts/postbuild.js e envia mensagem ao canal do Telegram.
  *
  * Variáveis de ambiente (Cloudflare Pages Secrets):
- *   TELEGRAM_TOKEN   = token do bot (ex: 123456:ABC-DEF...)
- *   TELEGRAM_CHAT_ID = ID do canal (ex: @seucanal ou -100123456789)
+ *   telegram_token   = token do bot (minúsculo, como está no Cloudflare)
+ *   TELEGRAM_CHAT_ID = ID do canal
  *   SITE_URL         = URL do site (ex: https://achadocerto.vip)
  */
 
@@ -13,13 +13,14 @@ export const prerender = false;
 
 export async function POST({ request }) {
   try {
-    const token  = import.meta.env.TELEGRAM_TOKEN;
-    const chatId = import.meta.env.TELEGRAM_CHAT_ID;
+    // Aceita tanto minúsculo quanto maiúsculo
+    const token   = import.meta.env.telegram_token || import.meta.env.TELEGRAM_TOKEN;
+    const chatId  = import.meta.env.TELEGRAM_CHAT_ID;
     const siteUrl = import.meta.env.SITE_URL || 'https://achadocerto.vip';
 
     if (!token || !chatId) {
       return Response.json(
-        { success: false, error: 'TELEGRAM_TOKEN ou TELEGRAM_CHAT_ID não configurados.' },
+        { success: false, error: 'telegram_token ou TELEGRAM_CHAT_ID não configurados.' },
         { status: 500 }
       );
     }
@@ -34,35 +35,25 @@ export async function POST({ request }) {
       );
     }
 
-    const postUrl = `${siteUrl}/blog/${slug}`;
-    const categoryLabel = category ? `\n🏷 *Categoria:* ${category}` : '';
-    const descriptionText = description ? `\n\n${description}` : '';
+    const postUrl       = `${siteUrl}/blog/${slug}`;
+    const categoryLabel = category    ? `\n🏷 *Categoria:* ${category}` : '';
+    const descText      = description ? `\n\n${description}`            : '';
 
     const text = [
       `🔥 *Novo post no Achado Certo VIP!*`,
       ``,
-      `*${title}*${descriptionText}`,
+      `*${title}*${descText}`,
       `${categoryLabel}`,
       ``,
       `👉 [Leia agora](${postUrl})`,
     ].join('\n');
 
-    // Monta a requisição para a API do Telegram
-    const telegramUrl = `https://api.telegram.org/bot${token}/sendMessage`;
-
-    const telegramBody = {
-      chat_id:    chatId,
-      text,
-      parse_mode: 'Markdown',
-      disable_web_page_preview: false,
-    };
-
     // Se tiver imagem, envia como foto com caption
     if (image) {
-      const photoUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+      const photoUrl     = image.startsWith('http') ? image : `${siteUrl}${image}`;
       const sendPhotoUrl = `https://api.telegram.org/bot${token}/sendPhoto`;
 
-      const photoRes = await fetch(sendPhotoUrl, {
+      const photoRes    = await fetch(sendPhotoUrl, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({
@@ -72,22 +63,25 @@ export async function POST({ request }) {
           parse_mode: 'Markdown',
         }),
       });
-
       const photoResult = await photoRes.json();
 
       if (photoResult.ok) {
         return Response.json({ success: true, message_id: photoResult.result.message_id });
       }
-      // Se falhar com foto, cai no envio de texto abaixo
+      // Se falhar com foto, tenta enviar só o texto abaixo
     }
 
     // Envio somente texto
-    const res    = await fetch(telegramUrl, {
+    const res    = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify(telegramBody),
+      body:    JSON.stringify({
+        chat_id:    chatId,
+        text,
+        parse_mode: 'Markdown',
+        disable_web_page_preview: false,
+      }),
     });
-
     const result = await res.json();
 
     if (result.ok) {
