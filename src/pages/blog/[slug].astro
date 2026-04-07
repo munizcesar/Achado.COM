@@ -31,9 +31,20 @@ const catSlug = mapCatSlug(post.data.category);
 
 const siteUrl = 'https://achadocerto.vip';
 const postUrl = `${siteUrl}/blog/${post.slug}`;
-const ogImage = post.data.image
+
+// Imagem estática do post (usada dentro do artigo)
+const ogImageStatic = post.data.image
   ? (post.data.image.startsWith('http') ? post.data.image : `${siteUrl}${post.data.image}`)
   : `${siteUrl}/og-default.jpg`;
+
+// OG Image dinâmica via Cloudflare Pages Function
+// Rota: /og-image/:slug?title=...&img=...&cat=...
+const ogImageWorkerParams = new URLSearchParams({
+  title: post.data.title || '',
+  img:   post.data.productImage || post.data.image || '',
+  cat:   post.data.category || '',
+});
+const ogImageDynamic = `${siteUrl}/og-image/${post.slug}?${ogImageWorkerParams.toString()}`;
 
 const productImage = post.data.productImage || post.data.image || null;
 const hasAffiliate  = !!post.data.affiliateUrl;
@@ -54,12 +65,12 @@ const articleSchema = {
   '@type': 'Review',
   headline: post.data.title,
   description: post.data.description ?? '',
-  image: ogImage,
+  image: ogImageStatic,
   datePublished: post.data.date?.toISOString() ?? '',
   author: { '@type': 'Organization', name: 'AchadoCerto', url: siteUrl },
   publisher: { '@type': 'Organization', name: 'AchadoCerto', url: siteUrl },
   mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
-  itemReviewed: { '@type': 'Product', name: post.data.title, image: ogImage },
+  itemReviewed: { '@type': 'Product', name: post.data.title, image: ogImageStatic },
   reviewRating: { '@type': 'Rating', ratingValue: post.data.rating ?? 4, bestRating: 5, worstRating: 1 },
 };
 
@@ -112,7 +123,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
 <Layout
   title={`${post.data.title} — AchadoCerto`}
   description={post.data.description}
-  image={ogImage}
+  image={ogImageDynamic}
   schema={[articleSchema, breadcrumbSchema]}
 >
   <article>
