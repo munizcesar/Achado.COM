@@ -1,0 +1,108 @@
+/**
+ * src/pages/api/notify-telegram.js
+ *
+ * Recebe POST do scripts/postbuild.js e envia mensagem ao canal do Telegram.
+ *
+ * Variáveis de ambiente (Cloudflare Pages Secrets):
+ *   TELEGRAM_TOKEN   = token do bot (ex: 123456:ABC-DEF...)
+ *   TELEGRAM_CHAT_ID = ID do canal (ex: @seucanal ou -100123456789)
+ *   SITE_URL         = URL do site (ex: https://achadocerto.vip)
+ */
+
+export const prerender = false;
+
+export async function POST({ request }) {
+  try {
+    const token  = import.meta.env.TELEGRAM_TOKEN;
+    const chatId = import.meta.env.TELEGRAM_CHAT_ID;
+    const siteUrl = import.meta.env.SITE_URL || 'https://achadocerto.vip';
+
+    if (!token || !chatId) {
+      return Response.json(
+        { success: false, error: 'TELEGRAM_TOKEN ou TELEGRAM_CHAT_ID não configurados.' },
+        { status: 500 }
+      );
+    }
+
+    const body = await request.json();
+    const { title, slug, description, category, image } = body;
+
+    if (!title || !slug) {
+      return Response.json(
+        { success: false, error: 'title e slug são obrigatórios.' },
+        { status: 400 }
+      );
+    }
+
+    const postUrl = `${siteUrl}/blog/${slug}`;
+    const categoryLabel = category ? `\n🏷 *Categoria:* ${category}` : '';
+    const descriptionText = description ? `\n\n${description}` : '';
+
+    const text = [
+      `🔥 *Novo post no Achado Certo VIP!*`,
+      ``,
+      `*${title}*${descriptionText}`,
+      `${categoryLabel}`,
+      ``,
+      `👉 [Leia agora](${postUrl})`,
+    ].join('\n');
+
+    // Monta a requisição para a API do Telegram
+    const telegramUrl = `https://api.telegram.org/bot${token}/sendMessage`;
+
+    const telegramBody = {
+      chat_id:    chatId,
+      text,
+      parse_mode: 'Markdown',
+      disable_web_page_preview: false,
+    };
+
+    // Se tiver imagem, envia como foto com caption
+    if (image) {
+      const photoUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+      const sendPhotoUrl = `https://api.telegram.org/bot${token}/sendPhoto`;
+
+      const photoRes = await fetch(sendPhotoUrl, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({
+          chat_id:    chatId,
+          photo:      photoUrl,
+          caption:    text,
+          parse_mode: 'Markdown',
+        }),
+      });
+
+      const photoResult = await photoRes.json();
+
+      if (photoResult.ok) {
+        return Response.json({ success: true, message_id: photoResult.result.message_id });
+      }
+      // Se falhar com foto, cai no envio de texto abaixo
+    }
+
+    // Envio somente texto
+    const res    = await fetch(telegramUrl, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(telegramBody),
+    });
+
+    const result = await res.json();
+
+    if (result.ok) {
+      return Response.json({ success: true, message_id: result.result.message_id });
+    } else {
+      return Response.json(
+        { success: false, error: result.description },
+        { status: 502 }
+      );
+    }
+
+  } catch (err) {
+    return Response.json(
+      { success: false, error: err.message },
+      { status: 500 }
+    );
+  }
+}
