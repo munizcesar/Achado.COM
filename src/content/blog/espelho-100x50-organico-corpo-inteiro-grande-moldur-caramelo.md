@@ -1,5 +1,5 @@
 ---
-title: "Espelho Orgânico 100x50 Corpo Inteiro: Vale a Pena? Review Completo"
+title: "Espelho Orgânico 100x50 para Corpo Inteiro: O Que Ninguém Te Conta Antes de Comprar"
 description: "Espelho orgânico 100x50 com moldura caramelo para corpo inteiro. Veja medidas reais, como instalar, onde usar e por que é um dos mais vendidos do Mercado Livre."
 date: 2026-04-07
 category: casa

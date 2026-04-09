@@ -1,5 +1,5 @@
 ---
-title: "Tomada Inteligente Intelbras ETS 2001 Wi-Fi: Vale a Pena?"
+title: "Intelbras ETS 2001: O Interruptor Inteligente Wi-Fi que Funciona com Alexa e Google"
 description: "Review completo da tomada interruptor inteligente Intelbras ETS 2001 Wi-Fi: funciona com Alexa e Google, controle pelo app, sem hub. Veja specs, como instalar e se vale o investimento."
 date: 2026-04-09
 category: casa
@@ -75,9 +75,9 @@ O app da Intelbras oferece mais do que ligar e desligar:
 
 A configuração é simples:
 
-**Alexa:** Acesse a skill **Intelbras iZY** na Amazon Alexa, faça login com sua conta iZY e os dispositivos aparecem automaticamente. Exemplo de comando: *“Alexa, apaga a luz da sala.”*
+**Alexa:** Acesse a skill **Intelbras iZY** na Amazon Alexa, faça login com sua conta iZY e os dispositivos aparecem automaticamente. Exemplo de comando: *"Alexa, apaga a luz da sala."*
 
-**Google Assistente:** Adicione o serviço **iZY** no Google Home e sincronize. Exemplo: *“Ok Google, liga o ventilador do quarto.”*
+**Google Assistente:** Adicione o serviço **iZY** no Google Home e sincronize. Exemplo: *"Ok Google, liga o ventilador do quarto."*
 
 ## Pontos positivos
 
