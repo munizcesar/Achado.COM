@@ -2,9 +2,9 @@
 title: "Lava Louças Blf08bs 8 Serviços Cor Prateado Brastemp 127v"
 description: "Conheça o Lava Louças Blf08bs 8 Serviços Cor Prateado Brastemp 127v. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-04-09
-category: automotivo
+category: casa
 image: /images/posts/lava-loucas-blf08bs-8-servicos-cor-prateado-brastemp-127v.webp
-tags: [automotivo]
+tags: [casa]
 draft: false
 affiliateUrl: "https://meli.la/1YbMYt2"
 productImage: /images/posts/lava-loucas-blf08bs-8-servicos-cor-prateado-brastemp-127v.webp
