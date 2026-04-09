@@ -1,5 +1,5 @@
 {
-  "total": 105,
+  "total": 108,
   "mes_atual": 3,
   "logs": [
     {
@@ -175,6 +175,11 @@
     {
       "data": "2026-04-07T01:48:57.447Z",
       "produto": "Espelho 100x50 Orgânico Corpo Inteiro Grande Moldu",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-09T00:25:59.351Z",
+      "produto": "Panela De Pressão Elétrica Electrolux Por Rita Lob",
       "consultas": 3
     }
   ]
