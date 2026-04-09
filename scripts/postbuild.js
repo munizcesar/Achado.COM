@@ -92,17 +92,37 @@ async function main() {
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify(post),
     });
-    const result = await res.json();
+
+    // Verifica o status da resposta
+    if (!res.ok) {
+      const text = await res.text();
+      console.warn(`⚠️  API retornou ${res.status}: ${text.slice(0, 100)}`);
+      console.log('💡 Dica: A notificação pode falhar durante o build se o site ainda está sendo deployado.');
+      process.exit(0); // Permite que o build passe mesmo se a notificação falhar
+    }
+
+    // Tenta fazer parse de JSON, com fallback seguro
+    let result;
+    const contentType = res.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      result = await res.json();
+    } else {
+      const text = await res.text();
+      console.warn(`⚠️  Resposta não é JSON (${contentType}): ${text.slice(0, 100)}`);
+      process.exit(0);
+    }
 
     if (result.success) {
       console.log(`✅ Notificação enviada! Message ID: ${result.message_id}`);
     } else {
-      console.error('❌ Erro ao enviar:', result);
-      process.exit(1);
+      console.warn('⚠️  Erro ao enviar:', result.error);
+      console.log('💡 A notificação pode ser reenviada manualmente depois.');
+      process.exit(0);
     }
   } catch (err) {
-    console.error('❌ Falha na requisição:', err.message);
-    process.exit(1);
+    console.warn('⚠️  Falha na requisição:', err.message);
+    console.log('💡 Isso pode acontecer durante o build se a API não está acessível ainda.');
+    process.exit(0); // Permite que o build passe mesmo se a notificação falhar
   }
 }
 
