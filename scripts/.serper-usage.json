@@ -1,5 +1,5 @@
 {
-  "total": 108,
+  "total": 111,
   "mes_atual": 3,
   "logs": [
     {
@@ -180,6 +180,11 @@
     {
       "data": "2026-04-09T00:25:59.351Z",
       "produto": "Panela De Pressão Elétrica Electrolux Por Rita Lob",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-09T00:36:49.537Z",
+      "produto": "Tomada Interruptor Inteligente Intelbras Wifi Smar",
       "consultas": 3
     }
   ]
