@@ -4,21 +4,26 @@
  *
  * Recebe dados de um novo post e envia notificação no canal do Telegram.
  *
- * Secret necessário no Cloudflare Pages:
- *   TELEGRAM_TOKEN = token do bot
+ * Secrets no Cloudflare Pages:
+ *   TELEGRAM_TOKEN ou telegram_token = token do bot
+ *   TELEGRAM_CHAT_ID (opcional)       = ID do canal/grupo
+ *   SITE_URL (opcional)               = URL base do site
  *
  * Canal: AchadoCerto VIP (-1003821647331)
  */
 
-const CHAT_ID = '-1003821647331';
+const DEFAULT_CHAT_ID = '-1003821647331';
 const TELEGRAM_API = 'https://api.telegram.org/bot';
 
 export async function onRequestPost(context) {
   const { request, env } = context;
 
-  const botToken = env.TELEGRAM_TOKEN;
+  const botToken = env.TELEGRAM_TOKEN || env.telegram_token;
+  const chatId = env.TELEGRAM_CHAT_ID || env.telegram_chat_id || DEFAULT_CHAT_ID;
+  const siteUrl = env.SITE_URL || 'https://achadocerto.vip';
+
   if (!botToken) {
-    return new Response(JSON.stringify({ error: 'TELEGRAM_TOKEN não configurado' }), {
+    return new Response(JSON.stringify({ error: 'TELEGRAM_TOKEN/telegram_token não configurado' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
@@ -43,32 +48,25 @@ export async function onRequestPost(context) {
     });
   }
 
-  const postUrl = `https://achadocerto.vip/blog/${slug}`;
+  const postUrl = `${siteUrl.replace(/\/$/, '')}/blog/${slug}`;
+  const photoUrl = normalizeImageUrl(image, siteUrl);
   const emoji = getCategoryEmoji(category);
 
-  const message = [
-    `${emoji} *Novo post publicado\!*`,
-    ``,
-    `📌 *${escapeMarkdown(title)}*`,
-    description ? escapeMarkdown(description) : '',
-    ``,
-    category ? `🏷 Categoria: ${escapeMarkdown(category)}` : '',
-    ``,
-    `🔗 [Ver review completo](${postUrl})`,
-  ].filter(Boolean).join('\n');
+  const message = buildHtmlMessage({ emoji, title, description, category, postUrl });
 
   try {
     let telegramResponse;
+    let result;
 
-    if (image) {
+    if (photoUrl) {
       telegramResponse = await fetch(`${TELEGRAM_API}${botToken}/sendPhoto`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          chat_id: CHAT_ID,
-          photo: image,
+          chat_id: chatId,
+          photo: photoUrl,
           caption: message,
-          parse_mode: 'MarkdownV2',
+          parse_mode: 'HTML',
           reply_markup: {
             inline_keyboard: [[
               { text: '👉 Ver Review Completo', url: postUrl },
@@ -76,14 +74,23 @@ export async function onRequestPost(context) {
           },
         }),
       });
-    } else {
+
+      result = await telegramResponse.json();
+      if (!result.ok) {
+        // Fallback para texto quando a foto falhar (URL ruim, limite de caption etc.)
+        console.warn('sendPhoto falhou, tentando sendMessage:', result);
+        telegramResponse = null;
+      }
+    }
+
+    if (!telegramResponse || !result?.ok) {
       telegramResponse = await fetch(`${TELEGRAM_API}${botToken}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          chat_id: CHAT_ID,
+          chat_id: chatId,
           text: message,
-          parse_mode: 'MarkdownV2',
+          parse_mode: 'HTML',
           disable_web_page_preview: false,
           reply_markup: {
             inline_keyboard: [[
@@ -92,9 +99,9 @@ export async function onRequestPost(context) {
           },
         }),
       });
-    }
 
-    const result = await telegramResponse.json();
+      result = await telegramResponse.json();
+    }
 
     if (!result.ok) {
       console.error('Telegram API error:', result);
@@ -130,7 +137,33 @@ function getCategoryEmoji(category) {
   return '🛍️';
 }
 
-function escapeMarkdown(text) {
+function escapeHtml(text) {
   if (!text) return '';
-  return text.replace(/([_*\[\]()~`>#+\-=|{}.!\\])/g, '\\$1');
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function buildHtmlMessage({ emoji, title, description, category, postUrl }) {
+  const lines = [
+    `${emoji} <b>Novo post publicado!</b>`,
+    '',
+    `📌 <b>${escapeHtml(title)}</b>`,
+  ];
+
+  if (description) lines.push(escapeHtml(description));
+  if (category) lines.push('', `🏷 Categoria: ${escapeHtml(category)}`);
+
+  lines.push('', `🔗 <a href="${postUrl}">Ver review completo</a>`);
+  return lines.join('\n');
+}
+
+function normalizeImageUrl(image, siteUrl) {
+  if (!image || typeof image !== 'string') return null;
+  if (image.startsWith('http://') || image.startsWith('https://')) return image;
+  if (!image.startsWith('/')) return null;
+  return `${siteUrl.replace(/\/$/, '')}${image}`;
 }
