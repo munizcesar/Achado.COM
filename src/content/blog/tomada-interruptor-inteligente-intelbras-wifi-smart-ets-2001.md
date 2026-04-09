@@ -2,9 +2,9 @@
 title: "Tomada Interruptor Inteligente Intelbras Wifi Smart Ets 2001"
 description: "Conheça o Tomada Interruptor Inteligente Intelbras Wifi Smart Ets 2001. Disponível no Mercado Livre com entrega rápida para todo o Brasil."
 date: 2026-04-09
-category: tech
+category: casa
 image: /images/posts/tomada-interruptor-inteligente-intelbras-wifi-smart-ets-2001.webp
-tags: [tech]
+tags: [casa]
 draft: false
 affiliateUrl: "https://meli.la/2RcGVCE"
 productImage: /images/posts/tomada-interruptor-inteligente-intelbras-wifi-smart-ets-2001.webp
