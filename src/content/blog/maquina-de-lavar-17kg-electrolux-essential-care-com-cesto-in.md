@@ -2,9 +2,9 @@
 title: "Máquina De Lavar 17kg Electrolux Essential Care Com Cesto Inox, Jet&amp;clean E Ultra Filter Led17 127v"
 description: "Conheça o Máquina De Lavar 17kg Electrolux Essential Care Com Cesto Inox, Jet&amp;clean E Ultra Filter Led17 127v. Disponível no Mercado Livre com entrega "
 date: 2026-04-10
-category: tech
+category: casa
 image: /images/posts/maquina-de-lavar-17kg-electrolux-essential-care-com-cesto-in.webp
-tags: [tech]
+tags: [casa]
 draft: false
 affiliateUrl: "https://meli.la/2eoLxTJ"
 productImage: /images/posts/maquina-de-lavar-17kg-electrolux-essential-care-com-cesto-in.webp
