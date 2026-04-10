@@ -9,5 +9,19 @@
             "approve": true,
             "matchCommandLine": true
         }
+    },
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "**/.venv/**": true,
+        "**/.astro/**": true,
+        "**/dist/**": true
+    },
+    "search.exclude": {
+        "**/node_modules/**": true,
+        "**/.venv/**": true,
+        "**/.astro/**": true,
+        "**/dist/**": true
     }
 }
