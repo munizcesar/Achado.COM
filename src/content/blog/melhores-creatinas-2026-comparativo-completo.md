@@ -44,7 +44,10 @@ O que diferencia o padrão Creapure das demais opções:
 
 **Para quem é:** atletas experientes que já usam creatina há tempo e não abrem mão de rastreabilidade e pureza máxima.
 
-👉 [Ver oferta no Mercado Livre](https://meli.la/2NzUpVd)
+<a href="https://meli.la/2NzUpVd" target="_blank" rel="noopener noreferrer sponsored" class="btn-cta-large" data-affiliate data-product="Creatina Creapure Darkness 200g" data-category="dicas">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+  Ver no Mercado Livre
+</a>
 
 ---
 
@@ -61,7 +64,10 @@ Por que se destaca:
 
 **Para quem é:** quem está iniciando a suplementação ou quer um produto confiável sem pagar premium desnecessário.
 
-👉 [Ver oferta no Mercado Livre](https://meli.la/1epHPes)
+<a href="https://meli.la/1epHPes" target="_blank" rel="noopener noreferrer sponsored" class="btn-cta-large" data-affiliate data-product="Creatina Growth Supplements 500g" data-category="dicas">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+  Ver no Mercado Livre
+</a>
 
 ---
 
@@ -78,7 +84,10 @@ Por que vale o investimento:
 
 **Para quem é:** usuários frequentes em ciclos longos que querem estocar por meses e reduzir o custo mensal de suplementação.
 
-👉 [Ver oferta no Mercado Livre](https://meli.la/1dV3PgN)
+<a href="https://meli.la/1dV3PgN" target="_blank" rel="noopener noreferrer sponsored" class="btn-cta-large" data-affiliate data-product="Creatina Ronnie Coleman 1kg" data-category="dicas">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+  Ver no Mercado Livre
+</a>
 
 ---
 
@@ -90,11 +99,14 @@ Pontos de destaque:
 
 - Zero aditivos: creatina monohidratada pura
 - ~100 doses de 5g por embalagem
-- Custo por dose em torno de R$ 0,55 a R$ 0,70 — excelente no segmento
+- Custo por dose em torno de R$ 0,55 a R$ 0,70 — excelente no segmento
 
 **Para quem é:** quem prioriza pureza e confia em marcas nacionais, sem disposição de pagar pelo premium das certificações importadas.
 
-👉 [Ver oferta no Mercado Livre](https://mercadolivre.com/sec/2KW8RB6)
+<a href="https://mercadolivre.com/sec/2KW8RB6" target="_blank" rel="noopener noreferrer sponsored" class="btn-cta-large" data-affiliate data-product="Creatina Soldiers Nutrition 500g" data-category="dicas">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+  Ver no Mercado Livre
+</a>
 
 ---
 
@@ -111,7 +123,10 @@ Por que esse stack funciona:
 
 **Para quem é:** praticantes de crossfit, HIIT e treinos de volume alto que querem menos fadiga nas últimas séries.
 
-👉 [Ver oferta no Mercado Livre](https://meli.la/2KW8RB6)
+<a href="https://meli.la/2KW8RB6" target="_blank" rel="noopener noreferrer sponsored" class="btn-cta-large" data-affiliate data-product="Creatina + Beta-Alanina Dark Lab 300g" data-category="dicas">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+  Ver no Mercado Livre
+</a>
 
 ---
 
