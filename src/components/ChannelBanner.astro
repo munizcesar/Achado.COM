@@ -1,14 +1,4 @@
 ---
-/**
- * ChannelBanner.astro
- * Banner de canais com imagem clicável — WhatsApp e Telegram
- *
- * Animações (CSS puro, GPU-accelerated, respeita prefers-reduced-motion):
- *   1. Fade + slide-up na entrada via IntersectionObserver
- *   2. Shimmer (brilho deslizante) — roda uma vez ao entrar na tela
- *   3. Pulso suave no ícone — loop infinito e discreto
- */
-
 interface Props {
   whatsappImage?: string;
   telegramImage?: string;
@@ -28,7 +18,7 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      class={`channel-banner channel-banner--whatsapp channel-banner--animate${whatsappImage ? ' channel-banner--has-image' : ''}`}
+      class={`channel-banner channel-banner--whatsapp${whatsappImage ? ' channel-banner--has-image' : ''}`}
       aria-label="Seguir canal do AchadoCerto no WhatsApp"
     >
       <span class="channel-banner__shimmer" aria-hidden="true"></span>
@@ -86,7 +76,7 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
       href={TELEGRAM_URL}
       target="_blank"
       rel="noopener noreferrer"
-      class={`channel-banner channel-banner--telegram channel-banner--animate${telegramImage ? ' channel-banner--has-image' : ''}`}
+      class={`channel-banner channel-banner--telegram${telegramImage ? ' channel-banner--has-image' : ''}`}
       aria-label="Seguir canal do AchadoCerto no Telegram"
     >
       <span class="channel-banner__shimmer" aria-hidden="true"></span>
@@ -119,7 +109,7 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
       ) : (
         <div class="channel-banner__icon-wrap">
           <svg class="channel-banner__icon channel-banner__icon--pulse" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
           </svg>
         </div>
         <div class="channel-banner__content">
@@ -143,38 +133,59 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
 </section>
 
 <style>
-  @keyframes cb-enter {
-    from { opacity: 0; transform: translateY(18px); }
+  /* ── KEYFRAMES ─────────────────────────────────────── */
+
+  /* Entrada: fade + slide-up */
+  @keyframes cb-enter-1 {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes cb-enter-2 {
+    from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
+  /* Shimmer */
   @keyframes cb-shimmer {
-    0%   { transform: translateX(-120%) skewX(-20deg); opacity: 0; }
-    15%  { opacity: 1; }
-    85%  { opacity: 1; }
-    100% { transform: translateX(220%) skewX(-20deg); opacity: 0; }
+    0%   { transform: translateX(-130%) skewX(-20deg); opacity: 0; }
+    20%  { opacity: 1; }
+    80%  { opacity: 1; }
+    100% { transform: translateX(230%) skewX(-20deg); opacity: 0; }
   }
 
+  /* Pulso no ícone */
   @keyframes cb-pulse {
     0%, 100% { transform: scale(1); }
-    50%       { transform: scale(1.10); }
+    50%       { transform: scale(1.12); }
   }
 
-  /* Estado inicial: oculto */
-  .channel-banner--animate {
-    opacity: 0;
-    transform: translateY(18px);
+  /* ── ANIMAÇÕES AUTOMÁTICAS (CSS puro, sem JS) ───────── */
+
+  /* Primeiro banner: entra ao carregar a página */
+  .channel-banner:nth-child(1) {
+    animation: cb-enter-1 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
   }
 
-  .channel-banner--animate.is-visible {
-    animation: cb-enter 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  /* Segundo banner: entra com delay para efeito cascata */
+  .channel-banner:nth-child(2) {
+    animation: cb-enter-2 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
   }
 
-  .channel-banner--animate.is-visible:nth-child(2) {
-    animation-delay: 0.1s;
+  /* Shimmer dispara após entrada */
+  .channel-banner:nth-child(1) .channel-banner__shimmer::after {
+    animation: cb-shimmer 0.8s ease-in-out 0.65s 1 forwards;
+  }
+  .channel-banner:nth-child(2) .channel-banner__shimmer::after {
+    animation: cb-shimmer 0.8s ease-in-out 0.85s 1 forwards;
   }
 
-  /* Shimmer */
+  /* Pulso loop no ícone */
+  .channel-banner__icon--pulse {
+    animation: cb-pulse 2.8s ease-in-out 1.5s infinite;
+    transform-origin: center;
+  }
+
+  /* ── SHIMMER FAIXA ──────────────────────────────────── */
   .channel-banner__shimmer {
     position: absolute;
     inset: 0;
@@ -183,46 +194,34 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     overflow: hidden;
     border-radius: inherit;
   }
-
   .channel-banner__shimmer::after {
     content: '';
     position: absolute;
     top: -10%;
     left: 0;
-    width: 40%;
+    width: 45%;
     height: 120%;
     background: linear-gradient(
       105deg,
       transparent 20%,
-      rgba(255,255,255,0.22) 50%,
+      rgba(255,255,255,0.25) 50%,
       transparent 80%
     );
     opacity: 0;
   }
 
-  .channel-banner--animate.is-visible .channel-banner__shimmer::after {
-    animation: cb-shimmer 0.75s ease-in-out 0.45s 1 forwards;
-  }
-
-  .channel-banner--animate.is-visible:nth-child(2) .channel-banner__shimmer::after {
-    animation-delay: 0.55s;
-  }
-
-  /* Pulso no ícone */
-  .channel-banner__icon--pulse {
-    animation: cb-pulse 2.8s ease-in-out infinite;
-    transform-origin: center;
-  }
-
-  /* Acessibilidade */
+  /* ── ACESSIBILIDADE ─────────────────────────────────── */
   @media (prefers-reduced-motion: reduce) {
-    .channel-banner--animate {
+    .channel-banner,
+    .channel-banner:nth-child(1),
+    .channel-banner:nth-child(2) {
+      animation: none !important;
       opacity: 1 !important;
       transform: none !important;
-      animation: none !important;
     }
     .channel-banner__shimmer::after,
-    .channel-banner--animate.is-visible .channel-banner__shimmer::after {
+    .channel-banner:nth-child(1) .channel-banner__shimmer::after,
+    .channel-banner:nth-child(2) .channel-banner__shimmer::after {
       animation: none !important;
     }
     .channel-banner__icon--pulse {
@@ -230,7 +229,7 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     }
   }
 
-  /* Layout */
+  /* ── LAYOUT ─────────────────────────────────────────── */
   .channel-banner-section {
     padding: 32px 0;
     background: var(--c-bg);
@@ -269,7 +268,6 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     transform: translateY(-4px) scale(1.01);
     box-shadow: 0 10px 32px rgba(0,0,0,.18);
   }
-
   .channel-banner:active {
     transform: translateY(-1px) scale(0.99);
   }
@@ -278,12 +276,12 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
     color: #fff;
   }
-
   .channel-banner--telegram {
     background: linear-gradient(135deg, #0088CC 0%, #26A5E4 100%);
     color: #fff;
   }
 
+  /* Modo imagem */
   .channel-banner__photo {
     width: 100%;
     height: 160px;
@@ -292,7 +290,6 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     border-radius: var(--r-lg, 12px);
     transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
   }
-
   .channel-banner:hover .channel-banner__photo { transform: scale(1.04); }
 
   .channel-banner__photo-overlay {
@@ -305,18 +302,13 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     padding: 16px 18px;
     transition: background 0.22s;
   }
-
   .channel-banner:hover .channel-banner__photo-overlay {
     background: linear-gradient(135deg, rgba(0,0,0,.64) 0%, rgba(0,0,0,.28) 60%, rgba(0,0,0,.08) 100%);
   }
 
   .channel-banner__photo-inner { display: flex; align-items: center; gap: 12px; width: 100%; }
   .channel-banner__photo-text  { display: flex; flex-direction: column; gap: 3px; }
-
-  .channel-banner__photo-title {
-    font-size: 15px; font-weight: 800; color: #fff; line-height: 1.2;
-  }
-
+  .channel-banner__photo-title { font-size: 15px; font-weight: 800; color: #fff; line-height: 1.2; }
   .channel-banner__photo-cta {
     display: inline-flex; align-items: center; gap: 4px;
     font-size: 12px; font-weight: 600; color: rgba(255,255,255,.88);
@@ -324,6 +316,7 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
   }
   .channel-banner:hover .channel-banner__photo-cta { gap: 8px; }
 
+  /* Modo padrão */
   .channel-banner__icon-wrap {
     width: 52px; height: 52px;
     background: rgba(255,255,255,0.18);
@@ -338,26 +331,20 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
   .channel-banner__icon { width: 28px; height: 28px; color: #fff; }
   .channel-banner__icon-wrap--sm .channel-banner__icon { width: 20px; height: 20px; }
 
-  .channel-banner__content {
-    flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;
-  }
-
+  .channel-banner__content { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
   .channel-banner__eyebrow {
     font-size: 10px; font-weight: 700; text-transform: uppercase;
     letter-spacing: .8px; color: rgba(255,255,255,.75); display: block;
   }
-
   .channel-banner__title {
     font-size: clamp(16px, 2vw, 20px); font-weight: 800;
     color: #fff; display: block; line-height: 1.2;
   }
-
   .channel-banner__desc {
     font-size: 12px; color: rgba(255,255,255,.82);
     line-height: 1.45; margin: 0;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
-
   .channel-banner__cta {
     display: flex; align-items: center; gap: 5px;
     font-size: 13px; font-weight: 700; color: #fff;
@@ -380,8 +367,9 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     opacity: 0.14;
     transform: translateY(-50%) scale(1.08);
   }
-  .channel-banner__bg-icon svg { width: 100%; height: 100%; color: #fff; fill: #fff; }
+  .channel-banner__bg-icon svg { width: 100%; height: 100%; fill: #fff; }
 
+  /* Mobile */
   @media (max-width: 600px) {
     .channel-banner-grid { grid-template-columns: 1fr; gap: 14px; }
     .channel-banner { padding: 18px 16px; }
@@ -389,51 +377,6 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     .channel-banner__desc { display: none; }
     .channel-banner__bg-icon { width: 90px; height: 90px; right: -10px; }
     .channel-banner__photo { height: 130px; }
-    .channel-banner--animate.is-visible:nth-child(2) { animation-delay: 0.08s; }
+    .channel-banner:nth-child(2) { animation-delay: 0.15s; }
   }
 </style>
-
-<!-- is:inline garante que o script roda direto no browser, sem bundling do Astro -->
-<script is:inline>
-  (function () {
-    function initBannerAnimations() {
-      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var banners = document.querySelectorAll('.channel-banner--animate');
-
-      if (prefersReduced) {
-        banners.forEach(function (el) {
-          el.style.opacity = '1';
-          el.style.transform = 'none';
-        });
-        return;
-      }
-
-      if (!('IntersectionObserver' in window)) {
-        // Fallback para browsers antigos
-        banners.forEach(function (el) { el.classList.add('is-visible'); });
-        return;
-      }
-
-      var observer = new IntersectionObserver(
-        function (entries, obs) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              obs.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.15 }
-      );
-
-      banners.forEach(function (el) { observer.observe(el); });
-    }
-
-    // Roda assim que o DOM estiver pronto
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initBannerAnimations);
-    } else {
-      initBannerAnimations();
-    }
-  })();
-</script>
