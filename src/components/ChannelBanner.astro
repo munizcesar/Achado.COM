@@ -2,17 +2,11 @@
 /**
  * ChannelBanner.astro
  * Banner de canais com imagem clicável — WhatsApp e Telegram
- * Links: https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w
- *        https://t.me/achadocertovip
  *
  * Animações (CSS puro, GPU-accelerated, respeita prefers-reduced-motion):
  *   1. Fade + slide-up na entrada via IntersectionObserver
  *   2. Shimmer (brilho deslizante) — roda uma vez ao entrar na tela
  *   3. Pulso suave no ícone — loop infinito e discreto
- *
- * Props opcionais:
- *   whatsappImage — caminho/URL da imagem do banner WhatsApp
- *   telegramImage — caminho/URL da imagem do banner Telegram
  */
 
 interface Props {
@@ -20,10 +14,7 @@ interface Props {
   telegramImage?: string;
 }
 
-const {
-  whatsappImage,
-  telegramImage,
-} = Astro.props;
+const { whatsappImage, telegramImage } = Astro.props;
 
 const WHATSAPP_URL = 'https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w';
 const TELEGRAM_URL = 'https://t.me/achadocertovip';
@@ -40,7 +31,6 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
       class={`channel-banner channel-banner--whatsapp channel-banner--animate${whatsappImage ? ' channel-banner--has-image' : ''}`}
       aria-label="Seguir canal do AchadoCerto no WhatsApp"
     >
-      <!-- Faixa shimmer -->
       <span class="channel-banner__shimmer" aria-hidden="true"></span>
 
       {whatsappImage ? (
@@ -99,7 +89,6 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
       class={`channel-banner channel-banner--telegram channel-banner--animate${telegramImage ? ' channel-banner--has-image' : ''}`}
       aria-label="Seguir canal do AchadoCerto no Telegram"
     >
-      <!-- Faixa shimmer -->
       <span class="channel-banner__shimmer" aria-hidden="true"></span>
 
       {telegramImage ? (
@@ -154,24 +143,11 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
 </section>
 
 <style>
-  /* ═══════════════════════════════════════════
-     KEYFRAMES — todas GPU-accelerated
-     (opacity + transform não causam reflow)
-  ═══════════════════════════════════════════ */
-
-  /* 1. Fade + slide-up na entrada */
   @keyframes cb-enter {
-    from {
-      opacity: 0;
-      transform: translateY(18px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* 2. Shimmer — brilho deslizando da esquerda para direita */
   @keyframes cb-shimmer {
     0%   { transform: translateX(-120%) skewX(-20deg); opacity: 0; }
     15%  { opacity: 1; }
@@ -179,33 +155,26 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     100% { transform: translateX(220%) skewX(-20deg); opacity: 0; }
   }
 
-  /* 3. Pulso suave no ícone */
   @keyframes cb-pulse {
-    0%, 100% { transform: scale(1);    }
+    0%, 100% { transform: scale(1); }
     50%       { transform: scale(1.10); }
   }
 
-  /* ═══════════════════════════════════════════
-     ESTADO INICIAL — oculto antes de entrar
-  ═══════════════════════════════════════════ */
+  /* Estado inicial: oculto */
   .channel-banner--animate {
     opacity: 0;
     transform: translateY(18px);
   }
 
-  /* Quando o JS adiciona .is-visible, roda a animação de entrada */
   .channel-banner--animate.is-visible {
     animation: cb-enter 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  /* Segundo banner entra com delay para efeito cascata */
   .channel-banner--animate.is-visible:nth-child(2) {
     animation-delay: 0.1s;
   }
 
-  /* ═══════════════════════════════════════════
-     SHIMMER — faixa de brilho
-  ═══════════════════════════════════════════ */
+  /* Shimmer */
   .channel-banner__shimmer {
     position: absolute;
     inset: 0;
@@ -225,12 +194,10 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     background: linear-gradient(
       105deg,
       transparent 20%,
-      rgba(255, 255, 255, 0.22) 50%,
+      rgba(255,255,255,0.22) 50%,
       transparent 80%
     );
     opacity: 0;
-    /* Shimmer só roda após o banner entrar (delay 0.45s) */
-    animation: cb-shimmer 0s linear 999s; /* inativo por padrão */
   }
 
   .channel-banner--animate.is-visible .channel-banner__shimmer::after {
@@ -241,18 +208,13 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     animation-delay: 0.55s;
   }
 
-  /* ═══════════════════════════════════════════
-     PULSO NO ÍCONE — loop suave e discreto
-  ═══════════════════════════════════════════ */
+  /* Pulso no ícone */
   .channel-banner__icon--pulse {
     animation: cb-pulse 2.8s ease-in-out infinite;
     transform-origin: center;
   }
 
-  /* ═══════════════════════════════════════════
-     RESPEITA prefers-reduced-motion
-     (acessibilidade obrigatória)
-  ═══════════════════════════════════════════ */
+  /* Acessibilidade */
   @media (prefers-reduced-motion: reduce) {
     .channel-banner--animate {
       opacity: 1 !important;
@@ -268,9 +230,7 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     }
   }
 
-  /* ═══════════════════════════════════════════
-     LAYOUT BASE (original preservado)
-  ═══════════════════════════════════════════ */
+  /* Layout */
   .channel-banner-section {
     padding: 32px 0;
     background: var(--c-bg);
@@ -324,7 +284,6 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     color: #fff;
   }
 
-  /* ── MODO IMAGEM ── */
   .channel-banner__photo {
     width: 100%;
     height: 160px;
@@ -334,20 +293,13 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
   }
 
-  .channel-banner:hover .channel-banner__photo {
-    transform: scale(1.04);
-  }
+  .channel-banner:hover .channel-banner__photo { transform: scale(1.04); }
 
   .channel-banner__photo-overlay {
     position: absolute;
     inset: 0;
     border-radius: var(--r-lg, 12px);
-    background: linear-gradient(
-      135deg,
-      rgba(0,0,0,.52) 0%,
-      rgba(0,0,0,.18) 60%,
-      rgba(0,0,0,.04) 100%
-    );
+    background: linear-gradient(135deg, rgba(0,0,0,.52) 0%, rgba(0,0,0,.18) 60%, rgba(0,0,0,.04) 100%);
     display: flex;
     align-items: flex-end;
     padding: 16px 18px;
@@ -355,224 +307,133 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
   }
 
   .channel-banner:hover .channel-banner__photo-overlay {
-    background: linear-gradient(
-      135deg,
-      rgba(0,0,0,.64) 0%,
-      rgba(0,0,0,.28) 60%,
-      rgba(0,0,0,.08) 100%
-    );
+    background: linear-gradient(135deg, rgba(0,0,0,.64) 0%, rgba(0,0,0,.28) 60%, rgba(0,0,0,.08) 100%);
   }
 
-  .channel-banner__photo-inner {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-  }
-
-  .channel-banner__photo-text {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
+  .channel-banner__photo-inner { display: flex; align-items: center; gap: 12px; width: 100%; }
+  .channel-banner__photo-text  { display: flex; flex-direction: column; gap: 3px; }
 
   .channel-banner__photo-title {
-    font-size: 15px;
-    font-weight: 800;
-    color: #fff;
-    line-height: 1.2;
+    font-size: 15px; font-weight: 800; color: #fff; line-height: 1.2;
   }
 
   .channel-banner__photo-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 12px;
-    font-weight: 600;
-    color: rgba(255,255,255,.88);
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 600; color: rgba(255,255,255,.88);
     transition: gap 0.18s;
   }
+  .channel-banner:hover .channel-banner__photo-cta { gap: 8px; }
 
-  .channel-banner:hover .channel-banner__photo-cta {
-    gap: 8px;
-  }
-
-  /* ── MODO PADRÃO ── */
   .channel-banner__icon-wrap {
-    width: 52px;
-    height: 52px;
+    width: 52px; height: 52px;
     background: rgba(255,255,255,0.18);
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
     transition: background 0.2s;
   }
+  .channel-banner__icon-wrap--sm { width: 38px; height: 38px; }
+  .channel-banner:hover .channel-banner__icon-wrap { background: rgba(255,255,255,0.28); }
 
-  .channel-banner__icon-wrap--sm {
-    width: 38px;
-    height: 38px;
-  }
-
-  .channel-banner:hover .channel-banner__icon-wrap {
-    background: rgba(255,255,255,0.28);
-  }
-
-  .channel-banner__icon {
-    width: 28px;
-    height: 28px;
-    color: #fff;
-  }
-
-  .channel-banner__icon-wrap--sm .channel-banner__icon {
-    width: 20px;
-    height: 20px;
-  }
+  .channel-banner__icon { width: 28px; height: 28px; color: #fff; }
+  .channel-banner__icon-wrap--sm .channel-banner__icon { width: 20px; height: 20px; }
 
   .channel-banner__content {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+    flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;
   }
 
   .channel-banner__eyebrow {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .8px;
-    color: rgba(255,255,255,.75);
-    display: block;
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .8px; color: rgba(255,255,255,.75); display: block;
   }
 
   .channel-banner__title {
-    font-size: clamp(16px, 2vw, 20px);
-    font-weight: 800;
-    color: #fff;
-    display: block;
-    line-height: 1.2;
+    font-size: clamp(16px, 2vw, 20px); font-weight: 800;
+    color: #fff; display: block; line-height: 1.2;
   }
 
   .channel-banner__desc {
-    font-size: 12px;
-    color: rgba(255,255,255,.82);
-    line-height: 1.45;
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 12px; color: rgba(255,255,255,.82);
+    line-height: 1.45; margin: 0;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
 
   .channel-banner__cta {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 13px;
-    font-weight: 700;
-    color: #fff;
+    display: flex; align-items: center; gap: 5px;
+    font-size: 13px; font-weight: 700; color: #fff;
     white-space: nowrap;
     background: rgba(0,0,0,.18);
-    padding: 8px 14px;
-    border-radius: 999px;
+    padding: 8px 14px; border-radius: 999px;
     flex-shrink: 0;
     transition: gap 0.18s, background 0.18s;
   }
-
-  .channel-banner:hover .channel-banner__cta {
-    gap: 9px;
-    background: rgba(0,0,0,.28);
-  }
+  .channel-banner:hover .channel-banner__cta { gap: 9px; background: rgba(0,0,0,.28); }
 
   .channel-banner__bg-icon {
-    position: absolute;
-    right: -20px;
-    top: 50%;
+    position: absolute; right: -20px; top: 50%;
     transform: translateY(-50%);
-    width: 120px;
-    height: 120px;
-    opacity: 0.08;
-    pointer-events: none;
+    width: 120px; height: 120px;
+    opacity: 0.08; pointer-events: none;
     transition: opacity 0.22s, transform 0.22s;
   }
-
   .channel-banner:hover .channel-banner__bg-icon {
     opacity: 0.14;
     transform: translateY(-50%) scale(1.08);
   }
+  .channel-banner__bg-icon svg { width: 100%; height: 100%; color: #fff; fill: #fff; }
 
-  .channel-banner__bg-icon svg {
-    width: 100%;
-    height: 100%;
-    color: #fff;
-    fill: #fff;
-  }
-
-  /* Mobile */
   @media (max-width: 600px) {
-    .channel-banner-grid {
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-
-    .channel-banner {
-      padding: 18px 16px;
-    }
-
-    .channel-banner--has-image {
-      padding: 0;
-    }
-
-    .channel-banner__desc {
-      display: none;
-    }
-
-    .channel-banner__bg-icon {
-      width: 90px;
-      height: 90px;
-      right: -10px;
-    }
-
-    .channel-banner__photo {
-      height: 130px;
-    }
-
-    /* No mobile banners entram um por vez (sem delay entre eles) */
-    .channel-banner--animate.is-visible:nth-child(2) {
-      animation-delay: 0.08s;
-    }
+    .channel-banner-grid { grid-template-columns: 1fr; gap: 14px; }
+    .channel-banner { padding: 18px 16px; }
+    .channel-banner--has-image { padding: 0; }
+    .channel-banner__desc { display: none; }
+    .channel-banner__bg-icon { width: 90px; height: 90px; right: -10px; }
+    .channel-banner__photo { height: 130px; }
+    .channel-banner--animate.is-visible:nth-child(2) { animation-delay: 0.08s; }
   }
 </style>
 
-<script>
-  // IntersectionObserver — adiciona .is-visible quando o banner entra na viewport
-  // Leve: roda uma única vez por elemento, depois se desconecta
+<!-- is:inline garante que o script roda direto no browser, sem bundling do Astro -->
+<script is:inline>
   (function () {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) {
-      // Acessibilidade: mostra diretamente sem animação
-      document.querySelectorAll('.channel-banner--animate').forEach(function (el) {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      });
-      return;
+    function initBannerAnimations() {
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var banners = document.querySelectorAll('.channel-banner--animate');
+
+      if (prefersReduced) {
+        banners.forEach(function (el) {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
+        return;
+      }
+
+      if (!('IntersectionObserver' in window)) {
+        // Fallback para browsers antigos
+        banners.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(
+        function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      banners.forEach(function (el) { observer.observe(el); });
     }
 
-    const observer = new IntersectionObserver(
-      function (entries, obs) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            obs.unobserve(entry.target); // dispara só uma vez
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    document.querySelectorAll('.channel-banner--animate').forEach(function (el) {
-      observer.observe(el);
-    });
+    // Roda assim que o DOM estiver pronto
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initBannerAnimations);
+    } else {
+      initBannerAnimations();
+    }
   })();
 </script>
