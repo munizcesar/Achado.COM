@@ -1565,9 +1565,6 @@ function gerarHTMLPost(titulo, conteudo, produto, url) {
             <a href="https://www.instagram.com/achadocertovip/" target="_blank" title="Instagram">
                 <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://www.tiktok.com/@achadocertovip?_r=1&_t=ZS-934lRAtLp1s" target="_blank" title="TikTok">
-                <i class="fab fa-tiktok"></i>
-            </a>
             <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" title="WhatsApp">
                 <i class="fab fa-whatsapp"></i>
             </a>

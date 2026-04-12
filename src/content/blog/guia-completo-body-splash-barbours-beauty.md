@@ -178,7 +178,7 @@ Inspirado no delicado **English Pear & Freesia da Jo Malone London** — pera fr
 
 ## O que as Pessoas Estão Falando
 
-Os elogios se repetem em todas as plataformas — TikTok, Instagram, Shopee e YouTube:
+Os elogios se repetem em todas as plataformas — Instagram, Shopee e YouTube:
 
 - **Fixação surpreendente:** o ponto mais celebrado em reviews — a duração está muito acima do esperado para a categoria body splash
 - **"Delight ficou mais explosivo do que o Delina original"** — comparação feita por quem possui os dois
