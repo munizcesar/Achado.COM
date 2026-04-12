@@ -1,163 +1,149 @@
 ---
-/**
- * ShareButtons.astro
- * Botões de compartilhamento: WhatsApp, Facebook, Email e Share nativa (Web Share API)
- * Props:
- *  - url:   URL canônica do post (obrigatória)
- *  - title: Título do post (obrigatória)
- *  - description: Descrição curta (opcional, usada no Email)
- */
-interface Props {
-  url: string;
-  title: string;
-  description?: string;
-}
-
-const { url, title, description = '' } = Astro.props;
-
+const { title, url } = Astro.props;
 const encodedUrl   = encodeURIComponent(url);
 const encodedTitle = encodeURIComponent(title);
-const encodedDesc  = encodeURIComponent(description);
-
-const whatsappHref = `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
-const facebookHref = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
-const emailHref    = `mailto:?subject=${encodedTitle}&body=${encodedDesc ? encodedDesc + '%0A%0A' : ''}${encodedUrl}`;
 ---
 
-<div class="share-buttons" role="group" aria-label="Compartilhar este post">
+<div class="share-bar">
   <span class="share-label">Compartilhar:</span>
 
-  <!-- WhatsApp -->
-  <a
-    href={whatsappHref}
-    target="_blank"
-    rel="noopener noreferrer"
-    class="share-btn share-whatsapp"
-    aria-label="Compartilhar no WhatsApp"
-    title="Compartilhar no WhatsApp"
-  >
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-    </svg>
-    <span class="share-btn-label">WhatsApp</span>
-  </a>
-
-  <!-- Facebook -->
-  <a
-    href={facebookHref}
-    target="_blank"
-    rel="noopener noreferrer"
-    class="share-btn share-facebook"
-    aria-label="Compartilhar no Facebook"
-    title="Compartilhar no Facebook"
-  >
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-    </svg>
-    <span class="share-btn-label">Facebook</span>
-  </a>
-
-  <!-- Email -->
-  <a
-    href={emailHref}
-    class="share-btn share-email"
-    aria-label="Compartilhar por e-mail"
-    title="Compartilhar por e-mail"
-  >
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <rect width="20" height="16" x="2" y="4" rx="2"/>
-      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-    </svg>
-    <span class="share-btn-label">E-mail</span>
-  </a>
-
-  <!-- Web Share API (exibido apenas se suportado) -->
-  <button
-    class="share-btn share-native"
-    id="shareNativeBtn"
-    aria-label="Mais opções de compartilhamento"
-    title="Compartilhar"
-    style="display:none"
-    type="button"
-  >
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
-      <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-      <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-    </svg>
-    <span class="share-btn-label">Mais</span>
-  </button>
+  <div class="share-icons">
+    <!-- WhatsApp -->
+    <a href={`https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`}
+      target="_blank" rel="noopener noreferrer"
+      class="share-btn" data-color="#25D366" aria-label="WhatsApp" title="WhatsApp">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+    <!-- X -->
+    <a href={`https://x.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`}
+      target="_blank" rel="noopener noreferrer"
+      class="share-btn" data-color="#000" aria-label="X" title="X">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <!-- Facebook -->
+    <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
+      target="_blank" rel="noopener noreferrer"
+      class="share-btn" data-color="#1877F2" aria-label="Facebook" title="Facebook">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <!-- Telegram -->
+    <a href={`https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`}
+      target="_blank" rel="noopener noreferrer"
+      class="share-btn" data-color="#229ED9" aria-label="Telegram" title="Telegram">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    </a>
+    <!-- E-mail -->
+    <a href={`mailto:?subject=${encodedTitle}&body=Confira%3A%20${encodedUrl}`}
+      class="share-btn" data-color="#6b7280" aria-label="E-mail" title="E-mail">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    </a>
+    <!-- Copiar link -->
+    <button class="share-btn" data-color="#374151" id="share-copy-ac" aria-label="Copiar link" title="Copiar link">
+      <svg id="icon-copy-ac" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+      <svg id="icon-check-ac" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><polyline points="20 6 9 17 4 12"/></svg>
+    </button>
+    <!-- Nativo (aparece como ícone extra em mobile/iOS/Android) -->
+    <button class="share-btn" data-color="#374151" id="share-native-ac" style="display:none" aria-label="Compartilhar">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+    </button>
+  </div>
 </div>
 
-<script define:vars={{ url, title, description }}>
-  (function () {
-    var btn = document.getElementById('shareNativeBtn');
-    if (!btn) return;
-    if (navigator.share) {
-      btn.style.display = 'inline-flex';
-      btn.addEventListener('click', function () {
-        navigator.share({ title: title, text: description || title, url: url }).catch(function () {});
-      });
-    }
-  })();
+<script>
+(function(){
+  // Hover: neutro → cor da marca + ícone branco
+  document.querySelectorAll('.share-btn[data-color]').forEach(function(btn) {
+    var color = btn.getAttribute('data-color');
+    btn.addEventListener('mouseenter', function() {
+      btn.style.background = color;
+      btn.style.color = '#fff';
+    });
+    btn.addEventListener('mouseleave', function() {
+      btn.style.background = '';
+      btn.style.color = '';
+    });
+  });
+
+  // Copiar link
+  var copyBtn   = document.getElementById('share-copy-ac');
+  var iconCopy  = document.getElementById('icon-copy-ac');
+  var iconCheck = document.getElementById('icon-check-ac');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function(){
+      navigator.clipboard.writeText(window.location.href).then(function(){
+        if (iconCopy)  iconCopy.style.display  = 'none';
+        if (iconCheck) iconCheck.style.display = 'inline';
+        copyBtn.style.background = '#22c55e';
+        copyBtn.style.color = '#fff';
+        setTimeout(function(){
+          if (iconCopy)  iconCopy.style.display  = 'inline';
+          if (iconCheck) iconCheck.style.display = 'none';
+          copyBtn.style.background = '';
+          copyBtn.style.color = '';
+        }, 1800);
+      }).catch(function(){});
+    });
+  }
+
+  // Nativo (iOS/Android)
+  var nativeBtn = document.getElementById('share-native-ac');
+  if (nativeBtn && navigator.share) {
+    nativeBtn.style.display = 'flex';
+    nativeBtn.addEventListener('click', function(){
+      navigator.share({ title: document.title, url: window.location.href }).catch(function(){});
+    });
+  }
+})();
 </script>
 
 <style>
-  .share-buttons {
+  .share-bar {
     display: flex;
     align-items: center;
+    gap: 0.75rem;
+    margin: 1.75rem 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-border, #e5e7eb);
     flex-wrap: wrap;
-    gap: 8px;
-    margin: 24px 0;
   }
 
   .share-label {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--c-text-muted, #64748b);
-    margin-right: 4px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-text-muted, #6b7280);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
     white-space: nowrap;
+  }
+
+  .share-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
   }
 
   .share-btn {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 7px;
-    padding: 8px 14px;
-    border-radius: 9999px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #fff;
-    text-decoration: none;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--color-surface-offset, #e5e7eb);
+    color: var(--color-text, #374151);
+    text-decoration: none !important;
     border: none;
     cursor: pointer;
-    line-height: 1;
-    transition: transform 0.18s ease, opacity 0.18s ease, box-shadow 0.18s ease;
-    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.18s ease, transform 0.15s ease, color 0.18s ease;
   }
+  .share-btn:hover  { transform: translateY(-2px); }
+  .share-btn:active { transform: scale(0.94); }
 
-  .share-btn:hover,
-  .share-btn:focus-visible {
-    transform: translateY(-2px);
-    opacity: 0.92;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
-  }
-
-  .share-btn:active {
-    transform: translateY(0);
-    opacity: 1;
-    box-shadow: none;
-  }
-
-  /* Cores oficiais */
-  .share-whatsapp  { background: #25D366; }
-  .share-facebook  { background: #1877F2; }
-  .share-email     { background: #6b7280; color: #fff; }
-  .share-native    { background: #374151; }
-
-  /* Em telas pequenas, oculta o label de texto */
   @media (max-width: 480px) {
-    .share-btn-label { display: none; }
-    .share-btn { padding: 10px 12px; }
+    .share-label { display: none; }
+    .share-bar   { gap: 0; }
+    .share-icons { gap: 0.4rem; }
+    .share-btn   { width: 38px; height: 38px; }
   }
 </style>
