@@ -1,3 +1,2 @@
-# Redireciona todas as chamadas /api para o backend Vercel
-# Backend atual: https://achadocertovip-gu4jjzvy2-munizcesars-projects.vercel.app
-/api/* https://achadocertovip-gu4jjzvy2-munizcesars-projects.vercel.app/:splat 200
+# API servida pelo Cloudflare Pages Functions
+# Não redirecionar /api/* para backend externo.
