@@ -1,4 +1,3 @@
----
 import Layout from '../../layouts/Layout.astro';
 import AdSense from '../../components/AdSense.astro';
 import ChannelBanner from '../../components/ChannelBanner.astro';
@@ -150,43 +149,35 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
           </div>
 
           <!-- SHARE HEADER -->
-          <div class="share-buttons">
-            <span class="share-label">Compartilhar:</span>
-            <!-- WhatsApp → Canal VIP -->
-            <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" rel="noopener noreferrer"
-               aria-label="Canal WhatsApp VIP" title="Canal WhatsApp VIP"
-               class="share-btn share-whatsapp">
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            </a>
-            <!-- Telegram → Canal -->
-            <a href="https://t.me/achadocertovip" target="_blank" rel="noopener noreferrer"
-               aria-label="Canal Telegram" title="Canal Telegram"
-               class="share-btn share-telegram">
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-            </a>
-            <!-- X -->
-            <a href={twitterUrl} target="_blank" rel="noopener noreferrer"
-               aria-label="X" title="X"
-               class="share-btn share-x">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <!-- Facebook -->
-            <a href={facebookUrl} target="_blank" rel="noopener noreferrer"
-               aria-label="Facebook" title="Facebook"
-               class="share-btn share-facebook">
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            </a>
-            <!-- Email -->
-            <a href={emailUrl}
-               aria-label="E-mail" title="E-mail"
-               class="share-btn share-email">
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            </a>
-            <!-- Copiar link -->
-            <button class="share-btn share-copy" id="share-copy-hdr" aria-label="Copiar link" title="Copiar link">
-              <svg id="icon-copy-hdr" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-              <svg id="icon-check-hdr" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><polyline points="20 6 9 17 4 12"/></svg>
-            </button>
+          <div class="share-bar">
+            <span class="share-bar-label">Compartilhar:</span>
+            <div class="share-bar-btns">
+              <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" rel="noopener noreferrer"
+                 aria-label="Canal WhatsApp VIP" class="sbtn sbtn-wa">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+              </a>
+              <a href="https://t.me/achadocertovip" target="_blank" rel="noopener noreferrer"
+                 aria-label="Canal Telegram" class="sbtn sbtn-tg">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                Telegram
+              </a>
+              <a href={twitterUrl} target="_blank" rel="noopener noreferrer"
+                 aria-label="X" class="sbtn sbtn-x">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                X
+              </a>
+              <a href={facebookUrl} target="_blank" rel="noopener noreferrer"
+                 aria-label="Facebook" class="sbtn sbtn-fb">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Facebook
+              </a>
+              <button class="sbtn sbtn-copy" id="share-copy-hdr" aria-label="Copiar link">
+                <svg id="icon-copy-hdr" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                <svg id="icon-check-hdr" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><polyline points="20 6 9 17 4 12"/></svg>
+                <span id="copy-label-hdr">Copiar</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -294,33 +285,33 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
           )}
 
           <!-- SHARE SIDEBAR -->
-          <div style="background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--r-md);padding:20px;margin-bottom:16px;box-shadow:var(--shadow-sm);">
-            <p style="font-size:12px;font-weight:700;text-transform:uppercase;color:var(--c-text-muted);margin-bottom:14px;">Compartilhar</p>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;">
-              <!-- WhatsApp → Canal VIP -->
+          <div class="sidebar-share-box">
+            <p class="sidebar-share-title">Compartilhar</p>
+            <div class="sidebar-share-grid">
               <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" rel="noopener noreferrer"
-                 aria-label="Canal WhatsApp VIP" title="Canal WhatsApp VIP" class="share-btn share-whatsapp">
+                 aria-label="Canal WhatsApp VIP" class="ssb ssb-wa">
                 <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
               </a>
-              <!-- Telegram → Canal -->
               <a href="https://t.me/achadocertovip" target="_blank" rel="noopener noreferrer"
-                 aria-label="Canal Telegram" title="Canal Telegram" class="share-btn share-telegram">
+                 aria-label="Canal Telegram" class="ssb ssb-tg">
                 <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                Telegram
               </a>
-              <!-- X -->
               <a href={twitterUrl} target="_blank" rel="noopener noreferrer"
-                 aria-label="X" title="X" class="share-btn share-x">
+                 aria-label="X" class="ssb ssb-x">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                X
               </a>
-              <!-- Facebook -->
               <a href={facebookUrl} target="_blank" rel="noopener noreferrer"
-                 aria-label="Facebook" title="Facebook" class="share-btn share-facebook">
+                 aria-label="Facebook" class="ssb ssb-fb">
                 <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Facebook
               </a>
-              <!-- Copiar link -->
-              <button class="share-btn share-copy" id="share-copy-sb" aria-label="Copiar link" title="Copiar link">
+              <button class="ssb ssb-copy ssb-full" id="share-copy-sb" aria-label="Copiar link">
                 <svg id="icon-copy-sb" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
                 <svg id="icon-check-sb" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><polyline points="20 6 9 17 4 12"/></svg>
+                <span id="copy-label-sb">Copiar link</span>
               </button>
             </div>
           </div>
@@ -462,28 +453,29 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
   <!-- JS: copiar link (header + sidebar) -->
   <script is:inline>
     (function(){
-      function setupCopy(btnId, copyIconId, checkIconId) {
+      function setupCopy(btnId, copyIconId, checkIconId, labelId) {
         var btn = document.getElementById(btnId);
         var ic  = document.getElementById(copyIconId);
         var ck  = document.getElementById(checkIconId);
+        var lb  = document.getElementById(labelId);
         if (!btn) return;
         btn.addEventListener('click', function(){
           navigator.clipboard.writeText(window.location.href).then(function(){
             if (ic) ic.style.display = 'none';
             if (ck) ck.style.display = 'inline';
-            btn.style.background = '#22c55e';
-            btn.style.color = '#fff';
+            if (lb) lb.textContent = 'Copiado!';
+            btn.style.background = '#16a34a';
             setTimeout(function(){
               if (ic) ic.style.display = 'inline';
               if (ck) ck.style.display = 'none';
+              if (lb) lb.textContent = btnId === 'share-copy-hdr' ? 'Copiar' : 'Copiar link';
               btn.style.background = '';
-              btn.style.color = '';
             }, 1800);
           }).catch(function(){});
         });
       }
-      setupCopy('share-copy-hdr', 'icon-copy-hdr', 'icon-check-hdr');
-      setupCopy('share-copy-sb',  'icon-copy-sb',  'icon-check-sb');
+      setupCopy('share-copy-hdr', 'icon-copy-hdr', 'icon-check-hdr', 'copy-label-hdr');
+      setupCopy('share-copy-sb',  'icon-copy-sb',  'icon-check-sb',  'copy-label-sb');
     })();
   </script>
 
@@ -500,7 +492,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     @media (max-width: 768px) {
       .post-content-grid { display: block !important; }
       .prose { padding: 0 4px; }
-      .share-buttons { width: 100%; justify-content: flex-start; }
+      .share-bar { width: 100%; }
       .product-box-final { padding: 24px 16px; }
     }
 
@@ -530,6 +522,76 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       width: 100%;
       height: auto;
     }
+
+    /* ===================== SHARE BAR (header) ===================== */
+    .share-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .share-bar-label {
+      font-size: 12px; font-weight: 600;
+      color: var(--c-text-muted); white-space: nowrap;
+    }
+    .share-bar-btns { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+
+    /* Botão base — retangular com ícone + texto */
+    .sbtn {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 6px 11px;
+      border-radius: 6px;
+      font-size: 12px; font-weight: 600;
+      color: #fff; text-decoration: none;
+      border: none; cursor: pointer;
+      transition: opacity .18s, transform .15s;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .sbtn:hover  { opacity: .88; transform: translateY(-1px); }
+    .sbtn:active { transform: scale(.96); }
+
+    .sbtn-wa   { background: #25D366; }
+    .sbtn-tg   { background: #229ED9; }
+    .sbtn-x    { background: #111; }
+    .sbtn-fb   { background: #1877F2; }
+    .sbtn-copy { background: #4b5563; }
+
+    /* ===================== SHARE SIDEBAR BOX ===================== */
+    .sidebar-share-box {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-md);
+      padding: 18px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .sidebar-share-title {
+      font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .5px;
+      color: var(--c-text-muted); margin-bottom: 12px;
+    }
+    .sidebar-share-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+    }
+
+    /* Botão sidebar — igual ao header mas ocupa coluna inteira */
+    .ssb {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 12px; font-weight: 600;
+      color: #fff; text-decoration: none;
+      border: none; cursor: pointer;
+      transition: opacity .18s, transform .15s;
+      white-space: nowrap;
+    }
+    .ssb:hover  { opacity: .88; transform: translateY(-1px); }
+    .ssb:active { transform: scale(.96); }
+    .ssb-full   { grid-column: 1 / -1; }
+
+    .ssb-wa   { background: #25D366; }
+    .ssb-tg   { background: #229ED9; }
+    .ssb-x    { background: #111; }
+    .ssb-fb   { background: #1877F2; }
+    .ssb-copy { background: #4b5563; }
 
     /* ===================== BOX CTA FINAL ===================== */
     .product-box-final {
@@ -600,24 +662,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .product-box-sidebar-btn:hover { background: var(--c-brand-dark); }
     .product-box-sidebar-disclaimer { font-size: 10px; color: var(--c-text-light); text-align: center; margin-top: 8px; }
 
-    /* ===================== SHARE ===================== */
-    .share-buttons { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
-    .share-label   { font-size:12px; font-weight:600; color:var(--c-text-muted); white-space:nowrap; margin-right:2px; }
-    .share-btn {
-      width:34px; height:34px; border-radius:50%;
-      display:flex; align-items:center; justify-content:center;
-      color:#fff; transition:transform .18s, opacity .18s, background .18s;
-      flex-shrink:0; text-decoration:none; border:none; cursor:pointer;
-    }
-    .share-btn:hover  { transform:scale(1.12); opacity:.9; }
-    .share-btn:active { transform:scale(.94); }
-    .share-whatsapp  { background:#25D366; }
-    .share-telegram  { background:#229ED9; }
-    .share-x         { background:#000; }
-    .share-facebook  { background:#1877F2; }
-    .share-email     { background:#6b7280; }
-    .share-copy      { background:#374151; }
-
     /* ===================== PROSE ===================== */
     .prose { color:var(--c-text); font-size:17px; line-height:1.8; }
     .prose h2 { font-size:26px; font-weight:800; letter-spacing:-.4px; margin:40px 0 16px; color:var(--c-text); }
@@ -641,7 +685,8 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       .post-content-grid { display:block !important; }
       .post-sidebar { position:static; margin-top:40px; }
       .product-box-final-btn { font-size:14px; padding:10px 24px; }
-      .share-buttons { margin-top:12px; }
+      .share-bar { margin-top:12px; }
+      .sidebar-share-grid { grid-template-columns: 1fr 1fr; }
     }
 
     /* ===================== ARTIGOS RELACIONADOS ===================== */
