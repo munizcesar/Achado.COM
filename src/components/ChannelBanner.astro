@@ -5,6 +5,11 @@
  * Links: https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w
  *        https://t.me/achadocertovip
  *
+ * Animações (CSS puro, GPU-accelerated, respeita prefers-reduced-motion):
+ *   1. Fade + slide-up na entrada via IntersectionObserver
+ *   2. Shimmer (brilho deslizante) — roda uma vez ao entrar na tela
+ *   3. Pulso suave no ícone — loop infinito e discreto
+ *
  * Props opcionais:
  *   whatsappImage — caminho/URL da imagem do banner WhatsApp
  *   telegramImage — caminho/URL da imagem do banner Telegram
@@ -32,11 +37,13 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      class={`channel-banner channel-banner--whatsapp${whatsappImage ? ' channel-banner--has-image' : ''}`}
+      class={`channel-banner channel-banner--whatsapp channel-banner--animate${whatsappImage ? ' channel-banner--has-image' : ''}`}
       aria-label="Seguir canal do AchadoCerto no WhatsApp"
     >
+      <!-- Faixa shimmer -->
+      <span class="channel-banner__shimmer" aria-hidden="true"></span>
+
       {whatsappImage ? (
-        <!-- MODO IMAGEM: foto clicável com overlay -->
         <img
           src={whatsappImage}
           alt="Canal AchadoCerto no WhatsApp"
@@ -48,7 +55,7 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
         <div class="channel-banner__photo-overlay">
           <div class="channel-banner__photo-inner">
             <div class="channel-banner__icon-wrap channel-banner__icon-wrap--sm">
-              <svg class="channel-banner__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <svg class="channel-banner__icon channel-banner__icon--pulse" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
               </svg>
             </div>
@@ -62,9 +69,8 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
           </div>
         </div>
       ) : (
-        <!-- MODO PADRÃO: layout de ícone + texto -->
         <div class="channel-banner__icon-wrap">
-          <svg class="channel-banner__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <svg class="channel-banner__icon channel-banner__icon--pulse" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
           </svg>
         </div>
@@ -90,11 +96,13 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
       href={TELEGRAM_URL}
       target="_blank"
       rel="noopener noreferrer"
-      class={`channel-banner channel-banner--telegram${telegramImage ? ' channel-banner--has-image' : ''}`}
+      class={`channel-banner channel-banner--telegram channel-banner--animate${telegramImage ? ' channel-banner--has-image' : ''}`}
       aria-label="Seguir canal do AchadoCerto no Telegram"
     >
+      <!-- Faixa shimmer -->
+      <span class="channel-banner__shimmer" aria-hidden="true"></span>
+
       {telegramImage ? (
-        <!-- MODO IMAGEM: foto clicável com overlay -->
         <img
           src={telegramImage}
           alt="Canal AchadoCerto no Telegram"
@@ -106,7 +114,7 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
         <div class="channel-banner__photo-overlay">
           <div class="channel-banner__photo-inner">
             <div class="channel-banner__icon-wrap channel-banner__icon-wrap--sm">
-              <svg class="channel-banner__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <svg class="channel-banner__icon channel-banner__icon--pulse" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
               </svg>
             </div>
@@ -120,9 +128,8 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
           </div>
         </div>
       ) : (
-        <!-- MODO PADRÃO: layout de ícone + texto -->
         <div class="channel-banner__icon-wrap">
-          <svg class="channel-banner__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <svg class="channel-banner__icon channel-banner__icon--pulse" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
           </svg>
         </div>
@@ -147,6 +154,123 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
 </section>
 
 <style>
+  /* ═══════════════════════════════════════════
+     KEYFRAMES — todas GPU-accelerated
+     (opacity + transform não causam reflow)
+  ═══════════════════════════════════════════ */
+
+  /* 1. Fade + slide-up na entrada */
+  @keyframes cb-enter {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* 2. Shimmer — brilho deslizando da esquerda para direita */
+  @keyframes cb-shimmer {
+    0%   { transform: translateX(-120%) skewX(-20deg); opacity: 0; }
+    15%  { opacity: 1; }
+    85%  { opacity: 1; }
+    100% { transform: translateX(220%) skewX(-20deg); opacity: 0; }
+  }
+
+  /* 3. Pulso suave no ícone */
+  @keyframes cb-pulse {
+    0%, 100% { transform: scale(1);    }
+    50%       { transform: scale(1.10); }
+  }
+
+  /* ═══════════════════════════════════════════
+     ESTADO INICIAL — oculto antes de entrar
+  ═══════════════════════════════════════════ */
+  .channel-banner--animate {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  /* Quando o JS adiciona .is-visible, roda a animação de entrada */
+  .channel-banner--animate.is-visible {
+    animation: cb-enter 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Segundo banner entra com delay para efeito cascata */
+  .channel-banner--animate.is-visible:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+
+  /* ═══════════════════════════════════════════
+     SHIMMER — faixa de brilho
+  ═══════════════════════════════════════════ */
+  .channel-banner__shimmer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: inherit;
+  }
+
+  .channel-banner__shimmer::after {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: 0;
+    width: 40%;
+    height: 120%;
+    background: linear-gradient(
+      105deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.22) 50%,
+      transparent 80%
+    );
+    opacity: 0;
+    /* Shimmer só roda após o banner entrar (delay 0.45s) */
+    animation: cb-shimmer 0s linear 999s; /* inativo por padrão */
+  }
+
+  .channel-banner--animate.is-visible .channel-banner__shimmer::after {
+    animation: cb-shimmer 0.75s ease-in-out 0.45s 1 forwards;
+  }
+
+  .channel-banner--animate.is-visible:nth-child(2) .channel-banner__shimmer::after {
+    animation-delay: 0.55s;
+  }
+
+  /* ═══════════════════════════════════════════
+     PULSO NO ÍCONE — loop suave e discreto
+  ═══════════════════════════════════════════ */
+  .channel-banner__icon--pulse {
+    animation: cb-pulse 2.8s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  /* ═══════════════════════════════════════════
+     RESPEITA prefers-reduced-motion
+     (acessibilidade obrigatória)
+  ═══════════════════════════════════════════ */
+  @media (prefers-reduced-motion: reduce) {
+    .channel-banner--animate {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+    .channel-banner__shimmer::after,
+    .channel-banner--animate.is-visible .channel-banner__shimmer::after {
+      animation: none !important;
+    }
+    .channel-banner__icon--pulse {
+      animation: none !important;
+    }
+  }
+
+  /* ═══════════════════════════════════════════
+     LAYOUT BASE (original preservado)
+  ═══════════════════════════════════════════ */
   .channel-banner-section {
     padding: 32px 0;
     background: var(--c-bg);
@@ -175,7 +299,6 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     box-shadow: 0 4px 16px rgba(0,0,0,.10);
   }
 
-  /* Modo imagem: sem padding interno, imagem preenche tudo */
   .channel-banner--has-image {
     padding: 0;
     display: block;
@@ -191,13 +314,11 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     transform: translateY(-1px) scale(0.99);
   }
 
-  /* WhatsApp — verde */
   .channel-banner--whatsapp {
     background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
     color: #fff;
   }
 
-  /* Telegram — azul */
   .channel-banner--telegram {
     background: linear-gradient(135deg, #0088CC 0%, #26A5E4 100%);
     color: #fff;
@@ -217,7 +338,6 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     transform: scale(1.04);
   }
 
-  /* Overlay escuro gradiente sobre a foto */
   .channel-banner__photo-overlay {
     position: absolute;
     inset: 0;
@@ -310,7 +430,6 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     height: 20px;
   }
 
-  /* Texto */
   .channel-banner__content {
     flex: 1;
     min-width: 0;
@@ -346,7 +465,6 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     text-overflow: ellipsis;
   }
 
-  /* CTA */
   .channel-banner__cta {
     display: flex;
     align-items: center;
@@ -367,7 +485,6 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     background: rgba(0,0,0,.28);
   }
 
-  /* Ícone de fundo decorativo */
   .channel-banner__bg-icon {
     position: absolute;
     right: -20px;
@@ -420,5 +537,42 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     .channel-banner__photo {
       height: 130px;
     }
+
+    /* No mobile banners entram um por vez (sem delay entre eles) */
+    .channel-banner--animate.is-visible:nth-child(2) {
+      animation-delay: 0.08s;
+    }
   }
 </style>
+
+<script>
+  // IntersectionObserver — adiciona .is-visible quando o banner entra na viewport
+  // Leve: roda uma única vez por elemento, depois se desconecta
+  (function () {
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      // Acessibilidade: mostra diretamente sem animação
+      document.querySelectorAll('.channel-banner--animate').forEach(function (el) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target); // dispara só uma vez
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    document.querySelectorAll('.channel-banner--animate').forEach(function (el) {
+      observer.observe(el);
+    });
+  })();
+</script>
