@@ -11,6 +11,15 @@
 
 export const prerender = false;
 
+function escapeHtml(text = '') {
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 export async function POST({ request }) {
   try {
     // Aceita tanto minúsculo quanto maiúsculo
@@ -39,13 +48,21 @@ export async function POST({ request }) {
     const categoryLabel = category    ? `\n🏷 *Categoria:* ${category}` : '';
     const descText      = description ? `\n\n${description}`            : '';
 
+    const safeTitle = escapeHtml(title);
+    const safeDescription = description ? escapeHtml(description) : '';
+    const safeCategory = category ? escapeHtml(category) : '';
+    const safePostUrl = escapeHtml(postUrl);
+
+    const categoryLine = safeCategory ? `\n🏷 <b>Categoria:</b> ${safeCategory}` : '';
+    const descLine = safeDescription ? `\n\n${safeDescription}` : '';
+
     const text = [
-      `🔥 *Novo post no Achado Certo VIP!*`,
-      ``,
-      `*${title}*${descText}`,
-      `${categoryLabel}`,
-      ``,
-      `👉 [Leia agora](${postUrl})`,
+      '🔥 <b>Novo post no Achado Certo VIP!</b>',
+      '',
+      `<b>${safeTitle}</b>${descLine}`,
+      `${categoryLine}`,
+      '',
+      `👉 <a href="${safePostUrl}">Leia agora</a>`,
     ].join('\n');
 
     // Se tiver imagem, envia como foto com caption
@@ -60,7 +77,7 @@ export async function POST({ request }) {
           chat_id:    chatId,
           photo:      photoUrl,
           caption:    text,
-          parse_mode: 'Markdown',
+          parse_mode: 'HTML',
         }),
       });
       const photoResult = await photoRes.json();
@@ -78,7 +95,7 @@ export async function POST({ request }) {
       body:    JSON.stringify({
         chat_id:    chatId,
         text,
-        parse_mode: 'Markdown',
+        parse_mode: 'HTML',
         disable_web_page_preview: false,
       }),
     });
