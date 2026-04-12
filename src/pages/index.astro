@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ChannelBanner from '../components/ChannelBanner.astro';
 
 let posts = [];
 try {
@@ -209,6 +210,10 @@ const siloPosts = posts.filter(p => {
   ))}
 
 
+  <!-- ===================== CHANNEL BANNER ===================== -->
+  <ChannelBanner />
+
+
   <!-- ===================== HERO ROTATIVO ===================== -->
   {siloPosts.length > 0 && (
     <section class="hero" id="heroSection">
@@ -408,13 +413,11 @@ const siloPosts = posts.filter(p => {
   .trust-search button:hover { background:#c2185b; }
   .trust-cats { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
 
-  /* ===== PILLS DE CATEGORIA — tamanho uniforme ===== */
   .trust-pill {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 6px;
-    /* largura mínima garante que todos fiquem do mesmo tamanho */
     min-width: 108px;
     height: 38px;
     padding: 0 16px;
@@ -436,8 +439,6 @@ const siloPosts = posts.filter(p => {
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(225,48,108,.2);
   }
-
-  /* Pills dos pilares */
   .trust-pill-pilar {
     background: rgba(255,255,255,.1);
     border-color: rgba(255,255,255,.22);
@@ -448,8 +449,6 @@ const siloPosts = posts.filter(p => {
     background: rgba(225,48,108,.25);
     border-color: rgba(225,48,108,.6);
   }
-
-  /* Pill "Ver todos" — destaque especial */
   .trust-pill-all {
     min-width: 120px;
     background: rgba(225,48,108,.15);
@@ -473,48 +472,14 @@ const siloPosts = posts.filter(p => {
 
   /* ===== CARDS DE PILARES ===== */
   .pilares-section { background:var(--c-bg,#f8f9fa); padding:32px 0 28px; border-bottom:1px solid var(--c-border,#e2e8f0); }
-
-  .pilares-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 24px;
-    padding-left: 4px;
+  .pilares-header { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:24px; padding-left:4px; }
+  .pilares-title { font-size:clamp(1.05rem,2vw,1.35rem); font-weight:800; color:var(--c-text,#1a202c); margin:0; line-height:1.15; display:flex; align-items:center; gap:10px; }
+  .pilares-title::before { content:''; display:block; width:4px; height:1.1em; border-radius:2px; background:var(--c-brand,#E1306C); flex-shrink:0; }
+  .pilares-sub { color:var(--c-text-sub,#4a5568); font-size:clamp(0.78rem,1.4vw,0.88rem); margin:0; line-height:1.4; padding-left:12px; border-left:1px solid var(--c-border,#e2e8f0); }
+  @media (max-width:600px) {
+    .pilares-header { flex-direction:column; align-items:flex-start; gap:4px; margin-bottom:20px; }
+    .pilares-sub { padding-left:14px; border-left:none; }
   }
-  .pilares-title {
-    font-size: clamp(1.05rem, 2vw, 1.35rem);
-    font-weight: 800;
-    color: var(--c-text, #1a202c);
-    margin: 0;
-    line-height: 1.15;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .pilares-title::before {
-    content: '';
-    display: block;
-    width: 4px;
-    height: 1.1em;
-    border-radius: 2px;
-    background: var(--c-brand, #E1306C);
-    flex-shrink: 0;
-  }
-  .pilares-sub {
-    color: var(--c-text-sub, #4a5568);
-    font-size: clamp(0.78rem, 1.4vw, 0.88rem);
-    margin: 0;
-    line-height: 1.4;
-    padding-left: 12px;
-    border-left: 1px solid var(--c-border, #e2e8f0);
-  }
-
-  @media (max-width: 600px) {
-    .pilares-header { flex-direction: column; align-items: flex-start; gap: 4px; margin-bottom: 20px; }
-    .pilares-sub { padding-left: 14px; border-left: none; }
-  }
-
   .pilares-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; }
   .pilar-card { display:flex; flex-direction:column; gap:10px; background:var(--c-surface,#fff); border:2px solid var(--c-border,#e2e8f0); border-radius:16px; padding:32px 28px; text-decoration:none; transition:border-color .2s,box-shadow .2s,transform .2s; position:relative; overflow:hidden; }
   .pilar-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(225,48,108,.04) 0%,transparent 60%); opacity:0; transition:opacity .2s; }
