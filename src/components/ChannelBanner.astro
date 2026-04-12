@@ -159,25 +159,20 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     50%       { transform: scale(1.12); }
   }
 
-  /* ── ANIMAÇÕES NA VIEWPORT ──────────────────────────── */
-  .channel-banner--animate {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  .channel-banner--animate.is-visible:nth-of-type(1) {
+  /* ── ANIMAÇÕES AUTOMÁTICAS (CSS puro) ───────────────── */
+  .channel-banner--animate:nth-of-type(1) {
     animation: cb-enter-1 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
   }
 
-  .channel-banner--animate.is-visible:nth-of-type(2) {
+  .channel-banner--animate:nth-of-type(2) {
     animation: cb-enter-2 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
   }
 
-  .channel-banner--animate.is-visible:nth-of-type(1) .channel-banner__shimmer::after {
+  .channel-banner--animate:nth-of-type(1) .channel-banner__shimmer::after {
     animation: cb-shimmer 0.8s ease-in-out 0.65s 1 forwards;
   }
 
-  .channel-banner--animate.is-visible:nth-of-type(2) .channel-banner__shimmer::after {
+  .channel-banner--animate:nth-of-type(2) .channel-banner__shimmer::after {
     animation: cb-shimmer 0.8s ease-in-out 0.85s 1 forwards;
   }
 
@@ -216,15 +211,15 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
   @media (prefers-reduced-motion: reduce) {
     .channel-banner,
     .channel-banner--animate,
-    .channel-banner--animate.is-visible:nth-of-type(1),
-    .channel-banner--animate.is-visible:nth-of-type(2) {
+    .channel-banner--animate:nth-of-type(1),
+    .channel-banner--animate:nth-of-type(2) {
       animation: none !important;
       opacity: 1 !important;
       transform: none !important;
     }
     .channel-banner__shimmer::after,
-    .channel-banner--animate.is-visible:nth-of-type(1) .channel-banner__shimmer::after,
-    .channel-banner--animate.is-visible:nth-of-type(2) .channel-banner__shimmer::after {
+    .channel-banner--animate:nth-of-type(1) .channel-banner__shimmer::after,
+    .channel-banner--animate:nth-of-type(2) .channel-banner__shimmer::after {
       animation: none !important;
     }
     .channel-banner__icon--pulse {
@@ -382,30 +377,3 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     .channel-banner__photo { height: 130px; }
   }
 </style>
-
-<script is:inline>
-  (() => {
-    const banners = document.querySelectorAll('.channel-banner--animate');
-    if (!banners.length) return;
-
-    const reveal = (el) => el.classList.add('is-visible');
-
-    if (!('IntersectionObserver' in window)) {
-      banners.forEach(reveal);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          reveal(entry.target);
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }
-    );
-
-    banners.forEach((banner) => observer.observe(banner));
-  })();
-</script>

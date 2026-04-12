@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ChannelBanner from '../components/ChannelBanner.astro';
 
 let posts = [];
 try {
@@ -85,6 +86,8 @@ const siloPosts = posts.filter(p => {
       </div>
     </div>
   </section>
+
+  <ChannelBanner />
 
 
   <!-- ===================== CARDS DE PILARES ===================== -->
