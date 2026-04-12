@@ -2,6 +2,7 @@
   ACHADOCERTO.VIP — Design System
   SF Light Theme | Astro Puro | Sem dependências externas
   Inspirado em: Wirecutter, The Verge, Stripe
+  v2 — Evolução visual: cores por categoria, hero gradiente, score, tags, animações
 */
 
 /* ── TOKENS ── */
@@ -25,6 +26,20 @@
 
   --c-success:     #087443;
   --c-success-bg:  #ECFDF3;
+
+  /* ── CORES POR CATEGORIA ── */
+  --c-cat-fitness:    #10B981;
+  --c-cat-fitness-bg: #ECFDF5;
+  --c-cat-tech:       #6366F1;
+  --c-cat-tech-bg:    #EEF2FF;
+  --c-cat-beleza:     #EC4899;
+  --c-cat-beleza-bg:  #FDF2F8;
+  --c-cat-casa:       #F59E0B;
+  --c-cat-casa-bg:    #FFFBEB;
+  --c-cat-nutri:      #EF4444;
+  --c-cat-nutri-bg:   #FEF2F2;
+  --c-cat-esporte:    #0EA5E9;
+  --c-cat-esporte-bg: #F0F9FF;
 
   --shadow-xs:  0 1px 2px rgba(0,0,0,.05);
   --shadow-sm:  0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
@@ -438,7 +453,7 @@ body.drawer-open { overflow: hidden; }
 }
 .section-title {
   font-size: clamp(22px, 3vw, 30px);
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: -.5px;
   color: var(--c-text);
   line-height: 1.2;
@@ -458,7 +473,7 @@ body.drawer-open { overflow: hidden; }
 /* ── HERO ── */
 .hero {
   padding: 32px 0;
-  background: var(--c-surface);
+  background: linear-gradient(160deg, #EBF2FF 0%, #F8F9FA 60%);
   border-bottom: 1px solid var(--c-border);
 }
 .hero-grid {
@@ -500,8 +515,8 @@ body.drawer-open { overflow: hidden; }
   display: inline-block;
 }
 .hero-title {
-  font-size: clamp(20px, 3vw, 30px);
-  font-weight: 800;
+  font-size: clamp(20px, 3vw, 32px);
+  font-weight: 900;
   letter-spacing: -.6px;
   line-height: 1.2;
   margin-bottom: 10px;
@@ -595,6 +610,13 @@ body.drawer-open { overflow: hidden; }
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
 }
+
+/* ── MICRO-ANIMAÇÃO FADEUP ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 .post-card {
   background: var(--c-surface);
   border: 1px solid var(--c-border);
@@ -604,11 +626,27 @@ body.drawer-open { overflow: hidden; }
   flex-direction: column;
   transition: box-shadow .2s var(--ease), transform .2s var(--ease);
   box-shadow: var(--shadow-sm);
+  animation: fadeUp .4s var(--ease) both;
 }
+.post-card:nth-child(2) { animation-delay: .08s; }
+.post-card:nth-child(3) { animation-delay: .16s; }
+.post-card:nth-child(4) { animation-delay: .06s; }
+.post-card:nth-child(5) { animation-delay: .12s; }
+.post-card:nth-child(6) { animation-delay: .18s; }
+
 .post-card:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-3px);
 }
+
+/* ── BORDAS POR CATEGORIA NOS CARDS ── */
+.post-card[data-cat="fitness"]   { border-top: 3px solid var(--c-cat-fitness); }
+.post-card[data-cat="tech"]      { border-top: 3px solid var(--c-cat-tech); }
+.post-card[data-cat="beleza"]    { border-top: 3px solid var(--c-cat-beleza); }
+.post-card[data-cat="casa"]      { border-top: 3px solid var(--c-cat-casa); }
+.post-card[data-cat="nutri"]     { border-top: 3px solid var(--c-cat-nutri); }
+.post-card[data-cat="esporte"]   { border-top: 3px solid var(--c-cat-esporte); }
+
 .post-card-img-wrap {
   overflow: hidden;
   aspect-ratio: 1/1;
@@ -641,6 +679,26 @@ body.drawer-open { overflow: hidden; }
   letter-spacing: .6px;
   color: var(--c-brand);
 }
+
+/* ── TAGS COLORIDAS POR CATEGORIA ── */
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--c-tag-bg);
+  color: var(--c-tag-text);
+}
+.tag-fitness  { background: var(--c-cat-fitness-bg);  color: var(--c-cat-fitness); }
+.tag-tech     { background: var(--c-cat-tech-bg);     color: var(--c-cat-tech); }
+.tag-beleza   { background: var(--c-cat-beleza-bg);   color: var(--c-cat-beleza); }
+.tag-casa     { background: var(--c-cat-casa-bg);     color: var(--c-cat-casa); }
+.tag-nutri    { background: var(--c-cat-nutri-bg);    color: var(--c-cat-nutri); }
+.tag-esporte  { background: var(--c-cat-esporte-bg);  color: var(--c-cat-esporte); }
+
 .post-card-title {
   font-size: 17px;
   font-weight: 700;
@@ -658,6 +716,31 @@ body.drawer-open { overflow: hidden; }
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* ── SCORE / AVALIAÇÃO ── */
+.post-card-score {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+.score-stars {
+  display: flex;
+  gap: 2px;
+  color: #F59E0B;
+  font-size: 13px;
+  line-height: 1;
+}
+.score-value {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--c-text-sub);
+}
+.score-count {
+  font-size: 11px;
+  color: var(--c-text-light);
+}
+
 .post-card-footer {
   padding: 12px 20px;
   border-top: 1px solid var(--c-border);
