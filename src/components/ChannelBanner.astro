@@ -4,7 +4,22 @@
  * Banner de canais com imagem clicável — WhatsApp e Telegram
  * Links: https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w
  *        https://t.me/achadocertovip
+ *
+ * Props opcionais:
+ *   whatsappImage — caminho/URL da imagem do banner WhatsApp
+ *   telegramImage — caminho/URL da imagem do banner Telegram
  */
+
+interface Props {
+  whatsappImage?: string;
+  telegramImage?: string;
+}
+
+const {
+  whatsappImage,
+  telegramImage,
+} = Astro.props;
+
 const WHATSAPP_URL = 'https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w';
 const TELEGRAM_URL = 'https://t.me/achadocertovip';
 ---
@@ -17,28 +32,57 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      class="channel-banner channel-banner--whatsapp"
+      class={`channel-banner channel-banner--whatsapp${whatsappImage ? ' channel-banner--has-image' : ''}`}
       aria-label="Seguir canal do AchadoCerto no WhatsApp"
     >
-      <div class="channel-banner__icon-wrap">
-        <svg class="channel-banner__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-        </svg>
-      </div>
-      <div class="channel-banner__content">
-        <span class="channel-banner__eyebrow">Canal Oficial</span>
-        <strong class="channel-banner__title">WhatsApp</strong>
-        <p class="channel-banner__desc">Receba os melhores achados em primeira mão</p>
-      </div>
-      <span class="channel-banner__cta">
-        Seguir agora
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </span>
-      <div class="channel-banner__bg-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-        </svg>
-      </div>
+      {whatsappImage ? (
+        <!-- MODO IMAGEM: foto clicável com overlay -->
+        <img
+          src={whatsappImage}
+          alt="Canal AchadoCerto no WhatsApp"
+          class="channel-banner__photo"
+          loading="lazy"
+          width="460"
+          height="160"
+        />
+        <div class="channel-banner__photo-overlay">
+          <div class="channel-banner__photo-inner">
+            <div class="channel-banner__icon-wrap channel-banner__icon-wrap--sm">
+              <svg class="channel-banner__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+              </svg>
+            </div>
+            <div class="channel-banner__photo-text">
+              <strong class="channel-banner__photo-title">Canal WhatsApp</strong>
+              <span class="channel-banner__photo-cta">
+                Seguir agora
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <!-- MODO PADRÃO: layout de ícone + texto -->
+        <div class="channel-banner__icon-wrap">
+          <svg class="channel-banner__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+          </svg>
+        </div>
+        <div class="channel-banner__content">
+          <span class="channel-banner__eyebrow">Canal Oficial</span>
+          <strong class="channel-banner__title">WhatsApp</strong>
+          <p class="channel-banner__desc">Receba os melhores achados em primeira mão</p>
+        </div>
+        <span class="channel-banner__cta">
+          Seguir agora
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+        <div class="channel-banner__bg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+          </svg>
+        </div>
+      )}
     </a>
 
     <!-- TELEGRAM BANNER -->
@@ -46,28 +90,57 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
       href={TELEGRAM_URL}
       target="_blank"
       rel="noopener noreferrer"
-      class="channel-banner channel-banner--telegram"
+      class={`channel-banner channel-banner--telegram${telegramImage ? ' channel-banner--has-image' : ''}`}
       aria-label="Seguir canal do AchadoCerto no Telegram"
     >
-      <div class="channel-banner__icon-wrap">
-        <svg class="channel-banner__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-        </svg>
-      </div>
-      <div class="channel-banner__content">
-        <span class="channel-banner__eyebrow">Canal Oficial</span>
-        <strong class="channel-banner__title">Telegram</strong>
-        <p class="channel-banner__desc">Ofertas e promoções sem perder nenhuma</p>
-      </div>
-      <span class="channel-banner__cta">
-        Entrar agora
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </span>
-      <div class="channel-banner__bg-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-        </svg>
-      </div>
+      {telegramImage ? (
+        <!-- MODO IMAGEM: foto clicável com overlay -->
+        <img
+          src={telegramImage}
+          alt="Canal AchadoCerto no Telegram"
+          class="channel-banner__photo"
+          loading="lazy"
+          width="460"
+          height="160"
+        />
+        <div class="channel-banner__photo-overlay">
+          <div class="channel-banner__photo-inner">
+            <div class="channel-banner__icon-wrap channel-banner__icon-wrap--sm">
+              <svg class="channel-banner__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+              </svg>
+            </div>
+            <div class="channel-banner__photo-text">
+              <strong class="channel-banner__photo-title">Canal Telegram</strong>
+              <span class="channel-banner__photo-cta">
+                Entrar agora
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <!-- MODO PADRÃO: layout de ícone + texto -->
+        <div class="channel-banner__icon-wrap">
+          <svg class="channel-banner__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+          </svg>
+        </div>
+        <div class="channel-banner__content">
+          <span class="channel-banner__eyebrow">Canal Oficial</span>
+          <strong class="channel-banner__title">Telegram</strong>
+          <p class="channel-banner__desc">Ofertas e promoções sem perder nenhuma</p>
+        </div>
+        <span class="channel-banner__cta">
+          Entrar agora
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+        <div class="channel-banner__bg-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+          </svg>
+        </div>
+      )}
     </a>
 
   </div>
@@ -102,6 +175,13 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     box-shadow: 0 4px 16px rgba(0,0,0,.10);
   }
 
+  /* Modo imagem: sem padding interno, imagem preenche tudo */
+  .channel-banner--has-image {
+    padding: 0;
+    display: block;
+    min-height: 160px;
+  }
+
   .channel-banner:hover {
     transform: translateY(-4px) scale(1.01);
     box-shadow: 0 10px 32px rgba(0,0,0,.18);
@@ -123,7 +203,81 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     color: #fff;
   }
 
-  /* Ícone principal */
+  /* ── MODO IMAGEM ── */
+  .channel-banner__photo {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--r-lg, 12px);
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  .channel-banner:hover .channel-banner__photo {
+    transform: scale(1.04);
+  }
+
+  /* Overlay escuro gradiente sobre a foto */
+  .channel-banner__photo-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--r-lg, 12px);
+    background: linear-gradient(
+      135deg,
+      rgba(0,0,0,.52) 0%,
+      rgba(0,0,0,.18) 60%,
+      rgba(0,0,0,.04) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: 16px 18px;
+    transition: background 0.22s;
+  }
+
+  .channel-banner:hover .channel-banner__photo-overlay {
+    background: linear-gradient(
+      135deg,
+      rgba(0,0,0,.64) 0%,
+      rgba(0,0,0,.28) 60%,
+      rgba(0,0,0,.08) 100%
+    );
+  }
+
+  .channel-banner__photo-inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .channel-banner__photo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .channel-banner__photo-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .channel-banner__photo-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,.88);
+    transition: gap 0.18s;
+  }
+
+  .channel-banner:hover .channel-banner__photo-cta {
+    gap: 8px;
+  }
+
+  /* ── MODO PADRÃO ── */
   .channel-banner__icon-wrap {
     width: 52px;
     height: 52px;
@@ -136,6 +290,11 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     transition: background 0.2s;
   }
 
+  .channel-banner__icon-wrap--sm {
+    width: 38px;
+    height: 38px;
+  }
+
   .channel-banner:hover .channel-banner__icon-wrap {
     background: rgba(255,255,255,0.28);
   }
@@ -144,6 +303,11 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
     width: 28px;
     height: 28px;
     color: #fff;
+  }
+
+  .channel-banner__icon-wrap--sm .channel-banner__icon {
+    width: 20px;
+    height: 20px;
   }
 
   /* Texto */
@@ -239,6 +403,10 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
       padding: 18px 16px;
     }
 
+    .channel-banner--has-image {
+      padding: 0;
+    }
+
     .channel-banner__desc {
       display: none;
     }
@@ -247,6 +415,10 @@ const TELEGRAM_URL = 'https://t.me/achadocertovip';
       width: 90px;
       height: 90px;
       right: -10px;
+    }
+
+    .channel-banner__photo {
+      height: 130px;
     }
   }
 </style>
