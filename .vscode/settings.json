@@ -15,13 +15,30 @@
         "**/.git/subtree-cache/**": true,
         "**/node_modules/**": true,
         "**/.venv/**": true,
+        "**/__pycache__/**": true,
+        "**/*.pyc": true,
         "**/.astro/**": true,
-        "**/dist/**": true
+        "**/dist/**": true,
+        "**/.wrangler/**": true,
+        "**/.cache/**": true
     },
     "search.exclude": {
         "**/node_modules/**": true,
         "**/.venv/**": true,
+        "**/__pycache__/**": true,
+        "**/*.pyc": true,
         "**/.astro/**": true,
-        "**/dist/**": true
-    }
+        "**/dist/**": true,
+        "**/.wrangler/**": true,
+        "**/.cache/**": true
+    },
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true,
+        "**/.astro": true,
+        "**/dist": true
+    },
+    "terminal.integrated.gpuAcceleration": "off",
+    "editor.minimap.enabled": false,
+    "typescript.disableAutomaticTypeAcquisition": true
 }
