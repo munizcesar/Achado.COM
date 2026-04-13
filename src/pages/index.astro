@@ -1,4 +1,3 @@
----
 import Layout from '../layouts/Layout.astro';
 import ChannelBanner from '../components/ChannelBanner.astro';
 
@@ -15,17 +14,34 @@ function fmtDate(d) {
   return new Date(d).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
 }
 
+// Helper: normaliza categoria para comparação (lowercase + remove acentos simples)
+function normalizeCategory(cat) {
+  if (!cat) return '';
+  return cat.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // remove acentos
+    .trim();
+}
+
 const pilares = [
   { slug: 'beleza', label: 'Beleza & Fragr\u00e2ncias', desc: 'Perfumes, col\u00f4nias e body splash com curadoria independente.' },
   { slug: 'saude',  label: 'Sa\u00fade & Suplementos',  desc: 'Vitaminas, prote\u00ednas e suplementos testados e aprovados.' },
   { slug: 'casa',   label: 'Casa & Bem-Estar',        desc: 'Eletrodom\u00e9sticos e utilit\u00e1rios que facilitam sua rotina.' },
 ];
 
-const postsByPilar = pilares.map(p => ({
-  ...p,
-  posts: posts.filter(post => post.data.category === p.slug),
-  total: posts.filter(post => post.data.category === p.slug).length,
-}));
+const postsByPilar = pilares.map(p => {
+  const filtered = posts.filter(post => {
+    const cat = normalizeCategory(post.data.category);
+    const slug = normalizeCategory(p.slug);
+    // mapeia aliases: "lar" → "casa", "esporte" → "esportes"
+    const mapped = cat === 'lar' ? 'casa' : cat === 'esporte' ? 'esportes' : cat;
+    return mapped === slug;
+  });
+  return {
+    ...p,
+    posts: filtered,
+    total: filtered.length,
+  };
+});
 
 const pilaresData = postsByPilar.map(pilar => ({
   slug: pilar.slug,
@@ -416,7 +432,6 @@ const siloPosts = posts.filter(p => {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    /* largura mínima garante que todos fiquem do mesmo tamanho */
     min-width: 108px;
     height: 38px;
     padding: 0 16px;
@@ -439,7 +454,6 @@ const siloPosts = posts.filter(p => {
     box-shadow: 0 4px 12px rgba(225,48,108,.2);
   }
 
-  /* Pills dos pilares */
   .trust-pill-pilar {
     background: rgba(255,255,255,.1);
     border-color: rgba(255,255,255,.22);
@@ -451,7 +465,6 @@ const siloPosts = posts.filter(p => {
     border-color: rgba(225,48,108,.6);
   }
 
-  /* Pill "Ver todos" — destaque especial */
   .trust-pill-all {
     min-width: 120px;
     background: rgba(225,48,108,.15);
