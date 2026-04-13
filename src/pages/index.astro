@@ -1,3 +1,4 @@
+---
 import Layout from '../layouts/Layout.astro';
 import ChannelBanner from '../components/ChannelBanner.astro';
 
@@ -14,11 +15,11 @@ function fmtDate(d) {
   return new Date(d).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
 }
 
-// Helper: normaliza categoria para comparação (lowercase + remove acentos simples)
+// Helper: normaliza categoria para comparação (lowercase + remove acentos)
 function normalizeCategory(cat) {
   if (!cat) return '';
   return cat.toLowerCase()
-    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // remove acentos
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .trim();
 }
 
@@ -32,7 +33,6 @@ const postsByPilar = pilares.map(p => {
   const filtered = posts.filter(post => {
     const cat = normalizeCategory(post.data.category);
     const slug = normalizeCategory(p.slug);
-    // mapeia aliases: "lar" → "casa", "esporte" → "esportes"
     const mapped = cat === 'lar' ? 'casa' : cat === 'esporte' ? 'esportes' : cat;
     return mapped === slug;
   });
