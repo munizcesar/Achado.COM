@@ -1,25 +1,29 @@
 ﻿@echo off
 chcp 65001 >nul
-echo ===== Diagnóstico VS Code Batch =====
-echo.
-echo Testando se o comando code existe no PATH...
-where code
-if errorlevel 1 (
-  echo ERRO: comando 'code' NAO encontrado no PATH!
-  echo Corrija o PATH ou reinstale o VS Code com "Add to PATH".
-  goto FIM
+setlocal
+
+set "SCRIPT=%~dp0scripts\otimizar-vscode.ps1"
+
+if not exist "%SCRIPT%" (
+  echo ERRO: script nao encontrado em:
+  echo %SCRIPT%
+  pause
+  exit /b 1
 )
+
+echo ===== OTIMIZAR VS CODE =====
 echo.
-echo Testando code --version:
-code --version
+echo 1 - Limpeza rapida ^(cache, logs, history, cache de extensoes^)
+echo 2 - Limpeza profunda ^(inclui workspaceStorage antigo e chats locais antigos^)
 echo.
-echo Testando code --list-extensions:
-code --list-extensions
+set /p OPCAO=Escolha uma opcao [1/2]: 
+
+if "%OPCAO%"=="2" (
+  powershell -NoProfile -ExecutionPolicy Bypass -File "%SCRIPT%" -Deep -KeepWorkspaceCount 1 -KeepChatSessions 5
+) else (
+  powershell -NoProfile -ExecutionPolicy Bypass -File "%SCRIPT%"
+)
+
 echo.
-echo Testando abrir VS Code sem extensoes:
-code --disable-extensions
-echo.
-:FIM
-echo.
-echo ===== FIM DO TESTE =====
+echo ===== PROCESSO FINALIZADO =====
 pause
