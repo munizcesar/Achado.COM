@@ -1,3 +1,4 @@
+---
 import Layout from '../../layouts/Layout.astro';
 import AdSense from '../../components/AdSense.astro';
 import ChannelBanner from '../../components/ChannelBanner.astro';
@@ -148,7 +149,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
             ))}
           </div>
 
-          <!-- SHARE BAR HEADER: WhatsApp primeiro, sem email -->
           <div class="share-bar">
             <span class="share-bar-label">Compartilhar:</span>
             <div class="share-bar-btns">
@@ -278,7 +278,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
             </div>
           )}
 
-          <!-- SHARE SIDEBAR: WhatsApp primeiro, sem email -->
           <div class="sidebar-share-box">
             <p class="sidebar-share-title">Compartilhar</p>
             <div class="sidebar-share-grid">
@@ -438,7 +437,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     </div>
   </article>
 
-  <!-- JS: copiar link + share nativo -->
   <script is:inline>
     (function(){
       function setupCopy(btnId, copyIconId, checkIconId) {
@@ -479,7 +477,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
   </script>
 
   <style>
-    /* ===================== GRID ===================== */
     .post-content-grid {
       display: grid;
       grid-template-columns: 1fr 280px;
@@ -495,7 +492,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       .product-box-final { padding: 24px 16px; }
     }
 
-    /* ===================== MOBILE CONTENT FIXES ===================== */
     .post-content-grid,
     .prose,
     .post-sidebar {
@@ -522,7 +518,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       height: auto;
     }
 
-    /* ===================== ÍCONES CIRCULARES DE COMPARTILHAMENTO ===================== */
     .sicon {
       display: inline-flex;
       align-items: center;
@@ -541,7 +536,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .sicon:hover { transform: translateY(-2px); color: #fff; }
     .sicon:active { transform: scale(0.93); }
 
-    /* Cores hover por rede */
     .sicon-x:hover      { background: #000000; }
     .sicon-fb:hover     { background: #1877F2; }
     .sicon-tg:hover     { background: #229ED9; }
@@ -550,7 +544,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .sicon-native:hover { background: #6366f1; }
     .sicon-copied       { background: #16a34a !important; color: #fff !important; }
 
-    /* ===================== SHARE BAR (header) ===================== */
     .share-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .share-bar-label {
       font-size: 12px; font-weight: 600;
@@ -558,7 +551,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     }
     .share-bar-btns { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 
-    /* ===================== SHARE SIDEBAR BOX ===================== */
     .sidebar-share-box {
       background: var(--c-surface);
       border: 1px solid var(--c-border);
@@ -578,7 +570,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       gap: 8px;
     }
 
-    /* ===================== BOX CTA FINAL ===================== */
     .product-box-final {
       display: flex;
       flex-direction: column;
@@ -615,7 +606,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     }
     .product-box-final-btn:hover { background: var(--c-brand-dark); transform: translateY(-2px); }
 
-    /* ===================== BOX SIDEBAR ===================== */
     .product-box-sidebar {
       background: var(--c-surface);
       border: 1px solid var(--c-border);
@@ -647,7 +637,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .product-box-sidebar-btn:hover { background: var(--c-brand-dark); }
     .product-box-sidebar-disclaimer { font-size: 10px; color: var(--c-text-light); text-align: center; margin-top: 8px; }
 
-    /* ===================== PROSE ===================== */
     .prose { color:var(--c-text); font-size:17px; line-height:1.8; }
     .prose h2 { font-size:26px; font-weight:800; letter-spacing:-.4px; margin:40px 0 16px; color:var(--c-text); }
     .prose h3 { font-size:20px; font-weight:700; margin:32px 0 12px; color:var(--c-text); }
@@ -673,7 +662,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       .share-bar { margin-top:12px; }
     }
 
-    /* ===================== ARTIGOS RELACIONADOS ===================== */
     .related-section {
       background: var(--c-surface);
       border-top: 1px solid var(--c-border);
