@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ChannelBanner from '../components/ChannelBanner.astro';
+import AdSense from '../components/AdSense.astro';
 
 let posts = [];
 try {
@@ -15,7 +16,6 @@ function fmtDate(d) {
   return new Date(d).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
 }
 
-// Helper: normaliza categoria para comparação (lowercase + remove acentos)
 function normalizeCategory(cat) {
   if (!cat) return '';
   return cat.toLowerCase()
@@ -36,11 +36,7 @@ const postsByPilar = pilares.map(p => {
     const mapped = cat === 'lar' ? 'casa' : cat === 'esporte' ? 'esportes' : cat;
     return mapped === slug;
   });
-  return {
-    ...p,
-    posts: filtered,
-    total: filtered.length,
-  };
+  return { ...p, posts: filtered, total: filtered.length };
 });
 
 const pilaresData = postsByPilar.map(pilar => ({
@@ -163,67 +159,89 @@ const siloPosts = posts.filter(p => {
 
 
   <!-- ===================== SEÇÕES POR PILAR ===================== -->
-  {postsByPilar.map((pilar, i) => pilar.posts.length > 0 && (
-    <section class={`pilar-section ${i % 2 === 0 ? 'pilar-section-alt' : ''}`}>
-      <div class="container">
-        <div class="section-header">
-          <div class="section-header-left">
-            <div class="section-icon-wrap">
-              {pilar.slug === 'beleza' && (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
-                  <path d="M20 3v4M22 5h-4M4 17v2M5 18H3"/>
-                </svg>
-              )}
-              {pilar.slug === 'saude' && (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/>
-                  <path d="M8.5 8.5 16 16"/>
-                </svg>
-              )}
-              {pilar.slug === 'casa' && (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                  <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-              )}
+  {postsByPilar.map((pilar, i) => (
+    <>
+      {/* Anuncio ANTES da 1a secao (entre pilares e posts) */}
+      {i === 0 && (
+        <div class="ad-between-sections">
+          <div class="container">
+            <AdSense slot="2844415754" format="auto" fullWidth={true} minHeight="90px" />
+          </div>
+        </div>
+      )}
+
+      {/* Anuncio ENTRE a 1a e a 2a secao de posts */}
+      {i === 1 && (
+        <div class="ad-between-sections">
+          <div class="container">
+            <AdSense slot="2844415754" format="auto" fullWidth={true} minHeight="90px" />
+          </div>
+        </div>
+      )}
+
+      {pilar.posts.length > 0 && (
+        <section class={`pilar-section ${i % 2 === 0 ? 'pilar-section-alt' : ''}`}>
+          <div class="container">
+            <div class="section-header">
+              <div class="section-header-left">
+                <div class="section-icon-wrap">
+                  {pilar.slug === 'beleza' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+                      <path d="M20 3v4M22 5h-4M4 17v2M5 18H3"/>
+                    </svg>
+                  )}
+                  {pilar.slug === 'saude' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/>
+                      <path d="M8.5 8.5 16 16"/>
+                    </svg>
+                  )}
+                  {pilar.slug === 'casa' && (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                      <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                  )}
+                </div>
+                <div>
+                  <span class="section-label">Categoria</span>
+                  <h2 class="section-title">{pilar.label}</h2>
+                </div>
+              </div>
+              <a href={`/categorias/${pilar.slug}`} class="section-link">
+                Ver todos ({pilar.total})
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
             </div>
-            <div>
-              <span class="section-label">Categoria</span>
-              <h2 class="section-title">{pilar.label}</h2>
+            <div class="post-grid" data-pilar-grid={pilar.slug}>
+              {pilar.posts.slice(0, 3).map(post => (
+                <article class="post-card">
+                  <a href={`/blog/${post.slug}`} class="post-card-img-wrap">
+                    <img src={post.data.image || '/placeholder.webp'} alt={post.data.title}
+                      class="post-card-img" width="600" height="400" loading="lazy" />
+                  </a>
+                  <div class="post-card-body">
+                    <span class="post-card-cat">{post.data.category}</span>
+                    <h3 class="post-card-title"><a href={`/blog/${post.slug}`}>{post.data.title}</a></h3>
+                    {post.data.description && <p class="post-card-excerpt">{post.data.description}</p>}
+                  </div>
+                  <div class="post-card-footer">
+                    <time class="post-card-date" datetime={post.data.date?.toISOString?.() ?? ''}>
+                      {fmtDate(post.data.date)}
+                    </time>
+                    <a href={`/blog/${post.slug}`} class="post-card-read">
+                      Ler review
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
-          <a href={`/categorias/${pilar.slug}`} class="section-link">
-            Ver todos ({pilar.total})
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-        <div class="post-grid" data-pilar-grid={pilar.slug}>
-          {pilar.posts.slice(0, 3).map(post => (
-            <article class="post-card">
-              <a href={`/blog/${post.slug}`} class="post-card-img-wrap">
-                <img src={post.data.image || '/placeholder.webp'} alt={post.data.title}
-                  class="post-card-img" width="600" height="400" loading="lazy" />
-              </a>
-              <div class="post-card-body">
-                <span class="post-card-cat">{post.data.category}</span>
-                <h3 class="post-card-title"><a href={`/blog/${post.slug}`}>{post.data.title}</a></h3>
-                {post.data.description && <p class="post-card-excerpt">{post.data.description}</p>}
-              </div>
-              <div class="post-card-footer">
-                <time class="post-card-date" datetime={post.data.date?.toISOString?.() ?? ''}>
-                  {fmtDate(post.data.date)}
-                </time>
-                <a href={`/blog/${post.slug}`} class="post-card-read">
-                  Ler review
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
+        </section>
+      )}
+    </>
   ))}
 
 
@@ -320,7 +338,6 @@ const siloPosts = posts.filter(p => {
       try {
         pilaresDataClient = JSON.parse(dataScript.textContent || '[]');
       } catch (error) {
-        console.error('Erro ao parsear pilares-data:', error);
         return;
       }
 
@@ -337,11 +354,9 @@ const siloPosts = posts.filter(p => {
         randomPosts.forEach(post => {
           const article = document.createElement('article');
           article.className = 'post-card';
-
           const link = document.createElement('a');
           link.href = `/blog/${post.slug}`;
           link.className = 'post-card-img-wrap';
-
           const img = document.createElement('img');
           img.src = post.image || '/placeholder.webp';
           img.alt = post.title || '';
@@ -349,39 +364,30 @@ const siloPosts = posts.filter(p => {
           img.width = 600;
           img.height = 400;
           img.loading = 'lazy';
-
           link.appendChild(img);
           article.appendChild(link);
-
           const body = document.createElement('div');
           body.className = 'post-card-body';
-
           const cat = document.createElement('span');
           cat.className = 'post-card-cat';
           cat.textContent = post.category || '';
-
           const title = document.createElement('h3');
           title.className = 'post-card-title';
           const titleAnchor = document.createElement('a');
           titleAnchor.href = `/blog/${post.slug}`;
           titleAnchor.textContent = post.title || '';
           title.appendChild(titleAnchor);
-
           body.appendChild(cat);
           body.appendChild(title);
-
           if (post.description) {
             const excerpt = document.createElement('p');
             excerpt.className = 'post-card-excerpt';
             excerpt.textContent = post.description;
             body.appendChild(excerpt);
           }
-
           article.appendChild(body);
-
           const footer = document.createElement('div');
           footer.className = 'post-card-footer';
-
           const timeEl = document.createElement('time');
           timeEl.className = 'post-card-date';
           if (post.date) {
@@ -391,15 +397,12 @@ const siloPosts = posts.filter(p => {
               timeEl.textContent = date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
             }
           }
-
           const readLink = document.createElement('a');
           readLink.href = `/blog/${post.slug}`;
           readLink.className = 'post-card-read';
           readLink.textContent = 'Ler review';
-
           footer.appendChild(timeEl);
           footer.appendChild(readLink);
-
           article.appendChild(footer);
           grid.appendChild(article);
         });
@@ -410,6 +413,14 @@ const siloPosts = posts.filter(p => {
 </Layout>
 
 <style>
+  /* ===== AD BETWEEN SECTIONS ===== */
+  .ad-between-sections {
+    background: var(--c-bg, #f8f9fa);
+    padding: 20px 0;
+    border-top: 1px solid var(--c-border, #e2e8f0);
+    border-bottom: 1px solid var(--c-border, #e2e8f0);
+  }
+
   /* ===== TRUST BANNER ===== */
   .trust-banner { background: linear-gradient(135deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%); padding:48px 0 40px; border-bottom:3px solid var(--c-brand,#E1306C); }
   .trust-inner { display:flex; flex-direction:column; gap:28px; }
@@ -426,59 +437,19 @@ const siloPosts = posts.filter(p => {
   .trust-search button:hover { background:#c2185b; }
   .trust-cats { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
 
-  /* ===== PILLS DE CATEGORIA — tamanho uniforme ===== */
   .trust-pill {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    min-width: 108px;
-    height: 38px;
-    padding: 0 16px;
-    background: rgba(255,255,255,.07);
-    border: 1px solid rgba(255,255,255,.12);
-    color: #e2e8f0;
-    font-size: .82rem;
-    font-weight: 500;
-    border-radius: 20px;
-    text-decoration: none;
-    white-space: nowrap;
-    letter-spacing: .02em;
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    min-width: 108px; height: 38px; padding: 0 16px;
+    background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+    color: #e2e8f0; font-size: .82rem; font-weight: 500; border-radius: 20px;
+    text-decoration: none; white-space: nowrap; letter-spacing: .02em;
     transition: background .18s, border-color .18s, color .18s, transform .15s, box-shadow .18s;
   }
-  .trust-pill:hover {
-    background: rgba(225,48,108,.18);
-    border-color: rgba(225,48,108,.5);
-    color: #fff;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(225,48,108,.2);
-  }
-
-  .trust-pill-pilar {
-    background: rgba(255,255,255,.1);
-    border-color: rgba(255,255,255,.22);
-    font-weight: 600;
-    color: #fff;
-  }
-  .trust-pill-pilar:hover {
-    background: rgba(225,48,108,.25);
-    border-color: rgba(225,48,108,.6);
-  }
-
-  .trust-pill-all {
-    min-width: 120px;
-    background: rgba(225,48,108,.15);
-    border-color: rgba(225,48,108,.4);
-    color: #f48fb1;
-    font-weight: 700;
-  }
-  .trust-pill-all:hover {
-    background: #E1306C;
-    border-color: #E1306C;
-    color: #fff;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(225,48,108,.35);
-  }
+  .trust-pill:hover { background: rgba(225,48,108,.18); border-color: rgba(225,48,108,.5); color: #fff; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(225,48,108,.2); }
+  .trust-pill-pilar { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.22); font-weight: 600; color: #fff; }
+  .trust-pill-pilar:hover { background: rgba(225,48,108,.25); border-color: rgba(225,48,108,.6); }
+  .trust-pill-all { min-width: 120px; background: rgba(225,48,108,.15); border-color: rgba(225,48,108,.4); color: #f48fb1; font-weight: 700; }
+  .trust-pill-all:hover { background: #E1306C; border-color: #E1306C; color: #fff; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(225,48,108,.35); }
 
   @media (min-width:768px) {
     .trust-banner { padding:56px 0 48px; }
@@ -488,48 +459,14 @@ const siloPosts = posts.filter(p => {
 
   /* ===== CARDS DE PILARES ===== */
   .pilares-section { background:var(--c-bg,#f8f9fa); padding:32px 0 28px; border-bottom:1px solid var(--c-border,#e2e8f0); }
-
-  .pilares-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 24px;
-    padding-left: 4px;
+  .pilares-header { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:24px; padding-left:4px; }
+  .pilares-title { font-size:clamp(1.05rem,2vw,1.35rem); font-weight:800; color:var(--c-text,#1a202c); margin:0; line-height:1.15; display:flex; align-items:center; gap:10px; }
+  .pilares-title::before { content:''; display:block; width:4px; height:1.1em; border-radius:2px; background:var(--c-brand,#E1306C); flex-shrink:0; }
+  .pilares-sub { color:var(--c-text-sub,#4a5568); font-size:clamp(0.78rem,1.4vw,0.88rem); margin:0; line-height:1.4; padding-left:12px; border-left:1px solid var(--c-border,#e2e8f0); }
+  @media (max-width:600px) {
+    .pilares-header { flex-direction:column; align-items:flex-start; gap:4px; margin-bottom:20px; }
+    .pilares-sub { padding-left:14px; border-left:none; }
   }
-  .pilares-title {
-    font-size: clamp(1.05rem, 2vw, 1.35rem);
-    font-weight: 800;
-    color: var(--c-text, #1a202c);
-    margin: 0;
-    line-height: 1.15;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .pilares-title::before {
-    content: '';
-    display: block;
-    width: 4px;
-    height: 1.1em;
-    border-radius: 2px;
-    background: var(--c-brand, #E1306C);
-    flex-shrink: 0;
-  }
-  .pilares-sub {
-    color: var(--c-text-sub, #4a5568);
-    font-size: clamp(0.78rem, 1.4vw, 0.88rem);
-    margin: 0;
-    line-height: 1.4;
-    padding-left: 12px;
-    border-left: 1px solid var(--c-border, #e2e8f0);
-  }
-
-  @media (max-width: 600px) {
-    .pilares-header { flex-direction: column; align-items: flex-start; gap: 4px; margin-bottom: 20px; }
-    .pilares-sub { padding-left: 14px; border-left: none; }
-  }
-
   .pilares-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; }
   .pilar-card { display:flex; flex-direction:column; gap:10px; background:var(--c-surface,#fff); border:2px solid var(--c-border,#e2e8f0); border-radius:16px; padding:32px 28px; text-decoration:none; transition:border-color .2s,box-shadow .2s,transform .2s; position:relative; overflow:hidden; }
   .pilar-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(225,48,108,.04) 0%,transparent 60%); opacity:0; transition:opacity .2s; }
