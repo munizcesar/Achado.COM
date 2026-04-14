@@ -20,6 +20,22 @@ function fmtDate(d) {
   return new Date(d).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
 }
 
+function normalizeCategory(cat) {
+  if (!cat) return '';
+  return cat.toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim();
+}
+
+function mapCategory(cat) {
+  const normalized = normalizeCategory(cat);
+  if (normalized === 'lar') return 'casa';
+  if (normalized === 'esporte') return 'esportes';
+  if (normalized === 'guias') return 'dicas';
+  return normalized;
+}
+
 const siteUrl = 'https://achadocerto.vip';
 const postUrl = `${siteUrl}/blog/${post.slug}`;
 const ogImage = post.data.image
@@ -29,6 +45,7 @@ const ogImage = post.data.image
 const productImage = post.data.productImage || post.data.image || null;
 const hasAffiliate  = !!post.data.affiliateUrl;
 const price         = post.data.price || null;
+const categorySlug  = mapCategory(post.data.category);
 
 function detectStore(url) {
   if (!url) return 'melhor preço';
@@ -58,7 +75,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Início', item: siteUrl },
     { '@type': 'ListItem', position: 2, name: 'Reviews', item: `${siteUrl}/blog` },
-    { '@type': 'ListItem', position: 3, name: post.data.category, item: `${siteUrl}/categorias/${post.data.category?.toLowerCase()}` },
+    { '@type': 'ListItem', position: 3, name: post.data.category, item: `${siteUrl}/categorias/${categorySlug}` },
     { '@type': 'ListItem', position: 4, name: post.data.title, item: postUrl }
   ]
 };
@@ -117,7 +134,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
         <nav style="font-size:13px;color:var(--c-text-muted);margin-bottom:20px;display:flex;gap:6px;align-items:center;flex-wrap:nowrap;overflow:hidden;">
           <a href="/" style="color:var(--c-brand);white-space:nowrap;">Início</a><span style="flex-shrink:0;">›</span>
           <a href="/blog" style="color:var(--c-brand);white-space:nowrap;">Reviews</a><span style="flex-shrink:0;">›</span>
-          {post.data.category && <a href={`/categorias/${post.data.category.toLowerCase()}`} style="color:var(--c-brand);white-space:nowrap;">{post.data.category}</a>}
+          {post.data.category && <a href={`/categorias/${categorySlug}`} style="color:var(--c-brand);white-space:nowrap;">{post.data.category}</a>}
           {post.data.category && <span style="flex-shrink:0;">›</span>}
           <span style="color:var(--c-text-light);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;">{post.data.title}</span>
         </nav>
