@@ -171,13 +171,15 @@ const schemaData = JSON.stringify(schemaArray);
           </button>
           <div class="subnav-inner" id="subnavInner">
             <a href="/" class={`subnav-link${currentPath === '/' ? ' active' : ''}`}>Início</a>
-            <a href="/categorias/tech" class={`subnav-link${currentPath.startsWith('/categorias/tech') ? ' active' : ''}`}>Tech</a>
-            <a href="/categorias/saude" class={`subnav-link${currentPath.startsWith('/categorias/saude') ? ' active' : ''}`}>Saúde</a>
-            <a href="/categorias/casa" class={`subnav-link${currentPath.startsWith('/categorias/casa') ? ' active' : ''}`}>Casa</a>
-            <a href="/categorias/beleza" class={`subnav-link${currentPath.startsWith('/categorias/beleza') ? ' active' : ''}`}>Beleza</a>
-            <a href="/categorias/esportes" class={`subnav-link${currentPath.startsWith('/categorias/esportes') ? ' active' : ''}`}>Esportes</a>
-            <a href="/categorias/automotivo" class={`subnav-link${currentPath.startsWith('/categorias/automotivo') ? ' active' : ''}`}>Automotivo</a>
-            <a href="/categorias/dicas" class={`subnav-link${currentPath.startsWith('/categorias/dicas') ? ' active' : ''}`}>Dicas</a>
+            <!-- Pilares em destaque -->
+            <a href="/categorias/beleza" class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/beleza') ? ' active' : ''}`}>Beleza</a>
+            <a href="/categorias/saude" class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/saude') ? ' active' : ''}`}>Saúde</a>
+            <a href="/categorias/casa" class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/casa') ? ' active' : ''}`}>Casa</a>
+            <!-- Categorias secundárias -->
+            <a href="/categorias/tech" class={`subnav-link subnav-sec${currentPath.startsWith('/categorias/tech') ? ' active' : ''}`}>Tech</a>
+            <a href="/categorias/esportes" class={`subnav-link subnav-sec${currentPath.startsWith('/categorias/esportes') ? ' active' : ''}`}>Esportes</a>
+            <a href="/categorias/automotivo" class={`subnav-link subnav-sec${currentPath.startsWith('/categorias/automotivo') ? ' active' : ''}`}>Automotivo</a>
+            <a href="/categorias/dicas" class={`subnav-link subnav-sec${currentPath.startsWith('/categorias/dicas') ? ' active' : ''}`}>Dicas</a>
           </div>
           <button class="subnav-arrow subnav-arrow-right" id="subnavArrowRight" aria-label="Rolar para direita">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
