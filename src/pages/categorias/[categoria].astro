@@ -2,21 +2,21 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-function normalizeCategory(cat) {
+const normalizeCategory = (cat) => {
   if (!cat) return '';
   return cat.toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .trim();
-}
+};
 
-function mapCategory(cat) {
+const mapCategory = (cat) => {
   const normalized = normalizeCategory(cat);
   if (normalized === 'lar') return 'casa';
   if (normalized === 'esporte') return 'esportes';
   if (normalized === 'guias') return 'dicas';
   return normalized;
-}
+};
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
