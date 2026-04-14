@@ -703,10 +703,24 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .prose td { padding:10px 14px; border:1px solid var(--c-border); }
     .prose tr:nth-child(even) td { background:var(--c-bg); }
 
+    /* AdSense mid-article positioning */
+    .ads-mid-article {
+      display: flex;
+      justify-content: center;
+      margin: 48px 0;
+      padding: 20px 0;
+    }
+    .ads-mid-article :global(ins) {
+      display: block !important;
+    }
+
     @media (max-width: 768px) {
       .share-bar { margin-top:12px; }
       .sicon { width: 32px; height: 32px; }
       .prose { font-size: 15px; line-height: 1.7; }
+      .ads-mid-article {
+        margin: 32px 0;
+      }
     }
 
     .related-section {
