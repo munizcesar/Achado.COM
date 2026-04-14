@@ -2,7 +2,7 @@
 title: "Balança Digital Corporal com Bioimpedância Relaxmedic: Vale a Pena? [Review Completo]"
 description: "Descubra tudo sobre a Balança Digital Corporal Relaxmedic com Bioimpedância e Bluetooth. Mede gordura corporal, IMC, massa muscular e muito mais. Veja pontos positivos, dicas de uso e onde comprar com segurança."
 date: 2026-03-31
-category: Saude
+category: saude
 image: /images/posts/balanca-digital-corporal-bioimpedancia-aplicativo-bluetooth-.webp
 tags: [saude, balança, bioimpedância, relaxmedic, composição corporal, peso, fitness, bem-estar]
 draft: false

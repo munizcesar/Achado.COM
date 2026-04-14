@@ -2,7 +2,7 @@
 title: "Umidificador de Ar Dellamed Umi Pop Health 2,3L: Review Completo"
 description: "Conheça o Umidificador de Ar Ultrasssônico Dellamed Umi Pop Health 2,3L. Silencioso, eficiente e ideal para bebês e adultos. Veja pontos positivos, dicas de uso, benefícios e onde comprar com segurança."
 date: 2026-03-31
-category: Saude
+category: saude
 image: /images/posts/umidificador-de-ar-ultrassonico-umi-pop-health-23l-dellamed-.webp
 tags: [saude, umidificador, dellamed, ar seco, qualidade do ar, bem-estar, bebe, alergia, respiratorio]
 draft: false

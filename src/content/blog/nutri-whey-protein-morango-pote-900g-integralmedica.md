@@ -2,7 +2,7 @@
 title: "Nutri Whey Protein Morango 900g Integralmédica: vale a pena?"
 description: "Review completo do Nutri Whey Protein Morango 900g da Integralmédica: proteína por dose, sabor, custo por grama e para quem é indicado."
 date: 2026-03-27
-category: Saude
+category: saude
 image: /images/posts/nutri-whey-protein-morango-pote-900g-integralmedica.jpg
 tags: [saude, whey-protein, suplementos, integralmedica, proteina]
 draft: false
