@@ -14,6 +14,20 @@ const blog = defineCollection({
     affiliateUrl: z.string().url().optional(),
     productImage: z.string().optional(),
     price: z.string().optional(),
+    // Campos legado (posts antigos) — não remover para evitar erros de build
+    rating: z.number().min(1).max(5).optional(),
+    pros: z.array(z.string()).optional(),
+    cons: z.array(z.string()).optional(),
+    brand: z.string().optional(),
+    model: z.string().optional(),
+    verdict: z.string().optional(),
+    // Evidências dos três pilares (usados em posts de produto)
+    pillar1Title: z.string().optional(),
+    pillar1Evidence: z.string().optional(),
+    pillar2Title: z.string().optional(),
+    pillar2Evidence: z.string().optional(),
+    pillar3Title: z.string().optional(),
+    pillar3Evidence: z.string().optional(),
   }),
 });
 
