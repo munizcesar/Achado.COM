@@ -196,13 +196,11 @@ const schemaData = JSON.stringify(schemaArray);
           </button>
           <div class="subnav-inner" id="subnavInner">
             <a href="/" class={`subnav-link${currentPath === '/' ? ' active' : ''}`}>Início</a>
-            <!-- Separador visual antes dos pilares -->
             <span class="subnav-sep" aria-hidden="true"></span>
             <!-- Pilares em destaque -->
-            <a href="/categorias/beleza" class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/beleza') ? ' active' : ''}`}>✦ Beleza</a>
-            <a href="/categorias/saude" class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/saude') ? ' active' : ''}`}>✦ Saúde</a>
-            <a href="/categorias/casa" class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/casa') ? ' active' : ''}`}>✦ Casa</a>
-            <!-- Separador visual depois dos pilares -->
+            <a href="/categorias/beleza" class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/beleza') ? ' active' : ''}`}>Beleza</a>
+            <a href="/categorias/saude" class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/saude') ? ' active' : ''}`}>Saúde</a>
+            <a href="/categorias/casa" class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/casa') ? ' active' : ''}`}>Casa</a>
             <span class="subnav-sep" aria-hidden="true"></span>
             <!-- Categorias secundárias -->
             <a href="/categorias/tech" class={`subnav-link subnav-sec${currentPath.startsWith('/categorias/tech') ? ' active' : ''}`}>Tech</a>
@@ -286,16 +284,17 @@ const schemaData = JSON.stringify(schemaArray);
   <style>
     /* ===== DRAWER PILARES ===== */
     .drawer-section-pilares {
-      background: linear-gradient(135deg, rgba(225,48,108,.06) 0%, rgba(225,48,108,.02) 100%);
-      border-radius: 12px;
-      margin: 0 -4px;
-      padding: 4px;
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-md);
+      margin: 8px 12px 0;
+      padding: 14px 16px 16px;
+      background: var(--c-bg);
     }
     .drawer-section-label-pilares {
       display: flex !important;
       align-items: center;
       gap: 6px;
-      color: var(--c-brand, #E1306C) !important;
+      color: var(--c-brand) !important;
       font-weight: 800 !important;
       font-size: .72rem !important;
       letter-spacing: .1em !important;
@@ -309,17 +308,17 @@ const schemaData = JSON.stringify(schemaArray);
       gap: 10px;
       font-weight: 700 !important;
       font-size: .97rem !important;
-      color: var(--c-text, #1a202c) !important;
-      padding: 11px 14px !important;
-      border-radius: 10px !important;
-      background: rgba(255,255,255,.7);
-      border: 1.5px solid transparent !important;
+      color: var(--c-text) !important;
+      padding: 10px 12px !important;
+      border-radius: var(--r-sm) !important;
+      background: var(--c-surface);
+      border: 1px solid var(--c-border) !important;
       transition: background .18s, border-color .18s, color .18s !important;
     }
     .drawer-link-pilar:hover {
-      background: #fff !important;
-      border-color: var(--c-brand, #E1306C) !important;
-      color: var(--c-brand, #E1306C) !important;
+      background: var(--c-brand-soft) !important;
+      border-color: var(--c-brand) !important;
+      color: var(--c-brand) !important;
     }
     .drawer-pilar-dot {
       width: 9px;
@@ -334,35 +333,37 @@ const schemaData = JSON.stringify(schemaArray);
     /* Separador entre pilares e categorias secundárias */
     .drawer-divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent, var(--c-border, #e2e8f0) 20%, var(--c-border, #e2e8f0) 80%, transparent);
-      margin: 8px 0;
+      background: var(--c-border);
+      margin: 0;
     }
 
     /* ===== SUBNAV PILARES ===== */
     .subnav-link.subnav-pilar {
       font-weight: 700;
-      color: var(--c-text, #1a202c);
-      letter-spacing: .01em;
+      color: var(--c-text);
     }
     .subnav-link.subnav-pilar:hover,
     .subnav-link.subnav-pilar.active {
-      color: var(--c-brand, #E1306C);
-      background: rgba(225,48,108,.08);
+      color: var(--c-brand);
+      border-bottom-color: var(--c-brand);
     }
     .subnav-link.subnav-sec {
       font-weight: 500;
-      color: var(--c-text-sub, #4a5568);
+      color: var(--c-text-muted);
       font-size: .83rem;
+    }
+    .subnav-link.subnav-sec:hover {
+      color: var(--c-text-sub);
     }
 
     /* Separador vertical no subnav */
     .subnav-sep {
-      display: inline-block;
-      width: 1px;
-      height: 18px;
-      background: var(--c-border, #e2e8f0);
-      margin: 0 4px;
+      display: inline-flex;
       align-self: center;
+      width: 1px;
+      height: 16px;
+      background: var(--c-border-mid);
+      margin: 0 2px;
       flex-shrink: 0;
     }
 
