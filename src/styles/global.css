@@ -917,44 +917,110 @@ body.drawer-open { overflow: hidden; }
   flex-shrink: 0;
 }
 
-/* Table styling */
+/* ══════════════════════════════════════════
+   TABELAS — fix definitivo para layout responsivo
+   Problemas anteriores:
+   1) Dois blocos .prose table conflitantes
+   2) Sem min-width nas células → texto quebrava em mobile
+   3) overflow:hidden no wrapper bloqueava o scroll
+   ══════════════════════════════════════════ */
+
+/* Wrapper para scroll horizontal sem quebrar o layout */
 .prose table {
+  /* Reseta display para que border-radius funcione no wrapper */
+  display: block;
   width: 100%;
-  border-collapse: collapse;
-  margin: 24px 0;
-  overflow: hidden;
-  border-radius: var(--r-md);
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  /* Scrollbar fina e discreta */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(26,86,219,.35) rgba(0,0,0,.05);
+
+  /* Visual */
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 28px 0;
   border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
   background: var(--c-surface);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  font-size: 14px;
+  line-height: 1.5;
 }
+
+.prose table::-webkit-scrollbar        { height: 6px; }
+.prose table::-webkit-scrollbar-thumb  { background: rgba(26,86,219,.35); border-radius: 999px; }
+.prose table::-webkit-scrollbar-track  { background: rgba(0,0,0,.04); }
+
+/* Células: min-width impede quebra de palavra indesejada */
 .prose th,
 .prose td {
-  padding: 14px 16px;
+  padding: 12px 16px;
   text-align: left;
-  border-bottom: 1px solid var(--c-border);
   vertical-align: top;
+  border-bottom: 1px solid var(--c-border);
+  border-right: 1px solid var(--c-border);
+  white-space: normal;        /* permite quebra em células longas */
+  word-break: break-word;     /* quebra só quando realmente necessário */
+  min-width: 120px;           /* garante largura mínima — evita espremimento */
+  hyphens: auto;
 }
-.prose th {
+
+/* Remove borda direita da última coluna */
+.prose th:last-child,
+.prose td:last-child {
+  border-right: none;
+}
+
+/* Remove borda inferior da última linha */
+.prose tr:last-child td {
+  border-bottom: none;
+}
+
+/* Cabeçalho */
+.prose thead th {
   background: var(--c-brand-soft);
   color: var(--c-brand);
   font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  white-space: nowrap; /* cabeçalho nunca quebra */
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
-.prose tr:nth-child(even) { background: rgba(26,86,219,0.06); }
-.prose tr:hover { background: rgba(26,86,219,0.12); }
-.prose tr:last-child td { border-bottom: none; }
-.prose table {
-  display: block;
-  overflow-x: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(26,86,219,.35) rgba(0,0,0,.05);
+
+/* Listras alternadas */
+.prose tbody tr:nth-child(even) td {
+  background: rgba(26,86,219,0.04);
 }
-.prose table::-webkit-scrollbar { height: 8px; }
-.prose table::-webkit-scrollbar-thumb {
-  background: rgba(26,86,219,.35);
-  border-radius: 999px;
+
+/* Hover na linha */
+.prose tbody tr:hover td {
+  background: rgba(26,86,219,0.09);
 }
-.prose table::-webkit-scrollbar-track { background: rgba(0,0,0,.04); }
+
+/* Primeira coluna em negrito (comum em tabelas comparativas) */
+.prose td:first-child {
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+/* Mobile: reduz padding e tamanho de fonte para caber mais */
+@media (max-width: 640px) {
+  .prose table {
+    font-size: 13px;
+    margin: 20px 0;
+  }
+  .prose th,
+  .prose td {
+    padding: 10px 12px;
+    min-width: 100px;
+  }
+}
 
 .footer-disclaimer {
   font-size: 12px;
