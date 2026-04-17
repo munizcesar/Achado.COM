@@ -28,7 +28,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const currentPath = Astro.url.pathname;
 
 const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
-
 const ogWidth = '1200';
 const ogHeight = '630';
 
@@ -118,7 +117,8 @@ const schemaData = JSON.stringify(schemaArray);
 </head>
 <body>
 
-  <!-- GEO SCRIPT: detecta país e adapta logo + banners Amazon US -->
+  <!-- GEO SCRIPT: detecta país e ativa banners Amazon US para visitantes internacionais -->
+  <!-- Logo permanece AchadoCerto para todos os visitantes -->
   <script is:inline>
   (function () {
     var CACHE_KEY = 'acv_geo';
@@ -129,30 +129,11 @@ const schemaData = JSON.stringify(schemaArray);
       try { localStorage.setItem(CACHE_KEY, JSON.stringify({ country: country, ts: Date.now() })); } catch(e) {}
       if (!isIntl) return;
 
-      // Classe global no body (ativa geo.css)
+      // Classe global no body (ativa geo.css: mostra banners Amazon US)
       document.body.classList.add('geo-intl');
-
-      // Logo: troca PT -> EN
-      var logoPT = document.getElementById('logo-pt');
-      var logoEN = document.getElementById('logo-en');
-      if (logoPT) logoPT.style.display = 'none';
-      if (logoEN) logoEN.style.display = 'block';
-
-      // Search placeholder
-      document.querySelectorAll('input[type="search"]').forEach(function(el) {
-        el.placeholder = 'Search products and deals…';
-      });
-
-      // Texto do botão seguir
-      var followText = document.getElementById('follow-btn-text');
-      if (followText) followText.textContent = 'Follow Channel';
-
-      // lang no html
-      document.documentElement.setAttribute('lang', 'en');
     }
 
     function run() {
-      // 1. Tenta cache localStorage
       try {
         var raw = localStorage.getItem(CACHE_KEY);
         if (raw) {
@@ -164,7 +145,6 @@ const schemaData = JSON.stringify(schemaArray);
         }
       } catch(e) {}
 
-      // 2. Cloudflare trace (gratuito, sem API key)
       fetch('https://www.cloudflare.com/cdn-cgi/trace')
         .then(function(r) { return r.text(); })
         .then(function(txt) {
@@ -172,7 +152,6 @@ const schemaData = JSON.stringify(schemaArray);
           applyGeo(m ? m[1] : 'BR');
         })
         .catch(function() {
-          // 3. Fallback: ipapi.co
           fetch('https://ipapi.co/country/')
             .then(function(r) { return r.text(); })
             .then(function(c) { applyGeo(c.trim() || 'BR'); })
@@ -261,41 +240,9 @@ const schemaData = JSON.stringify(schemaArray);
           </svg>
         </button>
 
-        <!-- LOGO DUAL: PT (padrão) + EN (exibido via geo JS) -->
+        <!-- LOGO: AchadoCerto fixo para todos os visitantes -->
         <a href="/" class="brand" aria-label="AchadoCertoVIP (Início)">
-          <!-- Logo PT -->
-          <svg id="logo-pt" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 64" class="logo-main-svg" role="img" aria-label="AchadoCertoVIP">
-            <circle cx="28" cy="28" r="18" fill="none" stroke="#1A3A8F" stroke-width="5"/>
-            <line x1="41" y1="41" x2="54" y2="54" stroke="#1A3A8F" stroke-width="5" stroke-linecap="round"/>
-            <polyline points="18,28 25,35 38,19" fill="none" stroke="#C9A84C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="68" y="40" font-family="'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800" fill="#1A3A8F" letter-spacing="-0.5">Achado</text>
-            <text x="212" y="40" font-family="'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800" fill="#1565C0" letter-spacing="-0.5">Certo</text>
-            <rect x="335" y="10" width="72" height="38" rx="8" fill="#1A3A8F"/>
-            <rect x="335" y="10" width="72" height="38" rx="8" fill="none" stroke="#C9A84C" stroke-width="2"/>
-            <text x="371" y="35" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="900" fill="#C9A84C" text-anchor="middle" letter-spacing="2">VIP</text>
-          </svg>
-          <!-- Logo EN (oculto por padrão, ativado pelo geo script) -->
-          <svg id="logo-en" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 64" class="logo-main-svg" role="img" aria-label="BestFind VIP" style="display:none;">
-            <circle cx="28" cy="28" r="18" fill="none" stroke="#B22234" stroke-width="5"/>
-            <line x1="41" y1="41" x2="54" y2="54" stroke="#B22234" stroke-width="5" stroke-linecap="round"/>
-            <polyline points="18,28 25,35 38,19" fill="none" stroke="#FF9900" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="68" y="40" font-family="'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800" fill="#1A3A8F" letter-spacing="-0.5">Best</text>
-            <text x="178" y="40" font-family="'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800" fill="#B22234" letter-spacing="-0.5">Find</text>
-            <!-- mini US flag -->
-            <rect x="285" y="14" width="36" height="24" rx="3" fill="#B22234"/>
-            <rect x="285" y="17.5" width="36" height="1.8" fill="white"/>
-            <rect x="285" y="21" width="36" height="1.8" fill="white"/>
-            <rect x="285" y="24.5" width="36" height="1.8" fill="white"/>
-            <rect x="285" y="28" width="36" height="1.8" fill="white"/>
-            <rect x="285" y="31.5" width="36" height="1.8" fill="white"/>
-            <rect x="285" y="14" width="14" height="13" fill="#3C3B6E"/>
-            <text x="286" y="21.5" font-size="3" fill="white">★ ★ ★</text>
-            <text x="286" y="25.5" font-size="3" fill="white">★ ★ ★</text>
-            <!-- Badge VIP vermelho -->
-            <rect x="338" y="10" width="72" height="38" rx="8" fill="#B22234"/>
-            <rect x="338" y="10" width="72" height="38" rx="8" fill="none" stroke="#FF9900" stroke-width="2"/>
-            <text x="374" y="35" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="900" fill="#FF9900" text-anchor="middle" letter-spacing="2">VIP</text>
-          </svg>
+          <Logo size="md" />
         </a>
 
         <form class="header-search" role="search" action="/blog" method="get">
@@ -410,15 +357,6 @@ const schemaData = JSON.stringify(schemaArray);
   </footer>
 
   <style>
-    .logo-main-svg {
-      height: 48px;
-      width: auto;
-      max-width: 280px;
-      display: block;
-    }
-    @media (max-width: 480px) {
-      .logo-main-svg { height: 38px; max-width: 220px; }
-    }
     .skip-link {
       position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
     }
