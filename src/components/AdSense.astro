@@ -5,6 +5,7 @@ interface Props {
   fullWidth?: boolean;
   maxWidth?: string;
   minHeight?: string;
+  label?: boolean;
 }
 
 const {
@@ -13,18 +14,33 @@ const {
   fullWidth = true,
   maxWidth = "100%",
   minHeight = "90px",
+  label = false,
 } = Astro.props;
 ---
 
-<div style={`max-width:${maxWidth}; margin:0 auto; width:100%; min-height:${minHeight}; max-height:280px; overflow:hidden; box-sizing:border-box;`}>
+<div class="adsense-wrap" style={`max-width:${maxWidth}; width:100%; min-height:${minHeight}; margin:0 auto; box-sizing:border-box;`}>
+  {label && <p class="adsense-label">Publicidade</p>}
   <ins class="adsbygoogle"
-    style="display:block; width:100%; min-height:inherit; overflow:hidden;"
+    style="display:block; width:100%;"
     data-ad-client="ca-pub-8532820173012599"
     data-ad-slot={slot}
     data-ad-format={format}
-    data-full-width-responsive="false">
+    data-full-width-responsive="true">
   </ins>
 </div>
 <script is:inline>
   (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+
+<style>
+  .adsense-wrap { position: relative; }
+  .adsense-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--c-text-light, #ADB5BD);
+    text-align: center;
+    margin: 0 0 4px;
+  }
+</style>
