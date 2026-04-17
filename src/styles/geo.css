@@ -1,0 +1,29 @@
+/*
+  geo.css — estilos ativados pela classe .geo-intl no body
+  Aplicada via JS após detecção de país != BR
+*/
+
+/* Banners Amazon US ficam ocultos por padrão (CSS), JS os exibe para intl */
+.amazon-us-banner,
+.amazon-us-sidebar {
+  display: none;
+}
+
+/* Quando geo-intl: exibe os banners Amazon US */
+body.geo-intl .amazon-us-banner,
+body.geo-intl .amazon-us-sidebar {
+  display: flex !important;
+}
+
+body.geo-intl .amazon-us-sidebar {
+  display: block !important;
+}
+
+/* Highlight sutil no botão follow para visitantes internacionais */
+body.geo-intl .header-btn-wpp {
+  background: #FF9900;
+  color: #111;
+}
+body.geo-intl .header-btn-wpp:hover {
+  background: #e68a00;
+}

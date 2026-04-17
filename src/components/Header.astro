@@ -12,9 +12,10 @@ const currentPath = Astro.url.pathname;
   <div class="container">
     <div class="header-inner">
 
-      <a href="/" class="logo-link" aria-label="AchadoCerto VIP - Home">
-        <!-- LOGO INLINE SVG -->
+      <a href="/" class="logo-link" aria-label="AchadoCerto VIP - Home" id="logo-link">
+        <!-- LOGO PT (padrão, visível por default) -->
         <svg
+          id="logo-pt"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 420 64"
           width="420"
@@ -23,29 +24,55 @@ const currentPath = Astro.url.pathname;
           role="img"
           aria-label="AchadoCertoVIP"
         >
-          <!-- Ícone: lupa com check -->
-          <!-- Círculo da lupa -->
           <circle cx="28" cy="28" r="18" fill="none" stroke="#1A3A8F" stroke-width="5"/>
-          <!-- Cabo da lupa -->
           <line x1="41" y1="41" x2="54" y2="54" stroke="#1A3A8F" stroke-width="5" stroke-linecap="round"/>
-          <!-- Check dourado dentro da lupa -->
           <polyline points="18,28 25,35 38,19" fill="none" stroke="#C9A84C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-          <!-- Texto "Achado" em navy bold -->
           <text x="68" y="40" font-family="'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800" fill="#1A3A8F" letter-spacing="-0.5">Achado</text>
-
-          <!-- Texto "Certo" em azul elétrico bold -->
           <text x="212" y="40" font-family="'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800" fill="#1565C0" letter-spacing="-0.5">Certo</text>
-
-          <!-- Badge VIP pill dourado -->
           <rect x="335" y="10" width="72" height="38" rx="8" fill="#1A3A8F"/>
           <rect x="335" y="10" width="72" height="38" rx="8" fill="none" stroke="#C9A84C" stroke-width="2"/>
           <text x="371" y="35" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="900" fill="#C9A84C" text-anchor="middle" letter-spacing="2">VIP</text>
         </svg>
+
+        <!-- LOGO EN (oculto por default, exibido para visitantes fora do Brasil) -->
+        <svg
+          id="logo-en"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 480 64"
+          width="480"
+          height="64"
+          class="logo-svg"
+          role="img"
+          aria-label="BestFind VIP"
+          style="display:none;"
+        >
+          <!-- Ícone: lupa com check -->
+          <circle cx="28" cy="28" r="18" fill="none" stroke="#B22234" stroke-width="5"/>
+          <line x1="41" y1="41" x2="54" y2="54" stroke="#B22234" stroke-width="5" stroke-linecap="round"/>
+          <polyline points="18,28 25,35 38,19" fill="none" stroke="#FF9900" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Texto "Best" em navy -->
+          <text x="68" y="40" font-family="'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800" fill="#1A3A8F" letter-spacing="-0.5">Best</text>
+          <!-- Texto "Find" em vermelho americano -->
+          <text x="178" y="40" font-family="'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800" fill="#B22234" letter-spacing="-0.5">Find</text>
+          <!-- Bandeira mini inline -->
+          <rect x="285" y="14" width="36" height="24" rx="3" fill="#B22234"/>
+          <rect x="285" y="17.5" width="36" height="1.8" fill="white"/>
+          <rect x="285" y="21" width="36" height="1.8" fill="white"/>
+          <rect x="285" y="24.5" width="36" height="1.8" fill="white"/>
+          <rect x="285" y="28" width="36" height="1.8" fill="white"/>
+          <rect x="285" y="31.5" width="36" height="1.8" fill="white"/>
+          <rect x="285" y="14" width="14" height="13" fill="#3C3B6E"/>
+          <text x="286" y="21.5" font-size="3" fill="white">★ ★ ★</text>
+          <text x="286" y="25.5" font-size="3" fill="white">★ ★ ★</text>
+          <!-- Badge VIP -->
+          <rect x="335" y="10" width="72" height="38" rx="8" fill="#B22234"/>
+          <rect x="335" y="10" width="72" height="38" rx="8" fill="none" stroke="#FF9900" stroke-width="2"/>
+          <text x="371" y="35" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="900" fill="#FF9900" text-anchor="middle" letter-spacing="2">VIP</text>
+        </svg>
       </a>
 
       <form class="header-search" role="search" action="/blog" method="get">
-        <input type="search" name="q" placeholder="Buscar achados e ofertas…" aria-label="Buscar" />
+        <input type="search" name="q" placeholder="Buscar achados e ofertas…" aria-label="Buscar" id="search-input" />
         <button type="submit" aria-label="Pesquisar">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         </button>
@@ -57,9 +84,10 @@ const currentPath = Astro.url.pathname;
           target="_blank" rel="noopener"
           class="header-btn header-btn-wpp"
           aria-label="Seguir Canal WhatsApp"
+          id="header-follow-btn"
         >
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          <span>Seguir Canal</span>
+          <span id="follow-btn-text">Seguir Canal</span>
         </a>
       </div>
     </div>
@@ -68,7 +96,7 @@ const currentPath = Astro.url.pathname;
 
 <nav class="nav-categorias" aria-label="Categorias">
   <div class="container">
-    <div class="nav-links">
+    <div class="nav-links" id="nav-links">
       {navLinks.map(link => (
         <a
           href={link.href}
@@ -80,6 +108,82 @@ const currentPath = Astro.url.pathname;
     </div>
   </div>
 </nav>
+
+<!-- GEO SCRIPT: detecta país via API gratuita, adapta logo + banners -->
+<script is:inline>
+(function () {
+  var CACHE_KEY = 'acv_geo';
+  var CACHE_TTL = 1000 * 60 * 60 * 24; // 24h
+
+  function applyGeo(country) {
+    var isUS = country !== 'BR';
+    // Salva no cache
+    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ country: country, ts: Date.now() })); } catch(e) {}
+
+    if (!isUS) return; // Brasil: padrão, nada a fazer
+
+    // 1. Troca logo
+    var logoPT = document.getElementById('logo-pt');
+    var logoEN = document.getElementById('logo-en');
+    if (logoPT) logoPT.style.display = 'none';
+    if (logoEN) logoEN.style.display = 'block';
+
+    // 2. Troca placeholder da busca
+    var searchInput = document.getElementById('search-input');
+    if (searchInput) searchInput.placeholder = 'Search products and deals…';
+
+    // 3. Troca texto botão header
+    var followText = document.getElementById('follow-btn-text');
+    if (followText) followText.textContent = 'Follow Channel';
+
+    // 4. Exibe banners Amazon US (inline + sidebar)
+    var banners = document.querySelectorAll('.amazon-us-banner, .amazon-us-sidebar');
+    banners.forEach(function(el) { el.style.display = ''; });
+
+    // 5. Oculta product-box-final BR (opcional, mantém se não for só Amazon BR)
+    // Deixamos visível para não quebrar UX
+
+    // 6. Adiciona classe global no body para CSS condicional
+    document.body.classList.add('geo-intl');
+  }
+
+  function run() {
+    // Tenta cache primeiro
+    try {
+      var raw = localStorage.getItem(CACHE_KEY);
+      if (raw) {
+        var cached = JSON.parse(raw);
+        if (Date.now() - cached.ts < CACHE_TTL) {
+          applyGeo(cached.country);
+          return;
+        }
+      }
+    } catch(e) {}
+
+    // Fetch geo via cloudflare-trace (sem auth, zero latência)
+    fetch('https://www.cloudflare.com/cdn-cgi/trace')
+      .then(function(r) { return r.text(); })
+      .then(function(txt) {
+        var match = txt.match(/loc=(\w+)/);
+        var country = match ? match[1] : 'BR';
+        applyGeo(country);
+      })
+      .catch(function() {
+        // Fallback: tenta ipapi.co
+        fetch('https://ipapi.co/country/')
+          .then(function(r) { return r.text(); })
+          .then(function(c) { applyGeo(c.trim()); })
+          .catch(function() { /* silencia */ });
+      });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+})();
+</script>
 
 <style>
   .logo-link {
@@ -99,5 +203,10 @@ const currentPath = Astro.url.pathname;
       height: 38px;
       max-width: 220px;
     }
+  }
+
+  /* Quando geo-intl: esconde nav em português, mostra em inglês */
+  body.geo-intl .nav-categorias {
+    /* mantém navegação — categorias são universais */
   }
 </style>
