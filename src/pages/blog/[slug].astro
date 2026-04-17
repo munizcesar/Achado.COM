@@ -47,6 +47,9 @@ const hasAffiliate  = !!post.data.affiliateUrl;
 const price         = post.data.price || null;
 const categorySlug  = mapCategory(post.data.category);
 
+const articleAuthor = post.data.author || 'Equipe AchadoCerto';
+const articleDate   = post.data.date?.toISOString() ?? '';
+
 function detectStore(url) {
   if (!url) return 'melhor preço';
   const urlLower = url.toLowerCase();
@@ -63,7 +66,7 @@ const articleSchema = {
   headline: post.data.title,
   description: post.data.description ?? '',
   image: ogImage,
-  datePublished: post.data.date?.toISOString() ?? '',
+  datePublished: articleDate,
   author: { '@type': 'Organization', name: 'AchadoCerto', url: siteUrl },
   publisher: { '@type': 'Organization', name: 'AchadoCerto', url: siteUrl },
   mainEntityOfPage: { '@type': 'WebPage', '@id': postUrl },
@@ -126,6 +129,9 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
   description={post.data.description}
   image={ogImage}
   schema={[articleSchema, breadcrumbSchema]}
+  isArticle={true}
+  articleDate={articleDate}
+  articleAuthor={articleAuthor}
 >
   <article>
 
@@ -156,11 +162,11 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
           <div style="display:flex;align-items:center;gap:16px;font-size:13px;color:var(--c-text-muted);flex-wrap:wrap;">
             <span style="display:flex;align-items:center;gap:5px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              <time datetime={post.data.date?.toISOString?.() ?? ''}>{fmtDate(post.data.date)}</time>
+              <time datetime={articleDate}>{fmtDate(post.data.date)}</time>
             </span>
             <span style="display:flex;align-items:center;gap:5px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              Equipe AchadoCerto
+              {articleAuthor}
             </span>
             {post.data.tags?.length > 0 && post.data.tags.slice(0,3).map(tag => (
               <span style="background:var(--c-tag-bg);color:var(--c-tag-text);padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600;">#{tag}</span>
@@ -194,7 +200,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       </div>
     </div>
 
-    <!-- SLOT 1: ABAIXO DO CABEÇALHO, ACIMA DA IMAGEM (desktop only via CSS) -->
     <div class="ad-post-top">
       <div class="container" style="max-width:1100px;">
         <AdSense slot="3873859149" format="auto" label={true} />
@@ -226,7 +231,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
         <div class="prose">
           <Content />
 
-          <!-- SLOT 2: APÓS CONTEÚDO, ANTES DO CTA FINAL -->
           <div class="ads-mid-article">
             <AdSense slot="7473925904" format="fluid" maxWidth="680px" label={true} />
           </div>
@@ -321,7 +325,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
             </div>
           </div>
 
-          <!-- SLOT 3 SIDEBAR: desktop only -->
           <div class="sidebar-ad-wrap">
             <p class="sidebar-ad-label">Publicidade</p>
             <AdSense slot="2844415754" format="auto" maxWidth="300px" />
@@ -346,7 +349,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
 
     <ChannelBanner />
 
-    <!-- SLOT PRÉ-RELACIONADOS: alta visibilidade, usuário ainda engajado -->
     {relatedPosts.length > 0 && (
       <div class="ad-pre-related">
         <div class="container" style="max-width:1100px;">
@@ -466,7 +468,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
   </script>
 
   <style>
-    /* SLOT 1 — topo: visível no desktop, oculto no mobile (acima do fold) */
     .ad-post-top {
       background: var(--c-bg);
       padding: 20px 0 8px;
@@ -475,18 +476,12 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     @media (max-width: 768px) {
       .ad-post-top { display: none; }
     }
-
-    /* SLOT PRÉ-RELACIONADOS */
     .ad-pre-related {
       background: var(--c-bg);
       padding: 32px 0;
       border-top: 1px solid var(--c-border);
     }
-
-    /* SLOT SIDEBAR */
-    .sidebar-ad-wrap {
-      margin-bottom: 16px;
-    }
+    .sidebar-ad-wrap { margin-bottom: 16px; }
     .sidebar-ad-label {
       font-size: 10px;
       font-weight: 600;
@@ -496,7 +491,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       text-align: center;
       margin: 0 0 4px;
     }
-
     .post-content-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(260px, 300px);
@@ -504,22 +498,18 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       align-items: start;
     }
     .post-sidebar { position: sticky; top: 88px; }
-
     @media (max-width: 768px) {
       .post-content-grid { display: block !important; }
       .post-sidebar       { display: none !important; }
       .prose              { padding: 0 4px; }
       .share-bar          { width: 100%; }
     }
-
     .post-content-grid, .prose, .post-sidebar { min-width: 0; box-sizing: border-box; }
     .prose { overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; }
     .prose table { width: 100%; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .prose img, .prose iframe, .prose video, .prose embed { max-width: 100%; width: 100%; height: auto; }
-
     .ads-mid-article { margin: 40px 0 32px; display: flex; justify-content: center; padding: 20px 0; }
     .ads-mid-article :global(ins) { display: block !important; }
-
     .sicon { display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:#e9eaec;color:#1a2332;text-decoration:none;border:none;cursor:pointer;flex-shrink:0;transition:background .2s,color .2s,transform .15s; }
     .sicon:hover { transform:translateY(-2px);color:#fff; }
     .sicon:active { transform:scale(0.93); }
@@ -535,7 +525,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .share-bar-btns  { display:flex;align-items:center;gap:8px;flex-wrap:wrap; }
     .sidebar-share-box { background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--r-md);padding:18px;margin-bottom:16px;box-shadow:var(--shadow-sm); }
     .sidebar-share-grid { display:flex;flex-wrap:wrap;gap:10px; }
-
     .product-box-final { display:flex;flex-direction:row;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f4ff 0%,#e8f0fe 100%);border:2px solid var(--c-brand);border-radius:var(--r-lg);padding:20px 24px;margin:48px 0 0;box-shadow:0 4px 20px rgba(26,86,219,.1); }
     .product-box-final-img { width:110px !important;height:110px !important;max-width:110px;max-height:110px;object-fit:contain;border-radius:var(--r-md);background:#fff;border:1px solid var(--c-border);padding:6px;flex-shrink:0; }
     .product-box-final-body   { flex:1;text-align:left; }
@@ -549,7 +538,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       .product-box-final-body { text-align:center; }
       .product-box-final-btn  { width:100%;justify-content:center; }
     }
-
     .product-box-sidebar { background:var(--c-surface);border:1px solid var(--c-border);border-top:3px solid var(--c-brand);border-radius:var(--r-md);overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm); }
     .product-box-sidebar-img-wrap { width:100%;aspect-ratio:1/1;background:#fff;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--c-border);padding:16px; }
     .product-box-sidebar-img { width:100%;height:100%;object-fit:contain; }
@@ -560,7 +548,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .product-box-sidebar-btn   { display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--c-brand);color:#fff;font-weight:700;font-size:13px;padding:10px 14px;border-radius:var(--r-sm);transition:background .2s;text-decoration:none; }
     .product-box-sidebar-btn:hover { background:var(--c-brand-dark); }
     .product-box-sidebar-disclaimer { font-size:10px;color:var(--c-text-light);text-align:center;margin-top:8px; }
-
     .prose { color:var(--c-text);font-size:16px;line-height:1.75; }
     .prose h2 { font-size:26px;font-weight:800;letter-spacing:-.4px;margin:40px 0 16px;color:var(--c-text); }
     .prose h3 { font-size:20px;font-weight:700;margin:32px 0 12px;color:var(--c-text); }
@@ -578,14 +565,12 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .prose th { background:var(--c-bg);padding:10px 14px;text-align:left;font-weight:700;border:1px solid var(--c-border); }
     .prose td { padding:10px 14px;border:1px solid var(--c-border); }
     .prose tr:nth-child(even) td { background:var(--c-bg); }
-
     @media (max-width:768px) {
       .share-bar { margin-top:12px; }
       .sicon { width:32px;height:32px; }
       .prose { font-size:15px;line-height:1.7; }
       .ads-mid-article { margin:32px 0; }
     }
-
     .related-section { background:var(--c-surface);border-top:1px solid var(--c-border);padding:48px 0 56px; }
     .related-header  { display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;gap:16px; }
     .related-eyebrow { display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.9px;color:var(--c-brand);margin-bottom:4px; }
