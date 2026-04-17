@@ -44,11 +44,15 @@ const ogImage = post.data.image
 
 const productImage = post.data.productImage || post.data.image || null;
 const hasAffiliate  = !!post.data.affiliateUrl;
+const hasAffiliateEn = !!post.data.affiliateUrlEn;
 const price         = post.data.price || null;
 const categorySlug  = mapCategory(post.data.category);
 
 const articleAuthor = post.data.author || 'Equipe AchadoCerto';
 const articleDate   = post.data.date?.toISOString() ?? '';
+
+// Link Amazon US genérico com tag achadocertovip-20 como fallback
+const amazonUsUrl = post.data.affiliateUrlEn || `https://www.amazon.com/s?k=${encodeURIComponent(post.data.title)}&tag=achadocertovip-20`;
 
 function detectStore(url) {
   if (!url) return 'melhor preço';
@@ -265,6 +269,44 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
               </div>
             </div>
           )}
+
+          <!-- BANNER AMAZON US -->
+          <div class="amazon-us-banner">
+            <div class="amazon-us-flag">
+              <!-- Bandeira americana SVG -->
+              <svg width="40" height="27" viewBox="0 0 40 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="27" rx="3" fill="#B22234"/>
+                <rect y="2" width="40" height="2.08" fill="white"/>
+                <rect y="6.15" width="40" height="2.08" fill="white"/>
+                <rect y="10.31" width="40" height="2.08" fill="white"/>
+                <rect y="14.46" width="40" height="2.08" fill="white"/>
+                <rect y="18.62" width="40" height="2.08" fill="white"/>
+                <rect y="22.77" width="40" height="2.08" fill="white"/>
+                <rect width="16" height="14.5" rx="0" fill="#3C3B6E"/>
+                <!-- Estrelas (simplificadas) -->
+                <text x="1.5" y="5" font-size="3.2" fill="white">★ ★ ★ ★ ★ ★</text>
+                <text x="1.5" y="8.5" font-size="3.2" fill="white">★ ★ ★ ★ ★</text>
+                <text x="1.5" y="12" font-size="3.2" fill="white">★ ★ ★ ★ ★ ★</text>
+              </svg>
+            </div>
+            <div class="amazon-us-body">
+              <p class="amazon-us-label">🇺🇸 International Visitors</p>
+              <p class="amazon-us-title">Shop this product on <strong>Amazon.com</strong></p>
+              <p class="amazon-us-sub">Fast US shipping · Pay in USD · Free returns on millions of items</p>
+            </div>
+            <a
+              href={amazonUsUrl}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              class="amazon-us-btn"
+              data-affiliate
+              data-product={post.data.title}
+              data-category="amazon-us"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 11.5c-1.2-4.4-5.2-7.5-9.5-7.5-5.8 0-10.5 4.7-10.5 10.5s4.7 10.5 10.5 10.5c4.4 0 8.3-2.8 9.9-7H19c-1.4 2.9-4.4 5-7.8 5-4.8 0-8.7-3.9-8.7-8.7s3.9-8.7 8.7-8.7c3.1 0 5.9 1.7 7.4 4.3H15v2h8v-8h-2l.5 2.6z"/></svg>
+              Shop on Amazon.com
+            </a>
+          </div>
         </div>
 
         <aside class="post-sidebar">
@@ -300,6 +342,39 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
               </div>
             </div>
           )}
+
+          <!-- SIDEBAR AMAZON US -->
+          <div class="amazon-us-sidebar">
+            <div class="amazon-us-sidebar-header">
+              <svg width="28" height="19" viewBox="0 0 40 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="27" rx="3" fill="#B22234"/>
+                <rect y="2" width="40" height="2.08" fill="white"/>
+                <rect y="6.15" width="40" height="2.08" fill="white"/>
+                <rect y="10.31" width="40" height="2.08" fill="white"/>
+                <rect y="14.46" width="40" height="2.08" fill="white"/>
+                <rect y="18.62" width="40" height="2.08" fill="white"/>
+                <rect y="22.77" width="40" height="2.08" fill="white"/>
+                <rect width="16" height="14.5" fill="#3C3B6E"/>
+                <text x="1.5" y="5" font-size="3.2" fill="white">★ ★ ★ ★ ★ ★</text>
+                <text x="1.5" y="8.5" font-size="3.2" fill="white">★ ★ ★ ★ ★</text>
+                <text x="1.5" y="12" font-size="3.2" fill="white">★ ★ ★ ★ ★ ★</text>
+              </svg>
+              <span>International visitors</span>
+            </div>
+            <p class="amazon-us-sidebar-text">Find this product on <strong>Amazon.com</strong> with fast US shipping</p>
+            <a
+              href={amazonUsUrl}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              class="amazon-us-sidebar-btn"
+              data-affiliate
+              data-product={post.data.title}
+              data-category="amazon-us-sidebar"
+            >
+              🛒 Shop on Amazon.com
+            </a>
+            <p class="amazon-us-sidebar-disclaimer">Affiliate link · No extra cost to you</p>
+          </div>
 
           <div class="sidebar-share-box">
             <div class="sidebar-share-grid">
@@ -468,6 +543,125 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
   </script>
 
   <style>
+    /* ── AMAZON US BANNER (inline, após product-box-final) ── */
+    .amazon-us-banner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: linear-gradient(135deg, #0a1628 0%, #1a2f5e 50%, #0d1f3c 100%);
+      border: 2px solid #B22234;
+      border-radius: var(--r-lg);
+      padding: 18px 22px;
+      margin: 24px 0 0;
+      box-shadow: 0 4px 20px rgba(178,34,52,.2), 0 2px 8px rgba(0,0,0,.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .amazon-us-banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #B22234 33%, #fff 33%, #fff 66%, #3C3B6E 66%);
+    }
+    .amazon-us-flag { flex-shrink: 0; filter: drop-shadow(0 2px 4px rgba(0,0,0,.4)); }
+    .amazon-us-body { flex: 1; min-width: 0; }
+    .amazon-us-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: #fbbf24;
+      margin-bottom: 4px;
+    }
+    .amazon-us-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .amazon-us-title strong { color: #FF9900; }
+    .amazon-us-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,.65);
+      line-height: 1.4;
+    }
+    .amazon-us-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FF9900;
+      color: #111 !important;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 10px 18px;
+      border-radius: var(--r-sm);
+      white-space: nowrap;
+      text-decoration: none;
+      flex-shrink: 0;
+      transition: background .2s, transform .15s;
+      box-shadow: 0 2px 10px rgba(255,153,0,.4);
+    }
+    .amazon-us-btn:hover { background: #e68a00; transform: translateY(-2px); }
+    @media (max-width: 600px) {
+      .amazon-us-banner { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px; }
+      .amazon-us-btn { width: 100%; justify-content: center; }
+    }
+
+    /* ── AMAZON US SIDEBAR ── */
+    .amazon-us-sidebar {
+      background: linear-gradient(160deg, #0a1628 0%, #1a2f5e 100%);
+      border: 1px solid #B22234;
+      border-top: 3px solid #B22234;
+      border-radius: var(--r-md);
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 12px rgba(178,34,52,.15);
+    }
+    .amazon-us-sidebar-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .amazon-us-sidebar-header span {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      color: #fbbf24;
+    }
+    .amazon-us-sidebar-text {
+      font-size: 13px;
+      color: rgba(255,255,255,.8);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .amazon-us-sidebar-text strong { color: #FF9900; }
+    .amazon-us-sidebar-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      background: #FF9900;
+      color: #111 !important;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 10px 12px;
+      border-radius: var(--r-sm);
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .amazon-us-sidebar-btn:hover { background: #e68a00; }
+    .amazon-us-sidebar-disclaimer {
+      font-size: 10px;
+      color: rgba(255,255,255,.4);
+      text-align: center;
+      margin-top: 8px;
+    }
+
     .ad-post-top {
       background: var(--c-bg);
       padding: 20px 0 8px;
