@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import '../styles/geo.css';
 import Logo from '../components/Logo.astro';
 
 interface Props {
@@ -28,8 +29,6 @@ const currentPath = Astro.url.pathname;
 
 const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
-// OG image dimensions: artigos usam imagem do produto (formato variado → declaramos 1200x630 padrão)
-// Homepage usa og-previa.jpg que deve ser 1200x630
 const ogWidth = '1200';
 const ogHeight = '630';
 
@@ -88,7 +87,7 @@ const schemaData = JSON.stringify(schemaArray);
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#E1306C" />
 
-  <!-- Fontes: preconnect + display=optional evita render-blocking -->
+  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=optional" rel="stylesheet" />
@@ -118,6 +117,77 @@ const schemaData = JSON.stringify(schemaArray);
   <script type="application/ld+json" set:html={schemaData}></script>
 </head>
 <body>
+
+  <!-- GEO SCRIPT: detecta país e adapta logo + banners Amazon US -->
+  <script is:inline>
+  (function () {
+    var CACHE_KEY = 'acv_geo';
+    var CACHE_TTL = 1000 * 60 * 60 * 24; // 24h
+
+    function applyGeo(country) {
+      var isIntl = country !== 'BR';
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ country: country, ts: Date.now() })); } catch(e) {}
+      if (!isIntl) return;
+
+      // Classe global no body (ativa geo.css)
+      document.body.classList.add('geo-intl');
+
+      // Logo: troca PT -> EN
+      var logoPT = document.getElementById('logo-pt');
+      var logoEN = document.getElementById('logo-en');
+      if (logoPT) logoPT.style.display = 'none';
+      if (logoEN) logoEN.style.display = 'block';
+
+      // Search placeholder
+      document.querySelectorAll('input[type="search"]').forEach(function(el) {
+        el.placeholder = 'Search products and deals…';
+      });
+
+      // Texto do botão seguir
+      var followText = document.getElementById('follow-btn-text');
+      if (followText) followText.textContent = 'Follow Channel';
+
+      // lang no html
+      document.documentElement.setAttribute('lang', 'en');
+    }
+
+    function run() {
+      // 1. Tenta cache localStorage
+      try {
+        var raw = localStorage.getItem(CACHE_KEY);
+        if (raw) {
+          var cached = JSON.parse(raw);
+          if (Date.now() - cached.ts < CACHE_TTL) {
+            applyGeo(cached.country);
+            return;
+          }
+        }
+      } catch(e) {}
+
+      // 2. Cloudflare trace (gratuito, sem API key)
+      fetch('https://www.cloudflare.com/cdn-cgi/trace')
+        .then(function(r) { return r.text(); })
+        .then(function(txt) {
+          var m = txt.match(/loc=(\w+)/);
+          applyGeo(m ? m[1] : 'BR');
+        })
+        .catch(function() {
+          // 3. Fallback: ipapi.co
+          fetch('https://ipapi.co/country/')
+            .then(function(r) { return r.text(); })
+            .then(function(c) { applyGeo(c.trim() || 'BR'); })
+            .catch(function() {});
+        });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', run);
+    } else {
+      run();
+    }
+  })();
+  </script>
+
   <div class="drawer-overlay" id="drawerOverlay" onclick="window.closeDrawer()"></div>
 
   <aside class="drawer" id="drawer" role="dialog" aria-label="Menu" aria-hidden="true">
@@ -191,8 +261,41 @@ const schemaData = JSON.stringify(schemaArray);
           </svg>
         </button>
 
+        <!-- LOGO DUAL: PT (padrão) + EN (exibido via geo JS) -->
         <a href="/" class="brand" aria-label="AchadoCertoVIP (Início)">
-          <Logo size="md" />
+          <!-- Logo PT -->
+          <svg id="logo-pt" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 64" class="logo-main-svg" role="img" aria-label="AchadoCertoVIP">
+            <circle cx="28" cy="28" r="18" fill="none" stroke="#1A3A8F" stroke-width="5"/>
+            <line x1="41" y1="41" x2="54" y2="54" stroke="#1A3A8F" stroke-width="5" stroke-linecap="round"/>
+            <polyline points="18,28 25,35 38,19" fill="none" stroke="#C9A84C" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="68" y="40" font-family="'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800" fill="#1A3A8F" letter-spacing="-0.5">Achado</text>
+            <text x="212" y="40" font-family="'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800" fill="#1565C0" letter-spacing="-0.5">Certo</text>
+            <rect x="335" y="10" width="72" height="38" rx="8" fill="#1A3A8F"/>
+            <rect x="335" y="10" width="72" height="38" rx="8" fill="none" stroke="#C9A84C" stroke-width="2"/>
+            <text x="371" y="35" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="900" fill="#C9A84C" text-anchor="middle" letter-spacing="2">VIP</text>
+          </svg>
+          <!-- Logo EN (oculto por padrão, ativado pelo geo script) -->
+          <svg id="logo-en" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 64" class="logo-main-svg" role="img" aria-label="BestFind VIP" style="display:none;">
+            <circle cx="28" cy="28" r="18" fill="none" stroke="#B22234" stroke-width="5"/>
+            <line x1="41" y1="41" x2="54" y2="54" stroke="#B22234" stroke-width="5" stroke-linecap="round"/>
+            <polyline points="18,28 25,35 38,19" fill="none" stroke="#FF9900" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="68" y="40" font-family="'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800" fill="#1A3A8F" letter-spacing="-0.5">Best</text>
+            <text x="178" y="40" font-family="'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800" fill="#B22234" letter-spacing="-0.5">Find</text>
+            <!-- mini US flag -->
+            <rect x="285" y="14" width="36" height="24" rx="3" fill="#B22234"/>
+            <rect x="285" y="17.5" width="36" height="1.8" fill="white"/>
+            <rect x="285" y="21" width="36" height="1.8" fill="white"/>
+            <rect x="285" y="24.5" width="36" height="1.8" fill="white"/>
+            <rect x="285" y="28" width="36" height="1.8" fill="white"/>
+            <rect x="285" y="31.5" width="36" height="1.8" fill="white"/>
+            <rect x="285" y="14" width="14" height="13" fill="#3C3B6E"/>
+            <text x="286" y="21.5" font-size="3" fill="white">★ ★ ★</text>
+            <text x="286" y="25.5" font-size="3" fill="white">★ ★ ★</text>
+            <!-- Badge VIP vermelho -->
+            <rect x="338" y="10" width="72" height="38" rx="8" fill="#B22234"/>
+            <rect x="338" y="10" width="72" height="38" rx="8" fill="none" stroke="#FF9900" stroke-width="2"/>
+            <text x="374" y="35" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="900" fill="#FF9900" text-anchor="middle" letter-spacing="2">VIP</text>
+          </svg>
         </a>
 
         <form class="header-search" role="search" action="/blog" method="get">
@@ -307,63 +410,44 @@ const schemaData = JSON.stringify(schemaArray);
   </footer>
 
   <style>
+    .logo-main-svg {
+      height: 48px;
+      width: auto;
+      max-width: 280px;
+      display: block;
+    }
+    @media (max-width: 480px) {
+      .logo-main-svg { height: 38px; max-width: 220px; }
+    }
     .skip-link {
-      position: absolute;
-      left: -9999px;
-      top: auto;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
+      position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
     }
     .skip-link:focus {
-      position: fixed;
-      top: 12px;
-      left: 12px;
-      width: auto;
-      height: auto;
-      padding: 8px 16px;
-      background: var(--c-brand);
-      color: #fff;
-      font-weight: 700;
-      font-size: 14px;
-      border-radius: 6px;
-      z-index: 9999;
-      overflow: visible;
+      position: fixed; top: 12px; left: 12px; width: auto; height: auto;
+      padding: 8px 16px; background: var(--c-brand); color: #fff;
+      font-weight: 700; font-size: 14px; border-radius: 6px; z-index: 9999; overflow: visible;
     }
     .drawer-section-pilares {
-      border: 1px solid var(--c-border);
-      border-radius: var(--r-md);
-      margin: 8px 12px 0;
-      padding: 14px 16px 16px;
-      background: var(--c-bg);
+      border: 1px solid var(--c-border); border-radius: var(--r-md);
+      margin: 8px 12px 0; padding: 14px 16px 16px; background: var(--c-bg);
     }
     .drawer-section-label-pilares {
-      display: flex !important;
-      align-items: center;
-      gap: 6px;
-      color: var(--c-brand) !important;
-      font-weight: 800 !important;
-      font-size: .72rem !important;
-      letter-spacing: .1em !important;
+      display: flex !important; align-items: center; gap: 6px;
+      color: var(--c-brand) !important; font-weight: 800 !important;
+      font-size: .72rem !important; letter-spacing: .1em !important;
     }
     .drawer-links-pilares { gap: 4px !important; }
     .drawer-link-pilar {
-      display: flex !important;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700 !important;
-      font-size: .97rem !important;
-      color: var(--c-text) !important;
-      padding: 10px 12px !important;
-      border-radius: var(--r-sm) !important;
-      background: var(--c-surface);
+      display: flex !important; align-items: center; gap: 10px;
+      font-weight: 700 !important; font-size: .97rem !important;
+      color: var(--c-text) !important; padding: 10px 12px !important;
+      border-radius: var(--r-sm) !important; background: var(--c-surface);
       border: 1px solid var(--c-border) !important;
       transition: background .18s, border-color .18s, color .18s !important;
     }
     .drawer-link-pilar:hover {
       background: var(--c-brand-soft) !important;
-      border-color: var(--c-brand) !important;
-      color: var(--c-brand) !important;
+      border-color: var(--c-brand) !important; color: var(--c-brand) !important;
     }
     .drawer-pilar-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
     .drawer-pilar-dot-beleza { background: #be185d; }
@@ -424,8 +508,8 @@ const schemaData = JSON.stringify(schemaArray);
         var s = inner.scrollLeft;
         var m = inner.scrollWidth - inner.clientWidth;
         if (m <= 0) { left.style.display='none'; right.style.display='none'; return; }
-        left.style.display  = s > 5       ? 'flex' : 'none';
-        right.style.display = s < m - 5   ? 'flex' : 'none';
+        left.style.display  = s > 5     ? 'flex' : 'none';
+        right.style.display = s < m - 5 ? 'flex' : 'none';
       }
       left.addEventListener('click',  function() { inner.scrollBy({left:-200,behavior:'smooth'}); });
       right.addEventListener('click', function() { inner.scrollBy({left: 200,behavior:'smooth'}); });
