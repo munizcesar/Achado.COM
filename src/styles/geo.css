@@ -5,19 +5,67 @@
 
 /* Banners Amazon US ficam ocultos por padrão (CSS), JS os exibe para intl */
 .amazon-us-banner,
-.amazon-us-sidebar {
+.amazon-us-sidebar,
+.amazon-us-quicklinks {
   display: none;
 }
 
 /* Quando geo-intl: exibe os banners Amazon US */
-body.geo-intl .amazon-us-banner,
-body.geo-intl .amazon-us-sidebar {
+body.geo-intl .amazon-us-banner {
   display: flex !important;
 }
-
 body.geo-intl .amazon-us-sidebar {
   display: block !important;
 }
+body.geo-intl .amazon-us-quicklinks {
+  display: block !important;
+}
+
+/* Estilo base dos banners */
+.amazon-us-banner {
+  align-items: center;
+  gap: 16px;
+  background: #0f1923;
+  border: 2px solid #B22234;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+.amazon-us-banner .amazon-us-cta {
+  display: inline-block;
+  background: #FF9900;
+  color: #111;
+  font-weight: 800;
+  font-size: .95rem;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .18s;
+}
+.amazon-us-banner .amazon-us-cta:hover { background: #e68a00; }
+
+/* Sidebar */
+.amazon-us-sidebar {
+  background: #0f1923;
+  border: 2px solid #B22234;
+  border-radius: 10px;
+  padding: 16px;
+}
+.amazon-us-sidebar .amazon-us-cta {
+  display: block;
+  background: #FF9900;
+  color: #111;
+  font-weight: 800;
+  font-size: .9rem;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  text-align: center;
+  transition: background .18s;
+}
+.amazon-us-sidebar .amazon-us-cta:hover { background: #e68a00; }
 
 /* Highlight sutil no botão follow para visitantes internacionais */
 body.geo-intl .header-btn-wpp {
