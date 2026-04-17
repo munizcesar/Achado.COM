@@ -5,20 +5,32 @@ export async function GET() {
   const base = 'https://achadocerto.vip';
   const now = new Date().toISOString().split('T')[0];
 
+  // Categorias: apenas as que têm posts publicados são incluídas no sitemap
+  // Evita thin content penalty do Google em páginas de categoria vazias
+  const categoryCounts: Record<string, number> = {};
+  for (const post of posts) {
+    const cat = (post.data.category || '').toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+    const mapped = cat === 'lar' ? 'casa' : cat === 'esporte' ? 'esportes' : cat;
+    categoryCounts[mapped] = (categoryCounts[mapped] || 0) + 1;
+  }
+
+  const allCategories = ['beleza', 'saude', 'casa', 'tech', 'esportes', 'automotivo', 'dicas'];
+  const activeCategories = allCategories.filter(c => (categoryCounts[c] || 0) > 0);
+
+  const pilarSlugs = ['beleza', 'saude', 'casa'];
+
+  const categoryPages = activeCategories.map(slug => ({
+    url: `${base}/categorias/${slug}`,
+    priority: pilarSlugs.includes(slug) ? '0.9' : '0.7',
+    changefreq: 'weekly',
+    lastmod: now,
+  }));
+
   const staticPages = [
-    // Core
-    { url: base,              priority: '1.0', changefreq: 'daily',   lastmod: now },
-    { url: `${base}/blog`,   priority: '0.9', changefreq: 'daily',   lastmod: now },
-    // Pilares (prioridade maxima entre categorias)
-    { url: `${base}/categorias/beleza`,    priority: '0.9', changefreq: 'weekly', lastmod: now },
-    { url: `${base}/categorias/saude`,     priority: '0.9', changefreq: 'weekly', lastmod: now },
-    { url: `${base}/categorias/casa`,      priority: '0.9', changefreq: 'weekly', lastmod: now },
-    // Categorias satelite
-    { url: `${base}/categorias/tech`,      priority: '0.7', changefreq: 'weekly', lastmod: now },
-    { url: `${base}/categorias/esportes`,  priority: '0.7', changefreq: 'weekly', lastmod: now },
-    { url: `${base}/categorias/automotivo`,priority: '0.7', changefreq: 'weekly', lastmod: now },
-    { url: `${base}/categorias/dicas`,     priority: '0.6', changefreq: 'weekly', lastmod: now },
-    // Institucionais
+    { url: base,           priority: '1.0', changefreq: 'daily',   lastmod: now },
+    { url: `${base}/blog`, priority: '0.9', changefreq: 'daily',   lastmod: now },
+    ...categoryPages,
     { url: `${base}/faq`,      priority: '0.6', changefreq: 'monthly', lastmod: now },
     { url: `${base}/sobre`,    priority: '0.5', changefreq: 'monthly' },
     { url: `${base}/politica`, priority: '0.3', changefreq: 'yearly' },
