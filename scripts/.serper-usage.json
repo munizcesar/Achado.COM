@@ -1,5 +1,5 @@
 {
-  "total": 120,
+  "total": 123,
   "mes_atual": 3,
   "logs": [
     {
@@ -200,6 +200,11 @@
     {
       "data": "2026-04-18T21:50:36.036Z",
       "produto": "Sanduicheira Elétrica Cadence Click - 127V",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-18T22:42:13.313Z",
+      "produto": "Loção Hidratante Corporal Sem Perfume, Com Ceramid",
       "consultas": 3
     }
   ]
