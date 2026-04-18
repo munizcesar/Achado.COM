@@ -75,3 +75,6 @@ body.geo-intl .header-btn-wpp {
 body.geo-intl .header-btn-wpp:hover {
   background: #e68a00;
 }
+
+/* Amazon US Banner Title */
+.amazon-us-title strong { color: #7EC8FF; }
