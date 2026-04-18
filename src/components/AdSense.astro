@@ -5,7 +5,7 @@ interface Props {
   fullWidth?: boolean;
   maxWidth?: string;
   minHeight?: string;
-  label?: boolean;
+  mobileMinHeight?: string;
 }
 
 const {
@@ -13,19 +13,21 @@ const {
   format = "auto",
   fullWidth = true,
   maxWidth = "100%",
-  minHeight = "90px",
-  label = false,
+  minHeight = "0px",
+  mobileMinHeight,
 } = Astro.props;
 ---
 
-<div class="adsense-wrap" style={`max-width:${maxWidth}; width:100%; min-height:${minHeight}; margin:0 auto; box-sizing:border-box;`}>
-  {label && <p class="adsense-label">Publicidade</p>}
+<div
+  class="adsense-wrap"
+  style={`max-width:${maxWidth}; margin:0 auto; width:100%; --ad-min-height:${minHeight}; --ad-mobile-min-height:${mobileMinHeight ?? minHeight};`}
+>
   <ins class="adsbygoogle"
-    style="display:block; width:100%;"
+    style="display:block; min-height:var(--ad-min-height);"
     data-ad-client="ca-pub-8532820173012599"
     data-ad-slot={slot}
     data-ad-format={format}
-    data-full-width-responsive="true">
+    data-full-width-responsive={fullWidth ? "true" : "false"}>
   </ins>
 </div>
 <script is:inline>
@@ -33,14 +35,9 @@ const {
 </script>
 
 <style>
-  .adsense-wrap { position: relative; }
-  .adsense-label {
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    color: var(--c-text-light, #ADB5BD);
-    text-align: center;
-    margin: 0 0 4px;
+  @media (max-width: 768px) {
+    .adsense-wrap .adsbygoogle {
+      min-height: var(--ad-mobile-min-height);
+    }
   }
 </style>
