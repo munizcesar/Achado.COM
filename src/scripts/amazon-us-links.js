@@ -13,15 +13,15 @@
 
   // ─── Tabela de links por tipo ───────────────────────────────────────────────
   var LINKS = {
-    homepage:          { url: 'https://www.amazon.com/?tag=' + TAG,                                          label: '🛒 Shop on Amazon.com',          desc: 'Millions of products' },
-    search:            { url: 'https://www.amazon.com/s?k={query}&tag=' + TAG,                               label: '🔍 Search on Amazon.com',         desc: 'Find on Amazon' },
-    bestsellersTech:   { url: 'https://www.amazon.com/best-sellers-electronics/?tag=' + TAG,                 label: '⚡ Best Sellers – Electronics',   desc: 'Top tech products' },
-    bestsellersSaude:  { url: 'https://www.amazon.com/best-sellers-health-personal-care/?tag=' + TAG,        label: '💊 Best Sellers – Health',        desc: 'Top health products' },
-    bestsellersBeleza: { url: 'https://www.amazon.com/best-sellers-beauty/?tag=' + TAG,                      label: '✨ Best Sellers – Beauty',        desc: 'Top beauty products' },
-    bestsellersHome:   { url: 'https://www.amazon.com/best-sellers-home-kitchen/?tag=' + TAG,                label: '🏠 Best Sellers – Home & Kitchen', desc: 'Top home products' },
-    bestsellersEsport: { url: 'https://www.amazon.com/best-sellers-sports-outdoors/?tag=' + TAG,             label: '🏋️ Best Sellers – Sports',        desc: 'Top sports products' },
-    deals:             { url: 'https://www.amazon.com/deals?tag=' + TAG,                                     label: '🔥 Today\'s Deals on Amazon',     desc: 'Limited-time offers' },
-    primeDay:          { url: 'https://www.amazon.com/primeday?tag=' + TAG,                                  label: '⭐ Prime Day Deals',              desc: 'Exclusive Prime offers' },
+    homepage:          { url: 'https://www.amazon.com/?tag=' + TAG,                                          label: 'Shop on Amazon.com',             desc: 'Millions of products' },
+    search:            { url: 'https://www.amazon.com/s?k={query}&tag=' + TAG,                               label: 'Search on Amazon.com',            desc: 'Find on Amazon' },
+    bestsellersTech:   { url: 'https://www.amazon.com/best-sellers-electronics/?tag=' + TAG,                 label: 'Best Sellers - Electronics',      desc: 'Top tech products' },
+    bestsellersSaude:  { url: 'https://www.amazon.com/best-sellers-health-personal-care/?tag=' + TAG,        label: 'Best Sellers - Health',           desc: 'Top health products' },
+    bestsellersBeleza: { url: 'https://www.amazon.com/best-sellers-beauty/?tag=' + TAG,                      label: 'Best Sellers - Beauty',           desc: 'Top beauty products' },
+    bestsellersHome:   { url: 'https://www.amazon.com/best-sellers-home-kitchen/?tag=' + TAG,                label: 'Best Sellers - Home & Kitchen',   desc: 'Top home products' },
+    bestsellersEsport: { url: 'https://www.amazon.com/best-sellers-sports-outdoors/?tag=' + TAG,             label: 'Best Sellers - Sports',           desc: 'Top sports products' },
+    deals:             { url: 'https://www.amazon.com/deals?tag=' + TAG,                                     label: 'Today\'s Deals on Amazon',        desc: 'Limited-time offers' },
+    primeDay:          { url: 'https://www.amazon.com/primeday?tag=' + TAG,                                  label: 'Prime Day Deals',                 desc: 'Exclusive Prime offers' },
   };
 
   // ─── Mapa categoria do site → link correto ──────────────────────────────────

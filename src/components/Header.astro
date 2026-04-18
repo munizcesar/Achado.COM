@@ -80,6 +80,16 @@ const currentPath = Astro.url.pathname;
 
       <div class="header-actions">
         <a
+          href="https://www.amazon.com/?tag=achadocertovip-20"
+          target="_blank" rel="noopener noreferrer sponsored"
+          class="header-btn header-btn-amazon-intl"
+          aria-label="Shop on Amazon.com"
+          id="header-amazon-intl-btn"
+        >
+          <span id="header-amazon-intl-text">Shop Amazon.com</span>
+        </a>
+
+        <a
           href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w"
           target="_blank" rel="noopener"
           class="header-btn header-btn-wpp"
@@ -136,6 +146,10 @@ const currentPath = Astro.url.pathname;
     var followText = document.getElementById('follow-btn-text');
     if (followText) followText.textContent = 'Follow Channel';
 
+    // 3.1 Exibe CTA Amazon internacional fixo no header
+    var amazonIntlBtn = document.getElementById('header-amazon-intl-btn');
+    if (amazonIntlBtn) amazonIntlBtn.style.display = 'inline-flex';
+
     // 4. Exibe banners Amazon US (inline + sidebar)
     var banners = document.querySelectorAll('.amazon-us-banner, .amazon-us-sidebar');
     banners.forEach(function(el) { el.style.display = ''; });
@@ -165,7 +179,7 @@ const currentPath = Astro.url.pathname;
       .then(function(r) { return r.text(); })
       .then(function(txt) {
         var match = txt.match(/loc=(\w+)/);
-        var country = match ? match[1] : 'BR';
+        var country = match ? match[1] : inferCountryFromNavigator();
         applyGeo(country);
       })
       .catch(function() {
@@ -173,8 +187,17 @@ const currentPath = Astro.url.pathname;
         fetch('https://ipapi.co/country/')
           .then(function(r) { return r.text(); })
           .then(function(c) { applyGeo(c.trim()); })
-          .catch(function() { /* silencia */ });
+          .catch(function() { applyGeo(inferCountryFromNavigator()); });
       });
+  }
+
+  function inferCountryFromNavigator() {
+    try {
+      var lang = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+      return /^pt(?:-|$)/i.test(lang) ? 'BR' : 'US';
+    } catch (e) {
+      return 'BR';
+    }
   }
 
   if (document.readyState === 'loading') {
@@ -198,10 +221,30 @@ const currentPath = Astro.url.pathname;
     max-width: 280px;
     display: block;
   }
+  .header-btn-amazon-intl {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #FFB347 0%, #FF9900 100%);
+    color: #111;
+    border: 1px solid rgba(230, 138, 0, 0.75);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    white-space: nowrap;
+  }
+  .header-btn-amazon-intl:hover {
+    background: linear-gradient(180deg, #FFAD33 0%, #E68A00 100%);
+  }
+  body.geo-intl .header-btn-amazon-intl {
+    display: inline-flex;
+  }
   @media (max-width: 480px) {
     .logo-svg {
       height: 38px;
       max-width: 220px;
+    }
+    .header-btn-amazon-intl {
+      font-size: 12px;
+      padding: 8px 10px;
     }
   }
 

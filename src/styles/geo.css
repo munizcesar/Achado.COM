@@ -22,8 +22,16 @@ body.geo-intl .amazon-us-quicklinks {
 }
 
 /* Estilo base dos banners */
+.amazon-us-banner,
+.amazon-us-sidebar {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
 .amazon-us-banner {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 16px;
   background: #0f1923;
   border: 2px solid #B22234;
@@ -33,7 +41,9 @@ body.geo-intl .amazon-us-quicklinks {
   flex-wrap: wrap;
 }
 .amazon-us-banner .amazon-us-cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: #FF9900;
   color: #111;
   font-weight: 800;
@@ -66,6 +76,18 @@ body.geo-intl .amazon-us-quicklinks {
   transition: background .18s;
 }
 .amazon-us-sidebar .amazon-us-cta:hover { background: #e68a00; }
+
+@media (max-width: 720px) {
+  .amazon-us-banner {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .amazon-us-banner .amazon-us-cta {
+    width: 100%;
+    white-space: normal;
+  }
+}
 
 /* Highlight sutil no botão follow para visitantes internacionais */
 body.geo-intl .header-btn-wpp {
