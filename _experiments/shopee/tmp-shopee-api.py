@@ -1,2 +1,4 @@
-# Movido de raiz para _experiments/shopee/
-# Arquivo original: tmp-shopee-api.py
+import requests
+
+# Experimento API Shopee - movido de raiz
+# Original: tmp-shopee-api.py
