@@ -27,3 +27,18 @@ debug-*.png
 test-output.txt
 rapidapi-response.json
 regenerar-posts.ps1
+
+# Build outputs (logs de build — não commitar)
+build-output.txt
+build-output-utf8.txt
+build-output*.txt
+
+# Arquivos temporários de experimentos
+tmp-*.py
+tmp-*.js
+tmp-*.md
+tmp_*.md
+tmp_*.py
+
+# Changelogs de sessão (artefatos de trabalho)
+CHANGELOG-SESSAO-*.md
