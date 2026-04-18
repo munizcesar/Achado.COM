@@ -161,15 +161,6 @@ const siloPosts = posts.filter(p => {
   <!-- ===================== SEÇÕES POR PILAR ===================== -->
   {postsByPilar.map((pilar, i) => (
     <>
-      {/* Anuncio ENTRE a 1a e a 2a secao de posts */}
-      {i === 1 && (
-        <div class="ad-between-sections">
-          <div class="container">
-            <AdSense slot="2844415754" format="auto" fullWidth={true} minHeight="80px" mobileMinHeight="72px" />
-          </div>
-        </div>
-      )}
-
       {pilar.posts.length > 0 && (
         <section class={`pilar-section ${i % 2 === 0 ? 'pilar-section-alt' : ''}`}>
           <div class="container">
@@ -267,6 +258,12 @@ const siloPosts = posts.filter(p => {
       </div>
     </section>
   )}
+
+  <div class="ad-between-sections">
+    <div class="container">
+      <AdSense slot="2844415754" format="auto" fullWidth={true} minHeight="80px" mobileMinHeight="72px" />
+    </div>
+  </div>
 
 
   <div id="postsPool" style="display:none" aria-hidden="true">
