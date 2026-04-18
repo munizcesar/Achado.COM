@@ -1,4 +1,4 @@
-﻿---
+---
 import Layout from '../../layouts/Layout.astro';
 import AdSense from '../../components/AdSense.astro';
 import ChannelBanner from '../../components/ChannelBanner.astro';
@@ -51,16 +51,15 @@ const categorySlug  = mapCategory(post.data.category);
 const articleAuthor = post.data.author || 'Equipe AchadoCerto';
 const articleDate   = post.data.date?.toISOString() ?? '';
 
-// Link Amazon US genÃ©rico com tag achadocertovip-20 como fallback
 const amazonUsUrl = post.data.affiliateUrlEn || `https://www.amazon.com/s?k=${encodeURIComponent(post.data.title)}&tag=achadocertovip-20`;
 
 function detectStore(url) {
-  if (!url) return 'melhor preÃ§o';
+  if (!url) return 'melhor preço';
   const urlLower = url.toLowerCase();
   if (urlLower.includes('mercadolivre.com') || urlLower.includes('meli.la')) return 'Mercado Livre';
   if (urlLower.includes('amazon.com')) return 'Amazon';
   if (urlLower.includes('magalu.com') || urlLower.includes('magazineluiza')) return 'Magalu';
-  return 'melhor preÃ§o';
+  return 'melhor preço';
 }
 const storeName = detectStore(post.data.affiliateUrl);
 
@@ -80,14 +79,14 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'InÃ­cio', item: siteUrl },
+    { '@type': 'ListItem', position: 1, name: 'Início', item: siteUrl },
     { '@type': 'ListItem', position: 2, name: 'Reviews', item: `${siteUrl}/blog` },
     { '@type': 'ListItem', position: 3, name: post.data.category, item: `${siteUrl}/categorias/${categorySlug}` },
     { '@type': 'ListItem', position: 4, name: post.data.title, item: postUrl }
   ]
 };
 
-const encodedTitle = encodeURIComponent(`${post.data.title} â€” AchadoCerto`);
+const encodedTitle = encodeURIComponent(`${post.data.title} — AchadoCerto`);
 const encodedUrl   = encodeURIComponent(postUrl);
 const whatsappUrl  = `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`;
 const twitterUrl   = `https://x.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
@@ -129,7 +128,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
 ---
 
 <Layout
-  title={`${post.data.title} â€” AchadoCerto`}
+  title={`${post.data.title} — AchadoCerto`}
   description={post.data.description}
   image={ogImage}
   schema={[articleSchema, breadcrumbSchema]}
@@ -139,14 +138,13 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
 >
   <article>
 
-    <!-- CABEÃ‡ALHO DO POST -->
     <div style="background: var(--c-surface); border-bottom: 1px solid var(--c-border); padding: 12px 0 0;" >
       <div class="container" style="max-width: 1100px;">
         <nav style="font-size:13px;color:var(--c-text-muted);margin-bottom:20px;display:flex;gap:6px;align-items:center;flex-wrap:nowrap;overflow:hidden;">
-          <a href="/" style="color:var(--c-brand);white-space:nowrap;">InÃ­cio</a><span style="flex-shrink:0;">â€º</span>
-          <a href="/blog" style="color:var(--c-brand);white-space:nowrap;">Reviews</a><span style="flex-shrink:0;">â€º</span>
+          <a href="/" style="color:var(--c-brand);white-space:nowrap;">Início</a><span style="flex-shrink:0;">›</span>
+          <a href="/blog" style="color:var(--c-brand);white-space:nowrap;">Reviews</a><span style="flex-shrink:0;">›</span>
           {post.data.category && <a href={`/categorias/${categorySlug}`} style="color:var(--c-brand);white-space:nowrap;">{post.data.category}</a>}
-          {post.data.category && <span style="flex-shrink:0;">â€º</span>}
+          {post.data.category && <span style="flex-shrink:0;">›</span>}
           <span style="color:var(--c-text-light);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;">{post.data.title}</span>
         </nav>
 
@@ -204,7 +202,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       </div>
     </div>
 
-
     {post.data.image && (
       <div style="background:var(--c-bg);padding:0 0 40px;">
         <div class="container" style="max-width:1100px;">
@@ -245,7 +242,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
                 />
               )}
               <div class="product-box-final-body">
-                <p class="product-box-final-label">â­ Gostou do review? Confira o preÃ§o agora</p>
+                <p class="product-box-final-label">⭐ Gostou do review? Confira o preço agora</p>
                 <p class="product-box-final-name">{post.data.title}</p>
                 {price && <p class="product-box-final-price">{price}</p>}
                 <a
@@ -260,15 +257,13 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                   Ver no {storeName}
                 </a>
-                <p style="font-size:11px;color:var(--c-text-light);text-align:center;margin-top:8px;">Link de afiliado â€” sem custo extra para vocÃª</p>
+                <p style="font-size:11px;color:var(--c-text-light);text-align:center;margin-top:8px;">Link de afiliado — sem custo extra para você</p>
               </div>
             </div>
           )}
 
-          <!-- BANNER AMAZON US -->
           <div class="amazon-us-banner">
             <div class="amazon-us-flag">
-              <!-- Bandeira americana SVG -->
               <svg width="40" height="27" viewBox="0 0 40 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="40" height="27" rx="3" fill="#B22234"/>
                 <rect y="2" width="40" height="2.08" fill="white"/>
@@ -278,16 +273,12 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
                 <rect y="18.62" width="40" height="2.08" fill="white"/>
                 <rect y="22.77" width="40" height="2.08" fill="white"/>
                 <rect width="16" height="14.5" rx="0" fill="#3C3B6E"/>
-                <!-- Estrelas (simplificadas) -->
-                <text x="1.5" y="5" font-size="3.2" fill="white">â˜… â˜… â˜… â˜… â˜… â˜…</text>
-                <text x="1.5" y="8.5" font-size="3.2" fill="white">â˜… â˜… â˜… â˜… â˜…</text>
-                <text x="1.5" y="12" font-size="3.2" fill="white">â˜… â˜… â˜… â˜… â˜… â˜…</text>
               </svg>
             </div>
             <div class="amazon-us-body">
-              <p class="amazon-us-label">ðŸ‡ºðŸ‡¸ International Visitors</p>
+              <p class="amazon-us-label">US International Visitors</p>
               <p class="amazon-us-title">Shop this product on <strong>Amazon.com</strong></p>
-              <p class="amazon-us-sub">Fast US shipping Â· Pay in USD Â· Free returns on millions of items</p>
+              <p class="amazon-us-sub">Fast US shipping · Pay in USD · Free returns on millions of items</p>
             </div>
             <a
               href={amazonUsUrl}
@@ -318,7 +309,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
                 </div>
               )}
               <div class="product-box-sidebar-body">
-                <p class="product-box-sidebar-label">Melhor preÃ§o</p>
+                <p class="product-box-sidebar-label">Melhor preço</p>
                 <p class="product-box-sidebar-name">{post.data.title}</p>
                 {price && <p class="product-box-sidebar-price">{price}</p>}
                 <a
@@ -333,12 +324,11 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                   Ver no {storeName}
                 </a>
-                <p class="product-box-sidebar-disclaimer">Link de afiliado â€” sem custo extra</p>
+                <p class="product-box-sidebar-disclaimer">Link de afiliado — sem custo extra</p>
               </div>
             </div>
           )}
 
-          <!-- SIDEBAR AMAZON US -->
           <div class="amazon-us-sidebar">
             <div class="amazon-us-sidebar-header">
               <svg width="28" height="19" viewBox="0 0 40 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -350,9 +340,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
                 <rect y="18.62" width="40" height="2.08" fill="white"/>
                 <rect y="22.77" width="40" height="2.08" fill="white"/>
                 <rect width="16" height="14.5" fill="#3C3B6E"/>
-                <text x="1.5" y="5" font-size="3.2" fill="white">â˜… â˜… â˜… â˜… â˜… â˜…</text>
-                <text x="1.5" y="8.5" font-size="3.2" fill="white">â˜… â˜… â˜… â˜… â˜…</text>
-                <text x="1.5" y="12" font-size="3.2" fill="white">â˜… â˜… â˜… â˜… â˜… â˜…</text>
               </svg>
               <span>International visitors</span>
             </div>
@@ -366,32 +353,19 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
               data-product={post.data.title}
               data-category="amazon-us-sidebar"
             >
-              ðŸ›’ Shop on Amazon.com
+              Shop on Amazon.com
             </a>
-            <p class="amazon-us-sidebar-disclaimer">Affiliate link Â· No extra cost to you</p>
+            <p class="amazon-us-sidebar-disclaimer">Affiliate link · No extra cost to you</p>
           </div>
 
           <div class="sidebar-share-box">
             <div class="sidebar-share-grid">
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="sicon sicon-wa">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              </a>
-              <a href={twitterUrl} target="_blank" rel="noopener noreferrer" aria-label="X / Twitter" class="sicon sicon-x">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </a>
-              <a href={facebookUrl} target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="sicon sicon-fb">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-              </a>
-              <a href="https://t.me/achadocertovip" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="sicon sicon-tg">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-              </a>
-              <button class="sicon sicon-copy" id="share-copy-sb" aria-label="Copiar link">
-                <svg id="icon-copy-sb" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                <svg id="icon-check-sb" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><polyline points="20 6 9 17 4 12"/></svg>
-              </button>
-              <button class="sicon sicon-native" id="share-native-sb" aria-label="Compartilhar">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-              </button>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="sicon sicon-wa"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+              <a href={twitterUrl} target="_blank" rel="noopener noreferrer" aria-label="X / Twitter" class="sicon sicon-x"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+              <a href={facebookUrl} target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="sicon sicon-fb"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+              <a href="https://t.me/achadocertovip" target="_blank" rel="noopener noreferrer" aria-label="Telegram" class="sicon sicon-tg"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+              <button class="sicon sicon-copy" id="share-copy-sb" aria-label="Copiar link"><svg id="icon-copy-sb" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg><svg id="icon-check-sb" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><polyline points="20 6 9 17 4 12"/></svg></button>
+              <button class="sicon sicon-native" id="share-native-sb" aria-label="Compartilhar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
             </div>
           </div>
 
@@ -410,7 +384,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
             <a href="/" style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--c-text-sub);padding:8px 0;transition:color .2s;"
                onmouseover="this.style.color='var(--c-brand)'" onmouseout="this.style.color='var(--c-text-sub)'">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-              PÃ¡gina inicial
+              Página inicial
             </a>
           </div>
         </aside>
@@ -418,88 +392,6 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     </div>
 
     <ChannelBanner />
-
-    {relatedPosts.length > 0 && (
-      <div class="ad-pre-related">
-        <div class="container" style="max-width:1100px;">
-          <AdSense slot="4076175097" format="auto" label={true} />
-        </div>
-      </div>
-    )}
-
-    {relatedPosts.length > 0 && (
-      <section class="related-section">
-        <div class="container">
-          <div class="related-header">
-            <div>
-              <span class="related-eyebrow">Continue lendo</span>
-              <h2 class="related-heading">Artigos Relacionados</h2>
-            </div>
-            <a href="/blog" class="related-see-all">
-              Ver todos
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-          <div class="related-grid">
-            {relatedDisplay.map(related => {
-              const isPlaceholder = related.placeholder;
-              const relImg = isPlaceholder ? related.image : (related.data?.productImage || related.data?.image || '/og-default.jpg');
-              const relUrl = isPlaceholder ? related.slug : `/blog/${related.slug}`;
-              const relTitle = isPlaceholder ? related.title : related.data?.title;
-              const relDesc = isPlaceholder ? related.description : related.data?.description;
-              const relCat = isPlaceholder ? related.category : related.data?.category;
-              return (
-                <a href={relUrl} class="related-card">
-                  <div class="related-img-wrap">
-                    <img src={relImg} alt={relTitle} class="related-img" loading="lazy" width="320" height="200" />
-                  </div>
-                  <div class="related-body">
-                    <span class="related-cat">{relCat}</span>
-                    <h3 class="related-title">{relTitle}</h3>
-                    {relDesc && <p class="related-desc">{relDesc}</p>}
-                    <span class="related-cta">
-                      {isPlaceholder ? 'Explorar' : 'Ler review'}
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </span>
-                  </div>
-                </a>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-    )}
-
-    <div style="background:var(--c-surface);padding:40px 0;border-top:1px solid var(--c-border);border-bottom:1px solid var(--c-border);">
-      <div class="container" style="max-width:1100px;">
-        <h2 style="font-size:22px;font-weight:800;margin:0 0 8px;color:var(--c-text);">ðŸ›¡ï¸ Onde Comprar com SeguranÃ§a</h2>
-        <p style="font-size:14px;color:var(--c-text-sub);margin:0 0 20px;line-height:1.6;">Dicas especÃ­ficas para comprar {detectStore(post.data.affiliateUrl) === 'melhor preÃ§o' ? 'online' : `no ${detectStore(post.data.affiliateUrl)}`} com tranquilidade</p>
-        <div style="display:grid;gap:12px;">
-          <div style="background:#fff;border:1px solid var(--c-border);border-left:4px solid var(--c-brand);border-radius:var(--r-md);padding:16px 20px;">
-            <div style="display:flex;align-items:start;gap:12px;">
-              <div style="background:var(--c-brand-soft);color:var(--c-brand);width:36px;height:36px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">â­</div>
-              <div style="flex:1;"><h3 style="font-size:15px;font-weight:700;color:var(--c-text);margin:0 0 6px;">Verifique a reputaÃ§Ã£o do vendedor</h3><p style="font-size:14px;color:var(--c-text-sub);line-height:1.6;margin:0;">{detectStore(post.data.affiliateUrl) === 'Mercado Livre' && 'Procure vendedores com selo MercadoLÃ­der Platinum e mais de 95% de avaliaÃ§Ãµes positivas.'}{detectStore(post.data.affiliateUrl) === 'Amazon' && 'Prefira produtos vendidos e entregues pela Amazon ou vendedores com avaliaÃ§Ã£o acima de 4.5 estrelas.'}{detectStore(post.data.affiliateUrl) === 'Magalu' && 'Verifique a nota do vendedor (acima de 4 estrelas) e quantidade de avaliaÃ§Ãµes.'}{!['Mercado Livre', 'Amazon', 'Magalu'].includes(detectStore(post.data.affiliateUrl)) && 'Busque vendedores com alta reputaÃ§Ã£o e tempo significativo de cadastro na plataforma.'}</p></div>
-            </div>
-          </div>
-          <div style="background:#fff;border:1px solid var(--c-border);border-left:4px solid var(--c-brand);border-radius:var(--r-md);padding:16px 20px;">
-            <div style="display:flex;align-items:start;gap:12px;">
-              <div style="background:var(--c-brand-soft);color:var(--c-brand);width:36px;height:36px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">â†©ï¸</div>
-              <div style="flex:1;"><h3 style="font-size:15px;font-weight:700;color:var(--c-text);margin:0 0 6px;">Leia a polÃ­tica de devoluÃ§Ã£o</h3><p style="font-size:14px;color:var(--c-text-sub);line-height:1.6;margin:0;">VocÃª tem 7 dias para desistir da compra (CDC), mas cada loja tem regras prÃ³prias sobre frete de devoluÃ§Ã£o. Verifique se hÃ¡ "troca grÃ¡tis" antes de finalizar.</p></div>
-            </div>
-          </div>
-          <div style="background:#fff;border:1px solid var(--c-border);border-left:4px solid var(--c-brand);border-radius:var(--r-md);padding:16px 20px;">
-            <div style="display:flex;align-items:start;gap:12px;">
-              <div style="background:var(--c-brand-soft);color:var(--c-brand);width:36px;height:36px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;">ðŸ’³</div>
-              <div style="flex:1;"><h3 style="font-size:15px;font-weight:700;color:var(--c-text);margin:0 0 6px;">Use pagamento dentro da plataforma</h3><p style="font-size:14px;color:var(--c-text-sub);line-height:1.6;margin:0;">{detectStore(post.data.affiliateUrl) === 'Mercado Livre' && 'Sempre pague via Mercado Pago para ter proteÃ§Ã£o na compra.'}{detectStore(post.data.affiliateUrl) === 'Amazon' && 'Pague via sistema da Amazon para ter cobertura da Garantia A-Z.'}{detectStore(post.data.affiliateUrl) === 'Magalu' && 'Use o sistema de pagamento do Magalu para ter proteÃ§Ã£o contra fraudes.'}{!['Mercado Livre', 'Amazon', 'Magalu'].includes(detectStore(post.data.affiliateUrl)) && 'Sempre utilize o sistema de pagamento oficial da plataforma para ter proteÃ§Ã£o extra.'}</p></div>
-            </div>
-          </div>
-          <div style="background:linear-gradient(135deg,#f0f4ff,#e8f0fe);border:1px solid var(--c-brand);border-radius:var(--r-md);padding:16px;text-align:center;margin-top:8px;">
-            <p style="font-size:13px;color:var(--c-text-sub);margin:0 0 10px;">Mais dÃºvidas sobre compras online?</p>
-            <a href="/faq" style="display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff;font-weight:700;font-size:14px;padding:8px 18px;border-radius:var(--r-sm);text-decoration:none;transition:all .2s;">Ver Perguntas Frequentes <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          </div>
-        </div>
-      </div>
-    </div>
   </article>
 
   <script is:inline>
@@ -538,17 +430,16 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
   </script>
 
   <style>
-    /* â”€â”€ AMAZON US BANNER (inline, apÃ³s product-box-final) â”€â”€ */
     .amazon-us-banner {
       display: flex;
       align-items: center;
       gap: 16px;
-      background: linear-gradient(135deg, #0a1628 0%, #1a2f5e 50%, #0d1f3c 100%);
+      background: linear-gradient(135deg, #24395f 0%, #365082 50%, #2a4370 100%);
       border: 2px solid #B22234;
       border-radius: var(--r-lg);
       padding: 18px 22px;
       margin: 24px 0 0;
-      box-shadow: 0 4px 20px rgba(178,34,52,.2), 0 2px 8px rgba(0,0,0,.3);
+      box-shadow: 0 4px 20px rgba(178,34,52,.2), 0 2px 8px rgba(0,0,0,.18);
       position: relative;
       overflow: hidden;
     }
@@ -559,141 +450,33 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       height: 3px;
       background: linear-gradient(90deg, #B22234 33%, #fff 33%, #fff 66%, #3C3B6E 66%);
     }
-    .amazon-us-flag { flex-shrink: 0; filter: drop-shadow(0 2px 4px rgba(0,0,0,.4)); }
+    .amazon-us-flag { flex-shrink: 0; filter: drop-shadow(0 2px 4px rgba(0,0,0,.25)); }
     .amazon-us-body { flex: 1; min-width: 0; }
-    .amazon-us-label {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .8px;
-      color: #fbbf24;
-      margin-bottom: 4px;
-    }
-    .amazon-us-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 4px;
-      line-height: 1.3;
-    }
-    .amazon-us-title strong {
-      color: #7EC8FF;
-      font-weight: 800;
-      text-shadow: 0 0 10px rgba(126, 200, 255, .35);
-    }
-    .amazon-us-sub {
-      font-size: 12px;
-      color: rgba(235,245,255,.86);
-      line-height: 1.4;
-    }
-    .amazon-us-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #FF9900;
-      color: #111 !important;
-      font-weight: 800;
-      font-size: 13px;
-      padding: 10px 18px;
-      border-radius: var(--r-sm);
-      white-space: nowrap;
-      text-decoration: none;
-      flex-shrink: 0;
-      transition: background .2s, transform .15s;
-      box-shadow: 0 2px 10px rgba(255,153,0,.4);
-    }
+    .amazon-us-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: #fbbf24; margin-bottom: 4px; }
+    .amazon-us-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; line-height: 1.3; }
+    .amazon-us-title strong { color: #d7e6f7; font-weight: 800; text-shadow: none; }
+    .amazon-us-sub { font-size: 12px; color: rgba(245,248,255,.92); line-height: 1.4; }
+    .amazon-us-btn { display: inline-flex; align-items: center; gap: 8px; background: #FF9900; color: #111 !important; font-weight: 800; font-size: 13px; padding: 10px 18px; border-radius: var(--r-sm); white-space: nowrap; text-decoration: none; flex-shrink: 0; transition: background .2s, transform .15s; box-shadow: 0 2px 10px rgba(255,153,0,.35); }
     .amazon-us-btn:hover { background: #e68a00; transform: translateY(-2px); }
-    @media (max-width: 600px) {
-      .amazon-us-banner { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px; }
-      .amazon-us-btn { width: 100%; justify-content: center; }
-    }
+    @media (max-width: 600px) { .amazon-us-banner { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px; } .amazon-us-btn { width: 100%; justify-content: center; } }
 
-    /* â”€â”€ AMAZON US SIDEBAR â”€â”€ */
-    .amazon-us-sidebar {
-      background: linear-gradient(160deg, #0a1628 0%, #1a2f5e 100%);
-      border: 1px solid #B22234;
-      border-top: 3px solid #B22234;
-      border-radius: var(--r-md);
-      padding: 16px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 12px rgba(178,34,52,.15);
-    }
-    .amazon-us-sidebar-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-    .amazon-us-sidebar-header span {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .6px;
-      color: #fbbf24;
-    }
-    .amazon-us-sidebar-text {
-      font-size: 13px;
-      color: rgba(255,255,255,.8);
-      line-height: 1.5;
-      margin-bottom: 12px;
-    }
-    .amazon-us-sidebar-text strong {
-      color: #7EC8FF;
-      font-weight: 800;
-    }
-    .amazon-us-sidebar-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      width: 100%;
-      background: #FF9900;
-      color: #111 !important;
-      font-weight: 800;
-      font-size: 13px;
-      padding: 10px 12px;
-      border-radius: var(--r-sm);
-      text-decoration: none;
-      transition: background .2s;
-    }
+    .amazon-us-sidebar { background: linear-gradient(160deg, #24395f 0%, #365082 100%); border: 1px solid #B22234; border-top: 3px solid #B22234; border-radius: var(--r-md); padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 12px rgba(178,34,52,.15); }
+    .amazon-us-sidebar-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .amazon-us-sidebar-header span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: #fbbf24; }
+    .amazon-us-sidebar-text { font-size: 13px; color: rgba(255,255,255,.88); line-height: 1.5; margin-bottom: 12px; }
+    .amazon-us-sidebar-text strong { color: #d7e6f7; font-weight: 800; }
+    .amazon-us-sidebar-btn { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; background: #FF9900; color: #111 !important; font-weight: 800; font-size: 13px; padding: 10px 12px; border-radius: var(--r-sm); text-decoration: none; transition: background .2s; }
     .amazon-us-sidebar-btn:hover { background: #e68a00; }
-    .amazon-us-sidebar-disclaimer {
-      font-size: 10px;
-      color: rgba(255,255,255,.4);
-      text-align: center;
-      margin-top: 8px;
-    }
+    .amazon-us-sidebar-disclaimer { font-size: 10px; color: rgba(255,255,255,.55); text-align: center; margin-top: 8px; }
 
-    .ad-pre-related {
-      background: var(--c-bg);
-      padding: 32px 0;
-      border-top: 1px solid var(--c-border);
-    }
+    .ad-pre-related { background: var(--c-bg); padding: 32px 0; border-top: 1px solid var(--c-border); }
     .sidebar-ad-wrap { margin-bottom: 16px; }
-    .sidebar-ad-label {
-      font-size: 10px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      color: var(--c-text-light);
-      text-align: center;
-      margin: 0 0 4px;
-    }
-    .post-content-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(260px, 300px);
-      gap: clamp(24px, 3vw, 42px);
-      align-items: start;
-    }
+    .sidebar-ad-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--c-text-light); text-align: center; margin: 0 0 4px; }
+    .post-content-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 300px); gap: clamp(24px, 3vw, 42px); align-items: start; }
     .post-sidebar { position: sticky; top: 88px; }
-    @media (max-width: 768px) {
-      .post-content-grid { display: block !important; }
-      .post-sidebar       { display: none !important; }
-      .prose              { padding: 0 4px; }
-      .share-bar          { width: 100%; }
-    }
+    @media (max-width: 768px) { .post-content-grid { display: block !important; } .post-sidebar { display: none !important; } .prose { padding: 0 4px; } .share-bar { width: 100%; } }
     .post-content-grid, .prose, .post-sidebar { min-width: 0; box-sizing: border-box; }
-    .prose { overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; }
+    .prose { overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; color:var(--c-text); font-size:16px; line-height:1.75; }
     .prose table { width: 100%; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .prose img, .prose iframe, .prose video, .prose embed { max-width: 100%; width: 100%; height: auto; }
     .ads-mid-article { margin: 40px 0 32px; display: flex; justify-content: center; padding: 20px 0; }
@@ -701,92 +484,35 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .sicon { display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:#e9eaec;color:#1a2332;text-decoration:none;border:none;cursor:pointer;flex-shrink:0;transition:background .2s,color .2s,transform .15s; }
     .sicon:hover { transform:translateY(-2px);color:#fff; }
     .sicon:active { transform:scale(0.93); }
-    .sicon-x:hover      { background:#000; }
-    .sicon-fb:hover     { background:#1877F2; }
-    .sicon-tg:hover     { background:#229ED9; }
-    .sicon-wa:hover     { background:#25D366; }
-    .sicon-copy:hover   { background:#4b5563; }
+    .sicon-x:hover { background:#000; }
+    .sicon-fb:hover { background:#1877F2; }
+    .sicon-tg:hover { background:#229ED9; }
+    .sicon-wa:hover { background:#25D366; }
+    .sicon-copy:hover { background:#4b5563; }
     .sicon-native:hover { background:#6366f1; }
-    .sicon-copied       { background:#16a34a !important;color:#fff !important; }
+    .sicon-copied { background:#16a34a !important;color:#fff !important; }
     .share-bar { display:flex;align-items:center;gap:10px;flex-wrap:wrap; }
-    .share-bar-label { font-size:12px;font-weight:600;color:var(--c-text-muted);white-space:nowrap; }
-    .share-bar-btns  { display:flex;align-items:center;gap:8px;flex-wrap:wrap; }
+    .share-bar-btns { display:flex;align-items:center;gap:8px;flex-wrap:wrap; }
     .sidebar-share-box { background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--r-md);padding:18px;margin-bottom:16px;box-shadow:var(--shadow-sm); }
     .sidebar-share-grid { display:flex;flex-wrap:wrap;gap:10px; }
     .product-box-final { display:flex;flex-direction:row;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f4ff 0%,#e8f0fe 100%);border:2px solid var(--c-brand);border-radius:var(--r-lg);padding:20px 24px;margin:48px 0 0;box-shadow:0 4px 20px rgba(26,86,219,.1); }
     .product-box-final-img { width:110px !important;height:110px !important;max-width:110px;max-height:110px;object-fit:contain;border-radius:var(--r-md);background:#fff;border:1px solid var(--c-border);padding:6px;flex-shrink:0; }
-    .product-box-final-body   { flex:1;text-align:left; }
-    .product-box-final-label  { font-size:12px;font-weight:700;color:var(--c-brand);margin-bottom:4px; }
-    .product-box-final-name   { font-size:16px;font-weight:800;color:var(--c-text) !important;margin-bottom:8px;line-height:1.3; }
-    .product-box-final-price  { font-size:clamp(20px,2.2vw,26px);font-weight:800;color:var(--c-brand);margin-bottom:12px;line-height:1.15; }
-    .product-box-final-btn    { display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff !important;font-weight:700;font-size:14px;padding:10px 20px;border-radius:var(--r-sm);transition:background .2s,transform .15s;text-decoration:none;box-shadow:0 2px 10px rgba(26,86,219,.25); }
+    .product-box-final-body { flex:1;text-align:left; }
+    .product-box-final-label { font-size:12px;font-weight:700;color:var(--c-brand);margin-bottom:4px; }
+    .product-box-final-name { font-size:16px;font-weight:800;color:var(--c-text) !important;margin-bottom:8px;line-height:1.3; }
+    .product-box-final-price { font-size:clamp(20px,2.2vw,26px);font-weight:800;color:var(--c-brand);margin-bottom:12px;line-height:1.15; }
+    .product-box-final-btn { display:inline-flex;align-items:center;gap:8px;background:var(--c-brand);color:#fff !important;font-weight:700;font-size:14px;padding:10px 20px;border-radius:var(--r-sm);transition:background .2s,transform .15s;text-decoration:none;box-shadow:0 2px 10px rgba(26,86,219,.25); }
     .product-box-final-btn:hover { background:var(--c-brand-dark);transform:translateY(-2px); }
-    @media (max-width:600px) {
-      .product-box-final { flex-direction:column;align-items:center;text-align:center;padding:20px 14px;gap:14px; }
-      .product-box-final-body { text-align:center; }
-      .product-box-final-btn  { width:100%;justify-content:center; }
-    }
+    @media (max-width:600px) { .product-box-final { flex-direction:column;align-items:center;text-align:center;padding:20px 14px;gap:14px; } .product-box-final-body { text-align:center; } .product-box-final-btn { width:100%;justify-content:center; } }
     .product-box-sidebar { background:var(--c-surface);border:1px solid var(--c-border);border-top:3px solid var(--c-brand);border-radius:var(--r-md);overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm); }
     .product-box-sidebar-img-wrap { width:100%;aspect-ratio:1/1;background:#fff;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--c-border);padding:16px; }
     .product-box-sidebar-img { width:100%;height:100%;object-fit:contain; }
     .product-box-sidebar-body { padding:16px; }
     .product-box-sidebar-label { font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--c-text-muted);margin-bottom:4px; }
-    .product-box-sidebar-name  { font-size:14px;font-weight:700;color:var(--c-text);margin-bottom:8px;line-height:1.4; }
+    .product-box-sidebar-name { font-size:14px;font-weight:700;color:var(--c-text);margin-bottom:8px;line-height:1.4; }
     .product-box-sidebar-price { font-size:20px;font-weight:800;color:var(--c-brand);margin-bottom:12px; }
-    .product-box-sidebar-btn   { display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--c-brand);color:#fff;font-weight:700;font-size:13px;padding:10px 14px;border-radius:var(--r-sm);transition:background .2s;text-decoration:none; }
+    .product-box-sidebar-btn { display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--c-brand);color:#fff;font-weight:700;font-size:13px;padding:10px 14px;border-radius:var(--r-sm);transition:background .2s;text-decoration:none; }
     .product-box-sidebar-btn:hover { background:var(--c-brand-dark); }
     .product-box-sidebar-disclaimer { font-size:10px;color:var(--c-text-light);text-align:center;margin-top:8px; }
-    .prose { color:var(--c-text);font-size:16px;line-height:1.75; }
-    .prose h2 { font-size:26px;font-weight:800;letter-spacing:-.4px;margin:40px 0 16px;color:var(--c-text); }
-    .prose h3 { font-size:20px;font-weight:700;margin:32px 0 12px;color:var(--c-text); }
-    .prose p  { margin-bottom:20px; }
-    .prose a  { color:var(--c-brand);text-decoration:underline; }
-    .prose a:hover { color:var(--c-brand-dark); }
-    .prose ul,.prose ol { margin:0 0 20px 24px; }
-    .prose li { margin-bottom:8px; }
-    .prose blockquote { border-left:3px solid var(--c-brand);padding:12px 20px;background:var(--c-brand-soft);border-radius:0 var(--r-sm) var(--r-sm) 0;margin:24px 0;font-style:italic;color:var(--c-text-sub); }
-    .prose img { border-radius:var(--r-md);margin:24px 0;box-shadow:var(--shadow-md); }
-    .prose code { background:var(--c-bg);padding:2px 6px;border-radius:4px;font-size:14px; }
-    .prose strong { font-weight:700;color:var(--c-text); }
-    .prose hr { border:none;border-top:1px solid var(--c-border);margin:40px 0; }
-    .prose table { width:100%;border-collapse:collapse;margin:24px 0;font-size:15px; }
-    .prose th { background:var(--c-bg);padding:10px 14px;text-align:left;font-weight:700;border:1px solid var(--c-border); }
-    .prose td { padding:10px 14px;border:1px solid var(--c-border); }
-    .prose tr:nth-child(even) td { background:var(--c-bg); }
-    @media (max-width:768px) {
-      .share-bar { margin-top:12px; }
-      .sicon { width:32px;height:32px; }
-      .prose { font-size:15px;line-height:1.7; }
-      .ads-mid-article { margin:32px 0; }
-    }
-    .related-section { background:var(--c-surface);border-top:1px solid var(--c-border);padding:48px 0 56px; }
-    .related-header  { display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;gap:16px; }
-    .related-eyebrow { display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.9px;color:var(--c-brand);margin-bottom:4px; }
-    .related-heading { font-size:clamp(20px,3vw,26px);font-weight:800;letter-spacing:-.4px;color:var(--c-text);margin:0; }
-    .related-see-all { display:inline-flex;align-items:center;gap:5px;font-size:13.5px;font-weight:600;color:var(--c-brand);white-space:nowrap;transition:gap .18s; }
-    .related-see-all:hover { gap:9px;text-decoration:underline; }
-    .related-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:20px; }
-    .related-card { display:flex;flex-direction:column;background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--r-md);overflow:hidden;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s,border-color .2s; }
-    .related-card:hover { transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--c-brand); }
-    .related-img-wrap { width:100%;aspect-ratio:16/10;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--c-border);padding:16px; }
-    .related-img { max-width:100%;max-height:100%;object-fit:contain;transition:transform .35s; }
-    .related-card:hover .related-img { transform:scale(1.04); }
-    .related-body { padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1; }
-    .related-cat  { font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--c-brand); }
-    .related-title { font-size:15px;font-weight:700;line-height:1.35;color:var(--c-text);margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; }
-    .related-desc  { font-size:13px;color:var(--c-text-muted);line-height:1.5;margin:0;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; }
-    .related-cta   { display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--c-brand);margin-top:6px;transition:gap .18s; }
-    .related-card:hover .related-cta { gap:9px; }
-    @media (max-width:768px) {
-      .related-grid { grid-template-columns:1fr; }
-      .related-header { flex-direction:column;align-items:flex-start; }
-    }
-    @media (min-width:480px) and (max-width:768px) {
-      .related-grid { grid-template-columns:repeat(2,1fr); }
-    }
   </style>
 </Layout>
-
-
-
-
