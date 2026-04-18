@@ -161,15 +161,6 @@ const siloPosts = posts.filter(p => {
   <!-- ===================== SEÇÕES POR PILAR ===================== -->
   {postsByPilar.map((pilar, i) => (
     <>
-      {/* Anuncio ANTES da 1a secao (entre pilares e posts) */}
-      {i === 0 && (
-        <div class="ad-between-sections">
-          <div class="container">
-            <AdSense slot="2844415754" format="auto" fullWidth={true} minHeight="90px" />
-          </div>
-        </div>
-      )}
-
       {/* Anuncio ENTRE a 1a e a 2a secao de posts */}
       {i === 1 && (
         <div class="ad-between-sections">
