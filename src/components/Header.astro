@@ -46,15 +46,11 @@ const currentPath = Astro.url.pathname;
           aria-label="BestFind VIP"
           style="display:none;"
         >
-          <!-- Ícone: lupa com check -->
           <circle cx="28" cy="28" r="18" fill="none" stroke="#B22234" stroke-width="5"/>
           <line x1="41" y1="41" x2="54" y2="54" stroke="#B22234" stroke-width="5" stroke-linecap="round"/>
           <polyline points="18,28 25,35 38,19" fill="none" stroke="#FF9900" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Texto "Best" em navy -->
           <text x="68" y="40" font-family="'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800" fill="#1A3A8F" letter-spacing="-0.5">Best</text>
-          <!-- Texto "Find" em vermelho americano -->
           <text x="178" y="40" font-family="'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800" fill="#B22234" letter-spacing="-0.5">Find</text>
-          <!-- Bandeira mini inline -->
           <rect x="285" y="14" width="36" height="24" rx="3" fill="#B22234"/>
           <rect x="285" y="17.5" width="36" height="1.8" fill="white"/>
           <rect x="285" y="21" width="36" height="1.8" fill="white"/>
@@ -64,7 +60,6 @@ const currentPath = Astro.url.pathname;
           <rect x="285" y="14" width="14" height="13" fill="#3C3B6E"/>
           <text x="286" y="21.5" font-size="3" fill="white">★ ★ ★</text>
           <text x="286" y="25.5" font-size="3" fill="white">★ ★ ★</text>
-          <!-- Badge VIP -->
           <rect x="335" y="10" width="72" height="38" rx="8" fill="#B22234"/>
           <rect x="335" y="10" width="72" height="38" rx="8" fill="none" stroke="#FF9900" stroke-width="2"/>
           <text x="371" y="35" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="900" fill="#FF9900" text-anchor="middle" letter-spacing="2">VIP</text>
@@ -119,18 +114,11 @@ const currentPath = Astro.url.pathname;
   </div>
 </nav>
 
-<!-- GEO SCRIPT: detecta país via API gratuita, adapta logo + banners -->
+<!-- GEO SCRIPT: detecta idioma local (sem API externa) — Opção B -->
 <script is:inline>
 (function () {
-  var CACHE_KEY = 'acv_geo';
-  var CACHE_TTL = 1000 * 60 * 60 * 24; // 24h
-
-  function applyGeo(country) {
-    var isUS = country !== 'BR';
-    // Salva no cache
-    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ country: country, ts: Date.now() })); } catch(e) {}
-
-    if (!isUS) return; // Brasil: padrão, nada a fazer
+  function applyGeo(isIntl) {
+    if (!isIntl) return;
 
     // 1. Troca logo
     var logoPT = document.getElementById('logo-pt');
@@ -142,68 +130,30 @@ const currentPath = Astro.url.pathname;
     var searchInput = document.getElementById('search-input');
     if (searchInput) searchInput.placeholder = 'Search products and deals…';
 
-    // 3. Troca texto botão header
+    // 3. Troca texto botão seguir
     var followText = document.getElementById('follow-btn-text');
     if (followText) followText.textContent = 'Follow Channel';
 
-    // 3.1 Exibe CTA Amazon internacional fixo no header
+    // 4. Exibe CTA Amazon internacional no header
     var amazonIntlBtn = document.getElementById('header-amazon-intl-btn');
     if (amazonIntlBtn) amazonIntlBtn.style.display = 'inline-flex';
 
-    // 4. Exibe banners Amazon US (inline + sidebar)
+    // 5. Exibe banners Amazon US (inline + sidebar)
     var banners = document.querySelectorAll('.amazon-us-banner, .amazon-us-sidebar');
     banners.forEach(function(el) { el.style.display = ''; });
 
-    // 5. Oculta product-box-final BR (opcional, mantém se não for só Amazon BR)
-    // Deixamos visível para não quebrar UX
-
-    // 6. Adiciona classe global no body para CSS condicional
+    // 6. Classe global no body para CSS condicional
     document.body.classList.add('geo-intl');
   }
 
-  function run() {
-    // Tenta cache primeiro
-    try {
-      var raw = localStorage.getItem(CACHE_KEY);
-      if (raw) {
-        var cached = JSON.parse(raw);
-        if (Date.now() - cached.ts < CACHE_TTL) {
-          applyGeo(cached.country);
-          return;
-        }
-      }
-    } catch(e) {}
-
-    // Fetch geo via cloudflare-trace (sem auth, zero latência)
-    fetch('https://www.cloudflare.com/cdn-cgi/trace')
-      .then(function(r) { return r.text(); })
-      .then(function(txt) {
-        var match = txt.match(/loc=(\w+)/);
-        var country = match ? match[1] : inferCountryFromNavigator();
-        applyGeo(country);
-      })
-      .catch(function() {
-        // Fallback: tenta ipapi.co
-        fetch('https://ipapi.co/country/')
-          .then(function(r) { return r.text(); })
-          .then(function(c) { applyGeo(c.trim()); })
-          .catch(function() { applyGeo(inferCountryFromNavigator()); });
-      });
-  }
-
-  function inferCountryFromNavigator() {
-    try {
-      var lang = (navigator.languages && navigator.languages[0]) || navigator.language || '';
-      return /^pt(?:-|$)/i.test(lang) ? 'BR' : 'US';
-    } catch (e) {
-      return 'BR';
-    }
-  }
+  // Detecção local via navigator.language — sem request externo, instantâneo
+  var lang = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+  var isIntl = !/^pt(?:-|$)/i.test(lang);
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', run);
+    document.addEventListener('DOMContentLoaded', function() { applyGeo(isIntl); });
   } else {
-    run();
+    applyGeo(isIntl);
   }
 })();
 </script>
@@ -246,10 +196,5 @@ const currentPath = Astro.url.pathname;
       font-size: 12px;
       padding: 8px 10px;
     }
-  }
-
-  /* Quando geo-intl: esconde nav em português, mostra em inglês */
-  body.geo-intl .nav-categorias {
-    /* mantém navegação — categorias são universais */
   }
 </style>
