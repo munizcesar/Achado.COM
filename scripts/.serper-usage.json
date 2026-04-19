@@ -1,5 +1,5 @@
 {
-  "total": 162,
+  "total": 165,
   "mes_atual": 3,
   "logs": [
     {
@@ -270,6 +270,11 @@
     {
       "data": "2026-04-19T01:45:49.417Z",
       "produto": "Escorredor De Louça Cozinha Pratos Organizador De ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-19T23:49:37.320Z",
+      "produto": "Gold Standard 100% Whey Protein 2,27kg Optimum Nut",
       "consultas": 3
     }
   ]
