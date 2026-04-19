@@ -2,9 +2,9 @@
 title: "Sérum Capilar Noturno Para Cabelos Secos Restaura A Fibra Capilar Com Ação Antifrizz Para Nutrição, Maciez E Brilho Intenso Kérastase Nutritive 8h Mag"
 description: "Conheça o Sérum Capilar Noturno Para Cabelos Secos Restaura A Fibra Capilar Com Ação Antifrizz Para Nutrição, Maciez E Brilho Intenso Kérastase Nutritive 8"
 date: 2026-04-19
-category: saude
+category: beleza
 image: /images/posts/serum-capilar-noturno-para-cabelos-secos-restaura-a-fibra-ca.webp
-tags: [saude, cabelo, kerastase]
+tags: [beleza, cabelo, kerastase]
 draft: false
 affiliateUrl: "https://meli.la/1DqxPtm"
 productImage: /images/posts/serum-capilar-noturno-para-cabelos-secos-restaura-a-fibra-ca.webp
