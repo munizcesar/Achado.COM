@@ -1,5 +1,5 @@
 {
-  "total": 156,
+  "total": 159,
   "mes_atual": 3,
   "logs": [
     {
@@ -260,6 +260,11 @@
     {
       "data": "2026-04-19T01:24:05.194Z",
       "produto": "Multivitamínico Para Idosos Centrum Homem Select 5",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-19T01:26:05.172Z",
+      "produto": "Coenzima Q10 200mg 60 Cápsulas Vitafor Sem Sabor",
       "consultas": 3
     }
   ]
