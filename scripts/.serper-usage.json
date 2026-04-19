@@ -1,5 +1,5 @@
 {
-  "total": 150,
+  "total": 153,
   "mes_atual": 3,
   "logs": [
     {
@@ -250,6 +250,11 @@
     {
       "data": "2026-04-19T01:18:25.476Z",
       "produto": "Zma Vitaminas Y Minerales, 90 Cáps, Max Titanium",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-19T01:21:03.808Z",
+      "produto": "Testo Essencial - Fórmula Exclusiva Com Feno Grego",
       "consultas": 3
     }
   ]
