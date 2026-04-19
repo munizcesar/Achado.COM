@@ -1,5 +1,5 @@
 {
-  "total": 144,
+  "total": 147,
   "mes_atual": 3,
   "logs": [
     {
@@ -240,6 +240,11 @@
     {
       "data": "2026-04-19T01:13:35.596Z",
       "produto": "Ômega 3 Epa Dha 240 Cápsulas Vitafor Sem Sabor",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-19T01:15:56.522Z",
+      "produto": "Multivitamínico Para Mulher Centrum Vitaminas De A",
       "consultas": 3
     }
   ]
