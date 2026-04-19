@@ -1,5 +1,5 @@
 {
-  "total": 153,
+  "total": 156,
   "mes_atual": 3,
   "logs": [
     {
@@ -255,6 +255,11 @@
     {
       "data": "2026-04-19T01:21:03.808Z",
       "produto": "Testo Essencial - Fórmula Exclusiva Com Feno Grego",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-19T01:24:05.194Z",
+      "produto": "Multivitamínico Para Idosos Centrum Homem Select 5",
       "consultas": 3
     }
   ]
