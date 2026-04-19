@@ -1,5 +1,5 @@
 {
-  "total": 123,
+  "total": 126,
   "mes_atual": 3,
   "logs": [
     {
@@ -205,6 +205,11 @@
     {
       "data": "2026-04-18T22:42:13.313Z",
       "produto": "Loção Hidratante Corporal Sem Perfume, Com Ceramid",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-19T00:24:40.439Z",
+      "produto": "Shampoo Redutor De Grisalhos Grecin Control Gx Par",
       "consultas": 3
     }
   ]
