@@ -1,5 +1,5 @@
 {
-  "total": 129,
+  "total": 132,
   "mes_atual": 3,
   "logs": [
     {
@@ -215,6 +215,11 @@
     {
       "data": "2026-04-19T00:29:25.280Z",
       "produto": "Sérum Capilar Noturno Para Cabelos Secos Restaura ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-19T00:32:52.504Z",
+      "produto": "Kérastase Gloss Absolu Glaze Drops Óleo Capilar | ",
       "consultas": 3
     }
   ]
