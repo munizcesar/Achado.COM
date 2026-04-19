@@ -1,5 +1,5 @@
 {
-  "total": 159,
+  "total": 162,
   "mes_atual": 3,
   "logs": [
     {
@@ -265,6 +265,11 @@
     {
       "data": "2026-04-19T01:26:05.172Z",
       "produto": "Coenzima Q10 200mg 60 Cápsulas Vitafor Sem Sabor",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-19T01:45:49.417Z",
+      "produto": "Escorredor De Louça Cozinha Pratos Organizador De ",
       "consultas": 3
     }
   ]
