@@ -1,5 +1,5 @@
 {
-  "total": 147,
+  "total": 150,
   "mes_atual": 3,
   "logs": [
     {
@@ -245,6 +245,11 @@
     {
       "data": "2026-04-19T01:15:56.522Z",
       "produto": "Multivitamínico Para Mulher Centrum Vitaminas De A",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-19T01:18:25.476Z",
+      "produto": "Zma Vitaminas Y Minerales, 90 Cáps, Max Titanium",
       "consultas": 3
     }
   ]
