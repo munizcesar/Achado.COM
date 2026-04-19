@@ -75,7 +75,7 @@ Pode, mas a performance muda conforme espessura, porosidade e nível de ressecam
 ### Quantas vezes por semana usar?
 Depende da necessidade dos fios. Cabelos mais secos costumam se beneficiar de maior regularidade, sempre observando resposta do cabelo.
 
-## Vale a pena?
+## Conclusão: para quem faz sentido
 Para quem busca **máscara capilar de nutrição intensa para cabelos secos**, a Kérastase Nutritive Masquintense Riche 200 ml é uma alternativa relevante. Ela tende a atender melhor quem prioriza maciez, brilho e redução de ressecamento com uso contínuo.
 
 Se esse é o seu objetivo, vale conferir avaliações atualizadas e disponibilidade no Mercado Livre.

@@ -75,7 +75,7 @@ Depende da resposta dos fios. Muitas pessoas usam com frequência alta, mas o id
 ### Funciona para qualquer tipo de cabelo?
 Pode ser usado em diferentes tipos, mas a quantidade e a frequência precisam ser adaptadas para cada perfil capilar.
 
-## Vale a pena?
+## Conclusão: para quem faz sentido
 Para quem busca **sérum capilar noturno com foco em nutrição e ação antifrizz**, o Kérastase Nutritive 8H Magic Night é uma opção relevante. Ele tende a atender melhor quem quer praticidade na rotina e melhora progressiva da aparência dos fios.
 
 Se esse é o seu objetivo, vale conferir avaliações atuais e disponibilidade no Mercado Livre.

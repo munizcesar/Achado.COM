@@ -70,7 +70,7 @@ Ceramidas são ativos bastante usados em fórmulas para suporte da barreira cut�
 ### Loção sem fragrância é melhor para pele sensível?
 Nem toda pele sensível reage igual, mas produtos sem fragrância costumam ser uma escolha comum para quem deseja reduzir estímulos potencialmente irritantes.
 
-## Vale a pena?
+## Conclusão: para quem faz sentido
 Para quem procura **loção hidratante corporal sem perfume com ceramidas e ácido hialurônico**, esta versão da CeraVe é uma alternativa sólida e atemporal para rotina diária. O foco está em hidratação funcional, composição conhecida no mercado e proposta simples de uso.
 
 Se a sua prioridade é conforto diário e manutenção da barreira da pele, vale conferir avaliações recentes e disponibilidade do produto no Mercado Livre.

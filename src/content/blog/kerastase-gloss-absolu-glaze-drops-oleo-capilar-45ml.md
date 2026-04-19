@@ -75,7 +75,7 @@ Pode servir, mas com aplicação mínima e foco apenas em comprimento e pontas.
 ### Substitui máscara ou tratamento profundo?
 Não. Ele atua como finalizador e complemento da rotina, não como substituto de tratamentos intensivos.
 
-## Vale a pena?
+## Conclusão: para quem faz sentido
 Para quem busca **óleo capilar antifrizz com brilho e acabamento sofisticado**, o Kérastase Gloss Absolu Glaze Drops 45 ml é uma opção relevante. Ele tende a atender melhor quem prioriza controle de frizz, toque macio e visual mais alinhado na finalização.
 
 Se esse é o seu objetivo, vale conferir avaliações recentes e disponibilidade no Mercado Livre.

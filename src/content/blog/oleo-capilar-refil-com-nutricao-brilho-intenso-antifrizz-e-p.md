@@ -76,7 +76,7 @@ Depende da rotina e do nível de calor usado. Muitos consumidores combinam produ
 ### Pode usar diariamente?
 Sim, em geral pode, desde que a quantidade seja ajustada ao seu tipo de fio e ao efeito desejado.
 
-## Vale a pena?
+## Conclusão: para quem faz sentido
 Para quem procura **óleo capilar anti-frizz com brilho e proteção térmica**, o Kérastase Elixir Ultime Refil 75 ml é uma opção forte no segmento premium. Ele tende a atender melhor quem quer acabamento mais polido, controle de frizz e uso versátil em rotina diária.
 
 Se esse é o seu objetivo, vale conferir avaliações atualizadas e disponibilidade no Mercado Livre.

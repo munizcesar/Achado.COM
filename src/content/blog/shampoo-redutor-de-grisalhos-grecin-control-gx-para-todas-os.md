@@ -75,7 +75,7 @@ Depende do perfil do cabelo e da frequência de uso. Em geral, produtos desse ti
 ### Pode usar todos os dias?
 A frequência ideal deve seguir a orientação da embalagem e a resposta do seu couro cabeludo e fios.
 
-## Vale a pena?
+## Conclusão: para quem faz sentido
 Para quem procura **shampoo redutor de grisalhos com proposta prática e resultado progressivo**, o Grecin Control GX 118 ml é uma alternativa relevante. Ele tende a atender melhor quem prefere ajuste gradual de aparência, sem transição brusca de cor.
 
 Se esse é o seu objetivo, vale conferir avaliações atualizadas e disponibilidade no Mercado Livre.
