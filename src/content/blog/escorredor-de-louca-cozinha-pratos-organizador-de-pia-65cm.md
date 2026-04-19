@@ -58,9 +58,9 @@ A instalação não requer furos, parafusos ou modificações na pia—ponto imp
 
 ## Contexto Global: Como Escorredores se Comparam Internacionalmente
 
-**No mercado brasileiro**, escorredores de 65 cm custam entre R$ 80 e R$ 250 dependendo do material e marca. **Nos EUA**, produtos comparáveis (24"–26" de comprimento) variam entre $25 USD e $80 USD. 
+Nos mercados **brasileiro e americano**, escorredores de 65 cm (24"–26") são encontrados em variações de preço que refletem o material escolhido (aço inoxidável vs. plástico reforçado) e a marca. Modelos básicos de plástico reforçado tendem a ser mais acessíveis, enquanto estruturas em aço inoxidável representam investimentos maiores. 
 
-A tendência global mostra crescimento em produtos com **design modular**—escorredores que se adaptam a diferentes configurações sem descartar o produto original. Modelos que permitem remover divisórias internas ganham preferência em mercados mais sofisticados.
+A comparação internacional revela uma tendência consistente: a maioria dos consumidores prioriza **funcionalidade e durabilidade** sobre design extravagante. A tendência global mostra crescimento em produtos com **design modular**—escorredores que se adaptam a diferentes configurações sem descartar o produto original. Modelos que permitem remover divisórias internas ganham preferência em mercados mais sofisticados.
 
 ## Perguntas Frequentes: Dúvidas Reais de Compradores
 
