@@ -1,6 +1,6 @@
 ---
-title: "Kérastase Elixir Ultime Refil 75 ml: vale a pena para frizz e brilho?"
-description: "Análise completa e atemporal do Kérastase Elixir Ultime Refil 75 ml: benefícios, uso correto, proteção térmica e comparação prática para quem busca hair oil anti-frizz no Brasil e no exterior."
+title: "Kérastase Elixir Ultime Refil 75 ml (2.5 fl oz): vale a pena para frizz e brilho?"
+description: "Análise completa e atemporal do Kérastase Elixir Ultime Refil 75 ml (2.5 fl oz): benefícios, uso correto, proteção térmica e comparação prática para quem busca hair oil anti-frizz no Brasil e nos EUA."
 date: 2026-04-19
 category: beleza
 image: /images/posts/oleo-capilar-refil-com-nutricao-brilho-intenso-antifrizz-e-p.webp
@@ -15,7 +15,7 @@ Se você busca um **óleo capilar para frizz e brilho** (hair oil for frizz and 
 
 Este guia foi estruturado para ser útil no Brasil e em outros mercados, com linguagem atemporal e foco prático.
 
-## O que é o Kérastase Elixir Ultime Refil 75 ml
+## O que é o Kérastase Elixir Ultime Refil 75 ml (2.5 fl oz)
 Trata-se de um finalizador em óleo com proposta de:
 
 - reduzir frizz;
@@ -24,6 +24,8 @@ Trata-se de um finalizador em óleo com proposta de:
 - oferecer proteção térmica durante a finalização.
 
 Segundo o fabricante, a fórmula é voltada para múltiplos tipos de cabelo e pode ser usada em diferentes etapas da rotina.
+
+Em contexto internacional, a embalagem de **75 ml** equivale a aproximadamente **2.5 fl oz**, medida comum em e-commerces dos EUA.
 
 ## Para quem esse hair oil costuma ser indicado
 Este produto tende a funcionar melhor para:
@@ -36,7 +38,7 @@ Este produto tende a funcionar melhor para:
 Para cabelos muito finos, a recomendação prática é começar com dose menor e ajustar conforme a resposta dos fios.
 
 ## Benefícios mais buscados no Brasil e nos EUA
-As buscas mais comuns em ambos os mercados giram em torno de termos como **óleo capilar antifrizz**, **hair serum for frizzy hair**, **shine hair oil** e **heat protectant hair oil**. Na prática, os benefícios mais esperados são:
+As buscas mais comuns em ambos os mercados giram em torno de termos como **óleo capilar antifrizz**, **óleo capilar com proteção térmica**, **hair serum for frizzy hair**, **shine hair oil** e **heat protectant hair oil**. Na prática, os benefícios mais esperados são:
 
 - **controle de frizz** ao longo do dia;
 - **brilho cosmético imediato** após finalizar;
