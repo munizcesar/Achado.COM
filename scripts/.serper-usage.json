@@ -1,5 +1,5 @@
 {
-  "total": 135,
+  "total": 138,
   "mes_atual": 3,
   "logs": [
     {
@@ -225,6 +225,11 @@
     {
       "data": "2026-04-19T00:35:05.943Z",
       "produto": "Máscara Kérastase Nutritive Masquintense Riche 200",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-19T00:51:27.829Z",
+      "produto": "Óleo Capilar Refil Com Nutrição, Brilho Intenso, A",
       "consultas": 3
     }
   ]
