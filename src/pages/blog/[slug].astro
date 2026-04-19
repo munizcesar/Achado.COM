@@ -255,37 +255,48 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
             </div>
           )}
 
-          <div class="amazon-us-banner">
-            <div class="amazon-us-flag">
-              <svg width="40" height="27" viewBox="0 0 40 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="27" rx="3" fill="#B22234"/>
-                <rect y="2" width="40" height="2.08" fill="white"/>
-                <rect y="6.15" width="40" height="2.08" fill="white"/>
-                <rect y="10.31" width="40" height="2.08" fill="white"/>
-                <rect y="14.46" width="40" height="2.08" fill="white"/>
-                <rect y="18.62" width="40" height="2.08" fill="white"/>
-                <rect y="22.77" width="40" height="2.08" fill="white"/>
-                <rect width="16" height="14.5" rx="0" fill="#3C3B6E"/>
-              </svg>
+          <details class="amazon-us-disclosure">
+            <summary class="amazon-us-summary">
+              <span class="amazon-us-summary-copy">
+                <span class="amazon-us-summary-eyebrow">US / International</span>
+                <span class="amazon-us-summary-title">Ver opção da Amazon.com para visitantes internacionais</span>
+              </span>
+              <span class="amazon-us-summary-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </summary>
+            <div class="amazon-us-banner">
+              <div class="amazon-us-flag">
+                <svg width="40" height="27" viewBox="0 0 40 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="40" height="27" rx="3" fill="#B22234"/>
+                  <rect y="2" width="40" height="2.08" fill="white"/>
+                  <rect y="6.15" width="40" height="2.08" fill="white"/>
+                  <rect y="10.31" width="40" height="2.08" fill="white"/>
+                  <rect y="14.46" width="40" height="2.08" fill="white"/>
+                  <rect y="18.62" width="40" height="2.08" fill="white"/>
+                  <rect y="22.77" width="40" height="2.08" fill="white"/>
+                  <rect width="16" height="14.5" rx="0" fill="#3C3B6E"/>
+                </svg>
+              </div>
+              <div class="amazon-us-body">
+                <p class="amazon-us-label">US International Visitors</p>
+                <p class="amazon-us-title">Shop this product on <strong>Amazon.com</strong></p>
+                <p class="amazon-us-sub">Fast US shipping · Pay in USD · Free returns on millions of items</p>
+              </div>
+              <a
+                href={amazonUsUrl}
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                class="amazon-us-btn"
+                data-affiliate
+                data-product={post.data.title}
+                data-category="amazon-us"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 11.5c-1.2-4.4-5.2-7.5-9.5-7.5-5.8 0-10.5 4.7-10.5 10.5s4.7 10.5 10.5 10.5c4.4 0 8.3-2.8 9.9-7H19c-1.4 2.9-4.4 5-7.8 5-4.8 0-8.7-3.9-8.7-8.7s3.9-8.7 8.7-8.7c3.1 0 5.9 1.7 7.4 4.3H15v2h8v-8h-2l.5 2.6z"/></svg>
+                Shop on Amazon.com
+              </a>
             </div>
-            <div class="amazon-us-body">
-              <p class="amazon-us-label">US International Visitors</p>
-              <p class="amazon-us-title">Shop this product on <strong>Amazon.com</strong></p>
-              <p class="amazon-us-sub">Fast US shipping · Pay in USD · Free returns on millions of items</p>
-            </div>
-            <a
-              href={amazonUsUrl}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              class="amazon-us-btn"
-              data-affiliate
-              data-product={post.data.title}
-              data-category="amazon-us"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 11.5c-1.2-4.4-5.2-7.5-9.5-7.5-5.8 0-10.5 4.7-10.5 10.5s4.7 10.5 10.5 10.5c4.4 0 8.3-2.8 9.9-7H19c-1.4 2.9-4.4 5-7.8 5-4.8 0-8.7-3.9-8.7-8.7s3.9-8.7 8.7-8.7c3.1 0 5.9 1.7 7.4 4.3H15v2h8v-8h-2l.5 2.6z"/></svg>
-              Shop on Amazon.com
-            </a>
-          </div>
+          </details>
         </div>
 
         <aside class="post-sidebar">
@@ -322,34 +333,45 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
             </div>
           )}
 
-          <div class="amazon-us-sidebar">
-            <div class="amazon-us-sidebar-header">
-              <svg width="28" height="19" viewBox="0 0 40 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="27" rx="3" fill="#B22234"/>
-                <rect y="2" width="40" height="2.08" fill="white"/>
-                <rect y="6.15" width="40" height="2.08" fill="white"/>
-                <rect y="10.31" width="40" height="2.08" fill="white"/>
-                <rect y="14.46" width="40" height="2.08" fill="white"/>
-                <rect y="18.62" width="40" height="2.08" fill="white"/>
-                <rect y="22.77" width="40" height="2.08" fill="white"/>
-                <rect width="16" height="14.5" fill="#3C3B6E"/>
-              </svg>
-              <span>International visitors</span>
+          <details class="amazon-us-disclosure amazon-us-disclosure-sidebar">
+            <summary class="amazon-us-summary amazon-us-summary-sidebar">
+              <span class="amazon-us-summary-copy">
+                <span class="amazon-us-summary-eyebrow">US / International</span>
+                <span class="amazon-us-summary-title">Abrir opção Amazon.com</span>
+              </span>
+              <span class="amazon-us-summary-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
+            </summary>
+            <div class="amazon-us-sidebar">
+              <div class="amazon-us-sidebar-header">
+                <svg width="28" height="19" viewBox="0 0 40 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="40" height="27" rx="3" fill="#B22234"/>
+                  <rect y="2" width="40" height="2.08" fill="white"/>
+                  <rect y="6.15" width="40" height="2.08" fill="white"/>
+                  <rect y="10.31" width="40" height="2.08" fill="white"/>
+                  <rect y="14.46" width="40" height="2.08" fill="white"/>
+                  <rect y="18.62" width="40" height="2.08" fill="white"/>
+                  <rect y="22.77" width="40" height="2.08" fill="white"/>
+                  <rect width="16" height="14.5" fill="#3C3B6E"/>
+                </svg>
+                <span>International visitors</span>
+              </div>
+              <p class="amazon-us-sidebar-text">Find this product on <strong>Amazon.com</strong> with fast US shipping</p>
+              <a
+                href={amazonUsUrl}
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                class="amazon-us-sidebar-btn"
+                data-affiliate
+                data-product={post.data.title}
+                data-category="amazon-us-sidebar"
+              >
+                Shop on Amazon.com
+              </a>
+              <p class="amazon-us-sidebar-disclaimer">Affiliate link · No extra cost to you</p>
             </div>
-            <p class="amazon-us-sidebar-text">Find this product on <strong>Amazon.com</strong> with fast US shipping</p>
-            <a
-              href={amazonUsUrl}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              class="amazon-us-sidebar-btn"
-              data-affiliate
-              data-product={post.data.title}
-              data-category="amazon-us-sidebar"
-            >
-              Shop on Amazon.com
-            </a>
-            <p class="amazon-us-sidebar-disclaimer">Affiliate link · No extra cost to you</p>
-          </div>
+          </details>
 
           <div class="sidebar-share-box">
             <div class="sidebar-share-grid">
@@ -421,6 +443,74 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
   </script>
 
   <style>
+    .amazon-us-disclosure {
+      margin: 24px 0 0;
+    }
+    .amazon-us-disclosure-sidebar {
+      margin: 0 0 16px;
+    }
+    .amazon-us-summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 16px;
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-md);
+      color: var(--c-text);
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: border-color .2s ease, box-shadow .2s ease, transform .15s ease;
+    }
+    .amazon-us-summary::-webkit-details-marker { display: none; }
+    .amazon-us-summary:hover {
+      border-color: var(--c-brand);
+      box-shadow: 0 4px 18px rgba(26,86,219,.08);
+    }
+    .amazon-us-summary-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+    .amazon-us-summary-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--c-brand);
+    }
+    .amazon-us-summary-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--c-text);
+      line-height: 1.35;
+    }
+    .amazon-us-summary-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--c-text-muted);
+      transition: transform .2s ease, color .2s ease;
+    }
+    .amazon-us-disclosure[open] .amazon-us-summary {
+      border-bottom-left-radius: var(--r-sm);
+      border-bottom-right-radius: var(--r-sm);
+    }
+    .amazon-us-disclosure[open] .amazon-us-summary-icon {
+      transform: rotate(180deg);
+      color: var(--c-brand);
+    }
+    .amazon-us-summary-sidebar {
+      padding: 12px 14px;
+    }
+    .amazon-us-summary-sidebar .amazon-us-summary-title {
+      font-size: 13px;
+    }
+
     .amazon-us-banner {
       display: flex;
       align-items: center;
@@ -429,7 +519,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       border: 2px solid #B22234;
       border-radius: var(--r-lg);
       padding: 18px 22px;
-      margin: 24px 0 0;
+      margin: 12px 0 0;
       box-shadow: 0 4px 20px rgba(178,34,52,.2), 0 2px 8px rgba(0,0,0,.18);
       position: relative;
       overflow: hidden;
@@ -451,7 +541,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .amazon-us-btn:hover { background: #e68a00; transform: translateY(-2px); }
     @media (max-width: 600px) { .amazon-us-banner { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px; } .amazon-us-btn { width: 100%; justify-content: center; } }
 
-    .amazon-us-sidebar { background: linear-gradient(160deg, #24395f 0%, #365082 100%); border: 1px solid #B22234; border-top: 3px solid #B22234; border-radius: var(--r-md); padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 12px rgba(178,34,52,.15); }
+    .amazon-us-sidebar { background: linear-gradient(160deg, #24395f 0%, #365082 100%); border: 1px solid #B22234; border-top: 3px solid #B22234; border-radius: var(--r-md); padding: 16px; margin-top: 12px; margin-bottom: 0; box-shadow: 0 2px 12px rgba(178,34,52,.15); }
     .amazon-us-sidebar-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
     .amazon-us-sidebar-header span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: #fbbf24; }
     .amazon-us-sidebar-text { font-size: 13px; color: rgba(255,255,255,.88); line-height: 1.5; margin-bottom: 12px; }
