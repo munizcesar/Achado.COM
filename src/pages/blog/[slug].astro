@@ -629,4 +629,21 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .product-box-sidebar-btn:hover { background:var(--c-brand-dark); }
     .product-box-sidebar-disclaimer { font-size:10px;color:var(--c-text-light);text-align:center;margin-top:8px; }
   </style>
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      try {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+        const isBrazil = ["America/Sao_Paulo", "America/Bahia", "America/Fortaleza", "America/Maceio", "America/Recife", "America/Araguaina", "America/Belem", "America/Boa_Vista", "America/Campo_Grande", "America/Cuiaba", "America/Manaus", "America/Porto_Velho", "America/Rio_Branco", "America/Santarem"].includes(tz) || (navigator.language || "").toLowerCase().includes("pt-br");
+        const brDetails = document.querySelectorAll(".amazon-br-disclosure");
+        const usDetails = document.querySelectorAll(".amazon-us-disclosure:not(.amazon-br-disclosure)");
+        if (isBrazil) {
+          brDetails.forEach(el => el.setAttribute("open", "open"));
+          usDetails.forEach(el => el.removeAttribute("open"));
+        } else {
+          brDetails.forEach(el => el.removeAttribute("open"));
+          usDetails.forEach(el => el.setAttribute("open", "open"));
+        }
+      } catch (e) { console.error(e); }
+    });
+  </script>
 </Layout>
