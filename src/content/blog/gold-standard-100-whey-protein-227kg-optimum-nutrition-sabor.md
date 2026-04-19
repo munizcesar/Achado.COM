@@ -16,11 +16,11 @@ Neste artigo, analisamos de forma factual e direta o porqu� deste suplemento s
 
 ## O Padr�o Ouro Mundial na Suplementa��o
 
-O mercado de suplementos � saturado de op��es que prometem milagres, mas frequentemente falham na entrega ou na transpar�ncia do r�tulo. A **Optimum Nutrition (ON)** construiu sua reputa��o com base na consist�ncia. Fabricado e testado sob as mais rigorosas normas de qualidade internacionais, o Gold Standard se tornou a refer�ncia de compara��o para todos os outros wheys do mercado. 
+O mercado de suplementos � saturado de op��es que prometem milagres, mas frequentemente falham na entrega ou na transpar�ncia do r�tulo. A **Optimum Nutrition (ON)** construiu sua reputa��o com base na consist�ncia. Fabricado e testado sob as mais rigorosas normas de qualidade internacionais, o Gold Standard se tornou a refer�ncia de compara��o para todos os outros wheys do mercado.
 
 ### Por Que Ele � T�o Diferente?
 
-O grande diferencial do Gold Standard n�o est� em ingredientes m�gicos, mas na pureza e na propor��o da sua f�rmula. A base principal deste produto � o **Whey Protein Isolado (WPI)** � a forma mais pura de prote�na do soro do leite existente. 
+O grande diferencial do Gold Standard n�o est� em ingredientes m�gicos, mas na pureza e na propor��o da sua f�rmula. A base principal deste produto � o **Whey Protein Isolado (WPI)** - a forma mais pura de prote�na do soro do leite existente.
 
 Ao contr�rio de marcas que utilizam o Whey Concentrado (WPC) como primeiro ingrediente para baratear custos, a Optimum Nutrition prioriza a prote�na isolada, garantindo:
 * Mais prote�na por dosagem;
@@ -38,9 +38,9 @@ Para quem leva os macronutrientes a s�rio, a tabela nutricional do Gold Standa
 
 ## Experi�ncia de Consumo: Double Rich Chocolate
 
-A consist�ncia de um suplemento dita se voc� vai conseguir mant�-lo na sua rotina ou se o pote vai ficar esquecido no arm�rio. O sabor **Double Rich Chocolate** � amplamente considerado o carro-chefe da marca. 
+A consist�ncia de um suplemento dita se voc� vai conseguir mant�-lo na sua rotina ou se o pote vai ficar esquecido no arm�rio. O sabor **Double Rich Chocolate** � amplamente considerado o carro-chefe da marca.
 
-Ao inv�s de um chocolate excessivamente doce e artificial (comum em marcas de entrada), o perfil de sabor da Optimum Nutrition � suave, lembrando um cacau aut�ntico. 
+Ao inv�s de um chocolate excessivamente doce e artificial (comum em marcas de entrada), o perfil de sabor da Optimum Nutrition � suave, lembrando um cacau aut�ntico.
 
 **Dissolu��o:** Gra�as � tecnologia de instantaneiza��o, ele dissolve perfeitamente usando apenas uma coqueteleira simples ou at� mesmo um copo com colher, sem deixar os indesejados "grumos". Funciona perfeitamente em �gua gelada, leite (integral ou vegetal) e at� incorporado em receitas como mingau de aveia e panquecas proteicas.
 
@@ -54,7 +54,7 @@ Para maximizar o investimento neste suplemento "Premium", o momento de consumo f
 
 ## Veredito: O Gold Standard Vale o Investimento?
 
-Investir na nutri��o do seu corpo nunca deve ser visto como um gasto sup�rfluo, mas sim como o combust�vel para os resultados do seu esfor�o f�sico. 
+Investir na nutri��o do seu corpo nunca deve ser visto como um gasto sup�rfluo, mas sim como o combust�vel para os resultados do seu esfor�o f�sico.
 
 O **Gold Standard 100% Whey Protein (2,27kg)** exige um investimento inicial maior quando comparado a marcas populares de entrada. Contudo, em termos de **custo-benef�cio**, a durabilidade do pote de 2,27 kg (aproximadamente 71 a 74 doses) aliada � garantia de que voc� est� ingerindo a matriz proteica mais premiada do planeta, justifica totalmente a escolha.
 
