@@ -1,5 +1,5 @@
 {
-  "total": 132,
+  "total": 135,
   "mes_atual": 3,
   "logs": [
     {
@@ -220,6 +220,11 @@
     {
       "data": "2026-04-19T00:32:52.504Z",
       "produto": "Kérastase Gloss Absolu Glaze Drops Óleo Capilar | ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-19T00:35:05.943Z",
+      "produto": "Máscara Kérastase Nutritive Masquintense Riche 200",
       "consultas": 3
     }
   ]
