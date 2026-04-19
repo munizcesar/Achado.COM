@@ -1,5 +1,5 @@
 {
-  "total": 138,
+  "total": 141,
   "mes_atual": 3,
   "logs": [
     {
@@ -230,6 +230,11 @@
     {
       "data": "2026-04-19T00:51:27.829Z",
       "produto": "Óleo Capilar Refil Com Nutrição, Brilho Intenso, A",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-19T01:06:30.443Z",
+      "produto": "Suplemento De Melatonina 20ml Vitafor Menta",
       "consultas": 3
     }
   ]
