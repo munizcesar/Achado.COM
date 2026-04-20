@@ -589,7 +589,9 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .sidebar-ad-wrap { margin-bottom: 16px; }
     .sidebar-ad-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--c-text-light); text-align: center; margin: 0 0 4px; }
     .post-content-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 300px); gap: clamp(24px, 3vw, 42px); align-items: start; }
-    .post-sidebar { position: sticky; top: 88px; }
+    .post-sidebar { position: sticky; top: 88px; max-height: calc(100vh - 100px); overflow-y: auto; overscroll-behavior: contain; }
+      .post-sidebar::-webkit-scrollbar { width: 4px; }
+      .post-sidebar::-webkit-scrollbar-thumb { background-color: var(--c-border); border-radius: 2px; }
     @media (max-width: 768px) { .post-content-grid { display: block !important; } .post-sidebar { display: none !important; } .prose { padding: 0 4px; } .share-bar { width: 100%; } }
     .post-content-grid, .prose, .post-sidebar { min-width: 0; box-sizing: border-box; }
     .prose { overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; color:var(--c-text); font-size:16px; line-height:1.75; }
