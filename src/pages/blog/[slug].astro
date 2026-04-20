@@ -183,7 +183,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
               </a>
 <button class="sicon sicon-copy" id="share-copy-hdr" aria-label="Copiar link">
-                <svg id="icon-copy-hdr" viewBox="0 0 24 0" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                <svg id="icon-copy-hdr" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
                 <svg id="icon-check-hdr" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><polyline points="20 6 9 17 4 12"/></svg>
               </button>
               <button class="sicon sicon-native" id="share-native-hdr" aria-label="Compartilhar">
@@ -467,6 +467,9 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
   <style>
     .amazon-us-disclosure {
       margin: 24px 0 0;
+      border-left: 3px solid transparent;
+      border-radius: var(--r-md);
+      transition: border-color .2s ease, box-shadow .2s ease;
     }
     .amazon-us-disclosure-sidebar {
       margin: 0 0 16px;
@@ -484,7 +487,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       color: var(--c-text);
       cursor: pointer;
       box-shadow: var(--shadow-sm);
-      transition: border-color .2s ease, box-shadow .2s ease, transform .15s ease;
+      transition: border-color .2s ease, box-shadow .2s ease, transform .15s ease, background .2s ease;
     }
     .amazon-us-summary::-webkit-details-marker { display: none; }
     .amazon-us-summary:hover {
@@ -509,6 +512,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       font-weight: 700;
       color: var(--c-text);
       line-height: 1.35;
+      transition: color .2s ease;
     }
     .amazon-us-summary-icon {
       display: inline-flex;
@@ -518,9 +522,18 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       color: var(--c-text-muted);
       transition: transform .2s ease, color .2s ease;
     }
+    .amazon-us-disclosure[open] {
+      border-left-color: var(--c-brand);
+      box-shadow: 0 10px 24px rgba(26,86,219,.08);
+    }
     .amazon-us-disclosure[open] .amazon-us-summary {
+      background: color-mix(in srgb, var(--c-brand) 7%, var(--c-surface));
+      border-color: color-mix(in srgb, var(--c-brand) 42%, var(--c-border));
       border-bottom-left-radius: var(--r-sm);
       border-bottom-right-radius: var(--r-sm);
+    }
+    .amazon-us-disclosure[open] .amazon-us-summary-title {
+      color: var(--c-brand);
     }
     .amazon-us-disclosure[open] .amazon-us-summary-icon {
       transform: rotate(180deg);
@@ -540,6 +553,17 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .amazon-br-summary-sidebar:hover {
       border-color: #15803d;
       box-shadow: 0 4px 18px rgba(21,128,61,.10);
+    }
+    .amazon-br-disclosure[open] {
+      border-left-color: #15803d;
+      box-shadow: 0 10px 24px rgba(21,128,61,.10);
+    }
+    .amazon-br-disclosure[open] .amazon-us-summary {
+      background: color-mix(in srgb, #15803d 7%, var(--c-surface));
+      border-color: color-mix(in srgb, #15803d 38%, var(--c-border));
+    }
+    .amazon-br-disclosure[open] .amazon-us-summary-title {
+      color: #15803d;
     }
     .amazon-br-disclosure[open] .amazon-us-summary-icon,
     .amazon-br-disclosure-sidebar[open] .amazon-us-summary-icon {
