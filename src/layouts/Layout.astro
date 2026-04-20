@@ -1,6 +1,5 @@
----
+V---
 import '../styles/global.css';
-import '../styles/geo.css';
 import Logo from '../components/Logo.astro';
 
 interface Props {
@@ -8,9 +7,6 @@ interface Props {
   description?: string;
   image?: string;
   schema?: object | object[];
-  isArticle?: boolean;
-  articleDate?: string;
-  articleAuthor?: string;
 }
 
 const {
@@ -18,9 +14,6 @@ const {
   description = 'Análises aprofundadas, comparativos e guias de compra para você fazer a melhor escolha sem perder tempo nem dinheiro.',
   image = '/images/og-previa.jpg',
   schema,
-  isArticle = false,
-  articleDate = '',
-  articleAuthor = 'Equipe AchadoCerto',
 } = Astro.props;
 
 const siteUrl = 'https://achadocerto.vip';
@@ -28,8 +21,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const currentPath = Astro.url.pathname;
 
 const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
-const ogWidth = '1200';
-const ogHeight = '630';
 
 const defaultSchema = {
   '@context': 'https://schema.org',
@@ -55,43 +46,29 @@ const schemaData = JSON.stringify(schemaArray);
   <link rel="canonical" href={canonicalURL} />
   <title>{title}</title>
   <meta name="description" content={description} />
-  {isArticle && articleAuthor && <meta name="author" content={articleAuthor} />}
-
-  <!-- Open Graph -->
-  <meta property="og:type" content={isArticle ? 'article' : 'website'} />
+  <meta property="og:type" content="website" />
   <meta property="og:site_name" content="AchadoCertoVIP" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={ogImage} />
-  <meta property="og:image:width" content={ogWidth} />
-  <meta property="og:image:height" content={ogHeight} />
-  <meta property="og:image:alt" content={title} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="1200" />
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:locale" content="pt_BR" />
-  {isArticle && articleDate && <meta property="article:published_time" content={articleDate} />}
-  {isArticle && articleAuthor && <meta property="article:author" content={articleAuthor} />}
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@achadocerto" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
-  <meta name="twitter:image:alt" content={title} />
-
   <!-- Favicons -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/icon-180x180.svg" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#E1306C" />
-
-  <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=optional" rel="stylesheet" />
-
-  <!-- Google Analytics -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-B170HB38GJ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -108,62 +85,12 @@ const schemaData = JSON.stringify(schemaArray);
       });
     });
   </script>
-
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8532820173012599"
     crossorigin="anonymous"></script>
-
   <script type="application/ld+json" set:html={schemaData}></script>
 </head>
 <body>
-
-  <!-- GEO SCRIPT: detecta país e ativa banners Amazon US para visitantes internacionais -->
-  <script is:inline>
-  (function () {
-    var CACHE_KEY = 'acv_geo';
-    var CACHE_TTL = 1000 * 60 * 60 * 24;
-
-    function applyGeo(country) {
-      var isIntl = country !== 'BR';
-      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ country: country, ts: Date.now() })); } catch(e) {}
-      if (!isIntl) return;
-      document.body.classList.add('geo-intl');
-    }
-
-    function run() {
-      try {
-        var raw = localStorage.getItem(CACHE_KEY);
-        if (raw) {
-          var cached = JSON.parse(raw);
-          if (Date.now() - cached.ts < CACHE_TTL) {
-            applyGeo(cached.country);
-            return;
-          }
-        }
-      } catch(e) {}
-
-      fetch('https://www.cloudflare.com/cdn-cgi/trace')
-        .then(function(r) { return r.text(); })
-        .then(function(txt) {
-          var m = txt.match(/loc=(\w+)/);
-          applyGeo(m ? m[1] : 'BR');
-        })
-        .catch(function() {
-          fetch('https://ipapi.co/country/')
-            .then(function(r) { return r.text(); })
-            .then(function(c) { applyGeo(c.trim() || 'BR'); })
-            .catch(function() {});
-        });
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', run);
-    } else {
-      run();
-    }
-  })();
-  </script>
-
   <div class="drawer-overlay" id="drawerOverlay" onclick="window.closeDrawer()"></div>
 
   <aside class="drawer" id="drawer" role="dialog" aria-label="Menu" aria-hidden="true">
@@ -175,40 +102,18 @@ const schemaData = JSON.stringify(schemaArray);
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
-
-    <div class="drawer-section drawer-section-pilares">
-      <p class="drawer-section-label drawer-section-label-pilares">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
-        Principais categorias
-      </p>
-      <nav class="drawer-links drawer-links-pilares">
-        <a href="/categorias/beleza" class="drawer-link drawer-link-pilar">
-          <span class="drawer-pilar-dot drawer-pilar-dot-beleza"></span>
-          Beleza &amp; Fragrâncias
-        </a>
-        <a href="/categorias/saude" class="drawer-link drawer-link-pilar">
-          <span class="drawer-pilar-dot drawer-pilar-dot-saude"></span>
-          Saúde &amp; Suplementos
-        </a>
-        <a href="/categorias/casa" class="drawer-link drawer-link-pilar">
-          <span class="drawer-pilar-dot drawer-pilar-dot-casa"></span>
-          Casa &amp; Bem-Estar
-        </a>
-      </nav>
-    </div>
-
-    <div class="drawer-divider"></div>
-
     <div class="drawer-section">
-      <p class="drawer-section-label">Outras categorias</p>
+      <p class="drawer-section-label">Categorias</p>
       <nav class="drawer-links">
         <a href="/categorias/tech" class="drawer-link">Tech &amp; Eletrônicos</a>
+        <a href="/categorias/saude" class="drawer-link">Saúde &amp; Bem-estar</a>
+        <a href="/categorias/casa" class="drawer-link">Casa</a>
+        <a href="/categorias/beleza" class="drawer-link">Beleza &amp; Cuidados</a>
         <a href="/categorias/esportes" class="drawer-link">Esportes</a>
         <a href="/categorias/automotivo" class="drawer-link">Automotivo</a>
         <a href="/categorias/dicas" class="drawer-link">Dicas</a>
       </nav>
     </div>
-
     <div class="drawer-section">
       <p class="drawer-section-label">Site</p>
       <nav class="drawer-links">
@@ -266,11 +171,11 @@ const schemaData = JSON.stringify(schemaArray);
           </button>
           <div class="subnav-inner" id="subnavInner">
             <a href="/" class={`subnav-link${currentPath === '/' ? ' active' : ''}`}>Início</a>
-            <span class="subnav-sep" aria-hidden="true"></span>
+            <!-- Pilares em destaque -->
             <a href="/categorias/beleza" class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/beleza') ? ' active' : ''}`}>Beleza</a>
             <a href="/categorias/saude" class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/saude') ? ' active' : ''}`}>Saúde</a>
             <a href="/categorias/casa" class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/casa') ? ' active' : ''}`}>Casa</a>
-            <span class="subnav-sep" aria-hidden="true"></span>
+            <!-- Categorias secundárias -->
             <a href="/categorias/tech" class={`subnav-link subnav-sec${currentPath.startsWith('/categorias/tech') ? ' active' : ''}`}>Tech</a>
             <a href="/categorias/esportes" class={`subnav-link subnav-sec${currentPath.startsWith('/categorias/esportes') ? ' active' : ''}`}>Esportes</a>
             <a href="/categorias/automotivo" class={`subnav-link subnav-sec${currentPath.startsWith('/categorias/automotivo') ? ' active' : ''}`}>Automotivo</a>
@@ -284,10 +189,7 @@ const schemaData = JSON.stringify(schemaArray);
     </nav>
   </header>
 
-  <main id="main-content">
-    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
-    <slot />
-  </main>
+  <main id="main-content"><slot /></main>
 
   <footer class="site-footer">
     <div class="container">
@@ -301,7 +203,7 @@ const schemaData = JSON.stringify(schemaArray);
             <a href="https://x.com/achadocertovip" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="social-btn social-x">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
-            <a href="https://whatsapp.com/channel/0029VbC8hocDJ6H0vLWZlm2w" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-btn social-whatsapp">
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-btn social-whatsapp">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
             </a>
             <a href="https://www.instagram.com/achadocertovip/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-btn social-instagram">
@@ -353,58 +255,42 @@ const schemaData = JSON.stringify(schemaArray);
   </footer>
 
   <style>
-    .skip-link {
-      position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
     }
-    .skip-link:focus {
-      position: fixed; top: 12px; left: 12px; width: auto; height: auto;
-      padding: 8px 16px; background: var(--c-brand); color: #fff;
-      font-weight: 700; font-size: 14px; border-radius: 6px; z-index: 9999; overflow: visible;
+    .social-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: var(--shadow-xs);
+      transition: transform .2s, opacity .2s, box-shadow .2s;
+      flex-shrink: 0;
     }
-    .drawer-section-pilares {
-      border: 1px solid var(--c-border); border-radius: var(--r-md);
-      margin: 8px 12px 0; padding: 14px 16px 16px; background: var(--c-bg);
-    }
-    .drawer-section-label-pilares {
-      display: flex !important; align-items: center; gap: 6px;
-      color: var(--c-brand) !important; font-weight: 800 !important;
-      font-size: .72rem !important; letter-spacing: .1em !important;
-    }
-    .drawer-links-pilares { gap: 4px !important; }
-    .drawer-link-pilar {
-      display: flex !important; align-items: center; gap: 10px;
-      font-weight: 700 !important; font-size: .97rem !important;
-      color: var(--c-text) !important; padding: 10px 12px !important;
-      border-radius: var(--r-sm) !important; background: var(--c-surface);
-      border: 1px solid var(--c-border) !important;
-      transition: background .18s, border-color .18s, color .18s !important;
-    }
-    .drawer-link-pilar:hover {
-      background: var(--c-brand-soft) !important;
-      border-color: var(--c-brand) !important; color: var(--c-brand) !important;
-    }
-    .drawer-pilar-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-    .drawer-pilar-dot-beleza { background: #be185d; }
-    .drawer-pilar-dot-saude  { background: #15803d; }
-    .drawer-pilar-dot-casa   { background: #1d4ed8; }
-    .drawer-divider { height: 1px; background: var(--c-border); margin: 0; }
-    .subnav-link.subnav-pilar { font-weight: 700; color: var(--c-text); }
-    .subnav-link.subnav-pilar:hover,
-    .subnav-link.subnav-pilar.active { color: var(--c-brand); border-bottom-color: var(--c-brand); }
-    .subnav-link.subnav-sec { font-weight: 500; color: var(--c-text-muted); font-size: .83rem; }
-    .subnav-link.subnav-sec:hover { color: var(--c-text-sub); }
-    .subnav-sep { display: inline-flex; align-self: center; width: 1px; height: 16px; background: var(--c-border-mid); margin: 0 2px; flex-shrink: 0; }
-    .footer-social { display: flex; align-items: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
-    .social-btn { width: 42px; height: 42px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #fff; border: 1px solid rgba(0,0,0,.08); box-shadow: var(--shadow-xs); transition: transform .2s, opacity .2s, box-shadow .2s; flex-shrink: 0; }
     .social-btn svg { width: 17px; height: 17px; }
-    .social-btn:hover { transform: translateY(-1px); opacity: .96; box-shadow: var(--shadow-sm); }
-    .social-x { background: #000; }
-    .social-whatsapp { background: #25D366; }
-    .social-instagram { background: radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%); }
-    .brand { display: inline-flex; align-items: center; }
+    .social-btn:hover {
+      transform: translateY(-1px);
+      opacity: .96;
+      box-shadow: var(--shadow-sm);
+    }
+    .social-x { background:#000; }
+    .social-whatsapp { background:#25D366; }
+    .social-instagram { background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%); }
+    .brand { display:inline-flex; align-items:center; }
     @media (max-width: 480px) {
       .footer-social { gap: 10px; }
-      .social-btn { width: 38px; height: 38px; }
+      .social-btn {
+        width: 38px;
+        height: 38px;
+      }
       .social-btn svg { width: 16px; height: 16px; }
     }
   </style>
@@ -435,18 +321,18 @@ const schemaData = JSON.stringify(schemaArray);
     };
     (function() {
       var inner = document.getElementById('subnavInner');
-      var left  = document.getElementById('subnavArrowLeft');
+      var left = document.getElementById('subnavArrowLeft');
       var right = document.getElementById('subnavArrowRight');
       if (!inner || !left || !right) return;
       function upd() {
         var s = inner.scrollLeft;
         var m = inner.scrollWidth - inner.clientWidth;
         if (m <= 0) { left.style.display='none'; right.style.display='none'; return; }
-        left.style.display  = s > 5     ? 'flex' : 'none';
+        left.style.display = s > 5 ? 'flex' : 'none';
         right.style.display = s < m - 5 ? 'flex' : 'none';
       }
-      left.addEventListener('click',  function() { inner.scrollBy({left:-200,behavior:'smooth'}); });
-      right.addEventListener('click', function() { inner.scrollBy({left: 200,behavior:'smooth'}); });
+      left.addEventListener('click', function() { inner.scrollBy({left:-200,behavior:'smooth'}); });
+      right.addEventListener('click', function() { inner.scrollBy({left:200,behavior:'smooth'}); });
       inner.addEventListener('scroll', upd);
       window.addEventListener('resize', upd);
       upd();
