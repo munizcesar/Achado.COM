@@ -54,12 +54,12 @@ const articleDate   = post.data.date?.toISOString() ?? '';
 const amazonUsUrl = post.data.affiliateUrlEn || `https://www.amazon.com/s?k=${encodeURIComponent(post.data.title)}&tag=achadocertovip-20`;
 
 function detectStore(url) {
-  if (!url) return 'melhor preço';
+  if (!url) return 'Loja parceira';
   const urlLower = url.toLowerCase();
   if (urlLower.includes('mercadolivre.com') || urlLower.includes('meli.la')) return 'Mercado Livre';
   if (urlLower.includes('amazon.com')) return 'Amazon';
   if (urlLower.includes('magalu.com') || urlLower.includes('magazineluiza')) return 'Magalu';
-  return 'melhor preço';
+  return 'Loja parceira';
 }
 const storeName = detectStore(post.data.affiliateUrl);
 
@@ -260,7 +260,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                     Ver no {storeName}
                   </a>
-                  <p style="font-size:11px;color:var(--c-text-light);text-align:center;margin-top:8px;">Link de afiliado — sem custo extra para você</p>
+                  <p style="font-size:11px;color:var(--c-text-light);text-align:center;margin-top:8px;">Link de afiliado &mdash; sem custo extra para você</p>
                 </div>
               </div>
             </details>
@@ -334,7 +334,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
                   </div>
                 )}
                 <div class="product-box-sidebar-body">
-                  <p class="product-box-sidebar-label">Melhor pre�o</p>
+                  <p class="product-box-sidebar-label">Oferta em Destaque</p>
                   <p class="product-box-sidebar-name">{post.data.title}</p>     
                   {price && <p class="product-box-sidebar-price">{price}</p>}   
                   <a
@@ -349,7 +349,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                     Ver no {storeName}
                   </a>
-                  <p class="product-box-sidebar-disclaimer">Link de afiliado � sem custo extra</p>
+                  <p class="product-box-sidebar-disclaimer">Link de afiliado &mdash; sem custo extra para você</p>
                 </div>
               </div>
             </details>
@@ -391,7 +391,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
               >
                 Shop on Amazon.com
               </a>
-              <p class="amazon-us-sidebar-disclaimer">Affiliate link � No extra cost to you</p>
+              <p class="amazon-us-sidebar-disclaimer">Affiliate link &middot; No extra cost to you</p>
             </div>
           </details>
 
