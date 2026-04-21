@@ -5,6 +5,7 @@ date: 2026-03-26
 category: dicas
 image: /images/posts/GanharMassaMuscular.webp
 tags: ["massa muscular", "hipertrofia", "treino", "proteína", "alimentação", "musculação", "dicas"]
+affiliateUrl: "https://www.mercadolivre.com.br/social/muc1576372"
 draft: false
 ---
 
@@ -79,7 +80,7 @@ Os carboidratos são fundamentais para manter o desempenho e acelerar a recupera
 ### Estratégia correta
 
 - Priorizar **carboidratos complexos** no dia a dia para energia sustentada
-- Utilizar **carboidratos rápidos** próximos ao treino para reposição rápida de glicogênio
+- Utilizar **carboidratos rápidos** próximos ao treino para reposição rápida de glicôgenio
 
 ### Carboidratos complexos
 
@@ -108,7 +109,7 @@ Segundo a *National Sleep Foundation*, esse é o intervalo ideal para recuperaç
 - **Redução de testosterona** — noites abaixo de 6h reduzem em até 15% os níveis do hormônio
 - **Piora na recuperação** — músculos não completam o processo de reparo
 - **Queda de desempenho** — menos força, concentração e resistência no treino seguinte
-- **Aumento do cortisol** — hormônio do estresse que favorece o catábolismo muscular
+- **Aumento do cortisol** — hormônio do estresse que favorece o catabolismo muscular
 
 ## 6. Hidratação: Desempenho e Recuperação
 
