@@ -98,11 +98,11 @@ Pontos de destaque:
 
 - Zero aditivos: creatina monohidratada pura
 - ~100 doses de 5g por embalagem
-- Custo por dose em torno de R$ 0,55 a R$ 0,70 — excelente no segmento
+- Custo por dose em torno de R$ 0,55 a R$ 0,70 — excelente no segmento
 
 **Para quem é:** quem prioriza pureza e confia em marcas nacionais, sem disposição de pagar pelo premium das certificações importadas.
 
-<a href="https://mercadolivre.com/sec/2KW8RB6" target="_blank" rel="noopener noreferrer sponsored" class="btn-cta-large" data-affiliate data-product="Creatina Soldiers Nutrition 500g" data-category="dicas">
+<a href="https://meli.la/2prdXzz" target="_blank" rel="noopener noreferrer sponsored" class="btn-cta-large" data-affiliate data-product="Creatina Soldiers Nutrition 500g" data-category="dicas">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
   Ver no Mercado Livre
 </a>
