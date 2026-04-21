@@ -1,5 +1,5 @@
 {
-  "total": 174,
+  "total": 177,
   "mes_atual": 3,
   "logs": [
     {
@@ -290,6 +290,11 @@
     {
       "data": "2026-04-21T20:36:27.184Z",
       "produto": "Lixeira Inteligente Sensor Automático 16l Cor Cinz",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-21T20:40:46.632Z",
+      "produto": "Gel De Limpeza Facial Peles Normais A Oleosas Com ",
       "consultas": 3
     }
   ]
