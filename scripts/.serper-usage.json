@@ -1,5 +1,5 @@
 {
-  "total": 165,
+  "total": 168,
   "mes_atual": 3,
   "logs": [
     {
@@ -275,6 +275,11 @@
     {
       "data": "2026-04-19T23:49:37.320Z",
       "produto": "Gold Standard 100% Whey Protein 2,27kg Optimum Nut",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-21T19:52:17.877Z",
+      "produto": "Lixeira Inteligente Sensor Automático 16l Cor Cinz",
       "consultas": 3
     }
   ]
