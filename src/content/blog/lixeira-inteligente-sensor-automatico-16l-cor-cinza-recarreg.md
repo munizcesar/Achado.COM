@@ -7,6 +7,7 @@ image: /images/posts/lixeira-inteligente-sensor-automatico-16l-cor-cinza-recarre
 tags: [casa, organizacao, limpeza]
 draft: false
 affiliateUrl: "https://meli.la/2iwxxhu"
+affiliateUrlEn: "https://www.amazon.com/s?k=16L+automatic+smart+trash+can&tag=achadocertovip-20"
 productImage: /images/posts/lixeira-inteligente-sensor-automatico-16l-cor-cinza-recarreg.webp
 ---
 
