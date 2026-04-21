@@ -1,5 +1,5 @@
 {
-  "total": 195,
+  "total": 198,
   "mes_atual": 3,
   "logs": [
     {
@@ -325,6 +325,11 @@
     {
       "data": "2026-04-21T21:19:08.181Z",
       "produto": "Muscletech Hydroxycut Hardcore Elite 60 Tabletes T",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-21T22:06:46.270Z",
+      "produto": "Pasta De Amendoim Com Whey Protein Bueníssimo 600g",
       "consultas": 3
     }
   ]
