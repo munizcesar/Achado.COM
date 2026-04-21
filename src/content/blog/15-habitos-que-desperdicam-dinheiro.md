@@ -7,6 +7,7 @@ category: dicas
 image: "/images/posts/15-habitos-que-desperdicam-dinheiro.webp"
 productImage: "/images/posts/15-habitos-que-desperdicam-dinheiro.webp"
 tags: ["dicas", "economia", "finanças pessoais", "compras inteligentes", "como economizar"]
+affiliateUrl: "https://www.mercadolivre.com.br/social/muc1576372"
 draft: false
 ---
 
