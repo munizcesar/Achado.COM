@@ -41,7 +41,7 @@ O preço da embalagem menor parece mais barato, mas o custo por ml ou por kg qua
 
 ## 5. Deixar dinheiro parado em conta corrente
 
-Dinheiro na conta corrente perde valor para a inflação todos os dias. Com a Selic alta, mesmo R$ 500 parados por um mês em um CDB de liquidez diária já rendem algo.
+Dinheiro na conta corrente perde valor para a inflação todos os dias. Mesmo com qualquer cenário de juros, R$ 500 parados por um mês em um CDB de liquidez diária já rendem algo — e isso é melhor do que zero.
 
 **O que fazer:** Qualquer valor que ficará parado por mais de 7 dias deve ir para um CDB de liquidez diária ou conta remunerada (Nubank, Inter, PicPay).
 
@@ -71,13 +71,13 @@ A vida útil de um smartphone moderno é de 4 a 6 anos. Trocar a cada 2 anos por
 
 ## 10. Pagar tarifa bancária desnecessária
 
-Em 2026, não existe motivo para pagar tarifa de manutenção de conta. Os principais bancos digitais oferecem conta gratuita com TED, Pix, cartão e investimentos sem custo.
+Hoje não existe motivo para pagar tarifa de manutenção de conta. Os principais bancos digitais oferecem conta gratuita com TED, Pix, cartão e investimentos sem custo.
 
 **O que fazer:** Se você ainda paga tarifa mensal ao banco, migre para Nubank, Inter, C6 Bank ou similar. São gratuitos e têm os mesmos serviços.
 
 ## 11. Descartar sobras de comida sem aproveitar
 
-O desperdício de alimentos custa em média R$ 140 por mês para uma família brasileira, segundo dados do IBGE. Sobras de arroz, legumes e carnes têm dezenas de reaproveitamentos simples.
+O desperdício de alimentos é um dos maiores viloes ocultos do orçamento familiar. Sobras de arroz, legumes e carnes têm dezenas de reaproveitamentos simples que a maioria das pessoas simplesmente ignora.
 
 **O que fazer:** Reserve um dia da semana (geralmente sexta ou sábado) para cozinhar apenas com o que sobrou na geladeira antes de fazer nova compra.
 
