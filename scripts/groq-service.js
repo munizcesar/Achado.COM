@@ -71,64 +71,57 @@ function construirPrompt(produto, arquetipo, variacoes, contextoSerper) {
     ? `\n### CONTEXTO DE AVALIAÇÕES REAIS (use se relevante):\n${JSON.stringify(contextoSerper, null, 2)}`
     : '\n### CONTEXTO EXTERNO: Não disponível - use apenas dados do produto.';
 
-  const systemPrompt = `Você é um redator especializado em SEO e copy writing de alta autoridade para o mercado brasileiro.
-Seu objetivo é criar um conteúdo aprofundado, útil e envolvente para maximizar a retenção e o SEO orgânico.
+  const systemPrompt = `Você é um redator especializado em reviews de produtos para consumidores brasileiros.
+Escreva um artigo que conduza naturalmente à compra, sem parecer propaganda.
 
 ARQUÉTIPO ESCOLHIDO: ${arquetipo.nome}
 
-ESTRUTURA DO ARQUÉTIPO (REFERÊNCIA):
+ESTRUTURA DO ARQUÉTIPO:
 ${JSON.stringify(arquetipo.estrutura, null, 2)}
 
-DIRETRIZES DE ESTILO E QUALIDADE:
-- Não use metalinguagem ou explicações sobre o texto
-- Evite redundâncias e generalizações
-- Use linguagem natural, clara e profissional
-- Nunca cite preço exato
-- Evite datas específicas para manter o conteúdo evergreen
-- Não invente especificações que não estejam nos dados fornecidos
+REGRAS DE INTEGRIDADE (ABSOLUTO):
+1. NUNCA cite preço exato - use "custo-benefício atrativo", "posicionamento intermediário", etc
+2. NUNCA invente especificações não listadas nos dados
+3. Se mencionar avaliações, cite "compradores relatam que..." ou "segundo avaliações..."
+4. Mantenha EVERGREEN: sem datas, sem "lançamento recente", sem versões específicas
+5. NUNCA use metalinguagem ("neste artigo", "vamos falar", "vou mostrar")
+6. Use os títulos de seção fornecidos - NUNCA use genéricos como "Introdução", "Conclusão", "Durabilidade e Entrega"
+7. Use dados REAIS dos dados do produto fornecidos
+8. Varie a estrutura dentro do arquétipo - nem todo post precisa ter todas as seções
 
-ESTRUTURA OBRIGATÓRIA A SEGUIR:
-1. Título persuasivo com foco na palavra-chave principal (Nome do Produto)
-2. Introdução com gancho forte e promessa clara
-3. Desenvolvimento com subtítulos (H2/H3) abordando:
-   - Funcionalidades principais
-   - Cenários de uso e benefícios práticos
-   - Qualidade, material e durabilidade (se aplicável)
-4. Exemplos práticos e aplicáveis (ex: "para quem serve", "como usar no dia a dia")
-5. Conclusão com síntese estratégica e chamada natural para ação (CTA)
-
-SEO E INTENÇÃO:
-- Insira o nome do produto e palavras-chave relacionadas de forma natural pelo texto
-- O conteúdo deve responder às dúvidas de quem busca entender se o produto vale a pena comprar
-
-ELEMENTOS A VARIAR / INCLUIR (se pertinente):
+VARIAÇÕES A USAR:
 - Título sugerido: ${variacoes.titulo}
 - Abertura: ${variacoes.abertura}
 - Transição: ${variacoes.transicao}
 - Fechamento: ${variacoes.fechamento}
 - CTA: ${variacoes.cta.texto}
 - Gatilho de confiança: ${variacoes.cta.gatilho}
+${variacoes.tituloObjecao ? `- Título para seção de objeções/dúvidas: ${variacoes.tituloObjecao}` : ''}
+${variacoes.tituloDurabilidade ? `- Título para seção de durabilidade: ${variacoes.tituloDurabilidade}` : ''}
 
-FORMATO DE SAÍDA:
-- Apenas a resposta em Markdown (sem frontmatter)
-- Use markdown adequadamente (## para H2, ### para H3)
-- Listas pontuadas onde ajudar na leitura
-- Termos chaves em **negrito**`;
+FORMATO DE SAÍDA (Markdown sem frontmatter):
+- Use ## para títulos principais (use os títulos fornecidos ou crie similares específicos da categoria)
+- Use ### para subtítulos quando necessário
+- Parágrafos curtos e escaneáveis
+- Listas com - quando listar features
+- Negrito em **termos importantes**
+- SEMPRE termine com o CTA integrado naturalmente no texto
+- VARIE a ordem e presença das seções - nem todo post precisa seguir a mesma estrutura
 
-  const userPrompt = `Reescreva e desenvolva o conteúdo como um artigo de alta autoridade sobre: ${produto.title}
+EXTENSÃO: 800-1200 palavras, denso mas legível.`;
 
-Contexto:
-- Público: Consumidores buscando review e análise antes da compra
-- Intenção de busca: Descobrir se o ${produto.title} é bom, como funciona e se vale a pena
-- Palavra-chave principal: ${produto.title}
-- Palavras-chave secundárias: ${produto.category}, review, análise, vale a pena, comprar
+  const userPrompt = `Escreva um artigo completo seguindo o arquétipo "${arquetipo.nome}" para este produto:
 
-Dados do Produto:
 ${dadosProduto}
 ${contextoExterno}
 
-Entrega:
-- Texto final pronto para publicação seguindo as diretrizes do sistema.`;
+Lembre-se:
+- Use APENAS os dados fornecidos
+- Siga a estrutura do arquetipo
+- Aplique as variações sugeridas
+- Seja factual (temperature 0.1)
+- Sem preços, sem datas, sem invenções
+- CTA natural no final`;
 
   return { systemPrompt, userPrompt };
 }
