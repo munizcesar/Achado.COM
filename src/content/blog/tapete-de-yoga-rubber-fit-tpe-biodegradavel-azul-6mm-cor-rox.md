@@ -2,9 +2,9 @@
 title: "O Tapete de Yoga Definitivo: Por Que o TPE de 6mm Mudou o Padrão da Prática"
 description: "Entenda por que a escolha do material e da espessura do tapete de yoga determina não apenas o seu conforto, mas a segurança e evolução da sua prática."
 date: 2026-04-21
-category: esporte
+category: saude
 image: /images/posts/tapete-de-yoga-rubber-fit-tpe-biodegradavel-azul-6mm-cor-rox.webp
-tags: ["esporte", "yoga", "bem-estar", "tapete tpe", "pilates", "antiderrapante"]
+tags: ["saude", "yoga", "bem-estar", "tapete tpe", "pilates", "antiderrapante"]
 draft: false
 affiliateUrl: "https://meli.la/2WgHNP6"
 productImage: /images/posts/tapete-de-yoga-rubber-fit-tpe-biodegradavel-azul-6mm-cor-rox.webp
