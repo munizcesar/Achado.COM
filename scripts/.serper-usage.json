@@ -1,5 +1,5 @@
 {
-  "total": 171,
+  "total": 174,
   "mes_atual": 3,
   "logs": [
     {
@@ -285,6 +285,11 @@
     {
       "data": "2026-04-21T20:12:22.944Z",
       "produto": "Massageador Escova De Limpeza Facial Clean Relaxme",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-21T20:36:27.184Z",
+      "produto": "Lixeira Inteligente Sensor Automático 16l Cor Cinz",
       "consultas": 3
     }
   ]
