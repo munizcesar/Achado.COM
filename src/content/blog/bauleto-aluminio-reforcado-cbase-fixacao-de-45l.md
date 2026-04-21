@@ -7,6 +7,7 @@ image: /images/posts/bauleto-aluminio-reforcado-cbase-fixacao-de-45l.webp
 tags: ["automotivo", "moto", "bauleto", "acessorios para moto", "viagem"]
 draft: false
 affiliateUrl: "https://meli.la/2JAFreZ"
+affiliateUrlEn: "https://www.amazon.com/s?k=motorcycle+trunk&tag=achadocertovip-20"
 productImage: /images/posts/bauleto-aluminio-reforcado-cbase-fixacao-de-45l.webp
 ---
 
