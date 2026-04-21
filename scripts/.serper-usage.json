@@ -1,5 +1,5 @@
 {
-  "total": 180,
+  "total": 183,
   "mes_atual": 3,
   "logs": [
     {
@@ -299,6 +299,11 @@
     },
     {
       "data": "2026-04-21T20:44:28.963Z",
+      "produto": "Gel De Limpeza Facial Peles Normais A Oleosas Com ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-21T20:46:22.640Z",
       "produto": "Gel De Limpeza Facial Peles Normais A Oleosas Com ",
       "consultas": 3
     }
