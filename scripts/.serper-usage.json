@@ -1,5 +1,5 @@
 {
-  "total": 198,
+  "total": 201,
   "mes_atual": 3,
   "logs": [
     {
@@ -330,6 +330,11 @@
     {
       "data": "2026-04-21T22:06:46.270Z",
       "produto": "Pasta De Amendoim Com Whey Protein Bueníssimo 600g",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-21T22:19:34.002Z",
+      "produto": "Fone De Ouvido Bluetooth 5.4 Soundcore P30i Da Ank",
       "consultas": 3
     }
   ]
