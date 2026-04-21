@@ -1,4 +1,4 @@
-V---
+---
 import '../styles/global.css';
 import Logo from '../components/Logo.astro';
 
@@ -102,18 +102,43 @@ const schemaData = JSON.stringify(schemaArray);
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
+
+    <!-- PILARES em destaque -->
+    <div class="drawer-section drawer-section-pilares">
+      <p class="drawer-section-label drawer-section-label-pilares">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+        Principais categorias
+      </p>
+      <nav class="drawer-links drawer-links-pilares">
+        <a href="/categorias/beleza" class="drawer-link drawer-link-pilar">
+          <span class="drawer-pilar-dot drawer-pilar-dot-beleza"></span>
+          Beleza &amp; Fragrâncias
+        </a>
+        <a href="/categorias/saude" class="drawer-link drawer-link-pilar">
+          <span class="drawer-pilar-dot drawer-pilar-dot-saude"></span>
+          Saúde &amp; Suplementos
+        </a>
+        <a href="/categorias/casa" class="drawer-link drawer-link-pilar">
+          <span class="drawer-pilar-dot drawer-pilar-dot-casa"></span>
+          Casa &amp; Bem-Estar
+        </a>
+      </nav>
+    </div>
+
+    <!-- Separador visual -->
+    <div class="drawer-divider"></div>
+
+    <!-- Categorias secundárias -->
     <div class="drawer-section">
-      <p class="drawer-section-label">Categorias</p>
+      <p class="drawer-section-label">Outras categorias</p>
       <nav class="drawer-links">
         <a href="/categorias/tech" class="drawer-link">Tech &amp; Eletrônicos</a>
-        <a href="/categorias/saude" class="drawer-link">Saúde &amp; Bem-estar</a>
-        <a href="/categorias/casa" class="drawer-link">Casa</a>
-        <a href="/categorias/beleza" class="drawer-link">Beleza &amp; Cuidados</a>
         <a href="/categorias/esportes" class="drawer-link">Esportes</a>
         <a href="/categorias/automotivo" class="drawer-link">Automotivo</a>
         <a href="/categorias/dicas" class="drawer-link">Dicas</a>
       </nav>
     </div>
+
     <div class="drawer-section">
       <p class="drawer-section-label">Site</p>
       <nav class="drawer-links">
@@ -171,10 +196,14 @@ const schemaData = JSON.stringify(schemaArray);
           </button>
           <div class="subnav-inner" id="subnavInner">
             <a href="/" class={`subnav-link${currentPath === '/' ? ' active' : ''}`}>Início</a>
+            <!-- Separador visual antes dos pilares -->
+            <span class="subnav-sep" aria-hidden="true"></span>
             <!-- Pilares em destaque -->
             <a href="/categorias/beleza" class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/beleza') ? ' active' : ''}`}>Beleza</a>
             <a href="/categorias/saude" class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/saude') ? ' active' : ''}`}>Saúde</a>
             <a href="/categorias/casa" class={`subnav-link subnav-pilar${currentPath.startsWith('/categorias/casa') ? ' active' : ''}`}>Casa</a>
+            <!-- Separador visual depois dos pilares -->
+            <span class="subnav-sep" aria-hidden="true"></span>
             <!-- Categorias secundárias -->
             <a href="/categorias/tech" class={`subnav-link subnav-sec${currentPath.startsWith('/categorias/tech') ? ' active' : ''}`}>Tech</a>
             <a href="/categorias/esportes" class={`subnav-link subnav-sec${currentPath.startsWith('/categorias/esportes') ? ' active' : ''}`}>Esportes</a>
@@ -255,6 +284,89 @@ const schemaData = JSON.stringify(schemaArray);
   </footer>
 
   <style>
+    /* ===== DRAWER PILARES ===== */
+    .drawer-section-pilares {
+      background: linear-gradient(135deg, rgba(225,48,108,.06) 0%, rgba(225,48,108,.02) 100%);
+      border-radius: 12px;
+      margin: 0 -4px;
+      padding: 4px;
+    }
+    .drawer-section-label-pilares {
+      display: flex !important;
+      align-items: center;
+      gap: 6px;
+      color: var(--c-brand, #E1306C) !important;
+      font-weight: 800 !important;
+      font-size: .72rem !important;
+      letter-spacing: .1em !important;
+    }
+    .drawer-links-pilares {
+      gap: 4px !important;
+    }
+    .drawer-link-pilar {
+      display: flex !important;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700 !important;
+      font-size: .97rem !important;
+      color: var(--c-text, #1a202c) !important;
+      padding: 11px 14px !important;
+      border-radius: 10px !important;
+      background: rgba(255,255,255,.7);
+      border: 1.5px solid transparent !important;
+      transition: background .18s, border-color .18s, color .18s !important;
+    }
+    .drawer-link-pilar:hover {
+      background: #fff !important;
+      border-color: var(--c-brand, #E1306C) !important;
+      color: var(--c-brand, #E1306C) !important;
+    }
+    .drawer-pilar-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .drawer-pilar-dot-beleza { background: #be185d; }
+    .drawer-pilar-dot-saude  { background: #15803d; }
+    .drawer-pilar-dot-casa   { background: #1d4ed8; }
+
+    /* Separador entre pilares e categorias secundárias */
+    .drawer-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--c-border, #e2e8f0) 20%, var(--c-border, #e2e8f0) 80%, transparent);
+      margin: 8px 0;
+    }
+
+    /* ===== SUBNAV PILARES ===== */
+    .subnav-link.subnav-pilar {
+      font-weight: 700;
+      color: var(--c-text, #1a202c);
+      letter-spacing: .01em;
+    }
+    .subnav-link.subnav-pilar:hover,
+    .subnav-link.subnav-pilar.active {
+      color: var(--c-brand, #E1306C);
+      background: rgba(225,48,108,.08);
+    }
+    .subnav-link.subnav-sec {
+      font-weight: 500;
+      color: var(--c-text-sub, #4a5568);
+      font-size: .83rem;
+    }
+
+    /* Separador vertical no subnav */
+    .subnav-sep {
+      display: inline-block;
+      width: 1px;
+      height: 18px;
+      background: var(--c-border, #e2e8f0);
+      margin: 0 4px;
+      align-self: center;
+      flex-shrink: 0;
+    }
+
+    /* ===== FOOTER SOCIAL ===== */
     .footer-social {
       display: flex;
       align-items: center;
@@ -287,10 +399,7 @@ const schemaData = JSON.stringify(schemaArray);
     .brand { display:inline-flex; align-items:center; }
     @media (max-width: 480px) {
       .footer-social { gap: 10px; }
-      .social-btn {
-        width: 38px;
-        height: 38px;
-      }
+      .social-btn { width: 38px; height: 38px; }
       .social-btn svg { width: 16px; height: 16px; }
     }
   </style>
