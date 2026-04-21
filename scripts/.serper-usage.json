@@ -1,5 +1,5 @@
 {
-  "total": 186,
+  "total": 189,
   "mes_atual": 3,
   "logs": [
     {
@@ -310,6 +310,11 @@
     {
       "data": "2026-04-21T20:50:18.217Z",
       "produto": "Tapete De Yoga Rubber Fit Tpe Biodegradável Azul 6",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-21T21:04:05.302Z",
+      "produto": "Bota De Compressão Pneumática F10 Pro Sem Fio Rela",
       "consultas": 3
     }
   ]
