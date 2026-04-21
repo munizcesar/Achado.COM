@@ -1,5 +1,5 @@
 {
-  "total": 189,
+  "total": 192,
   "mes_atual": 3,
   "logs": [
     {
@@ -315,6 +315,11 @@
     {
       "data": "2026-04-21T21:04:05.302Z",
       "produto": "Bota De Compressão Pneumática F10 Pro Sem Fio Rela",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-21T21:15:08.214Z",
+      "produto": "Whey Protein Dymatize Elite Rich Chocolate 2,3kg R",
       "consultas": 3
     }
   ]
