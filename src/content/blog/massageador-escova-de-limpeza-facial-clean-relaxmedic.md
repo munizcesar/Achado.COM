@@ -7,7 +7,7 @@ image: /images/posts/massageador-escova-de-limpeza-facial-clean-relaxmedic.webp
 tags: [beleza, skincare, autocuidado]
 draft: false
 affiliateUrl: "https://meli.la/14LUoM5"
-affiliateUrlEn: "https://www.amazon.com/s?k=electric+silicone+facial+cleansing+brush&tag=achadocertovip-20"
+affiliateUrlEn: "https://www.amazon.com/s?k=relaxmedic+clean+silicone+facial+cleansing+brush+electric"
 productImage: /images/posts/massageador-escova-de-limpeza-facial-clean-relaxmedic.webp
 ---
 

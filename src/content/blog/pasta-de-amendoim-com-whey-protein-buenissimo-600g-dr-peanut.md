@@ -7,7 +7,7 @@ image: /images/posts/pasta-de-amendoim-com-whey-protein-buenissimo-600g-dr-peanu
 tags: ["saude", "whey-protein", "suplementacao", "proteina", "pasta de amendoim"]
 draft: false
 affiliateUrl: "https://meli.la/2zSRkLq"
-affiliateUrlEn: "https://www.amazon.com/s?k=peanut+butter+whey+protein&tag=achadocertovip-20"
+affiliateUrlEn: "https://www.amazon.com/s?k=dr+peanut+buenissimo+peanut+butter+whey+protein"
 productImage: /images/posts/pasta-de-amendoim-com-whey-protein-buenissimo-600g-dr-peanut.webp
 ---
 
