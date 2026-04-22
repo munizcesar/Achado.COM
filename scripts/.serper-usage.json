@@ -1,5 +1,5 @@
 {
-  "total": 207,
+  "total": 210,
   "mes_atual": 3,
   "logs": [
     {
@@ -345,6 +345,11 @@
     {
       "data": "2026-04-22T00:33:07.271Z",
       "produto": "Geladeira Side By Side 511l Inverter Cor Inox Cone",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-22T00:47:26.871Z",
+      "produto": "Perfume Carolina Herrera 212 Vip Black Eau De Parf",
       "consultas": 3
     }
   ]
