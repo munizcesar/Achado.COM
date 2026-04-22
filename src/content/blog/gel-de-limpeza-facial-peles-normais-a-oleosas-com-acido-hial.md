@@ -7,6 +7,7 @@ image: /images/posts/gel-de-limpeza-facial-peles-normais-a-oleosas-com-acido-hia
 tags: ["beleza", "skincare", "cuidados com a pele", "pele oleosa", "acido hialuronico"]
 draft: false
 affiliateUrl: "https://meli.la/1gdeFR5"
+affiliateUrlEn: "https://www.amazon.com/s?k=hyaluronic+acid+facial+cleanser+gel+oily+skin"
 productImage: /images/posts/gel-de-limpeza-facial-peles-normais-a-oleosas-com-acido-hial.webp
 ---
 
