@@ -7,7 +7,7 @@ image: /images/posts/geladeira-side-by-side-511l-inverter-cor-inox-conectada-mid
 tags: [casa, geladeira, side-by-side, eficiência-energética, conectada]
 draft: false
 affiliateUrl: "https://meli.la/25xu35b"
-affiliateUrlEn: "https://www.amazon.com/s?k=side+by+side+refrigerator+inverter+energy+efficient"
+affiliateUrlEn: "https://www.amazon.com/s?k=Samsung+side+by+side+refrigerator+inverter+compressor+500L"
 productImage: /images/posts/geladeira-side-by-side-511l-inverter-cor-inox-conectada-mide.webp
 ---
 
