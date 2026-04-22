@@ -1,5 +1,5 @@
 {
-  "total": 210,
+  "total": 213,
   "mes_atual": 3,
   "logs": [
     {
@@ -350,6 +350,11 @@
     {
       "data": "2026-04-22T00:47:26.871Z",
       "produto": "Perfume Carolina Herrera 212 Vip Black Eau De Parf",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-22T00:51:14.599Z",
+      "produto": "Body Spray Carolina Herrera 212 Vip Rosé Feminino ",
       "consultas": 3
     }
   ]
