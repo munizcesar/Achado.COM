@@ -1,5 +1,5 @@
 {
-  "total": 213,
+  "total": 216,
   "mes_atual": 3,
   "logs": [
     {
@@ -355,6 +355,11 @@
     {
       "data": "2026-04-22T00:51:14.599Z",
       "produto": "Body Spray Carolina Herrera 212 Vip Rosé Feminino ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-22T00:56:17.403Z",
+      "produto": "Perfume Carolina Herrera 212 Men Nyc Eau De Toilet",
       "consultas": 3
     }
   ]
