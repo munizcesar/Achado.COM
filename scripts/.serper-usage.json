@@ -1,5 +1,5 @@
 {
-  "total": 204,
+  "total": 207,
   "mes_atual": 3,
   "logs": [
     {
@@ -340,6 +340,11 @@
     {
       "data": "2026-04-21T22:22:07.953Z",
       "produto": "Bauleto Aluminio Reforçado C/base Fixação De 45l",
+      "consultas": 3
+    },
+    {
+      "data": "2026-04-22T00:33:07.271Z",
+      "produto": "Geladeira Side By Side 511l Inverter Cor Inox Cone",
       "consultas": 3
     }
   ]
