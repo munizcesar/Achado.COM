@@ -4,22 +4,22 @@
  *
  * 3 PILARES DE IDENTIDADE: beleza · saúde · casa
  *
- * Regra do dia:
+ * Fluxo de seleção de produto:
+ *   1. Trend Scout busca bestsellers Amazon BR para o pilar (cache 6h)
+ *   2. Produtos trending têm PRIORIDADE (não exclusividade)
+ *   3. Catálogo fixo é sempre o fallback — nunca fica sem produto
+ *   4. Content Guard valida antes de disparar o novo-post.js
+ *
+ * Horários BRT:
  *   08:00 → pilar A do dia
  *   12:00 → pilar B do dia
  *   18:00 → pilar C do dia
- *   (rotação cíclica diária para nunca repetir a mesma ordem)
- *
- * Protocolo de segurança: content-guard.js roda ANTES do novo-post.js
- *   e blinda as env vars injetadas sem tocar em nenhum código do site.
- *
- * Mercado Livre: manual.
  *
  * Uso:
- *   node scripts/agent/agent.js           ← daemon (08:00|12:00|18:00 BRT)
- *   node scripts/agent/agent.js --now     ← post imediato (usa próximo pilar)
- *   node scripts/agent/agent.js --now beleza|saude|casa  ← força pilar
- *   node scripts/agent/agent.js --status  ← histórico + rotação do dia
+ *   node scripts/agent/agent.js            ← daemon
+ *   node scripts/agent/agent.js --now      ← post imediato
+ *   node scripts/agent/agent.js --now beleza|saude|casa
+ *   node scripts/agent/agent.js --status   ← histórico + trending cache
  */
 
 import { execSync } from 'child_process';
@@ -27,20 +27,21 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { config } from 'dotenv';
-import { runContentGuard } from './content-guard.js';
+import { runContentGuard }  from './content-guard.js';
+import { fetchTrendingProducts, mergeTrendingWithCatalog, getTrendingStatus } from './trend-scout.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
 
 config({ path: path.join(__dirname, '..', '..', 'backend', '.env') });
 
-// ── Configuração ──────────────────────────────────────────────────────────────
+// ── Configuração ─────────────────────────────────────────────────────────────
 
-const AMAZON_TAG   = process.env.AMAZON_AFFILIATE_TAG || 'altivita-20';
-const HISTORY_FILE = path.join(__dirname, 'history.json');
-const LOG_FILE     = path.join(__dirname, 'agent.log');
-const HISTORY_DAYS = 60;
-const MAX_GUARD_RETRIES = 3; // tentativas antes de pular o produto
+const AMAZON_TAG      = process.env.AMAZON_AFFILIATE_TAG || 'altivita-20';
+const HISTORY_FILE    = path.join(__dirname, 'history.json');
+const LOG_FILE        = path.join(__dirname, 'agent.log');
+const HISTORY_DAYS    = 60;
+const MAX_GUARD_RETRIES = 3;
 
 const PILLARS = ['beleza', 'saude', 'casa'];
 
@@ -50,7 +51,7 @@ const SCHEDULES = [
   { hour: 18, minute: 0 },
 ];
 
-// ── Catálogo Amazon BR — apenas os 3 pilares ─────────────────────────────────
+// ── Catálogo fixo Amazon BR ──────────────────────────────────────────────────────
 
 const AMAZON_CATALOG = [
   // BELEZA
@@ -126,11 +127,12 @@ function wasRecentlyPosted(asin, history) {
   return history.some(h => h.asin === asin && new Date(h.postedAt).getTime() > cutoff);
 }
 
-function recordPost(asin, name, url, category, guardResult, history) {
+function recordPost(asin, name, url, category, guardResult, isTrending, history) {
   history.push({
     asin, name, url, category,
-    postedAt: new Date().toISOString(),
+    postedAt:      new Date().toISOString(),
     guardWarnings: guardResult.warnings.length,
+    trending:      !!isTrending,
   });
   if (history.length > 300) history.splice(0, history.length - 300);
   saveHistory(history);
@@ -139,46 +141,30 @@ function recordPost(asin, name, url, category, guardResult, history) {
 // ── Rotação de pilares ────────────────────────────────────────────────────────
 
 function getPillarForSlot(slotIndex) {
-  const brt      = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
-  const start    = new Date(brt.getFullYear(), 0, 0);
+  const brt       = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
+  const start     = new Date(brt.getFullYear(), 0, 0);
   const dayOfYear = Math.floor((brt - start) / 86400000);
-  const offset   = dayOfYear % PILLARS.length;
+  const offset    = dayOfYear % PILLARS.length;
   return PILLARS[(slotIndex + offset) % PILLARS.length];
 }
 
-// ── Seleção de produto ────────────────────────────────────────────────────────
+// ── Seleção de produto (com prioridade trending) ───────────────────────────────
 
-function pickProduct(pillar, history, exclude = []) {
-  const pool = AMAZON_CATALOG
-    .filter(p => p.category === pillar)
-    .filter(p => !wasRecentlyPosted(p.asin, history))
-    .filter(p => !exclude.includes(p.asin));
-
-  if (pool.length === 0) {
-    if (exclude.length > 0) {
-      // Tentou retries, reseta histórico do pilar
-      log(`⚠️  Reset parcial do histórico de "${pillar}"`);
-      const half = Math.ceil(history.filter(h => h.category === pillar).length / 2);
-      let removed = 0;
-      for (let i = 0; i < history.length && removed < half; i++) {
-        if (history[i].category === pillar) { history.splice(i, 1); removed++; i--; }
-      }
-      saveHistory(history);
-    }
-    return AMAZON_CATALOG
-      .filter(p => p.category === pillar)
-      .filter(p => !exclude.includes(p.asin))
-      [0] || AMAZON_CATALOG.find(p => p.category === pillar);
-  }
-
-  return pool[Math.floor(Math.random() * pool.length)];
+function pickFromPool(pool, exclude = []) {
+  const available = pool.filter(p => !exclude.includes(p.asin));
+  if (available.length === 0) return null;
+  // Pega o primeiro: pool já está ordenado por prioridade (trending > catálogo)
+  // Mas adiciona leve aleatoriedade nos primeiros 3 para variedade
+  const topN   = Math.min(3, available.length);
+  const chosen = available[Math.floor(Math.random() * topN)];
+  return chosen;
 }
 
 function buildAmazonUrl(asin, tag) {
   return `https://www.amazon.com.br/dp/${asin}?tag=${tag}`;
 }
 
-// ── Executa o novo-post.js (com env vars do guard injetadas) ────────────────────
+// ── Executa novo-post.js ─────────────────────────────────────────────────────────────
 
 function runPost(affiliateUrl, guardEnvVars) {
   const projectRoot = path.join(__dirname, '..', '..');
@@ -187,10 +173,10 @@ function runPost(affiliateUrl, guardEnvVars) {
     execSync(
       `node scripts/novo-post.js "${affiliateUrl}"`,
       {
-        cwd: projectRoot,
-        stdio: 'inherit',
+        cwd:     projectRoot,
+        stdio:   'inherit',
         timeout: 5 * 60 * 1000,
-        env: { ...process.env, ...guardEnvVars },
+        env:     { ...process.env, ...guardEnvVars },
       }
     );
     log('✅ Post criado com sucesso!');
@@ -205,15 +191,45 @@ function runPost(affiliateUrl, guardEnvVars) {
 
 async function runJob(forcePillar = null, slotIndex = 0) {
   log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  log('🤖 Agente + Content Guard — AchadoCerto.VIP');
+  log('🤖 Agente + Trend Scout + Content Guard — AchadoCerto.VIP');
 
   const pillar  = forcePillar || getPillarForSlot(slotIndex);
   const history = loadHistory();
   const excluded = [];
 
+  // ── 1. TREND SCOUT: busca produtos em alta (não bloqueante) ──
+  log(`📈 Trend Scout: buscando bestsellers de "${pillar}"...`);
+  const trending = await fetchTrendingProducts(pillar);
+  if (trending.length > 0) {
+    log(`   ✅ ${trending.length} produtos em alta encontrados`);
+    trending.slice(0, 5).forEach((t, i) =>
+      log(`   #${i + 1} [${t.asin}] ${t.name.slice(0, 60)}`)
+    );
+  } else {
+    log('   ⚠️  Trend Scout indisponível — usando catálogo fixo');
+  }
+
+  // ── 2. Monta pool com prioridade trending > catálogo ──
+  const catalogByPillar = AMAZON_CATALOG.filter(p => p.category === pillar);
+  const pool = mergeTrendingWithCatalog(trending, catalogByPillar, pillar, history, ANGLES);
+
+  if (pool.length === 0) {
+    log('❌ Pool vazio. Abortando.');
+    return;
+  }
+
+  log(`🏁 Pool final: ${pool.length} produtos (trending prioridade → catálogo fallback)`);
+
+  // ── 3. Tenta produto até o Content Guard aprovar ──
   for (let attempt = 1; attempt <= MAX_GUARD_RETRIES; attempt++) {
-    const product = pickProduct(pillar, history, excluded);
-    if (!product) { log('❌ Sem produtos disponíveis.'); return; }
+    const product = pickFromPool(pool, excluded);
+    if (!product) { log('❌ Sem produtos disponíveis no pool.'); return; }
+
+    const trendBadge = product.isTrending
+      ? (product.trendingNew ? ' 🆕 [trending novo]' : ` 📈 [trending #${product.trendingRank}]`)
+      : ' [catálogo]';
+
+    log(`\n🔍 Tentativa ${attempt}/${MAX_GUARD_RETRIES}: ${product.name}${trendBadge}`);
 
     const angleDesc = ANGLES[product.angle] || product.angle;
 
@@ -226,41 +242,40 @@ async function runJob(forcePillar = null, slotIndex = 0) {
       history,
     });
 
-    // Imprime relatório do guard
     guard.report.forEach(line => log(line));
     if (guard.warnings.length) guard.warnings.forEach(w => log(`   ${w}`));
 
     if (!guard.safe) {
-      log(`🚫 Guard bloqueou tentativa ${attempt}/${MAX_GUARD_RETRIES}: ${guard.blockers.join(' | ')}`);
+      log(`🚫 Guard bloqueou tentativa ${attempt}: ${guard.blockers.join(' | ')}`);
       excluded.push(product.asin);
       if (attempt < MAX_GUARD_RETRIES) {
-        log(`🔁 Tentando próximo produto do pilar "${pillar}"...`);
+        log(`🔁 Próximo produto...`);
         continue;
       } else {
-        log('⚠️  Máx de tentativas atingido. Prosseguindo com avisos (não bloqueante).');
+        log('⚠️  Máx de tentativas. Prosseguindo com aviso.');
       }
     }
 
-    // Guard aprovado (ou retries esgotados com aviso)
+    // Guard OK
     const url = buildAmazonUrl(product.asin, AMAZON_TAG);
-    log(`🎨 Pilar   : ${pillar.toUpperCase()}`);
-    log(`🛒 Produto : ${product.name}`);
-    log(`🔗 URL     : ${url}`);
-    log(`📐 Ângulo  : ${angleDesc}`);
+    log(`🎨 Pilar    : ${pillar.toUpperCase()}`);
+    log(`🛒 Produto  : ${product.name}${trendBadge}`);
+    log(`🔗 URL      : ${url}`);
+    log(`📐 Ângulo   : ${angleDesc}`);
 
     const success = runPost(url, guard.envVars);
-    if (success) recordPost(product.asin, product.name, url, product.category, guard, history);
+    if (success) recordPost(product.asin, product.name, url, product.category, guard, product.isTrending, history);
     return;
   }
 }
 
-// ── Scheduler ─────────────────────────────────────────────────────────────────
+// ── Scheduler ──────────────────────────────────────────────────────────────
 
 function startScheduler() {
   log('🕐 Agente iniciado — 08:00 | 12:00 | 18:00 (BRT)');
   log(`🏷️  Tag: ${AMAZON_TAG}  |  Pilares: ${PILLARS.join(' · ')}  |  Catálogo: ${AMAZON_CATALOG.length} produtos`);
   log('📅 Rotação de hoje:');
-  SCHEDULES.forEach((s, i) => log(`   ${String(s.hour).padStart(2,'0')}:00 → ${getPillarForSlot(i)}`));
+  SCHEDULES.forEach((s, i) => log(`   ${String(s.hour).padStart(2,'0')}:00 → ${getPillarForSlot(i)}  (${PILLARS.join('/')})` ));
 
   let lastRun = null;
   setInterval(() => {
@@ -282,16 +297,18 @@ const args = process.argv.slice(2);
 
 if (args.includes('--status')) {
   const history = loadHistory();
-  console.log(`\n📋 Últimos posts (${history.length} total):\n`);
+  const trending_count = history.filter(h => h.trending).length;
+  console.log(`\n📋 Últimos posts (${history.length} total • ${trending_count} de trending):\n`);
   history.slice(-20).reverse().forEach(h => {
-    const cat = (h.category || '?').padEnd(8);
-    const w   = h.guardWarnings > 0 ? ` ⚠️${h.guardWarnings}` : '';
-    console.log(`  ${h.postedAt.slice(0,10)}  [${cat}]${w}  ${h.name || h.asin}`);
+    const cat  = (h.category || '?').padEnd(8);
+    const w    = h.guardWarnings > 0 ? ` ⚠️${h.guardWarnings}` : '';
+    const tr   = h.trending ? ' 📈' : '';
+    console.log(`  ${h.postedAt.slice(0,10)}  [${cat}]${w}${tr}  ${h.name || h.asin}`);
   });
   console.log('\n📅 Rotação de HOJE:');
-  SCHEDULES.forEach((s, i) => {
-    console.log(`  ${String(s.hour).padStart(2,'0')}:00 → ${getPillarForSlot(i)}`);
-  });
+  SCHEDULES.forEach((s, i) => console.log(`  ${String(s.hour).padStart(2,'0')}:00 → ${getPillarForSlot(i)}`));
+  console.log('\n📡 Trend Scout cache:');
+  getTrendingStatus().forEach(l => console.log(l));
   console.log('');
   process.exit(0);
 }
