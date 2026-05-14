@@ -1,0 +1,155 @@
+# ────────────────────────────────────────────────────
+# Agente Autônomo — AchadoCerto.VIP
+# Gera posts automaticamente sem o PC estar ligado.
+#
+# Horários BRT (UTC-3):
+#   08:00 BRT = 11:00 UTC
+#   12:00 BRT = 15:00 UTC
+#   18:00 BRT = 21:00 UTC
+#
+# Fluxo:
+#   1. Trend Scout → bestsellers Amazon BR por pilar
+#   2. Content Guard → valida qualidade + evergreen
+#   3. node scripts/novo-post.js → gera .md do post
+#   4. git push → Cloudflare Pages rebuild automático
+#
+# Para disparar manualmente pelo celular:
+#   GitHub → Actions → Agente Posts → Run workflow
+# ────────────────────────────────────────────────────
+
+name: "🤖 Agente Posts AchadoCerto.VIP"
+
+on:
+  schedule:
+    - cron: '0 11 * * *'   # 08:00 BRT
+    - cron: '0 15 * * *'   # 12:00 BRT
+    - cron: '0 21 * * *'   # 18:00 BRT
+  workflow_dispatch:         # botão manual (celular ou PC)
+    inputs:
+      pillar:
+        description: 'Pilar específico (opcional)'
+        required: false
+        default: ''
+        type: choice
+        options:
+          - ''
+          - beleza
+          - saude
+          - casa
+
+jobs:
+  gerar-post:
+    name: "📝 Gerar post"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    # Permissão para o job fazer git push no repositório
+    permissions:
+      contents: write
+
+    steps:
+
+      # 1. Checkout completo do repositório
+      - name: "📥 Checkout"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # histórico completo (necessário para push)
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # 2. Configura Node.js 20 (mesmo que o projeto usa localmente)
+      - name: "⚡ Setup Node.js 20"
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # 3. Instala dependências do projeto raiz
+      - name: "📦 Instalar dependências (raiz)"
+        run: npm ci
+
+      # 4. Monta o arquivo backend/.env a partir dos Secrets
+      #    O agente lê as env vars deste arquivo em runtime
+      - name: "🔐 Montar backend/.env"
+        run: |
+          mkdir -p backend
+          cat > backend/.env << 'ENVEOF'
+          GROQ_API_KEY=${{ secrets.GROQ_API_KEY }}
+          SERPER_API_KEY=${{ secrets.SERPER_API_KEY }}
+          AMAZON_AFFILIATE_TAG=${{ secrets.AMAZON_AFFILIATE_TAG }}
+          OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+          ENVEOF
+          echo "✅ backend/.env criado ($(wc -l < backend/.env) linhas)"
+
+      # 5. Roda o agente
+      #    --now = post imediato (não espera horário)
+      #    pillar = opcional, vazio = rotação automática
+      - name: "🤖 Rodar agente"
+        run: |
+          PILLAR="${{ github.event.inputs.pillar }}"
+          if [ -n "$PILLAR" ]; then
+            echo "🏷️  Pilar forçado: $PILLAR"
+            node scripts/agent/agent.js --now $PILLAR
+          else
+            echo "🔄 Rotação automática"
+            node scripts/agent/agent.js --now
+          fi
+        env:
+          # Variáveis também disponíveis diretamente no processo
+          GROQ_API_KEY:         ${{ secrets.GROQ_API_KEY }}
+          SERPER_API_KEY:       ${{ secrets.SERPER_API_KEY }}
+          AMAZON_AFFILIATE_TAG: ${{ secrets.AMAZON_AFFILIATE_TAG }}
+          OPENAI_API_KEY:       ${{ secrets.OPENAI_API_KEY }}
+
+      # 6. Salva o history.json como artifact (persistência entre runs)
+      #    O history.json controla quais produtos já foram postados.
+      #    Como cada run é uma VM limpa, usamos cache do GitHub para persistir.
+      - name: "💾 Restaurar histórico (cache)"
+        uses: actions/cache@v4
+        with:
+          path: scripts/agent/history.json
+          key: agent-history-${{ github.run_id }}
+          restore-keys: |
+            agent-history-
+        # Roda ANTES do agente — veja nota abaixo
+        if: always()
+
+      # 7. Commit e push do novo post gerado
+      - name: "📤 Commit + Push do post"
+        run: |
+          git config user.name  "Agente AchadoCerto"
+          git config user.email "agente@achadocerto.vip"
+
+          # Verifica se algum arquivo novo foi gerado
+          git add src/content/ scripts/agent/history.json 2>/dev/null || true
+          git add -A
+
+          # Só commita se houver mudanças reais
+          if git diff --staged --quiet; then
+            echo "⚠️  Nenhum arquivo novo detectado — post não foi gerado"
+            exit 0
+          fi
+
+          # Monta mensagem de commit com timestamp BRT
+          TIMESTAMP=$(TZ='America/Sao_Paulo' date '+%d/%m/%Y %H:%M BRT')
+          git commit -m "post: artigo gerado pelo agente [$TIMESTAMP]"
+          git push origin main
+          echo "✅ Post publicado! Cloudflare Pages iniciará o rebuild."
+
+      # 8. Resumo no log do GitHub (visível pelo celular)
+      - name: "📊 Resumo do job"
+        if: always()
+        run: |
+          echo "## 🤖 Agente AchadoCerto.VIP" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Campo | Valor |" >> $GITHUB_STEP_SUMMARY
+          echo "|---|---|" >> $GITHUB_STEP_SUMMARY
+          echo "| Horário | $(TZ='America/Sao_Paulo' date '+%d/%m/%Y %H:%M BRT') |" >> $GITHUB_STEP_SUMMARY
+          echo "| Pilar solicitado | ${{ github.event.inputs.pillar || 'automático' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Trigger | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ -f scripts/agent/agent.log ]; then
+            echo "### 📝 Últimas linhas do log" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            tail -20 scripts/agent/agent.log >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          fi
