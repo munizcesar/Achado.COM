@@ -7,7 +7,7 @@
  *
  * Plataformas suportadas:
  *   ✅ Mercado Livre  (via API oficial)
- *   ✅ Amazon         (via scraping)
+ *   ✅ Amazon         (via PA-API 5.0 ou scraping melhorado)
  *   ✅ Magalu         (via scraping)
  *
  * Faz tudo:
@@ -39,6 +39,7 @@ import { selecionarArquetipo, gerarContextoVariacoes, ARQUETIPOS } from './conte
 import { buscarContextoProduto, verificarStatusSerper } from './serper-service.js';
 import { gerarConteudoPost } from './groq-service.js';
 import { validarConteudo, corrigirAutomatico, analisarDetalhado } from './content-validator.js';
+import { fetchAmazon as fetchAmazonService } from './amazon-service.js';
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -377,42 +378,10 @@ async function fetchML(inputUrl) {
   };
 }
 
-// ── Amazon (scraping) ───────────────────────────────────────────────
+// ── Amazon — usa amazon-service.js (PA-API + scraping melhorado) ──────────
 
 async function fetchAmazon(inputUrl) {
-  console.log('📦  Amazon detectado...');
-  const res = await get(inputUrl);
-  const body = res.body;
-
-  const titleM = body.match(/<span[^>]*id="productTitle"[^>]*>([\s\S]{1,300}?)<\/span>/);
-  const title  = titleM ? titleM[1].trim().replace(/\s+/g,' ') : 'Produto Amazon';
-
-  // Tenta vários padrões de imagem
-  const imgM =
-    body.match(/"hiRes":"(https:\/\/[^"]+\.webp)"/) ||
-    body.match(/"large":"(https:\/\/[^"]+\.webp)"/) ||
-    body.match(/id="landingImage"[^>]+src="([^"]+)"/) ||
-    body.match(/data-old-hires="(https:\/\/[^"]+\.webp)"/);
-  const imageUrl = imgM ? imgM[1] : '';
-
-  // Specs dos bullet points
-  const specs = [];
-  const bullets = body.matchAll(/<span class="a-list-item">([^<]{10,120})<\/span>/g);
-  for (const m of bullets) {
-    const txt = m[1].trim().replace(/\s+/g,' ');
-    if (txt && specs.length < 5) specs.push(`- ${txt}`);
-  }
-
-  const category = mapCategory(title);
-  return {
-    title: cleanTitle(title),
-    description: `${cleanTitle(title)} disponível na Amazon com entrega Prime para todo o Brasil.`,
-    category,
-    tags: buildTags(title, category),
-    imageUrl, specs,
-    store: 'Amazon',
-    affiliateUrl: inputUrl,
-  };
+  return await fetchAmazonService(inputUrl, { mapCategory, buildTags, cleanTitle });
 }
 
 // ── Magalu (scraping) ───────────────────────────────────────────────
