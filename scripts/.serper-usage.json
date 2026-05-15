@@ -1,5 +1,5 @@
 {
-  "total": 9,
+  "total": 12,
   "mes_atual": 4,
   "logs": [
     {
@@ -14,6 +14,11 @@
     },
     {
       "data": "2026-05-15T22:53:03.903Z",
+      "produto": "Iridium Labs Creatina Atlas 100% Pura",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-15T22:57:57.957Z",
       "produto": "Iridium Labs Creatina Atlas 100% Pura",
       "consultas": 3
     }
