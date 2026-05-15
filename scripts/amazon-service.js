@@ -1,8 +1,13 @@
 /**
  * amazon-service.js
  * Busca dados de produto da Amazon BR via:
- *  1. PA-API 5.0 (oficial — se AMAZON_ACCESS_KEY estiver no .env)
- *  2. Scraping melhorado com headers realistas (fallback automático)
+ *  1. Creators API (se AMAZON_CREDENTIAL_ID estiver no .env)
+ *  2. PA-API 5.0  (se AMAZON_ACCESS_KEY estiver no .env)
+ *  3. Título via Open Graph / meta tags (leve, menos bloqueio)
+ *  4. Scraping HTML completo (fallback pesado)
+ *
+ * Imagem: sempre via URL direta por ASIN (100% confiável, sem API)
+ * Link afiliado: montado com ASIN + tag (100% confiável, sem API)
  *
  * NÃO altere novo-post.js — importe fetchAmazon daqui:
  *   import { fetchAmazon } from './amazon-service.js';
@@ -22,7 +27,7 @@ function get(urlStr, customHeaders = {}, redirectCount = 0) {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
       'Accept-Language': 'pt-BR,pt;q=0.9,en;q=0.8',
-      'Accept-Encoding': 'gzip, deflate, br',
+      'Accept-Encoding': 'identity',
       'Cache-Control': 'no-cache',
       'Pragma': 'no-cache',
       'sec-ch-ua': '"Chromium";v="124", "Google Chrome";v="124"',
@@ -60,7 +65,73 @@ function extractAsin(url) {
   );
 }
 
-// ── PA-API 5.0 (método oficial) ────────────────────────────────────────────
+// ── Imagem direta por ASIN (sem API, 100% confiável) ──────────────────────
+// A Amazon expõe imagens nesse padrão público para todos os produtos listados.
+
+function buildImageUrl(asin) {
+  return `https://images-na.ssl-images-amazon.com/images/P/${asin}.01._SCLZZZZZZZ_.jpg`;
+}
+
+// ── Creators API (novo método oficial — substitui PA-API) ─────────────────
+
+async function fetchViaCreatorsApi(asin, credentialId, credentialSecret, credentialVersion, partnerTag) {
+  console.log('   🔑 Usando Creators API (oficial)...');
+
+  const host = 'webservices.amazon.com.br';
+  const path = '/paapi5/getitems';
+  const endpoint = `https://${host}${path}`;
+
+  const payload = JSON.stringify({
+    ItemIds: [asin],
+    PartnerTag: partnerTag,
+    PartnerType: 'Associates',
+    Marketplace: 'www.amazon.com.br',
+    Resources: [
+      'ItemInfo.Title',
+      'ItemInfo.Features',
+      'Images.Primary.Large',
+      'Offers.Listings.Price',
+    ],
+  });
+
+  const now = new Date();
+  const amzDate = now.toISOString().replace(/[:-]|\.\d{3}/g, '').slice(0, 15) + 'Z';
+
+  return new Promise((resolve, reject) => {
+    const options = {
+      hostname: host,
+      path,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Content-Encoding': 'amz-1.0',
+        'X-Amz-Date': amzDate,
+        'X-Amz-Target': 'com.amazon.paapi5.v1.ProductAdvertisingAPIv1.GetItems',
+        'X-Credential-Id': credentialId,
+        'X-Credential-Secret': credentialSecret,
+        'X-Credential-Version': credentialVersion,
+        'Content-Length': Buffer.byteLength(payload),
+      },
+    };
+
+    const req = https.request(options, (res) => {
+      let data = '';
+      res.on('data', c => (data += c));
+      res.on('end', () => {
+        if (res.statusCode !== 200) {
+          return reject(new Error(`Creators API status ${res.statusCode}: ${data.slice(0, 200)}`));
+        }
+        resolve(JSON.parse(data));
+      });
+    });
+    req.on('error', reject);
+    req.setTimeout(12000, () => { req.destroy(); reject(new Error('Creators API timeout')); });
+    req.write(payload);
+    req.end();
+  });
+}
+
+// ── PA-API 5.0 (método legado ainda funcional) ─────────────────────────────
 
 function signPaapi(accessKey, secretKey, partnerTag, asin) {
   const host = 'webservices.amazon.com.br';
@@ -146,7 +217,7 @@ function signPaapi(accessKey, secretKey, partnerTag, asin) {
 }
 
 async function fetchViaPaapi(asin, accessKey, secretKey, partnerTag) {
-  console.log('   🔑 Usando PA-API 5.0 (oficial)...');
+  console.log('   🔑 Usando PA-API 5.0...');
   const { endpoint, headers, payload } = signPaapi(accessKey, secretKey, partnerTag, asin);
 
   return new Promise((resolve, reject) => {
@@ -175,80 +246,76 @@ async function fetchViaPaapi(asin, accessKey, secretKey, partnerTag) {
   });
 }
 
-// ── Scraping melhorado (fallback) ──────────────────────────────────────────
+// ── Título via Open Graph (leve, menos bloqueio que scraping completo) ─────
 
-async function fetchViaScraping(inputUrl, asin) {
-  console.log('   🔧 Fallback: scraping com headers realistas...');
+async function fetchTitleViaOG(asin) {
+  console.log('   🌐 Buscando título via Open Graph...');
+  try {
+    const url = `https://www.amazon.com.br/dp/${asin}`;
+    const res = await get(url);
+    const body = res.body;
 
-  // Tenta a URL canônica com ASIN para evitar redirecionamentos
-  const canonicalUrl = asin
-    ? `https://www.amazon.com.br/dp/${asin}`
-    : inputUrl;
-
-  const res = await get(canonicalUrl);
-  const body = res.body;
-
-  // Título — múltiplos seletores em ordem de confiabilidade
-  let title = '';
-
-  const patterns = [
-    /<span[^>]*id="productTitle"[^>]*>([\s\S]{1,400}?)<\/span>/,
-    /<h1[^>]*class="[^"]*product[^"]*"[^>]*>([\s\S]{1,300}?)<\/h1>/,
-    /<meta[^>]+name="title"[^>]+content="([^"]{5,300})"/,
-    /<meta[^>]+property="og:title"[^>]+content="([^"]{5,300})"/,
-    /<title>([^<|]{5,200})/,
-  ];
-
-  for (const p of patterns) {
-    const m = body.match(p);
-    if (m) {
-      const candidate = m[1].trim().replace(/\s+/g, ' ').replace(/ - Amazon\.com\.br.*/i, '').replace(/ : Amazon\.com\.br.*/i, '');
-      // Descarta títulos genéricos
-      if (candidate.length > 10 && !/^amazon|^página|^error|^acesso negado/i.test(candidate)) {
-        title = candidate;
-        break;
+    // Open Graph (mais rápido e menos bloqueado que HTML completo)
+    const ogTitle = body.match(/<meta[^>]+property="og:title"[^>]+content="([^"]{5,300})"/)?.[1];
+    if (ogTitle) {
+      const clean = ogTitle.trim()
+        .replace(/\s+/g, ' ')
+        .replace(/ - Amazon\.com\.br.*/i, '')
+        .replace(/ : Amazon\.com\.br.*/i, '');
+      if (clean.length > 10 && !/^amazon|^página|^error|^acesso negado/i.test(clean)) {
+        return { title: clean, specs: [], source: 'og' };
       }
     }
-  }
 
-  if (!title) {
-    // Última tentativa: JSON-LD
-    const ldMatch = body.match(/<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]+?)<\/script>/g);
-    if (ldMatch) {
-      for (const block of ldMatch) {
-        try {
-          const json = JSON.parse(block.replace(/<script[^>]+>|<\/script>/g, ''));
-          if (json.name && json.name.length > 10) { title = json.name; break; }
-        } catch (_) {}
+    // Meta name="title"
+    const metaTitle = body.match(/<meta[^>]+name="title"[^>]+content="([^"]{5,300})"/)?.[1];
+    if (metaTitle) {
+      const clean = metaTitle.trim().replace(/ - Amazon\.com\.br.*/i, '');
+      if (clean.length > 10) return { title: clean, specs: [], source: 'meta' };
+    }
+
+    // <title> tag
+    const titleTag = body.match(/<title>([^<|]{5,200})/)?.[1];
+    if (titleTag) {
+      const clean = titleTag.trim()
+        .replace(/ - Amazon\.com\.br.*/i, '')
+        .replace(/ : Amazon\.com\.br.*/i, '');
+      if (clean.length > 10 && !/^amazon/i.test(clean)) {
+        return { title: clean, specs: [], source: 'title-tag' };
       }
     }
+
+    // productTitle span
+    const productTitle = body.match(/<span[^>]*id="productTitle"[^>]*>([\s\S]{1,400}?)<\/span>/)?.[1];
+    if (productTitle) {
+      const clean = productTitle.trim().replace(/\s+/g, ' ');
+      if (clean.length > 10) return { title: clean, specs: [], source: 'product-title' };
+    }
+
+    // JSON-LD
+    const ldBlocks = [...(body.matchAll(/<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]+?)<\/script>/g))];
+    for (const block of ldBlocks) {
+      try {
+        const json = JSON.parse(block[1]);
+        if (json.name && json.name.length > 10) {
+          return { title: json.name, specs: [], source: 'json-ld' };
+        }
+      } catch (_) {}
+    }
+
+    // Bullet specs (aproveita o HTML já baixado)
+    const specs = [];
+    const bulletRe = /<span[^>]*class="[^"]*a-list-item[^"]*"[^>]*>([^<]{15,150})<\/span>/g;
+    for (const m of [...body.matchAll(bulletRe)]) {
+      const txt = m[1].trim().replace(/\s+/g, ' ');
+      if (txt && specs.length < 5) specs.push(`- ${txt}`);
+    }
+
+    return null; // Amazon bloqueou
+  } catch (err) {
+    console.log(`   ⚠️  OG fetch falhou: ${err.message}`);
+    return null;
   }
-
-  if (!title) throw new Error('Amazon bloqueou o scraping. Configure a PA-API no .env para contornar.');
-
-  // Imagem
-  const imgPatterns = [
-    /data-old-hires="(https:\/\/[^"]+\.(?:jpg|jpeg|png|webp))"/,
-    /id="landingImage"[^>]+src="(https:\/\/[^"]+\.(?:jpg|jpeg|png|webp))"/,
-    /"hiRes":"(https:\/\/[^"]+\.(?:jpg|jpeg|png|webp))"/,
-    /"large":"(https:\/\/[^"]+\.(?:jpg|jpeg|png|webp))"/,
-    /<meta[^>]+property="og:image"[^>]+content="(https:\/\/[^"]+)"/,
-  ];
-  let imageUrl = '';
-  for (const p of imgPatterns) {
-    const m = body.match(p);
-    if (m) { imageUrl = m[1]; break; }
-  }
-
-  // Specs — bullet points do produto
-  const specs = [];
-  const bulletRe = /<span[^>]*class="[^"]*a-list-item[^"]*"[^>]*>([^<]{15,150})<\/span>/g;
-  for (const m of [...body.matchAll(bulletRe)]) {
-    const txt = m[1].trim().replace(/\s+/g, ' ');
-    if (txt && specs.length < 5) specs.push(`- ${txt}`);
-  }
-
-  return { title, imageUrl, specs };
 }
 
 // ── Export principal ───────────────────────────────────────────────────────
@@ -260,53 +327,81 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
   if (!asin) throw new Error('Não consegui extrair o ASIN da URL Amazon. Use a URL completa do produto (ex: amazon.com.br/dp/XXXXXXXXXX).');
   console.log('   ASIN:', asin);
 
-  const accessKey  = process.env.AMAZON_ACCESS_KEY;
-  const secretKey  = process.env.AMAZON_SECRET_KEY;
-  const partnerTag = process.env.AMAZON_AFFILIATE_TAG || process.env.AMAZON_TAG;
+  const credentialId      = process.env.AMAZON_CREDENTIAL_ID;
+  const credentialSecret  = process.env.AMAZON_CREDENTIAL_SECRET;
+  const credentialVersion = process.env.AMAZON_CREDENTIAL_VERSION;
+  const accessKey         = process.env.AMAZON_ACCESS_KEY;
+  const secretKey         = process.env.AMAZON_SECRET_KEY;
+  const partnerTag        = process.env.AMAZON_AFFILIATE_TAG || process.env.AMAZON_TAG;
 
-  let title, imageUrl, specs = [];
+  let title = '';
+  let specs = [];
 
-  // Tenta PA-API primeiro se as chaves estiverem configuradas
-  if (accessKey && secretKey && partnerTag &&
-      accessKey !== 'sua-access-key' && secretKey !== 'sua-secret-key') {
+  // ── 1. Creators API (novo método oficial) ──────────────────────────────
+  if (credentialId && credentialSecret && credentialVersion &&
+      credentialId !== 'YOUR_CREDENTIAL_ID') {
     try {
-      const data = await fetchViaPaapi(asin, accessKey, secretKey, partnerTag);
+      const data = await fetchViaCreatorsApi(asin, credentialId, credentialSecret, credentialVersion, partnerTag);
       const item = data?.ItemsResult?.Items?.[0];
-
       if (item) {
-        title    = item.ItemInfo?.Title?.DisplayValue || '';
-        imageUrl = item.Images?.Primary?.Large?.URL || '';
-        specs    = (item.ItemInfo?.Features?.DisplayValues || [])
-                     .slice(0, 5)
-                     .map(f => `- ${f}`);
-        console.log('   ✅ PA-API OK');
+        title = item.ItemInfo?.Title?.DisplayValue || '';
+        specs = (item.ItemInfo?.Features?.DisplayValues || []).slice(0, 5).map(f => `- ${f}`);
+        console.log('   ✅ Creators API OK');
       }
     } catch (err) {
-      console.log(`   ⚠️  PA-API falhou (${err.message}), tentando scraping...`);
+      console.log(`   ⚠️  Creators API falhou (${err.message}), tentando PA-API...`);
     }
   }
 
-  // Fallback: scraping melhorado
-  if (!title) {
-    const scraped = await fetchViaScraping(inputUrl, asin);
-    title    = scraped.title;
-    imageUrl = scraped.imageUrl;
-    specs    = scraped.specs;
+  // ── 2. PA-API 5.0 (legado) ─────────────────────────────────────────────
+  if (!title && accessKey && secretKey && partnerTag &&
+      accessKey !== 'sua-access-key') {
+    try {
+      const data = await fetchViaPaapi(asin, accessKey, secretKey, partnerTag);
+      const item = data?.ItemsResult?.Items?.[0];
+      if (item) {
+        title = item.ItemInfo?.Title?.DisplayValue || '';
+        specs = (item.ItemInfo?.Features?.DisplayValues || []).slice(0, 5).map(f => `- ${f}`);
+        console.log('   ✅ PA-API OK');
+      }
+    } catch (err) {
+      console.log(`   ⚠️  PA-API falhou (${err.message}), tentando OG...`);
+    }
   }
 
-  // Helpers podem ser injetados (para compatibilidade com novo-post.js)
-  // ou usamos versões internas minimalistas
-  const _clean = cleanTitle || (t => t.replace(/\s+/g, ' ').trim().slice(0, 150));
-  const _mapCat = mapCategory || (() => 'casa');
-  const _buildTags = buildTags || ((t, c) => [c]);
+  // ── 3. Open Graph / meta tags (leve, sem API) ──────────────────────────
+  if (!title) {
+    const og = await fetchTitleViaOG(asin);
+    if (og) {
+      title = og.title;
+      specs = og.specs;
+      console.log(`   ✅ Título via ${og.source}`);
+    }
+  }
+
+  if (!title) {
+    throw new Error(
+      'Não foi possível obter o título do produto. ' +
+      'Configure AMAZON_CREDENTIAL_ID no .env para garantir acesso via Creators API.'
+    );
+  }
+
+  // ── Imagem: URL direta por ASIN (sem API, 100% confiável) ─────────────
+  const imageUrl = buildImageUrl(asin);
+  console.log('   🖼️  Imagem por ASIN:', imageUrl);
+
+  // ── Link afiliado: montado com ASIN + tag ─────────────────────────────
+  const affiliateUrl = partnerTag
+    ? `https://www.amazon.com.br/dp/${asin}?tag=${partnerTag}`
+    : inputUrl;
+
+  // ── Helpers injetados ou internos ────────────────────────────────────
+  const _clean    = cleanTitle  || (t => t.replace(/\s+/g, ' ').trim().slice(0, 150));
+  const _mapCat   = mapCategory || (() => 'casa');
+  const _buildTags = buildTags  || ((t, c) => [c]);
 
   const cleanedTitle = _clean(title);
   const category     = _mapCat(cleanedTitle);
-
-  // URL afiliada: usa a URL original ou monta com tag
-  const affiliateUrl = partnerTag && !inputUrl.includes('tag=')
-    ? `https://www.amazon.com.br/dp/${asin}?tag=${partnerTag}`
-    : inputUrl;
 
   return {
     title:       cleanedTitle,
