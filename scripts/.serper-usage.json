@@ -1,5 +1,5 @@
 {
-  "total": 12,
+  "total": 15,
   "mes_atual": 4,
   "logs": [
     {
@@ -20,6 +20,11 @@
     {
       "data": "2026-05-15T22:57:57.957Z",
       "produto": "Iridium Labs Creatina Atlas 100% Pura",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-15T23:39:40.247Z",
+      "produto": "Garnier, Gel Creme Hidratante Facial Antimanchas T",
       "consultas": 3
     }
   ]
