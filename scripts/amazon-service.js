@@ -89,18 +89,6 @@ function extractAsin(url) {
   );
 }
 
-async function resolveFinalUrl(url) {
-  if (!/amzn\.to/i.test(url)) return url;
-  console.log('   🔄 Resolvendo redirecionamento Amazon short URL...');
-  try {
-    const res = await get(url);
-    return res.url || url;
-  } catch (err) {
-    console.log(`   ⚠️  Falha ao resolver short URL: ${err.message}`);
-    return url;
-  }
-}
-
 // ── Imagem direta por ASIN (sem API, 100% confiável) ──────────────────────
 
 function buildImageUrl(asin) {
@@ -253,24 +241,18 @@ async function fetchTitleViaOG(asin) {
 export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle } = {}) {
   console.log('📦  Amazon detectado...');
 
-<<<<<<< HEAD
-  const finalUrl = await resolveFinalUrl(inputUrl);
-  if (finalUrl !== inputUrl) console.log('   URL final:', finalUrl);
-
-  const asin = extractAsin(finalUrl) || extractAsin(inputUrl);
-  if (!asin) throw new Error('Não consegui extrair o ASIN da URL Amazon. Use a URL completa do produto (ex: amazon.com.br/dp/XXXXXXXXXX).');
-=======
   // Resolve links curtos amzn.to antes de extrair ASIN
   let resolvedUrl = inputUrl;
-  if (/amzn\.to|amzn\.com\/[a-zA-Z0-9]{5,}/i.test(inputUrl)) {
+  if (/amzn\.to/i.test(inputUrl)) {
     console.log('   🔗 Resolvendo link curto...');
     resolvedUrl = await resolveShortUrl(inputUrl);
-    console.log('   ✅ URL resolvida:', resolvedUrl);
+    if (resolvedUrl !== inputUrl) console.log('   ✅ URL resolvida:', resolvedUrl);
   }
 
-  const asin = extractAsin(resolvedUrl);
-  if (!asin) throw new Error(`Não consegui extrair o ASIN. URL resolvida: ${resolvedUrl}`);
->>>>>>> e77250a37b6902beb66608854af5979e72b3799b
+  const asin = extractAsin(resolvedUrl) || extractAsin(inputUrl);
+  if (!asin) {
+    throw new Error('Não consegui extrair o ASIN da URL Amazon. Use a URL completa do produto (ex: amazon.com.br/dp/XXXXXXXXXX).');
+  }
   console.log('   ASIN:', asin);
 
   const credentialId      = process.env.AMAZON_CREDENTIAL_ID;
