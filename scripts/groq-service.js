@@ -1,29 +1,29 @@
 /**
- * Groq AI Service - Geração de Conteúdo Editorial Profissional
+ * Groq AI Service - Protocolo Editorial v3
  * AchadoCerto.VIP
  *
- * PROTOCOLO EDITORIAL v2
- * - Voz opinativa e direta (não genérica)
- * - Profundidade técnica real por categoria
- * - Evergreen verdadeiro (sem datas, notas, rankings)
- * - Gatilhos de confiança sem invenção de dados
- * - Variações de ângulo narrativo por post
+ * Combina:
+ * - Template Coringa Evergreen (Kotler/Keller + Seth Godin + Gary Vee + Dan Kennedy)
+ * - Guias técnicos reais por categoria
+ * - 5 ângulos narrativos rotativos (anti-repetição)
+ * - Módulos dinâmicos variáveis
+ * - SEO semântico invisível + FAQ automático
  */
 
 import https from 'https';
 
-// ── Groq request ────────────────────────────────────────────────────────────
+// ── Groq request ──────────────────────────────────────────────────────────
 
 function groqRequest(messages, apiKey, model = 'llama-3.3-70b-versatile') {
   return new Promise((resolve, reject) => {
     const postData = JSON.stringify({
       model,
       messages,
-      temperature: 0.72, // Criativo mas controlado
-      max_tokens: 2200,
+      temperature: 0.78,      // Criativo, variado, humano
+      max_tokens: 2800,
       top_p: 0.92,
-      frequency_penalty: 0.45, // Reduz repetição de frases
-      presence_penalty: 0.3,
+      frequency_penalty: 0.52, // Penaliza repetição de palavras
+      presence_penalty: 0.35,  // Incentiva variedade de tópicos
     });
     const options = {
       hostname: 'api.groq.com',
@@ -47,110 +47,144 @@ function groqRequest(messages, apiKey, model = 'llama-3.3-70b-versatile') {
       });
     });
     req.on('error', reject);
-    req.setTimeout(30000, () => { req.destroy(); reject(new Error('Timeout Groq')); });
+    req.setTimeout(35000, () => { req.destroy(); reject(new Error('Timeout Groq')); });
     req.write(postData);
     req.end();
   });
 }
 
-// ── Guias técnicos por categoria ────────────────────────────────────────────
-// Cada categoria tem seus próprios critérios técnicos reais
-// para forçar profundidade editorial genuína
+// ── Guias técnicos por categoria ──────────────────────────────────────────
+// Profundidade técnica real injetada no prompt por categoria
 
 const GUIAS_CATEGORIA = {
   suplementos: `
-CRITÉRIOS TÉCNICOS DESTA CATEGORIA:
-- Creatina: diferencie monohidratada (mais estudada), creapure (pureza certificada), micronizada (dissolução)
-- Proteínas: fale sobre perfil de aminoácidos, PDCAAS, velocidade de absorção
-- Pré-treinos: cafeína anidra vs. natural, beta-alanina (formigamento normal), citrulina x arginina
-- Vitaminas: biodisponibilidade das formas (ex: D3 > D2, metilcobalamina > cianocobalamina)
-- Regra de ouro: qualquer suplemento só funciona com dieta e treino consistentes — mencione isso
-- Nunca prometa resultados específicos como "ganhe X kg" ou "perca Y% de gordura"
+CONHECIMENTO TÉCNICO OBRIGATÓRIO PARA ESTA CATEGORIA:
+- Creatina: diferencie monohidratada (mais estudada da história), creapure (pureza certificada alemã), micronizada (dissolução superior). 166 doses = comprometimento de longo prazo.
+- Proteínas: perfil de aminoácidos, PDCAAS, velocidade de absorção (whey isolado > concentrado > blend)
+- Pré-treinos: cafeína anidra vs. natural, beta-alanina (formigamento é normal e indica dose eficaz), citrulina > arginina para pump
+- Vitaminas: biodisponibilidade importa (D3 > D2, metilcobalamina > cianocobalamina, quelatos > óxidos)
+- Regra editorial: qualquer suplemento só entrega resultado com dieta e treino consistentes — diga isso. Não prometa resultados específicos.
 `,
   tecnologia: `
-CRITÉRIOS TÉCNICOS DESTA CATEGORIA:
-- Processadores: mencione arquitetura, não só GHz
-- Displays: nits, taxa de atualização, painel tipo (IPS/AMOLED/VA) fazem diferença real
-- Baterias: ciclos de carga, não só mAh
-- Câmeras: tamanho do sensor > megapixels na prática
-- Conectividade: Wi-Fi 6 vs 5, Bluetooth 5.x — explique o benefício real
-- Foque no uso prático: "o que isso significa no dia a dia"
+CONHECIMENTO TÉCNICO OBRIGATÓRIO PARA ESTA CATEGORIA:
+- Processadores: arquitetura e geração importam mais que GHz isolado
+- Displays: nits de brilho, taxa de atualização (60Hz vs 120Hz), tipo de painel (IPS, AMOLED, VA) — explique o impacto real
+- Baterias: ciclos de carga e densidade energética, não só mAh
+- Câmeras: tamanho do sensor supera megapixels na prática
+- Conectividade: Wi-Fi 6 (menor latência em redes congestionadas), Bluetooth 5.x (alcance e estabilidade)
+- Foco: sempre traduza spec técnico em benefício cotidiano real
 `,
   beleza: `
-CRITÉRIOS TÉCNICOS DESTA CATEGORIA:
-- Skincare: diferencie princípios ativos (retinol, niacinamida, ácido hialurônico, vitamina C)
-- Concentração importa: 0.1% retinol ≠ 1% retinol
-- Ordem de aplicação: mais leve para mais denso
-- Tipo de pele: um produto pode ser ótimo para oleosa e ruim para seca
-- Fale sobre rotina, não sobre uso isolado
-- Evite promessas de "reverter" ou "eliminar" — prefira "minimizar", "suavizar"
+CONHECIMENTO TÉCNICO OBRIGATÓRIO PARA ESTA CATEGORIA:
+- Skincare: diferencie ativos (retinol = renovação celular, niacinamida = poros e oleosidade, ácido hialurônico = hidratação profunda, vitamina C = uniformização)
+- Concentração importa: 0.025% retinol ≠ 1% retinol — efeitos e irritação são diferentes
+- Ordem de aplicação: mais aquoso para mais denso (sérum antes do hidratante)
+- Tipo de pele determina compatibilidade — mencione pele oleosa, seca, mista
+- Fale sobre rotina, não produto isolado. Um ativo potente mal integrado na rotina não performa.
 `,
   casa: `
-CRITÉRIOS TÉCNICOS DESTA CATEGORIA:
-- Eletrodomésticos: consumo de energia (selos Procel), capacidade real vs. nominal
-- Móveis: MDF vs. MDP vs. madeira maciça — qual a diferença prática
-- Organização: meça espaço antes de comprar, mencione isso
-- Qualidade de materiais: ABS, aço inox 304, alumínio — o que cada um significa
-- Instalação: diga se precisa de profissional ou é plug-and-play
+CONHECIMENTO TÉCNICO OBRIGATÓRIO PARA ESTA CATEGORIA:
+- Eletrodomésticos: consumo energético (selos Procel A), capacidade real vs nominal, ruído em dB
+- Móveis: MDF (resistência média, fácil acabamento) vs MDP (mais econômico) vs madeira maciça (durabilidade superior)
+- Organização: dimensões reais importam — mencione verificar espaço antes de comprar
+- Materiais: ABS (leveza e impacto), aço inox 304 (anticorrosão), alumínio (leveza)
+- Instalação: diferencie plug-and-play de instalação profissional necessária
 `,
   esportes: `
-CRITÉRIOS TÉCNICOS DESTA CATEGORIA:
-- Calçados: drop, amortecimento, pronação — explique de forma acessível
-- Roupas: tecidos técnicos (poliamida, dryfit, compression) e quando fazem diferença
-- Equipamentos: não basta ter o equipamento, precisa de técnica — mencione isso
-- Segurança: capacetes, joelheiras, luvas — quando são essenciais vs. opcionais
+CONHECIMENTO TÉCNICO OBRIGATÓRIO PARA ESTA CATEGORIA:
+- Calçados: drop (diferença calcanhar/antepé), amortecimento (corrida vs treino funcional), pronação (neutra, supinação, overpronação)
+- Roupas: poliamida (durabilidade), dryfit/mesh (transpiração), compression (circulação e recuperação)
+- Equipamentos: técnica e progressão importam mais que o equipamento em si — diga isso
+- Segurança: capacetes, joelheiras, luvas — quando são essenciais vs opcionais por modalidade
 `,
   default: `
-CRITÉRIOS GERAIS:
-- Identifique o critério de compra mais importante desta categoria específica
-- Explique o que diferencia produtos bons de ruins neste segmento
+CONHECIMENTO CONTEXTUAL:
+- Identifique o critério mais decisivo de compra nesta categoria específica
+- Explique o que diferencia produtos mediocres de produtos bem projetados neste segmento
 - Dê contexto de uso real: quem precisa, quando vale, quando não vale
+- Use termos do setor de forma natural, não decorativa
 `,
 };
 
-// ── Ângulos narrativos (anti-repetição) ─────────────────────────────────────
-// Rotacionados automaticamente para evitar posts com mesma estrutura
+// ── Ângulos narrativos rotativos ──────────────────────────────────────────
+// 5 ângulos determinísticos (mesmo produto = mesmo ângulo sempre)
+// Garantem variação real entre posts diferentes
 
 const ANGULOS = [
   {
     nome: 'problema_invisivel',
-    instrucao: `Comece identificando um PROBLEMA ESPECÍFICO que o consumidor típico desta categoria tem mas raramente articula.
-Não diga "muita gente busca..." — seja cirúrgico. Ex para creatina: "Você talvez já tenha comprado creatina barata e não viu resultado — não porque creatina não funciona, mas porque pureza importa."
-O produto resolve esse problema específico.`,
+    hook: `Comece identificando um PROBLEMA ESPECÍFICO que o consumidor típico desta categoria tem mas raramente consegue articular. Seja cirúrgico — não genérico. Ex para creatina: "Você talvez já tenha comprado creatina barata e não viu resultado — não porque creatina não funciona, mas porque pureza de fabricação importa muito mais do que o preço por grama." O produto resolve esse problema específico.`,
   },
   {
     nome: 'mito_desmontado',
-    instrucao: `Comece quebrando um mito ou equívoco REAL e comum sobre esta categoria ou produto.
-Ex: "Creatina não é só para quem quer ficar enorme. É um dos suplementos mais estudados da história, com benefícios documentados para força, memória e até saúde cardiovascular."
-Depois posicione o produto dentro dessa realidade correta.`,
+    hook: `Comece quebrando um equívoco REAL e comum sobre esta categoria. Ex: "Creatina não é só para quem quer ficar enorme. É um dos compostos mais estudados da história da nutrição esportiva, com benefícios documentados em força, cognição e recuperação muscular." Posicione o produto dentro dessa realidade corrigida.`,
   },
   {
     nome: 'criterio_oculto',
-    instrucao: `Revele um critério de compra que a maioria ignora mas que separa um produto bom de um ótimo nesta categoria.
-Ex para creatina: a maioria olha o preço por grama. O critério oculto é a pureza e o processo de fabricação.
-Apresente o produto como alguém que entende esse critério.`,
+    hook: `Revele um critério de compra que a maioria ignora mas que separa um produto bom de um ótimo nesta categoria. Ex para creatina: a maioria olha preço por grama. O critério oculto é o processo de fabricação e a ausência de contaminantes. Apresente o produto como quem entende esse critério.`,
   },
   {
     nome: 'contexto_uso_real',
-    instrucao: `Descreva com detalhe uma situação de uso REAL e específica — não abstrata.
-Ex: "São 6h da manhã. Treino em jejum antes do trabalho. Você precisa de algo que dissolva bem, não cause desconforto gástrico e faça efeito consistente ao longo de semanas."
-O produto se encaixa nesse cenário de forma natural.`,
+    hook: `Descreva com detalhe uma situação de uso REAL e específica — não abstrata. Ex: "São 6h da manhã. Treino em jejum antes do trabalho. Você precisa de algo que dissolva bem, não cause desconforto gástrico e faça efeito consistente ao longo de semanas, não de dias." O produto se encaixa nesse cenário de forma orgânica.`,
   },
   {
     nome: 'custo_de_errar',
-    instrucao: `Comece pelo custo REAL de fazer a escolha errada nesta categoria — não o custo financeiro, mas o custo em tempo, resultado ou saúde.
-Ex: "Três meses de suplemento ruim não são só dinheiro perdido — são três meses de treino sem a recuperação que você merecia."
-Depois apresente o produto como a escolha que elimina esse risco.`,
+    hook: `Comece pelo custo REAL de fazer a escolha errada nesta categoria — não financeiro, mas em tempo, resultado ou experiência. Ex: "Três meses de suplemento ruim não são só dinheiro perdido — são três meses de treino sem a recuperação que você merecia." O produto elimina esse risco de forma concreta.`,
   },
 ];
 
-// ── Constrói prompt editorial ────────────────────────────────────────────────
+// ── Modelos de título SEO (rotacionados) ──────────────────────────────────
+
+const MODELOS_TITULO = [
+  'Vale a pena comprar [PRODUTO]?',
+  'O que ninguém fala sobre o [PRODUTO]',
+  '[PRODUTO] entrega o que promete?',
+  '[PRODUTO]: análise completa e opinião real',
+  'Depois de analisar o [PRODUTO], isso chamou atenção',
+  '[PRODUTO] ainda vale a pena hoje?',
+  'Review completo do [PRODUTO]: desempenho, qualidade e custo-benefício',
+  '[PRODUTO] é bom mesmo? Análise sem enrolação',
+  'O [PRODUTO] se destaca — mas com ressalvas',
+  'Testamos o [PRODUTO]: pontos fortes e o que poderia melhorar',
+];
+
+// ── Modelos de CTA leve (sem cara de venda) ───────────────────────────────
+
+const MODELOS_CTA = [
+  'Verificar as condições atuais pode valer a pena, já que os valores costumam variar.',
+  'Comparar versões e ofertas disponíveis ajuda a encontrar a opção mais vantajosa.',
+  'Dependendo das promoções disponíveis, o custo-benefício pode ficar ainda mais interessante.',
+  'As condições atuais estão disponíveis na página do produto.',
+  'Para quem já decidiu, conferir disponibilidade e entrega é o próximo passo natural.',
+];
+
+// ── Módulos dinâmicos disponíveis ─────────────────────────────────────────
+// O modelo escolhe 4-6 dos 12 módulos abaixo por post
+
+const MODULOS_DISPONIVEIS = `
+MÓDULOS DISPONÍVEIS (escolha 4 a 6, nunca todos, nunca a mesma combinação):
+A. Experiência no uso diário — como funciona na prática, não no papel
+B. Principal diferencial — o que genuinamente se destaca vs. categoria
+C. Ponto fraco honesto — o que poderia melhorar (aumenta credibilidade)
+D. Para quem faz sentido — perfil de usuário ideal com especificidade
+E. Para quem NÃO faz sentido — tão importante quanto o anterior
+F. Comparativo contextual — sem citar concorrentes pelo nome
+G. Detalhe técnico relevante — 1 spec explicada com impacto real
+H. Experiência de longo prazo — durabilidade, consistência, recompra
+I. O que chamou atenção — observação específica, não genérica
+J. Custo-benefício contextual — sem citar preço, mas com contexto de valor
+K. Dúvida comum respondida — algo que as pessoas realmente perguntam
+L. Integração no cotidiano — como encaixa na rotina real do usuário
+`;
+
+// ── Constrói prompt master ────────────────────────────────────────────────
 
 function construirPrompt(produto, arquetipo, variacoes, contextoSerper) {
-  // Seleciona ângulo de forma determinística baseado no título do produto
-  // (mesmo produto = mesmo ângulo; produtos diferentes = ângulos diferentes)
+  // Seleção determinística pelo título (mesmo produto = mesmo ângulo)
   const hash = produto.title.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
-  const angulo = ANGULOS[hash % ANGULOS.length];
+  const angulo    = ANGULOS[hash % ANGULOS.length];
+  const modeloTitulo = MODELOS_TITULO[hash % MODELOS_TITULO.length];
+  const modeloCta    = MODELOS_CTA[hash % MODELOS_CTA.length];
 
   const categoria = produto.category || 'default';
   const guia = GUIAS_CATEGORIA[categoria] || GUIAS_CATEGORIA.default;
@@ -164,105 +198,136 @@ function construirPrompt(produto, arquetipo, variacoes, contextoSerper) {
   }, null, 2);
 
   const contextoExterno = contextoSerper
-    ? `\n### CONTEXTO EXTERNO (use como referência de linguagem, não cite fontes):\n${JSON.stringify(contextoSerper, null, 2)}`
+    ? `\n### CONTEXTO EXTERNO (use como referência de linguagem):\n${JSON.stringify(contextoSerper, null, 2)}`
     : '';
 
-  const systemPrompt = `Você é um redator editorial especializado em reviews de produtos para consumidores brasileiros.
-Sua escrita tem VOZ PRÓPRIA — opinativa, direta, tecnicamente fundamentada.
-Você não escreve marketing: você ajuda o leitor a tomar uma decisão melhor.
+  const systemPrompt = `Você é um redator editorial sênior especializado em reviews de produtos para consumidores brasileiros.
+Sua escrita aparece em portais editoriais reais — não em blogs automáticos.
+Você combina rigor técnico com narrativa humana e fluida.
 
-═══════════════════════════════════════════
+═══════════════════════════════════════════════
 ÂNGULO NARRATIVO DESTE POST: ${angulo.nome}
-═══════════════════════════════════════════
-${angulo.instrucao}
+═══════════════════════════════════════════════
+${angulo.hook}
 
-═══════════════════════════════════════════
-GUIA TÉCNICO DA CATEGORIA
-═══════════════════════════════════════════
+═══════════════════════════════════════════════
+GUIA TÉCNICO DA CATEGORIA: ${categoria}
+═══════════════════════════════════════════════
 ${guia}
 
-═══════════════════════════════════════════
-REGRAS EDITORIAIS (INVIOLÁVEIS)
-═══════════════════════════════════════════
+═══════════════════════════════════════════════
+PROTOCOLO EDITORIAL (INVIOLÁVEL)
+═══════════════════════════════════════════════
 
-1. VOZ: Opine. Não use "pode ser interessante", "pode ser uma boa opção", "é uma alternativa".
-   Use: "faz sentido para quem...", "vale especialmente se...", "não é para todo mundo, mas se X, então sim."
+## ESTRUTURA DO ARTIGO
 
-2. ESPECIFICIDADE: Nunca escreva frases que servem para qualquer produto.
-   PROIBIDO: "alta qualidade", "ótimo custo-benefício", "produto excelente", "vale a pena".
-   OBRIGADO: conectar cada qualidade a um benefício concreto e específico.
+Ordem dos blocos (pode variar — NÃO siga sempre a mesma ordem):
+1. Título H1 SEO — use o modelo: ${modeloTitulo}
+2. Introdução humanizada (ângulo: ${angulo.nome})
+3. Resumo rápido — prós, contras, ideal para (escaneável, bom para featured snippet)
+4. Bloco de experiência/narrativa — onde o texto deixa de parecer IA
+5. Módulos dinâmicos (${MODULOS_DISPONIVEIS})
+6. FAQ estratégico (5-7 perguntas reais que as pessoas fazem)
+7. Conclusão evergreen natural
+8. CTA leve: "${modeloCta}"
 
-3. EVERGREEN REAL: Sem datas, notas numéricas de avaliação, rankings, preços.
-   Em vez de "nota 4.8": "a consistência nos relatos de quem usa é o que mais chama atenção".
-   Em vez de "lançado em 2024": simplesmente ignore a data.
+## REGRAS DE TÍTULO E H2
+Proibido: "Design", "Desempenho", "Conclusão", "Introdução", "Durabilidade"
+Obrigatório: H2 específicos do produto, ex:
+- "O que esperar no uso diário"
+- "Onde realmente se destaca"
+- "O ponto que mais chamou atenção"
+- "Para quem faz sentido — e para quem não faz"
+- "O que considerar antes de decidir"
 
-4. REPETIÇÃO ZERO: Cada seção deve fazer uma afirmação diferente.
-   Se já disse que o produto tem boa absorção, não repita nas seções seguintes.
-   Avance a argumentação — cada parágrafo deve agregar algo novo.
+## REGRAS DE VOZ E ESTILO
+- Voz opinativa e direta. Opine. Não use "pode ser interessante" ou "é uma opção"
+- Micro-opiniões naturais: "isso chamou atenção", "na prática", "o equilíbrio aqui", "mais consistente do que impressionante"
+- Parágrafos curtos (2-4 linhas) misturados com médios (5-6 linhas) — nunca uniformes
+- Frases curtas intercaladas com médias — ritmo humano
+- Alternância emocional/técnico ao longo do texto
 
-5. PROIBIÇÕES ABSOLUTAS:
-   - Nunca cite preço exato ou faixa de preço
-   - Nunca invente especificações que não estão nos dados do produto
-   - Nunca use metalinguagem: "neste artigo", "vamos ver", "aqui você vai aprender"
-   - Nunca comece parágrafos com "Além disso," ou "Ademais,"
-   - Nunca use o nome do produto mais de 3x no texto inteiro — use pronomes e variações
-   - Nunca repita o mesmo adjetivo mais de 1x no texto
+## PROIBIÇÕES ABSOLUTAS
+- NUNCA: "alta qualidade", "ótimo custo-benefício", "produto excelente", "vale a pena" (genérico)
+- NUNCA: "Em conclusão", "Além disso" no início de parágrafo, metalinguagem ("neste artigo...")
+- NUNCA: mesmo adjetivo mais de 1x no texto inteiro
+- NUNCA: nome do produto mais de 4x — use pronomes e variações
+- NUNCA: preço exato, datas específicas, notas numéricas ("4.8 estrelas", "nota 8.7")
+- NUNCA: inventar especificações que não estão nos dados do produto
+- NUNCA: superlativos exagerados ("melhor do mercado", "incomparável", "revolucionário")
+- NUNCA: listas gigantes com mais de 6 itens
 
-6. ESTRUTURA:
-   - Use ## para títulos de seção (títulos específicos, não genéricos como "Conclusão")
-   - Parágrafos máximos de 4 linhas — escanável
-   - Listas com - apenas para especificações reais
-   - **Negrito** apenas em termos técnicos ou afirmações centrais
-   - Extensão: 900-1100 palavras (nem mais, nem menos)
+## SEO SEMÂNTICO INVISÍVEL
+Palavra-chave principal: inserir no H1, primeiro parágrafo, 1 H2 e FAQ
+Palavras semânticas a misturar naturalmente: avaliação, análise, opinião, desempenho,
+experiência, custo-benefício, comparativo, recursos, qualidade, vale a pena
+Técnica avançada: use perguntas naturais, entidades relacionadas, termos contextuais do setor
+O texto NÃO deve parecer otimizado — o SEO é invisível.
 
-7. FECHAMENTO:
-   O CTA deve ser consequência natural do texto — não um botão colado.
-   Ex: "Se o que foi descrito aqui conversa com o que você busca, as condições atuais estão na Amazon."
-   NUNCA use: "não perca essa oportunidade", "aproveite agora", "clique e compre".
+## FAQ ESTRATÉGICO
+Inclua 5-7 perguntas reais que consumidores desta categoria fazem:
+- "[Produto] é bom?"
+- "Vale a pena comprar?"
+- "Para quem é indicado?"
+- "Qual o principal diferencial?"
+- "Tem bom custo-benefício?"
+- "Existem alternativas?"
+Responda em 2-4 linhas por pergunta — direto, sem enrolação.
+
+## CONCLUSÃO EVERGREEN
+Proibido: "Em 2026...", qualquer data, qualquer nota numérica
+Use: frases atemporais baseadas em perfil de usuário
+Ex: "Faz sentido principalmente para quem busca consistência sem entrar em faixas premium."
+Ex: "Para uso cotidiano, entrega o que promete — sem exageros em nenhuma direção."
+
+## TAMANHO
+1800-2500 palavras. Denso mas escaneável. Nunca abaixo de 1500.
+
+## FORMATO
+- 1 H1, 6-9 H2, alguns H3 quando necessário
+- Tabela ocasional para comparações ou especificações
+- **Negrito** apenas em termos técnicos ou afirmações centrais
+- Listas com - apenas para specs reais ou prós/contras
+- FAQ com ### por pergunta
 
 ARQUÉTIPO ESTRUTURAL: ${arquetipo.nome}
-ESTRUTURA:
-${JSON.stringify(arquetipo.estrutura, null, 2)}
+${JSON.stringify(arquetipo.estrutura, null, 2)}`;
 
-VARIAÇÕES:
-- Título: ${variacoes.titulo}
-- Abertura: ${variacoes.abertura}
-- Transição: ${variacoes.transicao}
-- Fechamento: ${variacoes.fechamento}
-- CTA: ${variacoes.cta.texto}`;
-
-  const userPrompt = `Escreva o artigo completo para este produto, seguindo todas as regras editoriais.
+  const userPrompt = `Escreva o artigo completo seguindo o protocolo editorial acima.
 
 PRODUTO:
 ${dadosProduto}
 ${contextoExterno}
 
-IMPORTANTE:
-- Aplique o ângulo "${angulo.nome}" logo na abertura
-- Use o guia técnico da categoria para dar profundidade real
-- Cada seção deve avançar o argumento (não repetir)
-- O leitor deve terminar sabendo mais sobre esta categoria do que quando chegou`;
+LEMBRETES FINAIS:
+- Aplique o ângulo "${angulo.nome}" logo na abertura — seja específico, não genérico
+- Use o guia técnico da categoria para profundidade real (não decorativa)
+- Cada H2 deve avançar o argumento — não repetir o que já foi dito
+- O leitor deve terminar sabendo mais sobre esta categoria do que quando chegou
+- O texto deve parecer escrito por um especialista que também sabe comunicar`;
 
   return { systemPrompt, userPrompt };
 }
 
-// ── Export principal ─────────────────────────────────────────────────────────
+// ── Export principal ──────────────────────────────────────────────────────
 
 export async function gerarConteudoPost(produto, arquetipo, variacoes, contextoSerper, groqApiKey) {
   if (!groqApiKey || groqApiKey.length < 20) {
     throw new Error('GROQ_API_KEY não configurada no .env');
   }
 
-  console.log(`   🤖 Groq — ângulo e categoria carregados...`);
+  const hash = produto.title.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+  const angulo = ANGULOS[hash % ANGULOS.length];
+  console.log(`   🤖 Groq — ângulo: ${angulo.nome} | categoria: ${produto.category || 'default'}`);
 
   try {
     const { systemPrompt, userPrompt } = construirPrompt(produto, arquetipo, variacoes, contextoSerper);
     const messages = [
       { role: 'system', content: systemPrompt },
-      { role: 'user', content: userPrompt },
+      { role: 'user',   content: userPrompt },
     ];
     const conteudo = await groqRequest(messages, groqApiKey);
-    console.log(`   ✅ Conteúdo gerado (~${conteudo.length} chars)`);
+    console.log(`   ✅ Conteúdo gerado (~${conteudo.length} chars | ~${Math.round(conteudo.split(' ').length)} palavras)`);
     return conteudo;
   } catch (error) {
     console.error(`   ❌ Groq falhou: ${error.message}`);
@@ -271,11 +336,11 @@ export async function gerarConteudoPost(produto, arquetipo, variacoes, contextoS
   }
 }
 
-// ── Fallback ─────────────────────────────────────────────────────────────────
+// ── Fallback ──────────────────────────────────────────────────────────────
 
 function gerarConteudoFallback(produto, variacoes) {
   const specsBlock = produto.specs?.length
     ? `\n## Especificações\n\n${produto.specs.join('\n')}\n`
     : '';
-  return `${variacoes.abertura}\n\n${produto.title} está disponível na ${produto.store} com entrega para todo o Brasil.\n${specsBlock}\n## Vale a Pena?\n\n${variacoes.transicao}\n\n${produto.description}\n\n${variacoes.fechamento}. ${variacoes.cta.gatilho}.\n\n---\n\n*Links deste post são afiliados. Você não paga nada a mais, mas nos ajuda a manter o site gratuito.*`;
+  return `${variacoes.abertura}\n\n${produto.title} está disponível na ${produto.store} com entrega para todo o Brasil.\n${specsBlock}\n## Vale a Pena?\n\n${variacoes.transicao}\n\n${produto.description}\n\n${variacoes.fechamento}.\n\n---\n\n*Links deste post são afiliados. Você não paga nada a mais, mas nos ajuda a manter o site gratuito.*`;
 }
