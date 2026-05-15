@@ -65,6 +65,18 @@ function extractAsin(url) {
   );
 }
 
+async function resolveFinalUrl(url) {
+  if (!/amzn\.to/i.test(url)) return url;
+  console.log('   🔄 Resolvendo redirecionamento Amazon short URL...');
+  try {
+    const res = await get(url);
+    return res.url || url;
+  } catch (err) {
+    console.log(`   ⚠️  Falha ao resolver short URL: ${err.message}`);
+    return url;
+  }
+}
+
 // ── Imagem direta por ASIN (sem API, 100% confiável) ──────────────────────
 // A Amazon expõe imagens nesse padrão público para todos os produtos listados.
 
@@ -323,7 +335,10 @@ async function fetchTitleViaOG(asin) {
 export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle } = {}) {
   console.log('📦  Amazon detectado...');
 
-  const asin = extractAsin(inputUrl);
+  const finalUrl = await resolveFinalUrl(inputUrl);
+  if (finalUrl !== inputUrl) console.log('   URL final:', finalUrl);
+
+  const asin = extractAsin(finalUrl) || extractAsin(inputUrl);
   if (!asin) throw new Error('Não consegui extrair o ASIN da URL Amazon. Use a URL completa do produto (ex: amazon.com.br/dp/XXXXXXXXXX).');
   console.log('   ASIN:', asin);
 

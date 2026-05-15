@@ -1,5 +1,11 @@
 {
-  "total": 0,
+  "total": 3,
   "mes_atual": 4,
-  "logs": []
+  "logs": [
+    {
+      "data": "2026-05-15T22:39:34.199Z",
+      "produto": "Iridium Labs Creatina Atlas 100% Pura - 500g - 166",
+      "consultas": 3
+    }
+  ]
 }
