@@ -150,11 +150,11 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
         <span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--c-brand);display:block;margin-bottom:10px;">
           {post.data.category}
         </span>
-        <h1 style="font-size:clamp(26px,4vw,42px);font-weight:800;letter-spacing:-.8px;line-height:1.2;color:var(--c-text);margin-bottom:16px;">
+        <h1 style="font-size:clamp(22px,5.5vw,42px);font-weight:800;letter-spacing:-.8px;line-height:1.2;color:var(--c-text);margin-bottom:16px;">
           {post.data.title}
         </h1>
         {post.data.description && (
-          <p style="font-size:18px;color:var(--c-text-sub);line-height:1.7;margin-bottom:24px;max-width:680px;">
+          <p style="font-size:clamp(15px,4vw,18px);color:var(--c-text-sub);line-height:1.7;margin-bottom:24px;max-width:680px;">
             {post.data.description}
           </p>
         )}
@@ -470,6 +470,8 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
       border-left: 3px solid transparent;
       border-radius: var(--r-md);
       transition: border-color .2s ease, box-shadow .2s ease;
+      width: 100%;
+      box-sizing: border-box;
     }
     .amazon-us-disclosure-sidebar {
       margin: 0 0 16px;
@@ -614,7 +616,15 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .sidebar-ad-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--c-text-light); text-align: center; margin: 0 0 4px; }
     .post-content-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 300px); gap: clamp(24px, 3vw, 42px); align-items: start; }
     .post-sidebar { position: sticky; top: 88px; overflow: visible; }
-    @media (max-width: 768px) { .post-content-grid { display: block !important; } .post-sidebar { display: none !important; } .prose { padding: 0 4px; } .share-bar { width: 100%; } }
+    @media (max-width: 768px) {
+      .post-content-grid { display: block !important; }
+      .post-sidebar { display: none !important; }
+      .prose { padding: 0 4px; }
+      .share-bar { width: 100%; }
+      .amazon-us-disclosure,
+      .product-box-final,
+      .amazon-us-banner { width: 100%; box-sizing: border-box; max-width: 100%; }
+    }
     .post-content-grid, .prose, .post-sidebar { min-width: 0; box-sizing: border-box; }
     .prose { overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; color:var(--c-text); font-size:16px; line-height:1.75; }
     .prose table { width: 100%; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -633,7 +643,7 @@ const relatedDisplay = [...relatedPosts, ...relatedPlaceholders];
     .share-bar-btns { display:flex;align-items:center;gap:8px;flex-wrap:wrap; }
     .sidebar-share-box { background:var(--c-surface);border:1px solid var(--c-border);border-radius:var(--r-md);padding:18px;margin-bottom:16px;box-shadow:var(--shadow-sm); }
     .sidebar-share-grid { display:flex;flex-wrap:wrap;gap:10px; }
-    .product-box-final { display:flex;flex-direction:row;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f4ff 0%,#e8f0fe 100%);border:2px solid var(--c-brand);border-radius:var(--r-lg);padding:20px 24px;margin:12px 0 0;box-shadow:0 4px 20px rgba(26,86,219,.1); }
+    .product-box-final { display:flex;flex-direction:row;align-items:center;gap:20px;background:linear-gradient(135deg,#f0f4ff 0%,#e8f0fe 100%);border:2px solid var(--c-brand);border-radius:var(--r-lg);padding:20px 24px;margin:12px 0 0;box-shadow:0 4px 20px rgba(26,86,219,.1);width:100%;box-sizing:border-box; }
     .product-box-final-img { width:110px !important;height:110px !important;max-width:110px;max-height:110px;object-fit:contain;border-radius:var(--r-md);background:#fff;border:1px solid var(--c-border);padding:6px;flex-shrink:0; }
     .product-box-final-body { flex:1;text-align:left; }
     .product-box-final-label { font-size:12px;font-weight:700;color:var(--c-brand);margin-bottom:4px; }
