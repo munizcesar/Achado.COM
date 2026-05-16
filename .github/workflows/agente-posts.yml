@@ -22,12 +22,6 @@ on:
     - cron: '0 15 * * *'   # 12:00 BRT
     - cron: '0 21 * * *'   # 18:00 BRT
   workflow_dispatch:
-    inputs:
-      pillar:
-        description: 'Pilar específico (opcional)'
-        required: false
-        type: string
-        default: 'auto'
 
 jobs:
   gerar-post:
@@ -81,13 +75,8 @@ ENVEOF
       # Roda o agente — só busca produtos na Amazon BR
       - name: "🤖 Rodar agente"
         run: |
-          PILLAR="${{ github.event.inputs.pillar }}"
-          if [ -n "$PILLAR" ] && [ "$PILLAR" != "auto" ]; then
-            echo "🏷️  Pilar forçado: $PILLAR"
-            node scripts/agent/agent.js --now --source amazon $PILLAR
-          else
-            echo "🔄 Rotação automática entre pilares"
-            node scripts/agent/agent.js --now --source amazon
+          echo "🔄 Rotação automática entre pilares"
+          node scripts/agent/agent.js --now --source amazon
           fi
         env:
           GROQ_API_KEY:         ${{ secrets.GROQ_API_KEY }}
@@ -122,7 +111,7 @@ ENVEOF
           echo "| | |" >> $GITHUB_STEP_SUMMARY
           echo "|---|---|" >> $GITHUB_STEP_SUMMARY
           echo "| ⏰ Horário | $(TZ='America/Sao_Paulo' date '+%d/%m/%Y %H:%M BRT') |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🏷️  Pilar | ${{ github.event.inputs.pillar || 'automático' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🏷️  Pilar | automático |" >> $GITHUB_STEP_SUMMARY
           echo "| 🛠️  Fonte | Amazon BR (ML: manual) |" >> $GITHUB_STEP_SUMMARY
           echo "| 🔥 Trigger | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
           if [ -f scripts/agent/agent.log ]; then
