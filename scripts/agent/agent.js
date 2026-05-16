@@ -52,16 +52,12 @@ const SCHEDULES = [
 ];
 
 // ── Catálogo fixo Amazon BR ──────────────────────────────────────────────────
-// Regra de mapeamento:
-//   category  → pilar correto do produto (beleza | saude | casa)
-//   angle     → contexto editorial evergreen que ORIENTA o gerador
-//               Use ângulos distintos por ASIN para forçar variação de pauta
 
 const AMAZON_CATALOG = [
   // ── BELEZA ──────────────────────────────────────────────────────────────
   { asin: 'B08L6QPNB8', name: 'Sérum Vitamina C Facial',         category: 'beleza', angle: 'skincare_basico'    },
   { asin: 'B0932TVFR9', name: 'Protetor Solar FPS 70',           category: 'beleza', angle: 'cuidado_diario'     },
-  { asin: 'B07V3BQYZ6', name: 'Óleo de Argan para Cabelo',       category: 'beleza', angle: 'cuidado_capilar'    },
+  { asin: 'B07V38QYZ6', name: 'Óleo de Argan para Cabelo',       category: 'beleza', angle: 'cuidado_capilar'    },
   { asin: 'B08NWMH1CJ', name: 'Secador de Cabelo 2200W',         category: 'beleza', angle: 'custo_beneficio'    },
   { asin: 'B09BVKFXLQ', name: 'Ácido Hialurônico Sérum',         category: 'beleza', angle: 'anti_idade'         },
   { asin: 'B07WQJLX2P', name: 'Esfoliante Facial de Argila',     category: 'beleza', angle: 'limpeza_pele'       },
@@ -90,8 +86,6 @@ const AMAZON_CATALOG = [
 ];
 
 // ── Ângulos editoriais (evergreen) ───────────────────────────────────────────
-// Cada ângulo injeta um CONTEXTO no gerador via variável de ambiente POST_ANGLE.
-// Descrições curtas e diretas → orientam o tom do artigo, não descrevem o produto.
 
 const ANGLES = {
   // beleza
