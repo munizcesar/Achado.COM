@@ -45,13 +45,13 @@ jobs:
           mkdir -p backend
           cat > backend/.env << 'ENVEOF'
           GROQ_API_KEY=${{ secrets.GROQ_API_KEY }}
-          GROQ_MODEL=llama-3.3-70b-versatile
-          GROQ_TEMPERATURE=0.1
-          SERPER_API_KEY=${{ secrets.SERPER_API_KEY }}
-          AMAZON_AFFILIATE_TAG=${{ secrets.AMAZON_AFFILIATE_TAG }}
-          AMAZON_CREDENTIAL_ID=${{ secrets.AMAZON_CREDENTIAL_ID }}
-          NODE_ENV=production
-          ENVEOF
+GROQ_MODEL=llama-3.3-70b-versatile
+GROQ_TEMPERATURE=0.1
+SERPER_API_KEY=${{ secrets.SERPER_API_KEY }}
+AMAZON_AFFILIATE_TAG=${{ secrets.AMAZON_AFFILIATE_TAG }}
+AMAZON_CREDENTIAL_ID=${{ secrets.AMAZON_CREDENTIAL_ID }}
+NODE_ENV=production
+ENVEOF
           echo "✅ backend/.env criado"
 
       - name: "🤖 Rodar agente"
@@ -68,15 +68,15 @@ jobs:
         run: |
           git config user.name "Agente AchadoCerto"
           git config user.email "agente@achadocerto.vip"
-          
+
           git add src/content/ scripts/agent/history.json 2>/dev/null || true
           git add -A
-          
+
           if git diff --staged --quiet; then
             echo "⚠️  Nenhum post novo gerado nesta execução"
             exit 0
           fi
-          
+
           TIMESTAMP=$(TZ='America/Sao_Paulo' date '+%d/%m/%Y %H:%M BRT')
           git commit -m "post: artigo Amazon BR gerado pelo agente [$TIMESTAMP]"
           git push origin main
