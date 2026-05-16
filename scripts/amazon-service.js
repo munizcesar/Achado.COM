@@ -292,10 +292,9 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
     if (og) { title = og.title; specs = og.specs; console.log('   ✅ Título via OG/scraping'); }
   }
 
-  // 4. Fallback final: usa ASIN como título — nunca falha
+  // 4. Validação: rejeita se não conseguiu obter título real
   if (!title) {
-    console.log(`   ⚠️  Não foi possível obter título. Usando ASIN como fallback: ${asin}`);
-    title = `Produto Amazon ${asin}`;
+    throw new Error(`❌ Falha crítica: não foi possível obter título real do produto (ASIN: ${asin}). Verifique: (1) APIs configuradas? (2) Credenciais válidas? (3) Link ainda funciona? (4) Conectividade OK?`);
   }
 
   // Imagem por ASIN (sem API, 100% confiável)
