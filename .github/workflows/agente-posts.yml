@@ -1,26 +1,10 @@
-# ────────────────────────────────────────────────────
-# Agente Autônomo — AchadoCerto.VIP
-# Fonte de produtos: Amazon BR (API oficial)
-# Mercado Livre: manual (sem integração automática)
-#
-# Horários BRT (UTC-3):
-#   08:00 BRT = 11:00 UTC
-#   12:00 BRT = 15:00 UTC
-#   18:00 BRT = 21:00 UTC
-#
-# Secrets necessários (Settings → Secrets → Actions):
-#   GROQ_API_KEY          ← IA geradora do post
-#   SERPER_API_KEY         ← busca Google (opcional)
-#   AMAZON_AFFILIATE_TAG   ← sua tag Amazon Associados BR
-# ────────────────────────────────────────────────────
-
 name: "🤖 Agente Posts AchadoCerto.VIP"
 
 on:
   schedule:
-    - cron: '0 11 * * *'   # 08:00 BRT
-    - cron: '0 15 * * *'   # 12:00 BRT
-    - cron: '0 21 * * *'   # 18:00 BRT
+    - cron: '0 11 * * *'
+    - cron: '0 15 * * *'
+    - cron: '0 21 * * *'
   workflow_dispatch:
 
 jobs:
@@ -33,7 +17,6 @@ jobs:
       contents: write
 
     steps:
-
       - name: "📥 Checkout"
         uses: actions/checkout@v4
         with:
@@ -49,7 +32,6 @@ jobs:
       - name: "📦 Instalar dependências"
         run: npm ci
 
-      # Restaura o histórico entre runs (evita repetir produtos)
       - name: "💾 Restaurar histórico de posts"
         uses: actions/cache@v4
         with:
@@ -58,51 +40,46 @@ jobs:
           restore-keys: |
             agent-history-
 
-      # Monta backend/.env sem espaços antes das variáveis
       - name: "🔐 Montar backend/.env"
         run: |
           mkdir -p backend
           cat > backend/.env << 'ENVEOF'
-GROQ_API_KEY=${{ secrets.GROQ_API_KEY }}
-GROQ_MODEL=llama-3.3-70b-versatile
-GROQ_TEMPERATURE=0.1
-SERPER_API_KEY=${{ secrets.SERPER_API_KEY }}
-AMAZON_AFFILIATE_TAG=${{ secrets.AMAZON_AFFILIATE_TAG }}
-NODE_ENV=production
-ENVEOF
+          GROQ_API_KEY=${{ secrets.GROQ_API_KEY }}
+          GROQ_MODEL=llama-3.3-70b-versatile
+          GROQ_TEMPERATURE=0.1
+          SERPER_API_KEY=${{ secrets.SERPER_API_KEY }}
+          AMAZON_AFFILIATE_TAG=${{ secrets.AMAZON_AFFILIATE_TAG }}
+          NODE_ENV=production
+          ENVEOF
           echo "✅ backend/.env criado"
 
-      # Roda o agente — só busca produtos na Amazon BR
       - name: "🤖 Rodar agente"
         run: |
           echo "🔄 Rotação automática entre pilares"
           node scripts/agent/agent.js --now --source amazon
-          fi
         env:
-          GROQ_API_KEY:         ${{ secrets.GROQ_API_KEY }}
-          SERPER_API_KEY:       ${{ secrets.SERPER_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
           AMAZON_AFFILIATE_TAG: ${{ secrets.AMAZON_AFFILIATE_TAG }}
 
-      # Commit apenas se o agente gerou algum arquivo novo
       - name: "📤 Commit + Push do post"
         run: |
-          git config user.name  "Agente AchadoCerto"
+          git config user.name "Agente AchadoCerto"
           git config user.email "agente@achadocerto.vip"
-
+          
           git add src/content/ scripts/agent/history.json 2>/dev/null || true
           git add -A
-
+          
           if git diff --staged --quiet; then
             echo "⚠️  Nenhum post novo gerado nesta execução"
             exit 0
           fi
-
+          
           TIMESTAMP=$(TZ='America/Sao_Paulo' date '+%d/%m/%Y %H:%M BRT')
           git commit -m "post: artigo Amazon BR gerado pelo agente [$TIMESTAMP]"
           git push origin main
-          echo "✅ Post publicado — Cloudflare Pages rebuild iniciado"
+          echo "✅ Post publicado"
 
-      # Resumo visível pelo celular em github.com/.../actions
       - name: "📊 Resumo"
         if: always()
         run: |
