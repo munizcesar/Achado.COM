@@ -27,12 +27,7 @@ on:
         description: 'Pilar específico (opcional — vazio = rotação automática)'
         required: false
         default: ''
-        type: choice
-        options:
-          - ''
-          - beleza
-          - saude
-          - casa
+        type: string
 
 jobs:
   gerar-post:
