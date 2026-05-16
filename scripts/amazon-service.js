@@ -4,6 +4,7 @@
  *  1. Creators API (se AMAZON_CREDENTIAL_ID estiver no .env)
  *  2. PA-API 5.0  (se AMAZON_ACCESS_KEY estiver no .env)
  *  3. Título via Open Graph / meta tags (leve, menos bloqueio)
+ *  4. Fallback: usa ASIN como título genérico (nunca falha)
  *
  * Imagem: sempre via URL direta por ASIN (100% confiável, sem API)
  * Link afiliado: montado com ASIN + tag (100% confiável, sem API)
@@ -52,7 +53,6 @@ function get(urlStr, customHeaders = {}, redirectCount = 0) {
 }
 
 // ── Resolve link curto amzn.to → URL real ─────────────────────────────────
-// Segue apenas os headers Location sem baixar o body (muito mais rápido)
 
 function resolveShortUrl(urlStr, redirectCount = 0) {
   if (redirectCount > 8) return Promise.resolve(urlStr);
@@ -64,14 +64,13 @@ function resolveShortUrl(urlStr, redirectCount = 0) {
         'Accept-Language': 'pt-BR,pt;q=0.9',
       }
     }, (res) => {
-      res.resume(); // descarta o body
+      res.resume();
       const location = res.headers.location;
       if ([301, 302, 303, 307, 308].includes(res.statusCode) && location) {
-        // Resolve URL relativa se necessário
         const next = location.startsWith('http') ? location : new URL(location, urlStr).href;
         return resolve(resolveShortUrl(next, redirectCount + 1));
       }
-      resolve(urlStr); // URL final (sem mais redirects)
+      resolve(urlStr);
     });
     req.on('error', () => resolve(urlStr));
     req.setTimeout(10000, () => { req.destroy(); resolve(urlStr); });
@@ -212,7 +211,6 @@ async function fetchTitleViaOG(asin) {
         let clean = m[1].trim().replace(/\s+/g, ' ');
         if (stripBrand) clean = clean.replace(/ [-:|].*Amazon.*$/i, '');
         if (clean.length > 10 && !/^amazon|^página|^error|^acesso negado/i.test(clean)) {
-          // Aproveita specs do mesmo body
           const specs = [];
           for (const m2 of body.matchAll(/<span[^>]*class="[^"]*a-list-item[^"]*"[^>]*>([^<]{15,150})<\/span>/g)) {
             const txt = m2[1].trim().replace(/\s+/g, ' ');
@@ -222,7 +220,6 @@ async function fetchTitleViaOG(asin) {
         }
       }
     }
-    // JSON-LD fallback
     for (const block of body.matchAll(/<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]+?)<\/script>/g)) {
       try {
         const json = JSON.parse(block[1]);
@@ -241,7 +238,6 @@ async function fetchTitleViaOG(asin) {
 export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle } = {}) {
   console.log('📦  Amazon detectado...');
 
-  // Resolve links curtos amzn.to antes de extrair ASIN
   let resolvedUrl = inputUrl;
   if (/amzn\.to/i.test(inputUrl)) {
     console.log('   🔗 Resolvendo link curto...');
@@ -296,7 +292,11 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
     if (og) { title = og.title; specs = og.specs; console.log('   ✅ Título via OG/scraping'); }
   }
 
-  if (!title) throw new Error('Não foi possível obter o título. Configure AMAZON_CREDENTIAL_ID no .env.');
+  // 4. Fallback final: usa ASIN como título — nunca falha
+  if (!title) {
+    console.log(`   ⚠️  Não foi possível obter título. Usando ASIN como fallback: ${asin}`);
+    title = `Produto Amazon ${asin}`;
+  }
 
   // Imagem por ASIN (sem API, 100% confiável)
   const imageUrl = buildImageUrl(asin);
