@@ -69,20 +69,19 @@ jobs:
           restore-keys: |
             agent-history-
 
-      # Monta backend/.env apenas com as chaves necessárias
-      # RAPIDAPI_KEY intencionalmente omitido (ML é manual)
+      # Monta backend/.env sem espaços antes das variáveis
       - name: "🔐 Montar backend/.env"
         run: |
           mkdir -p backend
           cat > backend/.env << 'ENVEOF'
-          GROQ_API_KEY=${{ secrets.GROQ_API_KEY }}
-          GROQ_MODEL=llama-3.3-70b-versatile
-          GROQ_TEMPERATURE=0.1
-          SERPER_API_KEY=${{ secrets.SERPER_API_KEY }}
-          AMAZON_AFFILIATE_TAG=${{ secrets.AMAZON_AFFILIATE_TAG }}
-          NODE_ENV=production
-          ENVEOF
-          echo "✅ backend/.env criado (sem RAPIDAPI_KEY — ML manual)"
+GROQ_API_KEY=${{ secrets.GROQ_API_KEY }}
+GROQ_MODEL=llama-3.3-70b-versatile
+GROQ_TEMPERATURE=0.1
+SERPER_API_KEY=${{ secrets.SERPER_API_KEY }}
+AMAZON_AFFILIATE_TAG=${{ secrets.AMAZON_AFFILIATE_TAG }}
+NODE_ENV=production
+ENVEOF
+          echo "✅ backend/.env criado"
 
       # Roda o agente — só busca produtos na Amazon BR
       - name: "🤖 Rodar agente"
@@ -99,7 +98,6 @@ jobs:
           GROQ_API_KEY:         ${{ secrets.GROQ_API_KEY }}
           SERPER_API_KEY:       ${{ secrets.SERPER_API_KEY }}
           AMAZON_AFFILIATE_TAG: ${{ secrets.AMAZON_AFFILIATE_TAG }}
-          # RAPIDAPI_KEY omitido intencionalmente
 
       # Commit apenas se o agente gerou algum arquivo novo
       - name: "📤 Commit + Push do post"
