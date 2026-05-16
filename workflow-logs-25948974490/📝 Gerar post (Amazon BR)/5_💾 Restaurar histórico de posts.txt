@@ -1,0 +1,17 @@
+﻿2026-05-16T01:16:58.8010711Z ##[group]Run actions/cache@v4
+2026-05-16T01:16:58.8010926Z with:
+2026-05-16T01:16:58.8011091Z   path: scripts/agent/history.json
+2026-05-16T01:16:58.8011526Z   key: agent-history-25948974490
+2026-05-16T01:16:58.8011745Z   restore-keys: agent-history-
+
+2026-05-16T01:16:58.8011959Z   enableCrossOsArchive: false
+2026-05-16T01:16:58.8012159Z   fail-on-cache-miss: false
+2026-05-16T01:16:58.8012345Z   lookup-only: false
+2026-05-16T01:16:58.8012517Z   save-always: false
+2026-05-16T01:16:58.8012681Z ##[endgroup]
+2026-05-16T01:16:59.1145302Z Cache hit for restore-key: agent-history-25948876828
+2026-05-16T01:16:59.3836869Z Received 498 of 498 (100.0%), 0.0 MBs/sec
+2026-05-16T01:16:59.3837348Z Cache Size: ~0 MB (498 B)
+2026-05-16T01:16:59.3876508Z [command]/usr/bin/tar -xf /home/runner/work/_temp/6ee6ce25-7909-418e-aa8b-2c59e9653bcd/cache.tzst -P -C /home/runner/work/AchadoCerto.VIP/AchadoCerto.VIP --use-compress-program unzstd
+2026-05-16T01:16:59.3918285Z Cache restored successfully
+2026-05-16T01:16:59.4009927Z Cache restored from key: agent-history-25948876828

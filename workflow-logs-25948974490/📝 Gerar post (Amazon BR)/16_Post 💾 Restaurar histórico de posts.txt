@@ -1,0 +1,4 @@
+﻿2026-05-16T01:17:07.9041682Z Post job cleanup.
+2026-05-16T01:17:08.0218725Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/AchadoCerto.VIP/AchadoCerto.VIP --files-from manifest.txt --use-compress-program zstdmt
+2026-05-16T01:17:08.4810633Z Sent 540 of 540 (100.0%), 0.0 MBs/sec
+2026-05-16T01:17:08.5796670Z Cache saved with key: agent-history-25948974490

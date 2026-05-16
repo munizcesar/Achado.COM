@@ -1,0 +1,18 @@
+﻿2026-05-16T01:17:07.8878565Z ##[group]Run echo "## 🤖 Agente AchadoCerto.VIP" >> $GITHUB_STEP_SUMMARY
+2026-05-16T01:17:07.8878981Z [36;1mecho "## 🤖 Agente AchadoCerto.VIP" >> $GITHUB_STEP_SUMMARY[0m
+2026-05-16T01:17:07.8879258Z [36;1mecho "" >> $GITHUB_STEP_SUMMARY[0m
+2026-05-16T01:17:07.8879492Z [36;1mecho "| | |" >> $GITHUB_STEP_SUMMARY[0m
+2026-05-16T01:17:07.8879732Z [36;1mecho "|---|---|" >> $GITHUB_STEP_SUMMARY[0m
+2026-05-16T01:17:07.8880130Z [36;1mecho "| ⏰ Horário | $(TZ='America/Sao_Paulo' date '+%d/%m/%Y %H:%M BRT') |" >> $GITHUB_STEP_SUMMARY[0m
+2026-05-16T01:17:07.8880566Z [36;1mecho "| 🏷️  Pilar | automático |" >> $GITHUB_STEP_SUMMARY[0m
+2026-05-16T01:17:07.8880900Z [36;1mecho "| 🛠️  Fonte | Amazon BR (ML: manual) |" >> $GITHUB_STEP_SUMMARY[0m
+2026-05-16T01:17:07.8881487Z [36;1mecho "| 🔥 Trigger | workflow_dispatch |" >> $GITHUB_STEP_SUMMARY[0m
+2026-05-16T01:17:07.8881838Z [36;1mif [ -f scripts/agent/agent.log ]; then[0m
+2026-05-16T01:17:07.8882080Z [36;1m  echo "" >> $GITHUB_STEP_SUMMARY[0m
+2026-05-16T01:17:07.8882365Z [36;1m  echo "### 📝 Log do agente" >> $GITHUB_STEP_SUMMARY[0m
+2026-05-16T01:17:07.8882631Z [36;1m  echo '```' >> $GITHUB_STEP_SUMMARY[0m
+2026-05-16T01:17:07.8882909Z [36;1m  tail -20 scripts/agent/agent.log >> $GITHUB_STEP_SUMMARY[0m
+2026-05-16T01:17:07.8883175Z [36;1m  echo '```' >> $GITHUB_STEP_SUMMARY[0m
+2026-05-16T01:17:07.8883376Z [36;1mfi[0m
+2026-05-16T01:17:07.8912078Z shell: /usr/bin/bash -e {0}
+2026-05-16T01:17:07.8912290Z ##[endgroup]

@@ -1,0 +1,82 @@
+﻿2026-05-16T01:16:42.3132464Z ##[group]Run actions/checkout@v4
+2026-05-16T01:16:42.3133135Z with:
+2026-05-16T01:16:42.3133457Z   fetch-depth: 0
+2026-05-16T01:16:42.3134008Z   token: ***
+2026-05-16T01:16:42.3134350Z   repository: munizcesar/AchadoCerto.VIP
+2026-05-16T01:16:42.3134780Z   ssh-strict: true
+2026-05-16T01:16:42.3135105Z   ssh-user: git
+2026-05-16T01:16:42.3135436Z   persist-credentials: true
+2026-05-16T01:16:42.3135788Z   clean: true
+2026-05-16T01:16:42.3136112Z   sparse-checkout-cone-mode: true
+2026-05-16T01:16:42.3136514Z   fetch-tags: false
+2026-05-16T01:16:42.3136831Z   show-progress: true
+2026-05-16T01:16:42.3137155Z   lfs: false
+2026-05-16T01:16:42.3137454Z   submodules: false
+2026-05-16T01:16:42.3137800Z   set-safe-directory: true
+2026-05-16T01:16:42.3138278Z ##[endgroup]
+2026-05-16T01:16:42.4031085Z Syncing repository: munizcesar/AchadoCerto.VIP
+2026-05-16T01:16:42.4033019Z ##[group]Getting Git version info
+2026-05-16T01:16:42.4033640Z Working directory is '/home/runner/work/AchadoCerto.VIP/AchadoCerto.VIP'
+2026-05-16T01:16:42.4034652Z [command]/usr/bin/git version
+2026-05-16T01:16:42.4259763Z git version 2.54.0
+2026-05-16T01:16:42.4280101Z ##[endgroup]
+2026-05-16T01:16:42.4292343Z Temporarily overriding HOME='/home/runner/work/_temp/716966af-6696-4ff5-b4a3-548188edb9c5' before making global git config changes
+2026-05-16T01:16:42.4293504Z Adding repository directory to the temporary git global config as a safe directory
+2026-05-16T01:16:42.4297113Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/AchadoCerto.VIP/AchadoCerto.VIP
+2026-05-16T01:16:42.4333525Z Deleting the contents of '/home/runner/work/AchadoCerto.VIP/AchadoCerto.VIP'
+2026-05-16T01:16:42.4336866Z ##[group]Initializing the repository
+2026-05-16T01:16:42.4341006Z [command]/usr/bin/git init /home/runner/work/AchadoCerto.VIP/AchadoCerto.VIP
+2026-05-16T01:16:42.4413790Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-05-16T01:16:42.4415078Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-05-16T01:16:42.4416633Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-05-16T01:16:42.4417498Z hint: call:
+2026-05-16T01:16:42.4417954Z hint:
+2026-05-16T01:16:42.4418709Z hint: 	git config --global init.defaultBranch <name>
+2026-05-16T01:16:42.4419443Z hint:
+2026-05-16T01:16:42.4420269Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-05-16T01:16:42.4421538Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-05-16T01:16:42.4422390Z hint:
+2026-05-16T01:16:42.4422848Z hint: 	git branch -m <name>
+2026-05-16T01:16:42.4423399Z hint:
+2026-05-16T01:16:42.4424187Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-05-16T01:16:42.4425489Z Initialized empty Git repository in /home/runner/work/AchadoCerto.VIP/AchadoCerto.VIP/.git/
+2026-05-16T01:16:42.4427607Z [command]/usr/bin/git remote add origin https://github.com/munizcesar/AchadoCerto.VIP
+2026-05-16T01:16:42.4450961Z ##[endgroup]
+2026-05-16T01:16:42.4452052Z ##[group]Disabling automatic garbage collection
+2026-05-16T01:16:42.4455044Z [command]/usr/bin/git config --local gc.auto 0
+2026-05-16T01:16:42.4478520Z ##[endgroup]
+2026-05-16T01:16:42.4479359Z ##[group]Setting up auth
+2026-05-16T01:16:42.4484526Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-05-16T01:16:42.4509510Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-05-16T01:16:42.4768466Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-05-16T01:16:42.4795336Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-05-16T01:16:42.4984649Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-05-16T01:16:42.5010379Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-05-16T01:16:42.5205014Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-05-16T01:16:42.5233636Z ##[endgroup]
+2026-05-16T01:16:42.5234260Z ##[group]Fetching the repository
+2026-05-16T01:16:42.5240356Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2026-05-16T01:16:45.9179297Z From https://github.com/munizcesar/AchadoCerto.VIP
+2026-05-16T01:16:45.9180047Z  * [new branch]      copilot/add-blurred-background-search -> origin/copilot/add-blurred-background-search
+2026-05-16T01:16:45.9180825Z  * [new branch]      copilot/add-sticky-header-component -> origin/copilot/add-sticky-header-component
+2026-05-16T01:16:45.9181831Z  * [new branch]      copilot/audit-markdown-files-category-fix -> origin/copilot/audit-markdown-files-category-fix
+2026-05-16T01:16:45.9182461Z  * [new branch]      copilot/check-for-old-domain-residues -> origin/copilot/check-for-old-domain-residues
+2026-05-16T01:16:45.9183020Z  * [new branch]      copilot/update-hero-banner-style -> origin/copilot/update-hero-banner-style
+2026-05-16T01:16:45.9183514Z  * [new branch]      fix/logo-image-header -> origin/fix/logo-image-header
+2026-05-16T01:16:45.9183876Z  * [new branch]      main                  -> origin/main
+2026-05-16T01:16:45.9209531Z [command]/usr/bin/git branch --list --remote origin/main
+2026-05-16T01:16:45.9231582Z   origin/main
+2026-05-16T01:16:45.9240914Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-05-16T01:16:45.9258678Z 593b49fa685c67658d4056c4df056c36dd370ddd
+2026-05-16T01:16:45.9262929Z ##[endgroup]
+2026-05-16T01:16:45.9263501Z ##[group]Determining the checkout info
+2026-05-16T01:16:45.9264426Z ##[endgroup]
+2026-05-16T01:16:45.9267777Z [command]/usr/bin/git sparse-checkout disable
+2026-05-16T01:16:45.9298270Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-05-16T01:16:45.9320494Z ##[group]Checking out the ref
+2026-05-16T01:16:45.9324133Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-05-16T01:16:46.2471628Z Switched to a new branch 'main'
+2026-05-16T01:16:46.2472173Z branch 'main' set up to track 'origin/main'.
+2026-05-16T01:16:46.2500814Z ##[endgroup]
+2026-05-16T01:16:46.2538688Z [command]/usr/bin/git log -1 --format=%H
+2026-05-16T01:16:46.2560632Z 593b49fa685c67658d4056c4df056c36dd370ddd

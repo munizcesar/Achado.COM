@@ -1,0 +1,91 @@
+﻿2026-05-16T01:16:59.4233336Z ##[group]Run echo "🔄 Rotação automática entre pilares"
+2026-05-16T01:16:59.4233690Z [36;1mecho "🔄 Rotação automática entre pilares"[0m
+2026-05-16T01:16:59.4233985Z [36;1mnode scripts/agent/agent.js --now --source amazon[0m
+2026-05-16T01:16:59.4259474Z shell: /usr/bin/bash -e {0}
+2026-05-16T01:16:59.4259686Z env:
+2026-05-16T01:16:59.4260011Z   GROQ_API_KEY: ***
+2026-05-16T01:16:59.4260242Z   SERPER_API_KEY: ***
+2026-05-16T01:16:59.4260454Z   AMAZON_AFFILIATE_TAG: ***
+
+2026-05-16T01:16:59.4260655Z   AMAZON_CREDENTIAL_ID: 
+2026-05-16T01:16:59.4260838Z ##[endgroup]
+2026-05-16T01:16:59.4303511Z 🔄 Rotação automática entre pilares
+2026-05-16T01:16:59.4690286Z [dotenv@17.3.1] injecting env (3) from backend/.env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+2026-05-16T01:16:59.4806642Z [15/05/2026, 22:16:59] ⚡ --now (rotação automática)
+2026-05-16T01:16:59.4811501Z [15/05/2026, 22:16:59] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2026-05-16T01:16:59.4813052Z [15/05/2026, 22:16:59] 🤖 Agente + Trend Scout + Content Guard — AchadoCerto.VIP
+2026-05-16T01:16:59.4821150Z [15/05/2026, 22:16:59] 📈 Trend Scout: buscando bestsellers de "beleza"...
+2026-05-16T01:17:00.7725988Z [15/05/2026, 22:17:00]    ⚠️  Trend Scout indisponível — usando catálogo fixo
+2026-05-16T01:17:00.7729459Z [15/05/2026, 22:17:00] 🏁 Pool final: 6 produtos (trending prioridade → catálogo fallback)
+2026-05-16T01:17:00.7731917Z [15/05/2026, 22:17:00] 
+2026-05-16T01:17:00.7732423Z 🔍 Tentativa 1/3: Secador de Cabelo 2200W [catálogo]
+2026-05-16T01:17:00.7747923Z [15/05/2026, 22:17:00] 🛡️  Content Guard — Auditoria de Qualidade
+2026-05-16T01:17:00.7749770Z [15/05/2026, 22:17:00]    Produto : Secador de Cabelo 2200W
+2026-05-16T01:17:00.7751507Z [15/05/2026, 22:17:00]    Pilar   : beleza
+2026-05-16T01:17:00.7754081Z [15/05/2026, 22:17:00]    Ângulo  : custo_beneficio
+2026-05-16T01:17:00.7755891Z [15/05/2026, 22:17:00]    [OK] Nome do produto sem padrões genéricos
+2026-05-16T01:17:00.7758350Z [15/05/2026, 22:17:00]    [OK] Ângulo sem referências temporais
+2026-05-16T01:17:00.7760221Z [15/05/2026, 22:17:00]    [OK] Sem metalinguagem no ângulo
+2026-05-16T01:17:00.7761954Z [15/05/2026, 22:17:00]    [OK] Sem risco de repetição
+2026-05-16T01:17:00.7764030Z [15/05/2026, 22:17:00]    ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)
+2026-05-16T01:17:00.7766065Z [15/05/2026, 22:17:00] 🎨 Pilar    : BELEZA
+2026-05-16T01:17:00.7767909Z [15/05/2026, 22:17:00] 🛒 Produto  : Secador de Cabelo 2200W [catálogo]
+2026-05-16T01:17:00.7771071Z [15/05/2026, 22:17:00] 🔗 URL      : https://www.amazon.com.br/dp/B08NWMH1CJ?tag=***
+2026-05-16T01:17:00.7771563Z 
+2026-05-16T01:17:00.7772238Z [15/05/2026, 22:17:00] 📐 Ângulo   : Custo-benefício real: vale cada centavo investir neste produto
+2026-05-16T01:17:00.7775000Z [15/05/2026, 22:17:00] 🚀 Executando: node scripts/novo-post.js "https://www.amazon.com.br/dp/B08NWMH1CJ?tag=***
+2026-05-16T01:17:00.7776026Z "
+2026-05-16T01:17:00.8205668Z [dotenv@17.3.1] injecting env (0) from backend/.env -- tip: 🛡️ auth for agents: https://vestauth.com
+2026-05-16T01:17:00.8211170Z 📦  Amazon detectado...
+2026-05-16T01:17:00.8212199Z    ASIN: B08NWMH1CJ
+2026-05-16T01:17:00.8214314Z    🌐 Buscando título via Open Graph...
+2026-05-16T01:17:00.9591679Z    ⚠️  Não foi possível obter título. Usando ASIN como fallback: B08NWMH1CJ
+2026-05-16T01:17:00.9592621Z    🖼️  Imagem por ASIN: https://images-na.ssl-images-amazon.com/images/P/B08NWMH1CJ.01._SCLZZZZZZZ_.jpg
+2026-05-16T01:17:00.9663699Z 
+2026-05-16T01:17:00.9664137Z 📝 Título    : Produto Amazon B08NWMH1CJ
+2026-05-16T01:17:00.9664527Z 📂 Categoria : automotivo
+2026-05-16T01:17:00.9664766Z 🏷️  Tags      : automotivo
+2026-05-16T01:17:00.9665051Z 🔗 Slug      : produto-amazon-b08nwmh1cj
+2026-05-16T01:17:01.2089655Z 🖼️  Baixando imagem... ✅
+2026-05-16T01:17:01.2090118Z 🤖 Gerando conteúdo...
+2026-05-16T01:17:01.2092560Z    📚 Arquétipo: A Experiência de Quem Comprou
+2026-05-16T01:17:01.2096181Z    🔍 Buscando contexto via Serper (24/2500)...
+2026-05-16T01:17:01.9850937Z    ✅ Contexto enriquecido obtido (27/2500 usados)
+2026-05-16T01:17:01.9852217Z    🤖 Groq — protocolo editorial v3 carregado...
+2026-05-16T01:17:06.2659293Z    ✅ Conteúdo gerado com sucesso (~4917 caracteres)
+2026-05-16T01:17:06.2659725Z 
+2026-05-16T01:17:06.2660053Z 📋 Validando qualidade do conteúdo...
+2026-05-16T01:17:06.2660269Z 
+2026-05-16T01:17:06.2661738Z    ❌ Contém preço exato (remover)
+2026-05-16T01:17:06.2662215Z    ✅ Conteúdo evergreen
+2026-05-16T01:17:06.2664627Z    ✅ Títulos específicos
+2026-05-16T01:17:06.2666312Z    ✅ Sem metalinguagem
+2026-05-16T01:17:06.2667849Z    ✅ Contém prova social
+2026-05-16T01:17:06.2669126Z    ✅ CTA natural presente
+2026-05-16T01:17:06.2670280Z    ✅ Linguagem evergreen
+2026-05-16T01:17:06.2672262Z    ✅ Extensão adequada (784 palavras)
+2026-05-16T01:17:06.2673466Z    ✅ Especificações presentes
+2026-05-16T01:17:06.2673810Z 
+2026-05-16T01:17:06.2674196Z    📊 Pontuação: 8/9 (89%)
+2026-05-16T01:17:06.2674541Z    ✅ Qualidade EXCELENTE!
+2026-05-16T01:17:06.2674723Z 
+2026-05-16T01:17:06.2676857Z 📎  Post criado  : /home/runner/work/AchadoCerto.VIP/AchadoCerto.VIP/src/content/blog/produto-amazon-b08nwmh1cj.md
+2026-05-16T01:17:06.2677660Z 🚀  Publicando...
+2026-05-16T01:17:06.6362386Z Author identity unknown
+2026-05-16T01:17:06.6362625Z 
+2026-05-16T01:17:06.6362754Z *** Please tell me who you are.
+2026-05-16T01:17:06.6362917Z 
+2026-05-16T01:17:06.6362983Z Run
+2026-05-16T01:17:06.6363070Z 
+2026-05-16T01:17:06.6363212Z   git config --global user.email "you@example.com"
+2026-05-16T01:17:06.6363564Z   git config --global user.name "Your Name"
+2026-05-16T01:17:06.6363730Z 
+2026-05-16T01:17:06.6363861Z to set your account's default identity.
+2026-05-16T01:17:06.6364190Z Omit --global to set the identity only in this repository.
+2026-05-16T01:17:06.6364380Z 
+2026-05-16T01:17:06.6365021Z fatal: empty ident name (for <runner@runnervmrw5os.ghs03yo5c4judosebpamfexzwa.yx.internal.cloudapp.net>) not allowed
+2026-05-16T01:17:06.6369825Z 
+2026-05-16T01:17:06.6370341Z 📎  Arquivo gerado. Rode manualmente:
+2026-05-16T01:17:06.6370925Z    git add . && git commit -m "post: produto-amazon-b08nwmh1cj" && git push
+2026-05-16T01:17:06.6371430Z 
+2026-05-16T01:17:06.6418066Z [15/05/2026, 22:17:06] ✅ Post criado com sucesso!

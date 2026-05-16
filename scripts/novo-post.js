@@ -41,6 +41,31 @@ import { gerarConteudoPost } from './groq-service.js';
 import { validarConteudo, corrigirAutomatico, analisarDetalhado } from './content-validator.js';
 import { fetchAmazon as fetchAmazonService } from './amazon-service.js';
 
+// ── Sanitização de preços e CTA ───────────────────────────────────────────
+function sanitizarConteudo(conteudo) {
+  let sanitizado = conteudo;
+  
+  // Remove padrões monetários
+  sanitizado = sanitizado.replace(/R\$\s*[\d.,]+/gi, '');
+  sanitizado = sanitizado.replace(/\breais?\b|\bcentavos?\b/gi, '');
+  sanitizado = sanitizado.replace(/\b\d+,\d{2}\b/g, '');
+  sanitizado = sanitizado.replace(/preço\s*(?:é|de|:)?\s*\d+/gi, '');
+  sanitizado = sanitizado.replace(/custa\s*(?:apenas|de)?\s*r?\$?\s*\d+/gi, '');
+  
+  // Remove linhas apenas com valores
+  const linhas = sanitizado.split('\n');
+  sanitizado = linhas.filter(l => !/^\s*[r$\d.,\s]+\s*$/i.test(l)).join('\n');
+  sanitizado = sanitizado.replace(/\n{3,}/g, '\n\n').trim();
+  
+  // Valida e injeta CTA se faltar
+  const temCTA = /confira|acesse|veja|conheça|consulte|saiba mais|clique|visite|aproveite|compre|adquira|leia mais|descubra|encontre|confira no/i.test(sanitizado);
+  if (!temCTA) {
+    sanitizado = sanitizado.trimRight() + '\n\nConfira o produto no anúncio para detalhes atualizados e aproveitar a melhor oferta.';
+  }
+  
+  return sanitizado;
+}
+
 // ── Helpers ────────────────────────────────────────────────────────────────
 
 function slugify(text) {
@@ -476,8 +501,9 @@ async function generateMarkdown(produto, imageFile, slug) {
     conteudoGerado = gerarConteudoBasico(produto, variacoes);
   }
   
-  // 5. Valida e corrige conteúdo
+  // 5. Valida, corrige e sanitiza conteúdo
   let conteudoFinal = corrigirAutomatico(conteudoGerado);
+  conteudoFinal = sanitizarConteudo(conteudoFinal); // Remove preços e garante CTA
   const validacao = validarConteudo(conteudoFinal);
   
   if (!validacao.aprovado) {

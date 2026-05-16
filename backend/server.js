@@ -1255,7 +1255,7 @@ async function gerarConteudoPost(produto) {
 
     const prompt = `Você é um redator especialista em posts de blog para um site de achados e recomendações.
 
-  Crie um post ÚNICO e ORIGINAL sobre este produto, evitando mencionar preços numéricos ou afirmações de disponibilidade de preço.
+  Crie um post ÚNICO e ORIGINAL sobre este produto. REGRA FUNDAMENTAL: NÃO INCLUA NENHUM PREÇO, VALOR MONETÁRIO OU NÚMERO DE CUSTO.
 
   PRODUTO:
   - Título: ${produto.titulo}
@@ -1264,16 +1264,16 @@ async function gerarConteudoPost(produto) {
   - Condição: ${produto.condicao || 'Novo'}
   - Categoria: ${produto.categoria || 'geral'}
 
-  INSTRUÇÕES (importante):
-  1. NÃO inclua valores monetários ou comparações de preço (remova qualquer preço exato).
-  2. Use linguagem amigável e persuasiva, mas não sensacionalista.
-  3. Crie seções claras: "Por que este produto?", "Benefícios principais", "Especificações", "Resumo".
-  4. Inclua um CTA claro e curto ao final (ex.: "Confira o produto na Amazon"), sem texto legal/advertising pesado.
+  INSTRUÇÕES CRÍTICAS:
+  1. PROIBIDO: Mencionar "R$", "reais", "preço", "custa", "valor", números com cifrão ou qualquer custo.
+  2. Crie seções: "Por que este produto?", "Benefícios principais", "Especificações", "Resumo".
+  3. Foque em qualidade, recursos, utilidade e prova social (avaliações de clientes).
+  4. Termine com um CTA curto (ex.: "Confira o produto no anúncio").
   5. Máximo 800 palavras; parágrafos curtos (máx 3 linhas).
-  6. Forneça benefícios e uso prático, não promessas exageradas.
-  7. Evite metadiscussão sobre como o texto foi gerado.
+  6. Linguagem amigável, persuasiva, mas honesta.
+  7. SEM metadiscussão, SEM hashtags, SEM "---" adicional.
 
-  RESPONDA APENAS COM O CONTEÚDO DO POST, SEM MARKDOWN, SEM HASHTAGS, SEM '---', SEM TÍTULOS ADICIONAIS.`;
+  RESPONDA APENAS COM O CONTEÚDO DO POST.`;
 
     // Validar se Groq está inicializado
     if (!groq) {
