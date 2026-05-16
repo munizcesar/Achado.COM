@@ -1,0 +1,22 @@
+﻿2026-05-16T01:12:21.1350809Z ##[group]Run actions/setup-node@v4
+2026-05-16T01:12:21.1351119Z with:
+2026-05-16T01:12:21.1351316Z   node-version: 20
+2026-05-16T01:12:21.1351522Z   cache: npm
+2026-05-16T01:12:21.1351732Z   always-auth: false
+2026-05-16T01:12:21.1351970Z   check-latest: false
+2026-05-16T01:12:21.1352353Z   token: ***
+2026-05-16T01:12:21.1352560Z ##[endgroup]
+2026-05-16T01:12:21.3082513Z Found in cache @ /opt/hostedtoolcache/node/20.20.2/x64
+2026-05-16T01:12:21.3088549Z ##[group]Environment details
+2026-05-16T01:12:23.6189281Z node: v20.20.2
+2026-05-16T01:12:23.6189722Z npm: 10.8.2
+2026-05-16T01:12:23.6190011Z yarn: 1.22.22
+2026-05-16T01:12:23.6191462Z ##[endgroup]
+2026-05-16T01:12:23.6212551Z [command]/opt/hostedtoolcache/node/20.20.2/x64/bin/npm config get cache
+2026-05-16T01:12:23.8709829Z /home/runner/.npm
+2026-05-16T01:12:23.9945877Z Cache hit for: node-cache-Linux-x64-npm-7dd7d58b39cdb25df4b1584c699c3e1a29619d7726ceede0f732ee29ab2e5ebe
+2026-05-16T01:12:24.3344158Z Received 46568116 of 46568116 (100.0%), 150.5 MBs/sec
+2026-05-16T01:12:24.3344959Z Cache Size: ~44 MB (46568116 B)
+2026-05-16T01:12:24.3372767Z [command]/usr/bin/tar -xf /home/runner/work/_temp/1161c812-702d-4ec4-8a93-1d3b89558c7b/cache.tzst -P -C /home/runner/work/AchadoCerto.VIP/AchadoCerto.VIP --use-compress-program unzstd
+2026-05-16T01:12:24.4562397Z Cache restored successfully
+2026-05-16T01:12:24.4590420Z Cache restored from key: node-cache-Linux-x64-npm-7dd7d58b39cdb25df4b1584c699c3e1a29619d7726ceede0f732ee29ab2e5ebe

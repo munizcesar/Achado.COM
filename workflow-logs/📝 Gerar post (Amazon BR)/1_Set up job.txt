@@ -1,0 +1,32 @@
+﻿2026-05-16T01:12:17.5770273Z Current runner version: '2.334.0'
+2026-05-16T01:12:17.5799910Z ##[group]Runner Image Provisioner
+2026-05-16T01:12:17.5800804Z Hosted Compute Agent
+2026-05-16T01:12:17.5801426Z Version: 20260213.493
+2026-05-16T01:12:17.5802065Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+2026-05-16T01:12:17.5802855Z Build Date: 2026-02-13T00:28:41Z
+2026-05-16T01:12:17.5803536Z Worker ID: {277e0afe-f0c5-4209-bb1e-4fa6b80e91d9}
+2026-05-16T01:12:17.5804238Z Azure Region: eastus
+2026-05-16T01:12:17.5804844Z ##[endgroup]
+2026-05-16T01:12:17.5806115Z ##[group]Operating System
+2026-05-16T01:12:17.5806679Z Ubuntu
+2026-05-16T01:12:17.5807509Z 24.04.4
+2026-05-16T01:12:17.5808010Z LTS
+2026-05-16T01:12:17.5808512Z ##[endgroup]
+2026-05-16T01:12:17.5809078Z ##[group]Runner Image
+2026-05-16T01:12:17.5809692Z Image: ubuntu-24.04
+2026-05-16T01:12:17.5810232Z Version: 20260513.135.3
+2026-05-16T01:12:17.5811410Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260513.135/images/ubuntu/Ubuntu2404-Readme.md
+2026-05-16T01:12:17.5813109Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260513.135
+2026-05-16T01:12:17.5814090Z ##[endgroup]
+2026-05-16T01:12:17.5815125Z ##[group]GITHUB_TOKEN Permissions
+2026-05-16T01:12:17.5817602Z Contents: write
+2026-05-16T01:12:17.5818228Z Metadata: read
+2026-05-16T01:12:17.5818715Z ##[endgroup]
+2026-05-16T01:12:17.5821360Z Secret source: Actions
+2026-05-16T01:12:17.5822395Z Prepare workflow directory
+2026-05-16T01:12:17.6147828Z Prepare all required actions
+2026-05-16T01:12:17.6185461Z Getting action download info
+2026-05-16T01:12:18.0109478Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-05-16T01:12:18.1050874Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-05-16T01:12:18.2618770Z Download action repository 'actions/cache@v4' (SHA:0057852bfaa89a56745cba8c7296529d2fc39830)
+2026-05-16T01:12:18.4727674Z Complete job name: 📝 Gerar post (Amazon BR)

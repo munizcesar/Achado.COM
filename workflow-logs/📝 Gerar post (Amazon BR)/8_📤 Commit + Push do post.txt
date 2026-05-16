@@ -1,0 +1,25 @@
+﻿2026-05-16T01:12:36.1410772Z ##[group]Run git config user.name "Agente AchadoCerto"
+2026-05-16T01:12:36.1411205Z [36;1mgit config user.name "Agente AchadoCerto"[0m
+2026-05-16T01:12:36.1411565Z [36;1mgit config user.email "agente@achadocerto.vip"[0m
+2026-05-16T01:12:36.1411866Z [36;1m[0m
+2026-05-16T01:12:36.1412176Z [36;1mgit add src/content/ scripts/agent/history.json 2>/dev/null || true[0m
+2026-05-16T01:12:36.1412559Z [36;1mgit add -A[0m
+2026-05-16T01:12:36.1412774Z [36;1m[0m
+2026-05-16T01:12:36.1412993Z [36;1mif git diff --staged --quiet; then[0m
+2026-05-16T01:12:36.1413354Z [36;1m  echo "⚠️  Nenhum post novo gerado nesta execução"[0m
+2026-05-16T01:12:36.1413699Z [36;1m  exit 0[0m
+2026-05-16T01:12:36.1413906Z [36;1mfi[0m
+2026-05-16T01:12:36.1414272Z [36;1m[0m
+2026-05-16T01:12:36.1414562Z [36;1mTIMESTAMP=$(TZ='America/Sao_Paulo' date '+%d/%m/%Y %H:%M BRT')[0m
+2026-05-16T01:12:36.1415048Z [36;1mgit commit -m "post: artigo Amazon BR gerado pelo agente [$TIMESTAMP]"[0m
+2026-05-16T01:12:36.1415441Z [36;1mgit push origin main[0m
+2026-05-16T01:12:36.1415766Z [36;1mecho "✅ Post publicado"[0m
+2026-05-16T01:12:36.1451314Z shell: /usr/bin/bash -e {0}
+2026-05-16T01:12:36.1451590Z ##[endgroup]
+2026-05-16T01:12:36.1851438Z [main 0282be9] post: artigo Amazon BR gerado pelo agente [15/05/2026 22:12 BRT]
+2026-05-16T01:12:36.1852364Z  4 files changed, 72 insertions(+), 1 deletion(-)
+2026-05-16T01:12:36.1853124Z  create mode 100644 public/images/posts/produto-amazon-b07v38qyz6.webp
+2026-05-16T01:12:36.1853778Z  create mode 100644 src/content/blog/produto-amazon-b07v38qyz6.md
+2026-05-16T01:12:37.0491992Z To https://github.com/munizcesar/AchadoCerto.VIP
+2026-05-16T01:12:37.0492583Z    d561175..0282be9  main -> main
+2026-05-16T01:12:37.0539155Z ✅ Post publicado
