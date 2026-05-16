@@ -24,10 +24,10 @@ on:
   workflow_dispatch:
     inputs:
       pillar:
-        description: 'Pilar específico (opcional — vazio = rotação automática)'
+        description: 'Pilar específico (opcional)'
         required: false
-        default: ''
         type: string
+        default: 'auto'
 
 jobs:
   gerar-post:
@@ -82,7 +82,7 @@ ENVEOF
       - name: "🤖 Rodar agente"
         run: |
           PILLAR="${{ github.event.inputs.pillar }}"
-          if [ -n "$PILLAR" ]; then
+          if [ -n "$PILLAR" ] && [ "$PILLAR" != "auto" ]; then
             echo "🏷️  Pilar forçado: $PILLAR"
             node scripts/agent/agent.js --now --source amazon $PILLAR
           else
