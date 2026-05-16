@@ -1253,29 +1253,27 @@ async function gerarConteudoPost(produto) {
       return gerarConteudoPostFallback(produto);
     }
 
-    const prompt = `Você é um especialista em criar posts de blog atraentes sobre produtos para um site de achados e descontos.
+    const prompt = `Você é um redator especialista em posts de blog para um site de achados e recomendações.
 
-Crie um post ÚNICO e ORIGINAL sobre este produto:
+  Crie um post ÚNICO e ORIGINAL sobre este produto, evitando mencionar preços numéricos ou afirmações de disponibilidade de preço.
 
-PRODUTO:
-- Título: ${produto.titulo}
-- Preço: R$ ${produto.preco?.toFixed(2) || 'Consultar'}
-- Avaliação: ${produto.avaliacao || 4.5}/5 estrelas
-- Vendedores/Clientes: ${produto.vendidos || 1000}+
-- Condição: ${produto.condicao || 'Novo'}
-- Categoria: ${produto.categoria || 'geral'}
+  PRODUTO:
+  - Título: ${produto.titulo}
+  - Avaliação: ${produto.avaliacao || 4.5}/5 estrelas
+  - Vendedores/Clientes: ${produto.vendidos || 1000}+
+  - Condição: ${produto.condicao || 'Novo'}
+  - Categoria: ${produto.categoria || 'geral'}
 
-INSTRUÇÕES:
-1. Use linguagem casual, amigável e persuasiva
-2. Crie seções claras: "Por que este produto?", "Benefícios principais", "Especificações", "Por que comprar agora?", "Resumo"
-3. Seja honesto e útil - não exagere
-4. Máximo 800 palavras
-5. Use emojis ocasionalmente para tornar legível
-6. Inclua call-to-action para comprar
-7. Foco em valor e benefícios reais
-8. Cada parágrafo curto (máx 3 linhas)
+  INSTRUÇÕES (importante):
+  1. NÃO inclua valores monetários ou comparações de preço (remova qualquer preço exato).
+  2. Use linguagem amigável e persuasiva, mas não sensacionalista.
+  3. Crie seções claras: "Por que este produto?", "Benefícios principais", "Especificações", "Resumo".
+  4. Inclua um CTA claro e curto ao final (ex.: "Confira o produto na Amazon"), sem texto legal/advertising pesado.
+  5. Máximo 800 palavras; parágrafos curtos (máx 3 linhas).
+  6. Forneça benefícios e uso prático, não promessas exageradas.
+  7. Evite metadiscussão sobre como o texto foi gerado.
 
-RESPONDA APENAS COM O CONTEÚDO DO POST, SEM MARKDOWN, SEM HASHTAGS, SEM "---", SEM TÍTULOS ADICIONAIS.`;
+  RESPONDA APENAS COM O CONTEÚDO DO POST, SEM MARKDOWN, SEM HASHTAGS, SEM '---', SEM TÍTULOS ADICIONAIS.`;
 
     // Validar se Groq está inicializado
     if (!groq) {
@@ -1311,27 +1309,22 @@ function gerarConteudoPostFallback(produto) {
   return `
 Por que este produto?
 
-${produto.titulo} é uma excelente escolha para quem busca qualidade e melhor preço no Mercado Livre.
+${produto.titulo} é uma escolha sólida para quem busca qualidade e desempenho dentro da sua categoria.
 
 Benefícios principais:
-✨ Preço competitivo: R$ ${produto.preco.toFixed(2)}
-⭐ Altamente avaliado: ${produto.avaliacao} estrelas
-✓ ${produto.vendidos} clientes satisfeitos
-🏪 Vendedor verificado
+✨ Excelente conjunto de características relevantes para o uso diário
+⭐ Avaliação consistente por usuários satisfeitos
+✓ Histórico de boas avaliações e especificações adequadas
 
 Especificações:
 - Condição: ${produto.condicao === 'novo' ? 'Novo' : 'Usado'}
-- Estoque disponível: ${produto.estoque || 'Verificar'}
-- Frete: Consultar no Mercado Livre
-
-Por que comprar agora?
-
-Este é um dos melhores preços encontrados no Mercado Livre. O desconto de ${produto.desconto}% representa uma oportunidade interessante para economizar.
+- Estoque: ${produto.estoque || 'Verificar disponibilidade no anúncio'}
 
 Resumo:
 
-${produto.titulo} é uma ótima oportunidade para aproveitar um bom preço com qualidade garantida. 
-Recomendamos conferir o anúncio completo no Mercado Livre para mais detalhes e confirmar a disponibilidade.
+${produto.titulo} oferece benefícios claros para quem procura uma solução confiável. Confira o anúncio para detalhes técnicos e disponibilidade.
+
+CTA: Confira o produto no anúncio e avalie a melhor opção de compra.
   `.trim();
 }
 
