@@ -1,5 +1,5 @@
 {
-  "total": 24,
+  "total": 27,
   "mes_atual": 4,
   "logs": [
     {
@@ -40,6 +40,11 @@
     {
       "data": "2026-05-16T01:12:32.483Z",
       "produto": "Produto Amazon B07V38QYZ6",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-16T01:17:01.984Z",
+      "produto": "Produto Amazon B08NWMH1CJ",
       "consultas": 3
     }
   ]
