@@ -15,6 +15,31 @@ import https from 'https';
 import http from 'http';
 import crypto from 'crypto';
 
+// ── Títulos de erro que indicam falha no scraping ─────────────────────────
+// Se o título obtido corresponder a qualquer um desses padrões,
+// o produto é rejeitado imediatamente (evita posts inválidos no site).
+const ERROR_TITLE_PATTERNS = [
+  /não foi possível encontrar/i,
+  /página não encontrada/i,
+  /page not found/i,
+  /robot check/i,
+  /captcha/i,
+  /acesso negado/i,
+  /access denied/i,
+  /desculpe.*erro/i,
+  /sorry.*error/i,
+  /^404/i,
+  /^erro\b/i,
+  /^error\b/i,
+  /^amazon\.com/i,
+  /^amazon\.com\.br\s*[-|]/i,
+];
+
+function isTitleValid(title) {
+  if (!title || title.trim().length < 8) return false;
+  return !ERROR_TITLE_PATTERNS.some(re => re.test(title.trim()));
+}
+
 // ── HTTP helper ────────────────────────────────────────────────────────────
 
 function get(urlStr, customHeaders = {}, redirectCount = 0) {
@@ -210,7 +235,7 @@ async function fetchTitleViaOG(asin) {
       if (m) {
         let clean = m[1].trim().replace(/\s+/g, ' ');
         if (stripBrand) clean = clean.replace(/ [-:|].*Amazon.*$/i, '');
-        if (clean.length > 10 && !/^amazon|^página|^error|^acesso negado/i.test(clean)) {
+        if (clean.length > 10 && isTitleValid(clean)) {
           const specs = [];
           for (const m2 of body.matchAll(/<span[^>]*class="[^"]*a-list-item[^"]*"[^>]*>([^<]{15,150})<\/span>/g)) {
             const txt = m2[1].trim().replace(/\s+/g, ' ');
@@ -223,7 +248,7 @@ async function fetchTitleViaOG(asin) {
     for (const block of body.matchAll(/<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]+?)<\/script>/g)) {
       try {
         const json = JSON.parse(block[1]);
-        if (json.name && json.name.length > 10) return { title: json.name, specs: [] };
+        if (json.name && json.name.length > 10 && isTitleValid(json.name)) return { title: json.name, specs: [] };
       } catch (_) {}
     }
     return null;
@@ -266,9 +291,14 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
       const data = await fetchViaCreatorsApi(asin, credentialId, credentialSecret, credentialVersion, partnerTag);
       const item = data?.ItemsResult?.Items?.[0];
       if (item) {
-        title = item.ItemInfo?.Title?.DisplayValue || '';
-        specs = (item.ItemInfo?.Features?.DisplayValues || []).slice(0, 5).map(f => `- ${f}`);
-        console.log('   ✅ Creators API OK');
+        const raw = item.ItemInfo?.Title?.DisplayValue || '';
+        if (isTitleValid(raw)) {
+          title = raw;
+          specs = (item.ItemInfo?.Features?.DisplayValues || []).slice(0, 5).map(f => `- ${f}`);
+          console.log('   ✅ Creators API OK');
+        } else {
+          console.log(`   ⚠️  Creators API retornou título inválido: "${raw}"`);
+        }
       }
     } catch (err) { console.log(`   ⚠️  Creators API: ${err.message}`); }
   }
@@ -279,9 +309,14 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
       const data = await fetchViaPaapi(asin, accessKey, secretKey, partnerTag);
       const item = data?.ItemsResult?.Items?.[0];
       if (item) {
-        title = item.ItemInfo?.Title?.DisplayValue || '';
-        specs = (item.ItemInfo?.Features?.DisplayValues || []).slice(0, 5).map(f => `- ${f}`);
-        console.log('   ✅ PA-API OK');
+        const raw = item.ItemInfo?.Title?.DisplayValue || '';
+        if (isTitleValid(raw)) {
+          title = raw;
+          specs = (item.ItemInfo?.Features?.DisplayValues || []).slice(0, 5).map(f => `- ${f}`);
+          console.log('   ✅ PA-API OK');
+        } else {
+          console.log(`   ⚠️  PA-API retornou título inválido: "${raw}"`);
+        }
       }
     } catch (err) { console.log(`   ⚠️  PA-API: ${err.message}`); }
   }
@@ -292,9 +327,10 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
     if (og) { title = og.title; specs = og.specs; console.log('   ✅ Título via OG/scraping'); }
   }
 
-  // 4. Validação: rejeita se não conseguiu obter título real
-  if (!title) {
-    throw new Error(`❌ Falha crítica: não foi possível obter título real do produto (ASIN: ${asin}). Verifique: (1) APIs configuradas? (2) Credenciais válidas? (3) Link ainda funciona? (4) Conectividade OK?`);
+  // 4. Validação final: rejeita se não conseguiu obter título real
+  if (!title || !isTitleValid(title)) {
+    const sample = title ? `"${title.slice(0, 80)}"` : '(vazio)';
+    throw new Error(`❌ Título inválido ou de erro detectado: ${sample} — ASIN: ${asin}. Verifique: (1) produto ainda existe? (2) link não está redirecionando para erro? (3) APIs configuradas?`);
   }
 
   // Imagem por ASIN (sem API, 100% confiável)
