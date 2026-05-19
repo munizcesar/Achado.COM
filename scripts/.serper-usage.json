@@ -1,5 +1,5 @@
 {
-  "total": 36,
+  "total": 39,
   "mes_atual": 4,
   "logs": [
     {
@@ -60,6 +60,11 @@
     {
       "data": "2026-05-19T01:10:41.938Z",
       "produto": "Mind Reader 50L Slim Laundry Hamper, Set of 2, Clo",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-19T13:57:08.443Z",
+      "produto": "Sublime Softy's Papel Higiênico Azul 4 Rolos",
       "consultas": 3
     }
   ]
