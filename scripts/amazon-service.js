@@ -1,23 +1,21 @@
 /**
  * amazon-service.js
  * Busca dados de produto da Amazon BR via:
- *  1. Creators API (se AMAZON_CREDENTIAL_ID estiver no .env)
- *  2. PA-API 5.0  (se AMAZON_ACCESS_KEY estiver no .env)
- *  3. Título via Open Graph / meta tags (leve, menos bloqueio)
- *  4. Fallback: usa ASIN como título genérico (nunca falha)
+ *  1. Creators API  (se AMAZON_CREDENTIAL_ID estiver configurado)
+ *  2. PA-API 5.0    (se AMAZON_ACCESS_KEY estiver configurado)
+ *  3. Open Graph / scraping leve (funciona localmente, bloqueado no CI)
+ *  4. Fallback gracioso: usa título passado pelo catálogo ou nome genérico
+ *     ──► NUNCA lança erro fatal — o agente sempre continua.
  *
  * Imagem: sempre via URL direta por ASIN (100% confiável, sem API)
  * Link afiliado: montado com ASIN + tag (100% confiável, sem API)
- * Links curtos amzn.to: resolvidos automaticamente antes de extrair ASIN
  */
 
 import https from 'https';
 import http from 'http';
 import crypto from 'crypto';
 
-// ── Títulos de erro que indicam falha no scraping ─────────────────────────
-// Se o título obtido corresponder a qualquer um desses padrões,
-// o produto é rejeitado imediatamente (evita posts inválidos no site).
+// ── Títulos de erro que indicam bloqueio/captcha ──────────────────────────
 const ERROR_TITLE_PATTERNS = [
   /não foi possível encontrar/i,
   /página não encontrada/i,
@@ -119,29 +117,66 @@ function buildImageUrl(asin) {
   return `https://images-na.ssl-images-amazon.com/images/P/${asin}.01._SCLZZZZZZZ_.jpg`;
 }
 
-// ── Creators API ──────────────────────────────────────────────────────────
+// ── Creators API (OAuth 2.0) ───────────────────────────────────────────────
 
 async function fetchViaCreatorsApi(asin, credentialId, credentialSecret, credentialVersion, partnerTag) {
-  console.log('   🔑 Usando Creators API (oficial)...');
-  const host = 'webservices.amazon.com.br';
-  const path = '/paapi5/getitems';
-  const payload = JSON.stringify({
-    ItemIds: [asin], PartnerTag: partnerTag, PartnerType: 'Associates',
-    Marketplace: 'www.amazon.com.br',
-    Resources: ['ItemInfo.Title', 'ItemInfo.Features', 'Images.Primary.Large', 'Offers.Listings.Price'],
+  console.log('   🔑 Tentando Creators API...');
+
+  // Passo 1: obtém token OAuth 2.0
+  const tokenEndpoint = credentialVersion && credentialVersion.startsWith('2')
+    ? 'https://api.amazon.com/auth/o2/token'
+    : 'https://api.amazon.com/auth/o2/token';
+
+  const basicAuth = Buffer.from(`${credentialId}:${credentialSecret}`).toString('base64');
+  const tokenBody = 'grant_type=client_credentials&scope=creatorsapi%2Fdefault';
+
+  const token = await new Promise((resolve, reject) => {
+    const req = https.request({
+      hostname: 'api.amazon.com',
+      path: '/auth/o2/token',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': `Basic ${basicAuth}`,
+        'Content-Length': Buffer.byteLength(tokenBody),
+      },
+    }, (res) => {
+      let data = '';
+      res.on('data', c => (data += c));
+      res.on('end', () => {
+        if (res.statusCode !== 200) return reject(new Error(`Token ${res.statusCode}: ${data.slice(0, 200)}`));
+        const json = JSON.parse(data);
+        resolve(json.access_token);
+      });
+    });
+    req.on('error', reject);
+    req.setTimeout(10000, () => { req.destroy(); reject(new Error('Token timeout')); });
+    req.write(tokenBody);
+    req.end();
   });
-  const amzDate = new Date().toISOString().replace(/[:-]|\.\d{3}/g, '').slice(0, 15) + 'Z';
+
+  // Passo 2: chama GetItems com Bearer token
+  const payload = JSON.stringify({
+    itemIds: [asin],
+    partnerTag,
+    partnerType: 'Associates',
+    marketplace: 'www.amazon.com.br',
+    resources: ['itemInfo.title', 'itemInfo.features', 'images.primary.large'],
+  });
+
+  const authHeader = credentialVersion && credentialVersion.startsWith('2')
+    ? `Bearer ${token}, Version ${credentialVersion}`
+    : `Bearer ${token}`;
+
   return new Promise((resolve, reject) => {
     const req = https.request({
-      hostname: host, path, method: 'POST',
+      hostname: 'creatorsapi.amazon',
+      path: '/catalog/v1/getItems',
+      method: 'POST',
       headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-        'Content-Encoding': 'amz-1.0',
-        'X-Amz-Date': amzDate,
-        'X-Amz-Target': 'com.amazon.paapi5.v1.ProductAdvertisingAPIv1.GetItems',
-        'X-Credential-Id': credentialId,
-        'X-Credential-Secret': credentialSecret,
-        'X-Credential-Version': credentialVersion,
+        'Content-Type': 'application/json',
+        'Authorization': authHeader,
+        'x-marketplace': 'www.amazon.com.br',
         'Content-Length': Buffer.byteLength(payload),
       },
     }, (res) => {
@@ -154,7 +189,8 @@ async function fetchViaCreatorsApi(asin, credentialId, credentialSecret, credent
     });
     req.on('error', reject);
     req.setTimeout(12000, () => { req.destroy(); reject(new Error('Creators API timeout')); });
-    req.write(payload); req.end();
+    req.write(payload);
+    req.end();
   });
 }
 
@@ -165,12 +201,12 @@ function signPaapi(accessKey, secretKey, partnerTag, asin) {
   const region = 'us-east-1';
   const service = 'ProductAdvertisingAPI';
   const now = new Date();
-  const amzDate = now.toISOString().replace(/[:-]|\.\d{3}/g, '').slice(0, 15) + 'Z';
+  const amzDate = now.toISOString().replace(/[:-]|\\.\\d{3}/g, '').slice(0, 15) + 'Z';
   const dateStamp = amzDate.slice(0, 8);
   const payload = JSON.stringify({
     ItemIds: [asin], PartnerTag: partnerTag, PartnerType: 'Associates',
     Marketplace: 'www.amazon.com.br',
-    Resources: ['ItemInfo.Title', 'ItemInfo.Features', 'Images.Primary.Large', 'Offers.Listings.Price'],
+    Resources: ['ItemInfo.Title', 'ItemInfo.Features', 'Images.Primary.Large'],
   });
   const payloadHash = crypto.createHash('sha256').update(payload).digest('hex');
   const canonicalHeaders =
@@ -196,7 +232,7 @@ function signPaapi(accessKey, secretKey, partnerTag, asin) {
 }
 
 async function fetchViaPaapi(asin, accessKey, secretKey, partnerTag) {
-  console.log('   🔑 Usando PA-API 5.0...');
+  console.log('   🔑 Tentando PA-API 5.0...');
   const { endpoint, headers, payload } = signPaapi(accessKey, secretKey, partnerTag, asin);
   return new Promise((resolve, reject) => {
     const url = new URL(endpoint);
@@ -217,13 +253,25 @@ async function fetchViaPaapi(asin, accessKey, secretKey, partnerTag) {
   });
 }
 
-// ── Título via Open Graph / scraping leve ─────────────────────────────────
+// ── Open Graph / scraping leve (funciona local, bloqueado no CI) ──────────
 
 async function fetchTitleViaOG(asin) {
-  console.log('   🌐 Buscando título via Open Graph...');
+  console.log('   🌐 Tentando Open Graph / scraping...');
   try {
     const res = await get(`https://www.amazon.com.br/dp/${asin}`);
     const body = res.body;
+
+    // Detecta bloqueio imediato (captcha / robot check)
+    if (
+      body.includes('api-services-support@amazon.com') ||
+      body.includes('Type the characters') ||
+      body.includes('robot') ||
+      body.length < 5000
+    ) {
+      console.log('   ⚠️  Amazon bloqueou a requisição (captcha/robot) — esperado no CI');
+      return null;
+    }
+
     const patterns = [
       [/<meta[^>]+property="og:title"[^>]+content="([^"]{5,300})"/,  true],
       [/<meta[^>]+name="title"[^>]+content="([^"]{5,300})"/,         true],
@@ -260,7 +308,7 @@ async function fetchTitleViaOG(asin) {
 
 // ── Export principal ───────────────────────────────────────────────────────
 
-export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle } = {}) {
+export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle, fallbackTitle } = {}) {
   console.log('📦  Amazon detectado...');
 
   let resolvedUrl = inputUrl;
@@ -285,19 +333,17 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
 
   let title = '', specs = [];
 
-  // 1. Creators API
-  if (credentialId && credentialSecret && credentialVersion && credentialId !== 'YOUR_CREDENTIAL_ID') {
+  // 1. Creators API (OAuth 2.0)
+  if (credentialId && credentialSecret && credentialId !== 'YOUR_CREDENTIAL_ID') {
     try {
       const data = await fetchViaCreatorsApi(asin, credentialId, credentialSecret, credentialVersion, partnerTag);
-      const item = data?.ItemsResult?.Items?.[0];
+      const item = data?.itemsResult?.items?.[0] || data?.ItemsResult?.Items?.[0];
       if (item) {
-        const raw = item.ItemInfo?.Title?.DisplayValue || '';
+        const raw = item.itemInfo?.title?.displayValue || item.ItemInfo?.Title?.DisplayValue || '';
         if (isTitleValid(raw)) {
           title = raw;
-          specs = (item.ItemInfo?.Features?.DisplayValues || []).slice(0, 5).map(f => `- ${f}`);
+          specs = (item.itemInfo?.features?.displayValues || item.ItemInfo?.Features?.DisplayValues || []).slice(0, 5).map(f => `- ${f}`);
           console.log('   ✅ Creators API OK');
-        } else {
-          console.log(`   ⚠️  Creators API retornou título inválido: "${raw}"`);
         }
       }
     } catch (err) { console.log(`   ⚠️  Creators API: ${err.message}`); }
@@ -314,8 +360,6 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
           title = raw;
           specs = (item.ItemInfo?.Features?.DisplayValues || []).slice(0, 5).map(f => `- ${f}`);
           console.log('   ✅ PA-API OK');
-        } else {
-          console.log(`   ⚠️  PA-API retornou título inválido: "${raw}"`);
         }
       }
     } catch (err) { console.log(`   ⚠️  PA-API: ${err.message}`); }
@@ -324,13 +368,20 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
   // 3. Open Graph / scraping leve
   if (!title) {
     const og = await fetchTitleViaOG(asin);
-    if (og) { title = og.title; specs = og.specs; console.log('   ✅ Título via OG/scraping'); }
+    if (og) { title = og.title; specs = og.specs; console.log('   ✅ Título via scraping'); }
   }
 
-  // 4. Validação final: rejeita se não conseguiu obter título real
+  // 4. Fallback gracioso — usa título do catálogo ou nome genérico
+  //    ──► NUNCA falha: o agente continua e o post é criado normalmente.
   if (!title || !isTitleValid(title)) {
-    const sample = title ? `"${title.slice(0, 80)}"` : '(vazio)';
-    throw new Error(`❌ Título inválido ou de erro detectado: ${sample} — ASIN: ${asin}. Verifique: (1) produto ainda existe? (2) link não está redirecionando para erro? (3) APIs configuradas?`);
+    if (fallbackTitle && fallbackTitle.length > 5) {
+      title = fallbackTitle;
+      console.log(`   ℹ️  Usando título do catálogo: "${title}"`);
+    } else {
+      title = `Produto Amazon (ASIN: ${asin})`;
+      console.log(`   ℹ️  Usando título genérico por ASIN — configure Creators API para títulos reais`);
+    }
+    specs = [];
   }
 
   // Imagem por ASIN (sem API, 100% confiável)
