@@ -172,9 +172,9 @@ function buildAmazonUrl(asin, tag) {
   return `https://www.amazon.com.br/dp/${asin}?tag=${tag}`;
 }
 
-// ── Executa novo-post.js ──────────────────────────────────────────────────────
+// ── Executa novo-post.js — captura e exibe erro detalhado ────────────────────
 
-function runPost(affiliateUrl, guardEnvVars) {
+function runPost(affiliateUrl, productName, guardEnvVars) {
   const projectRoot = path.join(__dirname, '..', '..');
   log(`🚀 Executando: node scripts/novo-post.js "${affiliateUrl}"`);
   try {
@@ -182,14 +182,29 @@ function runPost(affiliateUrl, guardEnvVars) {
       `node scripts/novo-post.js "${affiliateUrl}"`,
       {
         cwd:     projectRoot,
-        stdio:   'inherit',
+        stdio:   'pipe',          // captura stdout+stderr para exibir em caso de erro
         timeout: 5 * 60 * 1000,
-        env:     { ...process.env, ...guardEnvVars },
+        env:     {
+          ...process.env,
+          ...guardEnvVars,
+          PRODUCT_NAME_HINT: productName || '',   // nome do catálogo como fallback de título
+        },
       }
     );
     log('✅ Post criado com sucesso!');
     return true;
   } catch (err) {
+    // Exibe stdout + stderr completos para diagnóstico
+    const out = (err.stdout || Buffer.alloc(0)).toString('utf8').trim();
+    const errOut = (err.stderr || Buffer.alloc(0)).toString('utf8').trim();
+    if (out) {
+      log('📋 stdout do novo-post.js:');
+      out.split('\n').forEach(l => log('   ' + l));
+    }
+    if (errOut) {
+      log('🔴 stderr do novo-post.js:');
+      errOut.split('\n').forEach(l => log('   ' + l));
+    }
     log(`❌ Erro ao criar post: ${err.message}`);
     return false;
   }
@@ -269,7 +284,7 @@ async function runJob(forcePillar = null, slotIndex = 0) {
     log(`🔗 URL      : ${url}`);
     log(`📐 Ângulo   : ${angleDesc}`);
 
-    const success = runPost(url, guard.envVars);
+    const success = runPost(url, product.name, guard.envVars);
     if (success) recordPost(product.asin, product.name, url, product.category, guard, product.isTrending, history);
     return;
   }
