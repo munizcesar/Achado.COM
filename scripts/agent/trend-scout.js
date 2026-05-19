@@ -20,6 +20,8 @@
  *   - Timeout de 8s para não bloquear o job
  *   - Cache de 6h em disco para não bater na Amazon a cada execução
  *   - Respeita robots.txt: usa apenas páginas de bestsellers públicas
+ *   - SEGURANÇA: produtos trending fora do catálogo fixo são ignorados
+ *     para evitar publicar produtos da Amazon.com (EUA) por engano
  *
  * MAPEAMENTO DE PILAR → CATEGORIA AMAZON BR:
  *   beleza  → /bestsellers/beauty        (Beleza e Cuidados Pessoais)
@@ -219,7 +221,8 @@ export async function fetchTrendingProducts(pillar) {
  *
  * Combina produtos em alta com o catálogo fixo de forma estratégica:
  *   - Produtos trending que já existem no catálogo recebem boost de prioridade
- *   - Produtos trending novos (fora do catálogo) são inseridos na fila com angle genérico
+ *   - Produtos trending FORA do catálogo são IGNORADOS por segurança
+ *     (evita publicar produtos da Amazon.com EUA ou sem curadoria)
  *   - Catálogo fixo é sempre o fallback final
  *
  * @param {Array}  trendingProducts  - resultado de fetchTrendingProducts()
@@ -239,37 +242,22 @@ export function mergeTrendingWithCatalog(trendingProducts, catalogProducts, pill
   const catalogMap = new Map(catalogProducts.map(p => [p.asin, p]));
 
   // Grupo A: trending que já estão no catálogo e não foram postados recentemente
+  // ÚNICO grupo permitido para trending — garante que só produtos curados são usados
   const groupA = trendingProducts
     .filter(t => catalogMap.has(t.asin) && !historyAsins.has(t.asin))
     .map(t => ({ ...catalogMap.get(t.asin), isTrending: true, trendingRank: trendingProducts.indexOf(t) + 1 }));
 
-  // Grupo B: trending NOVOS (fora do catálogo) e não postados recentemente
-  // Recebem angle genérico baseado no pilar — sem inventar dados
-  const genericAngles = {
-    beleza: 'cuidado_diario',
-    saude:  'bem_estar',
-    casa:   'custo_beneficio',
-  };
-  const groupB = trendingProducts
-    .filter(t => !catalogMap.has(t.asin) && !historyAsins.has(t.asin))
-    .slice(0, 3) // máx 3 novos por execução para não sair fora do controle
-    .map(t => ({
-      asin:       t.asin,
-      name:       t.name,
-      category:   pillar,
-      angle:      genericAngles[pillar] || 'custo_beneficio',
-      isTrending: true,
-      trendingNew: true,
-      trendingRank: trendingProducts.indexOf(t) + 1,
-    }));
+  // GRUPO B REMOVIDO: produtos trending fora do catálogo eram publicados sem
+  // validação de origem, causando posts de produtos Amazon.com (EUA) no site.
+  // Apenas produtos do catálogo curado podem ser postados.
 
   // Grupo C: catálogo fixo restante (não trending, não postado)
   const groupC = catalogProducts
     .filter(p => !historyAsins.has(p.asin))
     .filter(p => !groupA.some(a => a.asin === p.asin));
 
-  // Ordem de prioridade: A (trending no catálogo) > B (trending novos) > C (catálogo)
-  return [...groupA, ...groupB, ...groupC];
+  // Ordem de prioridade: A (trending no catálogo) > C (catálogo fixo)
+  return [...groupA, ...groupC];
 }
 
 /**
