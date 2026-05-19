@@ -1,5 +1,5 @@
 {
-  "total": 33,
+  "total": 36,
   "mes_atual": 4,
   "logs": [
     {
@@ -55,6 +55,11 @@
     {
       "data": "2026-05-16T21:40:13.989Z",
       "produto": "Não foi possível encontrar esta página",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-19T01:10:41.938Z",
+      "produto": "Mind Reader 50L Slim Laundry Hamper, Set of 2, Clo",
       "consultas": 3
     }
   ]
