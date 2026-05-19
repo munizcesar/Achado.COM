@@ -1,5 +1,5 @@
 {
-  "total": 42,
+  "total": 45,
   "mes_atual": 4,
   "logs": [
     {
@@ -70,6 +70,11 @@
     {
       "data": "2026-05-19T17:39:04.725Z",
       "produto": "Detalhes do produto",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-19T22:07:50.867Z",
+      "produto": "Sublime Softy's Papel Higiênico Azul 4 Rolos",
       "consultas": 3
     }
   ]
