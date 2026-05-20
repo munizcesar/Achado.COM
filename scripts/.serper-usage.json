@@ -1,5 +1,5 @@
 {
-  "total": 51,
+  "total": 54,
   "mes_atual": 4,
   "logs": [
     {
@@ -85,6 +85,11 @@
     {
       "data": "2026-05-20T17:54:40.225Z",
       "produto": "Singh's Textiles Juego de sábanas de 700 hilos, 10",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-20T22:20:02.037Z",
+      "produto": "Amazon Basics - Juego de cubo de limpieza de piso ",
       "consultas": 3
     }
   ]
