@@ -61,5 +61,86 @@
     "postedAt": "2026-05-19T01:10:46.531Z",
     "guardWarnings": 1,
     "trending": false
+  },
+  {
+    "asin": "B08F7BQXCK",
+    "name": "Colágeno Hidrolisado + Vit C",
+    "url": "https://www.amazon.com.br/dp/B08F7BQXCK?tag=altivita-20",
+    "category": "saude",
+    "postedAt": "2026-05-19T13:57:13.025Z",
+    "guardWarnings": 0,
+    "trending": false
+  },
+  {
+    "asin": "B07BVJFMHB",
+    "name": "Creatina Monohidratada 300g",
+    "url": "https://www.amazon.com.br/dp/B07BVJFMHB?tag=altivita-20",
+    "category": "saude",
+    "postedAt": "2026-05-19T17:39:10.992Z",
+    "guardWarnings": 1,
+    "trending": false
+  },
+  {
+    "asin": "B07QM5WZQG",
+    "name": "Vitamina D3 2000UI",
+    "url": "https://www.amazon.com.br/dp/B07QM5WZQG?tag=altivita-20",
+    "category": "saude",
+    "postedAt": "2026-05-19T22:07:55.466Z",
+    "guardWarnings": 1,
+    "trending": false
+  },
+  {
+    "asin": "B087LTZW61",
+    "name": "Chaleira Elétrica 1,7L",
+    "url": "https://www.amazon.com.br/dp/B087LTZW61?tag=altivita-20",
+    "category": "casa",
+    "postedAt": "2026-05-20T13:44:05.085Z",
+    "guardWarnings": 0,
+    "trending": false
+  },
+  {
+    "asin": "B07VX9W8WP",
+    "name": "Cafeteira Expresso 15 Bar",
+    "url": "https://www.amazon.com.br/dp/B07VX9W8WP?tag=altivita-20",
+    "category": "casa",
+    "postedAt": "2026-05-20T17:54:45.352Z",
+    "guardWarnings": 0,
+    "trending": false
+  },
+  {
+    "asin": "B09HKD5VHX",
+    "name": "Air Fryer 4L Digital",
+    "url": "https://www.amazon.com.br/dp/B09HKD5VHX?tag=altivita-20",
+    "category": "casa",
+    "postedAt": "2026-05-20T22:20:06.393Z",
+    "guardWarnings": 0,
+    "trending": false
+  },
+  {
+    "asin": "B09C3MRFL4",
+    "name": "Tônico Facial Niacinamida 10%",
+    "url": "https://www.amazon.com.br/dp/B09C3MRFL4?tag=altivita-20",
+    "category": "beleza",
+    "postedAt": "2026-05-21T14:16:33.065Z",
+    "guardWarnings": 1,
+    "trending": false
+  },
+  {
+    "asin": "B0932TVFR9",
+    "name": "Protetor Solar FPS 70",
+    "url": "https://www.amazon.com.br/dp/B0932TVFR9?tag=altivita-20",
+    "category": "beleza",
+    "postedAt": "2026-05-21T17:31:23.591Z",
+    "guardWarnings": 1,
+    "trending": false
+  },
+  {
+    "asin": "B07WQJLX2P",
+    "name": "Esfoliante Facial de Argila",
+    "url": "https://www.amazon.com.br/dp/B07WQJLX2P?tag=altivita-20",
+    "category": "beleza",
+    "postedAt": "2026-05-21T22:12:56.222Z",
+    "guardWarnings": 1,
+    "trending": false
   }
 ]
