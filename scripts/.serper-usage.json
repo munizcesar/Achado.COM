@@ -1,5 +1,5 @@
 {
-  "total": 54,
+  "total": 57,
   "mes_atual": 4,
   "logs": [
     {
@@ -90,6 +90,11 @@
     {
       "data": "2026-05-20T22:20:02.037Z",
       "produto": "Amazon Basics - Juego de cubo de limpieza de piso ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-21T14:16:26.573Z",
+      "produto": "Sublime Softy's Papel Higiênico Azul 4 Rolos",
       "consultas": 3
     }
   ]
