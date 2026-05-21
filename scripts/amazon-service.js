@@ -1,14 +1,14 @@
 /**
- * amazon-service.js  — v4 (sem PA-API, com imagem corrigida)
+ * amazon-service.js  — v4 (sem API Amazon)
  *
- * Estratégia:
+ * Estratégia sem PA-API / Creators API:
  *  1. Extrai ASIN da URL
- *  2. Busca título via Serper.dev (Google Shopping / Web)
- *  3. Fallback: proxy de metadados público (jsonlink.io)
- *  4. Fallback final: usa nome do catálogo como título
+ *  2. Busca título via Serper.dev (Google Shopping / Web) — funciona em CI/CD
+ *  3. Fallback: busca título via Open Graph com proxy de metadados público
+ *  4. Fallback final: usa nome do catálogo como título (nunca lança exceção)
  *
- * Imagem: tenta múltiplos padrões de URL por ASIN, valida antes de retornar
- * Link:   montado com ASIN + tag de afiliado
+ * Imagem: testa múltiplos padrões de URL por ASIN com validação real
+ * Link:   montado com ASIN + tag (sem API, 100% confiável)
  */
 
 import https from 'https';
@@ -89,58 +89,72 @@ function extractAsin(url) {
 }
 
 // ── Candidatos de URL de imagem por ASIN ─────────────────────────────────
-// Testados em ordem — retorna o primeiro que responder com imagem válida
+// Múltiplos padrões em ordem de confiabilidade. O primeiro que retornar
+// uma imagem real com Content-Type image/* e tamanho > 5KB é usado.
 function buildImageCandidates(asin) {
   return [
-    // Padrão principal atual (SL1500)
-    `https://m.media-amazon.com/images/P/${asin}.01._SL1500_.jpg`,
-    // Padrão compacto (SL500) — fallback
-    `https://m.media-amazon.com/images/P/${asin}.01._SL500_.jpg`,
-    // Padrão legado images-na (às vezes ainda funciona)
-    `https://images-na.ssl-images-amazon.com/images/P/${asin}.01._SL1500_.jpg`,
-    // Padrão mínimo sem sufixo
+    // Padrão atual da Amazon (imagem principal, alta resolução)
+    `https://m.media-amazon.com/images/P/${asin}.01._AC_SL1500_.jpg`,
+    // Padrão alternativo (thumbnail grande)
+    `https://m.media-amazon.com/images/P/${asin}.01._AC_SX679_.jpg`,
+    // Padrão sem modificador
     `https://m.media-amazon.com/images/P/${asin}.01.jpg`,
+    // CDN antigo (ainda funciona para muitos ASINs)
+    `https://images-na.ssl-images-amazon.com/images/P/${asin}.01._AC_SL1500_.jpg`,
+    `https://images-na.ssl-images-amazon.com/images/P/${asin}.01.jpg`,
   ];
 }
 
-// ── Verifica se URL retorna uma imagem válida (≥ 2 KB) ───────────────────
-async function probeImageUrl(url) {
+// ── Valida se uma URL retorna uma imagem real ─────────────────────────────
+// Faz HEAD request; verifica Content-Type image/* e Content-Length > 5KB
+async function validateImageUrl(imgUrl) {
   return new Promise((resolve) => {
-    const lib = url.startsWith('https') ? https : http;
-    const req = lib.get(url, {
-      headers: { 'User-Agent': 'Mozilla/5.0' }
-    }, (res) => {
-      const ct = res.headers['content-type'] || '';
-      const isImage = ct.startsWith('image/');
-      const size = parseInt(res.headers['content-length'] || '0', 10);
+    const lib = imgUrl.startsWith('https') ? https : http;
 
-      // Consome os dados sem salvar
+    const req = lib.request(imgUrl, { method: 'HEAD', headers: { 'User-Agent': 'Mozilla/5.0' } }, (res) => {
+      const ct = (res.headers['content-type'] || '').toLowerCase();
+      const cl = parseInt(res.headers['content-length'] || '0', 10);
+
+      if ([301, 302, 303, 307, 308].includes(res.statusCode) && res.headers.location) {
+        res.resume();
+        return resolve(validateImageUrl(res.headers.location));
+      }
+
       res.resume();
 
-      if (res.statusCode === 200 && isImage && (size === 0 || size > 2000)) {
-        resolve(true);
+      // content-length 0 significa que o servidor não enviou o header (pode ser válida)
+      const isImage = ct.startsWith('image/') || ct === 'binary/octet-stream';
+      const hasSize = cl === 0 || cl > 5000;
+
+      if (res.statusCode === 200 && isImage && hasSize) {
+        resolve(imgUrl);
       } else {
-        resolve(false);
+        resolve(null);
       }
     });
-    req.on('error', () => resolve(false));
-    req.setTimeout(8000, () => { req.destroy(); resolve(false); });
+
+    req.on('error', () => resolve(null));
+    req.setTimeout(8000, () => { req.destroy(); resolve(null); });
+    req.end();
   });
 }
 
-// ── Retorna a primeira URL de imagem válida para o ASIN ──────────────────
-async function findValidImageUrl(asin) {
+// ── Encontra a primeira URL de imagem válida entre os candidatos ──────────
+async function resolveImageUrl(asin) {
   const candidates = buildImageCandidates(asin);
+  console.log(`   🔍 Testando ${candidates.length} URLs de imagem para ASIN ${asin}...`);
+
   for (const url of candidates) {
-    console.log(`   🖼️  Testando imagem: ${url}`);
-    const ok = await probeImageUrl(url);
-    if (ok) {
-      console.log(`   ✅ Imagem válida: ${url}`);
-      return url;
+    const valid = await validateImageUrl(url);
+    if (valid) {
+      console.log(`   ✅ Imagem válida encontrada: ${valid}`);
+      return valid;
     }
+    console.log(`   ✗  Inválida: ${url.split('/').pop()}`);
   }
-  console.log('   ⚠️  Nenhuma URL de imagem válida encontrada para este ASIN');
-  return '';
+
+  console.log(`   ⚠️  Nenhuma URL de imagem funcionou para ASIN ${asin}`);
+  return null;
 }
 
 // ── 1. Título via Serper.dev (Google) ─────────────────────────────────────
@@ -171,7 +185,7 @@ async function fetchTitleViaSerper(asin, serperKey) {
 
     for (const r of results) {
       const raw = (r.title || '').replace(/ [-:|].*Amazon.*$/i, '').replace(/ - Amazon\.com\.br$/i, '').trim();
-      if (raw.length > 10 && isTitleValid(raw) && !raw.toLowerCase().includes(asin.toLowerCase())) {
+      if (raw.length > 10 && isTitleValid(raw) && raw.toLowerCase().includes(asin.toLowerCase()) === false) {
         console.log(`   ✅ Título via Serper: "${raw.slice(0, 60)}..."`);
         return { title: raw, specs: [] };
       }
@@ -303,14 +317,14 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
     title = productName;
   }
 
-  // 5. Fallback extremo: usa ASIN como marcador
+  // 5. Fallback extremo: usa ASIN como marcador (nunca trava o agente)
   if (!title || !isTitleValid(title)) {
     console.log(`   ⚠️  Não consegui título real — usando ASIN como base`);
     title = `Produto Amazon ${asin}`;
   }
 
-  // Imagem: testa candidatos em ordem, retorna a primeira URL válida
-  const imageUrl = await findValidImageUrl(asin);
+  // Resolve imagem: testa múltiplos candidatos e valida Content-Type + tamanho
+  const imageUrl = await resolveImageUrl(asin);
 
   // Link afiliado
   const affiliateUrl = partnerTag
@@ -329,7 +343,7 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
     description: `${cleanedTitle} disponível na Amazon com entrega Prime para todo o Brasil.`,
     category,
     tags: _buildTags(cleanedTitle, category),
-    imageUrl,
+    imageUrl,   // null se nenhum candidato funcionou — novo-post.js trata isso
     specs,
     store: 'Amazon',
     affiliateUrl,
