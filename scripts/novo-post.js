@@ -113,7 +113,16 @@ async function downloadImage(imgUrl, destPath, redirectCount = 0) {
         return resolve(downloadImage(res.headers.location, destPath, redirectCount + 1));
       }
       res.pipe(file);
-      file.on('finish', () => { file.close(); resolve(); });
+      file.on('finish', () => {
+        file.close(() => {
+          const size = fs.statSync(destPath).size;
+          if (size < 500) {
+            try { fs.unlinkSync(destPath); } catch (_) {}
+            return reject(new Error(`Imagem inválida (${size} bytes) — possível tracking pixel`));
+          }
+          resolve();
+        });
+      });
     });
     req.on('error', err => { try { fs.unlinkSync(destPath); } catch(_){} reject(err); });
     req.setTimeout(15000, () => { req.destroy(); reject(new Error('Timeout imagem')); });
