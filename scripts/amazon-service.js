@@ -1,14 +1,14 @@
 /**
- * amazon-service.js  — v3 (sem API Amazon)
+ * amazon-service.js  — v4 (sem PA-API, com imagem corrigida)
  *
- * Estratégia sem PA-API / Creators API:
+ * Estratégia:
  *  1. Extrai ASIN da URL
- *  2. Busca título via Serper.dev (Google Shopping / Web) — funciona em CI/CD
- *  3. Fallback: busca título via Open Graph com proxy de metadados público
- *  4. Fallback final: usa nome do catálogo como título (nunca lança exceção)
+ *  2. Busca título via Serper.dev (Google Shopping / Web)
+ *  3. Fallback: proxy de metadados público (jsonlink.io)
+ *  4. Fallback final: usa nome do catálogo como título
  *
- * Imagem: sempre via URL direta por ASIN (sem API, 100% confiável)
- * Link:   montado com ASIN + tag (sem API, 100% confiável)
+ * Imagem: tenta múltiplos padrões de URL por ASIN, valida antes de retornar
+ * Link:   montado com ASIN + tag de afiliado
  */
 
 import https from 'https';
@@ -42,7 +42,6 @@ function isTitleValid(title) {
 // ── HTTP helper ───────────────────────────────────────────────────────────
 function httpRequest(options, body = null) {
   return new Promise((resolve, reject) => {
-    const lib = (options.hostname || '').startsWith('https') ? https : https;
     const req = https.request(options, (res) => {
       const chunks = [];
       res.on('data', c => chunks.push(Buffer.from(c)));
@@ -89,13 +88,62 @@ function extractAsin(url) {
   );
 }
 
-// ── Imagem por ASIN (sem API, sempre funciona) ────────────────────────────
-function buildImageUrl(asin) {
-  return `https://images-na.ssl-images-amazon.com/images/P/${asin}.01._SCLZZZZZZZ_.jpg`;
+// ── Candidatos de URL de imagem por ASIN ─────────────────────────────────
+// Testados em ordem — retorna o primeiro que responder com imagem válida
+function buildImageCandidates(asin) {
+  return [
+    // Padrão principal atual (SL1500)
+    `https://m.media-amazon.com/images/P/${asin}.01._SL1500_.jpg`,
+    // Padrão compacto (SL500) — fallback
+    `https://m.media-amazon.com/images/P/${asin}.01._SL500_.jpg`,
+    // Padrão legado images-na (às vezes ainda funciona)
+    `https://images-na.ssl-images-amazon.com/images/P/${asin}.01._SL1500_.jpg`,
+    // Padrão mínimo sem sufixo
+    `https://m.media-amazon.com/images/P/${asin}.01.jpg`,
+  ];
+}
+
+// ── Verifica se URL retorna uma imagem válida (≥ 2 KB) ───────────────────
+async function probeImageUrl(url) {
+  return new Promise((resolve) => {
+    const lib = url.startsWith('https') ? https : http;
+    const req = lib.get(url, {
+      headers: { 'User-Agent': 'Mozilla/5.0' }
+    }, (res) => {
+      const ct = res.headers['content-type'] || '';
+      const isImage = ct.startsWith('image/');
+      const size = parseInt(res.headers['content-length'] || '0', 10);
+
+      // Consome os dados sem salvar
+      res.resume();
+
+      if (res.statusCode === 200 && isImage && (size === 0 || size > 2000)) {
+        resolve(true);
+      } else {
+        resolve(false);
+      }
+    });
+    req.on('error', () => resolve(false));
+    req.setTimeout(8000, () => { req.destroy(); resolve(false); });
+  });
+}
+
+// ── Retorna a primeira URL de imagem válida para o ASIN ──────────────────
+async function findValidImageUrl(asin) {
+  const candidates = buildImageCandidates(asin);
+  for (const url of candidates) {
+    console.log(`   🖼️  Testando imagem: ${url}`);
+    const ok = await probeImageUrl(url);
+    if (ok) {
+      console.log(`   ✅ Imagem válida: ${url}`);
+      return url;
+    }
+  }
+  console.log('   ⚠️  Nenhuma URL de imagem válida encontrada para este ASIN');
+  return '';
 }
 
 // ── 1. Título via Serper.dev (Google) ─────────────────────────────────────
-// Funciona perfeitamente em servidores CI/CD (GitHub Actions, etc.)
 async function fetchTitleViaSerper(asin, serperKey) {
   if (!serperKey) return null;
   console.log('   🔍 Buscando título via Serper (Google)...');
@@ -122,15 +170,13 @@ async function fetchTitleViaSerper(asin, serperKey) {
     const results = data?.organic || [];
 
     for (const r of results) {
-      // Pega o título do snippet orgânico do Google
       const raw = (r.title || '').replace(/ [-:|].*Amazon.*$/i, '').replace(/ - Amazon\.com\.br$/i, '').trim();
-      if (raw.length > 10 && isTitleValid(raw) && raw.toLowerCase().includes(asin.toLowerCase()) === false) {
+      if (raw.length > 10 && isTitleValid(raw) && !raw.toLowerCase().includes(asin.toLowerCase())) {
         console.log(`   ✅ Título via Serper: "${raw.slice(0, 60)}..."`);
         return { title: raw, specs: [] };
       }
     }
 
-    // Tenta Shopping se disponível
     const shopping = data?.shopping || [];
     for (const s of shopping) {
       const raw = (s.title || '').trim();
@@ -184,7 +230,6 @@ async function fetchTitleViaSerperSimple(asin, serperKey) {
 }
 
 // ── 3. Título via proxy de metadados público ──────────────────────────────
-// Usa jsonlink.io que faz server-side fetch e retorna OG tags
 async function fetchTitleViaMetaProxy(asin) {
   console.log('   🌐 Tentando via proxy de metadados...');
   try {
@@ -252,21 +297,20 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
     if (r) { title = r.title; specs = r.specs; }
   }
 
-  // 4. Fallback final: usa o nome do catálogo (passado pelo agente)
+  // 4. Fallback: usa o nome do catálogo (passado pelo agente)
   if (!title && productName && isTitleValid(productName)) {
     console.log(`   ℹ️  Usando nome do catálogo como título: "${productName}"`);
     title = productName;
   }
 
-  // 5. Fallback extremo: usa ASIN como marcador (nunca trava o agente)
+  // 5. Fallback extremo: usa ASIN como marcador
   if (!title || !isTitleValid(title)) {
     console.log(`   ⚠️  Não consegui título real — usando ASIN como base`);
     title = `Produto Amazon ${asin}`;
   }
 
-  // Imagem por ASIN (sem API, sempre funciona)
-  const imageUrl = buildImageUrl(asin);
-  console.log('   🖼️  Imagem por ASIN:', imageUrl);
+  // Imagem: testa candidatos em ordem, retorna a primeira URL válida
+  const imageUrl = await findValidImageUrl(asin);
 
   // Link afiliado
   const affiliateUrl = partnerTag
