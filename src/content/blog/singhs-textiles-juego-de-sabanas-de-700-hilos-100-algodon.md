@@ -3,11 +3,11 @@ title: "Singh's Textiles Juego de sábanas de 700 hilos, 100% algodón ..."
 description: "Singh's Textiles Juego de sábanas de 700 hilos, 100% algodón ... disponível na Amazon com entrega Prime para todo o Brasil."
 date: 2026-05-20
 category: saude
-image: /images/posts/singhs-textiles-juego-de-sabanas-de-700-hilos-100-algodon.webp
+image: /images/posts/singhs-textiles-juego-de-sabanas-de-700-hilos-100-algodon.jpg
 tags: [saude]
 draft: false
 affiliateUrl: "https://www.amazon.com.br/dp/B07VX9W8WP?tag=altivita-20"
-productImage: /images/posts/singhs-textiles-juego-de-sabanas-de-700-hilos-100-algodon.webp
+productImage: /images/posts/singhs-textiles-juego-de-sabanas-de-700-hilos-100-algodon.jpg
 ---
 
 # Singh's Textiles Juego de Sábanas: Guia Definitivo para Escolher o Melhor

@@ -3,11 +3,11 @@ title: "Sublime Softy's Papel Higiênico Azul 4 Rolos"
 description: "Sublime Softy's Papel Higiênico Azul 4 Rolos disponível na Amazon com entrega Prime para todo o Brasil."
 date: 2026-05-21
 category: casa
-image: /images/posts/sublime-softys-papel-higienico-azul-4-rolos.webp
+image: /images/posts/sublime-softys-papel-higienico-azul-4-rolos.jpg
 tags: [casa]
 draft: false
 affiliateUrl: "https://www.amazon.com.br/dp/B07WQJLX2P?tag=altivita-20"
-productImage: /images/posts/sublime-softys-papel-higienico-azul-4-rolos.webp
+productImage: /images/posts/sublime-softys-papel-higienico-azul-4-rolos.jpg
 ---
 
 # Antes de comprar Sublime Softy's Papel Higiênico, leia isso

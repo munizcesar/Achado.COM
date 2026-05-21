@@ -3,11 +3,11 @@ title: "Amazon Basics - Juego de cubo de limpieza de piso rectangular ..."
 description: "Amazon Basics - Juego de cubo de limpieza de piso rectangular ... disponível na Amazon com entrega Prime para todo o Brasil."
 date: 2026-05-20
 category: casa
-image: /images/posts/amazon-basics-juego-de-cubo-de-limpieza-de-piso-rectangular.webp
+image: /images/posts/amazon-basics-juego-de-cubo-de-limpieza-de-piso-rectangular.jpg
 tags: [casa]
 draft: false
 affiliateUrl: "https://www.amazon.com.br/dp/B09HKD5VHX?tag=altivita-20"
-productImage: /images/posts/amazon-basics-juego-de-cubo-de-limpieza-de-piso-rectangular.webp
+productImage: /images/posts/amazon-basics-juego-de-cubo-de-limpieza-de-piso-rectangular.jpg
 ---
 
 # Amazon Basics - Juego de Cubo de Limpieza de Piso Rectangular: O Guia Definitivo

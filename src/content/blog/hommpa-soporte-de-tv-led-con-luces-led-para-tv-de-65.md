@@ -3,11 +3,11 @@ title: "HOMMPA Soporte de TV LED con luces LED para TV de 65 ..."
 description: "HOMMPA Soporte de TV LED con luces LED para TV de 65 ... disponível na Amazon com entrega Prime para todo o Brasil."
 date: 2026-05-21
 category: tech
-image: /images/posts/hommpa-soporte-de-tv-led-con-luces-led-para-tv-de-65.webp
+image: /images/posts/hommpa-soporte-de-tv-led-con-luces-led-para-tv-de-65.jpg
 tags: [tech, smart-tv]
 draft: false
 affiliateUrl: "https://www.amazon.com.br/dp/B0932TVFR9?tag=altivita-20"
-productImage: /images/posts/hommpa-soporte-de-tv-led-con-luces-led-para-tv-de-65.webp
+productImage: /images/posts/hommpa-soporte-de-tv-led-con-luces-led-para-tv-de-65.jpg
 ---
 
 # Antes de Comprar HOMMPA Soporte de TV, Leia Isso
