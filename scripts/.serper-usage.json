@@ -1,5 +1,5 @@
 {
-  "total": 60,
+  "total": 63,
   "mes_atual": 4,
   "logs": [
     {
@@ -100,6 +100,11 @@
     {
       "data": "2026-05-21T17:31:16.966Z",
       "produto": "HOMMPA Soporte de TV LED con luces LED para TV de ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-21T22:12:50.710Z",
+      "produto": "Sublime Softy's Papel Higiênico Azul 4 Rolos",
       "consultas": 3
     }
   ]
