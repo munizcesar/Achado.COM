@@ -1,5 +1,5 @@
 /**
- * amazon-service.js  — v4 (sem API Amazon)
+ * amazon-service.js  — v5 (sem API Amazon)
  *
  * Estratégia sem PA-API / Creators API:
  *  1. Extrai ASIN da URL
@@ -9,6 +9,8 @@
  *
  * Imagem: testa múltiplos padrões de URL por ASIN com validação real
  * Link:   montado com ASIN + tag (sem API, 100% confiável)
+ *
+ * v5: Adiciona filtro de idioma — rejeita títulos em espanhol
  */
 
 import https from 'https';
@@ -34,9 +36,32 @@ const ERROR_TITLE_PATTERNS = [
   /fazer login/i,
 ];
 
+// ── Palavras exclusivamente em espanhol — rejeita títulos com elas ────────
+// Palavras que nunca aparecem em português brasileiro mas são comuns em ES
+const SPANISH_ONLY_PATTERNS = [
+  /\bjuego de\b/i,       // "juego de" = jogo de (ES)
+  /\bcubo de limpieza\b/i,
+  /\bde piso\b/i,        // "piso" em ES = chão (em PT é diferente)
+  /\blimpieza\b/i,
+  /\bescobilla\b/i,
+  /\bespuma de afeitar\b/i,
+  /\b(el|la|los|las|del|al|un|una|unos|unas)\s+\w/i, // artigos ES
+  /\b(también|además|después|entonces|siempre|nunca|algo|alguien|nadie)\b/i,
+  /\b(grande|pequeño|pequeña|mismo|misma|nuevo|nueva|usado|usada)\b/i,
+  /\b(precio|envío|gratis|color|tamaño|tipo|producto)\b/i,
+  /\b(rectangular|cuadrado|triangular)\b.*\b(limpieza|piso|suelo)\b/i,
+];
+
 function isTitleValid(title) {
   if (!title || title.trim().length < 8) return false;
   return !ERROR_TITLE_PATTERNS.some(re => re.test(title.trim()));
+}
+
+// Retorna true se o título parece estar em espanhol
+function isTitleInSpanish(title) {
+  if (!title) return false;
+  const matched = SPANISH_ONLY_PATTERNS.filter(re => re.test(title));
+  return matched.length >= 2; // precisa de pelo menos 2 indicadores para rejeitar
 }
 
 // ── HTTP helper ───────────────────────────────────────────────────────────
@@ -89,50 +114,36 @@ function extractAsin(url) {
 }
 
 // ── Candidatos de URL de imagem por ASIN ─────────────────────────────────
-// Múltiplos padrões em ordem de confiabilidade. O primeiro que retornar
-// uma imagem real com Content-Type image/* e tamanho > 5KB é usado.
 function buildImageCandidates(asin) {
   return [
-    // Padrão atual da Amazon (imagem principal, alta resolução)
     `https://m.media-amazon.com/images/P/${asin}.01._AC_SL1500_.jpg`,
-    // Padrão alternativo (thumbnail grande)
     `https://m.media-amazon.com/images/P/${asin}.01._AC_SX679_.jpg`,
-    // Padrão sem modificador
     `https://m.media-amazon.com/images/P/${asin}.01.jpg`,
-    // CDN antigo (ainda funciona para muitos ASINs)
     `https://images-na.ssl-images-amazon.com/images/P/${asin}.01._AC_SL1500_.jpg`,
     `https://images-na.ssl-images-amazon.com/images/P/${asin}.01.jpg`,
   ];
 }
 
 // ── Valida se uma URL retorna uma imagem real ─────────────────────────────
-// Faz HEAD request; verifica Content-Type image/* e Content-Length > 5KB
 async function validateImageUrl(imgUrl) {
   return new Promise((resolve) => {
     const lib = imgUrl.startsWith('https') ? https : http;
-
     const req = lib.request(imgUrl, { method: 'HEAD', headers: { 'User-Agent': 'Mozilla/5.0' } }, (res) => {
       const ct = (res.headers['content-type'] || '').toLowerCase();
       const cl = parseInt(res.headers['content-length'] || '0', 10);
-
       if ([301, 302, 303, 307, 308].includes(res.statusCode) && res.headers.location) {
         res.resume();
         return resolve(validateImageUrl(res.headers.location));
       }
-
       res.resume();
-
-      // content-length 0 significa que o servidor não enviou o header (pode ser válida)
       const isImage = ct.startsWith('image/') || ct === 'binary/octet-stream';
       const hasSize = cl === 0 || cl > 5000;
-
       if (res.statusCode === 200 && isImage && hasSize) {
         resolve(imgUrl);
       } else {
         resolve(null);
       }
     });
-
     req.on('error', () => resolve(null));
     req.setTimeout(8000, () => { req.destroy(); resolve(null); });
     req.end();
@@ -143,7 +154,6 @@ async function validateImageUrl(imgUrl) {
 async function resolveImageUrl(asin) {
   const candidates = buildImageCandidates(asin);
   console.log(`   🔍 Testando ${candidates.length} URLs de imagem para ASIN ${asin}...`);
-
   for (const url of candidates) {
     const valid = await validateImageUrl(url);
     if (valid) {
@@ -152,18 +162,18 @@ async function resolveImageUrl(asin) {
     }
     console.log(`   ✗  Inválida: ${url.split('/').pop()}`);
   }
-
   console.log(`   ⚠️  Nenhuma URL de imagem funcionou para ASIN ${asin}`);
   return null;
 }
 
-// ── 1. Título via Serper.dev (Google) ─────────────────────────────────────
+// ── 1. Título via Serper.dev — busca FORÇADA em PT-BR, site:amazon.com.br ─
 async function fetchTitleViaSerper(asin, serperKey) {
   if (!serperKey) return null;
-  console.log('   🔍 Buscando título via Serper (Google)...');
+  console.log('   🔍 Buscando título via Serper (Google PT-BR)...');
   try {
-    const query = `amazon.com.br ${asin} site:amazon.com.br`;
-    const payload = JSON.stringify({ q: query, gl: 'br', hl: 'pt', num: 5 });
+    // gl=br + hl=pt-br força resultados em português do Brasil
+    const query = `site:amazon.com.br/dp/${asin}`;
+    const payload = JSON.stringify({ q: query, gl: 'br', hl: 'pt-br', num: 5 });
     const res = await httpRequest({
       hostname: 'google.serper.dev',
       path: '/search',
@@ -181,25 +191,18 @@ async function fetchTitleViaSerper(asin, serperKey) {
     }
 
     const data = JSON.parse(res.body);
-    const results = data?.organic || [];
+    const results = [...(data?.organic || []), ...(data?.shopping || [])];
 
     for (const r of results) {
       const raw = (r.title || '').replace(/ [-:|].*Amazon.*$/i, '').replace(/ - Amazon\.com\.br$/i, '').trim();
-      if (raw.length > 10 && isTitleValid(raw) && raw.toLowerCase().includes(asin.toLowerCase()) === false) {
-        console.log(`   ✅ Título via Serper: "${raw.slice(0, 60)}..."`);
+      if (raw.length > 10 && isTitleValid(raw) && !isTitleInSpanish(raw)) {
+        console.log(`   ✅ Título via Serper (PT): "${raw.slice(0, 60)}..."`);
         return { title: raw, specs: [] };
       }
-    }
-
-    const shopping = data?.shopping || [];
-    for (const s of shopping) {
-      const raw = (s.title || '').trim();
-      if (raw.length > 10 && isTitleValid(raw)) {
-        console.log(`   ✅ Título via Serper Shopping: "${raw.slice(0, 60)}..."`);
-        return { title: raw, specs: [] };
+      if (raw.length > 10 && isTitleInSpanish(raw)) {
+        console.log(`   ⚠️  Título em espanhol ignorado: "${raw.slice(0, 50)}"`);
       }
     }
-
     return null;
   } catch (err) {
     console.log(`   ⚠️  Serper falhou: ${err.message}`);
@@ -210,9 +213,9 @@ async function fetchTitleViaSerper(asin, serperKey) {
 // ── 2. Título via Serper com query mais simples ───────────────────────────
 async function fetchTitleViaSerperSimple(asin, serperKey) {
   if (!serperKey) return null;
-  console.log('   🔍 Serper — query simplificada...');
+  console.log('   🔍 Serper — query simplificada (PT-BR)...');
   try {
-    const payload = JSON.stringify({ q: `amazon ${asin}`, gl: 'br', hl: 'pt', num: 3 });
+    const payload = JSON.stringify({ q: `amazon.com.br ${asin}`, gl: 'br', hl: 'pt-br', num: 3 });
     const res = await httpRequest({
       hostname: 'google.serper.dev',
       path: '/search',
@@ -231,8 +234,8 @@ async function fetchTitleViaSerperSimple(asin, serperKey) {
     for (const r of results) {
       if (!r.link?.includes('amazon.com')) continue;
       const raw = (r.title || '').replace(/ [-:|].*Amazon.*$/i, '').trim();
-      if (raw.length > 10 && isTitleValid(raw)) {
-        console.log(`   ✅ Título via Serper (simples): "${raw.slice(0, 60)}..."`);
+      if (raw.length > 10 && isTitleValid(raw) && !isTitleInSpanish(raw)) {
+        console.log(`   ✅ Título via Serper (simples PT): "${raw.slice(0, 60)}..."`);
         return { title: raw, specs: [] };
       }
     }
@@ -258,9 +261,12 @@ async function fetchTitleViaMetaProxy(asin) {
     if (res.status !== 200) return null;
     const data = JSON.parse(res.body);
     const title = (data?.title || '').replace(/ [-:|].*Amazon.*$/i, '').trim();
-    if (title.length > 10 && isTitleValid(title)) {
-      console.log(`   ✅ Título via proxy: "${title.slice(0, 60)}..."`);
+    if (title.length > 10 && isTitleValid(title) && !isTitleInSpanish(title)) {
+      console.log(`   ✅ Título via proxy (PT): "${title.slice(0, 60)}..."`);
       return { title, specs: [] };
+    }
+    if (isTitleInSpanish(title)) {
+      console.log(`   ⚠️  Proxy retornou título em espanhol — descartado`);
     }
     return null;
   } catch (err) {
@@ -273,7 +279,6 @@ async function fetchTitleViaMetaProxy(asin) {
 export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle, productName } = {}) {
   console.log('📦  Amazon detectado...');
 
-  // Resolve link curto
   let resolvedUrl = inputUrl;
   if (/amzn\.to/i.test(inputUrl)) {
     console.log('   🔗 Resolvendo link curto...');
@@ -293,13 +298,13 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
   let title = '';
   let specs = [];
 
-  // 1. Serper (query com ASIN + site:amazon.com.br)
+  // 1. Serper (query com site:amazon.com.br/dp/ASIN + forçar PT-BR)
   if (!title) {
     const r = await fetchTitleViaSerper(asin, serperKey);
     if (r) { title = r.title; specs = r.specs; }
   }
 
-  // 2. Serper query simples
+  // 2. Serper query simples PT-BR
   if (!title) {
     const r = await fetchTitleViaSerperSimple(asin, serperKey);
     if (r) { title = r.title; specs = r.specs; }
@@ -311,22 +316,22 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
     if (r) { title = r.title; specs = r.specs; }
   }
 
-  // 4. Fallback: usa o nome do catálogo (passado pelo agente)
-  if (!title && productName && isTitleValid(productName)) {
+  // 4. Fallback: nome do catálogo (passado pelo agente via PRODUCT_NAME_HINT)
+  if (!title && productName && isTitleValid(productName) && !isTitleInSpanish(productName)) {
     console.log(`   ℹ️  Usando nome do catálogo como título: "${productName}"`);
     title = productName;
   }
 
-  // 5. Fallback extremo: usa ASIN como marcador (nunca trava o agente)
+  // 5. Fallback extremo: ASIN como base — nunca trava o agente
   if (!title || !isTitleValid(title)) {
-    console.log(`   ⚠️  Não consegui título real — usando ASIN como base`);
+    console.log(`   ⚠️  Não consegui título em português — usando ASIN como base`);
     title = `Produto Amazon ${asin}`;
   }
 
-  // Resolve imagem: testa múltiplos candidatos e valida Content-Type + tamanho
+  // Resolve imagem
   const imageUrl = await resolveImageUrl(asin);
 
-  // Link afiliado
+  // Link afiliado — usa SEMPRE a tag do .env
   const affiliateUrl = partnerTag
     ? `https://www.amazon.com.br/dp/${asin}?tag=${partnerTag}`
     : resolvedUrl;
@@ -343,7 +348,7 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
     description: `${cleanedTitle} disponível na Amazon com entrega Prime para todo o Brasil.`,
     category,
     tags: _buildTags(cleanedTitle, category),
-    imageUrl,   // null se nenhum candidato funcionou — novo-post.js trata isso
+    imageUrl,
     specs,
     store: 'Amazon',
     affiliateUrl,

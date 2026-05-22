@@ -37,7 +37,14 @@ config({ path: path.join(__dirname, '..', '..', 'backend', '.env') });
 
 // ── Configuração ─────────────────────────────────────────────────────────────
 
-const AMAZON_TAG      = process.env.AMAZON_AFFILIATE_TAG || 'altivita-20';
+// CORREÇÃO: tag afiliada correta do AchadoCerto.VIP (sem fallback para outra tag)
+const AMAZON_TAG      = process.env.AMAZON_AFFILIATE_TAG;
+if (!AMAZON_TAG) {
+  console.error('❌ ERRO CRÍTICO: variável AMAZON_AFFILIATE_TAG não definida no .env!');
+  console.error('   Defina AMAZON_AFFILIATE_TAG=<sua-tag> no arquivo backend/.env');
+  process.exit(1);
+}
+
 const HISTORY_FILE    = path.join(__dirname, 'history.json');
 const LOG_FILE        = path.join(__dirname, 'agent.log');
 const HISTORY_DAYS    = 60;
@@ -148,6 +155,25 @@ function recordPost(asin, name, url, category, guardResult, isTrending, history)
   saveHistory(history);
 }
 
+// ── Valida se o título do post gerado está em português ──────────────────────
+// Detecta palavras-chave de espanhol no título para rejeitar produtos
+// do catálogo global da Amazon que chegam com título em espanhol.
+function isTitleInPortuguese(title) {
+  if (!title) return false;
+  // Palavras exclusivamente espanholas que nunca aparecem em PT-BR
+  const spanishOnlyWords = /\b(juego|cubo de limpieza|escurrador de prensa|sopa de|el |los |las |del |una |unos |unas |también|también|además|después|entonces|cuando|donde|porque|pero|sino|aunque|siempre|nunca|algo|alguien|nadie|nada|todo|todos|cada|otro|otra|otros|otras|muy|más|menos|poco|mucho|grande|pequeño|pequeña|mismo|misma|color|tamaño|tipo|precio|envío|gratis|nuevo|nueva|usado|usada)\b/i;
+  // Se mais de 15% do título for palavras espanholas, rejeita
+  const hasSpanishWords = spanishOnlyWords.test(title);
+  // Palavras que indicam que é português (presença de pelo menos uma confirma)
+  const portugueseIndicators = /\b(para|com|sem|não|mais|menos|que|por|uma|uns|umas|também|além|depois|quando|onde|porque|mas|mas|sempre|nunca|algo|alguém|ninguém|nada|tudo|todos|cada|outro|outra|cor|tamanho|tipo|preço|frete|grátis|novo|nova|usado|usada|produto|disponível|entrega|compra|oferta|promoção)\b/i;
+  const hasPortuguese = portugueseIndicators.test(title);
+
+  if (hasSpanishWords && !hasPortuguese) {
+    return false; // título em espanhol
+  }
+  return true;
+}
+
 // ── Rotação de pilares ────────────────────────────────────────────────────────
 
 function getPillarForSlot(slotIndex) {
@@ -172,7 +198,31 @@ function buildAmazonUrl(asin, tag) {
   return `https://www.amazon.com.br/dp/${asin}?tag=${tag}`;
 }
 
-// ── Executa novo-post.js — captura e exibe erro detalhado ────────────────────
+// ── Verifica se o post gerado tem imagem real (não placeholder) ───────────────
+function postHasRealImage(slug) {
+  try {
+    const mdPath = path.join(__dirname, '..', '..', 'src', 'content', 'blog', `${slug}.md`);
+    if (!fs.existsSync(mdPath)) return true; // arquivo não existe ainda, ok
+    const content = fs.readFileSync(mdPath, 'utf8');
+    // Verifica se o frontmatter ainda tem placeholder
+    const hasPlaceholder = content.includes('image: /images/posts/placeholder.webp') ||
+                           content.includes('productImage: /images/posts/placeholder.webp');
+    return !hasPlaceholder;
+  } catch(_) {
+    return true;
+  }
+}
+
+// ── Executa novo-post.js e verifica resultado ────────────────────────────────
+
+function slugify(text) {
+  return text
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim().replace(/\s+/g, '-').replace(/-+/g, '-')
+    .slice(0, 60);
+}
 
 function runPost(affiliateUrl, productName, guardEnvVars) {
   const projectRoot = path.join(__dirname, '..', '..');
@@ -182,29 +232,22 @@ function runPost(affiliateUrl, productName, guardEnvVars) {
       `node scripts/novo-post.js "${affiliateUrl}"`,
       {
         cwd:     projectRoot,
-        stdio:   'pipe',          // captura stdout+stderr para exibir em caso de erro
+        stdio:   'pipe',
         timeout: 5 * 60 * 1000,
         env:     {
           ...process.env,
           ...guardEnvVars,
-          PRODUCT_NAME_HINT: productName || '',   // nome do catálogo como fallback de título
+          PRODUCT_NAME_HINT: productName || '',
         },
       }
     );
     log('✅ Post criado com sucesso!');
     return true;
   } catch (err) {
-    // Exibe stdout + stderr completos para diagnóstico
-    const out = (err.stdout || Buffer.alloc(0)).toString('utf8').trim();
+    const out    = (err.stdout || Buffer.alloc(0)).toString('utf8').trim();
     const errOut = (err.stderr || Buffer.alloc(0)).toString('utf8').trim();
-    if (out) {
-      log('📋 stdout do novo-post.js:');
-      out.split('\n').forEach(l => log('   ' + l));
-    }
-    if (errOut) {
-      log('🔴 stderr do novo-post.js:');
-      errOut.split('\n').forEach(l => log('   ' + l));
-    }
+    if (out)    { log('📋 stdout do novo-post.js:'); out.split('\n').forEach(l => log('   ' + l)); }
+    if (errOut) { log('🔴 stderr do novo-post.js:'); errOut.split('\n').forEach(l => log('   ' + l)); }
     log(`❌ Erro ao criar post: ${err.message}`);
     return false;
   }
@@ -215,6 +258,7 @@ function runPost(affiliateUrl, productName, guardEnvVars) {
 async function runJob(forcePillar = null, slotIndex = 0) {
   log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   log('🤖 Agente + Trend Scout + Content Guard — AchadoCerto.VIP');
+  log(`🏷️  Tag afiliada: ${AMAZON_TAG}`);
 
   const pillar  = forcePillar || getPillarForSlot(slotIndex);
   const history = loadHistory();
@@ -243,7 +287,7 @@ async function runJob(forcePillar = null, slotIndex = 0) {
 
   log(`🏁 Pool final: ${pool.length} produtos (trending prioridade → catálogo fallback)`);
 
-  // ── 3. Content Guard ──
+  // ── 3. Content Guard + Validação de idioma + Imagem ──
   for (let attempt = 1; attempt <= MAX_GUARD_RETRIES; attempt++) {
     const product = pickFromPool(pool, excluded);
     if (!product) { log('❌ Sem produtos disponíveis no pool.'); return; }
@@ -253,6 +297,13 @@ async function runJob(forcePillar = null, slotIndex = 0) {
       : ' [catálogo]';
 
     log(`\n🔍 Tentativa ${attempt}/${MAX_GUARD_RETRIES}: ${product.name}${trendBadge}`);
+
+    // Valida idioma do nome do produto no catálogo
+    if (!isTitleInPortuguese(product.name)) {
+      log(`🚫 Produto rejeitado: título em espanhol ou idioma não-PT — "${product.name}"`);
+      excluded.push(product.asin);
+      continue;
+    }
 
     const angleDesc = ANGLES[product.angle] || product.angle;
 
@@ -285,7 +336,30 @@ async function runJob(forcePillar = null, slotIndex = 0) {
     log(`📐 Ângulo   : ${angleDesc}`);
 
     const success = runPost(url, product.name, guard.envVars);
-    if (success) recordPost(product.asin, product.name, url, product.category, guard, product.isTrending, history);
+
+    if (success) {
+      // ── NOVA VALIDAÇÃO: bloqueia post se placeholder ainda está presente ──
+      const productSlug = slugify(product.name);
+      if (!postHasRealImage(productSlug)) {
+        log(`⚠️  Post gerado com placeholder.webp — BLOQUEANDO publicação!`);
+        log(`   Removendo arquivo gerado com placeholder...`);
+        try {
+          const mdPath = path.join(__dirname, '..', '..', 'src', 'content', 'blog', `${productSlug}.md`);
+          if (fs.existsSync(mdPath)) fs.unlinkSync(mdPath);
+          // Reverte o commit do placeholder
+          execSync('git reset --soft HEAD~1', { cwd: path.join(__dirname, '..', '..'), stdio: 'pipe' });
+          execSync('git restore --staged .', { cwd: path.join(__dirname, '..', '..'), stdio: 'pipe' });
+          log(`   ♻️  Commit revertido. Post não publicado.`);
+        } catch(e) {
+          log(`   ⚠️  Não foi possível reverter automaticamente: ${e.message}`);
+        }
+        excluded.push(product.asin);
+        if (attempt < MAX_GUARD_RETRIES) continue;
+        return;
+      }
+
+      recordPost(product.asin, product.name, url, product.category, guard, product.isTrending, history);
+    }
     return;
   }
 }
