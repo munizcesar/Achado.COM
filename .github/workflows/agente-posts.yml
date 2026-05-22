@@ -6,6 +6,12 @@ on:
     - cron: '0 15 * * *'
     - cron: '0 21 * * *'
   workflow_dispatch:
+    inputs:
+      pilar:
+        description: 'Pilar do post (beleza | saude | casa) ou deixe vazio para rotação automática'
+        required: false
+        default: ''
+        type: string
 
 jobs:
   gerar-post:
@@ -43,27 +49,38 @@ jobs:
       - name: "🔐 Montar backend/.env"
         run: |
           mkdir -p backend
-          printf 'GROQ_API_KEY=%s\nGROQ_MODEL=llama-3.3-70b-versatile\nGROQ_TEMPERATURE=0.1\nSERPER_API_KEY=%s\nAMAZON_AFFILIATE_TAG=%s\nAMAZON_CREDENTIAL_ID=%s\nNODE_ENV=production\n' \
+          printf 'GROQ_API_KEY=%s\nGROQ_MODEL=llama-3.3-70b-versatile\nGROQ_TEMPERATURE=0.1\nSERPER_API_KEY=%s\nAMAZON_AFFILIATE_TAG=%s\nAMAZON_CREDENTIAL_ID=%s\nRAPIDAPI_KEY=%s\nRAPIDAPI_HOST=%s\nNODE_ENV=production\n' \
             "$GROQ_API_KEY" \
             "$SERPER_API_KEY" \
             "$AMAZON_AFFILIATE_TAG" \
-            "$AMAZON_CREDENTIAL_ID" > backend/.env
-          echo "✅ backend/.env criado"
+            "$AMAZON_CREDENTIAL_ID" \
+            "$RAPIDAPI_KEY" \
+            "mercado-libre7.p.rapidapi.com" > backend/.env
+          echo "✅ backend/.env criado (com RapidAPI ML)"
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
           AMAZON_AFFILIATE_TAG: ${{ secrets.AMAZON_AFFILIATE_TAG }}
           AMAZON_CREDENTIAL_ID: ${{ secrets.AMAZON_CREDENTIAL_ID }}
+          RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
 
       - name: "🤖 Rodar agente"
         run: |
-          echo "🔄 Rotação automática entre pilares"
-          node scripts/agent/agent.js --now --source amazon
+          PILAR="${{ github.event.inputs.pilar }}"
+          if [ -n "$PILAR" ]; then
+            echo "🏷️  Pilar manual: $PILAR"
+            node scripts/agent/agent.js --now $PILAR
+          else
+            echo "🔄 Rotação automática entre pilares"
+            node scripts/agent/agent.js --now
+          fi
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
           AMAZON_AFFILIATE_TAG: ${{ secrets.AMAZON_AFFILIATE_TAG }}
           AMAZON_CREDENTIAL_ID: ${{ secrets.AMAZON_CREDENTIAL_ID }}
+          RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
+          RAPIDAPI_HOST: mercado-libre7.p.rapidapi.com
 
       - name: "📤 Commit + Push do post"
         run: |
@@ -91,13 +108,14 @@ jobs:
           echo "| | |" >> $GITHUB_STEP_SUMMARY
           echo "|---|---|" >> $GITHUB_STEP_SUMMARY
           echo "| ⏰ Horário | $(TZ='America/Sao_Paulo' date '+%d/%m/%Y %H:%M BRT') |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🏷️  Pilar | automático |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🏷️  Pilar | ${{ github.event.inputs.pilar || 'automático' }} |" >> $GITHUB_STEP_SUMMARY
           echo "| 🛠️  Fonte | Amazon BR |" >> $GITHUB_STEP_SUMMARY
           echo "| 🔥 Trigger | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🔗 ML Fallback | RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY != '' && 'configurada ✅' || 'ausente ❌' }} |" >> $GITHUB_STEP_SUMMARY
           if [ -f scripts/agent/agent.log ]; then
             echo "" >> $GITHUB_STEP_SUMMARY
             echo "### 📝 Log do agente" >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
-            tail -20 scripts/agent/agent.log >> $GITHUB_STEP_SUMMARY
+            tail -30 scripts/agent/agent.log >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
           fi
