@@ -1,16 +1,19 @@
 /**
- * amazon-service.js  — v5 (sem API Amazon)
+ * amazon-service.js  — v6 (sem API Amazon, com ML como fallback PT-BR)
  *
- * Estratégia sem PA-API / Creators API:
- *  1. Extrai ASIN da URL
- *  2. Busca título via Serper.dev (Google Shopping / Web) — funciona em CI/CD
- *  3. Fallback: busca título via Open Graph com proxy de metadados público
- *  4. Fallback final: usa nome do catálogo como título (nunca lança exceção)
+ * Cadeia de busca de título PT-BR:
+ *  1. Serper.dev — site:amazon.com.br/dp/ASIN (gl=br, hl=pt-br)
+ *  2. Serper.dev — query simples PT-BR
+ *  3. Mercado Livre via RapidAPI — busca por nome do produto → pega título PT-BR
+ *     (Opção B: usa só o TÍTULO do ML; o link de destino continua sendo Amazon)
+ *  4. Proxy de metadados público (jsonlink.io)
+ *  5. Fallback: nome do catálogo (PRODUCT_NAME_HINT)
+ *  6. Fallback extremo: "Produto Amazon {ASIN}"
  *
  * Imagem: testa múltiplos padrões de URL por ASIN com validação real
- * Link:   montado com ASIN + tag (sem API, 100% confiável)
+ * Link:   montado com ASIN + tag Amazon (100% confiável, nunca muda)
  *
- * v5: Adiciona filtro de idioma — rejeita títulos em espanhol
+ * v6: +Mercado Livre RapidAPI como step 3 para garantir título sempre PT-BR
  */
 
 import https from 'https';
@@ -36,16 +39,15 @@ const ERROR_TITLE_PATTERNS = [
   /fazer login/i,
 ];
 
-// ── Palavras exclusivamente em espanhol — rejeita títulos com elas ────────
-// Palavras que nunca aparecem em português brasileiro mas são comuns em ES
+// ── Detector de espanhol ──────────────────────────────────────────────────
 const SPANISH_ONLY_PATTERNS = [
-  /\bjuego de\b/i,       // "juego de" = jogo de (ES)
+  /\bjuego de\b/i,
   /\bcubo de limpieza\b/i,
-  /\bde piso\b/i,        // "piso" em ES = chão (em PT é diferente)
+  /\bde piso\b/i,
   /\blimpieza\b/i,
   /\bescobilla\b/i,
   /\bespuma de afeitar\b/i,
-  /\b(el|la|los|las|del|al|un|una|unos|unas)\s+\w/i, // artigos ES
+  /\b(el|la|los|las|del|al|un|una|unos|unas)\s+\w/i,
   /\b(también|además|después|entonces|siempre|nunca|algo|alguien|nadie)\b/i,
   /\b(grande|pequeño|pequeña|mismo|misma|nuevo|nueva|usado|usada)\b/i,
   /\b(precio|envío|gratis|color|tamaño|tipo|producto)\b/i,
@@ -57,11 +59,9 @@ function isTitleValid(title) {
   return !ERROR_TITLE_PATTERNS.some(re => re.test(title.trim()));
 }
 
-// Retorna true se o título parece estar em espanhol
 function isTitleInSpanish(title) {
   if (!title) return false;
-  const matched = SPANISH_ONLY_PATTERNS.filter(re => re.test(title));
-  return matched.length >= 2; // precisa de pelo menos 2 indicadores para rejeitar
+  return SPANISH_ONLY_PATTERNS.filter(re => re.test(title)).length >= 2;
 }
 
 // ── HTTP helper ───────────────────────────────────────────────────────────
@@ -70,10 +70,7 @@ function httpRequest(options, body = null) {
     const req = https.request(options, (res) => {
       const chunks = [];
       res.on('data', c => chunks.push(Buffer.from(c)));
-      res.on('end', () => {
-        const text = Buffer.concat(chunks).toString('utf8');
-        resolve({ status: res.statusCode, body: text, headers: res.headers });
-      });
+      res.on('end', () => resolve({ status: res.statusCode, body: Buffer.concat(chunks).toString('utf8'), headers: res.headers }));
     });
     req.on('error', reject);
     req.setTimeout(15000, () => { req.destroy(); reject(new Error('Timeout')); });
@@ -124,7 +121,7 @@ function buildImageCandidates(asin) {
   ];
 }
 
-// ── Valida se uma URL retorna uma imagem real ─────────────────────────────
+// ── Valida URL de imagem ──────────────────────────────────────────────────
 async function validateImageUrl(imgUrl) {
   return new Promise((resolve) => {
     const lib = imgUrl.startsWith('https') ? https : http;
@@ -138,11 +135,7 @@ async function validateImageUrl(imgUrl) {
       res.resume();
       const isImage = ct.startsWith('image/') || ct === 'binary/octet-stream';
       const hasSize = cl === 0 || cl > 5000;
-      if (res.statusCode === 200 && isImage && hasSize) {
-        resolve(imgUrl);
-      } else {
-        resolve(null);
-      }
+      resolve(res.statusCode === 200 && isImage && hasSize ? imgUrl : null);
     });
     req.on('error', () => resolve(null));
     req.setTimeout(8000, () => { req.destroy(); resolve(null); });
@@ -150,132 +143,153 @@ async function validateImageUrl(imgUrl) {
   });
 }
 
-// ── Encontra a primeira URL de imagem válida entre os candidatos ──────────
 async function resolveImageUrl(asin) {
   const candidates = buildImageCandidates(asin);
   console.log(`   🔍 Testando ${candidates.length} URLs de imagem para ASIN ${asin}...`);
   for (const url of candidates) {
     const valid = await validateImageUrl(url);
-    if (valid) {
-      console.log(`   ✅ Imagem válida encontrada: ${valid}`);
-      return valid;
-    }
+    if (valid) { console.log(`   ✅ Imagem válida: ${valid}`); return valid; }
     console.log(`   ✗  Inválida: ${url.split('/').pop()}`);
   }
-  console.log(`   ⚠️  Nenhuma URL de imagem funcionou para ASIN ${asin}`);
+  console.log(`   ⚠️  Nenhuma imagem funcionou para ASIN ${asin}`);
   return null;
 }
 
-// ── 1. Título via Serper.dev — busca FORÇADA em PT-BR, site:amazon.com.br ─
+// ── 1. Serper — site:amazon.com.br/dp/ASIN (PT-BR forçado) ───────────────
 async function fetchTitleViaSerper(asin, serperKey) {
   if (!serperKey) return null;
-  console.log('   🔍 Buscando título via Serper (Google PT-BR)...');
+  console.log('   🔍 Serper — site:amazon.com.br/dp (PT-BR)...');
   try {
-    // gl=br + hl=pt-br força resultados em português do Brasil
-    const query = `site:amazon.com.br/dp/${asin}`;
-    const payload = JSON.stringify({ q: query, gl: 'br', hl: 'pt-br', num: 5 });
+    const payload = JSON.stringify({ q: `site:amazon.com.br/dp/${asin}`, gl: 'br', hl: 'pt-br', num: 5 });
     const res = await httpRequest({
-      hostname: 'google.serper.dev',
-      path: '/search',
-      method: 'POST',
-      headers: {
-        'X-API-KEY': serperKey,
-        'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(payload),
-      },
+      hostname: 'google.serper.dev', path: '/search', method: 'POST',
+      headers: { 'X-API-KEY': serperKey, 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(payload) },
     }, payload);
-
-    if (res.status !== 200) {
-      console.log(`   ⚠️  Serper retornou ${res.status}`);
-      return null;
-    }
-
-    const data = JSON.parse(res.body);
-    const results = [...(data?.organic || []), ...(data?.shopping || [])];
-
+    if (res.status !== 200) { console.log(`   ⚠️  Serper ${res.status}`); return null; }
+    const results = [...(JSON.parse(res.body)?.organic || []), ...(JSON.parse(res.body)?.shopping || [])];
     for (const r of results) {
-      const raw = (r.title || '').replace(/ [-:|].*Amazon.*$/i, '').replace(/ - Amazon\.com\.br$/i, '').trim();
+      const raw = (r.title || '').replace(/ [-:|].*Amazon.*$/i, '').trim();
       if (raw.length > 10 && isTitleValid(raw) && !isTitleInSpanish(raw)) {
-        console.log(`   ✅ Título via Serper (PT): "${raw.slice(0, 60)}..."`);
+        console.log(`   ✅ Serper (PT): "${raw.slice(0, 60)}"`);
         return { title: raw, specs: [] };
       }
-      if (raw.length > 10 && isTitleInSpanish(raw)) {
-        console.log(`   ⚠️  Título em espanhol ignorado: "${raw.slice(0, 50)}"`);
-      }
+      if (isTitleInSpanish(raw)) console.log(`   ⚠️  ES ignorado: "${raw.slice(0, 40)}"`);
     }
     return null;
-  } catch (err) {
-    console.log(`   ⚠️  Serper falhou: ${err.message}`);
-    return null;
-  }
+  } catch (err) { console.log(`   ⚠️  Serper falhou: ${err.message}`); return null; }
 }
 
-// ── 2. Título via Serper com query mais simples ───────────────────────────
+// ── 2. Serper — query simples PT-BR ──────────────────────────────────────
 async function fetchTitleViaSerperSimple(asin, serperKey) {
   if (!serperKey) return null;
-  console.log('   🔍 Serper — query simplificada (PT-BR)...');
+  console.log('   🔍 Serper — query simples (PT-BR)...');
   try {
     const payload = JSON.stringify({ q: `amazon.com.br ${asin}`, gl: 'br', hl: 'pt-br', num: 3 });
     const res = await httpRequest({
-      hostname: 'google.serper.dev',
-      path: '/search',
-      method: 'POST',
-      headers: {
-        'X-API-KEY': serperKey,
-        'Content-Type': 'application/json',
-        'Content-Length': Buffer.byteLength(payload),
-      },
+      hostname: 'google.serper.dev', path: '/search', method: 'POST',
+      headers: { 'X-API-KEY': serperKey, 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(payload) },
     }, payload);
-
     if (res.status !== 200) return null;
-    const data = JSON.parse(res.body);
-    const results = data?.organic || [];
-
+    const results = JSON.parse(res.body)?.organic || [];
     for (const r of results) {
       if (!r.link?.includes('amazon.com')) continue;
       const raw = (r.title || '').replace(/ [-:|].*Amazon.*$/i, '').trim();
       if (raw.length > 10 && isTitleValid(raw) && !isTitleInSpanish(raw)) {
-        console.log(`   ✅ Título via Serper (simples PT): "${raw.slice(0, 60)}..."`);
+        console.log(`   ✅ Serper simples (PT): "${raw.slice(0, 60)}"`);
         return { title: raw, specs: [] };
       }
     }
     return null;
+  } catch (err) { console.log(`   ⚠️  Serper simples falhou: ${err.message}`); return null; }
+}
+
+// ── 3. MERCADO LIVRE via RapidAPI — Opção B ───────────────────────────────
+// Busca o produto por nome no ML Brasil e pega o título PT-BR do resultado.
+// O link de destino CONTINUA sendo Amazon — apenas o título é reutilizado.
+//
+// Como funciona:
+//   a) Usa o nome do catálogo (productName) como query de busca
+//   b) Chama GET /listings_for_search?query=<nome>&limit=3
+//   c) Pega o primeiro título que seja válido e em PT-BR
+//   d) Sanitiza o título (remove marca do ML, preço, etc.)
+async function fetchTitleViaML(productName, rapidApiKey, rapidApiHost) {
+  if (!rapidApiKey || !productName) return null;
+  console.log('   🛒 Mercado Livre (RapidAPI) — buscando título PT-BR...');
+  try {
+    const query = encodeURIComponent(productName.slice(0, 80));
+    const host  = rapidApiHost || 'mercado-libre7.p.rapidapi.com';
+    const res   = await httpRequest({
+      hostname: host,
+      path:     `/listings_for_search?query=${query}&limit=3`,
+      method:   'GET',
+      headers: {
+        'x-rapidapi-key':  rapidApiKey,
+        'x-rapidapi-host': host,
+        'Accept':          'application/json',
+      },
+    });
+
+    if (res.status !== 200) {
+      console.log(`   ⚠️  ML RapidAPI retornou ${res.status}`);
+      return null;
+    }
+
+    const data = JSON.parse(res.body);
+    // A API pode retornar array direto ou { results: [...] }
+    const items = Array.isArray(data) ? data : (data?.results || data?.listings || []);
+
+    for (const item of items) {
+      const raw = (item?.title || item?.name || '').trim();
+      if (!raw || raw.length < 8) continue;
+
+      // Sanitiza: remove sufixos de quantidade/tamanho que ML adiciona
+      const clean = raw
+        .replace(/\s*[-|–]\s*(\d+\s*(ml|g|kg|un|pack|unidades|capsulas|cápsulas|comprimidos)).*$/i, '')
+        .replace(/\s*\(.*?\)$/, '')   // remove parênteses finais
+        .replace(/\s+/g, ' ')
+        .trim()
+        .slice(0, 150);
+
+      if (clean.length < 8) continue;
+      if (isTitleInSpanish(clean)) {
+        console.log(`   ⚠️  ML título ES ignorado: "${clean.slice(0, 40)}"`);
+        continue;
+      }
+      if (!isTitleValid(clean)) continue;
+
+      console.log(`   ✅ ML RapidAPI título PT-BR: "${clean.slice(0, 60)}"`);
+      return { title: clean, specs: [] };
+    }
+
+    console.log('   ⚠️  ML RapidAPI: nenhum título PT-BR válido nos resultados');
+    return null;
   } catch (err) {
-    console.log(`   ⚠️  Serper simples falhou: ${err.message}`);
+    console.log(`   ⚠️  ML RapidAPI falhou: ${err.message}`);
     return null;
   }
 }
 
-// ── 3. Título via proxy de metadados público ──────────────────────────────
+// ── 4. Proxy de metadados público ────────────────────────────────────────
 async function fetchTitleViaMetaProxy(asin) {
-  console.log('   🌐 Tentando via proxy de metadados...');
+  console.log('   🌐 Proxy de metadados (jsonlink.io)...');
   try {
     const targetUrl = encodeURIComponent(`https://www.amazon.com.br/dp/${asin}`);
     const res = await httpRequest({
-      hostname: 'jsonlink.io',
-      path: `/api/extract?url=${targetUrl}`,
-      method: 'GET',
-      headers: { 'User-Agent': 'Mozilla/5.0', 'Accept': 'application/json' },
+      hostname: 'jsonlink.io', path: `/api/extract?url=${targetUrl}`,
+      method: 'GET', headers: { 'User-Agent': 'Mozilla/5.0', 'Accept': 'application/json' },
     });
-
     if (res.status !== 200) return null;
-    const data = JSON.parse(res.body);
-    const title = (data?.title || '').replace(/ [-:|].*Amazon.*$/i, '').trim();
+    const title = (JSON.parse(res.body)?.title || '').replace(/ [-:|].*Amazon.*$/i, '').trim();
     if (title.length > 10 && isTitleValid(title) && !isTitleInSpanish(title)) {
-      console.log(`   ✅ Título via proxy (PT): "${title.slice(0, 60)}..."`);
+      console.log(`   ✅ Proxy (PT): "${title.slice(0, 60)}"`);
       return { title, specs: [] };
     }
-    if (isTitleInSpanish(title)) {
-      console.log(`   ⚠️  Proxy retornou título em espanhol — descartado`);
-    }
+    if (isTitleInSpanish(title)) console.log('   ⚠️  Proxy: título ES — descartado');
     return null;
-  } catch (err) {
-    console.log(`   ⚠️  Proxy falhou: ${err.message}`);
-    return null;
-  }
+  } catch (err) { console.log(`   ⚠️  Proxy falhou: ${err.message}`); return null; }
 }
 
-// ── Export principal ───────────────────────────────────────────────────────
+// ── Export principal ──────────────────────────────────────────────────────
 export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle, productName } = {}) {
   console.log('📦  Amazon detectado...');
 
@@ -287,51 +301,65 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
   }
 
   const asin = extractAsin(resolvedUrl) || extractAsin(inputUrl);
-  if (!asin) {
-    throw new Error('Não consegui extrair o ASIN da URL Amazon. Use a URL completa do produto (ex: amazon.com.br/dp/XXXXXXXXXX).');
-  }
+  if (!asin) throw new Error('Não consegui extrair o ASIN da URL Amazon.');
   console.log('   ASIN:', asin);
 
-  const serperKey = process.env.SERPER_API_KEY;
-  const partnerTag = process.env.AMAZON_AFFILIATE_TAG || process.env.AMAZON_TAG;
+  const serperKey    = process.env.SERPER_API_KEY;
+  const rapidApiKey  = process.env.RAPIDAPI_KEY;
+  const rapidApiHost = process.env.RAPIDAPI_HOST || 'mercado-libre7.p.rapidapi.com';
+  const partnerTag   = process.env.AMAZON_AFFILIATE_TAG || process.env.AMAZON_TAG;
 
   let title = '';
   let specs = [];
 
-  // 1. Serper (query com site:amazon.com.br/dp/ASIN + forçar PT-BR)
+  // ── Cadeia de busca de título PT-BR ──────────────────────────────────
+  // Step 1: Serper — site:amazon.com.br/dp/ASIN
   if (!title) {
     const r = await fetchTitleViaSerper(asin, serperKey);
     if (r) { title = r.title; specs = r.specs; }
   }
 
-  // 2. Serper query simples PT-BR
+  // Step 2: Serper — query simples
   if (!title) {
     const r = await fetchTitleViaSerperSimple(asin, serperKey);
     if (r) { title = r.title; specs = r.specs; }
   }
 
-  // 3. Proxy de metadados
+  // Step 3: Mercado Livre RapidAPI (Opção B)
+  // Usa o nome do catálogo para buscar no ML e pegar título PT-BR.
+  // O link de destino continua sendo Amazon — só o título é reutilizado.
+  if (!title) {
+    const hint = productName || '';
+    if (hint) {
+      const r = await fetchTitleViaML(hint, rapidApiKey, rapidApiHost);
+      if (r) { title = r.title; specs = r.specs; }
+    } else {
+      console.log('   ℹ️  ML step 3 pulado — sem PRODUCT_NAME_HINT');
+    }
+  }
+
+  // Step 4: Proxy de metadados
   if (!title) {
     const r = await fetchTitleViaMetaProxy(asin);
     if (r) { title = r.title; specs = r.specs; }
   }
 
-  // 4. Fallback: nome do catálogo (passado pelo agente via PRODUCT_NAME_HINT)
+  // Step 5: Nome do catálogo direto
   if (!title && productName && isTitleValid(productName) && !isTitleInSpanish(productName)) {
-    console.log(`   ℹ️  Usando nome do catálogo como título: "${productName}"`);
+    console.log(`   ℹ️  Usando nome do catálogo: "${productName}"`);
     title = productName;
   }
 
-  // 5. Fallback extremo: ASIN como base — nunca trava o agente
+  // Step 6: Fallback extremo — nunca trava o agente
   if (!title || !isTitleValid(title)) {
-    console.log(`   ⚠️  Não consegui título em português — usando ASIN como base`);
+    console.log(`   ⚠️  Sem título PT — usando ASIN como base`);
     title = `Produto Amazon ${asin}`;
   }
 
-  // Resolve imagem
+  // ── Imagem ────────────────────────────────────────────────────────────
   const imageUrl = await resolveImageUrl(asin);
 
-  // Link afiliado — usa SEMPRE a tag do .env
+  // ── Link afiliado — SEMPRE Amazon ────────────────────────────────────
   const affiliateUrl = partnerTag
     ? `https://www.amazon.com.br/dp/${asin}?tag=${partnerTag}`
     : resolvedUrl;
