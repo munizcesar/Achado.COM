@@ -1,5 +1,5 @@
 {
-  "total": 63,
+  "total": 66,
   "mes_atual": 4,
   "logs": [
     {
@@ -105,6 +105,11 @@
     {
       "data": "2026-05-21T22:12:50.710Z",
       "produto": "Sublime Softy's Papel Higiênico Azul 4 Rolos",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-22T13:33:55.776Z",
+      "produto": "Kole Import Mini cabide automotivo multiuso",
       "consultas": 3
     }
   ]
