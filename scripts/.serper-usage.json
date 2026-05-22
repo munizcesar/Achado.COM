@@ -1,5 +1,5 @@
 {
-  "total": 69,
+  "total": 72,
   "mes_atual": 4,
   "logs": [
     {
@@ -115,6 +115,11 @@
     {
       "data": "2026-05-22T17:09:31.562Z",
       "produto": "Amazon Basics - Juego de cubo de limpieza de piso ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-22T21:59:43.777Z",
+      "produto": "Kole Import Mini cabide automotivo multiuso",
       "consultas": 3
     }
   ]
