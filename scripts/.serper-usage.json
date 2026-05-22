@@ -1,5 +1,5 @@
 {
-  "total": 72,
+  "total": 75,
   "mes_atual": 4,
   "logs": [
     {
@@ -120,6 +120,11 @@
     {
       "data": "2026-05-22T21:59:43.777Z",
       "produto": "Kole Import Mini cabide automotivo multiuso",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-22T22:40:39.647Z",
+      "produto": "Dispositivos Kindle e Acessórios",
       "consultas": 3
     }
   ]
