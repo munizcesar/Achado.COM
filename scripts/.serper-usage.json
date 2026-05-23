@@ -1,5 +1,5 @@
 {
-  "total": 78,
+  "total": 81,
   "mes_atual": 4,
   "logs": [
     {
@@ -130,6 +130,11 @@
     {
       "data": "2026-05-23T12:02:28.809Z",
       "produto": "Dispositivos Kindle e Acessórios",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-23T16:02:47.834Z",
+      "produto": "Amazon Prime - Teste Grátis por 30 Dias",
       "consultas": 3
     }
   ]
