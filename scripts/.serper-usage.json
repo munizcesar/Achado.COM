@@ -1,5 +1,5 @@
 {
-  "total": 87,
+  "total": 90,
   "mes_atual": 4,
   "logs": [
     {
@@ -144,6 +144,11 @@
     },
     {
       "data": "2026-05-24T12:03:11.238Z",
+      "produto": "Amazon Prime - Teste Grátis por 30 Dias",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-24T16:01:33.357Z",
       "produto": "Amazon Prime - Teste Grátis por 30 Dias",
       "consultas": 3
     }
