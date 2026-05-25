@@ -1,5 +1,5 @@
 {
-  "total": 96,
+  "total": 99,
   "mes_atual": 4,
   "logs": [
     {
@@ -160,6 +160,11 @@
     {
       "data": "2026-05-25T14:12:40.505Z",
       "produto": "Todos os departamentos: na Amazon.com.br",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-25T17:07:11.706Z",
+      "produto": "Amazon Prime - Teste Grátis por 30 Dias",
       "consultas": 3
     }
   ]
