@@ -78,15 +78,14 @@ const CATALOGO = [
   { asin: 'B09C5RKM2Y', categoria: 'esportes'  }, // Mini band kit 5 faixas
 
   // ── SAÚDE ──────────────────────────────────────────────────────
-  { asin: 'B09MVKL9BZ', categoria: 'saude'     }, // Whey Protein Growth 900g
-  { asin: 'B0BGV4KKVN', categoria: 'saude'     }, // Creatina Growth 300g
-  { asin: 'B09MTVRXHX', categoria: 'saude'     }, // Vitamina D3 + K2 60 caps
-  { asin: 'B08H93BGVB', categoria: 'saude'     }, // Ômega 3 Fish Oil 120 caps
-  { asin: 'B09W5PQKQZ', categoria: 'saude'     }, // Colágeno Hidrolisado 300g
-  { asin: 'B0B9RKKL3M', categoria: 'saude'     }, // Coenzima Q10 200mg
-  { asin: 'B07MZK7QBF', categoria: 'saude'     }, // Complexo B Premium
-  { asin: 'B09NRRJ4CV', categoria: 'saude'     }, // BCAA 2:1:1 200g Growth
-  { asin: 'B0C1GK3DGH', categoria: 'saude'     }, // Aparelho de pressão G-Tech
+  { asin: 'B0BGV4KKVN', categoria: 'saude', nome: 'Creatina Growth 300g' }, // Creatina Growth 300g
+  { asin: 'B09MTVRXHX', categoria: 'saude', nome: 'Vitamina D3 + K2 60 caps' }, // Vitamina D3 + K2 60 caps
+  { asin: 'B08H93BGVB', categoria: 'saude', nome: 'Ômega 3 Fish Oil 120 caps' }, // Ômega 3 Fish Oil 120 caps
+  { asin: 'B09W5PQKQZ', categoria: 'saude', nome: 'Colágeno Hidrolisado 300g' }, // Colágeno Hidrolisado 300g
+  { asin: 'B0B9RKKL3M', categoria: 'saude', nome: 'Coenzima Q10 200mg' }, // Coenzima Q10 200mg
+  { asin: 'B07MZK7QBF', categoria: 'saude', nome: 'Complexo B Premium' }, // Complexo B Premium
+  { asin: 'B09NRRJ4CV', categoria: 'saude', nome: 'BCAA 2:1:1 200g Growth' }, // BCAA 2:1:1 200g Growth
+  { asin: 'B0C1GK3DGH', categoria: 'saude', nome: 'Aparelho de pressão G-Tech' }, // Aparelho de pressão G-Tech
 
   // ── BELEZA ─────────────────────────────────────────────────────
   { asin: 'B09PVS9K32', categoria: 'beleza'    }, // Shampoo L'Oréal Hidra-Hialurônico
@@ -187,7 +186,7 @@ function log(msg) {
 }
 
 async function rodarGerador(produto) {
-  const { url, asin, categoria } = produto;
+  const { url, asin, categoria, nome } = produto;
   log(`🚀 Categoria: ${categoria} | ASIN: ${asin}`);
   log(`🔗 URL afiliada: ${url}`);
 
@@ -195,7 +194,12 @@ async function rodarGerador(produto) {
   log(`⚙️  Executando: ${comando}`);
 
   try {
-    execSync(comando, { cwd: ROOT, stdio: 'inherit', timeout: 120000 });
+    execSync(comando, {
+      cwd: ROOT,
+      stdio: 'inherit',
+      timeout: 120000,
+      env: { ...process.env, PRODUCT_NAME_HINT: nome || '' },
+    });
     registrarUso(asin, categoria);
     log(`✅ Post criado! [${categoria}]`);
     return true;

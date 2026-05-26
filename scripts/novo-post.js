@@ -431,7 +431,12 @@ async function fetchML(inputUrl) {
 // ── Amazon — usa amazon-service.js (PA-API + scraping melhorado) ──────────
 
 async function fetchAmazon(inputUrl) {
-  return await fetchAmazonService(inputUrl, { mapCategory, buildTags, cleanTitle });
+  return await fetchAmazonService(inputUrl, {
+    mapCategory,
+    buildTags,
+    cleanTitle,
+    productName: process.env.PRODUCT_NAME_HINT,
+  });
 }
 
 // ── Magalu (scraping) ───────────────────────────────────────────────

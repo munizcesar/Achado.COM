@@ -35,6 +35,12 @@ const ERROR_TITLE_PATTERNS = [
   /^error\b/i,
   /^amazon\.com/i,
   /^amazon\.com\.br\s*[-|]/i,
+  /amazon prime/i,
+  /teste grátis/i,
+  /teste gratis/i,
+  /assinatura/i,
+  /plano\s+(mensal|anual)/i,
+  /\bprime\b.*\bfrete\b/i,
   /sign in/i,
   /fazer login/i,
 ];
@@ -59,6 +65,11 @@ function isTitleValid(title) {
   return !ERROR_TITLE_PATTERNS.some(re => re.test(title.trim()));
 }
 
+function isAmazonProductUrl(url, asin) {
+  if (!url || !asin) return false;
+  return new RegExp(`/(dp|gp/product)/${asin}(?:[/?]|$)`, 'i').test(url);
+}
+
 function isTitleInSpanish(title) {
   if (!title) return false;
   return SPANISH_ONLY_PATTERNS.filter(re => re.test(title)).length >= 2;
@@ -77,6 +88,102 @@ function httpRequest(options, body = null) {
     if (body) req.write(body);
     req.end();
   });
+}
+
+async function fetchTitleFromAmazonPage(asin) {
+  console.log('   🔍 Amazon page direta...');
+  const paths = [`/dp/${asin}`, `/gp/product/${asin}`];
+  for (const path of paths) {
+    try {
+      const res = await httpRequest({
+        hostname: 'www.amazon.com.br',
+        path,
+        method: 'GET',
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+          'Accept': 'text/html',
+          'Accept-Language': 'pt-BR,pt;q=0.9',
+          'Accept-Encoding': 'identity',
+        },
+      });
+
+      if (res.status !== 200) {
+        console.log(`   ⚠️  Amazon page ${path} retornou ${res.status}`);
+        continue;
+      }
+
+      const body = res.body;
+      const title = ((body.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i) || [])[1] || (body.match(/<title>([^<]*)</i) || [])[1] || '').replace(/ [-:|].*Amazon.*$/i, '').trim();
+      if (title.length > 10 && isTitleValid(title) && !isTitleInSpanish(title)) {
+        const imageUrl = (body.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i) || [])[1] || null;
+        return { title, specs: [], imageUrl };
+      }
+
+      console.log(`   ⚠️  Amazon page ${path}: título inválido ou genérico: ${title.slice(0, 120)}`);
+    } catch (err) {
+      console.log(`   ⚠️  Amazon page ${path} falhou: ${err.message}`);
+    }
+  }
+  return null;
+}
+
+async function fetchImageFromAmazonSearch(asin, query = null) {
+  const searchTerm = query && query.trim().length > 0 ? query.trim() : asin;
+  const encodedQuery = encodeURIComponent(searchTerm);
+  console.log(`   🔍 Amazon search page fallback (${searchTerm})...`);
+  try {
+    const res = await httpRequest({
+      hostname: 'www.amazon.com.br',
+      path: `/s?k=${encodedQuery}`,
+      method: 'GET',
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+        'Accept': 'text/html',
+        'Accept-Language': 'pt-BR,pt;q=0.9',
+        'Accept-Encoding': 'identity',
+      },
+    });
+
+    if (res.status !== 200) {
+      console.log(`   ⚠️  Amazon search retornou ${res.status}`);
+      return null;
+    }
+
+    const body = res.body;
+    const markerIndex = body.indexOf(`data-asin="${asin}"`);
+    const start = markerIndex >= 0 ? Math.max(0, markerIndex - 1800) : 0;
+    const snippet = markerIndex >= 0 ? body.slice(start, markerIndex + 1200) : body;
+
+    const images = [...snippet.matchAll(/<img[^>]+(?:src|data-src|data-image-src)=['"]([^'"\s]+\.(?:jpg|jpeg|png|webp))['"][^>]*>/ig)]
+      .map(m => m[1])
+      .filter(u => !/sprite|privacy|logo|badge|icon|global-1x/i.test(u));
+
+    const productImage = images.find(u => u.includes(asin));
+    if (productImage) {
+      console.log(`   ✅ Search image found: ${productImage}`);
+      return productImage;
+    }
+
+    const fallback = snippet.match(new RegExp(`https?:\\/\\/[^'"\\s]*${asin}[^'"\\s]*\\.(?:jpg|jpeg|png|webp)`, 'i'));
+    if (fallback) {
+      console.log(`   ✅ Search fallback image found: ${fallback[0]}`);
+      return fallback[0];
+    }
+
+    const allMatches = [...body.matchAll(new RegExp(`https?:\\/\\/[^'"\\s]*${asin}[^'"\\s]*\\.(?:jpg|jpeg|png|webp)`, 'ig'))]
+      .map(m => m[0])
+      .filter(u => !/(sprite|privacy|logo|badge|icon|global-1x)/i.test(u));
+    if (allMatches.length) {
+      console.log(`   ✅ Search page ASIN image found: ${allMatches[0]}`);
+      return allMatches[0];
+    }
+
+    console.log('   ⚠️  Nenhuma imagem encontrada na busca Amazon');
+    return null;
+  } catch (err) {
+    console.log(`   ⚠️  Amazon search falhou: ${err.message}`);
+    return null;
+  }
 }
 
 // ── Resolve link curto amzn.to ────────────────────────────────────────────
@@ -112,30 +219,57 @@ function extractAsin(url) {
 
 // ── Candidatos de URL de imagem por ASIN ─────────────────────────────────
 function buildImageCandidates(asin) {
-  return [
-    `https://m.media-amazon.com/images/P/${asin}.01._AC_SL1500_.jpg`,
-    `https://m.media-amazon.com/images/P/${asin}.01._AC_SX679_.jpg`,
-    `https://m.media-amazon.com/images/P/${asin}.01.jpg`,
-    `https://images-na.ssl-images-amazon.com/images/P/${asin}.01._AC_SL1500_.jpg`,
-    `https://images-na.ssl-images-amazon.com/images/P/${asin}.01.jpg`,
+  const hosts = [
+    'https://m.media-amazon.com/images',
+    'https://images-na.ssl-images-amazon.com/images',
   ];
+  const prefixes = ['P', 'I'];
+  const suffixes = [
+    '._AC_SL1500_.jpg',
+    '._AC_SX679_.jpg',
+    '._AC_SL1000_.jpg',
+    '._AC_UL1500_.jpg',
+    '._AC_QL65_.jpg',
+    '.jpg',
+    '.webp',
+    '.png',
+  ];
+  const indexes = ['01', '02', '03', '04', '05', '06', '07', '08'];
+
+  const urls = [];
+  for (const host of hosts) {
+    for (const prefix of prefixes) {
+      for (const index of indexes) {
+        for (const suffix of suffixes) {
+          urls.push(`${host}/${prefix}/${asin}.${index}${suffix}`);
+        }
+      }
+    }
+  }
+
+  // Reduz duplicação onde o ASIN já está no padrão P/01 ou I/01
+  return Array.from(new Set(urls));
 }
 
 // ── Valida URL de imagem ──────────────────────────────────────────────────
 async function validateImageUrl(imgUrl) {
   return new Promise((resolve) => {
     const lib = imgUrl.startsWith('https') ? https : http;
-    const req = lib.request(imgUrl, { method: 'HEAD', headers: { 'User-Agent': 'Mozilla/5.0' } }, (res) => {
+    const req = lib.request(imgUrl, { method: 'GET', headers: { 'User-Agent': 'Mozilla/5.0', 'Accept': 'image/*' } }, (res) => {
       const ct = (res.headers['content-type'] || '').toLowerCase();
       const cl = parseInt(res.headers['content-length'] || '0', 10);
       if ([301, 302, 303, 307, 308].includes(res.statusCode) && res.headers.location) {
         res.resume();
         return resolve(validateImageUrl(res.headers.location));
       }
-      res.resume();
       const isImage = ct.startsWith('image/') || ct === 'binary/octet-stream';
       const hasSize = cl === 0 || cl > 5000;
-      resolve(res.statusCode === 200 && isImage && hasSize ? imgUrl : null);
+      if (res.statusCode === 200 && isImage && hasSize) {
+        res.destroy();
+        return resolve(imgUrl);
+      }
+      res.on('data', () => {});
+      res.on('end', () => resolve(null));
     });
     req.on('error', () => resolve(null));
     req.setTimeout(8000, () => { req.destroy(); resolve(null); });
@@ -168,6 +302,7 @@ async function fetchTitleViaSerper(asin, serperKey) {
     if (res.status !== 200) { console.log(`   ⚠️  Serper ${res.status}`); return null; }
     const results = [...(JSON.parse(res.body)?.organic || []), ...(JSON.parse(res.body)?.shopping || [])];
     for (const r of results) {
+      if (!isAmazonProductUrl(r.link, asin)) continue;
       const raw = (r.title || '').replace(/ [-:|].*Amazon.*$/i, '').trim();
       if (raw.length > 10 && isTitleValid(raw) && !isTitleInSpanish(raw)) {
         console.log(`   ✅ Serper (PT): "${raw.slice(0, 60)}"`);
@@ -192,7 +327,7 @@ async function fetchTitleViaSerperSimple(asin, serperKey) {
     if (res.status !== 200) return null;
     const results = JSON.parse(res.body)?.organic || [];
     for (const r of results) {
-      if (!r.link?.includes('amazon.com')) continue;
+      if (!isAmazonProductUrl(r.link, asin)) continue;
       const raw = (r.title || '').replace(/ [-:|].*Amazon.*$/i, '').trim();
       if (raw.length > 10 && isTitleValid(raw) && !isTitleInSpanish(raw)) {
         console.log(`   ✅ Serper simples (PT): "${raw.slice(0, 60)}"`);
@@ -311,8 +446,19 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
 
   let title = '';
   let specs = [];
+  let imageUrl = null;
 
   // ── Cadeia de busca de título PT-BR ──────────────────────────────────
+  // Step 0: Amazon page direta
+  if (!title) {
+    const r = await fetchTitleFromAmazonPage(asin);
+    if (r) {
+      title = r.title;
+      specs = r.specs;
+      if (r.imageUrl) imageUrl = r.imageUrl;
+    }
+  }
+
   // Step 1: Serper — site:amazon.com.br/dp/ASIN
   if (!title) {
     const r = await fetchTitleViaSerper(asin, serperKey);
@@ -357,7 +503,12 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
   }
 
   // ── Imagem ────────────────────────────────────────────────────────────
-  const imageUrl = await resolveImageUrl(asin);
+  if (!imageUrl) {
+    imageUrl = await fetchImageFromAmazonSearch(asin, productName || asin);
+  }
+  if (!imageUrl) {
+    imageUrl = await resolveImageUrl(asin);
+  }
 
   // ── Link afiliado — SEMPRE Amazon ────────────────────────────────────
   const affiliateUrl = partnerTag
