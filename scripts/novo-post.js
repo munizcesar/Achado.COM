@@ -40,27 +40,72 @@ import { buscarContextoProduto, verificarStatusSerper } from './serper-service.j
 import { gerarConteudoPost } from './groq-service.js';
 import { validarConteudo, corrigirAutomatico, analisarDetalhado } from './content-validator.js';
 import { fetchAmazon as fetchAmazonService } from './amazon-service-puppeteer.js';
-import { generateAffiliateLink } from './affiliate-link-service.js';
 
-// ── Adiciona rastreamento (UTM) aos links de afiliado ─────────────────────
-function addTrackingToUrl(url, trackingTag = 'achadocertovip') {
-  // Mercado Livre: NÃO adiciona UTM (quebra o link)
-  // Apenas retorna o URL limpo
-  if (url.includes('mercadolivre.com.br') || url.includes('produto.mercadolivre.com.br')) {
-    return url; // Link direto, sem UTM
-  }
-  
-  // Amazon e Magalu: adiciona UTM normalmente
+// ── Carrega links de afiliado salvos ───────────────────────────────────────
+function carregarProdutosAfiliados() {
   try {
-    const urlObj = new URL(url);
-    urlObj.searchParams.set('utm_source', 'achadocertovip');
-    urlObj.searchParams.set('utm_medium', 'blog');
-    urlObj.searchParams.set('utm_campaign', 'posts-ia');
-    if (trackingTag) urlObj.searchParams.set('utm_id', trackingTag);
-    return urlObj.toString();
-  } catch {
+    const filePath = path.join(__dirname, '..', 'data', 'produtos-afiliados.json');
+    if (fs.existsSync(filePath)) {
+      const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      // Converte array de produtos para objeto com ID como chave
+      const mapa = {};
+      if (Array.isArray(data.produtos)) {
+        data.produtos.forEach(prod => {
+          mapa[prod.id] = prod.linkAfiliado;
+        });
+      }
+      return mapa;
+    }
+  } catch (err) {
+    console.log('   ⚠️  Erro ao carregar produtos salvos:', err.message);
+  }
+  return {};
+}
+
+const PRODUTOS_AFILIADOS = carregarProdutosAfiliados();
+
+// ── Processa link de afiliado ──────────────────────────────────────────────
+function processarLinkAfiliado(url, tipo = 'mercado-livre') {
+  // Mercado Livre: Procura por link já gerado e salvo
+  if (tipo === 'mercado-livre' && url.includes('mercadolivre.com.br')) {
+    try {
+      const mlMatch = url.match(/MLB-?(\d{6,12})/i);
+      if (mlMatch) {
+        const productId = mlMatch[1];
+        
+        // Procura nos produtos salvos
+        if (PRODUTOS_AFILIADOS[productId]) {
+          const linkAfiliado = PRODUTOS_AFILIADOS[productId];
+          console.log(`   ✅ Link de afiliado encontrado: ${linkAfiliado}`);
+          return linkAfiliado;
+        } else {
+          console.log(`   ⚠️  Link não salvo para ${productId}. Usando URL simples.`);
+          console.log(`      Para gerar: https://afiliados.mercadolivre.com.br/gerar-links`);
+        }
+      }
+    } catch (err) {
+      // Fallback silencioso
+    }
+    
+    // Retorna URL limpa sem parâmetros
     return url;
   }
+  
+  // Amazon e Magalu: Adiciona UTM
+  if (['amazon', 'magalu'].includes(tipo)) {
+    try {
+      const urlObj = new URL(url);
+      urlObj.searchParams.set('utm_source', 'achadocertovip');
+      urlObj.searchParams.set('utm_medium', 'blog');
+      urlObj.searchParams.set('utm_campaign', 'posts-ia');
+      if (tipo) urlObj.searchParams.set('utm_id', tipo);
+      return urlObj.toString();
+    } catch {
+      return url;
+    }
+  }
+  
+  return url;
 }
 
 // ── Sanitização de preços e CTA ───────────────────────────────────────────
@@ -397,7 +442,7 @@ async function fetchMLScraping(inputUrl, itemId) {
     tags: buildTags(title, category),
     imageUrl, specs,
     store: 'Mercado Livre',
-    affiliateUrl: addTrackingToUrl(inputUrl, 'mercado-livre'),
+    affiliateUrl: processarLinkAfiliado(inputUrl, 'mercado-livre'),
   };
 }
 
@@ -446,7 +491,7 @@ async function fetchML(inputUrl) {
     tags: buildTags(item.title, category),
     imageUrl, specs,
     store: 'Mercado Livre',
-    affiliateUrl: addTrackingToUrl(inputUrl, 'mercado-livre'),
+    affiliateUrl: processarLinkAfiliado(inputUrl, 'mercado-livre'),
   };
 }
 
@@ -506,7 +551,7 @@ async function fetchMagalu(inputUrl) {
     tags: buildTags(title, category),
     imageUrl, specs,
     store: 'Magalu',
-    affiliateUrl: addTrackingToUrl(inputUrl, 'magalu'),
+    affiliateUrl: processarLinkAfiliado(inputUrl, 'magalu'),
   };
 }
 

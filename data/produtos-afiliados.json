@@ -1,0 +1,27 @@
+{
+  "produtos": [
+    {
+      "id": "19603205",
+      "nome": "Creatina Growth 300g",
+      "categoria": "saude",
+      "linkAfiliado": "https://meli.la/2fk9MmR",
+      "status": "✅ Pronto para usar"
+    },
+    {
+      "id": "4787968949",
+      "nome": "Cafeteira Italiana",
+      "categoria": "casa",
+      "linkAfiliado": "https://meli.la/2Aaknvn",
+      "status": "✅ Pronto para usar"
+    }
+  ],
+  "instrucoes": "Para CADA produto que você quer usar no agente automático, siga esses passos:",
+  "passos": [
+    "1. Acesse https://afiliados.mercadolivre.com.br/gerar-links",
+    "2. Cole o ID do produto (ex: 19603205)",
+    "3. Selecione a etiqueta: muc1576372",
+    "4. Clique em 'Gerar Link'",
+    "5. Copie o link encurtado (meli.la/XXXXX)",
+    "6. Adicione neste arquivo na seção 'produtos'"
+  ]
+}
