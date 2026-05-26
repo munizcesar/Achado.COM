@@ -44,6 +44,13 @@ import { generateAffiliateLink } from './affiliate-link-service.js';
 
 // ── Adiciona rastreamento (UTM) aos links de afiliado ─────────────────────
 function addTrackingToUrl(url, trackingTag = 'achadocertovip') {
+  // Mercado Livre: NÃO adiciona UTM (quebra o link)
+  // Apenas retorna o URL limpo
+  if (url.includes('mercadolivre.com.br') || url.includes('produto.mercadolivre.com.br')) {
+    return url; // Link direto, sem UTM
+  }
+  
+  // Amazon e Magalu: adiciona UTM normalmente
   try {
     const urlObj = new URL(url);
     urlObj.searchParams.set('utm_source', 'achadocertovip');

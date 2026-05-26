@@ -1,5 +1,5 @@
 {
-  "total": 114,
+  "total": 117,
   "mes_atual": 4,
   "logs": [
     {
@@ -189,6 +189,11 @@
     },
     {
       "data": "2026-05-26T22:27:38.216Z",
+      "produto": "Mercado Livre",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-26T22:31:26.296Z",
       "produto": "Mercado Livre",
       "consultas": 3
     }
