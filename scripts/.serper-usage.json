@@ -1,5 +1,5 @@
 {
-  "total": 105,
+  "total": 108,
   "mes_atual": 4,
   "logs": [
     {
@@ -175,6 +175,11 @@
     {
       "data": "2026-05-26T13:56:37.664Z",
       "produto": "Todos os departamentos: na Amazon.com.br",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-26T17:56:08.161Z",
+      "produto": "Dispositivos Kindle e Acessórios",
       "consultas": 3
     }
   ]
