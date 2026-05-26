@@ -39,7 +39,22 @@ import { selecionarArquetipo, gerarContextoVariacoes, ARQUETIPOS } from './conte
 import { buscarContextoProduto, verificarStatusSerper } from './serper-service.js';
 import { gerarConteudoPost } from './groq-service.js';
 import { validarConteudo, corrigirAutomatico, analisarDetalhado } from './content-validator.js';
-import { fetchAmazon as fetchAmazonService } from './amazon-service.js';
+import { fetchAmazon as fetchAmazonService } from './amazon-service-puppeteer.js';
+import { generateAffiliateLink } from './affiliate-link-service.js';
+
+// ── Adiciona rastreamento (UTM) aos links de afiliado ─────────────────────
+function addTrackingToUrl(url, trackingTag = 'achadocertovip') {
+  try {
+    const urlObj = new URL(url);
+    urlObj.searchParams.set('utm_source', 'achadocertovip');
+    urlObj.searchParams.set('utm_medium', 'blog');
+    urlObj.searchParams.set('utm_campaign', 'posts-ia');
+    if (trackingTag) urlObj.searchParams.set('utm_id', trackingTag);
+    return urlObj.toString();
+  } catch {
+    return url;
+  }
+}
 
 // ── Sanitização de preços e CTA ───────────────────────────────────────────
 function sanitizarConteudo(conteudo) {
@@ -375,7 +390,7 @@ async function fetchMLScraping(inputUrl, itemId) {
     tags: buildTags(title, category),
     imageUrl, specs,
     store: 'Mercado Livre',
-    affiliateUrl: inputUrl,
+    affiliateUrl: addTrackingToUrl(inputUrl, 'mercado-livre'),
   };
 }
 
@@ -424,7 +439,7 @@ async function fetchML(inputUrl) {
     tags: buildTags(item.title, category),
     imageUrl, specs,
     store: 'Mercado Livre',
-    affiliateUrl: inputUrl,
+    affiliateUrl: addTrackingToUrl(inputUrl, 'mercado-livre'),
   };
 }
 
@@ -484,7 +499,7 @@ async function fetchMagalu(inputUrl) {
     tags: buildTags(title, category),
     imageUrl, specs,
     store: 'Magalu',
-    affiliateUrl: inputUrl,
+    affiliateUrl: addTrackingToUrl(inputUrl, 'magalu'),
   };
 }
 
