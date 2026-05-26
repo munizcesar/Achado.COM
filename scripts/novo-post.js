@@ -64,31 +64,41 @@ function carregarProdutosAfiliados() {
 
 const PRODUTOS_AFILIADOS = carregarProdutosAfiliados();
 
+function addAffiliateCodeToMlUrl(url, code = 'muc1576372') {
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname.includes('mercadolivre.com.br') && !parsed.pathname.includes('/social/') && !parsed.pathname.includes('/sec/')) {
+      if (!parsed.searchParams.has('affiliateCode')) {
+        parsed.searchParams.set('affiliateCode', code);
+      }
+      return parsed.toString();
+    }
+  } catch (_) {}
+  return url;
+}
+
 // ── Processa link de afiliado ──────────────────────────────────────────────
 function processarLinkAfiliado(url, tipo = 'mercado-livre') {
   // Mercado Livre: Procura por link já gerado e salvo
-  if (tipo === 'mercado-livre' && url.includes('mercadolivre.com.br')) {
+  if (tipo === 'mercado-livre' && /mercadolivre\.com(\.br)?/.test(url)) {
     try {
       const mlMatch = url.match(/MLB-?(\d{6,12})/i);
       if (mlMatch) {
         const productId = mlMatch[1];
-        
-        // Procura nos produtos salvos
         if (PRODUTOS_AFILIADOS[productId]) {
           const linkAfiliado = PRODUTOS_AFILIADOS[productId];
           console.log(`   ✅ Link de afiliado encontrado: ${linkAfiliado}`);
           return linkAfiliado;
-        } else {
-          console.log(`   ⚠️  Link não salvo para ${productId}. Usando URL simples.`);
-          console.log(`      Para gerar: https://afiliados.mercadolivre.com.br/gerar-links`);
         }
       }
     } catch (err) {
       // Fallback silencioso
     }
-    
-    // Retorna URL limpa sem parâmetros
-    return url;
+
+    // Caso não exista link salvo, adiciona o código de afiliado ao produto
+    const affiliateUrl = addAffiliateCodeToMlUrl(url);
+    console.log(`   🔧 Usando fallback de afiliado ML: ${affiliateUrl}`);
+    return affiliateUrl;
   }
   
   // Amazon e Magalu: Adiciona UTM
