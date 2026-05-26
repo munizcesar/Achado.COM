@@ -77,6 +77,22 @@ function slugify(text) {
     .slice(0, 60);
 }
 
+function isSuspiciousTitle(title) {
+  if (!title) return true;
+  const normalized = title.toLowerCase();
+  const patterns = [
+    /^produto amazon\b/i,
+    /amazon\.com\.br/i,
+    /todos os departamentos/i,
+    /departamentos/i,
+    /produto amazon [a-z0-9]{10}/i,
+    /antes de comprar/i,
+    /dispositivos kindle/i,
+    /prime teste gratis/i,
+  ];
+  return patterns.some(re => re.test(normalized));
+}
+
 function get(urlStr, redirectCount = 0) {
   console.log(`→ HTTP GET ${urlStr} (redirects=${redirectCount})`);
   if (redirectCount > 8) throw new Error('Muitos redirecionamentos');
@@ -514,11 +530,11 @@ async function generateMarkdown(produto, imageFile, slug) {
   let conteudoFinal = corrigirAutomatico(conteudoGerado);
   conteudoFinal = sanitizarConteudo(conteudoFinal); // Remove preços e garante CTA
   const validacao = validarConteudo(conteudoFinal);
-  
+
   if (!validacao.aprovado) {
-    console.log('   ⚠️  Conteúdo precisa de revisão manual');
+    throw new Error('Conteúdo não passou na validação de qualidade.');
   }
-  
+
   // 6. Monta markdown completo com frontmatter
   // category e tags SEMPRE em minúsculo para bater com filtros do Astro
   const descricaoFinal = description.replace(/"/g, "'").slice(0, 155);
@@ -607,6 +623,12 @@ async function main() {
     process.exit(1);
   }
 
+  if (isSuspiciousTitle(product.title)) {
+    console.error('\n❌ Título do produto parece genérico ou inválido:');
+    console.error('   ', product.title);
+    process.exit(1);
+  }
+
   const slug = slugify(product.title);
   console.log('\n📝 Título    :', product.title);
   console.log('📂 Categoria :', product.category);
@@ -632,6 +654,10 @@ async function main() {
   } else {
     console.warn('⚠️  Nenhuma imagem encontrada, usando placeholder.');
     imageFile = 'placeholder.webp';
+  }
+
+  if (imageFile === 'placeholder.webp') {
+    throw new Error('Imagem real não disponível; publicação cancelada.');
   }
 
   // 3. Gera .md com IA
