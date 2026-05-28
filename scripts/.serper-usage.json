@@ -1,5 +1,5 @@
 {
-  "total": 129,
+  "total": 132,
   "mes_atual": 4,
   "logs": [
     {
@@ -215,6 +215,11 @@
     {
       "data": "2026-05-28T22:55:09.221Z",
       "produto": "Beef Protein Integral Médica 900g Proteina Carne Z",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-28T23:03:10.795Z",
+      "produto": "Panela De Pressão Vancouver 20582620 Em Alumínio C",
       "consultas": 3
     }
   ]
