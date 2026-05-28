@@ -1,5 +1,5 @@
 {
-  "total": 138,
+  "total": 141,
   "mes_atual": 4,
   "logs": [
     {
@@ -230,6 +230,11 @@
     {
       "data": "2026-05-28T23:06:39.644Z",
       "produto": "Marinex Conjunto De Assadeiras Oval Opaline 3 Peça",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-28T23:31:18.858Z",
+      "produto": "L-carnitina 500 Mg Para Energia &amp; Foco | Suple",
       "consultas": 3
     }
   ]
