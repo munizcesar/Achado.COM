@@ -1,5 +1,5 @@
 {
-  "total": 150,
+  "total": 153,
   "mes_atual": 4,
   "logs": [
     {
@@ -250,6 +250,11 @@
     {
       "data": "2026-05-28T23:52:16.812Z",
       "produto": "Diurex Chá Diurético Termogênico Detox 200g - Prof",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-28T23:53:34.061Z",
+      "produto": "Pré Treino +mu Exquenta Sabor Pink Lemonade Com Ca",
       "consultas": 3
     }
   ]
