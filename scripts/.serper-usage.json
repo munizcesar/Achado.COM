@@ -1,5 +1,5 @@
 {
-  "total": 135,
+  "total": 138,
   "mes_atual": 4,
   "logs": [
     {
@@ -225,6 +225,11 @@
     {
       "data": "2026-05-28T23:05:12.310Z",
       "produto": "Panela De Pressão Fechamento Externo Profissional ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-28T23:06:39.644Z",
+      "produto": "Marinex Conjunto De Assadeiras Oval Opaline 3 Peça",
       "consultas": 3
     }
   ]
