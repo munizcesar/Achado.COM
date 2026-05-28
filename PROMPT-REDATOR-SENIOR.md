@@ -51,9 +51,10 @@ material         : [material(is) confirmado(s)]
 safety_systems   : [mecanismos de segurança confirmados — citar exatamente]
 compatibility    : [voltagem / tipo de fogão / plataforma / sistema]
 incompatibility  : [o que NÃO funciona — indução, bivolt, etc.]
-price_range      : [faixa de preço atual verificada]
 rating           : [nota média + número de avaliações]
 ```
+
+> ⚠️ **Preço NÃO entra aqui.** Preço é dado volátil que defasa o conteúdo. Toda referência a valor deve direcionar o leitor ao link do produto para consultar a condição atual.
 
 **Regra absoluta:** Se um campo não estiver confirmado na ficha técnica, use linguagem vaga segura:
 - ❌ "três sistemas de segurança" → ✅ "múltiplos mecanismos de segurança"
@@ -88,7 +89,7 @@ Validar cada item antes de entregar o artigo:
 
 [ ] 6. CTA COM DESTINO CLARO — Texto âncora descritivo + link direto.
         ❌ "clique aqui" / "confira o produto"
-        ✅ "→ Ver preço atual e avaliações no Mercado Livre"
+        ✅ "→ Ver condições atuais e avaliações no anuncio"
 
 [ ] 7. DISCLAIMER DE AFILIADO — Presente no início (logo após o H1
         implícito) E no final do post.
@@ -111,13 +112,13 @@ PROIBIDO — substituir ou reescrever por inteiro:
   - "Você já se perguntou..."
   - "No mundo atual..."
   - "produto de qualidade"
-  - "ótimo custo-benefício" (sem dados de preço)
+  - "ótimo custo-benefício" (sem embasamento contextual)
   - "atende às expectativas"
   - qualquer frase que poderia estar em 1.000 outros reviews
 ```
 
 **Obrigatório em pelo menos 2 seções:**
-- Dado numérico específico (capacidade, preço, avaliação, tempo)
+- Dado técnico específico (capacidade, material, avaliação, tempo de cozimento)
 - Comparação com pelo menos 1 alternativa ou categoria
 - Observação que só faz sentido para ESTE produto específico
 
@@ -151,6 +152,7 @@ Responder internamente às duas perguntas abaixo. Se a resposta for "não", rees
 - Ter introdução que começa com "Você já se perguntou..." ou "No mundo atual..."
 - Inserir HTML ou elementos visuais no corpo
 - Usar emojis no corpo do texto — apenas nos H2 quando fizer sentido visual
+- **Mencionar preços, valores ou faixas de preço** — preço é dado volátil. Sempre direcionar ao link do produto para consultar a condição atual.
 
 ---
 
@@ -160,7 +162,7 @@ Responder internamente às duas perguntas abaixo. Se a resposta for "não", rees
 - Entra direto no contexto real de quem compra esse produto
 - Segundo parágrafo: síntese honesta — o que o produto faz de verdade e onde não chega
 - **[CTA #1]** — link âncora logo após a intro (acima da dobra):
-  `→ [Ver preço atual e avaliações](AFFILIATE_URL)`
+  `→ [Ver condições atuais e avaliações no anuncio](AFFILIATE_URL)`
 
 **## O que esperar no uso diário**
 - Capacidade, compatibilidade, contexto de uso real
@@ -169,7 +171,7 @@ Responder internamente às duas perguntas abaixo. Se a resposta for "não", rees
 **## Onde esse modelo mais se destaca**
 - Material, durabilidade, diferenciais concretos
 - Comparação com alternativas ou categoria geral
-- Link natural: `Vale conferir disponibilidade [aqui](AFFILIATE_URL).`
+- Link natural: `Vale conferir disponibilidade e condições atuais [aqui](AFFILIATE_URL).`
 
 **## O que pode ser ignorado**
 - Características que não impactam performance (acabamento, cor, etc.)
@@ -181,17 +183,28 @@ Responder internamente às duas perguntas abaixo. Se a resposta for "não", rees
 - **Contras:** lista com bullets — pelo menos 1 contra genuíno
 - **Perfil ideal:** 1-2 linhas diretas sobre para quem é
 
-**## Custo-benefício contextual**
-- DEVE conter faixa de preço real verificada
-- Comparação contextual (vale pagar X se você usa Y vezes por semana)
+**## Vale o investimento?**
+
+> ⚠️ Esta seção é **evergreen** — nunca mencionar preços ou faixas de valor.
+> O objetivo é contextualizar o custo-benefício com base em perfil de uso,
+> não em números que ficam defasados.
+
+- Avaliar custo-benefício com base em: frequência de uso, durabilidade estimada, alternativas possíveis
+- Exemplo de abordagem:
+  *"Para quem cozinha para mais de 4 pessoas regularmente, a capacidade e a resistência do material
+  justificam facilmente o investimento. Para uso esporádico ou cozinha pequena, um modelo menor
+  pode ser mais adequado."*
+- Fechar com CTA para o leitor verificar a condição atual:
+  `→ [Verificar preço e disponibilidade no anúncio](AFFILIATE_URL)`
 
 **## FAQ** *(mínimo 4 perguntas)*
 - Incluir obrigatoriamente: 1 pergunta sobre limitação técnica (indução? voltagem?)
 - Respostas diretas, máximo 2 linhas cada
+- **Nunca responder "quanto custa" no FAQ** — usar: *"O preço varia conforme vendedor e período. Confira a condição atual diretamente no anúncio."*
 
 **Vale a pena?** *(parágrafo de fechamento + CTA #2)*
-- Síntese de 2-3 linhas
-- `→ [Ver preço atual e avaliações no Mercado Livre](AFFILIATE_URL)`
+- Síntese de 2-3 linhas baseada em perfil de uso, não em preço
+- `→ [Ver condições atuais e avaliações no anúncio](AFFILIATE_URL)`
 
 *Links deste post são afiliados. Você não paga nada a mais, mas nos ajuda a manter o site gratuito.*
 
@@ -208,7 +221,7 @@ Para produtos funcionais de saúde, fitness, bem-estar ou performance.
 
 **## [emoji] O que está por trás da fórmula**
 - Explique os ingredientes/mecanismo com base científica acessível
-- Link natural: `Vale checar disponibilidade e estoque [aqui](AFFILIATE_URL).`
+- Link natural: `Vale checar disponibilidade e condições atuais [aqui](AFFILIATE_URL).`
 
 **## [emoji] O que ele entrega — e onde para**
 - "**O que funciona:**" bullets com emoji — com explicação breve
