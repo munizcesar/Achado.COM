@@ -1,5 +1,5 @@
 {
-  "total": 147,
+  "total": 150,
   "mes_atual": 4,
   "logs": [
     {
@@ -244,6 +244,11 @@
     },
     {
       "data": "2026-05-28T23:51:25.316Z",
+      "produto": "Diurex Chá Diurético Termogênico Detox 200g - Prof",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-28T23:52:16.812Z",
       "produto": "Diurex Chá Diurético Termogênico Detox 200g - Prof",
       "consultas": 3
     }

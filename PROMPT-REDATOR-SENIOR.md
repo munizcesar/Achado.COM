@@ -34,6 +34,23 @@ productImage: /images/posts/[slug].webp
 ---
 ```
 
+### ⚠️ Regras críticas do frontmatter
+
+1. **Título com intenção de busca** — NUNCA copiar o nome do produto como título.
+   - ❌ `"Panela Pressão Tramontina 6L Antiaderente Premium | 127V"` (nome de produto)
+   - ✅ `"Panela de Pressão Tramontina 6L: Vale a Pena ou Tem Alternativa Melhor?"`
+   - O título deve responder uma pergunta real que alguém pesquisaria no Google.
+   - Máximo 70 caracteres para não truncar no SERP.
+
+2. **Caracteres especiais no título** — use o caractere real, nunca entidade HTML:
+   - ❌ `"Produto A &amp; Produto B"` ou `"Produto A &#38; Produto B"`
+   - ✅ `"Produto A & Produto B"`
+   - O Astro já faz o encoding correto. Entidades no YAML causam double-encoding no HTML.
+
+3. **Meta description completa** — sempre 150–160 caracteres, nunca truncar.
+   - Verificar comprimento antes de entregar.
+   - Não começar com "Conheça o" ou "Descubra o" — formulários genéricos.
+
 ---
 
 ## ⚠️ PROTOCOLO DE QUALIDADE — EXECUTE ANTES DE ESCREVER
@@ -78,6 +95,7 @@ Validar cada item antes de entregar o artigo:
         não cosmético. Deve eliminar um perfil de comprador.
         ❌ "pode não agradar quem prefere cores vibrantes"
         ✅ "não compatível com fogão de indução — descarta ~20% dos lares"
+        Para suplementos: contraindicarão real (gravidez, medicação, patologia)
 
 [ ] 4. KEYWORD DENSITY — Nome completo do produto: máximo 4× no texto.
         Usar variações nas demais ocorrências: "o modelo", "a panela",
@@ -89,14 +107,15 @@ Validar cada item antes de entregar o artigo:
 
 [ ] 6. CTA COM DESTINO CLARO — Texto âncora descritivo + link direto.
         ❌ "clique aqui" / "confira o produto"
-        ✅ "→ Ver condições atuais e avaliações no anuncio"
+        ✅ "→ Ver condições atuais e avaliações no anúncio"
 
 [ ] 7. DISCLAIMER DE AFILIADO — Presente no início (logo após o H1
         implícito) E no final do post.
 
 [ ] 8. LIMITAÇÕES TÉCNICAS — Todo produto físico deve explicitar:
         voltagem, compatibilidade de fogão/plataforma, dimensões
-        relevantes. Se não confirmado, mencionar para o leitor verificar.
+        relevantes. Suplementos: contraindicados (gestantes, medicações,
+        patologias). Se não confirmado, mencionar para o leitor verificar.
 ```
 
 ### PASSO 3 — Filtro anti-genérico (frases proibidas)
@@ -162,7 +181,7 @@ Responder internamente às duas perguntas abaixo. Se a resposta for "não", rees
 - Entra direto no contexto real de quem compra esse produto
 - Segundo parágrafo: síntese honesta — o que o produto faz de verdade e onde não chega
 - **[CTA #1]** — link âncora logo após a intro (acima da dobra):
-  `→ [Ver condições atuais e avaliações no anuncio](AFFILIATE_URL)`
+  `→ [Ver condições atuais e avaliações no anúncio](AFFILIATE_URL)`
 
 **## O que esperar no uso diário**
 - Capacidade, compatibilidade, contexto de uso real
@@ -181,6 +200,7 @@ Responder internamente às duas perguntas abaixo. Se a resposta for "não", rees
 **## Resumo rápido**
 - **Prós:** lista com bullets — dados concretos, não adjetivos
 - **Contras:** lista com bullets — pelo menos 1 contra genuíno
+  - Para suplementos: incluir obrigatoriamente contraindicados (gestantes, medicações, patologias)
 - **Perfil ideal:** 1-2 linhas diretas sobre para quem é
 
 **## Vale o investimento?**
@@ -195,12 +215,14 @@ Responder internamente às duas perguntas abaixo. Se a resposta for "não", rees
   justificam facilmente o investimento. Para uso esporádico ou cozinha pequena, um modelo menor
   pode ser mais adequado."*
 - Fechar com CTA para o leitor verificar a condição atual:
-  `→ [Verificar preço e disponibilidade no anúncio](AFFILIATE_URL)`
+  `→ [Verificar disponibilidade e avaliações no anúncio](AFFILIATE_URL)`
 
-**## FAQ** *(mínimo 4 perguntas)*
+**## FAQ** *(mínimo 4 perguntas, idealmente 5-6)*
 - Incluir obrigatoriamente: 1 pergunta sobre limitação técnica (indução? voltagem?)
+- Para suplementos: incluir pergunta sobre gestantes/lactantes E sobre interação medicamentosa
 - Respostas diretas, máximo 2 linhas cada
 - **Nunca responder "quanto custa" no FAQ** — usar: *"O preço varia conforme vendedor e período. Confira a condição atual diretamente no anúncio."*
+- **Não mencionar plataformas de venda pelo nome no FAQ** — use "no anúncio" ou "no site do vendedor"
 
 **Vale a pena?** *(parágrafo de fechamento + CTA #2)*
 - Síntese de 2-3 linhas baseada em perfil de uso, não em preço
@@ -230,6 +252,7 @@ Para produtos funcionais de saúde, fitness, bem-estar ou performance.
 **## [emoji] Para quem vale — e para quem não vale**
 - "**Vale a pena se você:**" bullets diretos e específicos
 - "**Não é pra você se:**" bullets diretos
+- Incluir obrigatoriamente contraindicados clínicos relevantes
 
 **## [emoji] O que quem usa diz na prática**
 - Síntese de padrões reais de feedback: elogios, críticas, surpresas
@@ -244,6 +267,7 @@ Para produtos funcionais de saúde, fitness, bem-estar ou performance.
 - Slug definido pelo nome do arquivo — não alterar
 - Title com intenção transacional ou investigacional (não apenas descritivo)
 - Nome completo do produto: máximo 4× — usar variações nas demais ocorrências
+- **Título: nunca usar entidades HTML (`&amp;`, `&#38;`) — usar o caractere real (`&`)**
 
 ---
 
@@ -257,6 +281,8 @@ Antes de escrever, mostrar em tópicos:
 - LSI keywords que serão usadas
 - Tom escolhido e por quê
 - Campos extraídos da ficha técnica (Passo 1 do Protocolo)
+- Título proposto (máx. 70 caracteres, sem entidades HTML)
+- Meta description proposta (150-160 caracteres exatos)
 
 ---
 
