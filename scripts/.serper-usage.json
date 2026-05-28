@@ -1,5 +1,5 @@
 {
-  "total": 132,
+  "total": 135,
   "mes_atual": 4,
   "logs": [
     {
@@ -220,6 +220,11 @@
     {
       "data": "2026-05-28T23:03:10.795Z",
       "produto": "Panela De Pressão Vancouver 20582620 Em Alumínio C",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-28T23:05:12.310Z",
+      "produto": "Panela De Pressão Fechamento Externo Profissional ",
       "consultas": 3
     }
   ]
