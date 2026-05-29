@@ -1,0 +1,45 @@
+name: Corrigir Disclaimers
+
+on:
+  # Roda manualmente quando precisar corrigir em massa
+  workflow_dispatch:
+
+jobs:
+  fix:
+    name: Corrigir disclaimers em todos os posts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Rodar script de correção
+        run: node scripts/fix-disclaimer.js
+
+      - name: Verificar se houve alterações
+        id: check
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "✅ Nenhum disclaimer desatualizado encontrado."
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "📝 Disclaimers corrigidos:"
+            git diff --name-only
+          fi
+
+      - name: Commit das correções
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/content/blog/
+          git commit -m "fix: corrige disclaimers de afiliado em massa [auto]"
+          git push

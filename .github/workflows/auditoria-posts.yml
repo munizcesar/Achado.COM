@@ -1,0 +1,48 @@
+name: Auditoria de Posts
+
+on:
+  # Roda toda segunda-feira às 8h (horário Brasília = 11h UTC)
+  schedule:
+    - cron: '0 11 * * 1'
+  # Permite rodar manualmente pela UI do GitHub
+  workflow_dispatch:
+  # Roda em todo push para verificar posts novos
+  push:
+    paths:
+      - 'src/content/blog/**'
+
+jobs:
+  auditoria:
+    name: Auditar qualidade dos posts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Rodar auditoria
+        id: auditoria
+        run: node scripts/audit-posts.js
+        continue-on-error: true
+
+      - name: Mostrar relatório no log
+        run: cat audit-report.md
+
+      - name: Upload do relatório como artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-report-${{ github.run_number }}
+          path: audit-report.md
+          retention-days: 30
+
+      - name: Falhar se houver problemas críticos
+        if: steps.auditoria.outcome == 'failure'
+        run: |
+          echo "⚠️ Auditoria encontrou problemas nos posts. Verifique o artefato audit-report.md"
+          echo "Acesse: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          exit 1
