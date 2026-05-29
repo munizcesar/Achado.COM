@@ -1,5 +1,5 @@
 {
-  "total": 177,
+  "total": 180,
   "mes_atual": 4,
   "logs": [
     {
@@ -294,6 +294,11 @@
     },
     {
       "data": "2026-05-29T00:55:07.137Z",
+      "produto": "Creme Para O Corpo Natura Tododia Maçã Caramelada ",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-29T00:58:54.877Z",
       "produto": "Creme Para O Corpo Natura Tododia Maçã Caramelada ",
       "consultas": 3
     }
