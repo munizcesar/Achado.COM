@@ -1,5 +1,5 @@
 {
-  "total": 171,
+  "total": 174,
   "mes_atual": 4,
   "logs": [
     {
@@ -285,6 +285,11 @@
     {
       "data": "2026-05-29T00:42:39.369Z",
       "produto": "Desodorante Colônia Kaiak Extremo Masculino Promoç",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-29T00:43:17.607Z",
+      "produto": "Refil Base Líquida Hd Natura Una 30ml",
       "consultas": 3
     }
   ]
