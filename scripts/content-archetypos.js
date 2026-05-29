@@ -104,7 +104,7 @@ export const ARQUETIPOS = {
       abertura: 'duvida_paralisante',
       desenvolvimento: 'criterios_diferenciais',
       aplicacao: 'casos_uso_reais',
-      objecao: 'pontos_praticos', // Mudado para ser mais genérico
+      objecao: 'pontos_praticos',
       fechamento: 'proximo_passo'
     }
   },
@@ -124,7 +124,7 @@ export const ARQUETIPOS = {
       abertura: 'erros_comuns',
       desenvolvimento: 'criterios_importantes',
       aplicacao: 'atendimento_criterios',
-      objecao: 'duvidas_frequentes', // Mudado para variar
+      objecao: 'duvidas_frequentes',
       fechamento: 'criterios_marcados'
     }
   },
@@ -153,7 +153,15 @@ export const VARIACOES = {
     '{produto}: guia definitivo antes de decidir',
     'Review completo: {produto} atende suas expectativas?',
     'O que você precisa saber sobre {categoria}',
-    '{produto} - análise técnica e opinião de uso'
+    '{produto} - análise técnica e opinião de uso',
+    '{produto}: o que avaliar antes de decidir',
+    'Por que {produto} se destaca na categoria {categoria}?',
+    '{produto}: pontos fortes, fracos e para quem vale',
+    'Análise honesta: {produto} entrega o que promete?',
+    '{produto} — experiência real de uso e pontos de atenção',
+    'Quem deve comprar {produto} e quem deve evitar',
+    '{categoria}: como {produto} se compara ao mercado',
+    '{produto}: análise sem enrolação para quem quer decidir logo'
   ],
 
   aberturas: [
@@ -171,7 +179,12 @@ export const VARIACOES = {
     'Quando você olha várias opções parecidas, os diferenciais que realmente importam ficam mais claros...',
     'Decisões de compra bem informadas começam com perguntas certas, não com impulso...',
     'No mercado atual de {categoria}, separar marketing de realidade exige atenção aos detalhes...',
-    'Investir tempo pesquisando antes economiza dinheiro e frustração depois...'
+    'Investir tempo pesquisando antes economiza dinheiro e frustração depois...',
+    'A maioria das pessoas decide pela capa. Quem lê o miolo raramente se arrepende...',
+    'Especificações técnicas importam — mas o que realmente define uma boa compra é o uso no dia a dia...',
+    'Nem sempre o mais caro é o melhor. Nem sempre o mais barato é o pior. O segredo está no encaixe...',
+    'Há produtos que parecem iguais na descrição mas se comportam de formas muito diferentes no uso...',
+    'O que faz um produto ser recomendado por quem comprou meses depois? Isso é o que vale analisar...'
   ],
 
   transicoes: [
@@ -225,24 +238,32 @@ export function selecionarArquetipo(produtoNome) {
 }
 
 /**
- * Sorteia variação com seed melhorada
+ * Sorteia variação com seed
  */
 export function sortearVariacao(array, seed) {
-  // Usa múltiplos fatores para melhor distribuição
   const index = (seed * 7919 + 104729) % array.length;
   return array[index];
+}
+
+/**
+ * Gera seed robusto baseado nos caracteres do título + categoria + posição
+ * Evita colisões entre produtos com títulos de mesmo comprimento
+ */
+function gerarSeedRobusto(produto) {
+  const str = produto.title + '|' + produto.category + '|' + (produto.affiliateUrl || '');
+  return str.split('').reduce((acc, char, i) => acc + char.charCodeAt(0) * (i + 1), 0);
 }
 
 /**
  * Gera contexto de variações para o produto
  */
 export function gerarContextoVariacoes(produto, arquetipo) {
-  const seed = produto.title.length + produto.category.length;
-  
+  const seed = gerarSeedRobusto(produto);
+
   // Seleciona títulos de seção específicos da categoria
   const categoria = produto.category in TITULOS_SECOES ? produto.category : 'default';
   const titulosCategoria = TITULOS_SECOES[categoria];
-  
+
   return {
     arquetipo: ARQUETIPOS[arquetipo],
     titulo: sortearVariacao(VARIACOES.titulos, seed)
