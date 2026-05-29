@@ -1,5 +1,5 @@
 {
-  "total": 159,
+  "total": 162,
   "mes_atual": 4,
   "logs": [
     {
@@ -265,6 +265,11 @@
     {
       "data": "2026-05-29T00:15:54.703Z",
       "produto": "Kit 2x Gas Gel Energético 20 Sachês + Pré Treino N",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-29T00:31:23.936Z",
+      "produto": "Colônia Kaiak Oceano Masculino Vai Dar Onda 100",
       "consultas": 3
     }
   ]
