@@ -1,5 +1,5 @@
 {
-  "total": 162,
+  "total": 165,
   "mes_atual": 4,
   "logs": [
     {
@@ -270,6 +270,11 @@
     {
       "data": "2026-05-29T00:31:23.936Z",
       "produto": "Colônia Kaiak Oceano Masculino Vai Dar Onda 100",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-29T00:32:38.280Z",
+      "produto": "Colônia Kaiak Oceano Feminino Vai Dar Onda 100",
       "consultas": 3
     }
   ]
