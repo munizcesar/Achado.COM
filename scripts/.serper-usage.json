@@ -1,5 +1,5 @@
 {
-  "total": 168,
+  "total": 171,
   "mes_atual": 4,
   "logs": [
     {
@@ -280,6 +280,11 @@
     {
       "data": "2026-05-29T00:33:30.886Z",
       "produto": "Colônia Kaiak Masculino Vai Dar Onda 100",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-29T00:42:39.369Z",
+      "produto": "Desodorante Colônia Kaiak Extremo Masculino Promoç",
       "consultas": 3
     }
   ]
