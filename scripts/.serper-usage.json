@@ -1,5 +1,5 @@
 {
-  "total": 153,
+  "total": 156,
   "mes_atual": 4,
   "logs": [
     {
@@ -255,6 +255,11 @@
     {
       "data": "2026-05-28T23:53:34.061Z",
       "produto": "Pré Treino +mu Exquenta Sabor Pink Lemonade Com Ca",
+      "consultas": 3
+    },
+    {
+      "data": "2026-05-29T00:12:49.072Z",
+      "produto": "Kit 2x Gas Gel Energético 20 Sachês + Pré Treino N",
       "consultas": 3
     }
   ]
