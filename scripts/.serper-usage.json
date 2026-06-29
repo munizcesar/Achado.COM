@@ -1,5 +1,11 @@
 {
-  "total": 0,
+  "total": 3,
   "mes_atual": 5,
-  "logs": []
+  "logs": [
+    {
+      "data": "2026-06-29T00:41:05.104Z",
+      "produto": "Combo Siàge Nutri Diamond Shampoo + Condicionador",
+      "consultas": 3
+    }
+  ]
 }
