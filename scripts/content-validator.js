@@ -64,7 +64,7 @@ export const VALIDACOES = {
    * Verifica se há CTA natural
    */
   temCtaNatural: (texto) => {
-    const temCta = /conferir|ver (na|o|disponibilidade)|próximo passo|acessar|consultar oferta/i.test(texto);
+    const temCta = /conferir|confira|ver (na|o|disponibilidade)|próximo passo|acessar|consultar oferta/i.test(texto);
     return {
       valido: temCta,
       mensagem: temCta ? '✅ CTA natural presente' : '❌ Sem CTA (adicionar)'

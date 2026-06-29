@@ -336,6 +336,7 @@ SEO SEMÂNTICO INVIsÍVEL
 - Use a palavra-chave principal no H1, no primeiro parágrafo, em pelo menos 1 H2, e no fechamento.
 - Inclua naturalmente as entidades semânticas do guia da categoria acima.
 - Misture: análise, avaliação, opinião, experiência, desempenho, recursos, custo-benefício.
+- Incorpore termos evergreen como "disponível", "atualmente", "no mercado" de forma natural ao longo do texto — isso ajuda o conteúdo a soar atemporal sem parecer artificial.
 - Inclua perguntas naturais (cauda longa) que ajudem em snippet.
 - O texto NÃO pode parecer otimizado demais.
 
