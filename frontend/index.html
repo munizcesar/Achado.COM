@@ -359,6 +359,80 @@
         @keyframes spin    { to { transform: translate(-50%, -50%) rotate(360deg); } }
         .instagram-media { opacity: 0; transition: opacity 0.3s ease; }
         .instagram-media.loaded { opacity: 1; }
+
+        /* ===== HERO BACKGROUND EFFECTS ===== */
+
+        /* Camada de mesh gradiente animado por trás do SVG */
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 15% 20%, rgba(124, 58, 237, 0.30) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 85% 10%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse 70% 80% at 50% 95%, rgba(29, 78, 216, 0.20) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 70% 60%, rgba(168, 85, 247, 0.12) 0%, transparent 50%);
+            animation: heroMesh 12s ease-in-out infinite alternate;
+            pointer-events: none;
+            border-radius: 24px;
+        }
+
+        @keyframes heroMesh {
+            0%   { opacity: 0.6; transform: scale(1); }
+            50%  { opacity: 1; transform: scale(1.02); }
+            100% { opacity: 0.7; transform: scale(0.98); }
+        }
+
+        /* Brilho pulsante nos glows do SVG */
+        .hero-svg-glow {
+            animation: heroGlowPulse 4s ease-in-out infinite alternate;
+        }
+
+        .hero-svg-glow:nth-child(2) {
+            animation-delay: 2s;
+        }
+
+        @keyframes heroGlowPulse {
+            0%   { opacity: 0.15; }
+            100% { opacity: 0.40; }
+        }
+
+        /* Cards de produto flutuantes */
+        .hero-svg-card {
+            animation: cardFloat 5s ease-in-out infinite alternate;
+            will-change: transform;
+        }
+
+        .hero-svg-card:nth-child(2) { animation-delay: -1.2s; animation-duration: 5.8s; }
+        .hero-svg-card:nth-child(3) { animation-delay: -2.5s; animation-duration: 4.5s; }
+        .hero-svg-card:nth-child(4) { animation-delay: -0.8s; animation-duration: 6.2s; }
+        .hero-svg-card:nth-child(5) { animation-delay: -3.0s; animation-duration: 5.2s; }
+
+        @keyframes cardFloat {
+            0%   { transform: translateY(0px); }
+            100% { transform: translateY(-8px); }
+        }
+
+        /* Grid de pontos: brilho sutil */
+        @keyframes dotPulse {
+            0%   { opacity: 0.06; }
+            100% { opacity: 0.12; }
+        }
+
+        /* Textura noise (grão sutil) — premium feel */
+        .hero-noise {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            border-radius: 24px;
+            opacity: 0.035;
+            mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 300px 300px;
+        }
     </style>
     
     <!-- Google Analytics -->
@@ -425,10 +499,10 @@
         </defs>
         <!-- Fundo principal -->
         <rect width="1200" height="480" fill="url(#bg)"/>
-        <rect width="1200" height="480" fill="url(#glow1)"/>
-        <rect width="1200" height="480" fill="url(#glow2)"/>
+        <rect width="1200" height="480" fill="url(#glow1)" class="hero-svg-glow"/>
+        <rect width="1200" height="480" fill="url(#glow2)" class="hero-svg-glow"/>
         <!-- Grid de pontos decorativos -->
-        <g opacity="0.08" fill="#D4AF37">
+        <g opacity="0.08" fill="#D4AF37" style="animation: dotPulse 6s ease-in-out infinite alternate;">
             <circle cx="60"  cy="60"  r="2"/><circle cx="160" cy="60"  r="2"/><circle cx="260" cy="60"  r="2"/>
             <circle cx="360" cy="60"  r="2"/><circle cx="460" cy="60"  r="2"/><circle cx="560" cy="60"  r="2"/>
             <circle cx="660" cy="60"  r="2"/><circle cx="760" cy="60"  r="2"/><circle cx="860" cy="60"  r="2"/>
@@ -450,43 +524,16 @@
         <line x1="0" y1="479" x2="1200" y2="479" stroke="#D4AF37" stroke-width="1" stroke-opacity="0.3"/>
         <!-- Cards de produto flutuantes (direita) -->
         <g transform="translate(700, 70)">
-            <!-- Card 1 - Smartphone -->
-            <rect x="0" y="0" width="140" height="170" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/>
-            <rect x="20" y="16" width="100" height="90" rx="8" fill="rgba(124,58,237,0.2)"/>
-            <text x="70" y="68" text-anchor="middle" font-size="32" fill="#A78BFA">📱</text>
-            <rect x="20" y="118" width="70" height="8" rx="4" fill="rgba(255,255,255,0.15)"/>
-            <rect x="20" y="132" width="50" height="6" rx="3" fill="rgba(212,175,55,0.4)"/>
-            <rect x="20" y="148" width="100" height="14" rx="7" fill="rgba(212,175,55,0.7)"/>
-            <!-- Card 2 - Headphone -->
-            <rect x="160" y="30" width="140" height="170" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/>
-            <rect x="180" y="46" width="100" height="90" rx="8" fill="rgba(29,78,216,0.2)"/>
-            <text x="230" y="98" text-anchor="middle" font-size="32" fill="#93C5FD">🎧</text>
-            <rect x="180" y="148" width="70" height="8" rx="4" fill="rgba(255,255,255,0.15)"/>
-            <rect x="180" y="162" width="50" height="6" rx="3" fill="rgba(212,175,55,0.4)"/>
-            <rect x="180" y="178" width="100" height="14" rx="7" fill="rgba(212,175,55,0.7)"/>
-            <!-- Card 3 - Notebook -->
-            <rect x="320" y="10" width="140" height="170" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/>
-            <rect x="340" y="26" width="100" height="90" rx="8" fill="rgba(5,150,105,0.2)"/>
-            <text x="390" y="78" text-anchor="middle" font-size="32" fill="#6EE7B7">💻</text>
-            <rect x="340" y="128" width="70" height="8" rx="4" fill="rgba(255,255,255,0.15)"/>
-            <rect x="340" y="142" width="50" height="6" rx="3" fill="rgba(212,175,55,0.4)"/>
-            <rect x="340" y="158" width="100" height="14" rx="7" fill="rgba(212,175,55,0.7)"/>
-            <!-- Card 4 - Tênis -->
-            <rect x="80" y="210" width="140" height="170" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/>
-            <rect x="100" y="226" width="100" height="90" rx="8" fill="rgba(255,107,53,0.2)"/>
-            <text x="150" y="278" text-anchor="middle" font-size="32" fill="#FCA5A5">👟</text>
-            <rect x="100" y="328" width="70" height="8" rx="4" fill="rgba(255,255,255,0.15)"/>
-            <rect x="100" y="342" width="50" height="6" rx="3" fill="rgba(212,175,55,0.4)"/>
-            <rect x="100" y="358" width="100" height="14" rx="7" fill="rgba(212,175,55,0.7)"/>
-            <!-- Card 5 - Watch -->
-            <rect x="250" y="230" width="140" height="170" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/>
-            <rect x="270" y="246" width="100" height="90" rx="8" fill="rgba(212,175,55,0.15)"/>
-            <text x="320" y="298" text-anchor="middle" font-size="32" fill="#FDE68A">⌚</text>
-            <rect x="270" y="348" width="70" height="8" rx="4" fill="rgba(255,255,255,0.15)"/>
-            <rect x="270" y="362" width="50" height="6" rx="3" fill="rgba(212,175,55,0.4)"/>
-            <rect x="270" y="378" width="100" height="14" rx="7" fill="rgba(212,175,55,0.7)"/>
+            <g class="hero-svg-card"><rect x="0" y="0" width="140" height="170" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/><rect x="20" y="16" width="100" height="90" rx="8" fill="rgba(124,58,237,0.2)"/><text x="70" y="68" text-anchor="middle" font-size="32" fill="#A78BFA">📱</text><rect x="20" y="118" width="70" height="8" rx="4" fill="rgba(255,255,255,0.15)"/><rect x="20" y="132" width="50" height="6" rx="3" fill="rgba(212,175,55,0.4)"/><rect x="20" y="148" width="100" height="14" rx="7" fill="rgba(212,175,55,0.7)"/></g>
+            <g class="hero-svg-card"><rect x="160" y="30" width="140" height="170" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/><rect x="180" y="46" width="100" height="90" rx="8" fill="rgba(29,78,216,0.2)"/><text x="230" y="98" text-anchor="middle" font-size="32" fill="#93C5FD">🎧</text><rect x="180" y="148" width="70" height="8" rx="4" fill="rgba(255,255,255,0.15)"/><rect x="180" y="162" width="50" height="6" rx="3" fill="rgba(212,175,55,0.4)"/><rect x="180" y="178" width="100" height="14" rx="7" fill="rgba(212,175,55,0.7)"/></g>
+            <g class="hero-svg-card"><rect x="320" y="10" width="140" height="170" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/><rect x="340" y="26" width="100" height="90" rx="8" fill="rgba(5,150,105,0.2)"/><text x="390" y="78" text-anchor="middle" font-size="32" fill="#6EE7B7">💻</text><rect x="340" y="128" width="70" height="8" rx="4" fill="rgba(255,255,255,0.15)"/><rect x="340" y="142" width="50" height="6" rx="3" fill="rgba(212,175,55,0.4)"/><rect x="340" y="158" width="100" height="14" rx="7" fill="rgba(212,175,55,0.7)"/></g>
+            <g class="hero-svg-card"><rect x="80" y="210" width="140" height="170" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/><rect x="100" y="226" width="100" height="90" rx="8" fill="rgba(255,107,53,0.2)"/><text x="150" y="278" text-anchor="middle" font-size="32" fill="#FCA5A5">👟</text><rect x="100" y="328" width="70" height="8" rx="4" fill="rgba(255,255,255,0.15)"/><rect x="100" y="342" width="50" height="6" rx="3" fill="rgba(212,175,55,0.4)"/><rect x="100" y="358" width="100" height="14" rx="7" fill="rgba(212,175,55,0.7)"/></g>
+            <g class="hero-svg-card"><rect x="250" y="230" width="140" height="170" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/><rect x="270" y="246" width="100" height="90" rx="8" fill="rgba(212,175,55,0.15)"/><text x="320" y="298" text-anchor="middle" font-size="32" fill="#FDE68A">⌚</text><rect x="270" y="348" width="70" height="8" rx="4" fill="rgba(255,255,255,0.15)"/><rect x="270" y="362" width="50" height="6" rx="3" fill="rgba(212,175,55,0.4)"/><rect x="270" y="378" width="100" height="14" rx="7" fill="rgba(212,175,55,0.7)"/></g>
         </g>
     </svg>
+
+    <!-- Textura noise premium -->
+    <div class="hero-noise"></div>
 
     <!-- Imagem real (substitui o SVG quando disponível) -->
     <picture>
