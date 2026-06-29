@@ -145,6 +145,19 @@ function sanitizarConteudo(conteudo) {
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
+function decodeHtmlEntities(text) {
+  return text
+    .replace(/&#x27;/g, "'")
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(code))
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+}
+
 function slugify(text) {
   return text
     .toLowerCase()
@@ -405,14 +418,15 @@ function buildTags(title, category) {
 }
 
 function cleanTitle(title) {
+  // Decodifica entidades HTML primeiro (ex: &#x27; → ')
+  let cleaned = decodeHtmlEntities(title);
+  
   // Remove cores comuns (no final da string)
   const colors = [
     'Cinza', 'Cinza-escuro', 'Preto', 'Branco', 'Azul', 'Verde', 'Vermelho', 
     'Amarelo', 'Rosa', 'Roxo', 'Laranja', 'Marrom', 'Bege', 'Dourado',
     'Prata', 'Prateado', 'Grafite', 'Chumbo', 'Cobre'
   ];
-  
-  let cleaned = title;
   
   // Remove cores que aparecem no final (com ou sem espaço antes)
   const colorPattern = new RegExp(`\\s+(${colors.join('|')})$`, 'i');
