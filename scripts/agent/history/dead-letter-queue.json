@@ -1,0 +1,15 @@
+[
+  {
+    "asin": "B0CYD92TBQ",
+    "productName": "Magnésio Quelato 300mg",
+    "pillar": "saude",
+    "stage": "QUALITY_APPROVED",
+    "error": "Quality gates: Título do produto não encontrado no frontmatter; Categoria saude não encontrada no frontmatter; URL de afiliado não encontrada no markdown",
+    "meta": {
+      "executionId": "20260712-120301-d02ea1bb"
+    },
+    "failedAt": "2026-07-12T12:03:13.329Z",
+    "retryCount": 0,
+    "status": "pending"
+  }
+]

@@ -1,5 +1,5 @@
 {
-  "total": 39,
+  "total": 42,
   "mes_atual": 6,
   "logs": [
     {
@@ -64,6 +64,11 @@
     },
     {
       "data": "2026-07-12T02:42:14.397Z",
+      "produto": "O resumo do produto apresenta as principais inform",
+      "consultas": 3
+    },
+    {
+      "data": "2026-07-12T12:03:08.004Z",
       "produto": "O resumo do produto apresenta as principais inform",
       "consultas": 3
     }

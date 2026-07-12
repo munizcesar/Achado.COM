@@ -1,0 +1,292 @@
+{
+  "meta": {
+    "runId": "20260712-120301-d02ea1bb",
+    "startTime": "2026-07-12T12:03:01.139Z",
+    "endTime": "2026-07-12T12:03:13.330Z",
+    "duration": 12191,
+    "pilar": "saude",
+    "trigger": "manual",
+    "executionId": "20260712-120301-d02ea1bb"
+  },
+  "result": {
+    "status": "fail",
+    "produto": "Magnésio Quelato 300mg",
+    "error": null,
+    "errors": null
+  },
+  "entries": [
+    {
+      "ts": "2026-07-12T12:03:01.140Z",
+      "level": "INFO",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "═══════════════════════════════════════════════════",
+      "elapsed": 1
+    },
+    {
+      "ts": "2026-07-12T12:03:01.140Z",
+      "level": "INFO",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🤖 Pipeline — 20260712-120301-d02ea1bb",
+      "pillar": "saude",
+      "tag": "afiliado-ok",
+      "elapsed": 1
+    },
+    {
+      "ts": "2026-07-12T12:03:01.142Z",
+      "level": "STEP",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Validando configuração de afiliado...",
+      "elapsed": 3
+    },
+    {
+      "ts": "2026-07-12T12:03:01.142Z",
+      "level": "PASS",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tag configurada",
+      "elapsed": 3
+    },
+    {
+      "ts": "2026-07-12T12:03:01.143Z",
+      "level": "STEP",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Buscando produtos para \"saude\"...",
+      "elapsed": 4
+    },
+    {
+      "ts": "2026-07-12T12:03:01.466Z",
+      "level": "INFO",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Trend Scout indisponível",
+      "elapsed": 327
+    },
+    {
+      "ts": "2026-07-12T12:03:01.467Z",
+      "level": "INFO",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Catálogo: 11 produtos",
+      "elapsed": 328
+    },
+    {
+      "ts": "2026-07-12T12:03:01.468Z",
+      "level": "INFO",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Pool: 11 produtos",
+      "elapsed": 329
+    },
+    {
+      "ts": "2026-07-12T12:03:01.469Z",
+      "level": "INFO",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tentativa 1: Magnésio Quelato 300mg [📦 catálogo]",
+      "asin": "B0CYD92TBQ",
+      "elapsed": 330
+    },
+    {
+      "ts": "2026-07-12T12:03:01.475Z",
+      "level": "INFO",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 336
+    },
+    {
+      "ts": "2026-07-12T12:03:01.476Z",
+      "level": "INFO",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Produto : Magnésio Quelato 300mg",
+      "elapsed": 337
+    },
+    {
+      "ts": "2026-07-12T12:03:01.476Z",
+      "level": "INFO",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Pilar   : saude",
+      "elapsed": 337
+    },
+    {
+      "ts": "2026-07-12T12:03:01.476Z",
+      "level": "INFO",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Ângulo  : bem_estar",
+      "elapsed": 337
+    },
+    {
+      "ts": "2026-07-12T12:03:01.476Z",
+      "level": "INFO",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 337
+    },
+    {
+      "ts": "2026-07-12T12:03:01.477Z",
+      "level": "INFO",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 338
+    },
+    {
+      "ts": "2026-07-12T12:03:01.477Z",
+      "level": "INFO",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 338
+    },
+    {
+      "ts": "2026-07-12T12:03:01.477Z",
+      "level": "INFO",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 338
+    },
+    {
+      "ts": "2026-07-12T12:03:01.477Z",
+      "level": "INFO",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 338
+    },
+    {
+      "ts": "2026-07-12T12:03:01.478Z",
+      "level": "PASS",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Produto selecionado: Magnésio Quelato 300mg",
+      "elapsed": 339
+    },
+    {
+      "ts": "2026-07-12T12:03:01.478Z",
+      "level": "STEP",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Validando confiança: Magnésio Quelato 300mg",
+      "elapsed": 339
+    },
+    {
+      "ts": "2026-07-12T12:03:01.479Z",
+      "level": "PASS",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Confiança: 60",
+      "elapsed": 340
+    },
+    {
+      "ts": "2026-07-12T12:03:01.479Z",
+      "level": "STEP",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Gerando post: Magnésio Quelato 300mg [B0CYD92TBQ]",
+      "elapsed": 340
+    },
+    {
+      "ts": "2026-07-12T12:03:01.480Z",
+      "level": "STEP",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Executando novo-post.js para gerar arquivos...",
+      "elapsed": 341
+    },
+    {
+      "ts": "2026-07-12T12:03:13.321Z",
+      "level": "PASS",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos do post gerados com sucesso",
+      "elapsed": 12182
+    },
+    {
+      "ts": "2026-07-12T12:03:13.326Z",
+      "level": "PASS",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos gerados: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p",
+      "elapsed": 12187
+    },
+    {
+      "ts": "2026-07-12T12:03:13.326Z",
+      "level": "STEP",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Aplicando quality gates...",
+      "elapsed": 12187
+    },
+    {
+      "ts": "2026-07-12T12:03:13.327Z",
+      "level": "FAIL",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "QUALITY: Título do produto não encontrado no frontmatter",
+      "elapsed": 12188
+    },
+    {
+      "ts": "2026-07-12T12:03:13.327Z",
+      "level": "FAIL",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "QUALITY: Categoria saude não encontrada no frontmatter",
+      "elapsed": 12188
+    },
+    {
+      "ts": "2026-07-12T12:03:13.327Z",
+      "level": "FAIL",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "QUALITY: URL de afiliado não encontrada no markdown",
+      "elapsed": 12188
+    },
+    {
+      "ts": "2026-07-12T12:03:13.328Z",
+      "level": "FAIL",
+      "run": "20260712-120301-d02ea1bb",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Quality gates: 3 falha(s) — CANCELANDO",
+      "elapsed": 12189
+    }
+  ]
+}

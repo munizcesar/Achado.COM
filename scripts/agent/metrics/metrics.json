@@ -1,0 +1,73 @@
+[
+  {
+    "executionId": "20260712-120301-d02ea1bb",
+    "pillar": "saude",
+    "startedAt": "2026-07-12T12:03:01.140Z",
+    "totalTime": 12189,
+    "stages": [
+      {
+        "name": "PENDING",
+        "startedAt": 1783857781142,
+        "endedAt": 1783857781143,
+        "duration": 1,
+        "success": true,
+        "error": null,
+        "tag": "altivita-20"
+      },
+      {
+        "name": "PRODUCT_SELECTED",
+        "startedAt": 1783857781143,
+        "endedAt": 1783857781469,
+        "duration": 326,
+        "success": true,
+        "error": null,
+        "poolSize": 11
+      },
+      {
+        "name": "PRODUCT_VALIDATED",
+        "startedAt": 1783857781478,
+        "endedAt": 1783857781479,
+        "duration": 1,
+        "success": true,
+        "error": null,
+        "confidence": 60
+      },
+      {
+        "name": "CONTENT_GENERATED",
+        "startedAt": 1783857781479,
+        "endedAt": 1783857793326,
+        "duration": 11847,
+        "success": true,
+        "error": null,
+        "slug": "o-resumo-do-produto-apresenta-as-principais-informacoes-do-p"
+      },
+      {
+        "name": "QUALITY_APPROVED",
+        "startedAt": 1783857793326,
+        "endedAt": 1783857793328,
+        "duration": 2,
+        "success": false,
+        "error": "Quality gates",
+        "errors": [
+          "Título do produto não encontrado no frontmatter",
+          "Categoria saude não encontrada no frontmatter",
+          "URL de afiliado não encontrada no markdown"
+        ]
+      }
+    ],
+    "summary": {
+      "total": 5,
+      "passed": 4,
+      "failed": 1,
+      "successRate": 80
+    },
+    "result": {
+      "status": "fail",
+      "executionId": "20260712-120301-d02ea1bb",
+      "produto": "Magnésio Quelato 300mg",
+      "asin": "B0CYD92TBQ",
+      "dryRun": false
+    },
+    "savedAt": "2026-07-12T12:03:13.329Z"
+  }
+]

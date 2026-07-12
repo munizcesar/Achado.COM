@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 Agente AchadoCerto.VIP — Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; padding: 2rem; }
+  h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #f8fafc; }
+  .subtitle { color: #94a3b8; margin-bottom: 2rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .card { background: #1e293b; border-radius: 12px; padding: 1.25rem; border: 1px solid #334155; }
+  .card h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; margin-bottom: 0.5rem; }
+  .card .value { font-size: 2rem; font-weight: 700; }
+  .card .value.green { color: #22c55e; }
+  .card .value.yellow { color: #eab308; }
+  .card .value.red { color: #ef4444; }
+  .card .detail { font-size: 0.85rem; color: #94a3b8; margin-top: 0.25rem; }
+  table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+  th { text-align: left; padding: 0.5rem; font-size: 0.75rem; text-transform: uppercase; color: #64748b; border-bottom: 1px solid #334155; }
+  td { padding: 0.5rem; border-bottom: 1px solid #1e293b; font-size: 0.85rem; }
+  .section-title { font-size: 1.2rem; margin: 2rem 0 1rem; color: #f1f5f9; }
+  .badge { display: inline-block; padding: 0.125rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+  .badge.success { background: #166534; color: #86efac; }
+  .badge.fail { background: #7f1d1d; color: #fca5a5; }
+  .badge.warning { background: #713f12; color: #fde68a; }
+  @media (max-width: 640px) { body { padding: 1rem; } .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<h1>📊 Agente AchadoCerto.VIP</h1>
+<p class="subtitle">Gerado em 12/07/2026, 09:03:13</p>
+
+<div class="grid">
+  <div class="card">
+    <h3>Taxa de Sucesso (Hoje)</h3>
+    <div class="value red">0%</div>
+    <div class="detail">0/1 publicações</div>
+  </div>
+  <div class="card">
+    <h3>Taxa de Sucesso (7 dias)</h3>
+    <div class="value red">0%</div>
+    <div class="detail">0/1 publicações</div>
+  </div>
+  <div class="card">
+    <h3>Total de Execuções</h3>
+    <div class="value">1</div>
+    <div class="detail">1 dias com atividade</div>
+  </div>
+  <div class="card">
+    <h3>Dead Letter Queue</h3>
+    <div class="value yellow">1</div>
+    <div class="detail">1 pendentes · 0 processados</div>
+  </div>
+</div>
+
+<h2 class="section-title">📈 Publicações por Dia</h2>
+<div class="card">
+  <table>
+    <tr><th>Data</th><th>Posts</th></tr>
+    <tr><td>2026-07-12</td><td><span class="badge success">1</span></td></tr>
+  </table>
+</div>
+
+<h2 class="section-title">⏱ Tempo Médio por Etapa</h2>
+<div class="card">
+  <table>
+    <tr><th>Etapa</th><th>Tempo Médio</th></tr>
+    <tr><td>PENDING</td><td>0.0s</td></tr><tr><td>PRODUCT_SELECTED</td><td>0.3s</td></tr><tr><td>PRODUCT_VALIDATED</td><td>0.0s</td></tr><tr><td>CONTENT_GENERATED</td><td>11.8s</td></tr><tr><td>QUALITY_APPROVED</td><td>0.0s</td></tr>
+  </table>
+</div>
+
+<h2 class="section-title">🔌 Fontes Utilizadas</h2>
+<div class="card">
+  <table>
+    <tr><th>Fonte</th><th>Score</th><th>Usos</th></tr>
+    
+  </table>
+</div>
+
+<h2 class="section-title">❌ Causas de Falha</h2>
+<div class="card">
+  <table>
+    <tr><th>Motivo</th><th>Ocorrências</th></tr>
+    
+  </table>
+</div>
+
+<h2 class="section-title">📋 Últimas Execuções</h2>
+<div class="card">
+  <table>
+    <tr><th>ID</th><th>Pilar</th><th>Status</th><th>Duração</th></tr>
+    
+  </table>
+</div>
+
+<p style="text-align:center;margin-top:2rem;color:#475569;font-size:0.8rem">
+  Dashboard gerado automaticamente pelo Agente AchadoCerto.VIP
+</p>
+</body>
+</html>
