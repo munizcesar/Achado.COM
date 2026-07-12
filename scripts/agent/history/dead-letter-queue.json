@@ -37,5 +37,16 @@
     "failedAt": "2026-07-12T21:40:09.248Z",
     "retryCount": 0,
     "status": "pending"
+  },
+  {
+    "asin": "TEST-001",
+    "productName": "Produto Teste",
+    "pillar": "test",
+    "stage": "FETCH_DATA",
+    "error": "Fonte indisponível",
+    "meta": {},
+    "failedAt": "2026-07-12T22:31:29.948Z",
+    "retryCount": 0,
+    "status": "pending"
   }
 ]
