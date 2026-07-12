@@ -1,0 +1,44 @@
+{
+  "state": "FAIL",
+  "context": {
+    "executionId": "20260712-214001-95328c72",
+    "transitions": [
+      {
+        "from": "PENDING",
+        "to": "PRODUCT_SELECTED",
+        "ts": "2026-07-12T21:40:01.258Z"
+      },
+      {
+        "from": "PRODUCT_SELECTED",
+        "to": "PRODUCT_VALIDATED",
+        "ts": "2026-07-12T21:40:01.528Z",
+        "poolSize": 11
+      },
+      {
+        "from": "PRODUCT_VALIDATED",
+        "to": "CONTENT_GENERATED",
+        "ts": "2026-07-12T21:40:01.536Z",
+        "confidence": 60
+      },
+      {
+        "from": "CONTENT_GENERATED",
+        "to": "QUALITY_APPROVED",
+        "ts": "2026-07-12T21:40:09.245Z",
+        "slug": "kit-2x-omega-3-fish-oil-1000mg-90-softgels-vitamin-life"
+      },
+      {
+        "from": "QUALITY_APPROVED",
+        "to": "FAIL",
+        "ts": "2026-07-12T21:40:09.247Z"
+      }
+    ],
+    "errors": [
+      {
+        "state": "QUALITY_APPROVED",
+        "error": "Quality gates: Título do produto não encontrado no frontmatter; URL de afiliado não encontrada no markdown",
+        "ts": "2026-07-12T21:40:09.247Z"
+      }
+    ]
+  },
+  "updatedAt": "2026-07-12T21:40:09.247Z"
+}

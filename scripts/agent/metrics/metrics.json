@@ -140,5 +140,75 @@
       "dryRun": false
     },
     "savedAt": "2026-07-12T16:00:16.487Z"
+  },
+  {
+    "executionId": "20260712-214001-95328c72",
+    "pillar": "saude",
+    "startedAt": "2026-07-12T21:40:01.256Z",
+    "totalTime": 7992,
+    "stages": [
+      {
+        "name": "PENDING",
+        "startedAt": 1783892401257,
+        "endedAt": 1783892401258,
+        "duration": 1,
+        "success": true,
+        "error": null,
+        "tag": "altivita-20"
+      },
+      {
+        "name": "PRODUCT_SELECTED",
+        "startedAt": 1783892401258,
+        "endedAt": 1783892401529,
+        "duration": 271,
+        "success": true,
+        "error": null,
+        "poolSize": 11
+      },
+      {
+        "name": "PRODUCT_VALIDATED",
+        "startedAt": 1783892401535,
+        "endedAt": 1783892401536,
+        "duration": 1,
+        "success": true,
+        "error": null,
+        "confidence": 60
+      },
+      {
+        "name": "CONTENT_GENERATED",
+        "startedAt": 1783892401536,
+        "endedAt": 1783892409246,
+        "duration": 7710,
+        "success": true,
+        "error": null,
+        "slug": "kit-2x-omega-3-fish-oil-1000mg-90-softgels-vitamin-life"
+      },
+      {
+        "name": "QUALITY_APPROVED",
+        "startedAt": 1783892409246,
+        "endedAt": 1783892409248,
+        "duration": 2,
+        "success": false,
+        "error": "Quality gates",
+        "errors": [
+          "Título do produto não encontrado no frontmatter",
+          "URL de afiliado não encontrada no markdown"
+        ]
+      }
+    ],
+    "summary": {
+      "total": 5,
+      "passed": 4,
+      "failed": 1,
+      "successRate": 80
+    },
+    "result": {
+      "status": "fail",
+      "executionId": "20260712-214001-95328c72",
+      "produto": "Ômega 3 Fish Oil 1000mg",
+      "asin": "B0DWNFZN17",
+      "dryRun": false
+    },
+    "savedAt": "2026-07-12T21:40:09.248Z"
   }
 ]

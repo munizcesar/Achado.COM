@@ -1,5 +1,5 @@
 {
-  "total": 45,
+  "total": 48,
   "mes_atual": 6,
   "logs": [
     {
@@ -75,6 +75,11 @@
     {
       "data": "2026-07-12T16:00:11.216Z",
       "produto": "O resumo do produto apresenta as principais inform",
+      "consultas": 3
+    },
+    {
+      "data": "2026-07-12T21:40:09.060Z",
+      "produto": "Kit 2x Ômega 3 Fish Oil 1000MG 90 Softgels-VITAMIN",
       "consultas": 3
     }
   ]
