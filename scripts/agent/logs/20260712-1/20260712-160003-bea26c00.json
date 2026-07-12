@@ -1,0 +1,292 @@
+{
+  "meta": {
+    "runId": "20260712-160003-bea26c00",
+    "startTime": "2026-07-12T16:00:03.407Z",
+    "endTime": "2026-07-12T16:00:16.490Z",
+    "duration": 13083,
+    "pilar": "saude",
+    "trigger": "manual",
+    "executionId": "20260712-160003-bea26c00"
+  },
+  "result": {
+    "status": "fail",
+    "produto": "Ômega 3 Fish Oil 1000mg",
+    "error": null,
+    "errors": null
+  },
+  "entries": [
+    {
+      "ts": "2026-07-12T16:00:03.407Z",
+      "level": "INFO",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "═══════════════════════════════════════════════════",
+      "elapsed": 0
+    },
+    {
+      "ts": "2026-07-12T16:00:03.408Z",
+      "level": "INFO",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🤖 Pipeline — 20260712-160003-bea26c00",
+      "pillar": "saude",
+      "tag": "afiliado-ok",
+      "elapsed": 1
+    },
+    {
+      "ts": "2026-07-12T16:00:03.409Z",
+      "level": "STEP",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Validando configuração de afiliado...",
+      "elapsed": 2
+    },
+    {
+      "ts": "2026-07-12T16:00:03.409Z",
+      "level": "PASS",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tag configurada",
+      "elapsed": 2
+    },
+    {
+      "ts": "2026-07-12T16:00:03.410Z",
+      "level": "STEP",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Buscando produtos para \"saude\"...",
+      "elapsed": 3
+    },
+    {
+      "ts": "2026-07-12T16:00:03.817Z",
+      "level": "INFO",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Trend Scout indisponível",
+      "elapsed": 410
+    },
+    {
+      "ts": "2026-07-12T16:00:03.818Z",
+      "level": "INFO",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Catálogo: 11 produtos",
+      "elapsed": 411
+    },
+    {
+      "ts": "2026-07-12T16:00:03.819Z",
+      "level": "INFO",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Pool: 11 produtos",
+      "elapsed": 412
+    },
+    {
+      "ts": "2026-07-12T16:00:03.819Z",
+      "level": "INFO",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tentativa 1: Ômega 3 Fish Oil 1000mg [📦 catálogo]",
+      "asin": "B0DWNFZN17",
+      "elapsed": 412
+    },
+    {
+      "ts": "2026-07-12T16:00:03.824Z",
+      "level": "INFO",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 417
+    },
+    {
+      "ts": "2026-07-12T16:00:03.824Z",
+      "level": "INFO",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Produto : Ômega 3 Fish Oil 1000mg",
+      "elapsed": 417
+    },
+    {
+      "ts": "2026-07-12T16:00:03.824Z",
+      "level": "INFO",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Pilar   : saude",
+      "elapsed": 417
+    },
+    {
+      "ts": "2026-07-12T16:00:03.824Z",
+      "level": "INFO",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Ângulo  : saude_preventiva",
+      "elapsed": 417
+    },
+    {
+      "ts": "2026-07-12T16:00:03.825Z",
+      "level": "INFO",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 418
+    },
+    {
+      "ts": "2026-07-12T16:00:03.825Z",
+      "level": "INFO",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 418
+    },
+    {
+      "ts": "2026-07-12T16:00:03.825Z",
+      "level": "INFO",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 418
+    },
+    {
+      "ts": "2026-07-12T16:00:03.825Z",
+      "level": "INFO",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 419
+    },
+    {
+      "ts": "2026-07-12T16:00:03.826Z",
+      "level": "INFO",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 419
+    },
+    {
+      "ts": "2026-07-12T16:00:03.826Z",
+      "level": "PASS",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Produto selecionado: Ômega 3 Fish Oil 1000mg",
+      "elapsed": 419
+    },
+    {
+      "ts": "2026-07-12T16:00:03.826Z",
+      "level": "STEP",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Validando confiança: Ômega 3 Fish Oil 1000mg",
+      "elapsed": 419
+    },
+    {
+      "ts": "2026-07-12T16:00:03.827Z",
+      "level": "PASS",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Confiança: 60",
+      "elapsed": 420
+    },
+    {
+      "ts": "2026-07-12T16:00:03.827Z",
+      "level": "STEP",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Gerando post: Ômega 3 Fish Oil 1000mg [B0DWNFZN17]",
+      "elapsed": 420
+    },
+    {
+      "ts": "2026-07-12T16:00:03.827Z",
+      "level": "STEP",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Executando novo-post.js para gerar arquivos...",
+      "elapsed": 420
+    },
+    {
+      "ts": "2026-07-12T16:00:16.481Z",
+      "level": "PASS",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos do post gerados com sucesso",
+      "elapsed": 13074
+    },
+    {
+      "ts": "2026-07-12T16:00:16.484Z",
+      "level": "PASS",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos gerados: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p",
+      "elapsed": 13077
+    },
+    {
+      "ts": "2026-07-12T16:00:16.485Z",
+      "level": "STEP",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Aplicando quality gates...",
+      "elapsed": 13078
+    },
+    {
+      "ts": "2026-07-12T16:00:16.485Z",
+      "level": "FAIL",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "QUALITY: Título do produto não encontrado no frontmatter",
+      "elapsed": 13078
+    },
+    {
+      "ts": "2026-07-12T16:00:16.485Z",
+      "level": "FAIL",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "QUALITY: Categoria saude não encontrada no frontmatter",
+      "elapsed": 13078
+    },
+    {
+      "ts": "2026-07-12T16:00:16.486Z",
+      "level": "FAIL",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "QUALITY: URL de afiliado não encontrada no markdown",
+      "elapsed": 13079
+    },
+    {
+      "ts": "2026-07-12T16:00:16.486Z",
+      "level": "FAIL",
+      "run": "20260712-160003-bea26c00",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Quality gates: 3 falha(s) — CANCELANDO",
+      "elapsed": 13079
+    }
+  ]
+}

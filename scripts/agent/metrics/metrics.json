@@ -69,5 +69,76 @@
       "dryRun": false
     },
     "savedAt": "2026-07-12T12:03:13.329Z"
+  },
+  {
+    "executionId": "20260712-160003-bea26c00",
+    "pillar": "saude",
+    "startedAt": "2026-07-12T16:00:03.407Z",
+    "totalTime": 13080,
+    "stages": [
+      {
+        "name": "PENDING",
+        "startedAt": 1783872003409,
+        "endedAt": 1783872003410,
+        "duration": 1,
+        "success": true,
+        "error": null,
+        "tag": "altivita-20"
+      },
+      {
+        "name": "PRODUCT_SELECTED",
+        "startedAt": 1783872003410,
+        "endedAt": 1783872003819,
+        "duration": 409,
+        "success": true,
+        "error": null,
+        "poolSize": 11
+      },
+      {
+        "name": "PRODUCT_VALIDATED",
+        "startedAt": 1783872003826,
+        "endedAt": 1783872003827,
+        "duration": 1,
+        "success": true,
+        "error": null,
+        "confidence": 60
+      },
+      {
+        "name": "CONTENT_GENERATED",
+        "startedAt": 1783872003827,
+        "endedAt": 1783872016484,
+        "duration": 12657,
+        "success": true,
+        "error": null,
+        "slug": "o-resumo-do-produto-apresenta-as-principais-informacoes-do-p"
+      },
+      {
+        "name": "QUALITY_APPROVED",
+        "startedAt": 1783872016485,
+        "endedAt": 1783872016487,
+        "duration": 2,
+        "success": false,
+        "error": "Quality gates",
+        "errors": [
+          "Título do produto não encontrado no frontmatter",
+          "Categoria saude não encontrada no frontmatter",
+          "URL de afiliado não encontrada no markdown"
+        ]
+      }
+    ],
+    "summary": {
+      "total": 5,
+      "passed": 4,
+      "failed": 1,
+      "successRate": 80
+    },
+    "result": {
+      "status": "fail",
+      "executionId": "20260712-160003-bea26c00",
+      "produto": "Ômega 3 Fish Oil 1000mg",
+      "asin": "B0DWNFZN17",
+      "dryRun": false
+    },
+    "savedAt": "2026-07-12T16:00:16.487Z"
   }
 ]
