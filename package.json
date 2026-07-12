@@ -8,7 +8,11 @@
     "postbuild": "node scripts/postbuild.js",
     "preview": "astro preview",
     "astro": "astro",
-    "post": "node scripts/novo-post.js"
+    "post": "node scripts/novo-post.js",
+    "agent": "node scripts/agent/agent.js",
+    "agent:now": "node scripts/agent/agent.js --now",
+    "agent:status": "node scripts/agent/agent.js --status",
+    "health": "node scripts/agent/monitor/health.js"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",

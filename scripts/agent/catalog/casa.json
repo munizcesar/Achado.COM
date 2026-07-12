@@ -1,0 +1,146 @@
+[
+  {
+    "asin": "B0CV4BFNRQ",
+    "nome": "Air Fryer 4L Digital",
+    "prioridade": 10,
+    "ativo": true,
+    "score": 95,
+    "angle": "praticidade_cozinha",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0GYQ8325V",
+    "nome": "Cafeteira Expresso 15 Bar",
+    "prioridade": 9,
+    "ativo": true,
+    "score": 93,
+    "angle": "ritual_diario",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B076HZ357P",
+    "nome": "Chaleira Elétrica 1,7L",
+    "prioridade": 8,
+    "ativo": true,
+    "score": 88,
+    "angle": "custo_beneficio",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B07BFRRCM8",
+    "nome": "Panela Antiaderente 28cm",
+    "prioridade": 8,
+    "ativo": true,
+    "score": 88,
+    "angle": "praticidade_cozinha",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0DSLX7ZQX",
+    "nome": "Purificador de Água Compacto",
+    "prioridade": 8,
+    "ativo": true,
+    "score": 88,
+    "angle": "saude_em_casa",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B07HR1MZQP",
+    "nome": "Umidificador de Ar Ultrassônico",
+    "prioridade": 7,
+    "ativo": true,
+    "score": 85,
+    "angle": "bem_estar_em_casa",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0DZ687M2L",
+    "nome": "Aspirador Robô Wi-Fi",
+    "prioridade": 9,
+    "ativo": true,
+    "score": 92,
+    "angle": "praticidade_casa",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B07S8JDC4B",
+    "nome": "Difusor de Aromas 400ml",
+    "prioridade": 7,
+    "ativo": true,
+    "score": 85,
+    "angle": "bem_estar_em_casa",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0H5KPHMQS",
+    "nome": "Fritadeira Elétrica sem Óleo 5,5L",
+    "prioridade": 9,
+    "ativo": true,
+    "score": 92,
+    "angle": "praticidade_cozinha",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B07RHVJ9SL",
+    "nome": "Mixer Vertical 600W Inox",
+    "prioridade": 7,
+    "ativo": true,
+    "score": 85,
+    "angle": "praticidade_cozinha",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B07L8PWVW5",
+    "nome": "Panela de Pressão Elétrica 5L",
+    "prioridade": 8,
+    "ativo": true,
+    "score": 88,
+    "angle": "praticidade_cozinha",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B07PVT1CJG",
+    "nome": "Ferro de Passar a Vapor 2400W",
+    "prioridade": 6,
+    "ativo": true,
+    "score": 82,
+    "angle": "custo_beneficio",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B08KWNT75K",
+    "nome": "Liquidificador de Alta Potência 900W",
+    "prioridade": 8,
+    "ativo": true,
+    "score": 88,
+    "angle": "praticidade_cozinha",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0BT524YQB",
+    "nome": "Ventilador de Torre com Timer",
+    "prioridade": 7,
+    "ativo": true,
+    "score": 85,
+    "angle": "bem_estar_em_casa",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0CPTD7WH3",
+    "nome": "Organizador de Gaveta Modulável",
+    "prioridade": 6,
+    "ativo": true,
+    "score": 80,
+    "angle": "praticidade_casa",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0H2CWWK2P",
+    "nome": "Esteira Elétrica Dobrável para Casa",
+    "prioridade": 8,
+    "ativo": true,
+    "score": 88,
+    "angle": "saude_em_casa",
+    "ultimaPublicacao": null
+  }
+]

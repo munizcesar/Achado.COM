@@ -1,0 +1,146 @@
+[
+  {
+    "asin": "B0DQQPCT5D",
+    "nome": "Sérum Vitamina C Facial",
+    "prioridade": 10,
+    "ativo": true,
+    "score": 95,
+    "angle": "skincare_basico",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0C2ZP91XV",
+    "nome": "Protetor Solar FPS 70",
+    "prioridade": 10,
+    "ativo": true,
+    "score": 95,
+    "angle": "cuidado_diario",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B00IO7WB26",
+    "nome": "Óleo de Argan para Cabelo",
+    "prioridade": 8,
+    "ativo": true,
+    "score": 90,
+    "angle": "cuidado_capilar",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0GQ9XYXQ4",
+    "nome": "Secador de Cabelo 2200W",
+    "prioridade": 7,
+    "ativo": true,
+    "score": 85,
+    "angle": "custo_beneficio",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B08WNP7DG1",
+    "nome": "Ácido Hialurônico Sérum",
+    "prioridade": 9,
+    "ativo": true,
+    "score": 93,
+    "angle": "anti_idade",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0FRG7TF96",
+    "nome": "Esfoliante Facial de Argila",
+    "prioridade": 7,
+    "ativo": true,
+    "score": 85,
+    "angle": "limpeza_pele",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0H4S2H24C",
+    "nome": "Máscara Capilar Hidratação",
+    "prioridade": 8,
+    "ativo": true,
+    "score": 88,
+    "angle": "cuidado_capilar",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B08R7RSJFX",
+    "nome": "Tônico Facial Niacinamida 10%",
+    "prioridade": 9,
+    "ativo": true,
+    "score": 92,
+    "angle": "ingrediente_ativo",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0C9FY3MXB",
+    "nome": "Retinol Sérum Antienvelhecimento",
+    "prioridade": 9,
+    "ativo": true,
+    "score": 93,
+    "angle": "anti_idade",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B08RV8WQBZ",
+    "nome": "Protetor Térmico Capilar 230°C",
+    "prioridade": 7,
+    "ativo": false,
+    "score": 85,
+    "angle": "cuidado_capilar",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B07THHQMHM",
+    "nome": "Água Micelar Demaquilante 500ml",
+    "prioridade": 8,
+    "ativo": true,
+    "score": 88,
+    "angle": "limpeza_pele",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B09NW1KXPQ",
+    "nome": "Creme Facial FPS 30 Hidratante",
+    "prioridade": 9,
+    "ativo": true,
+    "score": 92,
+    "angle": "cuidado_diario",
+    "ultimaPublicacao": "2026-07-08T16:39:48.792Z"
+  },
+  {
+    "asin": "B0GS7HB5WL",
+    "nome": "Shampoo Antiqueda com Biotina",
+    "prioridade": 8,
+    "ativo": true,
+    "score": 88,
+    "angle": "cuidado_capilar",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0C73G1QVD",
+    "nome": "Base Líquida Cobertura Total",
+    "prioridade": 6,
+    "ativo": true,
+    "score": 82,
+    "angle": "custo_beneficio",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B09WB12BKW",
+    "nome": "Vitamina E Sérum Facial Noturno",
+    "prioridade": 8,
+    "ativo": true,
+    "score": 90,
+    "angle": "skincare_basico",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0H68CQZ1R",
+    "nome": "Condicionador Hidratação Intensa",
+    "prioridade": 8,
+    "ativo": true,
+    "score": 88,
+    "angle": "cuidado_capilar",
+    "ultimaPublicacao": null
+  }
+]

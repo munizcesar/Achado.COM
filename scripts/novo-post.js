@@ -39,7 +39,8 @@ import { selecionarArquetipo, gerarContextoVariacoes, ARQUETIPOS } from './conte
 import { buscarContextoProduto, verificarStatusSerper } from './serper-service.js';
 import { gerarConteudoPost } from './groq-service.js';
 import { validarConteudo, corrigirAutomatico, analisarDetalhado } from './content-validator.js';
-import { fetchAmazon as fetchAmazonService } from './amazon-service-puppeteer.js';
+import { fetchAmazon as fetchAmazonHttp } from './amazon-service.js';
+import { fetchAmazon as fetchAmazonPuppeteer } from './amazon-service-puppeteer.js';
 
 // ── Carrega links de afiliado salvos ───────────────────────────────────────
 function carregarProdutosAfiliados() {
@@ -559,15 +560,31 @@ async function fetchML(inputUrl) {
   };
 }
 
-// ── Amazon — usa amazon-service.js (PA-API + scraping melhorado) ──────────
+// ── Amazon — Puppeteer primeiro, HTTP chain como fallback ──────────────
 
 async function fetchAmazon(inputUrl) {
-  return await fetchAmazonService(inputUrl, {
-    mapCategory,
-    buildTags,
-    cleanTitle,
-    productName: process.env.PRODUCT_NAME_HINT,
-  });
+  // Tenta Puppeteer primeiro (resultado mais completo com JS renderizado)
+  try {
+    console.log('   🔄 Tentando Puppeteer...');
+    const result = await fetchAmazonPuppeteer(inputUrl, {
+      mapCategory,
+      buildTags,
+      cleanTitle,
+      productName: process.env.PRODUCT_NAME_HINT,
+    });
+    console.log('   ✅ Puppeteer: dados obtidos com sucesso');
+    return result;
+  } catch (puppeteerError) {
+    console.log(`   ⚠️  Puppeteer falhou: ${puppeteerError.message}`);
+    console.log('   🔄 Fallback para HTTP chain (Serper + ML RapidAPI)...');
+    // Fallback: HTTP chain com 6 etapas de fallback
+    return await fetchAmazonHttp(inputUrl, {
+      mapCategory,
+      buildTags,
+      cleanTitle,
+      productName: process.env.PRODUCT_NAME_HINT,
+    });
+  }
 }
 
 // ── Magalu (scraping) ───────────────────────────────────────────────
@@ -813,18 +830,15 @@ async function main() {
   fs.writeFileSync(mdPath, md, 'utf8');
   console.log('📎  Post criado  :', mdPath);
 
-  // 4. Git: add + commit + push
-  console.log('🚀  Publicando...');
-  try {
-    execSync('git add .', { stdio: 'inherit' });
-    execSync(`git commit -m "post: ${slug}"`, { stdio: 'inherit' });
-    execSync('git push', { stdio: 'inherit' });
-    console.log(`\n✅  PRONTO! Post publicado.`);
-    console.log(`🌍  URL: https://achadocerto.vip/blog/${slug}\n`);
-  } catch (_) {
-    console.log('\n📎  Arquivo gerado. Rode manualmente:');
-    console.log(`   git add . && git commit -m "post: ${slug}" && git push\n`);
-  }
+  // 4. ✅ Arquivos salvos — git NÃO é executado aqui
+  // Git add/commit/push é responsabilidade EXCLUSIVA do Workflow
+  // (agente-posts.yml no GitHub Actions)
+  console.log('\n✅  Arquivos gerados com sucesso:');
+  console.log(`   📝 ${mdPath}`);
+  console.log(`   🖼️  ${imgPath}`);
+  console.log(`   🔗 Slug: ${slug}`);
+  console.log(`\n📎  Commit será feito pelo Workflow CI.`);
+  console.log(`🌍  URL: https://achadocerto.vip/blog/${slug}\n`);
 }
 
 main().catch(err => { console.error(err); process.exit(1); });

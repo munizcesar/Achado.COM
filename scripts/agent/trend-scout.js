@@ -233,9 +233,11 @@ export async function fetchTrendingProducts(pillar) {
  * @returns {Array} pool ordenado por prioridade
  */
 export function mergeTrendingWithCatalog(trendingProducts, catalogProducts, pillar, history, ANGLES) {
+  // Usa 7 dias (consistente com o HISTORY_DAYS do agent.js)
+  // Antes: 60 dias — bloqueava todo o catálogo após ~16 dias de postagens
   const historyAsins = new Set(
     history
-      .filter(h => (Date.now() - new Date(h.postedAt).getTime()) < 60 * 24 * 60 * 60 * 1000)
+      .filter(h => (Date.now() - new Date(h.postedAt).getTime()) < 7 * 24 * 60 * 60 * 1000)
       .map(h => h.asin)
   );
 

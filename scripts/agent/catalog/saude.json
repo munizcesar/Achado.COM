@@ -1,0 +1,146 @@
+[
+  {
+    "asin": "B0D9ZY6B9G",
+    "nome": "Vitamina D3 2000UI",
+    "prioridade": 10,
+    "ativo": true,
+    "score": 95,
+    "angle": "saude_preventiva",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0DWNFZN17",
+    "nome": "Ômega 3 Fish Oil 1000mg",
+    "prioridade": 10,
+    "ativo": true,
+    "score": 95,
+    "angle": "saude_preventiva",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0CYD92TBQ",
+    "nome": "Magnésio Quelato 300mg",
+    "prioridade": 9,
+    "ativo": true,
+    "score": 93,
+    "angle": "bem_estar",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B07L5WFHXW",
+    "nome": "Creatina Monohidratada 300g",
+    "prioridade": 9,
+    "ativo": true,
+    "score": 92,
+    "angle": "performance",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B07NX1C9VL",
+    "nome": "Colágeno Hidrolisado com Vitamina C",
+    "prioridade": 9,
+    "ativo": true,
+    "score": 92,
+    "angle": "anti_idade",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B07WQRG8LM",
+    "nome": "Vitamina C 1000mg Efervescente",
+    "prioridade": 8,
+    "ativo": false,
+    "score": 90,
+    "angle": "imunidade",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0DSV58MNC",
+    "nome": "Probiótico 10 Cepas 60 cápsulas",
+    "prioridade": 8,
+    "ativo": true,
+    "score": 88,
+    "angle": "saude_intestinal",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B08C2RFTPN",
+    "nome": "Melatonina 0,21mg Sublingual",
+    "prioridade": 7,
+    "ativo": false,
+    "score": 85,
+    "angle": "qualidade_sono",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B07MFR91SV",
+    "nome": "Whey Protein Isolado 900g",
+    "prioridade": 8,
+    "ativo": true,
+    "score": 88,
+    "angle": "performance",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0F3PZS1WJ",
+    "nome": "Zinco Quelato 30mg 60 cápsulas",
+    "prioridade": 7,
+    "ativo": true,
+    "score": 85,
+    "angle": "imunidade",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0BFT4WF51",
+    "nome": "Coenzima Q10 100mg Antioxidante",
+    "prioridade": 7,
+    "ativo": true,
+    "score": 85,
+    "angle": "saude_preventiva",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0D9HVGM4L",
+    "nome": "Spirulina 500mg 120 comprimidos",
+    "prioridade": 6,
+    "ativo": true,
+    "score": 82,
+    "angle": "bem_estar",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B08W4LQXBT",
+    "nome": "Biotina 10000mcg para Cabelo e Unhas",
+    "prioridade": 7,
+    "ativo": false,
+    "score": 85,
+    "angle": "saude_preventiva",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B07X4GLPKM",
+    "nome": "Vitamina B12 1000mcg Sublingual",
+    "prioridade": 7,
+    "ativo": false,
+    "score": 85,
+    "angle": "bem_estar",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B0FKPSVV2W",
+    "nome": "Glutamina em Pó 300g",
+    "prioridade": 7,
+    "ativo": true,
+    "score": 85,
+    "angle": "performance",
+    "ultimaPublicacao": null
+  },
+  {
+    "asin": "B08MNPWQRV",
+    "nome": "Cúrcuma com Piperina 500mg",
+    "prioridade": 6,
+    "ativo": false,
+    "score": 80,
+    "angle": "saude_intestinal",
+    "ultimaPublicacao": null
+  }
+]
