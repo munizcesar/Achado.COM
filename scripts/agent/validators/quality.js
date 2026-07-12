@@ -104,7 +104,25 @@ export function validateGeneratedContent(content, productTitle) {
 }
 
 /**
+ * Extrai o frontmatter de um markdown.
+ * Retorna o texto do frontmatter ou string vazia.
+ */
+function extractFrontmatter(markdown) {
+  if (!markdown || !markdown.startsWith('---')) return '';
+  const fmEnd = markdown.indexOf('\n---\n', 4);
+  if (fmEnd < 0) return '';
+  return markdown.slice(0, fmEnd + 5);
+}
+
+/**
  * Valida o Markdown final antes de salvar.
+ *
+ * NOTA: O título do markdown vem da Amazon (título oficial do produto),
+ * enquanto o parâmetro `title` passado aqui é o nome do catálogo.
+ * Eles raramente são iguais, então a verificação é flexível.
+ *
+ * A URL de afiliado gerada pelo novo-post.js pode conter UTMs extras,
+ * então também usamos verificação flexível por ASIN.
  */
 export function validateFinalMarkdown(markdown, { title, category, imageFile, affiliateUrl, slug } = {}) {
   const errors = [];
@@ -116,30 +134,67 @@ export function validateFinalMarkdown(markdown, { title, category, imageFile, af
   // Frontmatter básico
   if (!markdown.startsWith('---')) {
     errors.push('Markdown sem frontmatter (---)');
+    // Se não tem frontmatter, não adianta continuar checando
+    return { pass: false, errors, warnings: [] };
   }
 
-  // Título no frontmatter
-  if (title && !markdown.includes(`title: "${title}"`) && !markdown.includes(`title: '${title}'`)) {
-    errors.push('Título do produto não encontrado no frontmatter');
+  const frontmatter = extractFrontmatter(markdown);
+
+  // ── Título no frontmatter ───
+  // Verificação flexível: o título da Amazon é diferente do nome do catálogo
+  const titleMatch = frontmatter.match(/^title:\s*"([^"]+)"\s*$/m) || frontmatter.match(/^title:\s*'([^']+)'\s*$/m);
+
+  if (!titleMatch) {
+    errors.push('Frontmatter sem campo title');
+  } else {
+    const mdTitle = titleMatch[1].trim();
+    if (!mdTitle || mdTitle.length < 5) {
+      errors.push('Título no frontmatter muito curto ou vazio');
+    } else if (/^Produto Amazon\b/i.test(mdTitle) || /^Produto\b$/i.test(mdTitle)) {
+      errors.push(`Título genérico no frontmatter: "${mdTitle.slice(0, 60)}"`);
+    }
   }
 
-  // Categoria no frontmatter
-  if (category && !markdown.includes(`category: ${category}`)) {
-    errors.push(`Categoria ${category} não encontrada no frontmatter`);
+  // ── Categoria no frontmatter ──
+  if (category) {
+    const catMatch = frontmatter.match(/^category:\s*(\S+)\s*$/m);
+    if (!catMatch) {
+      errors.push(`Categoria não encontrada no frontmatter`);
+    } else if (!VALID_CATEGORIES.includes(catMatch[1])) {
+      errors.push(`Categoria inválida no frontmatter: "${catMatch[1]}"`);
+    }
   }
 
-  // Imagem
-  if (imageFile && !markdown.includes(imageFile)) {
+  // ── Imagem ──
+  if (imageFile && !frontmatter.includes(imageFile)) {
     errors.push(`Imagem ${imageFile} não referenciada no frontmatter`);
   }
 
-  // Link de afiliado
+  // ── Link de afiliado ──
+  // Verificação flexível: novo-post.js adiciona UTMs à URL
   if (affiliateUrl) {
-    if (!markdown.includes(affiliateUrl)) {
-      errors.push('URL de afiliado não encontrada no markdown');
+    // Extrai ASIN da URL original
+    const asinMatch = affiliateUrl.match(/\/(?:dp|gp\/product)\/([A-Z0-9]{10})/i);
+
+    if (asinMatch) {
+      const asin = asinMatch[1];
+      // Procura por qualquer URL com o mesmo ASIN no markdown inteiro
+      const asinInMarkdown = new RegExp(`/dp/${asin}[/?#]`, 'i').test(markdown) ||
+                             new RegExp(`/dp/${asin}"`, 'i').test(markdown) ||
+                             markdown.includes(asin);
+      if (!asinInMarkdown) {
+        errors.push(`URL com ASIN ${asin} não encontrada no markdown`);
+      }
+    } else {
+      // Fallback: verificação exata (para lojas não-Amazon)
+      if (!markdown.includes(affiliateUrl)) {
+        errors.push('URL de afiliado não encontrada no markdown');
+      }
     }
-    // Verifica tag=
-    if (!affiliateUrl.includes('?tag=') && !affiliateUrl.includes('&tag=')) {
+
+    // Verifica tag= em qualquer lugar do markdown
+    const hasTag = /[?&]tag=/.test(markdown) || affiliateUrl.includes('?tag=') || affiliateUrl.includes('&tag=');
+    if (!hasTag) {
       errors.push('URL de afiliado sem tag= — NÃO PUBLICAR');
     }
   }

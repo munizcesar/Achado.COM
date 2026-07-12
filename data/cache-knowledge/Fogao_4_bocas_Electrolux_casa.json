@@ -1,0 +1,35 @@
+{
+  "ts": 1783892275867,
+  "knowledge": {
+    "benefits": [
+      "Praticidade no dia a dia",
+      "Economia de tempo",
+      "Qualidade e durabilidade"
+    ],
+    "contraindications": [],
+    "scientific_names": [],
+    "mechanisms": [],
+    "faq": [
+      {
+        "q": "É fácil de instalar?",
+        "a": "Geralmente sim, seguindo o manual."
+      },
+      {
+        "q": "Qual a garantia?",
+        "a": "Consulte a página do produto."
+      },
+      {
+        "q": "Fogao 4 bocas Electrolux funciona?",
+        "a": "Os resultados variam conforme o perfil de uso e consistência."
+      }
+    ],
+    "entities": [
+      "praticidade",
+      "durabilidade",
+      "eficiência",
+      "consumo energético",
+      "capacidade"
+    ],
+    "sources": []
+  }
+}

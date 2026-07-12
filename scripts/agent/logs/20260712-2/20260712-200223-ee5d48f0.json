@@ -1,0 +1,265 @@
+{
+  "meta": {
+    "runId": "20260712-200223-ee5d48f0",
+    "startTime": "2026-07-12T20:02:23.970Z",
+    "endTime": "2026-07-12T20:02:52.669Z",
+    "duration": 28699,
+    "pilar": "saude",
+    "trigger": "manual",
+    "executionId": "20260712-200223-ee5d48f0"
+  },
+  "result": {
+    "status": "fail",
+    "produto": "Vitamina D3 2000UI",
+    "error": null,
+    "errors": null
+  },
+  "entries": [
+    {
+      "ts": "2026-07-12T20:02:23.975Z",
+      "level": "INFO",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "═══════════════════════════════════════════════════",
+      "elapsed": 5
+    },
+    {
+      "ts": "2026-07-12T20:02:23.977Z",
+      "level": "INFO",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🤖 Pipeline — 20260712-200223-ee5d48f0",
+      "pillar": "saude",
+      "tag": "afiliado-ok",
+      "elapsed": 7
+    },
+    {
+      "ts": "2026-07-12T20:02:23.978Z",
+      "level": "INFO",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "═══ 🧪 DRY RUN — nenhum artefato será persistido ═══",
+      "elapsed": 8
+    },
+    {
+      "ts": "2026-07-12T20:02:23.992Z",
+      "level": "STEP",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Validando configuração de afiliado...",
+      "elapsed": 22
+    },
+    {
+      "ts": "2026-07-12T20:02:23.993Z",
+      "level": "PASS",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tag configurada",
+      "elapsed": 23
+    },
+    {
+      "ts": "2026-07-12T20:02:23.998Z",
+      "level": "STEP",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Buscando produtos para \"saude\"...",
+      "elapsed": 28
+    },
+    {
+      "ts": "2026-07-12T20:02:24.905Z",
+      "level": "INFO",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Trend Scout indisponível",
+      "elapsed": 935
+    },
+    {
+      "ts": "2026-07-12T20:02:24.910Z",
+      "level": "INFO",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Catálogo: 11 produtos",
+      "elapsed": 940
+    },
+    {
+      "ts": "2026-07-12T20:02:24.911Z",
+      "level": "INFO",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Pool: 11 produtos",
+      "elapsed": 941
+    },
+    {
+      "ts": "2026-07-12T20:02:24.913Z",
+      "level": "INFO",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tentativa 1/11: Vitamina D3 2000UI [📦 catálogo]",
+      "asin": "B0D9ZY6B9G",
+      "elapsed": 943
+    },
+    {
+      "ts": "2026-07-12T20:02:24.924Z",
+      "level": "INFO",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 954
+    },
+    {
+      "ts": "2026-07-12T20:02:24.925Z",
+      "level": "INFO",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Produto : Vitamina D3 2000UI",
+      "elapsed": 955
+    },
+    {
+      "ts": "2026-07-12T20:02:24.927Z",
+      "level": "INFO",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Pilar   : saude",
+      "elapsed": 957
+    },
+    {
+      "ts": "2026-07-12T20:02:24.928Z",
+      "level": "INFO",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Ângulo  : saude_preventiva",
+      "elapsed": 958
+    },
+    {
+      "ts": "2026-07-12T20:02:24.929Z",
+      "level": "INFO",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 959
+    },
+    {
+      "ts": "2026-07-12T20:02:24.930Z",
+      "level": "INFO",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 960
+    },
+    {
+      "ts": "2026-07-12T20:02:24.931Z",
+      "level": "INFO",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 961
+    },
+    {
+      "ts": "2026-07-12T20:02:24.933Z",
+      "level": "INFO",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 963
+    },
+    {
+      "ts": "2026-07-12T20:02:24.934Z",
+      "level": "INFO",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 964
+    },
+    {
+      "ts": "2026-07-12T20:02:24.936Z",
+      "level": "STEP",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Gerando post: Vitamina D3 2000UI [B0D9ZY6B9G]",
+      "elapsed": 966
+    },
+    {
+      "ts": "2026-07-12T20:02:24.938Z",
+      "level": "STEP",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Executando novo-post.js para gerar arquivos...",
+      "elapsed": 969
+    },
+    {
+      "ts": "2026-07-12T20:02:52.541Z",
+      "level": "PASS",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos do post gerados com sucesso",
+      "elapsed": 28571
+    },
+    {
+      "ts": "2026-07-12T20:02:52.601Z",
+      "level": "PASS",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos gerados: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p",
+      "elapsed": 28631
+    },
+    {
+      "ts": "2026-07-12T20:02:52.607Z",
+      "level": "PASS",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Quality gates OK",
+      "elapsed": 28637
+    },
+    {
+      "ts": "2026-07-12T20:02:52.610Z",
+      "level": "WARN",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "SEO: 2 problemas",
+      "elapsed": 28640
+    },
+    {
+      "ts": "2026-07-12T20:02:52.616Z",
+      "level": "INFO",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Auditoria: APROVADO — 90% (9/10)",
+      "elapsed": 28646
+    },
+    {
+      "ts": "2026-07-12T20:02:52.617Z",
+      "level": "PASS",
+      "run": "20260712-200223-ee5d48f0",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ Produto selecionado: Vitamina D3 2000UI [B0D9ZY6B9G]",
+      "elapsed": 28647
+    }
+  ]
+}

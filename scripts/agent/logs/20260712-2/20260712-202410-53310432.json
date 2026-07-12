@@ -1,0 +1,364 @@
+{
+  "meta": {
+    "runId": "20260712-202410-53310432",
+    "startTime": "2026-07-12T20:24:10.308Z",
+    "endTime": "2026-07-12T20:24:32.874Z",
+    "duration": 22566,
+    "pilar": "saude",
+    "trigger": "manual",
+    "executionId": "20260712-202410-53310432"
+  },
+  "result": {
+    "status": "success",
+    "produto": "Creatina Monohidratada 300g",
+    "error": null,
+    "errors": null
+  },
+  "entries": [
+    {
+      "ts": "2026-07-12T20:24:10.311Z",
+      "level": "INFO",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "═══════════════════════════════════════════════════",
+      "elapsed": 3
+    },
+    {
+      "ts": "2026-07-12T20:24:10.312Z",
+      "level": "INFO",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🤖 Pipeline — 20260712-202410-53310432",
+      "pillar": "saude",
+      "tag": "afiliado-ok",
+      "elapsed": 4
+    },
+    {
+      "ts": "2026-07-12T20:24:10.313Z",
+      "level": "INFO",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "═══ 🧪 DRY RUN — nenhum artefato será persistido ═══",
+      "elapsed": 5
+    },
+    {
+      "ts": "2026-07-12T20:24:10.324Z",
+      "level": "STEP",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Validando configuração de afiliado...",
+      "elapsed": 16
+    },
+    {
+      "ts": "2026-07-12T20:24:10.325Z",
+      "level": "PASS",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tag configurada",
+      "elapsed": 17
+    },
+    {
+      "ts": "2026-07-12T20:24:10.329Z",
+      "level": "STEP",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Buscando produtos para \"saude\"...",
+      "elapsed": 21
+    },
+    {
+      "ts": "2026-07-12T20:24:11.072Z",
+      "level": "INFO",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Trend Scout indisponível",
+      "elapsed": 764
+    },
+    {
+      "ts": "2026-07-12T20:24:11.077Z",
+      "level": "INFO",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Catálogo: 11 produtos",
+      "elapsed": 769
+    },
+    {
+      "ts": "2026-07-12T20:24:11.078Z",
+      "level": "INFO",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Pool: 10 produtos",
+      "elapsed": 770
+    },
+    {
+      "ts": "2026-07-12T20:24:11.079Z",
+      "level": "INFO",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tentativa 1/10: Creatina Monohidratada 300g [📦 catálogo]",
+      "asin": "B07L5WFHXW",
+      "elapsed": 772
+    },
+    {
+      "ts": "2026-07-12T20:24:11.089Z",
+      "level": "INFO",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 781
+    },
+    {
+      "ts": "2026-07-12T20:24:11.090Z",
+      "level": "INFO",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Produto : Creatina Monohidratada 300g",
+      "elapsed": 782
+    },
+    {
+      "ts": "2026-07-12T20:24:11.091Z",
+      "level": "INFO",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Pilar   : saude",
+      "elapsed": 783
+    },
+    {
+      "ts": "2026-07-12T20:24:11.091Z",
+      "level": "INFO",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Ângulo  : performance",
+      "elapsed": 784
+    },
+    {
+      "ts": "2026-07-12T20:24:11.092Z",
+      "level": "INFO",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 784
+    },
+    {
+      "ts": "2026-07-12T20:24:11.092Z",
+      "level": "INFO",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 784
+    },
+    {
+      "ts": "2026-07-12T20:24:11.093Z",
+      "level": "INFO",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 785
+    },
+    {
+      "ts": "2026-07-12T20:24:11.093Z",
+      "level": "INFO",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 785
+    },
+    {
+      "ts": "2026-07-12T20:24:11.094Z",
+      "level": "INFO",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 786
+    },
+    {
+      "ts": "2026-07-12T20:24:11.094Z",
+      "level": "STEP",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Gerando post: Creatina Monohidratada 300g [B07L5WFHXW]",
+      "elapsed": 787
+    },
+    {
+      "ts": "2026-07-12T20:24:11.096Z",
+      "level": "STEP",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Executando novo-post.js para gerar arquivos...",
+      "elapsed": 788
+    },
+    {
+      "ts": "2026-07-12T20:24:32.723Z",
+      "level": "PASS",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos do post gerados com sucesso",
+      "elapsed": 22415
+    },
+    {
+      "ts": "2026-07-12T20:24:32.766Z",
+      "level": "PASS",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos gerados: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p",
+      "elapsed": 22458
+    },
+    {
+      "ts": "2026-07-12T20:24:32.770Z",
+      "level": "PASS",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Quality gates OK",
+      "elapsed": 22462
+    },
+    {
+      "ts": "2026-07-12T20:24:32.775Z",
+      "level": "WARN",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "SEO: 1 problemas",
+      "elapsed": 22467
+    },
+    {
+      "ts": "2026-07-12T20:24:32.788Z",
+      "level": "INFO",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Auditoria: APROVADO — 90% (9/10)",
+      "elapsed": 22480
+    },
+    {
+      "ts": "2026-07-12T20:24:32.788Z",
+      "level": "PASS",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ Produto selecionado: Creatina Monohidratada 300g [B07L5WFHXW]",
+      "elapsed": 22480
+    },
+    {
+      "ts": "2026-07-12T20:24:32.793Z",
+      "level": "STEP",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Verificando artefatos...",
+      "elapsed": 22485
+    },
+    {
+      "ts": "2026-07-12T20:24:32.799Z",
+      "level": "PASS",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ C:\\Users\\Cesar Victor\\Desktop\\AchadoCerto.Vip\\AchadoCerto.VIP\\src\\content\\blog\\o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.md",
+      "elapsed": 22492
+    },
+    {
+      "ts": "2026-07-12T20:24:32.801Z",
+      "level": "PASS",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ 2649 bytes",
+      "elapsed": 22493
+    },
+    {
+      "ts": "2026-07-12T20:24:32.802Z",
+      "level": "PASS",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ C:\\Users\\Cesar Victor\\Desktop\\AchadoCerto.Vip\\AchadoCerto.VIP\\public\\images\\posts\\o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.webp",
+      "elapsed": 22494
+    },
+    {
+      "ts": "2026-07-12T20:24:32.803Z",
+      "level": "PASS",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ 88.7KB",
+      "elapsed": 22495
+    },
+    {
+      "ts": "2026-07-12T20:24:32.803Z",
+      "level": "PASS",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ o-resumo-do-produto-apresenta-as-principais-informacoes-do-p",
+      "elapsed": 22495
+    },
+    {
+      "ts": "2026-07-12T20:24:32.804Z",
+      "level": "PASS",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Artefatos OK",
+      "elapsed": 22496
+    },
+    {
+      "ts": "2026-07-12T20:24:32.807Z",
+      "level": "STEP",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Aguardando commit (Workflow CI)...",
+      "elapsed": 22499
+    },
+    {
+      "ts": "2026-07-12T20:24:32.811Z",
+      "level": "PASS",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Pronto para commit — CI fará git add/commit/push",
+      "elapsed": 22503
+    },
+    {
+      "ts": "2026-07-12T20:24:32.812Z",
+      "level": "STEP",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Aguardando deploy (Workflow CI)...",
+      "elapsed": 22504
+    },
+    {
+      "ts": "2026-07-12T20:24:32.818Z",
+      "level": "PASS",
+      "run": "20260712-202410-53310432",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Publicação concluída: https://achadocerto.vip/blog/o-resumo-do-produto-apresenta-as-principais-informacoes-do-p",
+      "elapsed": 22510
+    }
+  ]
+}

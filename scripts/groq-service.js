@@ -189,12 +189,36 @@ function construirPrompt(produto, arquetipo, variacoes, contextoSerper) {
   const categoria = produto.category || 'default';
   const guia = GUIAS_CATEGORIA[categoria] || GUIAS_CATEGORIA.default;
 
+  const normalized = produto.normalized || {};
+  const canonical = produto.canonical || {};
+  const knowledge = produto.knowledge || {};
+  const plan = produto.plan || {};
+
   const dadosProduto = JSON.stringify({
     nome: produto.title,
+    marca: normalized.marca || canonical.brand || '',
     categoria: produto.category,
+    subcategoria: canonical.subcategory || '',
     loja: produto.store,
     especificacoes: produto.specs || [],
-    descricao_base: produto.description
+    descricao_base: produto.description,
+    ingredientes: normalized.ingredientes?.length ? normalized.ingredientes 
+      : (canonical.active_ingredients?.length ? canonical.active_ingredients : []),
+    beneficios: normalized.beneficios?.length ? normalized.beneficios 
+      : (knowledge.benefits?.length ? knowledge.benefits : []),
+    publico_alvo: normalized.publico_alvo?.length ? normalized.publico_alvo : [],
+    cuidados: normalized.cuidados?.length ? normalized.cuidados 
+      : (knowledge.contraindications?.length ? knowledge.contraindications : []),
+    faq_sugerido: normalized.faq_sugerido?.length ? normalized.faq_sugerido 
+      : (knowledge.faq?.length ? knowledge.faq : []),
+    // Dados enriquecidos (Fase 1)
+    nomes_cientificos: knowledge.scientific_names || [],
+    mecanismos_acao: knowledge.mechanisms || [],
+    entidades_semanticas: knowledge.entities || [],
+    plano_editorial_secoes: plan.sections ? plan.sections.map(s => s.label) : [],
+    tom_editorial: plan.tone || '',
+    intencao_busca: plan.intent || '',
+    keyword_principal: plan.primary_keyword || '',
   }, null, 2);
 
   const contextoExterno = contextoSerper
@@ -390,6 +414,20 @@ RESTRIÇÕES ABSOLUTAS
 - Não dizer que "testou" o produto sem dados que suportem isso
 
 ════════════════════════════════════
+PROIBIÇÃO DE CÓDIGO E HTML (NUNCA VIOLAR)
+════════════════════════════════════
+- NUNCA copie texto diretamente da página da Amazon
+- NUNCA reproduza HTML, CSS ou código de qualquer tipo
+- NUNCA escreva classes CSS, seletores ou estilos inline
+- NUNCA repita nomes de classes como "aplus-" ou "celwidget"
+- NUNCA inclua JavaScript, chamadas de função ou logShoppableMetrics
+- NUNCA inclua div, span, style, class=, id= ou qualquer tag HTML
+- NUNCA use font-size, margin, padding, display: como parte do texto
+- NUNCA inclua blocos de código markup ou notação técnica não-markdown
+- TUDO deve ser escrito com suas próprias palavras em português natural
+- Se o contexto externo contiver HTML, IGNORE-O completamente
+
+════════════════════════════════════
 REVISÃO FINAL OBRIGATÓRIA (SIMULE EDITOR HUMANO)
 ════════════════════════════════════
 Antes de entregar o artigo, simule mentalmente a revisão de um editor de portal premium:
@@ -419,7 +457,7 @@ TAMANHO ALVO:
 
   const userPrompt = `Crie o review completo para este produto seguindo rigorosamente o protocolo editorial v4.
 
-PRODUTO:
+PRODUTO (dados completos — use TODOS os campos disponíveis):
 ${dadosProduto}
 ${contextoExterno}
 
@@ -436,7 +474,15 @@ INSTRUÇÕES FINAIS:
 - Faça o leitor sentir que entendeu melhor a compra ao terminar a leitura
 - Inclua FAQ conversacional e direto no final
 - Mantenha o tom evergreen e profissional
-- Antes de finalizar: revise como editor humano, eliminando qualquer traço de automação`;
+- Antes de finalizar: revise como editor humano, eliminando qualquer traço de automação
+
+⚠️ USE OS DADOS ESTRUTURADOS ACIMA:
+- Se o campo MARCA estiver preenchido, mencione a marca naturalmente no texto
+- Se INGREDIENTES estiver presente, incorpore-os na seção técnica
+- Se BENEFÍCIOS estiver listado, desenvolva cada um com contexto prático
+- Se PÚBLICO-ALVO estiver definido, direcione o texto para esse perfil
+- Se FAQ_SUGERIDO existir, use como inspiração — reescreva com suas palavras, não copie
+- Se nenhum dado estruturado estiver disponível, escreva baseado apenas no nome e especificações`;
 
   return { systemPrompt, userPrompt };
 }
@@ -456,6 +502,19 @@ export async function gerarConteudoPost(produto, arquetipo, variacoes, contextoS
       { role: 'user', content: userPrompt }
     ];
 
+    // [AUDIT] Log completo do prompt enviado
+    console.log('\n[AUDIT] === SYSTEM PROMPT ENVIADO ===');
+    console.log(systemPrompt.substring(0, 500) + '...');
+    console.log('\n[AUDIT] === USER PROMPT ENVIADO ===');
+    console.log(userPrompt.substring(0, 500) + '...');
+    console.log('\n[AUDIT] === PAYLOAD COMPLETO (dadosProduto JSON) ===');
+    // Extrai o JSON do userPrompt
+    const jsonMatch = userPrompt.match(/PRODUTO \(dados completos.*?\):\n(\{[\s\S]*?\})\n\nINSTRUÇÕES/);
+    if (jsonMatch) {
+      console.log(jsonMatch[1]);
+    }
+    console.log('\n[AUDIT] === FIM DO PAYLOAD ===\n');
+
     const conteudo = await groqRequest(messages, groqApiKey);
 
     console.log(`   ✅ Conteúdo gerado com sucesso (~${conteudo.length} caracteres)`);
@@ -464,6 +523,64 @@ export async function gerarConteudoPost(produto, arquetipo, variacoes, contextoS
     console.error(`   ❌ Erro ao gerar conteúdo: ${error.message}`);
     console.log('   💡 Usando template de fallback básico...');
     return gerarConteudoFallback(produto, variacoes);
+  }
+}
+
+/**
+ * Reescreve o conteúdo com base no relatório de melhoria editorial.
+ * Usado no rewrite loop quando Editorial Score < 45/50.
+ */
+export async function reescreverConteudo(conteudoOriginal, improvementReport, groqApiKey) {
+  if (!groqApiKey || groqApiKey.length < 20) {
+    throw new Error('GROQ_API_KEY não configurada no .env');
+  }
+
+  console.log(`   🔄 Reescrevendo conteúdo com base em feedback editorial...`);
+
+  // Safety: fallback se improvementReport for malformado
+  const melhorias = improvementReport?.improvements || ['Melhorar originalidade e naturalidade do texto'];
+  const dimensoes = improvementReport?.editorialFeedback?.dimensions || {};
+  const scoreAtual = improvementReport?.editorialFeedback?.score ?? 40;
+
+  const systemPrompt = `Você é um editor brasileiro especializado em revisão de conteúdo.
+Sua função é reescrever o artigo abaixo para melhorar sua qualidade editorial.
+
+REGRAS:
+- Mantenha o tom editorial e humano
+- NÃO adicione HTML, CSS ou código
+- Reescreva com suas próprias palavras — não copie da Amazon
+- Mantenha o formato Markdown
+- O artigo final deve ser natural e original
+
+MELHORIAS SOLICITADAS:
+${melhorias.map((imp, i) => `${i + 1}. ${imp}`).join('\n')}
+
+SCORE MÍNIMO NECESSÁRIO: 45/50
+SCORE ATUAL: ${scoreAtual}/50
+
+Se o texto tiver HTML, CSS ou frases genéricas, REMOVA-OS completamente.
+O texto precisa parecer de um portal editorial premium brasileiro.`;
+
+  const userPrompt = `Reescreva o artigo abaixo aplicando todas as melhorias listadas acima.
+
+ARTIGO ATUAL:
+${conteudoOriginal}
+
+Lembre-se: o score editorial atual é ${scoreAtual}/50. Precisamos de no mínimo 45/50.
+Foque em tornar o texto mais original, bem estruturado e informativo.`;
+
+  try {
+    const messages = [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: userPrompt }
+    ];
+
+    const conteudo = await groqRequest(messages, groqApiKey);
+    console.log(`   ✅ Conteúdo reescrito com sucesso (~${conteudo.length} caracteres)`);
+    return conteudo;
+  } catch (error) {
+    console.error(`   ❌ Erro ao reescrever conteúdo: ${error.message}`);
+    return null;
   }
 }
 

@@ -1,0 +1,48 @@
+{
+  "ts": 1783892275854,
+  "knowledge": {
+    "benefits": [
+      "Aumento de força",
+      "Melhora na recuperação muscular",
+      "Aumento de massa magra",
+      "Melhora cognitiva em idosos"
+    ],
+    "contraindications": [
+      "Doenças renais preexistentes (consultar médico)"
+    ],
+    "scientific_names": [
+      "Creatina Monohidratada",
+      "Creatina Etílica"
+    ],
+    "mechanisms": [
+      "Aumenta a regeneração de ATP nas células musculares",
+      "Melhora a performance em exercícios de alta intensidade"
+    ],
+    "faq": [
+      {
+        "q": "Como tomar?",
+        "a": "Siga a dosagem recomendada na embalagem."
+      },
+      {
+        "q": "Tem efeitos colaterais?",
+        "a": "Geralmente bem tolerado, mas consulte um médico."
+      },
+      {
+        "q": "Creatina Monohidratada 300g funciona?",
+        "a": "Os resultados variam conforme o perfil de uso e consistência."
+      }
+    ],
+    "entities": [
+      "biodisponibilidade",
+      "absorção",
+      "metabolismo",
+      "aminoácidos essenciais",
+      "suplementação",
+      "dosagem",
+      "eficácia",
+      "estudo clínico",
+      "creatina monohidratada"
+    ],
+    "sources": []
+  }
+}

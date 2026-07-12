@@ -1,0 +1,49 @@
+{
+  "ts": 1783892275863,
+  "knowledge": {
+    "benefits": [
+      "Saúde cardiovascular",
+      "Função cognitiva",
+      "Saúde articular",
+      "Ação anti-inflamatória"
+    ],
+    "contraindications": [
+      "Anticoagulantes (consultar médico)"
+    ],
+    "scientific_names": [
+      "Ácido Eicosapentaenoico (EPA)",
+      "Ácido Docosahexaenoico (DHA)"
+    ],
+    "mechanisms": [
+      "Ação anti-inflamatória sistêmica",
+      "Suporte à saúde cardiovascular e neurológica"
+    ],
+    "faq": [
+      {
+        "q": "Como tomar?",
+        "a": "Siga a dosagem recomendada na embalagem."
+      },
+      {
+        "q": "Tem efeitos colaterais?",
+        "a": "Geralmente bem tolerado, mas consulte um médico."
+      },
+      {
+        "q": "Omega 3 Fish Oil funciona?",
+        "a": "Os resultados variam conforme o perfil de uso e consistência."
+      }
+    ],
+    "entities": [
+      "biodisponibilidade",
+      "absorção",
+      "metabolismo",
+      "aminoácidos essenciais",
+      "suplementação",
+      "dosagem",
+      "eficácia",
+      "estudo clínico",
+      "epa",
+      "dha"
+    ],
+    "sources": []
+  }
+}

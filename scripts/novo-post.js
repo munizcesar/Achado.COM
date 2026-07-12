@@ -41,6 +41,10 @@ import { gerarConteudoPost } from './groq-service.js';
 import { validarConteudo, corrigirAutomatico, analisarDetalhado } from './content-validator.js';
 import { fetchAmazon as fetchAmazonHttp } from './amazon-service.js';
 import { fetchAmazon as fetchAmazonPuppeteer } from './amazon-service-puppeteer.js';
+import { normalizeProductData } from './agent/content/normalizer.js';
+import { buildCanonicalProduct } from './agent/content/canonical-product.js';
+import { buildKnowledge } from './agent/content/knowledge-builder.js';
+import { createEditorialPlan } from './agent/content/editorial-planner.js';
 
 // ── Carrega links de afiliado salvos ───────────────────────────────────────
 function carregarProdutosAfiliados() {
@@ -122,6 +126,13 @@ function processarLinkAfiliado(url, tipo = 'mercado-livre') {
 // ── Sanitização de preços e CTA ───────────────────────────────────────────
 function sanitizarConteudo(conteudo) {
   let sanitizado = conteudo;
+
+  // Remove HTML/CSS garbage (Amazon A+ Content markup)
+  sanitizado = sanitizado.replace(/<style[^>]*>[^<]*<\/style>/gi, '');
+  sanitizado = sanitizado.replace(/<[^>]+>/g, '');
+  sanitizado = sanitizado.replace(/\.aplus-[a-zA-Z0-9_-]+[^{]*\{[^}]*\}/g, '');
+  sanitizado = sanitizado.replace(/#[a-zA-Z0-9_-]+\s*\{[^}]*\}/g, '');
+  sanitizado = sanitizado.replace(/\.[a-zA-Z][a-zA-Z0-9_-]*\s*\{[^}]*\}/g, '');
   
   // Remove padrões monetários
   sanitizado = sanitizado.replace(/R\$\s*[\d.,]+/gi, '');
@@ -134,6 +145,17 @@ function sanitizarConteudo(conteudo) {
   const linhas = sanitizado.split('\n');
   sanitizado = linhas.filter(l => !/^\s*[r$\d.,\s]+\s*$/i.test(l)).join('\n');
   sanitizado = sanitizado.replace(/\n{3,}/g, '\n\n').trim();
+
+  // Remove linhas de CSS residuals (apenas sintaxe CSS explicita)
+  sanitizado = sanitizado.split('\n').filter(l => {
+    const trimmed = l.trim();
+    // Remove linhas que sao apenas CSS selectors
+    if (/^[.#][a-zA-Z0-9_-]/.test(trimmed)) return false;
+    // Remove linhas que sao apenas declaracoes CSS (propriedade: valor;)
+    if (/^(background|color|margin|padding|font|display|width|height|border)[\s-]*:/i.test(trimmed)) return false;
+    if (/^[a-zA-Z0-9_-]+\s*\{[^}]*\}$/.test(trimmed)) return false;
+    return true;
+  }).join('\n');
   
   // Valida e injeta CTA se faltar
   const temCTA = /confira|acesse|veja|conheça|consulte|saiba mais|clique|visite|aproveite|compre|adquira|leia mais|descubra|encontre|confira no/i.test(sanitizado);
@@ -643,25 +665,59 @@ async function generateMarkdown(produto, imageFile, slug) {
   
   const today = new Date().toISOString().split('T')[0];
   
-  // 1. Seleciona arquetipo baseado no produto
+  // ── FASE 1: Pipeline Editorial Avançado ────────────────────
+  console.log('\n[AUDIT] === FASE 1 INÍCIO ===');
+  
+  // 1. Constrói produto canônico (padronizado)
+  const t1 = Date.now();
+  const canonical = buildCanonicalProduct(produto);
+  console.log(`[AUDIT] buildCanonicalProduct: ${Date.now() - t1}ms`);
+  console.log(`   📋 Produto canônico: marca=${canonical.brand || 'N/A'}, subcategoria=${canonical.subcategory}`);
+
+  // 2. Constrói conhecimento (cache + Serper)
+  const t2 = Date.now();
+  const knowledge = await buildKnowledge(canonical);
+  console.log(`[AUDIT] buildKnowledge: ${Date.now() - t2}ms`);
+  if (knowledge) {
+    console.log(`   🧠 Knowledge: ${knowledge.benefits.length} benefícios, ${knowledge.faq.length} FAQ`);
+  }
+
+  // 3. Cria plano editorial (outline + SEO)
+  const t3 = Date.now();
+  const plan = createEditorialPlan(canonical, knowledge);
+  console.log(`[AUDIT] createEditorialPlan: ${Date.now() - t3}ms`);
+  console.log(`   📝 Plano editorial: ${plan.sections.length} seções, tom=${plan.tone}, intent=${plan.intent}`);
+  console.log(`   🔑 Keyword primária: "${plan.primary_keyword}"`);
+
+  // Anexa planejamento ao produto para o Groq
+  produto.canonical = canonical;
+  produto.knowledge = knowledge;
+  produto.plan = plan;
+  console.log('[AUDIT] === FASE 1 FIM ===\n');
+
+  // ── Geração de conteúdo (mantida para compatibilidade) ─────
+  
+  // 4. Seleciona arquetipo baseado no produto
   const arquetipo = selecionarArquetipo(title);
   console.log(`   📚 Arquétipo: ${ARQUETIPOS[arquetipo].nome}`);
   
-  // 2. Gera variações de conteúdo
+  // 5. Gera variações de conteúdo
   const variacoes = gerarContextoVariacoes(produto, arquetipo);
   
-  // 3. Busca contexto via Serper (opcional)
+  // 6. Busca contexto via Serper (se knowledge não tiver)
   let contextoSerper = null;
-  const serperKey = process.env.SERPER_API_KEY;
-  if (serperKey && serperKey !== 'sua-key-serper-aqui') {
-    try {
-      contextoSerper = await buscarContextoProduto(title, category, serperKey);
-    } catch (e) {
-      console.log('   ⚠️  Serper indisponível, continuando sem contexto externo');
+  if (!knowledge || knowledge.sources.length === 0) {
+    const serperKey = process.env.SERPER_API_KEY;
+    if (serperKey && serperKey !== 'sua-key-serper-aqui') {
+      try {
+        contextoSerper = await buscarContextoProduto(title, category, serperKey);
+      } catch (e) {
+        console.log('   ⚠️  Serper indisponível, continuando sem contexto externo');
+      }
     }
   }
   
-  // 4. Gera conteúdo via Groq
+  // 7. Gera conteúdo via Groq
   const groqKey = process.env.GROQ_API_KEY;
   let conteudoGerado;
   
@@ -774,6 +830,15 @@ async function main() {
   } catch (err) {
     console.error('\n❌ Erro ao buscar produto:', err.message, '\n');
     process.exit(1);
+  }
+
+  // Normaliza dados do produto para contexto estruturado (enriquece prompt Groq)
+  try {
+    product.normalized = normalizeProductData(product);
+    console.log(`   📊 Dados normalizados: marca=${product.normalized.marca || 'N/A'}, benefícios=${product.normalized.beneficios.length}`);
+  } catch (normError) {
+    console.log(`   ⚠️  Normalizador indisponível: ${normError.message}`);
+    product.normalized = null;
   }
 
   if (isSuspiciousTitle(product.title)) {

@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "runId": "2026-07-12-2059",
+    "startTime": "2026-07-12T20:59:23.328Z",
+    "endTime": "2026-07-12T20:59:23.334Z",
+    "duration": 6,
+    "pilar": "error",
+    "trigger": "manual"
+  },
+  "result": {
+    "status": "error",
+    "produto": null,
+    "error": "cbGroq.isClosed is not a function",
+    "errors": null
+  },
+  "entries": [
+    {
+      "ts": "2026-07-12T20:59:23.329Z",
+      "level": "ERROR",
+      "run": "2026-07-12-2059",
+      "pilar": "error",
+      "trigger": "manual",
+      "message": "cbGroq.isClosed is not a function",
+      "elapsed": 1
+    }
+  ]
+}

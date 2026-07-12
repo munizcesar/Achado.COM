@@ -1,0 +1,400 @@
+{
+  "meta": {
+    "runId": "20260712-203042-9cf4ad61",
+    "startTime": "2026-07-12T20:30:42.867Z",
+    "endTime": "2026-07-12T20:31:00.623Z",
+    "duration": 17756,
+    "pilar": "saude",
+    "trigger": "manual",
+    "executionId": "20260712-203042-9cf4ad61"
+  },
+  "result": {
+    "status": "success",
+    "produto": "Ômega 3 Fish Oil 1000mg",
+    "error": null,
+    "errors": null
+  },
+  "entries": [
+    {
+      "ts": "2026-07-12T20:30:42.878Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "═══════════════════════════════════════════════════",
+      "elapsed": 12
+    },
+    {
+      "ts": "2026-07-12T20:30:42.880Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🤖 Pipeline — 20260712-203042-9cf4ad61",
+      "pillar": "saude",
+      "tag": "afiliado-ok",
+      "elapsed": 13
+    },
+    {
+      "ts": "2026-07-12T20:30:42.881Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "═══ 🧪 DRY RUN — nenhum artefato será persistido ═══",
+      "elapsed": 14
+    },
+    {
+      "ts": "2026-07-12T20:30:42.917Z",
+      "level": "STEP",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Validando configuração de afiliado...",
+      "elapsed": 51
+    },
+    {
+      "ts": "2026-07-12T20:30:42.919Z",
+      "level": "PASS",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tag configurada",
+      "elapsed": 52
+    },
+    {
+      "ts": "2026-07-12T20:30:42.933Z",
+      "level": "STEP",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Buscando produtos para \"saude\"...",
+      "elapsed": 66
+    },
+    {
+      "ts": "2026-07-12T20:30:43.630Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Trend Scout indisponível",
+      "elapsed": 763
+    },
+    {
+      "ts": "2026-07-12T20:30:43.635Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Catálogo: 11 produtos",
+      "elapsed": 768
+    },
+    {
+      "ts": "2026-07-12T20:30:43.636Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Pool: 10 produtos",
+      "elapsed": 769
+    },
+    {
+      "ts": "2026-07-12T20:30:43.637Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tentativa 1/10: Ômega 3 Fish Oil 1000mg [📦 catálogo]",
+      "asin": "B0DWNFZN17",
+      "elapsed": 770
+    },
+    {
+      "ts": "2026-07-12T20:30:43.651Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 784
+    },
+    {
+      "ts": "2026-07-12T20:30:43.652Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Produto : Ômega 3 Fish Oil 1000mg",
+      "elapsed": 785
+    },
+    {
+      "ts": "2026-07-12T20:30:43.653Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Pilar   : saude",
+      "elapsed": 786
+    },
+    {
+      "ts": "2026-07-12T20:30:43.653Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Ângulo  : saude_preventiva",
+      "elapsed": 786
+    },
+    {
+      "ts": "2026-07-12T20:30:43.654Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 787
+    },
+    {
+      "ts": "2026-07-12T20:30:43.654Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 787
+    },
+    {
+      "ts": "2026-07-12T20:30:43.655Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 788
+    },
+    {
+      "ts": "2026-07-12T20:30:43.655Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 788
+    },
+    {
+      "ts": "2026-07-12T20:30:43.656Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 789
+    },
+    {
+      "ts": "2026-07-12T20:30:43.656Z",
+      "level": "STEP",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Gerando post: Ômega 3 Fish Oil 1000mg [B0DWNFZN17]",
+      "elapsed": 789
+    },
+    {
+      "ts": "2026-07-12T20:30:43.658Z",
+      "level": "STEP",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Executando novo-post.js para gerar arquivos...",
+      "elapsed": 791
+    },
+    {
+      "ts": "2026-07-12T20:31:00.503Z",
+      "level": "PASS",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos do post gerados com sucesso",
+      "elapsed": 17636
+    },
+    {
+      "ts": "2026-07-12T20:31:00.535Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Slug gerado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p → renomeando para: omega-3-fish-oil-1000mg",
+      "elapsed": 17668
+    },
+    {
+      "ts": "2026-07-12T20:31:00.539Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.md → omega-3-fish-oil-1000mg.md",
+      "elapsed": 17672
+    },
+    {
+      "ts": "2026-07-12T20:31:00.544Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.webp → omega-3-fish-oil-1000mg.webp",
+      "elapsed": 17677
+    },
+    {
+      "ts": "2026-07-12T20:31:00.548Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Referências de imagem atualizadas no .md",
+      "elapsed": 17681
+    },
+    {
+      "ts": "2026-07-12T20:31:00.549Z",
+      "level": "PASS",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos gerados: omega-3-fish-oil-1000mg",
+      "elapsed": 17682
+    },
+    {
+      "ts": "2026-07-12T20:31:00.553Z",
+      "level": "PASS",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Quality gates OK",
+      "elapsed": 17687
+    },
+    {
+      "ts": "2026-07-12T20:31:00.556Z",
+      "level": "WARN",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "SEO: 2 problemas",
+      "elapsed": 17689
+    },
+    {
+      "ts": "2026-07-12T20:31:00.560Z",
+      "level": "INFO",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Auditoria: APROVADO — 90% (9/10)",
+      "elapsed": 17693
+    },
+    {
+      "ts": "2026-07-12T20:31:00.561Z",
+      "level": "PASS",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ Produto selecionado: Ômega 3 Fish Oil 1000mg [B0DWNFZN17]",
+      "elapsed": 17694
+    },
+    {
+      "ts": "2026-07-12T20:31:00.566Z",
+      "level": "STEP",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Verificando artefatos...",
+      "elapsed": 17699
+    },
+    {
+      "ts": "2026-07-12T20:31:00.568Z",
+      "level": "PASS",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ C:\\Users\\Cesar Victor\\Desktop\\AchadoCerto.Vip\\AchadoCerto.VIP\\src\\content\\blog\\omega-3-fish-oil-1000mg.md",
+      "elapsed": 17701
+    },
+    {
+      "ts": "2026-07-12T20:31:00.568Z",
+      "level": "PASS",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ 2488 bytes",
+      "elapsed": 17701
+    },
+    {
+      "ts": "2026-07-12T20:31:00.570Z",
+      "level": "PASS",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ C:\\Users\\Cesar Victor\\Desktop\\AchadoCerto.Vip\\AchadoCerto.VIP\\public\\images\\posts\\omega-3-fish-oil-1000mg.webp",
+      "elapsed": 17703
+    },
+    {
+      "ts": "2026-07-12T20:31:00.571Z",
+      "level": "PASS",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ 51.9KB",
+      "elapsed": 17704
+    },
+    {
+      "ts": "2026-07-12T20:31:00.571Z",
+      "level": "PASS",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ omega-3-fish-oil-1000mg",
+      "elapsed": 17704
+    },
+    {
+      "ts": "2026-07-12T20:31:00.572Z",
+      "level": "PASS",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Artefatos OK",
+      "elapsed": 17705
+    },
+    {
+      "ts": "2026-07-12T20:31:00.575Z",
+      "level": "STEP",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Aguardando commit (Workflow CI)...",
+      "elapsed": 17708
+    },
+    {
+      "ts": "2026-07-12T20:31:00.578Z",
+      "level": "PASS",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Pronto para commit — CI fará git add/commit/push",
+      "elapsed": 17711
+    },
+    {
+      "ts": "2026-07-12T20:31:00.579Z",
+      "level": "STEP",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Aguardando deploy (Workflow CI)...",
+      "elapsed": 17712
+    },
+    {
+      "ts": "2026-07-12T20:31:00.585Z",
+      "level": "PASS",
+      "run": "20260712-203042-9cf4ad61",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Publicação concluída: https://achadocerto.vip/blog/omega-3-fish-oil-1000mg",
+      "elapsed": 17718
+    }
+  ]
+}

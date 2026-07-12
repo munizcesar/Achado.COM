@@ -1,0 +1,256 @@
+{
+  "meta": {
+    "runId": "20260712-201116-0904ddf8",
+    "startTime": "2026-07-12T20:11:16.242Z",
+    "endTime": "2026-07-12T20:11:47.823Z",
+    "duration": 31581,
+    "pilar": "saude",
+    "trigger": "manual",
+    "executionId": "20260712-201116-0904ddf8"
+  },
+  "result": {
+    "status": "fail",
+    "produto": "Magnésio Quelato 300mg",
+    "error": null,
+    "errors": null
+  },
+  "entries": [
+    {
+      "ts": "2026-07-12T20:11:16.245Z",
+      "level": "INFO",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "═══════════════════════════════════════════════════",
+      "elapsed": 3
+    },
+    {
+      "ts": "2026-07-12T20:11:16.246Z",
+      "level": "INFO",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🤖 Pipeline — 20260712-201116-0904ddf8",
+      "pillar": "saude",
+      "tag": "afiliado-ok",
+      "elapsed": 4
+    },
+    {
+      "ts": "2026-07-12T20:11:16.264Z",
+      "level": "STEP",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Validando configuração de afiliado...",
+      "elapsed": 22
+    },
+    {
+      "ts": "2026-07-12T20:11:16.268Z",
+      "level": "PASS",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tag configurada",
+      "elapsed": 26
+    },
+    {
+      "ts": "2026-07-12T20:11:16.276Z",
+      "level": "STEP",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Buscando produtos para \"saude\"...",
+      "elapsed": 34
+    },
+    {
+      "ts": "2026-07-12T20:11:17.116Z",
+      "level": "INFO",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Trend Scout indisponível",
+      "elapsed": 874
+    },
+    {
+      "ts": "2026-07-12T20:11:17.120Z",
+      "level": "INFO",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Catálogo: 11 produtos",
+      "elapsed": 878
+    },
+    {
+      "ts": "2026-07-12T20:11:17.122Z",
+      "level": "INFO",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Pool: 11 produtos",
+      "elapsed": 880
+    },
+    {
+      "ts": "2026-07-12T20:11:17.124Z",
+      "level": "INFO",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tentativa 1/11: Magnésio Quelato 300mg [📦 catálogo]",
+      "asin": "B0CYD92TBQ",
+      "elapsed": 882
+    },
+    {
+      "ts": "2026-07-12T20:11:17.138Z",
+      "level": "INFO",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 896
+    },
+    {
+      "ts": "2026-07-12T20:11:17.139Z",
+      "level": "INFO",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Produto : Magnésio Quelato 300mg",
+      "elapsed": 897
+    },
+    {
+      "ts": "2026-07-12T20:11:17.140Z",
+      "level": "INFO",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Pilar   : saude",
+      "elapsed": 898
+    },
+    {
+      "ts": "2026-07-12T20:11:17.141Z",
+      "level": "INFO",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Ângulo  : bem_estar",
+      "elapsed": 899
+    },
+    {
+      "ts": "2026-07-12T20:11:17.142Z",
+      "level": "INFO",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 900
+    },
+    {
+      "ts": "2026-07-12T20:11:17.143Z",
+      "level": "INFO",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 901
+    },
+    {
+      "ts": "2026-07-12T20:11:17.143Z",
+      "level": "INFO",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 902
+    },
+    {
+      "ts": "2026-07-12T20:11:17.144Z",
+      "level": "INFO",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 902
+    },
+    {
+      "ts": "2026-07-12T20:11:17.145Z",
+      "level": "INFO",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 903
+    },
+    {
+      "ts": "2026-07-12T20:11:17.148Z",
+      "level": "STEP",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Gerando post: Magnésio Quelato 300mg [B0CYD92TBQ]",
+      "elapsed": 906
+    },
+    {
+      "ts": "2026-07-12T20:11:17.151Z",
+      "level": "STEP",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Executando novo-post.js para gerar arquivos...",
+      "elapsed": 909
+    },
+    {
+      "ts": "2026-07-12T20:11:47.721Z",
+      "level": "PASS",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos do post gerados com sucesso",
+      "elapsed": 31479
+    },
+    {
+      "ts": "2026-07-12T20:11:47.767Z",
+      "level": "PASS",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos gerados: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p",
+      "elapsed": 31525
+    },
+    {
+      "ts": "2026-07-12T20:11:47.775Z",
+      "level": "PASS",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Quality gates OK",
+      "elapsed": 31533
+    },
+    {
+      "ts": "2026-07-12T20:11:47.778Z",
+      "level": "WARN",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "SEO: 2 problemas",
+      "elapsed": 31536
+    },
+    {
+      "ts": "2026-07-12T20:11:47.784Z",
+      "level": "INFO",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Auditoria: APROVADO — 90% (9/10)",
+      "elapsed": 31542
+    },
+    {
+      "ts": "2026-07-12T20:11:47.784Z",
+      "level": "PASS",
+      "run": "20260712-201116-0904ddf8",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ Produto selecionado: Magnésio Quelato 300mg [B0CYD92TBQ]",
+      "elapsed": 31542
+    }
+  ]
+}

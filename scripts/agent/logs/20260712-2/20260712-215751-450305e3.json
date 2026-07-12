@@ -1,0 +1,2334 @@
+{
+  "meta": {
+    "runId": "20260712-215751-450305e3",
+    "startTime": "2026-07-12T21:57:51.182Z",
+    "endTime": "2026-07-12T22:00:53.906Z",
+    "duration": 182724,
+    "pilar": "saude",
+    "trigger": "manual",
+    "executionId": "20260712-215751-450305e3"
+  },
+  "result": {
+    "status": "fail",
+    "produto": "Glutamina em Pó 300g",
+    "error": null,
+    "errors": null
+  },
+  "entries": [
+    {
+      "ts": "2026-07-12T21:57:51.185Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "═══════════════════════════════════════════════════",
+      "elapsed": 3
+    },
+    {
+      "ts": "2026-07-12T21:57:51.186Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🤖 Pipeline — 20260712-215751-450305e3",
+      "pillar": "saude",
+      "tag": "afiliado-ok",
+      "elapsed": 4
+    },
+    {
+      "ts": "2026-07-12T21:57:51.187Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "═══ 🧪 DRY RUN — nenhum artefato será persistido ═══",
+      "elapsed": 5
+    },
+    {
+      "ts": "2026-07-12T21:57:51.198Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Validando configuração de afiliado...",
+      "elapsed": 16
+    },
+    {
+      "ts": "2026-07-12T21:57:51.200Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tag configurada",
+      "elapsed": 18
+    },
+    {
+      "ts": "2026-07-12T21:57:51.204Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Buscando produtos para \"saude\"...",
+      "elapsed": 22
+    },
+    {
+      "ts": "2026-07-12T21:57:51.957Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Trend Scout indisponível",
+      "elapsed": 775
+    },
+    {
+      "ts": "2026-07-12T21:57:51.962Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Catálogo: 11 produtos",
+      "elapsed": 780
+    },
+    {
+      "ts": "2026-07-12T21:57:51.963Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Pool: 9 produtos",
+      "elapsed": 781
+    },
+    {
+      "ts": "2026-07-12T21:57:51.965Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tentativa 1/9: Colágeno Hidrolisado com Vitamina C [📦 catálogo]",
+      "asin": "B07NX1C9VL",
+      "elapsed": 783
+    },
+    {
+      "ts": "2026-07-12T21:57:51.976Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 794
+    },
+    {
+      "ts": "2026-07-12T21:57:51.977Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Produto : Colágeno Hidrolisado com Vitamina C",
+      "elapsed": 795
+    },
+    {
+      "ts": "2026-07-12T21:57:51.977Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Pilar   : saude",
+      "elapsed": 795
+    },
+    {
+      "ts": "2026-07-12T21:57:51.978Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Ângulo  : anti_idade",
+      "elapsed": 796
+    },
+    {
+      "ts": "2026-07-12T21:57:51.978Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 796
+    },
+    {
+      "ts": "2026-07-12T21:57:51.979Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 797
+    },
+    {
+      "ts": "2026-07-12T21:57:51.979Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 797
+    },
+    {
+      "ts": "2026-07-12T21:57:51.979Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 798
+    },
+    {
+      "ts": "2026-07-12T21:57:51.980Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 798
+    },
+    {
+      "ts": "2026-07-12T21:57:51.981Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Gerando post: Colágeno Hidrolisado com Vitamina C [B07NX1C9VL]",
+      "elapsed": 799
+    },
+    {
+      "ts": "2026-07-12T21:57:51.982Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Executando novo-post.js para gerar arquivos...",
+      "elapsed": 800
+    },
+    {
+      "ts": "2026-07-12T21:58:10.113Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos do post gerados com sucesso",
+      "elapsed": 18932
+    },
+    {
+      "ts": "2026-07-12T21:58:10.163Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Slug gerado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p → renomeando para: colageno-hidrolisado-com-vitamina-c",
+      "elapsed": 18981
+    },
+    {
+      "ts": "2026-07-12T21:58:10.168Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.md → colageno-hidrolisado-com-vitamina-c.md",
+      "elapsed": 18987
+    },
+    {
+      "ts": "2026-07-12T21:58:10.174Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.webp → colageno-hidrolisado-com-vitamina-c.webp",
+      "elapsed": 18992
+    },
+    {
+      "ts": "2026-07-12T21:58:10.179Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Referências de imagem atualizadas no .md",
+      "elapsed": 18997
+    },
+    {
+      "ts": "2026-07-12T21:58:10.181Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos gerados: colageno-hidrolisado-com-vitamina-c",
+      "elapsed": 18999
+    },
+    {
+      "ts": "2026-07-12T21:58:10.186Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Quality gates OK",
+      "elapsed": 19004
+    },
+    {
+      "ts": "2026-07-12T21:58:10.188Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "SEO: 1 problemas",
+      "elapsed": 19006
+    },
+    {
+      "ts": "2026-07-12T21:58:10.205Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Editorial: 40/50 editorial · ❌ Quality falhou",
+      "elapsed": 19023
+    },
+    {
+      "ts": "2026-07-12T21:58:10.206Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ❌ originalidade: 5/10",
+      "elapsed": 19024
+    },
+    {
+      "ts": "2026-07-12T21:58:10.207Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ naturalidade: 9/10",
+      "elapsed": 19025
+    },
+    {
+      "ts": "2026-07-12T21:58:10.207Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ⚠️ seo: 6/10",
+      "elapsed": 19025
+    },
+    {
+      "ts": "2026-07-12T21:58:10.208Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ legibilidade: 10/10",
+      "elapsed": 19026
+    },
+    {
+      "ts": "2026-07-12T21:58:10.209Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ especializacao: 10/10",
+      "elapsed": 19027
+    },
+    {
+      "ts": "2026-07-12T21:58:10.210Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🔄 Tentando reescrever com feedback editorial...",
+      "elapsed": 19028
+    },
+    {
+      "ts": "2026-07-12T21:58:10.305Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⏳ Rewrite falhou, aguardando 5s e tentando novamente (1/3)...",
+      "elapsed": 19123
+    },
+    {
+      "ts": "2026-07-12T21:58:15.380Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⏳ Rewrite falhou, aguardando 10s e tentando novamente (2/3)...",
+      "elapsed": 24198
+    },
+    {
+      "ts": "2026-07-12T21:58:25.452Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⚠️ Rewrite falhou após 3 tentativas — pode ser rate limit ou erro de conexão",
+      "elapsed": 34270
+    },
+    {
+      "ts": "2026-07-12T21:58:25.453Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Colágeno Hidrolisado com Vitamina C [B07NX1C9VL] — editorial score 40/50. Selecionando próximo...",
+      "elapsed": 34271
+    },
+    {
+      "ts": "2026-07-12T21:58:25.460Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tentativa 2/9: Probiótico 10 Cepas 60 cápsulas [📦 catálogo]",
+      "asin": "B0DSV58MNC",
+      "elapsed": 34278
+    },
+    {
+      "ts": "2026-07-12T21:58:25.466Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 34284
+    },
+    {
+      "ts": "2026-07-12T21:58:25.467Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Produto : Probiótico 10 Cepas 60 cápsulas",
+      "elapsed": 34285
+    },
+    {
+      "ts": "2026-07-12T21:58:25.468Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Pilar   : saude",
+      "elapsed": 34286
+    },
+    {
+      "ts": "2026-07-12T21:58:25.468Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Ângulo  : saude_intestinal",
+      "elapsed": 34286
+    },
+    {
+      "ts": "2026-07-12T21:58:25.469Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 34287
+    },
+    {
+      "ts": "2026-07-12T21:58:25.470Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 34288
+    },
+    {
+      "ts": "2026-07-12T21:58:25.470Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 34288
+    },
+    {
+      "ts": "2026-07-12T21:58:25.471Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 34289
+    },
+    {
+      "ts": "2026-07-12T21:58:25.471Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 34289
+    },
+    {
+      "ts": "2026-07-12T21:58:25.472Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Gerando post: Probiótico 10 Cepas 60 cápsulas [B0DSV58MNC]",
+      "elapsed": 34290
+    },
+    {
+      "ts": "2026-07-12T21:58:25.473Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Executando novo-post.js para gerar arquivos...",
+      "elapsed": 34291
+    },
+    {
+      "ts": "2026-07-12T21:58:43.103Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos do post gerados com sucesso",
+      "elapsed": 51921
+    },
+    {
+      "ts": "2026-07-12T21:58:43.155Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Slug gerado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p → renomeando para: probiotico-10-cepas-60-capsulas",
+      "elapsed": 51973
+    },
+    {
+      "ts": "2026-07-12T21:58:43.160Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.md → probiotico-10-cepas-60-capsulas.md",
+      "elapsed": 51978
+    },
+    {
+      "ts": "2026-07-12T21:58:43.164Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.webp → probiotico-10-cepas-60-capsulas.webp",
+      "elapsed": 51982
+    },
+    {
+      "ts": "2026-07-12T21:58:43.189Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Referências de imagem atualizadas no .md",
+      "elapsed": 52007
+    },
+    {
+      "ts": "2026-07-12T21:58:43.190Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos gerados: probiotico-10-cepas-60-capsulas",
+      "elapsed": 52008
+    },
+    {
+      "ts": "2026-07-12T21:58:43.220Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Quality gates OK",
+      "elapsed": 52038
+    },
+    {
+      "ts": "2026-07-12T21:58:43.222Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "SEO: 1 problemas",
+      "elapsed": 52040
+    },
+    {
+      "ts": "2026-07-12T21:58:43.238Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Editorial: 39/50 editorial · ❌ Quality falhou",
+      "elapsed": 52057
+    },
+    {
+      "ts": "2026-07-12T21:58:43.240Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ❌ originalidade: 5/10",
+      "elapsed": 52058
+    },
+    {
+      "ts": "2026-07-12T21:58:43.240Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ naturalidade: 9/10",
+      "elapsed": 52058
+    },
+    {
+      "ts": "2026-07-12T21:58:43.242Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ⚠️ seo: 6/10",
+      "elapsed": 52060
+    },
+    {
+      "ts": "2026-07-12T21:58:43.242Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ legibilidade: 9/10",
+      "elapsed": 52060
+    },
+    {
+      "ts": "2026-07-12T21:58:43.243Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ especializacao: 10/10",
+      "elapsed": 52061
+    },
+    {
+      "ts": "2026-07-12T21:58:43.244Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🔄 Tentando reescrever com feedback editorial...",
+      "elapsed": 52062
+    },
+    {
+      "ts": "2026-07-12T21:58:43.283Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⏳ Rewrite falhou, aguardando 5s e tentando novamente (1/3)...",
+      "elapsed": 52101
+    },
+    {
+      "ts": "2026-07-12T21:58:48.557Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⚠️ Circuit breaker Groq OPEN — pulando demais tentativas de rewrite",
+      "elapsed": 57375
+    },
+    {
+      "ts": "2026-07-12T21:58:48.558Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Probiótico 10 Cepas 60 cápsulas [B0DSV58MNC] — editorial score 39/50. Selecionando próximo...",
+      "elapsed": 57376
+    },
+    {
+      "ts": "2026-07-12T21:58:48.567Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tentativa 3/9: Creatina Monohidratada 300g [📦 catálogo]",
+      "asin": "B07L5WFHXW",
+      "elapsed": 57385
+    },
+    {
+      "ts": "2026-07-12T21:58:48.573Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 57391
+    },
+    {
+      "ts": "2026-07-12T21:58:48.574Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Produto : Creatina Monohidratada 300g",
+      "elapsed": 57392
+    },
+    {
+      "ts": "2026-07-12T21:58:48.575Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Pilar   : saude",
+      "elapsed": 57393
+    },
+    {
+      "ts": "2026-07-12T21:58:48.576Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Ângulo  : performance",
+      "elapsed": 57394
+    },
+    {
+      "ts": "2026-07-12T21:58:48.577Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 57395
+    },
+    {
+      "ts": "2026-07-12T21:58:48.579Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 57397
+    },
+    {
+      "ts": "2026-07-12T21:58:48.580Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 57398
+    },
+    {
+      "ts": "2026-07-12T21:58:48.581Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 57399
+    },
+    {
+      "ts": "2026-07-12T21:58:48.581Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 57400
+    },
+    {
+      "ts": "2026-07-12T21:58:48.582Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Gerando post: Creatina Monohidratada 300g [B07L5WFHXW]",
+      "elapsed": 57400
+    },
+    {
+      "ts": "2026-07-12T21:58:48.583Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Executando novo-post.js para gerar arquivos...",
+      "elapsed": 57401
+    },
+    {
+      "ts": "2026-07-12T21:59:08.964Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos do post gerados com sucesso",
+      "elapsed": 77782
+    },
+    {
+      "ts": "2026-07-12T21:59:09.005Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Slug gerado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p → renomeando para: creatina-monohidratada-300g",
+      "elapsed": 77823
+    },
+    {
+      "ts": "2026-07-12T21:59:09.009Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos gerados: creatina-monohidratada-300g",
+      "elapsed": 77827
+    },
+    {
+      "ts": "2026-07-12T21:59:09.011Z",
+      "level": "FAIL",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "QUALITY: Markdown sem frontmatter (---)",
+      "elapsed": 77829
+    },
+    {
+      "ts": "2026-07-12T21:59:09.011Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Creatina Monohidratada 300g [B07L5WFHXW] — quality gates: 1 falha(s). Selecionando próximo...",
+      "elapsed": 77830
+    },
+    {
+      "ts": "2026-07-12T21:59:09.020Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tentativa 4/9: Zinco Quelato 30mg 60 cápsulas [📦 catálogo]",
+      "asin": "B0F3PZS1WJ",
+      "elapsed": 77838
+    },
+    {
+      "ts": "2026-07-12T21:59:09.023Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 77841
+    },
+    {
+      "ts": "2026-07-12T21:59:09.023Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Produto : Zinco Quelato 30mg 60 cápsulas",
+      "elapsed": 77841
+    },
+    {
+      "ts": "2026-07-12T21:59:09.024Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Pilar   : saude",
+      "elapsed": 77842
+    },
+    {
+      "ts": "2026-07-12T21:59:09.025Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Ângulo  : imunidade",
+      "elapsed": 77843
+    },
+    {
+      "ts": "2026-07-12T21:59:09.025Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 77843
+    },
+    {
+      "ts": "2026-07-12T21:59:09.026Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 77844
+    },
+    {
+      "ts": "2026-07-12T21:59:09.027Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 77845
+    },
+    {
+      "ts": "2026-07-12T21:59:09.027Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 77845
+    },
+    {
+      "ts": "2026-07-12T21:59:09.028Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 77846
+    },
+    {
+      "ts": "2026-07-12T21:59:09.030Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Gerando post: Zinco Quelato 30mg 60 cápsulas [B0F3PZS1WJ]",
+      "elapsed": 77848
+    },
+    {
+      "ts": "2026-07-12T21:59:09.030Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Executando novo-post.js para gerar arquivos...",
+      "elapsed": 77848
+    },
+    {
+      "ts": "2026-07-12T21:59:25.300Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos do post gerados com sucesso",
+      "elapsed": 94118
+    },
+    {
+      "ts": "2026-07-12T21:59:25.346Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Slug gerado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p → renomeando para: zinco-quelato-30mg-60-capsulas",
+      "elapsed": 94165
+    },
+    {
+      "ts": "2026-07-12T21:59:25.352Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.md → zinco-quelato-30mg-60-capsulas.md",
+      "elapsed": 94170
+    },
+    {
+      "ts": "2026-07-12T21:59:25.358Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.webp → zinco-quelato-30mg-60-capsulas.webp",
+      "elapsed": 94176
+    },
+    {
+      "ts": "2026-07-12T21:59:25.364Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Referências de imagem atualizadas no .md",
+      "elapsed": 94182
+    },
+    {
+      "ts": "2026-07-12T21:59:25.370Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos gerados: zinco-quelato-30mg-60-capsulas",
+      "elapsed": 94188
+    },
+    {
+      "ts": "2026-07-12T21:59:25.378Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Quality gates OK",
+      "elapsed": 94196
+    },
+    {
+      "ts": "2026-07-12T21:59:25.380Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "SEO: 1 problemas",
+      "elapsed": 94198
+    },
+    {
+      "ts": "2026-07-12T21:59:25.390Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Editorial: 39/50 editorial · ❌ Quality falhou",
+      "elapsed": 94208
+    },
+    {
+      "ts": "2026-07-12T21:59:25.391Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ❌ originalidade: 5/10",
+      "elapsed": 94209
+    },
+    {
+      "ts": "2026-07-12T21:59:25.392Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ naturalidade: 9/10",
+      "elapsed": 94210
+    },
+    {
+      "ts": "2026-07-12T21:59:25.393Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ⚠️ seo: 6/10",
+      "elapsed": 94211
+    },
+    {
+      "ts": "2026-07-12T21:59:25.394Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ legibilidade: 9/10",
+      "elapsed": 94212
+    },
+    {
+      "ts": "2026-07-12T21:59:25.395Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ especializacao: 10/10",
+      "elapsed": 94213
+    },
+    {
+      "ts": "2026-07-12T21:59:25.396Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⚠️ Circuit breaker Groq OPEN — rewrite indisponível para este produto",
+      "elapsed": 94214
+    },
+    {
+      "ts": "2026-07-12T21:59:25.397Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Zinco Quelato 30mg 60 cápsulas [B0F3PZS1WJ] — editorial score 39/50. Selecionando próximo...",
+      "elapsed": 94215
+    },
+    {
+      "ts": "2026-07-12T21:59:25.409Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tentativa 5/9: Coenzima Q10 100mg Antioxidante [📦 catálogo]",
+      "asin": "B0BFT4WF51",
+      "elapsed": 94227
+    },
+    {
+      "ts": "2026-07-12T21:59:25.414Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 94232
+    },
+    {
+      "ts": "2026-07-12T21:59:25.415Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Produto : Coenzima Q10 100mg Antioxidante",
+      "elapsed": 94233
+    },
+    {
+      "ts": "2026-07-12T21:59:25.416Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Pilar   : saude",
+      "elapsed": 94234
+    },
+    {
+      "ts": "2026-07-12T21:59:25.417Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Ângulo  : saude_preventiva",
+      "elapsed": 94235
+    },
+    {
+      "ts": "2026-07-12T21:59:25.417Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 94235
+    },
+    {
+      "ts": "2026-07-12T21:59:25.418Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 94236
+    },
+    {
+      "ts": "2026-07-12T21:59:25.418Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 94236
+    },
+    {
+      "ts": "2026-07-12T21:59:25.419Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 94237
+    },
+    {
+      "ts": "2026-07-12T21:59:25.420Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 94238
+    },
+    {
+      "ts": "2026-07-12T21:59:25.420Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Gerando post: Coenzima Q10 100mg Antioxidante [B0BFT4WF51]",
+      "elapsed": 94238
+    },
+    {
+      "ts": "2026-07-12T21:59:25.421Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Executando novo-post.js para gerar arquivos...",
+      "elapsed": 94239
+    },
+    {
+      "ts": "2026-07-12T21:59:43.091Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos do post gerados com sucesso",
+      "elapsed": 111909
+    },
+    {
+      "ts": "2026-07-12T21:59:43.134Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Slug gerado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p → renomeando para: coenzima-q10-100mg-antioxidante",
+      "elapsed": 111952
+    },
+    {
+      "ts": "2026-07-12T21:59:43.139Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.md → coenzima-q10-100mg-antioxidante.md",
+      "elapsed": 111957
+    },
+    {
+      "ts": "2026-07-12T21:59:43.143Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.webp → coenzima-q10-100mg-antioxidante.webp",
+      "elapsed": 111961
+    },
+    {
+      "ts": "2026-07-12T21:59:43.147Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Referências de imagem atualizadas no .md",
+      "elapsed": 111965
+    },
+    {
+      "ts": "2026-07-12T21:59:43.148Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos gerados: coenzima-q10-100mg-antioxidante",
+      "elapsed": 111966
+    },
+    {
+      "ts": "2026-07-12T21:59:43.152Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Quality gates OK",
+      "elapsed": 111970
+    },
+    {
+      "ts": "2026-07-12T21:59:43.153Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "SEO: 1 problemas",
+      "elapsed": 111971
+    },
+    {
+      "ts": "2026-07-12T21:59:43.159Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Editorial: 40/50 editorial · ❌ Quality falhou",
+      "elapsed": 111977
+    },
+    {
+      "ts": "2026-07-12T21:59:43.164Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ❌ originalidade: 5/10",
+      "elapsed": 111982
+    },
+    {
+      "ts": "2026-07-12T21:59:43.165Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ naturalidade: 9/10",
+      "elapsed": 111983
+    },
+    {
+      "ts": "2026-07-12T21:59:43.165Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ⚠️ seo: 6/10",
+      "elapsed": 111983
+    },
+    {
+      "ts": "2026-07-12T21:59:43.167Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ legibilidade: 10/10",
+      "elapsed": 111985
+    },
+    {
+      "ts": "2026-07-12T21:59:43.168Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ especializacao: 10/10",
+      "elapsed": 111986
+    },
+    {
+      "ts": "2026-07-12T21:59:43.168Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⚠️ Circuit breaker Groq OPEN — rewrite indisponível para este produto",
+      "elapsed": 111986
+    },
+    {
+      "ts": "2026-07-12T21:59:43.169Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Coenzima Q10 100mg Antioxidante [B0BFT4WF51] — editorial score 40/50. Selecionando próximo...",
+      "elapsed": 111987
+    },
+    {
+      "ts": "2026-07-12T21:59:43.176Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tentativa 6/9: Whey Protein Isolado 900g [📦 catálogo]",
+      "asin": "B07MFR91SV",
+      "elapsed": 111994
+    },
+    {
+      "ts": "2026-07-12T21:59:43.180Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 111998
+    },
+    {
+      "ts": "2026-07-12T21:59:43.180Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Produto : Whey Protein Isolado 900g",
+      "elapsed": 111998
+    },
+    {
+      "ts": "2026-07-12T21:59:43.181Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Pilar   : saude",
+      "elapsed": 111999
+    },
+    {
+      "ts": "2026-07-12T21:59:43.181Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Ângulo  : performance",
+      "elapsed": 111999
+    },
+    {
+      "ts": "2026-07-12T21:59:43.182Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 112000
+    },
+    {
+      "ts": "2026-07-12T21:59:43.183Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 112001
+    },
+    {
+      "ts": "2026-07-12T21:59:43.183Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 112001
+    },
+    {
+      "ts": "2026-07-12T21:59:43.184Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 112002
+    },
+    {
+      "ts": "2026-07-12T21:59:43.184Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 112002
+    },
+    {
+      "ts": "2026-07-12T21:59:43.185Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Gerando post: Whey Protein Isolado 900g [B07MFR91SV]",
+      "elapsed": 112003
+    },
+    {
+      "ts": "2026-07-12T21:59:43.186Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Executando novo-post.js para gerar arquivos...",
+      "elapsed": 112004
+    },
+    {
+      "ts": "2026-07-12T22:00:02.882Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos do post gerados com sucesso",
+      "elapsed": 131700
+    },
+    {
+      "ts": "2026-07-12T22:00:02.911Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Slug gerado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p → renomeando para: whey-protein-isolado-900g",
+      "elapsed": 131729
+    },
+    {
+      "ts": "2026-07-12T22:00:02.915Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.md → whey-protein-isolado-900g.md",
+      "elapsed": 131733
+    },
+    {
+      "ts": "2026-07-12T22:00:02.919Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.webp → whey-protein-isolado-900g.webp",
+      "elapsed": 131737
+    },
+    {
+      "ts": "2026-07-12T22:00:02.924Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Referências de imagem atualizadas no .md",
+      "elapsed": 131742
+    },
+    {
+      "ts": "2026-07-12T22:00:02.926Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos gerados: whey-protein-isolado-900g",
+      "elapsed": 131744
+    },
+    {
+      "ts": "2026-07-12T22:00:02.929Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Quality gates OK",
+      "elapsed": 131747
+    },
+    {
+      "ts": "2026-07-12T22:00:02.930Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "SEO: 1 problemas",
+      "elapsed": 131748
+    },
+    {
+      "ts": "2026-07-12T22:00:02.935Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Editorial: 38/50 editorial · ❌ Quality falhou",
+      "elapsed": 131753
+    },
+    {
+      "ts": "2026-07-12T22:00:02.936Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ❌ originalidade: 5/10",
+      "elapsed": 131754
+    },
+    {
+      "ts": "2026-07-12T22:00:02.937Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ naturalidade: 9/10",
+      "elapsed": 131755
+    },
+    {
+      "ts": "2026-07-12T22:00:02.938Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ⚠️ seo: 6/10",
+      "elapsed": 131756
+    },
+    {
+      "ts": "2026-07-12T22:00:02.938Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ legibilidade: 9/10",
+      "elapsed": 131756
+    },
+    {
+      "ts": "2026-07-12T22:00:02.939Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ especializacao: 9/10",
+      "elapsed": 131757
+    },
+    {
+      "ts": "2026-07-12T22:00:02.939Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⚠️ Circuit breaker Groq OPEN — rewrite indisponível para este produto",
+      "elapsed": 131757
+    },
+    {
+      "ts": "2026-07-12T22:00:02.940Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Whey Protein Isolado 900g [B07MFR91SV] — editorial score 38/50. Selecionando próximo...",
+      "elapsed": 131758
+    },
+    {
+      "ts": "2026-07-12T22:00:02.948Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tentativa 7/9: Spirulina 500mg 120 comprimidos [📦 catálogo]",
+      "asin": "B0D9HVGM4L",
+      "elapsed": 131766
+    },
+    {
+      "ts": "2026-07-12T22:00:02.952Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 131770
+    },
+    {
+      "ts": "2026-07-12T22:00:02.952Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Produto : Spirulina 500mg 120 comprimidos",
+      "elapsed": 131770
+    },
+    {
+      "ts": "2026-07-12T22:00:02.953Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Pilar   : saude",
+      "elapsed": 131771
+    },
+    {
+      "ts": "2026-07-12T22:00:02.953Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Ângulo  : bem_estar",
+      "elapsed": 131772
+    },
+    {
+      "ts": "2026-07-12T22:00:02.954Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 131772
+    },
+    {
+      "ts": "2026-07-12T22:00:02.955Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 131773
+    },
+    {
+      "ts": "2026-07-12T22:00:02.955Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 131773
+    },
+    {
+      "ts": "2026-07-12T22:00:02.957Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 131775
+    },
+    {
+      "ts": "2026-07-12T22:00:02.958Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 131776
+    },
+    {
+      "ts": "2026-07-12T22:00:02.959Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Gerando post: Spirulina 500mg 120 comprimidos [B0D9HVGM4L]",
+      "elapsed": 131777
+    },
+    {
+      "ts": "2026-07-12T22:00:02.960Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Executando novo-post.js para gerar arquivos...",
+      "elapsed": 131779
+    },
+    {
+      "ts": "2026-07-12T22:00:21.397Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos do post gerados com sucesso",
+      "elapsed": 150215
+    },
+    {
+      "ts": "2026-07-12T22:00:21.441Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Slug gerado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p → renomeando para: spirulina-500mg-120-comprimidos",
+      "elapsed": 150259
+    },
+    {
+      "ts": "2026-07-12T22:00:21.447Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.md → spirulina-500mg-120-comprimidos.md",
+      "elapsed": 150265
+    },
+    {
+      "ts": "2026-07-12T22:00:21.453Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.webp → spirulina-500mg-120-comprimidos.webp",
+      "elapsed": 150271
+    },
+    {
+      "ts": "2026-07-12T22:00:21.458Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Referências de imagem atualizadas no .md",
+      "elapsed": 150277
+    },
+    {
+      "ts": "2026-07-12T22:00:21.460Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos gerados: spirulina-500mg-120-comprimidos",
+      "elapsed": 150279
+    },
+    {
+      "ts": "2026-07-12T22:00:21.464Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Quality gates OK",
+      "elapsed": 150283
+    },
+    {
+      "ts": "2026-07-12T22:00:21.465Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "SEO: 1 problemas",
+      "elapsed": 150283
+    },
+    {
+      "ts": "2026-07-12T22:00:21.479Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Editorial: 39/50 editorial · ❌ Quality falhou",
+      "elapsed": 150297
+    },
+    {
+      "ts": "2026-07-12T22:00:21.480Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ❌ originalidade: 5/10",
+      "elapsed": 150298
+    },
+    {
+      "ts": "2026-07-12T22:00:21.480Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ naturalidade: 9/10",
+      "elapsed": 150298
+    },
+    {
+      "ts": "2026-07-12T22:00:21.481Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ⚠️ seo: 6/10",
+      "elapsed": 150299
+    },
+    {
+      "ts": "2026-07-12T22:00:21.481Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ legibilidade: 9/10",
+      "elapsed": 150299
+    },
+    {
+      "ts": "2026-07-12T22:00:21.482Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ especializacao: 10/10",
+      "elapsed": 150300
+    },
+    {
+      "ts": "2026-07-12T22:00:21.482Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⚠️ Circuit breaker Groq OPEN — rewrite indisponível para este produto",
+      "elapsed": 150300
+    },
+    {
+      "ts": "2026-07-12T22:00:21.483Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Spirulina 500mg 120 comprimidos [B0D9HVGM4L] — editorial score 39/50. Selecionando próximo...",
+      "elapsed": 150301
+    },
+    {
+      "ts": "2026-07-12T22:00:21.489Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tentativa 8/9: Ômega 3 Fish Oil 1000mg [📦 catálogo]",
+      "asin": "B0DWNFZN17",
+      "elapsed": 150307
+    },
+    {
+      "ts": "2026-07-12T22:00:21.492Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 150310
+    },
+    {
+      "ts": "2026-07-12T22:00:21.493Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Produto : Ômega 3 Fish Oil 1000mg",
+      "elapsed": 150311
+    },
+    {
+      "ts": "2026-07-12T22:00:21.493Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Pilar   : saude",
+      "elapsed": 150311
+    },
+    {
+      "ts": "2026-07-12T22:00:21.494Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Ângulo  : saude_preventiva",
+      "elapsed": 150312
+    },
+    {
+      "ts": "2026-07-12T22:00:21.494Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 150312
+    },
+    {
+      "ts": "2026-07-12T22:00:21.495Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 150313
+    },
+    {
+      "ts": "2026-07-12T22:00:21.496Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 150314
+    },
+    {
+      "ts": "2026-07-12T22:00:21.497Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 150315
+    },
+    {
+      "ts": "2026-07-12T22:00:21.497Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 150315
+    },
+    {
+      "ts": "2026-07-12T22:00:21.498Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Gerando post: Ômega 3 Fish Oil 1000mg [B0DWNFZN17]",
+      "elapsed": 150316
+    },
+    {
+      "ts": "2026-07-12T22:00:21.499Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Executando novo-post.js para gerar arquivos...",
+      "elapsed": 150317
+    },
+    {
+      "ts": "2026-07-12T22:00:38.088Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos do post gerados com sucesso",
+      "elapsed": 166906
+    },
+    {
+      "ts": "2026-07-12T22:00:38.131Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Slug gerado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p → renomeando para: omega-3-fish-oil-1000mg",
+      "elapsed": 166949
+    },
+    {
+      "ts": "2026-07-12T22:00:38.137Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.md → omega-3-fish-oil-1000mg.md",
+      "elapsed": 166955
+    },
+    {
+      "ts": "2026-07-12T22:00:38.144Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.webp → omega-3-fish-oil-1000mg.webp",
+      "elapsed": 166962
+    },
+    {
+      "ts": "2026-07-12T22:00:38.149Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Referências de imagem atualizadas no .md",
+      "elapsed": 166967
+    },
+    {
+      "ts": "2026-07-12T22:00:38.151Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos gerados: omega-3-fish-oil-1000mg",
+      "elapsed": 166969
+    },
+    {
+      "ts": "2026-07-12T22:00:38.155Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Quality gates OK",
+      "elapsed": 166973
+    },
+    {
+      "ts": "2026-07-12T22:00:38.156Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "SEO: 2 problemas",
+      "elapsed": 166974
+    },
+    {
+      "ts": "2026-07-12T22:00:38.164Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Editorial: 40/50 editorial · ❌ Quality falhou",
+      "elapsed": 166982
+    },
+    {
+      "ts": "2026-07-12T22:00:38.165Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ❌ originalidade: 5/10",
+      "elapsed": 166983
+    },
+    {
+      "ts": "2026-07-12T22:00:38.166Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ naturalidade: 9/10",
+      "elapsed": 166984
+    },
+    {
+      "ts": "2026-07-12T22:00:38.167Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ⚠️ seo: 6/10",
+      "elapsed": 166985
+    },
+    {
+      "ts": "2026-07-12T22:00:38.168Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ legibilidade: 10/10",
+      "elapsed": 166986
+    },
+    {
+      "ts": "2026-07-12T22:00:38.168Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ especializacao: 10/10",
+      "elapsed": 166986
+    },
+    {
+      "ts": "2026-07-12T22:00:38.170Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⚠️ Circuit breaker Groq OPEN — rewrite indisponível para este produto",
+      "elapsed": 166988
+    },
+    {
+      "ts": "2026-07-12T22:00:38.171Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Ômega 3 Fish Oil 1000mg [B0DWNFZN17] — editorial score 40/50. Selecionando próximo...",
+      "elapsed": 166989
+    },
+    {
+      "ts": "2026-07-12T22:00:38.182Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tentativa 9/9: Glutamina em Pó 300g [📦 catálogo]",
+      "asin": "B0FKPSVV2W",
+      "elapsed": 167000
+    },
+    {
+      "ts": "2026-07-12T22:00:38.187Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 167005
+    },
+    {
+      "ts": "2026-07-12T22:00:38.187Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Produto : Glutamina em Pó 300g",
+      "elapsed": 167006
+    },
+    {
+      "ts": "2026-07-12T22:00:38.188Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Pilar   : saude",
+      "elapsed": 167006
+    },
+    {
+      "ts": "2026-07-12T22:00:38.188Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Ângulo  : performance",
+      "elapsed": 167006
+    },
+    {
+      "ts": "2026-07-12T22:00:38.189Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 167007
+    },
+    {
+      "ts": "2026-07-12T22:00:38.189Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 167007
+    },
+    {
+      "ts": "2026-07-12T22:00:38.190Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 167008
+    },
+    {
+      "ts": "2026-07-12T22:00:38.190Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 167008
+    },
+    {
+      "ts": "2026-07-12T22:00:38.191Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 167009
+    },
+    {
+      "ts": "2026-07-12T22:00:38.192Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Gerando post: Glutamina em Pó 300g [B0FKPSVV2W]",
+      "elapsed": 167010
+    },
+    {
+      "ts": "2026-07-12T22:00:38.192Z",
+      "level": "STEP",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Executando novo-post.js para gerar arquivos...",
+      "elapsed": 167010
+    },
+    {
+      "ts": "2026-07-12T22:00:53.739Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos do post gerados com sucesso",
+      "elapsed": 182557
+    },
+    {
+      "ts": "2026-07-12T22:00:53.780Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Slug gerado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p → renomeando para: glutamina-em-po-300g",
+      "elapsed": 182598
+    },
+    {
+      "ts": "2026-07-12T22:00:53.786Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.md → glutamina-em-po-300g.md",
+      "elapsed": 182604
+    },
+    {
+      "ts": "2026-07-12T22:00:53.792Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Renomeado: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.webp → glutamina-em-po-300g.webp",
+      "elapsed": 182610
+    },
+    {
+      "ts": "2026-07-12T22:00:53.797Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  Referências de imagem atualizadas no .md",
+      "elapsed": 182615
+    },
+    {
+      "ts": "2026-07-12T22:00:53.798Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos gerados: glutamina-em-po-300g",
+      "elapsed": 182616
+    },
+    {
+      "ts": "2026-07-12T22:00:53.802Z",
+      "level": "PASS",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Quality gates OK",
+      "elapsed": 182621
+    },
+    {
+      "ts": "2026-07-12T22:00:53.804Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "SEO: 2 problemas",
+      "elapsed": 182622
+    },
+    {
+      "ts": "2026-07-12T22:00:53.810Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Editorial: 40/50 editorial · ❌ Quality falhou",
+      "elapsed": 182628
+    },
+    {
+      "ts": "2026-07-12T22:00:53.811Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ❌ originalidade: 4/10",
+      "elapsed": 182629
+    },
+    {
+      "ts": "2026-07-12T22:00:53.812Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ naturalidade: 9/10",
+      "elapsed": 182630
+    },
+    {
+      "ts": "2026-07-12T22:00:53.812Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ seo: 8/10",
+      "elapsed": 182630
+    },
+    {
+      "ts": "2026-07-12T22:00:53.813Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ legibilidade: 9/10",
+      "elapsed": 182631
+    },
+    {
+      "ts": "2026-07-12T22:00:53.814Z",
+      "level": "INFO",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "  ✅ especializacao: 10/10",
+      "elapsed": 182632
+    },
+    {
+      "ts": "2026-07-12T22:00:53.816Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⚠️ Circuit breaker Groq OPEN — rewrite indisponível para este produto",
+      "elapsed": 182634
+    },
+    {
+      "ts": "2026-07-12T22:00:53.817Z",
+      "level": "WARN",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Glutamina em Pó 300g [B0FKPSVV2W] — editorial score 40/50. Selecionando próximo...",
+      "elapsed": 182635
+    },
+    {
+      "ts": "2026-07-12T22:00:53.830Z",
+      "level": "FAIL",
+      "run": "20260712-215751-450305e3",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "❌ Todas as 9 tentativas esgotadas — nenhum produto válido no pilar \"saude\"",
+      "elapsed": 182648
+    }
+  ]
+}

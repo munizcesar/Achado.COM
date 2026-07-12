@@ -1,0 +1,15 @@
+{
+  "state": "PRODUCT_SELECTED",
+  "context": {
+    "executionId": "20260712-215333-c5078abf",
+    "transitions": [
+      {
+        "from": "PENDING",
+        "to": "PRODUCT_SELECTED",
+        "ts": "2026-07-12T21:53:33.568Z"
+      }
+    ],
+    "errors": []
+  },
+  "updatedAt": "2026-07-12T21:53:33.569Z"
+}

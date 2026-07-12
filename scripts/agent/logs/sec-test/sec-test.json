@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "runId": "sec-test",
+    "startTime": "2026-07-12T21:48:30.095Z",
+    "endTime": "2026-07-12T21:48:30.167Z",
+    "duration": 72,
+    "pilar": "test",
+    "executionId": "sec-test"
+  },
+  "result": {
+    "status": "success",
+    "produto": null,
+    "error": null,
+    "errors": null
+  },
+  "entries": [
+    {
+      "ts": "2026-07-12T21:48:30.097Z",
+      "level": "INFO",
+      "run": "sec-test",
+      "pilar": "test",
+      "trigger": "unknown",
+      "message": "Teste sem crash",
+      "elapsed": 2
+    },
+    {
+      "ts": "2026-07-12T21:48:30.165Z",
+      "level": "PASS",
+      "run": "sec-test",
+      "pilar": "test",
+      "trigger": "unknown",
+      "message": "Log seguro",
+      "elapsed": 70
+    }
+  ]
+}

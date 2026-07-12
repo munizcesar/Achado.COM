@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "runId": "2026-07-12-2150",
+    "startTime": "2026-07-12T21:50:39.405Z",
+    "endTime": "2026-07-12T21:50:39.407Z",
+    "duration": 2,
+    "pilar": "error",
+    "trigger": "manual"
+  },
+  "result": {
+    "status": "error",
+    "produto": null,
+    "error": "Assignment to constant variable.",
+    "errors": null
+  },
+  "entries": [
+    {
+      "ts": "2026-07-12T21:50:39.406Z",
+      "level": "ERROR",
+      "run": "2026-07-12-2150",
+      "pilar": "error",
+      "trigger": "manual",
+      "message": "Assignment to constant variable.",
+      "elapsed": 1
+    }
+  ]
+}

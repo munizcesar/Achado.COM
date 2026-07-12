@@ -4,9 +4,12 @@
  * AchadoCerto.VIP — Agente Autônomo
  *
  * Estados:
- *   PENDING → PRODUCT_SELECTED → PRODUCT_VALIDATED →
- *   CONTENT_GENERATED → QUALITY_APPROVED → FILES_WRITTEN →
+ *   PENDING → PRODUCT_SELECTED → FILES_WRITTEN →
  *   READY_TO_COMMIT → COMMITTED → VERIFIED → DONE
+ *
+ * (via pipeline resliente com auto-skip — estados intermedirios
+ *  PRODUCT_VALIDATED/CONTENT_GENERATED/QUALITY_APPROVED/AUDIT
+ *  so tratados internamente no loop de seleo)
  *
  * Se o processo cair, a PRÓXIMA execução continua do estado atual.
  * Cada estado tem um handler associado.
@@ -55,7 +58,7 @@ const STATE_KEYS = Object.keys(STATES);
  */
 const TRANSITIONS = {
   PENDING:            ['PRODUCT_SELECTED', 'FAIL'],
-  PRODUCT_SELECTED:   ['PRODUCT_VALIDATED', 'PENDING', 'FAIL'],
+  PRODUCT_SELECTED:   ['PRODUCT_VALIDATED', 'FILES_WRITTEN', 'PENDING', 'FAIL'],
   PRODUCT_VALIDATED:  ['CONTENT_GENERATED', 'PRODUCT_SELECTED', 'FAIL'],
   CONTENT_GENERATED:  ['QUALITY_APPROVED', 'PRODUCT_SELECTED', 'FAIL'],
   QUALITY_APPROVED:   ['AUDIT', 'PRODUCT_SELECTED', 'FAIL'],

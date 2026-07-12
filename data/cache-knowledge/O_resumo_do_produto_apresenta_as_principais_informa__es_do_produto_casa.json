@@ -1,0 +1,55 @@
+{
+  "ts": 1783891403149,
+  "knowledge": {
+    "benefits": [
+      "Praticidade no dia a dia",
+      "Economia de tempo",
+      "Qualidade e durabilidade"
+    ],
+    "contraindications": [],
+    "scientific_names": [],
+    "mechanisms": [],
+    "faq": [
+      {
+        "q": "É fácil de instalar?",
+        "a": "Geralmente sim, seguindo o manual."
+      },
+      {
+        "q": "Qual a garantia?",
+        "a": "Consulte a página do produto."
+      },
+      {
+        "q": "O resumo do produto funciona?",
+        "a": "Os resultados variam conforme o perfil de uso e consistência."
+      }
+    ],
+    "entities": [
+      "praticidade",
+      "durabilidade",
+      "eficiência",
+      "consumo energético",
+      "capacidade"
+    ],
+    "sources": [
+      {
+        "type": "serper",
+        "data": {
+          "avaliacoes": [
+            "Você sabe o que são avaliações de produtos? São opiniões emitidas por consumidores reais a respeito da experiência que tiveram com suas ...",
+            "O review é uma análise, uma opinião crítica dada pelo cliente a respeito de determinado produto ou serviço adquirido. Tem como objetivo, a ...",
+            "Mas, o que é review de produto? É uma avaliação que seu cliente faz sobre um produto que comprou, sendo uma espécie de feedback, não ..."
+          ],
+          "mencoes_positivas": [
+            "Equilibrio e harmonia nas relações entre consumidores e fornecedores.",
+            "Conheça os 10 melhores produtos de limpeza da minha casa que uso para deixar tudo brilhando e organizado! Produtos eficientes e fáceis de ...",
+            "1️⃣ A loja tem CNPJ? 2️⃣ Existe endereço físico? 3️⃣ Há reclamações de outros consumidores? Se você não consegue encontrar essas informações, o risco ..."
+          ],
+          "mencoes_negativas": [],
+          "contexto_mercado": [
+            "Pesquise reputação de empresas antes de comprar. Se tiver problema, reclame e resolva rápido. Toda empresa tem problema, boa é aquela que resolve."
+          ]
+        }
+      }
+    ]
+  }
+}

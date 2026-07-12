@@ -1,0 +1,22 @@
+{
+  "state": "PRODUCT_SELECTED",
+  "context": {
+    "executionId": "20260712-201116-0904ddf8",
+    "transitions": [
+      {
+        "from": "PENDING",
+        "to": "PRODUCT_SELECTED",
+        "ts": "2026-07-12T20:11:16.270Z"
+      }
+    ],
+    "errors": [
+      {
+        "from": "PRODUCT_SELECTED",
+        "to": "FILES_WRITTEN",
+        "error": "Transição inválida: PRODUCT_SELECTED → FILES_WRITTEN (permitidas: PRODUCT_VALIDATED, PENDING, FAIL)",
+        "ts": "2026-07-12T20:11:47.788Z"
+      }
+    ]
+  },
+  "updatedAt": "2026-07-12T20:11:47.790Z"
+}

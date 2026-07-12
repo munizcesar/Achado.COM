@@ -1,0 +1,47 @@
+{
+  "state": "DONE",
+  "context": {
+    "executionId": "20260712-203126-6ec8b124",
+    "transitions": [
+      {
+        "from": "PENDING",
+        "to": "PRODUCT_SELECTED",
+        "ts": "2026-07-12T20:31:26.097Z"
+      },
+      {
+        "from": "PRODUCT_SELECTED",
+        "to": "FILES_WRITTEN",
+        "ts": "2026-07-12T20:31:47.653Z",
+        "slug": "magnesio-quelato-300mg",
+        "productName": "Magnésio Quelato 300mg"
+      },
+      {
+        "from": "FILES_WRITTEN",
+        "to": "READY_TO_COMMIT",
+        "ts": "2026-07-12T20:31:47.664Z"
+      },
+      {
+        "from": "READY_TO_COMMIT",
+        "to": "COMMITTED",
+        "ts": "2026-07-12T20:31:47.667Z"
+      },
+      {
+        "from": "COMMITTED",
+        "to": "DEPLOYED",
+        "ts": "2026-07-12T20:31:47.672Z"
+      },
+      {
+        "from": "DEPLOYED",
+        "to": "VERIFIED",
+        "ts": "2026-07-12T20:31:47.675Z"
+      },
+      {
+        "from": "VERIFIED",
+        "to": "DONE",
+        "ts": "2026-07-12T20:31:47.679Z"
+      }
+    ],
+    "errors": []
+  },
+  "updatedAt": "2026-07-12T20:31:47.680Z"
+}

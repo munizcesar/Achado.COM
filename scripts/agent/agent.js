@@ -5,12 +5,14 @@
  * Pipeline integrado com state machine, execution ID, lock, confidence score,
  * SEO gate, metrics collector, audit, DLQ e circuit breaker.
  *
- * Pipeline EXATO:
- *   PENDING → PRODUCT_SELECTED → PRODUCT_VALIDATED → CONTENT_GENERATED →
- *   QUALITY_APPROVED → AUDIT → FILES_WRITTEN → READY_TO_COMMIT →
+ * Pipeline EXATO (v2 — auto-skip resiliente):
+ *   PENDING → PRODUCT_SELECTED → FILES_WRITTEN → READY_TO_COMMIT →
  *   COMMITTED → DEPLOYED → VERIFIED → DONE
  *
- * Se o AUDIT reprovar → FAIL (publicação bloqueada)
+ * Dentro de PRODUCT_SELECTED, um loop tenta produtos até um passar
+ * em TODAS as validações (link, duplicidade, guard, confiança,
+ * geração, quality gates, SEO, auditoria). Se falhar, pula para o
+ * próximo. Só falha quando o pool inteiro esgota.
  * Se interromper → retoma do último estado persistido
  *
  * Uso:
@@ -29,6 +31,7 @@ import { config } from 'dotenv';
 
 // ── Módulos da arquitetura modular ────────────────────────────────
 import { runContentGuard }                           from './content-guard.js';
+import { reescreverConteudo }                        from '../groq-service.js';
 import { fetchTrendingProducts, mergeTrendingWithCatalog, getTrendingStatus } from './trend-scout.js';
 import { createExecutionLogger, getLatestLog, getRecentLogs } from './logging/logger.js';
 import { validateAffiliateConfig, buildAmazonAffiliateUrl, validateFinalAffiliateUrl } from './affiliate/link-builder.js';
@@ -39,6 +42,7 @@ import { verifyPublication }                         from './monitor/publication
 import { runSeoGates }                               from './validators/seo.js';
 import { validateConfidence }                        from './validators/confidence.js';
 import { runFinalAudit }                             from './validators/audit.js';
+import { runEditorialGates }                         from './validators/editorial-gate.js';
 import { createStateMachine }                        from './core/state-machine.js';
 import { generateExecutionId, acquireLock, releaseLock, createExecution } from './core/execution.js';
 import { createMetricsCollector }                    from './monitoring/metrics.js';
@@ -60,7 +64,7 @@ if (!AMAZON_TAG) {
 }
 
 const HISTORY_DAYS      = 7;
-const MAX_GUARD_RETRIES = 3;
+const MAX_GUARD_RETRIES = 3;  // (mantido para compatibilidade, não usado no loop resiliente)
 const PILLARS           = ['beleza', 'saude', 'casa'];
 
 const SCHEDULES = [
@@ -168,7 +172,6 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
   const projectRoot = path.join(__dirname, '..', '..');
 
   let pipelineFailed = false;
-  let pipelineBlocked = false;
   let product = null;
   let affUrl = '';
   let slug = '';
@@ -216,7 +219,11 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
   }
 
   // ════════════════════════════════════════════════════════════════
-  // PRODUCT_SELECTED → busca produtos → PRODUCT_VALIDATED
+  // PRODUCT_SELECTED → Pipeline completo com auto-skip resiliente
+  // ════════════════════════════════════════════════════════════════
+  // Se QUALQUER etapa falhar (404 Amazon, scraping, quality, audit)
+  // o produto é descartado e o próximo é tentado automaticamente.
+  // A execução SÓ falha se TODOS os produtos do pool esgotarem.
   // ════════════════════════════════════════════════════════════════
   if (!pipelineFailed && stateMachine.getState() === 'PRODUCT_SELECTED') {
     const si = collector.startStage('PRODUCT_SELECTED');
@@ -232,6 +239,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
 
     let pool = mergeTrendingWithCatalog(trending, catalogByPillar, pillar, history, ANGLES);
     if (pool.length === 0) pool = [...catalogByPillar];
+
     if (pool.length === 0) {
       logger.fail(`Pool vazio — pilar "${pillar}" sem produtos`);
       stateMachine.addError('Pool vazio - nenhum produto disponível');
@@ -240,28 +248,43 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
       pipelineFailed = true;
     } else {
       logger.info(`Pool: ${pool.length} produtos`);
-      stateMachine.transition('PRODUCT_VALIDATED', { poolSize: pool.length });
-      collector.endStage(si, { poolSize: pool.length });
 
-      // ── Loop de seleção: tenta até achar um produto válido ─────
+      // ── Loop resiliente: tenta produtos até um passar em TODAS as validações ──
       const excluded = [];
-      for (let attempt = 1; attempt <= MAX_GUARD_RETRIES; attempt++) {
+      const MAX_ATTEMPTS = Math.min(pool.length, 15);
+      let attempt = 0;
+      let productSelected = false;
+
+      while (attempt < MAX_ATTEMPTS && !productSelected && !pipelineFailed) {
+        attempt++;
+
+        // Reseta variáveis por tentativa
+        product = null;
+        affUrl = '';
+        slug = '';
+        mdPath = '';
+        imgPath = '';
+        seoResult = null;
+        auditResult = null;
+        guard = null;
+
         product = pickFromPool(pool, excluded);
         if (!product) {
           logger.fail('Nenhum produto disponível no pool');
-          stateMachine.addError('Nenhum produto disponível no pool - todas as tentativas esgotadas');
+          stateMachine.addError('Pool exaurido - nenhum produto restante');
           stateMachine.transition('FAIL');
-          collector.failStage(si, 'Pool vazio - nenhum produto após retry');
           pipelineFailed = true;
           break;
         }
 
         const badge = product.isTrending ? `📈 trending` : '📦 catálogo';
-        logger.info(`Tentativa ${attempt}: ${product.name} [${badge}]`, { asin: product.asin });
+        logger.info(`Tentativa ${attempt}/${MAX_ATTEMPTS}: ${product.name} [${badge}]`, { asin: product.asin });
+
+        // ── 1. VALIDAÇÃO BÁSICA ──────────────────────────────────
 
         // Português
         if (!isTitleInPortuguese(product.name)) {
-          logger.fail(`Título fora do PT-BR`);
+          logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — título fora do PT-BR. Selecionando próximo...`);
           excluded.push(product.asin);
           continue;
         }
@@ -270,7 +293,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
         affUrl = buildAmazonAffiliateUrl(product.asin, affConfig.tag);
         const urlValid = validateFinalAffiliateUrl(affUrl);
         if (!urlValid.valid) {
-          logger.fail(`Link inválido: ${urlValid.error}`);
+          logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — link inválido: ${urlValid.error}. Selecionando próximo...`);
           excluded.push(product.asin);
           continue;
         }
@@ -278,7 +301,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
         // Duplicidade
         const dupCheck = checkDuplicate({ asin: product.asin, title: product.name, url: affUrl }, HISTORY_DAYS);
         if (dupCheck.duplicate) {
-          logger.fail(`Duplicado: ${dupCheck.reason}`);
+          logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — duplicado: ${dupCheck.reason}. Selecionando próximo...`);
           excluded.push(product.asin);
           continue;
         }
@@ -291,183 +314,264 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
         guard.warnings.forEach(w => logger.warn(w));
 
         if (!guard.safe) {
-          logger.fail(`Guard bloqueou: ${guard.blockers.join(' | ')}`);
+          logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — guard bloqueou: ${guard.blockers.join(' | ')}. Selecionando próximo...`);
           excluded.push(product.asin);
           continue;
         }
 
-        logger.pass(`Produto selecionado: ${product.name}`);
+        // ── 2. CONFIANÇA ────────────────────────────────────────
+
+        const source = product.isTrending ? 'puppeteer' : 'catalog';
+        const confCheck = validateConfidence(source, 50);
+        if (!confCheck.pass) {
+          logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — confiança ${confCheck.score} < ${confCheck.minimum}. Selecionando próximo...`);
+          excluded.push(product.asin);
+          addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'PRODUCT_VALIDATED', error: `Confidence ${confCheck.score}`, meta: { executionId } });
+          continue;
+        }
+
+        // ── 3. GERAÇÃO DE CONTEÚDO ───────────────────────────────
+        // (novo-post.js faz scraping Amazon, IA, markdown, imagem)
+
+        logger.step(`Gerando post: ${product.name} [${product.asin}]`);
+        const genStartTs = Date.now(); // timestamp ANTES da geracao (arquivos sao criados durante)
+        const genOk = runPostGenerator(affUrl, product.name, guard.envVars, logger);
+
+        if (!genOk) {
+          logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — geração falhou (Amazon 404 / scraping / imagem indisponível). Selecionando próximo...`);
+          addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'CONTENT_GENERATED', error: 'novo-post.js falhou', meta: { executionId } });
+          excluded.push(product.asin);
+          continue;
+        }
+
+        // ── 4. DETECTAR SLUG + RENOMEAR ARQUIVOS ────────────────
+        // Usa o nome do catálogo como slug (confiável).
+        // Se novo-post.js gerou com outro slug, renomeia os arquivos.
+
+        const blogDir = path.join(projectRoot, 'src', 'content', 'blog');
+        const imgDirLocal = path.join(projectRoot, 'public', 'images', 'posts');
+        const catalogSlug = slugify(product.name);
+
+        slug = catalogSlug;
+        mdPath = path.join(blogDir, `${slug}.md`);
+
+        // Detecta arquivo gerado por novo-post.js
+        let generatedSlug = null;
+        if (fs.existsSync(blogDir)) {
+          const files = fs.readdirSync(blogDir).filter(f => f.endsWith('.md'));
+          const recent = files.filter(f => {
+            try { return fs.statSync(path.join(blogDir, f)).mtimeMs >= genStartTs - 5000; }
+            catch { return false; }
+          });
+          if (recent.length > 0) {
+            const sorted = recent.map(f => ({ name: f, time: fs.statSync(path.join(blogDir, f)).mtimeMs }))
+              .sort((a, b) => b.time - a.time);
+            generatedSlug = sorted[0].name.replace(/\.md$/, '');
+          }
+        }
+
+        // Se o slug gerado for diferente do catálogo, renomeia arquivos
+        if (generatedSlug && generatedSlug !== catalogSlug) {
+          logger.info(`Slug gerado: ${generatedSlug} → renomeando para: ${catalogSlug}`);
+
+          // Renomeia .md
+          const oldMd = path.join(blogDir, `${generatedSlug}.md`);
+          if (fs.existsSync(oldMd) && !fs.existsSync(mdPath)) {
+            fs.renameSync(oldMd, mdPath);
+            logger.info(`  Renomeado: ${generatedSlug}.md → ${catalogSlug}.md`);
+          }
+
+          // Renomeia imagem (webp, jpg, png)
+          for (const ext of ['.webp', '.jpg', '.png']) {
+            const oldImg = path.join(imgDirLocal, `${generatedSlug}${ext}`);
+            const newImg = path.join(imgDirLocal, `${catalogSlug}${ext}`);
+            if (fs.existsSync(oldImg) && !fs.existsSync(newImg)) {
+              fs.renameSync(oldImg, newImg);
+              logger.info(`  Renomeado: ${generatedSlug}${ext} → ${catalogSlug}${ext}`);
+              break;
+            }
+          }
+
+          // Atualiza referências de imagem dentro do .md
+          if (fs.existsSync(mdPath)) {
+            let mdContent = fs.readFileSync(mdPath, 'utf8');
+            const oldRef = `/images/posts/${generatedSlug}`;
+            const newRef = `/images/posts/${catalogSlug}`;
+            if (mdContent.includes(oldRef)) {
+              mdContent = mdContent.replace(new RegExp(oldRef.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), newRef);
+              fs.writeFileSync(mdPath, mdContent, 'utf8');
+              logger.info(`  Referências de imagem atualizadas no .md`);
+            }
+          }
+        } else if (generatedSlug && generatedSlug === catalogSlug) {
+          logger.info(`Slug gerado coincide com catálogo: ${catalogSlug}`);
+        } else {
+          logger.info(`Slug do catálogo: ${catalogSlug}`);
+        }
+
+        // Determina imgPath
+        const imgCandidates = [
+          path.join(imgDirLocal, `${slug}.webp`),
+          path.join(imgDirLocal, `${slug}.jpg`),
+          path.join(imgDirLocal, `${slug}.png`),
+        ];
+        for (const candidate of imgCandidates) {
+          if (fs.existsSync(candidate)) {
+            imgPath = candidate;
+            break;
+          }
+        }
+        if (!imgPath) imgPath = imgCandidates[0];
+
+        logger.pass(`Arquivos gerados: ${slug}`);
+
+        // ── 5. QUALITY GATES ─────────────────────────────────────
+
+        let markdownContent = '';
+        try { if (fs.existsSync(mdPath)) markdownContent = fs.readFileSync(mdPath, 'utf8'); } catch (_) {}
+
+        // Gate: título genérico
+        if (markdownContent && /title:\s*"Produto Amazon\b/i.test(markdownContent)) {
+          logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — título genérico detectado. Selecionando próximo...`);
+          try { fs.unlinkSync(mdPath); } catch (_) {}
+          try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
+          addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'QUALITY_APPROVED', error: 'Título genérico', meta: { executionId } });
+          excluded.push(product.asin);
+          continue;
+        }
+
+        if (markdownContent) {
+          const qResult = runQualityGates('final_markdown', {
+            markdown: markdownContent, title: product.name,
+            category: pillar, imageFile: `${slug}.webp`,
+            affiliateUrl: affUrl, slug,
+          });
+          for (const e of qResult.errors) logger.fail(`QUALITY: ${e}`);
+          if (!qResult.pass) {
+            logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — quality gates: ${qResult.errors.length} falha(s). Selecionando próximo...`);
+            try { fs.unlinkSync(mdPath); } catch (_) {}
+            try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
+            addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'QUALITY_APPROVED', error: `Quality gates: ${qResult.errors.join('; ')}`, meta: { executionId } });
+            excluded.push(product.asin);
+            continue;
+          }
+          logger.pass(`Quality gates OK`);
+
+          // SEO Gate
+          seoResult = runSeoGates({ title: product.name, description: `Descubra as vantagens do ${product.name}.`, markdown: markdownContent, slug });
+          if (!seoResult.pass) logger.warn(`SEO: ${seoResult.errors.length} problemas`);
+          else logger.pass(`SEO OK`);
+
+          // ── AI Content Quality Gate + Editorial Score ────────
+          const editorialResult = runEditorialGates(markdownContent, { title: product.name, category: pillar, slug });
+          logger.info(`Editorial: ${editorialResult.summary}`);
+          for (const d of Object.entries(editorialResult.editorialScore.dimensions)) {
+            const [name, data] = d;
+            const pct = Math.round((data.score / data.max) * 100);
+            const icon = pct >= 80 ? '✅' : pct >= 60 ? '⚠️' : '❌';
+            logger.info(`  ${icon} ${name}: ${data.score}/${data.max}`);
+          }            if (!editorialResult.passed) {
+            // ── REWRITE LOOP: tenta reescrever com feedback ────
+            const groqKey = process.env.GROQ_API_KEY;
+            const cbClosed = cbGroq.getState() === 'CLOSED';
+            let rewritten = null;
+            if (groqKey && groqKey.length > 20 && editorialResult.improvementReport && cbClosed) {
+              logger.info('🔄 Tentando reescrever com feedback editorial...');
+              for (let rwAttempt = 1; rwAttempt <= 3; rwAttempt++) {
+                rewritten = await reescreverConteudo(markdownContent, editorialResult.improvementReport, groqKey);
+                if (rewritten) { cbGroq.recordSuccess(); break; }
+                // Rate limit (429) ou timeout — circuito abre após falhas consecutivas
+                cbGroq.recordFailure();
+                const stillClosed = cbGroq.getState() === 'CLOSED';
+                if (rwAttempt < 3 && stillClosed) {
+                  const wait = rwAttempt * 5000;
+                  logger.info(`⏳ Rewrite falhou, aguardando ${wait/1000}s e tentando novamente (${rwAttempt}/3)...`);
+                  await new Promise(resolve => setTimeout(resolve, wait));
+                }
+              }
+              if (!rewritten) {
+                const cbState = cbGroq.getState();
+                if (cbState !== 'CLOSED') {
+                  logger.warn(`⚠️ Circuit breaker Groq ${cbState} — pulando demais tentativas de rewrite`);
+                } else {
+                  logger.warn(`⚠️ Rewrite falhou após 3 tentativas — pode ser rate limit ou erro de conexão`);
+                }
+              }
+            } else if (groqKey && editorialResult.improvementReport && !cbClosed) {
+              logger.warn('⚠️ Circuit breaker Groq ' + cbGroq.getState() + ' — rewrite indisponível para este produto');
+            }
+
+            if (rewritten && rewritten.length > 200) {
+              // Reescreveu: substitui conteudo e re-valida
+              markdownContent = rewritten;
+              if (fs.existsSync(mdPath)) fs.writeFileSync(mdPath, rewritten, 'utf8');
+              logger.info('✅ Conteúdo reescrito, re-avaliando editorial score...');
+
+              const retryResult = runEditorialGates(markdownContent, { title: product.name, category: pillar, slug });
+              for (const d of Object.entries(retryResult.editorialScore.dimensions)) {
+                const [name, data] = d;
+                logger.info(`  ${name}: ${data.score}/${data.max}`);
+              }
+              logger.info(`Retry: ${retryResult.summary}`);
+
+              if (retryResult.passed) {
+                logger.pass(`✅ Rewrite aprovado: ${retryResult.editorialScore.score}/50`);
+                editorialResult = retryResult;
+              } else {
+                logger.warn(`⚠️ Rewrite ainda abaixo: ${retryResult.editorialScore.score}/50. Descartando...`);
+                rewritten = null;
+              }
+            }
+
+            if (!rewritten) {
+              logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — editorial score ${editorialResult.editorialScore.score}/50. Selecionando próximo...`);
+              try { fs.unlinkSync(mdPath); } catch (_) {}
+              try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
+              addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'EDITORIAL_GATE', error: `Editorial ${editorialResult.editorialScore.score}/50`, meta: { executionId } });
+              excluded.push(product.asin);
+              continue;
+            }
+          }
+          logger.pass(`Editorial score: ${editorialResult.editorialScore.score}/50`);
+        }
+
+        // ── 6. AUDITORIA FINAL ───────────────────────────────────
+
+        auditResult = runFinalAudit({ slug, title: product.name, affiliateUrl: affUrl, category: pillar, seoResult, historyCheck: { duplicate: false } });
+        logger.info(`Auditoria: ${auditResult.passed ? 'APROVADO' : 'REPROVADO'} — ${auditResult.score}% (${auditResult.details.passed}/${auditResult.details.total})`);
+
+        if (!auditResult.passed) {
+          logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — auditoria ${auditResult.score}% reprovou. Selecionando próximo...`);
+          logger.info(`  Motivos: ${auditResult.checks.filter(c => !c.pass).map(c => c.detail).join(' | ')}`);
+          addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'AUDIT', error: `Auditoria ${auditResult.score}% — ${auditResult.summary}`, meta: { executionId, slug, checks: auditResult?.checks || [] } });
+          excluded.push(product.asin);
+          continue;
+        }
+
+        // ── ✅ TUDO PASSOU! ──────────────────────────────────────
+        logger.pass(`✅ Produto selecionado: ${product.name} [${product.asin}]`);
+        productSelected = true;
         stateMachine.setContext({ asin: product.asin, productName: product.name, affiliateUrl: affUrl });
         break;
       }
-    }
-  }
 
-  // ════════════════════════════════════════════════════════════════
-  // PRODUCT_VALIDATED → gera conteúdo → CONTENT_GENERATED
-  // ════════════════════════════════════════════════════════════════
-  if (!pipelineFailed && product && stateMachine.getState() === 'PRODUCT_VALIDATED') {
-    const si = collector.startStage('PRODUCT_VALIDATED');
-    logger.step(`Validando confiança: ${product.name}`);
-
-    const source = product.isTrending ? 'puppeteer' : 'catalog';
-    const confCheck = validateConfidence(source, 50);
-    if (!confCheck.pass) {
-      logger.fail(`Confiança ${confCheck.score} < ${confCheck.minimum}`);
-      stateMachine.addError(confCheck.error);
-      stateMachine.transition('FAIL');
-      collector.failStage(si, confCheck.error);
-      pipelineFailed = true;
-    } else {
-      logger.pass(`Confiança: ${confCheck.score}`);
-      stateMachine.transition('CONTENT_GENERATED', { confidence: confCheck.score });
-      collector.endStage(si, { confidence: confCheck.score });
-    }
-  }
-
-  // ════════════════════════════════════════════════════════════════
-  // CONTENT_GENERATED → gera arquivos → QUALITY_APPROVED
-  // ════════════════════════════════════════════════════════════════
-  if (!pipelineFailed && product && stateMachine.getState() === 'CONTENT_GENERATED') {
-    const si = collector.startStage('CONTENT_GENERATED');
-    logger.step(`Gerando post: ${product.name} [${product.asin}]`);
-
-    const genOk = runPostGenerator(affUrl, product.name, guard ? guard.envVars : {}, logger);
-
-    if (!genOk) {
-      logger.fail(`Geração do post falhou`);
-      stateMachine.addError('Geração do post falhou');
-      stateMachine.transition('FAIL');
-      collector.failStage(si, 'Geração falhou');
-      addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'CONTENT_GENERATED', error: 'novo-post.js falhou', meta: { executionId } });
-      pipelineFailed = true;
-    } else {
-      // Escaneia o diretório de blog para encontrar o slug REAL gerado pelo novo-post.js
-      const blogDir = path.join(projectRoot, 'src', 'content', 'blog');
-      const imgDir = path.join(projectRoot, 'public', 'images', 'posts');
-
-      if (fs.existsSync(blogDir)) {
-        const files = fs.readdirSync(blogDir).filter(f => f.endsWith('.md'));
-        if (files.length > 0) {
-          // Pega o arquivo .md mais recente (acabou de ser criado pelo novo-post.js)
-          const newest = files.map(f => ({
-            name: f,
-            time: fs.statSync(path.join(blogDir, f)).mtimeMs
-          })).sort((a, b) => b.time - a.time)[0];
-          mdPath = path.join(blogDir, newest.name);
-          slug = newest.name.replace(/\.md$/, '');
-        }
-      }
-
-      if (!slug) {
-        // Fallback: usa slugify se não encontrou arquivo
-        slug = slugify(product.name);
-        mdPath = path.join(blogDir, `${slug}.md`);
-      }
-
-      // Procura a imagem correspondente
-      const imgCandidates = [
-        path.join(imgDir, `${slug}.webp`),
-        path.join(imgDir, `${slug}.jpg`),
-        path.join(imgDir, `${slug}.png`),
-      ];
-      for (const candidate of imgCandidates) {
-        if (fs.existsSync(candidate)) {
-          imgPath = candidate;
-          break;
-        }
-      }
-      if (!imgPath) imgPath = imgCandidates[0]; // fallback .webp
-
-      stateMachine.transition('QUALITY_APPROVED', { slug });
-      collector.endStage(si, { slug });
-      logger.pass(`Arquivos gerados: ${slug}`);
-    }
-  }
-
-  // ════════════════════════════════════════════════════════════════
-  // QUALITY_APPROVED → quality gates + SEO → AUDIT
-  // ════════════════════════════════════════════════════════════════
-  if (!pipelineFailed && slug && stateMachine.getState() === 'QUALITY_APPROVED') {
-    const si = collector.startStage('QUALITY_APPROVED');
-    logger.step(`Aplicando quality gates...`);
-
-    let markdownContent = '';
-    try { if (fs.existsSync(mdPath)) markdownContent = fs.readFileSync(mdPath, 'utf8'); } catch (_) {}
-
-    // Gate: título genérico
-    if (markdownContent && /title:\s*"Produto Amazon\b/i.test(markdownContent)) {
-      logger.fail(`TÍTULO GENÉRICO — CANCELANDO`);
-      try { fs.unlinkSync(mdPath); } catch (_) {}
-      try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
-      stateMachine.addError('Título genérico detectado no markdown');
-      stateMachine.transition('FAIL');
-      collector.failStage(si, 'Título genérico');
-      addToDeadLetter({ asin: product?.asin || '?', productName: product?.name || '?', pillar, stage: 'QUALITY_APPROVED', error: 'Título genérico', meta: { executionId } });
-      pipelineFailed = true;
-    } else
-    // Quality gates
-    if (markdownContent) {
-      const qResult = runQualityGates('final_markdown', {
-        markdown: markdownContent, title: product?.name,
-        category: pillar, imageFile: `${slug}.webp`,
-        affiliateUrl: affUrl, slug,
-      });
-      for (const e of qResult.errors) logger.fail(`QUALITY: ${e}`);
-      if (!qResult.pass) {
-        logger.fail(`Quality gates: ${qResult.errors.length} falha(s) — CANCELANDO`);
-        try { fs.unlinkSync(mdPath); } catch (_) {}
-        try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
-        stateMachine.addError(`Quality gates: ${qResult.errors.join('; ')}`);
+      if (productSelected) {
+        stateMachine.transition('FILES_WRITTEN', { slug, productName: product?.name });
+        collector.endStage(si, { selectedAsin: product?.asin, poolSize: pool.length, attempts: attempt });
+      } else if (!pipelineFailed) {
+        logger.fail(`❌ Todas as ${MAX_ATTEMPTS} tentativas esgotadas — nenhum produto válido no pilar "${pillar}"`);
+        stateMachine.addError('Todas as tentativas esgotadas - nenhum produto válido');
         stateMachine.transition('FAIL');
-        collector.failStage(si, 'Quality gates', { errors: qResult.errors });
-        addToDeadLetter({ asin: product?.asin || '?', productName: product?.name || '?', pillar, stage: 'QUALITY_APPROVED', error: `Quality gates: ${qResult.errors.join('; ')}`, meta: { executionId } });
+        collector.failStage(si, 'Todas as tentativas esgotadas');
         pipelineFailed = true;
-      } else {
-        logger.pass(`Quality gates OK`);
-        stateMachine.transition('AUDIT');
-        collector.endStage(si, { qErrors: qResult.errors.length, qWarnings: qResult.warnings.length });
-
-        // SEO Gate
-        seoResult = runSeoGates({ title: product?.name, description: `Descubra as vantagens do ${product?.name}.`, markdown: markdownContent, slug });
-        if (!seoResult.pass) logger.warn(`SEO: ${seoResult.errors.length} problemas`);
-        else logger.pass(`SEO OK`);
       }
-    } else {
-      stateMachine.transition('AUDIT');
-      collector.endStage(si);
-    }
-  }
-
-  // ════════════════════════════════════════════════════════════════
-  // AUDIT → verifica tudo → FILES_WRITTEN (ou FAIL se reprovar)
-  // ════════════════════════════════════════════════════════════════
-  if (!pipelineFailed && slug && stateMachine.getState() === 'AUDIT') {
-    const si = collector.startStage('AUDIT');
-    logger.step(`Executando auditoria final...`);
-
-    auditResult = runFinalAudit({ slug, title: product?.name, affiliateUrl: affUrl, category: pillar, seoResult, historyCheck: { duplicate: false } });
-    logger.info(`Auditoria: ${auditResult.passed ? 'APROVADO' : 'REPROVADO'} — ${auditResult.score}% (${auditResult.details.passed}/${auditResult.details.total})`);
-
-    if (auditResult.passed) {
-      stateMachine.transition('FILES_WRITTEN');
-      collector.endStage(si, { auditPassed: true, auditScore: auditResult.score });
-      logger.pass(`Auditoria aprovada — prosseguindo`);
-    } else {
-      logger.fail(`Auditoria REPROVOU — publicação CANCELADA`);
-      logger.info(`  Motivos: ${auditResult.checks.filter(c => !c.pass).map(c => c.detail).join(' | ')}`);
-      stateMachine.addError(`Auditoria reprovou: ${auditResult.score}%`);
-      stateMachine.transition('FAIL');
-      collector.failStage(si, `Auditoria: ${auditResult.score}%`);
-      addToDeadLetter({ asin: product?.asin || '?', productName: product?.name || '?', pillar, stage: 'AUDIT', error: `Auditoria ${auditResult.score}% — ${auditResult.summary}`, meta: { executionId, slug, checks: auditResult?.checks || [] } });
-      pipelineBlocked = true;
     }
   }
 
   // ════════════════════════════════════════════════════════════════
   // FILES_WRITTEN → verifica artefatos → READY_TO_COMMIT
   // ════════════════════════════════════════════════════════════════
-  if (!pipelineFailed && !pipelineBlocked && slug && stateMachine.getState() === 'FILES_WRITTEN') {
+  if (!pipelineFailed && slug && stateMachine.getState() === 'FILES_WRITTEN') {
     const si = collector.startStage('FILES_WRITTEN');
     logger.step(`Verificando artefatos...`);
 
@@ -485,7 +589,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
   // ════════════════════════════════════════════════════════════════
   // READY_TO_COMMIT → COMMITTED (simulado ou aguardando CI)
   // ════════════════════════════════════════════════════════════════
-  if (!pipelineFailed && !pipelineBlocked && slug && stateMachine.getState() === 'READY_TO_COMMIT') {
+  if (!pipelineFailed && slug && stateMachine.getState() === 'READY_TO_COMMIT') {
     const si = collector.startStage('READY_TO_COMMIT');
     logger.step(`Aguardando commit (Workflow CI)...`);
     stateMachine.transition('COMMITTED');
@@ -496,7 +600,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
   // ════════════════════════════════════════════════════════════════
   // COMMITTED → DEPLOYED (simulado)
   // ════════════════════════════════════════════════════════════════
-  if (!pipelineFailed && !pipelineBlocked && slug && stateMachine.getState() === 'COMMITTED') {
+  if (!pipelineFailed && slug && stateMachine.getState() === 'COMMITTED') {
     const si = collector.startStage('COMMITTED');
     logger.step(`Aguardando deploy (Workflow CI)...`);
     stateMachine.transition('DEPLOYED');
@@ -506,7 +610,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
   // ════════════════════════════════════════════════════════════════
   // DEPLOYED → VERIFIED (simulado)
   // ════════════════════════════════════════════════════════════════
-  if (!pipelineFailed && !pipelineBlocked && slug && stateMachine.getState() === 'DEPLOYED') {
+  if (!pipelineFailed && slug && stateMachine.getState() === 'DEPLOYED') {
     const si = collector.startStage('DEPLOYED');
     stateMachine.transition('VERIFIED');
     collector.endStage(si);
@@ -515,7 +619,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
   // ════════════════════════════════════════════════════════════════
   // VERIFIED → DONE
   // ════════════════════════════════════════════════════════════════
-  if (!pipelineFailed && !pipelineBlocked && slug && stateMachine.getState() === 'VERIFIED') {
+  if (!pipelineFailed && slug && stateMachine.getState() === 'VERIFIED') {
     const si = collector.startStage('VERIFIED');
     const postUrl = `https://achadocerto.vip/blog/${slug}`;
     logger.pass(`Publicação concluída: ${postUrl}`);

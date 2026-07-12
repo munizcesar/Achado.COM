@@ -1,0 +1,364 @@
+{
+  "meta": {
+    "runId": "20260712-202319-caa42242",
+    "startTime": "2026-07-12T20:23:19.722Z",
+    "endTime": "2026-07-12T20:23:41.615Z",
+    "duration": 21893,
+    "pilar": "saude",
+    "trigger": "manual",
+    "executionId": "20260712-202319-caa42242"
+  },
+  "result": {
+    "status": "success",
+    "produto": "Ômega 3 Fish Oil 1000mg",
+    "error": null,
+    "errors": null
+  },
+  "entries": [
+    {
+      "ts": "2026-07-12T20:23:19.725Z",
+      "level": "INFO",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "═══════════════════════════════════════════════════",
+      "elapsed": 3
+    },
+    {
+      "ts": "2026-07-12T20:23:19.726Z",
+      "level": "INFO",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🤖 Pipeline — 20260712-202319-caa42242",
+      "pillar": "saude",
+      "tag": "afiliado-ok",
+      "elapsed": 4
+    },
+    {
+      "ts": "2026-07-12T20:23:19.727Z",
+      "level": "INFO",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "═══ 🧪 DRY RUN — nenhum artefato será persistido ═══",
+      "elapsed": 5
+    },
+    {
+      "ts": "2026-07-12T20:23:19.742Z",
+      "level": "STEP",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Validando configuração de afiliado...",
+      "elapsed": 20
+    },
+    {
+      "ts": "2026-07-12T20:23:19.743Z",
+      "level": "PASS",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tag configurada",
+      "elapsed": 21
+    },
+    {
+      "ts": "2026-07-12T20:23:19.747Z",
+      "level": "STEP",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Buscando produtos para \"saude\"...",
+      "elapsed": 25
+    },
+    {
+      "ts": "2026-07-12T20:23:20.516Z",
+      "level": "INFO",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Trend Scout indisponível",
+      "elapsed": 794
+    },
+    {
+      "ts": "2026-07-12T20:23:20.520Z",
+      "level": "INFO",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Catálogo: 11 produtos",
+      "elapsed": 798
+    },
+    {
+      "ts": "2026-07-12T20:23:20.521Z",
+      "level": "INFO",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Pool: 10 produtos",
+      "elapsed": 799
+    },
+    {
+      "ts": "2026-07-12T20:23:20.523Z",
+      "level": "INFO",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Tentativa 1/10: Ômega 3 Fish Oil 1000mg [📦 catálogo]",
+      "asin": "B0DWNFZN17",
+      "elapsed": 801
+    },
+    {
+      "ts": "2026-07-12T20:23:20.534Z",
+      "level": "INFO",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 812
+    },
+    {
+      "ts": "2026-07-12T20:23:20.534Z",
+      "level": "INFO",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Produto : Ômega 3 Fish Oil 1000mg",
+      "elapsed": 812
+    },
+    {
+      "ts": "2026-07-12T20:23:20.535Z",
+      "level": "INFO",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Pilar   : saude",
+      "elapsed": 813
+    },
+    {
+      "ts": "2026-07-12T20:23:20.536Z",
+      "level": "INFO",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   Ângulo  : saude_preventiva",
+      "elapsed": 814
+    },
+    {
+      "ts": "2026-07-12T20:23:20.536Z",
+      "level": "INFO",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 814
+    },
+    {
+      "ts": "2026-07-12T20:23:20.537Z",
+      "level": "INFO",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 815
+    },
+    {
+      "ts": "2026-07-12T20:23:20.537Z",
+      "level": "INFO",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 816
+    },
+    {
+      "ts": "2026-07-12T20:23:20.538Z",
+      "level": "INFO",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 816
+    },
+    {
+      "ts": "2026-07-12T20:23:20.539Z",
+      "level": "INFO",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 817
+    },
+    {
+      "ts": "2026-07-12T20:23:20.540Z",
+      "level": "STEP",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Gerando post: Ômega 3 Fish Oil 1000mg [B0DWNFZN17]",
+      "elapsed": 818
+    },
+    {
+      "ts": "2026-07-12T20:23:20.541Z",
+      "level": "STEP",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Executando novo-post.js para gerar arquivos...",
+      "elapsed": 819
+    },
+    {
+      "ts": "2026-07-12T20:23:41.504Z",
+      "level": "PASS",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos do post gerados com sucesso",
+      "elapsed": 21782
+    },
+    {
+      "ts": "2026-07-12T20:23:41.546Z",
+      "level": "PASS",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Arquivos gerados: o-resumo-do-produto-apresenta-as-principais-informacoes-do-p",
+      "elapsed": 21824
+    },
+    {
+      "ts": "2026-07-12T20:23:41.550Z",
+      "level": "PASS",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Quality gates OK",
+      "elapsed": 21828
+    },
+    {
+      "ts": "2026-07-12T20:23:41.552Z",
+      "level": "WARN",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "SEO: 2 problemas",
+      "elapsed": 21831
+    },
+    {
+      "ts": "2026-07-12T20:23:41.557Z",
+      "level": "INFO",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Auditoria: APROVADO — 90% (9/10)",
+      "elapsed": 21835
+    },
+    {
+      "ts": "2026-07-12T20:23:41.557Z",
+      "level": "PASS",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ Produto selecionado: Ômega 3 Fish Oil 1000mg [B0DWNFZN17]",
+      "elapsed": 21835
+    },
+    {
+      "ts": "2026-07-12T20:23:41.562Z",
+      "level": "STEP",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Verificando artefatos...",
+      "elapsed": 21840
+    },
+    {
+      "ts": "2026-07-12T20:23:41.564Z",
+      "level": "PASS",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ C:\\Users\\Cesar Victor\\Desktop\\AchadoCerto.Vip\\AchadoCerto.VIP\\src\\content\\blog\\o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.md",
+      "elapsed": 21842
+    },
+    {
+      "ts": "2026-07-12T20:23:41.565Z",
+      "level": "PASS",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ 2562 bytes",
+      "elapsed": 21843
+    },
+    {
+      "ts": "2026-07-12T20:23:41.566Z",
+      "level": "PASS",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ C:\\Users\\Cesar Victor\\Desktop\\AchadoCerto.Vip\\AchadoCerto.VIP\\public\\images\\posts\\o-resumo-do-produto-apresenta-as-principais-informacoes-do-p.webp",
+      "elapsed": 21844
+    },
+    {
+      "ts": "2026-07-12T20:23:41.566Z",
+      "level": "PASS",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ 51.9KB",
+      "elapsed": 21844
+    },
+    {
+      "ts": "2026-07-12T20:23:41.567Z",
+      "level": "PASS",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "✅ o-resumo-do-produto-apresenta-as-principais-informacoes-do-p",
+      "elapsed": 21845
+    },
+    {
+      "ts": "2026-07-12T20:23:41.568Z",
+      "level": "PASS",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Artefatos OK",
+      "elapsed": 21846
+    },
+    {
+      "ts": "2026-07-12T20:23:41.572Z",
+      "level": "STEP",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Aguardando commit (Workflow CI)...",
+      "elapsed": 21850
+    },
+    {
+      "ts": "2026-07-12T20:23:41.575Z",
+      "level": "PASS",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Pronto para commit — CI fará git add/commit/push",
+      "elapsed": 21853
+    },
+    {
+      "ts": "2026-07-12T20:23:41.576Z",
+      "level": "STEP",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Aguardando deploy (Workflow CI)...",
+      "elapsed": 21854
+    },
+    {
+      "ts": "2026-07-12T20:23:41.582Z",
+      "level": "PASS",
+      "run": "20260712-202319-caa42242",
+      "pilar": "saude",
+      "trigger": "manual",
+      "message": "Publicação concluída: https://achadocerto.vip/blog/o-resumo-do-produto-apresenta-as-principais-informacoes-do-p",
+      "elapsed": 21860
+    }
+  ]
+}
