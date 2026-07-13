@@ -1,0 +1,26 @@
+{
+  "state": "FAIL",
+  "context": {
+    "executionId": "20260713-214500-971055e5",
+    "transitions": [
+      {
+        "from": "PENDING",
+        "to": "PRODUCT_SELECTED",
+        "ts": "2026-07-13T21:45:00.290Z"
+      },
+      {
+        "from": "PRODUCT_SELECTED",
+        "to": "FAIL",
+        "ts": "2026-07-13T21:45:00.467Z"
+      }
+    ],
+    "errors": [
+      {
+        "state": "PRODUCT_SELECTED",
+        "error": "Todas as tentativas esgotadas - nenhum produto válido",
+        "ts": "2026-07-13T21:45:00.467Z"
+      }
+    ]
+  },
+  "updatedAt": "2026-07-13T21:45:00.467Z"
+}
