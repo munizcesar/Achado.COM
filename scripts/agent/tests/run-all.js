@@ -146,9 +146,10 @@ async function testSeoGate(seoModule) {
 
   const ok = runSeoGates({
     title: 'Sérum Vitamina C Facial: O Que Ninguém Te Conta Antes de Comprar',
-    description: 'Descubra por que o Sérum Vitamina C Facial se tornou um dos produtos mais comentados no cuidado com a pele. Análise completa com benefícios.',
-    markdown: '# Título H1\n\nConteúdo.\n\n## Seção 1\n\nDetalhes.\n\n## Seção 2\n\nMais info.\n\n![Imagem](https://exemplo.com/img.jpg)\n\n[Link](/blog/post)',
+    description: 'Descubra por que o Sérum Vitamina C Facial se tornou um dos produtos mais comentados no cuidado com a pele. Análise completa com benefícios, ingredientes e dicas de uso.',
+    markdown: '# Sérum Vitamina C Facial: Análise Completa\n\nO Sérum Vitamina C Facial tem se destacado no mercado de skincare por seus benefícios. Este sérum facial oferece uma combinação poderosa de vitamina C e outros ativos que ajudam a uniformizar o tom da pele e combater os radicais livres.\n\n## O que esperar do Sérum Vitamina C Facial\n\nA vitamina C é um ingrediente ativo amplamente estudado. Sua biodisponibilidade na pele depende da concentração e do pH da fórmula. Este sérum facial utiliza uma absorção otimizada para garantir eficácia no tratamento diário.\n\n## Benefícios e Resultados\n\nOs principais benefícios incluem proteção antioxidante contra danos externos, estímulo à produção de colágeno e uniformização do tom da pele. A textura do sérum permite uma hidratação profunda sem pesar na barreira cutânea.\n\n![Sérum Vitamina C Facial](https://exemplo.com/serum-vitamina-c.jpg)\n\n[Ver disponibilidade](https://amazon.com.br/dp/B08L6QPNB8)',
     slug: 'serum-vitamina-c-facial',
+    category: 'beleza',
   });
   assert(ok.pass, 'Artigo OK');
   assert(ok.errors.length === 0, `${ok.errors.length} erros`);
@@ -164,13 +165,12 @@ async function testSeoGate(seoModule) {
     markdown: '# H1\n\nConteúdo sem H2.',
     slug: 'slug-valido',
   });
-  assert(!noH2.pass, 'Sem H2 rejeitado');
-
-  const badSlug = runSeoGates({
+  assert(!noH2.pass, 'Sem H2 rejeitado');    const badSlug = runSeoGates({
     title: 'Título Válido Aqui com Mais de 25 Caracteres',
-    description: 'Descrição com tamanho adequado para testar.',
-    markdown: '# H1\n\nTexto.\n\n## H2\n\nMais.',
+    description: 'Descrição com tamanho adequado para testar o SEO gate e verificar o comportamento esperado com slugs inválidos.',
+    markdown: '# Título H1\n\nTexto sobre o título válido com palavras suficientes.\n\n## Características do Título\n\nMais conteúdo relevante com termos semânticos de qualidade e funcionalidade.\n\n## Especificações\n\nDetalhes técnicos do produto com características e diferenciais.',
     slug: 'SLUG INVALIDO!!!',
+    category: 'casa',
   });
   assert(!badSlug.pass, 'Slug inválido rejeitado');
 }

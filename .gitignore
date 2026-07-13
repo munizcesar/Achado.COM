@@ -40,5 +40,8 @@ tmp-*.md
 tmp_*.md
 tmp_*.py
 
+# Relatórios gerados (homologação, dashboards, auditoria)
+reports/
+
 # Changelogs de sessão (artefatos de trabalho)
 CHANGELOG-SESSAO-*.md
