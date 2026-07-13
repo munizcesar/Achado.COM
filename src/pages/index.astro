@@ -16,6 +16,13 @@ function fmtDate(d) {
   return new Date(d).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
 }
 
+function readingTime(body) {
+  if (!body) return '2 min de leitura';
+  const words = body.trim().split(/\s+/).length;
+  const minutes = Math.max(1, Math.round(words / 200));
+  return `${minutes} min de leitura`;
+}
+
 function normalizeCategory(cat) {
   if (!cat) return '';
   return cat.toLowerCase()
@@ -39,17 +46,17 @@ const postsByPilar = pilares.map(p => {
   return { ...p, posts: filtered, total: filtered.length };
 });
 
-const pilaresData = postsByPilar.map(pilar => ({
-  slug: pilar.slug,
-  posts: pilar.posts.map(post => ({
-    slug: post.slug,
-    title: post.data.title,
-    image: post.data.image || '/placeholder.webp',
-    category: post.data.category,
-    description: post.data.description || '',
-    date: post.data.date ? new Date(post.data.date).toISOString() : null,
-  })),
+// Dados para a Seção Seleção AchadoCerto
+const selecaoPosts = posts.slice(0, 6).map(p => ({
+  slug: p.slug,
+  title: p.data.title,
+  description: p.data.description || '',
+  category: p.data.category || 'Blog',
+  image: p.data.image || '/placeholder.webp',
+  readTime: readingTime(p.body),
 }));
+const mainPost = selecaoPosts[0] || null;
+const sidebarPosts = selecaoPosts.slice(1);
 
 const seen = new Set();
 const siloPosts = posts.filter(p => {
@@ -102,60 +109,120 @@ const siloPosts = posts.filter(p => {
   <ChannelBanner />
 
 
-  <!-- ===================== CARDS DE PILARES ===================== -->
-  <section class="pilares-section">
-    <div class="container">
-      <div class="pilares-header">
-        <h2 class="pilares-title">Explore por categoria</h2>
-        <p class="pilares-sub">Escolha seu tema e encontre o melhor produto</p>
+  <!-- ===================== CURADORIA ACHADOCERTO — Selo Editorial ===================== -->
+  {mainPost && (
+    <section class="selecao-section">
+      <!-- Background: 8 camadas de profundidade -->
+      <div class="selecao-bg" aria-hidden="true">
+        <div class="selecao-bg-blue"></div>
+        <div class="selecao-bg-green"></div>
+        <div class="selecao-bg-gold"></div>
+        <div class="selecao-bg-noise"></div>
+        <div class="selecao-bg-map" aria-hidden="true">
+          <svg viewBox="0 0 1400 700" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Journey paths – trajetórias de descoberta conectando nós -->
+            <path d="M-80 560 C120 540 200 280 380 320 C560 360 640 180 860 200 C1040 214 1140 360 1320 340 C1400 332 1470 380 1520 420" stroke="var(--c-brand, #1A56DB)" stroke-width="1.2" opacity="0.06" stroke-linecap="round"/>
+            <path d="M-60 440 C180 420 260 520 460 460 C660 400 740 260 940 280 C1100 296 1200 420 1380 400" stroke="var(--c-brand, #1A56DB)" stroke-width="0.8" opacity="0.04" stroke-linecap="round"/>
+            <path d="M-40 620 C240 600 340 380 540 400 C740 420 840 240 1040 260 C1200 276 1280 460 1480 440" stroke="rgba(16,185,129,0.8)" stroke-width="0.6" opacity="0.04" stroke-linecap="round"/>
+            <path d="M-20 340 C160 320 280 460 480 420 C680 380 780 200 980 220 C1140 236 1240 320 1420 300" stroke="var(--c-brand, #1A56DB)" stroke-width="0.5" opacity="0.03" stroke-linecap="round"/>
+            <!-- Nós do mapa – pontos luminosos nas interseções -->
+            <circle cx="200" cy="280" r="3" fill="var(--c-brand, #1A56DB)" opacity="0.12"/>
+            <circle cx="380" cy="320" r="2.5" fill="var(--c-brand, #1A56DB)" opacity="0.1"/>
+            <circle cx="640" cy="180" r="3.5" fill="var(--c-brand, #1A56DB)" opacity="0.14"/>
+            <circle cx="860" cy="200" r="2.5" fill="var(--c-brand, #1A56DB)" opacity="0.1"/>
+            <circle cx="1140" cy="360" r="3" fill="var(--c-brand, #1A56DB)" opacity="0.12"/>
+            <circle cx="1320" cy="340" r="2" fill="var(--c-brand, #1A56DB)" opacity="0.08"/>
+            <circle cx="260" cy="520" r="2" fill="rgba(16,185,129,0.8)" opacity="0.1"/>
+            <circle cx="460" cy="460" r="2.5" fill="var(--c-brand, #1A56DB)" opacity="0.1"/>
+            <circle cx="740" cy="260" r="3" fill="var(--c-brand, #1A56DB)" opacity="0.12"/>
+            <circle cx="940" cy="280" r="2" fill="var(--c-brand, #1A56DB)" opacity="0.08"/>
+            <circle cx="1200" cy="420" r="2.5" fill="var(--c-brand, #1A56DB)" opacity="0.1"/>
+            <circle cx="340" cy="380" r="2" fill="rgba(16,185,129,0.8)" opacity="0.08"/>
+            <circle cx="540" cy="400" r="2.5" fill="var(--c-brand, #1A56DB)" opacity="0.1"/>
+            <circle cx="840" cy="240" r="2" fill="var(--c-brand, #1A56DB)" opacity="0.08"/>
+            <circle cx="1040" cy="260" r="3" fill="var(--c-brand, #1A56DB)" opacity="0.12"/>
+            <!-- Glow nodes – pontos maiores com brilho -->
+            <circle cx="380" cy="320" r="8" fill="var(--c-brand, #1A56DB)" opacity="0.04"/>
+            <circle cx="860" cy="200" r="10" fill="var(--c-brand, #1A56DB)" opacity="0.03"/>
+            <circle cx="1320" cy="340" r="7" fill="var(--c-brand, #1A56DB)" opacity="0.04"/>
+          </svg>
+        </div>
       </div>
-      <div class="pilares-grid">
 
-        <!-- BELEZA -->
-        <a href="/categorias/beleza" class="pilar-card">
-          <div class="pilar-icon-wrap pilar-icon-beleza">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
-              <path d="M20 3v4M22 5h-4M4 17v2M5 18H3"/>
-            </svg>
+      <div class="container">
+        <!-- Header → Selo editorial institucional -->
+        <div class="selecao-header">
+          <div class="selecao-seal">
+            <span class="selecao-seal-mark" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.5" y="0.5" width="29" height="29" rx="5" stroke="currentColor" stroke-width="0.8" opacity="0.3"/>
+                <text x="15" y="19" text-anchor="middle" fill="currentColor" font-size="11" font-weight="700" font-family="system-ui, -apple-system, sans-serif" opacity="0.5" letter-spacing="0.5">AC</text>
+              </svg>
+            </span>
+            <h2 class="selecao-title">Curadoria AchadoCerto</h2>
           </div>
-          <h3 class="pilar-label">{postsByPilar[0].label}</h3>
-          <p class="pilar-desc">{postsByPilar[0].desc}</p>
-          <span class="pilar-count">{postsByPilar[0].total} reviews publicados</span>
-          <span class="pilar-cta">Ver todos &#8594;</span>
-        </a>
-
-        <!-- SAÚDE -->
-        <a href="/categorias/saude" class="pilar-card">
-          <div class="pilar-icon-wrap pilar-icon-saude">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/>
-              <path d="M8.5 8.5 16 16"/>
-            </svg>
+          <p class="selecao-subtitle">An&aacute;lises aprofundadas e comparativos reais para voc&ecirc; decidir com seguran&ccedil;a.</p>
+          <div class="selecao-ruler">
+            <span class="selecao-ruler-line"></span>
+            <span class="selecao-ruler-line"></span>
           </div>
-          <h3 class="pilar-label">{postsByPilar[1].label}</h3>
-          <p class="pilar-desc">{postsByPilar[1].desc}</p>
-          <span class="pilar-count">{postsByPilar[1].total} reviews publicados</span>
-          <span class="pilar-cta">Ver todos &#8594;</span>
-        </a>
+        </div>
 
-        <!-- CASA -->
-        <a href="/categorias/casa" class="pilar-card">
-          <div class="pilar-icon-wrap pilar-icon-casa">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <polyline points="9 22 9 12 15 12 15 22"/>
-            </svg>
-          </div>
-          <h3 class="pilar-label">{postsByPilar[2].label}</h3>
-          <p class="pilar-desc">{postsByPilar[2].desc}</p>
-          <span class="pilar-count">{postsByPilar[2].total} reviews publicados</span>
-          <span class="pilar-cta">Ver todos &#8594;</span>
-        </a>
+        <!-- Editorial Grid 65/35 -->
+        <div class="selecao-editorial">
+          <!-- Feature principal (65%) -->
+          <article class="selecao-feature">
+            <a href={`/blog/${mainPost.slug}`} class="selecao-feature-link">
+              <div class="selecao-feature-figure">
+                <img src={mainPost.image} alt={mainPost.title} class="selecao-feature-img" width="900" height="560" loading="eager" />
+                <div class="selecao-feature-shine" aria-hidden="true"></div>
+              </div>
+              <div class="selecao-feature-body">
+                <div class="selecao-feature-meta">
+                  <span class="selecao-feature-cat">{mainPost.category}</span>
+                  <span class="selecao-feature-time">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    {mainPost.readTime}
+                  </span>
+                </div>
+                <h3 class="selecao-feature-headline">{mainPost.title}</h3>
+                {mainPost.description && <p class="selecao-feature-desc">{mainPost.description}</p>}
+                <span class="selecao-feature-cta">
+                  <span class="selecao-feature-cta-text">Ver an&aacute;lise completa</span>
+                  <span class="selecao-feature-cta-arrow" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </span>
+                </span>
+              </div>
+            </a>
+          </article>
 
+          <!-- Sidebar Mini Features (35%) -->
+          {sidebarPosts.length > 0 && (
+            <aside class="selecao-minilist" aria-label="Mais an&aacute;lises da sele&ccedil;&atilde;o">
+              <div class="selecao-minilist-header">
+                <h3 class="selecao-minilist-heading">Nesta edi&ccedil;&atilde;o</h3>
+              </div>
+              <div class="selecao-minilist-items">
+                {sidebarPosts.map((post, i) => (
+                  <a href={`/blog/${post.slug}`} class="selecao-minilist-item" style={`--i: ${i}`}>
+                    <div class="selecao-minilist-figure">
+                      <img src={post.image} alt={post.title} class="selecao-minilist-img" width="72" height="72" loading="lazy" />
+                    </div>
+                    <div class="selecao-minilist-body">
+                      <span class="selecao-minilist-cat">{post.category}</span>
+                      <span class="selecao-minilist-title">{post.title}</span>
+                    </div>
+                    <svg class="selecao-minilist-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
+                  </a>
+                ))}
+              </div>
+            </aside>
+          )}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
 
 
   <!-- ===================== SEÇÕES POR PILAR ===================== -->
@@ -196,7 +263,7 @@ const siloPosts = posts.filter(p => {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
             </div>
-            <div class="post-grid" data-pilar-grid={pilar.slug}>
+            <div class="post-grid">
               {pilar.posts.slice(0, 3).map(post => (
                 <article class="post-card">
                   <a href={`/blog/${post.slug}`} class="post-card-img-wrap">
@@ -306,97 +373,7 @@ const siloPosts = posts.filter(p => {
     }
   </script>
 
-  <script type="application/json" id="pilares-data" set:text={JSON.stringify(pilaresData)}></script>
 
-  <script>
-    (function () {
-      function shuffle(array) {
-        const a = array.slice();
-        for (let i = a.length - 1; i > 0; i -= 1) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [a[i], a[j]] = [a[j], a[i]];
-        }
-        return a;
-      }
-
-      const dataScript = document.getElementById('pilares-data');
-      if (!dataScript) return;
-
-      let pilaresDataClient;
-      try {
-        pilaresDataClient = JSON.parse(dataScript.textContent || '[]');
-      } catch (error) {
-        return;
-      }
-
-      document.querySelectorAll('[data-pilar-grid]').forEach(grid => {
-        const pilarSlug = grid.getAttribute('data-pilar-grid');
-        if (!pilarSlug) return;
-
-        const pilarObj = pilaresDataClient.find(p => p.slug === pilarSlug);
-        if (!pilarObj || !Array.isArray(pilarObj.posts) || pilarObj.posts.length <= 3) return;
-
-        const randomPosts = shuffle(pilarObj.posts).slice(0, 3);
-        grid.innerHTML = '';
-
-        randomPosts.forEach(post => {
-          const article = document.createElement('article');
-          article.className = 'post-card';
-          const link = document.createElement('a');
-          link.href = `/blog/${post.slug}`;
-          link.className = 'post-card-img-wrap';
-          const img = document.createElement('img');
-          img.src = post.image || '/placeholder.webp';
-          img.alt = post.title || '';
-          img.className = 'post-card-img';
-          img.width = 600;
-          img.height = 400;
-          img.loading = 'lazy';
-          link.appendChild(img);
-          article.appendChild(link);
-          const body = document.createElement('div');
-          body.className = 'post-card-body';
-          const cat = document.createElement('span');
-          cat.className = 'post-card-cat';
-          cat.textContent = post.category || '';
-          const title = document.createElement('h3');
-          title.className = 'post-card-title';
-          const titleAnchor = document.createElement('a');
-          titleAnchor.href = `/blog/${post.slug}`;
-          titleAnchor.textContent = post.title || '';
-          title.appendChild(titleAnchor);
-          body.appendChild(cat);
-          body.appendChild(title);
-          if (post.description) {
-            const excerpt = document.createElement('p');
-            excerpt.className = 'post-card-excerpt';
-            excerpt.textContent = post.description;
-            body.appendChild(excerpt);
-          }
-          article.appendChild(body);
-          const footer = document.createElement('div');
-          footer.className = 'post-card-footer';
-          const timeEl = document.createElement('time');
-          timeEl.className = 'post-card-date';
-          if (post.date) {
-            const date = new Date(post.date);
-            if (!Number.isNaN(date.getTime())) {
-              timeEl.dateTime = date.toISOString();
-              timeEl.textContent = date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
-            }
-          }
-          const readLink = document.createElement('a');
-          readLink.href = `/blog/${post.slug}`;
-          readLink.className = 'post-card-read';
-          readLink.textContent = 'Ler review';
-          footer.appendChild(timeEl);
-          footer.appendChild(readLink);
-          article.appendChild(footer);
-          grid.appendChild(article);
-        });
-      });
-    })();
-  </script>
 
 </Layout>
 
@@ -445,30 +422,545 @@ const siloPosts = posts.filter(p => {
     .trust-actions { flex-shrink:0; width:100%; max-width:480px; }
   }
 
-  /* ===== CARDS DE PILARES ===== */
-  .pilares-section { background:var(--c-bg,#f8f9fa); padding:32px 0 28px; border-bottom:1px solid var(--c-border,#e2e8f0); }
-  .pilares-header { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:24px; padding-left:4px; }
-  .pilares-title { font-size:clamp(1.05rem,2vw,1.35rem); font-weight:800; color:var(--c-text,#1a202c); margin:0; line-height:1.15; display:flex; align-items:center; gap:10px; }
-  .pilares-title::before { content:''; display:block; width:4px; height:1.1em; border-radius:2px; background:var(--c-brand,#E1306C); flex-shrink:0; }
-  .pilares-sub { color:var(--c-text-sub,#4a5568); font-size:clamp(0.78rem,1.4vw,0.88rem); margin:0; line-height:1.4; padding-left:12px; border-left:1px solid var(--c-border,#e2e8f0); }
-  @media (max-width:600px) {
-    .pilares-header { flex-direction:column; align-items:flex-start; gap:4px; margin-bottom:20px; }
-    .pilares-sub { padding-left:14px; border-left:none; }
+  /* ===== CURADORIA ACHADOCERTO — Selo Editorial ===== */
+  .selecao-section {
+    position: relative;
+    padding: 80px 0 88px;
+    overflow: hidden;
+    background: #FCFCFA;
+    border-bottom: 1px solid var(--c-border, #e2e8f0);
   }
-  .pilares-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; }
-  .pilar-card { display:flex; flex-direction:column; gap:10px; background:var(--c-surface,#fff); border:2px solid var(--c-border,#e2e8f0); border-radius:16px; padding:32px 28px; text-decoration:none; transition:border-color .2s,box-shadow .2s,transform .2s; position:relative; overflow:hidden; }
-  .pilar-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(225,48,108,.04) 0%,transparent 60%); opacity:0; transition:opacity .2s; }
-  .pilar-card:hover { border-color:var(--c-brand,#E1306C); box-shadow:0 8px 32px rgba(225,48,108,.12); transform:translateY(-3px); }
-  .pilar-card:hover::before { opacity:1; }
-  .pilar-card:hover .pilar-icon-wrap { background:var(--c-brand,#E1306C); color:#fff; }
-  .pilar-icon-wrap { width:56px; height:56px; border-radius:14px; display:flex; align-items:center; justify-content:center; margin-bottom:6px; transition:background .2s,color .2s; }
-  .pilar-icon-beleza { background:#fce7f3; color:#be185d; }
-  .pilar-icon-saude  { background:#dcfce7; color:#15803d; }
-  .pilar-icon-casa   { background:#eff6ff; color:#1d4ed8; }
-  .pilar-label { font-size:1.15rem; font-weight:800; color:var(--c-text,#1a202c); margin:0; }
-  .pilar-desc  { font-size:.88rem; color:var(--c-text-sub,#4a5568); margin:0; line-height:1.55; flex:1; }
-  .pilar-count { font-size:.76rem; font-weight:700; color:var(--c-text-muted,#718096); text-transform:uppercase; letter-spacing:.06em; }
-  .pilar-cta   { font-size:.9rem; font-weight:700; color:var(--c-brand,#E1306C); }
+
+  /* ── Background: 8 camadas de profundidade ── */
+  .selecao-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  /* Layer 1: Base — #FCFCFa já definido no section */
+
+  /* Layer 2: Blue radial */
+  .selecao-bg-blue {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 65% 55% at 12% 85%, rgba(59,130,246,0.07) 0%, transparent 70%);
+  }
+
+  /* Layer 3: Green radial */
+  .selecao-bg-green {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 45% at 88% 22%, rgba(16,185,129,0.045) 0%, transparent 65%);
+  }
+
+  /* Layer 4: Golden glow behind title */
+  .selecao-bg-gold {
+    position: absolute;
+    top: 4%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 480px;
+    height: 200px;
+    background: radial-gradient(ellipse 50% 50% at center, rgba(251,191,36,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Layer 5: Glass — applied on cards instead of bg layer */
+
+  /* Layer 6: Noise 2% */
+  .selecao-bg-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.02;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+  }
+
+  /* Layer 7: Journey map paths */
+  .selecao-bg-map {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .selecao-bg-map svg {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+  }
+
+  /* ── Container ── */
+  .selecao-section .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Header com selo proprietário ── */
+  .selecao-header {
+    margin-bottom: 48px;
+    text-align: center;
+  }
+  .selecao-seal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .selecao-seal-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    color: var(--c-brand, #1A56DB);
+  }
+  .selecao-seal-mark svg {
+    display: block;
+  }
+  .selecao-title {
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--c-text, #1a202c);
+    margin: 0;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .selecao-subtitle {
+    font-size: clamp(0.95rem, 1.4vw, 1.125rem);
+    font-weight: 500;
+    color: var(--c-text-sub, #4a5568);
+    max-width: 560px;
+    margin: 0 auto 24px;
+    line-height: 1.7;
+  }
+  .selecao-ruler {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .selecao-ruler-line {
+    display: block;
+    width: clamp(48px, 8vw, 140px);
+    height: 1px;
+    flex-shrink: 0;
+  }
+  .selecao-ruler-line:first-child {
+    background: linear-gradient(90deg, transparent, var(--c-border, #d2d6dc));
+  }
+  .selecao-ruler-line:last-child {
+    background: linear-gradient(90deg, var(--c-border, #d2d6dc), transparent);
+  }
+
+  /* ── Editorial Grid 65/35 ── */
+  .selecao-editorial {
+    display: grid;
+    grid-template-columns: 1.75fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  /* ═══ Feature principal ═══ */
+  .selecao-feature {
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.55);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow:
+      0 2px 6px rgba(0,0,0,0.03),
+      0 12px 32px rgba(0,0,0,0.04),
+      0 24px 56px rgba(0,0,0,0.03);
+    transition:
+      box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+  .selecao-feature::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, rgba(59,130,246,0.08), transparent 40%, rgba(16,185,129,0.06));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .selecao-feature:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 4px 12px rgba(0,0,0,0.04),
+      0 20px 48px rgba(0,0,0,0.06),
+      0 36px 80px rgba(0,0,0,0.05);
+  }
+  .selecao-feature:hover::before {
+    opacity: 1;
+  }
+
+  .selecao-feature-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .selecao-feature-link:focus-visible {
+    outline: 2px solid var(--c-brand, #1A56DB);
+    outline-offset: 4px;
+    border-radius: 26px;
+  }
+
+  .selecao-feature-figure {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .selecao-feature-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .selecao-feature:hover .selecao-feature-img {
+    transform: scale(1.02);
+  }
+
+  .selecao-feature-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      transparent 30%,
+      rgba(255,255,255,0.12) 45%,
+      transparent 60%
+    );
+    transform: translateX(-100%) rotate(25deg);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+  .selecao-feature:hover .selecao-feature-shine {
+    transform: translateX(100%) rotate(25deg);
+  }
+
+  .selecao-feature-body {
+    padding: 28px 32px 32px;
+  }
+
+  .selecao-feature-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .selecao-feature-cat {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--c-brand, #1A56DB);
+    background: rgba(59,130,246,0.07);
+    padding: 5px 14px;
+    border-radius: 100px;
+    line-height: 1.3;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .selecao-feature:hover .selecao-feature-cat {
+    background: rgba(59,130,246,0.12);
+  }
+  .selecao-feature-time {
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--c-text-light, #adb5bd);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .selecao-feature-time svg {
+    opacity: 0.5;
+    width: 13px;
+    height: 13px;
+  }
+
+  .selecao-feature-headline {
+    font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+    font-weight: 700;
+    color: var(--c-text, #1a202c);
+    margin: 0 0 12px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    transition: color 0.2s ease;
+  }
+  .selecao-feature:hover .selecao-feature-headline {
+    color: var(--c-brand, #1A56DB);
+  }
+
+  .selecao-feature-desc {
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: var(--c-text-sub, #4a5568);
+    line-height: 1.65;
+    margin: 0 0 22px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ── CTA premium ── */
+  .selecao-feature-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px 10px 24px;
+    border-radius: 100px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--c-brand, #1A56DB);
+    background: rgba(59,130,246,0.06);
+    border: 1px solid rgba(59,130,246,0.12);
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      gap 0.2s ease;
+  }
+  .selecao-feature:hover .selecao-feature-cta {
+    background: rgba(59,130,246,0.11);
+    border-color: rgba(59,130,246,0.22);
+    gap: 14px;
+    box-shadow: 0 2px 12px rgba(59,130,246,0.1);
+  }
+  .selecao-feature-cta-text {
+    line-height: 1.2;
+  }
+  .selecao-feature-cta-arrow {
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+  }
+  .selecao-feature:hover .selecao-feature-cta-arrow {
+    transform: translateX(6px);
+  }
+  .selecao-feature-cta-arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ═══ Mini-list / Sidebar ═══ */
+  .selecao-minilist {
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,0.55);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow:
+      0 2px 6px rgba(0,0,0,0.03),
+      0 12px 32px rgba(0,0,0,0.04),
+      0 24px 56px rgba(0,0,0,0.03);
+  }
+
+  .selecao-minilist-header {
+    padding: 18px 24px 14px;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+  .selecao-minilist-heading {
+    margin: 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--c-text-muted, #6c757d);
+  }
+
+  .selecao-minilist-items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .selecao-minilist-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 24px;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    animation: selecao-slide-up 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+    animation-delay: calc(0.07s * var(--i, 0));
+  }
+  @keyframes selecao-slide-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .selecao-minilist-item:last-child {
+    border-bottom: none;
+  }
+  .selecao-minilist-item:hover {
+    background: rgba(59,130,246,0.035);
+    transform: translateX(6px);
+  }
+  .selecao-minilist-item:focus-visible {
+    outline: 2px solid var(--c-brand, #1A56DB);
+    outline-offset: -2px;
+    background: rgba(59,130,246,0.035);
+    transform: translateX(6px);
+  }
+
+  .selecao-minilist-figure {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .selecao-minilist-item:hover .selecao-minilist-figure {
+    transform: scale(1.06);
+    box-shadow: 0 4px 14px rgba(59,130,246,0.08);
+  }
+  .selecao-minilist-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+  }
+
+  .selecao-minilist-body {
+    flex: 1;
+    min-width: 0;
+  }
+  .selecao-minilist-cat {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--c-brand, #1A56DB);
+    margin-bottom: 3px;
+  }
+  .selecao-minilist-title {
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--c-text, #1a202c);
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.2s ease;
+  }
+  .selecao-minilist-item:hover .selecao-minilist-title {
+    color: var(--c-brand, #1A56DB);
+  }
+
+  .selecao-minilist-arrow {
+    flex-shrink: 0;
+    color: var(--c-text-light, #adb5bd);
+    transition:
+      transform 0.2s ease,
+      color 0.2s ease;
+  }
+  .selecao-minilist-item:hover .selecao-minilist-arrow {
+    transform: translateX(6px);
+    color: var(--c-brand, #1A56DB);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 1024px) {
+    .selecao-editorial {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .selecao-feature-figure {
+      aspect-ratio: 16/9;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .selecao-section {
+      padding: 56px 0 64px;
+    }
+    .selecao-header {
+      margin-bottom: 36px;
+    }
+    .selecao-feature-body {
+      padding: 22px 24px 26px;
+    }
+    .selecao-minilist-item {
+      padding: 14px 20px;
+    }
+    .selecao-bg-map {
+      opacity: 0.45;
+    }
+    .selecao-bg-gold {
+      width: 300px;
+      height: 140px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .selecao-section {
+      padding: 40px 0 48px;
+    }
+    .selecao-feature-body {
+      padding: 18px 18px 22px;
+    }
+    .selecao-feature-figure {
+      aspect-ratio: 4/3;
+      padding: 12px;
+    }
+    .selecao-minilist-figure {
+      width: 46px;
+      height: 46px;
+      padding: 5px;
+    }
+    .selecao-minilist-item {
+      padding: 12px 16px;
+      gap: 10px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .selecao-minilist-item { animation: none; }
+
+    .selecao-feature { transition: none; }
+    .selecao-feature:hover {
+      transform: none;
+    }
+    .selecao-feature:hover .selecao-feature-img {
+      transform: none;
+    }
+    .selecao-feature-shine { display: none; }
+  }
 
   /* ===== SEÇÕES POR PILAR ===== */
   .pilar-section { padding:48px 0; border-bottom:1px solid var(--c-border,#e2e8f0); background:var(--c-surface,#fff); }
