@@ -210,5 +210,44 @@
       "dryRun": false
     },
     "savedAt": "2026-07-12T21:40:09.248Z"
+  },
+  {
+    "executionId": "20260713-171247-01b30813",
+    "pillar": "casa",
+    "startedAt": "2026-07-13T17:12:47.694Z",
+    "totalTime": 958,
+    "stages": [
+      {
+        "name": "PENDING",
+        "startedAt": 1783962767696,
+        "endedAt": 1783962767697,
+        "duration": 1,
+        "success": true,
+        "error": null,
+        "tag": "altivita-20"
+      },
+      {
+        "name": "PRODUCT_SELECTED",
+        "startedAt": 1783962767697,
+        "endedAt": 1783962768651,
+        "duration": 954,
+        "success": false,
+        "error": "Todas as tentativas esgotadas"
+      }
+    ],
+    "summary": {
+      "total": 2,
+      "passed": 1,
+      "failed": 1,
+      "successRate": 50
+    },
+    "result": {
+      "status": "fail",
+      "executionId": "20260713-171247-01b30813",
+      "produto": "Esteira Elétrica Dobrável para Casa",
+      "asin": "B0H2CWWK2P",
+      "dryRun": false
+    },
+    "savedAt": "2026-07-13T17:12:48.653Z"
   }
 ]

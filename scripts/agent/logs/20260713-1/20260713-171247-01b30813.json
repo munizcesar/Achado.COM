@@ -1,0 +1,1611 @@
+{
+  "meta": {
+    "runId": "20260713-171247-01b30813",
+    "startTime": "2026-07-13T17:12:47.694Z",
+    "endTime": "2026-07-13T17:12:48.660Z",
+    "duration": 966,
+    "pilar": "casa",
+    "trigger": "manual",
+    "executionId": "20260713-171247-01b30813"
+  },
+  "result": {
+    "status": "fail",
+    "produto": "Esteira Elétrica Dobrável para Casa",
+    "error": null,
+    "errors": null
+  },
+  "entries": [
+    {
+      "ts": "2026-07-13T17:12:47.694Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "═══════════════════════════════════════════════════",
+      "elapsed": 0
+    },
+    {
+      "ts": "2026-07-13T17:12:47.695Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "🤖 Pipeline — 20260713-171247-01b30813",
+      "pillar": "casa",
+      "tag": "afiliado-ok",
+      "elapsed": 1
+    },
+    {
+      "ts": "2026-07-13T17:12:47.696Z",
+      "level": "STEP",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Validando configuração de afiliado...",
+      "elapsed": 2
+    },
+    {
+      "ts": "2026-07-13T17:12:47.696Z",
+      "level": "PASS",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Tag configurada",
+      "elapsed": 2
+    },
+    {
+      "ts": "2026-07-13T17:12:47.697Z",
+      "level": "STEP",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Buscando produtos para \"casa\"...",
+      "elapsed": 3
+    },
+    {
+      "ts": "2026-07-13T17:12:48.601Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Trend Scout indisponível",
+      "elapsed": 907
+    },
+    {
+      "ts": "2026-07-13T17:12:48.602Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Catálogo: 16 produtos",
+      "elapsed": 908
+    },
+    {
+      "ts": "2026-07-13T17:12:48.602Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Pool: 16 produtos",
+      "elapsed": 908
+    },
+    {
+      "ts": "2026-07-13T17:12:48.602Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Tentativa 1/15: Chaleira Elétrica 1,7L [📦 catálogo]",
+      "asin": "B076HZ357P",
+      "elapsed": 908
+    },
+    {
+      "ts": "2026-07-13T17:12:48.606Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 912
+    },
+    {
+      "ts": "2026-07-13T17:12:48.606Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Produto : Chaleira Elétrica 1,7L",
+      "elapsed": 912
+    },
+    {
+      "ts": "2026-07-13T17:12:48.607Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Pilar   : casa",
+      "elapsed": 913
+    },
+    {
+      "ts": "2026-07-13T17:12:48.607Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Ângulo  : custo_beneficio",
+      "elapsed": 913
+    },
+    {
+      "ts": "2026-07-13T17:12:48.607Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 913
+    },
+    {
+      "ts": "2026-07-13T17:12:48.607Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 913
+    },
+    {
+      "ts": "2026-07-13T17:12:48.608Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 914
+    },
+    {
+      "ts": "2026-07-13T17:12:48.608Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 914
+    },
+    {
+      "ts": "2026-07-13T17:12:48.608Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 914
+    },
+    {
+      "ts": "2026-07-13T17:12:48.609Z",
+      "level": "WARN",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Chaleira Elétrica 1,7L [B076HZ357P] — validação de produto: URL da imagem ausente; Descrição do produto ausente ou muito curta. ABORTANDO produto.",
+      "elapsed": 915
+    },
+    {
+      "ts": "2026-07-13T17:12:48.610Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Tentativa 2/15: Air Fryer 4L Digital [📦 catálogo]",
+      "asin": "B0CV4BFNRQ",
+      "elapsed": 916
+    },
+    {
+      "ts": "2026-07-13T17:12:48.612Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 918
+    },
+    {
+      "ts": "2026-07-13T17:12:48.612Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Produto : Air Fryer 4L Digital",
+      "elapsed": 918
+    },
+    {
+      "ts": "2026-07-13T17:12:48.612Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Pilar   : casa",
+      "elapsed": 918
+    },
+    {
+      "ts": "2026-07-13T17:12:48.612Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Ângulo  : praticidade_cozinha",
+      "elapsed": 918
+    },
+    {
+      "ts": "2026-07-13T17:12:48.612Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 918
+    },
+    {
+      "ts": "2026-07-13T17:12:48.613Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 919
+    },
+    {
+      "ts": "2026-07-13T17:12:48.613Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 919
+    },
+    {
+      "ts": "2026-07-13T17:12:48.613Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 919
+    },
+    {
+      "ts": "2026-07-13T17:12:48.613Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 919
+    },
+    {
+      "ts": "2026-07-13T17:12:48.613Z",
+      "level": "WARN",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Air Fryer 4L Digital [B0CV4BFNRQ] — validação de produto: URL da imagem ausente; Descrição do produto ausente ou muito curta. ABORTANDO produto.",
+      "elapsed": 919
+    },
+    {
+      "ts": "2026-07-13T17:12:48.614Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Tentativa 3/15: Purificador de Água Compacto [📦 catálogo]",
+      "asin": "B0DSLX7ZQX",
+      "elapsed": 920
+    },
+    {
+      "ts": "2026-07-13T17:12:48.614Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 920
+    },
+    {
+      "ts": "2026-07-13T17:12:48.614Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Produto : Purificador de Água Compacto",
+      "elapsed": 921
+    },
+    {
+      "ts": "2026-07-13T17:12:48.615Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Pilar   : casa",
+      "elapsed": 921
+    },
+    {
+      "ts": "2026-07-13T17:12:48.615Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Ângulo  : saude_em_casa",
+      "elapsed": 921
+    },
+    {
+      "ts": "2026-07-13T17:12:48.615Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 921
+    },
+    {
+      "ts": "2026-07-13T17:12:48.615Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 921
+    },
+    {
+      "ts": "2026-07-13T17:12:48.615Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 921
+    },
+    {
+      "ts": "2026-07-13T17:12:48.616Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 922
+    },
+    {
+      "ts": "2026-07-13T17:12:48.616Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 922
+    },
+    {
+      "ts": "2026-07-13T17:12:48.616Z",
+      "level": "WARN",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Purificador de Água Compacto [B0DSLX7ZQX] — validação de produto: URL da imagem ausente; Descrição do produto ausente ou muito curta. ABORTANDO produto.",
+      "elapsed": 922
+    },
+    {
+      "ts": "2026-07-13T17:12:48.617Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Tentativa 4/15: Umidificador de Ar Ultrassônico [📦 catálogo]",
+      "asin": "B07HR1MZQP",
+      "elapsed": 923
+    },
+    {
+      "ts": "2026-07-13T17:12:48.618Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 924
+    },
+    {
+      "ts": "2026-07-13T17:12:48.618Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Produto : Umidificador de Ar Ultrassônico",
+      "elapsed": 924
+    },
+    {
+      "ts": "2026-07-13T17:12:48.618Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Pilar   : casa",
+      "elapsed": 924
+    },
+    {
+      "ts": "2026-07-13T17:12:48.618Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Ângulo  : bem_estar_em_casa",
+      "elapsed": 924
+    },
+    {
+      "ts": "2026-07-13T17:12:48.618Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 924
+    },
+    {
+      "ts": "2026-07-13T17:12:48.619Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 925
+    },
+    {
+      "ts": "2026-07-13T17:12:48.619Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 925
+    },
+    {
+      "ts": "2026-07-13T17:12:48.619Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 925
+    },
+    {
+      "ts": "2026-07-13T17:12:48.619Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 925
+    },
+    {
+      "ts": "2026-07-13T17:12:48.619Z",
+      "level": "WARN",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Umidificador de Ar Ultrassônico [B07HR1MZQP] — validação de produto: URL da imagem ausente; Descrição do produto ausente ou muito curta. ABORTANDO produto.",
+      "elapsed": 925
+    },
+    {
+      "ts": "2026-07-13T17:12:48.620Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Tentativa 5/15: Cafeteira Expresso 15 Bar [📦 catálogo]",
+      "asin": "B0GYQ8325V",
+      "elapsed": 926
+    },
+    {
+      "ts": "2026-07-13T17:12:48.621Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 927
+    },
+    {
+      "ts": "2026-07-13T17:12:48.621Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Produto : Cafeteira Expresso 15 Bar",
+      "elapsed": 927
+    },
+    {
+      "ts": "2026-07-13T17:12:48.621Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Pilar   : casa",
+      "elapsed": 927
+    },
+    {
+      "ts": "2026-07-13T17:12:48.621Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Ângulo  : ritual_diario",
+      "elapsed": 927
+    },
+    {
+      "ts": "2026-07-13T17:12:48.621Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 927
+    },
+    {
+      "ts": "2026-07-13T17:12:48.621Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 927
+    },
+    {
+      "ts": "2026-07-13T17:12:48.622Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 928
+    },
+    {
+      "ts": "2026-07-13T17:12:48.622Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 928
+    },
+    {
+      "ts": "2026-07-13T17:12:48.622Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 928
+    },
+    {
+      "ts": "2026-07-13T17:12:48.622Z",
+      "level": "WARN",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Cafeteira Expresso 15 Bar [B0GYQ8325V] — validação de produto: URL da imagem ausente; Descrição do produto ausente ou muito curta. ABORTANDO produto.",
+      "elapsed": 928
+    },
+    {
+      "ts": "2026-07-13T17:12:48.623Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Tentativa 6/15: Panela Antiaderente 28cm [📦 catálogo]",
+      "asin": "B07BFRRCM8",
+      "elapsed": 929
+    },
+    {
+      "ts": "2026-07-13T17:12:48.623Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 929
+    },
+    {
+      "ts": "2026-07-13T17:12:48.623Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Produto : Panela Antiaderente 28cm",
+      "elapsed": 929
+    },
+    {
+      "ts": "2026-07-13T17:12:48.623Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Pilar   : casa",
+      "elapsed": 929
+    },
+    {
+      "ts": "2026-07-13T17:12:48.624Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Ângulo  : praticidade_cozinha",
+      "elapsed": 930
+    },
+    {
+      "ts": "2026-07-13T17:12:48.624Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 930
+    },
+    {
+      "ts": "2026-07-13T17:12:48.624Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 930
+    },
+    {
+      "ts": "2026-07-13T17:12:48.624Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 930
+    },
+    {
+      "ts": "2026-07-13T17:12:48.624Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 930
+    },
+    {
+      "ts": "2026-07-13T17:12:48.625Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 931
+    },
+    {
+      "ts": "2026-07-13T17:12:48.625Z",
+      "level": "WARN",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Panela Antiaderente 28cm [B07BFRRCM8] — validação de produto: URL da imagem ausente; Descrição do produto ausente ou muito curta. ABORTANDO produto.",
+      "elapsed": 931
+    },
+    {
+      "ts": "2026-07-13T17:12:48.625Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Tentativa 7/15: Aspirador Robô Wi-Fi [📦 catálogo]",
+      "asin": "B0DZ687M2L",
+      "elapsed": 931
+    },
+    {
+      "ts": "2026-07-13T17:12:48.626Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 932
+    },
+    {
+      "ts": "2026-07-13T17:12:48.626Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Produto : Aspirador Robô Wi-Fi",
+      "elapsed": 932
+    },
+    {
+      "ts": "2026-07-13T17:12:48.626Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Pilar   : casa",
+      "elapsed": 932
+    },
+    {
+      "ts": "2026-07-13T17:12:48.626Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Ângulo  : praticidade_casa",
+      "elapsed": 932
+    },
+    {
+      "ts": "2026-07-13T17:12:48.626Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 932
+    },
+    {
+      "ts": "2026-07-13T17:12:48.627Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 933
+    },
+    {
+      "ts": "2026-07-13T17:12:48.627Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 933
+    },
+    {
+      "ts": "2026-07-13T17:12:48.627Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 933
+    },
+    {
+      "ts": "2026-07-13T17:12:48.627Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 933
+    },
+    {
+      "ts": "2026-07-13T17:12:48.627Z",
+      "level": "WARN",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Aspirador Robô Wi-Fi [B0DZ687M2L] — validação de produto: URL da imagem ausente; Descrição do produto ausente ou muito curta. ABORTANDO produto.",
+      "elapsed": 933
+    },
+    {
+      "ts": "2026-07-13T17:12:48.629Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Tentativa 8/15: Difusor de Aromas 400ml [📦 catálogo]",
+      "asin": "B07S8JDC4B",
+      "elapsed": 935
+    },
+    {
+      "ts": "2026-07-13T17:12:48.629Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 935
+    },
+    {
+      "ts": "2026-07-13T17:12:48.630Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Produto : Difusor de Aromas 400ml",
+      "elapsed": 936
+    },
+    {
+      "ts": "2026-07-13T17:12:48.630Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Pilar   : casa",
+      "elapsed": 936
+    },
+    {
+      "ts": "2026-07-13T17:12:48.630Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Ângulo  : bem_estar_em_casa",
+      "elapsed": 936
+    },
+    {
+      "ts": "2026-07-13T17:12:48.630Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 936
+    },
+    {
+      "ts": "2026-07-13T17:12:48.630Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 936
+    },
+    {
+      "ts": "2026-07-13T17:12:48.630Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 936
+    },
+    {
+      "ts": "2026-07-13T17:12:48.630Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 936
+    },
+    {
+      "ts": "2026-07-13T17:12:48.631Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 937
+    },
+    {
+      "ts": "2026-07-13T17:12:48.631Z",
+      "level": "WARN",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Difusor de Aromas 400ml [B07S8JDC4B] — validação de produto: URL da imagem ausente; Descrição do produto ausente ou muito curta. ABORTANDO produto.",
+      "elapsed": 937
+    },
+    {
+      "ts": "2026-07-13T17:12:48.631Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Tentativa 9/15: Mixer Vertical 600W Inox [📦 catálogo]",
+      "asin": "B07RHVJ9SL",
+      "elapsed": 937
+    },
+    {
+      "ts": "2026-07-13T17:12:48.632Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 938
+    },
+    {
+      "ts": "2026-07-13T17:12:48.632Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Produto : Mixer Vertical 600W Inox",
+      "elapsed": 938
+    },
+    {
+      "ts": "2026-07-13T17:12:48.632Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Pilar   : casa",
+      "elapsed": 938
+    },
+    {
+      "ts": "2026-07-13T17:12:48.632Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Ângulo  : praticidade_cozinha",
+      "elapsed": 938
+    },
+    {
+      "ts": "2026-07-13T17:12:48.633Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 939
+    },
+    {
+      "ts": "2026-07-13T17:12:48.633Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 939
+    },
+    {
+      "ts": "2026-07-13T17:12:48.633Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 939
+    },
+    {
+      "ts": "2026-07-13T17:12:48.633Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 939
+    },
+    {
+      "ts": "2026-07-13T17:12:48.633Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 939
+    },
+    {
+      "ts": "2026-07-13T17:12:48.633Z",
+      "level": "WARN",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Mixer Vertical 600W Inox [B07RHVJ9SL] — validação de produto: URL da imagem ausente; Descrição do produto ausente ou muito curta. ABORTANDO produto.",
+      "elapsed": 939
+    },
+    {
+      "ts": "2026-07-13T17:12:48.634Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Tentativa 10/15: Fritadeira Elétrica sem Óleo 5,5L [📦 catálogo]",
+      "asin": "B0H5KPHMQS",
+      "elapsed": 940
+    },
+    {
+      "ts": "2026-07-13T17:12:48.634Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 940
+    },
+    {
+      "ts": "2026-07-13T17:12:48.635Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Produto : Fritadeira Elétrica sem Óleo 5,5L",
+      "elapsed": 941
+    },
+    {
+      "ts": "2026-07-13T17:12:48.635Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Pilar   : casa",
+      "elapsed": 941
+    },
+    {
+      "ts": "2026-07-13T17:12:48.635Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Ângulo  : praticidade_cozinha",
+      "elapsed": 941
+    },
+    {
+      "ts": "2026-07-13T17:12:48.635Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 941
+    },
+    {
+      "ts": "2026-07-13T17:12:48.635Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 941
+    },
+    {
+      "ts": "2026-07-13T17:12:48.635Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 941
+    },
+    {
+      "ts": "2026-07-13T17:12:48.636Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 942
+    },
+    {
+      "ts": "2026-07-13T17:12:48.636Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 942
+    },
+    {
+      "ts": "2026-07-13T17:12:48.636Z",
+      "level": "WARN",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Fritadeira Elétrica sem Óleo 5,5L [B0H5KPHMQS] — validação de produto: URL da imagem ausente; Descrição do produto ausente ou muito curta. ABORTANDO produto.",
+      "elapsed": 942
+    },
+    {
+      "ts": "2026-07-13T17:12:48.636Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Tentativa 11/15: Liquidificador de Alta Potência 900W [📦 catálogo]",
+      "asin": "B08KWNT75K",
+      "elapsed": 942
+    },
+    {
+      "ts": "2026-07-13T17:12:48.637Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 943
+    },
+    {
+      "ts": "2026-07-13T17:12:48.637Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Produto : Liquidificador de Alta Potência 900W",
+      "elapsed": 943
+    },
+    {
+      "ts": "2026-07-13T17:12:48.637Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Pilar   : casa",
+      "elapsed": 943
+    },
+    {
+      "ts": "2026-07-13T17:12:48.638Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Ângulo  : praticidade_cozinha",
+      "elapsed": 944
+    },
+    {
+      "ts": "2026-07-13T17:12:48.638Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 944
+    },
+    {
+      "ts": "2026-07-13T17:12:48.638Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 944
+    },
+    {
+      "ts": "2026-07-13T17:12:48.638Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 944
+    },
+    {
+      "ts": "2026-07-13T17:12:48.638Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 944
+    },
+    {
+      "ts": "2026-07-13T17:12:48.638Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 944
+    },
+    {
+      "ts": "2026-07-13T17:12:48.638Z",
+      "level": "WARN",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Liquidificador de Alta Potência 900W [B08KWNT75K] — validação de produto: URL da imagem ausente; Descrição do produto ausente ou muito curta. ABORTANDO produto.",
+      "elapsed": 944
+    },
+    {
+      "ts": "2026-07-13T17:12:48.639Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Tentativa 12/15: Ferro de Passar a Vapor 2400W [📦 catálogo]",
+      "asin": "B07PVT1CJG",
+      "elapsed": 945
+    },
+    {
+      "ts": "2026-07-13T17:12:48.640Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 946
+    },
+    {
+      "ts": "2026-07-13T17:12:48.640Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Produto : Ferro de Passar a Vapor 2400W",
+      "elapsed": 946
+    },
+    {
+      "ts": "2026-07-13T17:12:48.640Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Pilar   : casa",
+      "elapsed": 946
+    },
+    {
+      "ts": "2026-07-13T17:12:48.640Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Ângulo  : custo_beneficio",
+      "elapsed": 946
+    },
+    {
+      "ts": "2026-07-13T17:12:48.640Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 946
+    },
+    {
+      "ts": "2026-07-13T17:12:48.640Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 946
+    },
+    {
+      "ts": "2026-07-13T17:12:48.641Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 947
+    },
+    {
+      "ts": "2026-07-13T17:12:48.641Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 947
+    },
+    {
+      "ts": "2026-07-13T17:12:48.641Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 947
+    },
+    {
+      "ts": "2026-07-13T17:12:48.641Z",
+      "level": "WARN",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Ferro de Passar a Vapor 2400W [B07PVT1CJG] — validação de produto: URL da imagem ausente; Descrição do produto ausente ou muito curta. ABORTANDO produto.",
+      "elapsed": 947
+    },
+    {
+      "ts": "2026-07-13T17:12:48.642Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Tentativa 13/15: Organizador de Gaveta Modulável [📦 catálogo]",
+      "asin": "B0CPTD7WH3",
+      "elapsed": 948
+    },
+    {
+      "ts": "2026-07-13T17:12:48.642Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 948
+    },
+    {
+      "ts": "2026-07-13T17:12:48.643Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Produto : Organizador de Gaveta Modulável",
+      "elapsed": 949
+    },
+    {
+      "ts": "2026-07-13T17:12:48.643Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Pilar   : casa",
+      "elapsed": 949
+    },
+    {
+      "ts": "2026-07-13T17:12:48.643Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Ângulo  : praticidade_casa",
+      "elapsed": 949
+    },
+    {
+      "ts": "2026-07-13T17:12:48.643Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 949
+    },
+    {
+      "ts": "2026-07-13T17:12:48.643Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 949
+    },
+    {
+      "ts": "2026-07-13T17:12:48.644Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 950
+    },
+    {
+      "ts": "2026-07-13T17:12:48.644Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 950
+    },
+    {
+      "ts": "2026-07-13T17:12:48.644Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 950
+    },
+    {
+      "ts": "2026-07-13T17:12:48.644Z",
+      "level": "WARN",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Organizador de Gaveta Modulável [B0CPTD7WH3] — validação de produto: URL da imagem ausente; Descrição do produto ausente ou muito curta. ABORTANDO produto.",
+      "elapsed": 950
+    },
+    {
+      "ts": "2026-07-13T17:12:48.645Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Tentativa 14/15: Panela de Pressão Elétrica 5L [📦 catálogo]",
+      "asin": "B07L8PWVW5",
+      "elapsed": 951
+    },
+    {
+      "ts": "2026-07-13T17:12:48.646Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 952
+    },
+    {
+      "ts": "2026-07-13T17:12:48.646Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Produto : Panela de Pressão Elétrica 5L",
+      "elapsed": 952
+    },
+    {
+      "ts": "2026-07-13T17:12:48.646Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Pilar   : casa",
+      "elapsed": 952
+    },
+    {
+      "ts": "2026-07-13T17:12:48.646Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Ângulo  : praticidade_cozinha",
+      "elapsed": 952
+    },
+    {
+      "ts": "2026-07-13T17:12:48.646Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 952
+    },
+    {
+      "ts": "2026-07-13T17:12:48.646Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 952
+    },
+    {
+      "ts": "2026-07-13T17:12:48.647Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 953
+    },
+    {
+      "ts": "2026-07-13T17:12:48.647Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 953
+    },
+    {
+      "ts": "2026-07-13T17:12:48.647Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 953
+    },
+    {
+      "ts": "2026-07-13T17:12:48.647Z",
+      "level": "WARN",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Panela de Pressão Elétrica 5L [B07L8PWVW5] — validação de produto: URL da imagem ausente; Descrição do produto ausente ou muito curta. ABORTANDO produto.",
+      "elapsed": 953
+    },
+    {
+      "ts": "2026-07-13T17:12:48.648Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Tentativa 15/15: Esteira Elétrica Dobrável para Casa [📦 catálogo]",
+      "asin": "B0H2CWWK2P",
+      "elapsed": 954
+    },
+    {
+      "ts": "2026-07-13T17:12:48.649Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "🛡️  Content Guard — Auditoria de Qualidade",
+      "elapsed": 955
+    },
+    {
+      "ts": "2026-07-13T17:12:48.649Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Produto : Esteira Elétrica Dobrável para Casa",
+      "elapsed": 955
+    },
+    {
+      "ts": "2026-07-13T17:12:48.649Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Pilar   : casa",
+      "elapsed": 955
+    },
+    {
+      "ts": "2026-07-13T17:12:48.649Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   Ângulo  : saude_em_casa",
+      "elapsed": 955
+    },
+    {
+      "ts": "2026-07-13T17:12:48.649Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Nome do produto sem padrões genéricos",
+      "elapsed": 955
+    },
+    {
+      "ts": "2026-07-13T17:12:48.649Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Ângulo sem referências temporais",
+      "elapsed": 955
+    },
+    {
+      "ts": "2026-07-13T17:12:48.650Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem metalinguagem no ângulo",
+      "elapsed": 956
+    },
+    {
+      "ts": "2026-07-13T17:12:48.650Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   [OK] Sem risco de repetição",
+      "elapsed": 956
+    },
+    {
+      "ts": "2026-07-13T17:12:48.650Z",
+      "level": "INFO",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "   ✅ Guard aprovado — 0 aviso(s), 0 bloqueio(s)",
+      "elapsed": 956
+    },
+    {
+      "ts": "2026-07-13T17:12:48.650Z",
+      "level": "WARN",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "⚠️ Produto inválido: Esteira Elétrica Dobrável para Casa [B0H2CWWK2P] — validação de produto: URL da imagem ausente; Descrição do produto ausente ou muito curta. ABORTANDO produto.",
+      "elapsed": 956
+    },
+    {
+      "ts": "2026-07-13T17:12:48.651Z",
+      "level": "FAIL",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "❌ Todas as 15 tentativas esgotadas — nenhum produto válido no pilar \"casa\"",
+      "elapsed": 957
+    },
+    {
+      "ts": "2026-07-13T17:12:48.652Z",
+      "level": "WARN",
+      "run": "20260713-171247-01b30813",
+      "pilar": "casa",
+      "trigger": "manual",
+      "message": "Erro ao gerar relatorio: Cannot read properties of null (reading 'pass')",
+      "elapsed": 958
+    }
+  ]
+}

@@ -48,5 +48,755 @@
     "failedAt": "2026-07-12T22:31:29.948Z",
     "retryCount": 0,
     "status": "pending"
+  },
+  {
+    "asin": "B076HZ357P",
+    "productName": "Chaleira Elétrica 1,7L",
+    "pillar": "casa",
+    "stage": "PRODUCT_VALIDATED",
+    "error": "Produto inválido: URL da imagem ausente; Descrição do produto ausente ou muito curta",
+    "meta": {
+      "executionId": "20260713-171247-01b30813",
+      "checks": [
+        {
+          "name": "categoria_coerencia",
+          "pass": true,
+          "detail": "✅ Categoria coerente com produto"
+        },
+        {
+          "name": "titulo_consistencia",
+          "pass": true,
+          "detail": "✅ Título consistente entre catálogo e scraping"
+        },
+        {
+          "name": "imagem_url",
+          "pass": false,
+          "detail": "❌ URL da imagem ausente"
+        },
+        {
+          "name": "descricao",
+          "pass": false,
+          "detail": "❌ Descrição do produto ausente ou muito curta"
+        },
+        {
+          "name": "asin",
+          "pass": true,
+          "detail": "✅ ASIN B076HZ357P extraído"
+        },
+        {
+          "name": "asin_valido",
+          "pass": true,
+          "detail": "✅ ASIN B076HZ357P válido"
+        },
+        {
+          "name": "categoria_valida",
+          "pass": true,
+          "detail": "✅ Categoria: casa"
+        }
+      ]
+    },
+    "failedAt": "2026-07-13T17:12:48.610Z",
+    "retryCount": 0,
+    "status": "pending"
+  },
+  {
+    "asin": "B0CV4BFNRQ",
+    "productName": "Air Fryer 4L Digital",
+    "pillar": "casa",
+    "stage": "PRODUCT_VALIDATED",
+    "error": "Produto inválido: URL da imagem ausente; Descrição do produto ausente ou muito curta",
+    "meta": {
+      "executionId": "20260713-171247-01b30813",
+      "checks": [
+        {
+          "name": "categoria_coerencia",
+          "pass": true,
+          "detail": "✅ Categoria coerente com produto"
+        },
+        {
+          "name": "titulo_consistencia",
+          "pass": true,
+          "detail": "✅ Título consistente entre catálogo e scraping"
+        },
+        {
+          "name": "imagem_url",
+          "pass": false,
+          "detail": "❌ URL da imagem ausente"
+        },
+        {
+          "name": "descricao",
+          "pass": false,
+          "detail": "❌ Descrição do produto ausente ou muito curta"
+        },
+        {
+          "name": "asin",
+          "pass": true,
+          "detail": "✅ ASIN B0CV4BFNRQ extraído"
+        },
+        {
+          "name": "asin_valido",
+          "pass": true,
+          "detail": "✅ ASIN B0CV4BFNRQ válido"
+        },
+        {
+          "name": "categoria_valida",
+          "pass": true,
+          "detail": "✅ Categoria: casa"
+        }
+      ]
+    },
+    "failedAt": "2026-07-13T17:12:48.614Z",
+    "retryCount": 0,
+    "status": "pending"
+  },
+  {
+    "asin": "B0DSLX7ZQX",
+    "productName": "Purificador de Água Compacto",
+    "pillar": "casa",
+    "stage": "PRODUCT_VALIDATED",
+    "error": "Produto inválido: URL da imagem ausente; Descrição do produto ausente ou muito curta",
+    "meta": {
+      "executionId": "20260713-171247-01b30813",
+      "checks": [
+        {
+          "name": "categoria_coerencia",
+          "pass": true,
+          "detail": "✅ Categoria coerente com produto"
+        },
+        {
+          "name": "titulo_consistencia",
+          "pass": true,
+          "detail": "✅ Título consistente entre catálogo e scraping"
+        },
+        {
+          "name": "imagem_url",
+          "pass": false,
+          "detail": "❌ URL da imagem ausente"
+        },
+        {
+          "name": "descricao",
+          "pass": false,
+          "detail": "❌ Descrição do produto ausente ou muito curta"
+        },
+        {
+          "name": "asin",
+          "pass": true,
+          "detail": "✅ ASIN B0DSLX7ZQX extraído"
+        },
+        {
+          "name": "asin_valido",
+          "pass": true,
+          "detail": "✅ ASIN B0DSLX7ZQX válido"
+        },
+        {
+          "name": "categoria_valida",
+          "pass": true,
+          "detail": "✅ Categoria: casa"
+        }
+      ]
+    },
+    "failedAt": "2026-07-13T17:12:48.617Z",
+    "retryCount": 0,
+    "status": "pending"
+  },
+  {
+    "asin": "B07HR1MZQP",
+    "productName": "Umidificador de Ar Ultrassônico",
+    "pillar": "casa",
+    "stage": "PRODUCT_VALIDATED",
+    "error": "Produto inválido: URL da imagem ausente; Descrição do produto ausente ou muito curta",
+    "meta": {
+      "executionId": "20260713-171247-01b30813",
+      "checks": [
+        {
+          "name": "categoria_coerencia",
+          "pass": true,
+          "detail": "✅ Categoria coerente com produto"
+        },
+        {
+          "name": "titulo_consistencia",
+          "pass": true,
+          "detail": "✅ Título consistente entre catálogo e scraping"
+        },
+        {
+          "name": "imagem_url",
+          "pass": false,
+          "detail": "❌ URL da imagem ausente"
+        },
+        {
+          "name": "descricao",
+          "pass": false,
+          "detail": "❌ Descrição do produto ausente ou muito curta"
+        },
+        {
+          "name": "asin",
+          "pass": true,
+          "detail": "✅ ASIN B07HR1MZQP extraído"
+        },
+        {
+          "name": "asin_valido",
+          "pass": true,
+          "detail": "✅ ASIN B07HR1MZQP válido"
+        },
+        {
+          "name": "categoria_valida",
+          "pass": true,
+          "detail": "✅ Categoria: casa"
+        }
+      ]
+    },
+    "failedAt": "2026-07-13T17:12:48.620Z",
+    "retryCount": 0,
+    "status": "pending"
+  },
+  {
+    "asin": "B0GYQ8325V",
+    "productName": "Cafeteira Expresso 15 Bar",
+    "pillar": "casa",
+    "stage": "PRODUCT_VALIDATED",
+    "error": "Produto inválido: URL da imagem ausente; Descrição do produto ausente ou muito curta",
+    "meta": {
+      "executionId": "20260713-171247-01b30813",
+      "checks": [
+        {
+          "name": "categoria_coerencia",
+          "pass": true,
+          "detail": "✅ Categoria coerente com produto"
+        },
+        {
+          "name": "titulo_consistencia",
+          "pass": true,
+          "detail": "✅ Título consistente entre catálogo e scraping"
+        },
+        {
+          "name": "imagem_url",
+          "pass": false,
+          "detail": "❌ URL da imagem ausente"
+        },
+        {
+          "name": "descricao",
+          "pass": false,
+          "detail": "❌ Descrição do produto ausente ou muito curta"
+        },
+        {
+          "name": "asin",
+          "pass": true,
+          "detail": "✅ ASIN B0GYQ8325V extraído"
+        },
+        {
+          "name": "asin_valido",
+          "pass": true,
+          "detail": "✅ ASIN B0GYQ8325V válido"
+        },
+        {
+          "name": "categoria_valida",
+          "pass": true,
+          "detail": "✅ Categoria: casa"
+        }
+      ]
+    },
+    "failedAt": "2026-07-13T17:12:48.622Z",
+    "retryCount": 0,
+    "status": "pending"
+  },
+  {
+    "asin": "B07BFRRCM8",
+    "productName": "Panela Antiaderente 28cm",
+    "pillar": "casa",
+    "stage": "PRODUCT_VALIDATED",
+    "error": "Produto inválido: URL da imagem ausente; Descrição do produto ausente ou muito curta",
+    "meta": {
+      "executionId": "20260713-171247-01b30813",
+      "checks": [
+        {
+          "name": "categoria_coerencia",
+          "pass": true,
+          "detail": "✅ Categoria coerente com produto"
+        },
+        {
+          "name": "titulo_consistencia",
+          "pass": true,
+          "detail": "✅ Título consistente entre catálogo e scraping"
+        },
+        {
+          "name": "imagem_url",
+          "pass": false,
+          "detail": "❌ URL da imagem ausente"
+        },
+        {
+          "name": "descricao",
+          "pass": false,
+          "detail": "❌ Descrição do produto ausente ou muito curta"
+        },
+        {
+          "name": "asin",
+          "pass": true,
+          "detail": "✅ ASIN B07BFRRCM8 extraído"
+        },
+        {
+          "name": "asin_valido",
+          "pass": true,
+          "detail": "✅ ASIN B07BFRRCM8 válido"
+        },
+        {
+          "name": "categoria_valida",
+          "pass": true,
+          "detail": "✅ Categoria: casa"
+        }
+      ]
+    },
+    "failedAt": "2026-07-13T17:12:48.625Z",
+    "retryCount": 0,
+    "status": "pending"
+  },
+  {
+    "asin": "B0DZ687M2L",
+    "productName": "Aspirador Robô Wi-Fi",
+    "pillar": "casa",
+    "stage": "PRODUCT_VALIDATED",
+    "error": "Produto inválido: URL da imagem ausente; Descrição do produto ausente ou muito curta",
+    "meta": {
+      "executionId": "20260713-171247-01b30813",
+      "checks": [
+        {
+          "name": "categoria_coerencia",
+          "pass": true,
+          "detail": "✅ Categoria coerente com produto"
+        },
+        {
+          "name": "titulo_consistencia",
+          "pass": true,
+          "detail": "✅ Título consistente entre catálogo e scraping"
+        },
+        {
+          "name": "imagem_url",
+          "pass": false,
+          "detail": "❌ URL da imagem ausente"
+        },
+        {
+          "name": "descricao",
+          "pass": false,
+          "detail": "❌ Descrição do produto ausente ou muito curta"
+        },
+        {
+          "name": "asin",
+          "pass": true,
+          "detail": "✅ ASIN B0DZ687M2L extraído"
+        },
+        {
+          "name": "asin_valido",
+          "pass": true,
+          "detail": "✅ ASIN B0DZ687M2L válido"
+        },
+        {
+          "name": "categoria_valida",
+          "pass": true,
+          "detail": "✅ Categoria: casa"
+        }
+      ]
+    },
+    "failedAt": "2026-07-13T17:12:48.629Z",
+    "retryCount": 0,
+    "status": "pending"
+  },
+  {
+    "asin": "B07S8JDC4B",
+    "productName": "Difusor de Aromas 400ml",
+    "pillar": "casa",
+    "stage": "PRODUCT_VALIDATED",
+    "error": "Produto inválido: URL da imagem ausente; Descrição do produto ausente ou muito curta",
+    "meta": {
+      "executionId": "20260713-171247-01b30813",
+      "checks": [
+        {
+          "name": "categoria_coerencia",
+          "pass": true,
+          "detail": "✅ Categoria coerente com produto"
+        },
+        {
+          "name": "titulo_consistencia",
+          "pass": true,
+          "detail": "✅ Título consistente entre catálogo e scraping"
+        },
+        {
+          "name": "imagem_url",
+          "pass": false,
+          "detail": "❌ URL da imagem ausente"
+        },
+        {
+          "name": "descricao",
+          "pass": false,
+          "detail": "❌ Descrição do produto ausente ou muito curta"
+        },
+        {
+          "name": "asin",
+          "pass": true,
+          "detail": "✅ ASIN B07S8JDC4B extraído"
+        },
+        {
+          "name": "asin_valido",
+          "pass": true,
+          "detail": "✅ ASIN B07S8JDC4B válido"
+        },
+        {
+          "name": "categoria_valida",
+          "pass": true,
+          "detail": "✅ Categoria: casa"
+        }
+      ]
+    },
+    "failedAt": "2026-07-13T17:12:48.631Z",
+    "retryCount": 0,
+    "status": "pending"
+  },
+  {
+    "asin": "B07RHVJ9SL",
+    "productName": "Mixer Vertical 600W Inox",
+    "pillar": "casa",
+    "stage": "PRODUCT_VALIDATED",
+    "error": "Produto inválido: URL da imagem ausente; Descrição do produto ausente ou muito curta",
+    "meta": {
+      "executionId": "20260713-171247-01b30813",
+      "checks": [
+        {
+          "name": "categoria_coerencia",
+          "pass": true,
+          "detail": "✅ Categoria coerente com produto"
+        },
+        {
+          "name": "titulo_consistencia",
+          "pass": true,
+          "detail": "✅ Título consistente entre catálogo e scraping"
+        },
+        {
+          "name": "imagem_url",
+          "pass": false,
+          "detail": "❌ URL da imagem ausente"
+        },
+        {
+          "name": "descricao",
+          "pass": false,
+          "detail": "❌ Descrição do produto ausente ou muito curta"
+        },
+        {
+          "name": "asin",
+          "pass": true,
+          "detail": "✅ ASIN B07RHVJ9SL extraído"
+        },
+        {
+          "name": "asin_valido",
+          "pass": true,
+          "detail": "✅ ASIN B07RHVJ9SL válido"
+        },
+        {
+          "name": "categoria_valida",
+          "pass": true,
+          "detail": "✅ Categoria: casa"
+        }
+      ]
+    },
+    "failedAt": "2026-07-13T17:12:48.634Z",
+    "retryCount": 0,
+    "status": "pending"
+  },
+  {
+    "asin": "B0H5KPHMQS",
+    "productName": "Fritadeira Elétrica sem Óleo 5,5L",
+    "pillar": "casa",
+    "stage": "PRODUCT_VALIDATED",
+    "error": "Produto inválido: URL da imagem ausente; Descrição do produto ausente ou muito curta",
+    "meta": {
+      "executionId": "20260713-171247-01b30813",
+      "checks": [
+        {
+          "name": "categoria_coerencia",
+          "pass": true,
+          "detail": "✅ Categoria coerente com produto"
+        },
+        {
+          "name": "titulo_consistencia",
+          "pass": true,
+          "detail": "✅ Título consistente entre catálogo e scraping"
+        },
+        {
+          "name": "imagem_url",
+          "pass": false,
+          "detail": "❌ URL da imagem ausente"
+        },
+        {
+          "name": "descricao",
+          "pass": false,
+          "detail": "❌ Descrição do produto ausente ou muito curta"
+        },
+        {
+          "name": "asin",
+          "pass": true,
+          "detail": "✅ ASIN B0H5KPHMQS extraído"
+        },
+        {
+          "name": "asin_valido",
+          "pass": true,
+          "detail": "✅ ASIN B0H5KPHMQS válido"
+        },
+        {
+          "name": "categoria_valida",
+          "pass": true,
+          "detail": "✅ Categoria: casa"
+        }
+      ]
+    },
+    "failedAt": "2026-07-13T17:12:48.636Z",
+    "retryCount": 0,
+    "status": "pending"
+  },
+  {
+    "asin": "B08KWNT75K",
+    "productName": "Liquidificador de Alta Potência 900W",
+    "pillar": "casa",
+    "stage": "PRODUCT_VALIDATED",
+    "error": "Produto inválido: URL da imagem ausente; Descrição do produto ausente ou muito curta",
+    "meta": {
+      "executionId": "20260713-171247-01b30813",
+      "checks": [
+        {
+          "name": "categoria_coerencia",
+          "pass": true,
+          "detail": "✅ Categoria coerente com produto"
+        },
+        {
+          "name": "titulo_consistencia",
+          "pass": true,
+          "detail": "✅ Título consistente entre catálogo e scraping"
+        },
+        {
+          "name": "imagem_url",
+          "pass": false,
+          "detail": "❌ URL da imagem ausente"
+        },
+        {
+          "name": "descricao",
+          "pass": false,
+          "detail": "❌ Descrição do produto ausente ou muito curta"
+        },
+        {
+          "name": "asin",
+          "pass": true,
+          "detail": "✅ ASIN B08KWNT75K extraído"
+        },
+        {
+          "name": "asin_valido",
+          "pass": true,
+          "detail": "✅ ASIN B08KWNT75K válido"
+        },
+        {
+          "name": "categoria_valida",
+          "pass": true,
+          "detail": "✅ Categoria: casa"
+        }
+      ]
+    },
+    "failedAt": "2026-07-13T17:12:48.639Z",
+    "retryCount": 0,
+    "status": "pending"
+  },
+  {
+    "asin": "B07PVT1CJG",
+    "productName": "Ferro de Passar a Vapor 2400W",
+    "pillar": "casa",
+    "stage": "PRODUCT_VALIDATED",
+    "error": "Produto inválido: URL da imagem ausente; Descrição do produto ausente ou muito curta",
+    "meta": {
+      "executionId": "20260713-171247-01b30813",
+      "checks": [
+        {
+          "name": "categoria_coerencia",
+          "pass": true,
+          "detail": "✅ Categoria coerente com produto"
+        },
+        {
+          "name": "titulo_consistencia",
+          "pass": true,
+          "detail": "✅ Título consistente entre catálogo e scraping"
+        },
+        {
+          "name": "imagem_url",
+          "pass": false,
+          "detail": "❌ URL da imagem ausente"
+        },
+        {
+          "name": "descricao",
+          "pass": false,
+          "detail": "❌ Descrição do produto ausente ou muito curta"
+        },
+        {
+          "name": "asin",
+          "pass": true,
+          "detail": "✅ ASIN B07PVT1CJG extraído"
+        },
+        {
+          "name": "asin_valido",
+          "pass": true,
+          "detail": "✅ ASIN B07PVT1CJG válido"
+        },
+        {
+          "name": "categoria_valida",
+          "pass": true,
+          "detail": "✅ Categoria: casa"
+        }
+      ]
+    },
+    "failedAt": "2026-07-13T17:12:48.642Z",
+    "retryCount": 0,
+    "status": "pending"
+  },
+  {
+    "asin": "B0CPTD7WH3",
+    "productName": "Organizador de Gaveta Modulável",
+    "pillar": "casa",
+    "stage": "PRODUCT_VALIDATED",
+    "error": "Produto inválido: URL da imagem ausente; Descrição do produto ausente ou muito curta",
+    "meta": {
+      "executionId": "20260713-171247-01b30813",
+      "checks": [
+        {
+          "name": "categoria_coerencia",
+          "pass": true,
+          "detail": "✅ Categoria coerente com produto"
+        },
+        {
+          "name": "titulo_consistencia",
+          "pass": true,
+          "detail": "✅ Título consistente entre catálogo e scraping"
+        },
+        {
+          "name": "imagem_url",
+          "pass": false,
+          "detail": "❌ URL da imagem ausente"
+        },
+        {
+          "name": "descricao",
+          "pass": false,
+          "detail": "❌ Descrição do produto ausente ou muito curta"
+        },
+        {
+          "name": "asin",
+          "pass": true,
+          "detail": "✅ ASIN B0CPTD7WH3 extraído"
+        },
+        {
+          "name": "asin_valido",
+          "pass": true,
+          "detail": "✅ ASIN B0CPTD7WH3 válido"
+        },
+        {
+          "name": "categoria_valida",
+          "pass": true,
+          "detail": "✅ Categoria: casa"
+        }
+      ]
+    },
+    "failedAt": "2026-07-13T17:12:48.645Z",
+    "retryCount": 0,
+    "status": "pending"
+  },
+  {
+    "asin": "B07L8PWVW5",
+    "productName": "Panela de Pressão Elétrica 5L",
+    "pillar": "casa",
+    "stage": "PRODUCT_VALIDATED",
+    "error": "Produto inválido: URL da imagem ausente; Descrição do produto ausente ou muito curta",
+    "meta": {
+      "executionId": "20260713-171247-01b30813",
+      "checks": [
+        {
+          "name": "categoria_coerencia",
+          "pass": true,
+          "detail": "✅ Categoria coerente com produto"
+        },
+        {
+          "name": "titulo_consistencia",
+          "pass": true,
+          "detail": "✅ Título consistente entre catálogo e scraping"
+        },
+        {
+          "name": "imagem_url",
+          "pass": false,
+          "detail": "❌ URL da imagem ausente"
+        },
+        {
+          "name": "descricao",
+          "pass": false,
+          "detail": "❌ Descrição do produto ausente ou muito curta"
+        },
+        {
+          "name": "asin",
+          "pass": true,
+          "detail": "✅ ASIN B07L8PWVW5 extraído"
+        },
+        {
+          "name": "asin_valido",
+          "pass": true,
+          "detail": "✅ ASIN B07L8PWVW5 válido"
+        },
+        {
+          "name": "categoria_valida",
+          "pass": true,
+          "detail": "✅ Categoria: casa"
+        }
+      ]
+    },
+    "failedAt": "2026-07-13T17:12:48.648Z",
+    "retryCount": 0,
+    "status": "pending"
+  },
+  {
+    "asin": "B0H2CWWK2P",
+    "productName": "Esteira Elétrica Dobrável para Casa",
+    "pillar": "casa",
+    "stage": "PRODUCT_VALIDATED",
+    "error": "Produto inválido: URL da imagem ausente; Descrição do produto ausente ou muito curta",
+    "meta": {
+      "executionId": "20260713-171247-01b30813",
+      "checks": [
+        {
+          "name": "categoria_coerencia",
+          "pass": true,
+          "detail": "✅ Categoria coerente com produto"
+        },
+        {
+          "name": "titulo_consistencia",
+          "pass": true,
+          "detail": "✅ Título consistente entre catálogo e scraping"
+        },
+        {
+          "name": "imagem_url",
+          "pass": false,
+          "detail": "❌ URL da imagem ausente"
+        },
+        {
+          "name": "descricao",
+          "pass": false,
+          "detail": "❌ Descrição do produto ausente ou muito curta"
+        },
+        {
+          "name": "asin",
+          "pass": true,
+          "detail": "✅ ASIN B0H2CWWK2P extraído"
+        },
+        {
+          "name": "asin_valido",
+          "pass": true,
+          "detail": "✅ ASIN B0H2CWWK2P válido"
+        },
+        {
+          "name": "categoria_valida",
+          "pass": true,
+          "detail": "✅ Categoria: casa"
+        }
+      ]
+    },
+    "failedAt": "2026-07-13T17:12:48.651Z",
+    "retryCount": 0,
+    "status": "pending"
   }
 ]
