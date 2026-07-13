@@ -139,7 +139,11 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
     throw new Error('Não foi possível extrair dados do produto Amazon');
   }
 
-  const _mapCat = mapCategory || (() => 'casa');
+  if (!mapCategory) {
+    console.error('   ❌ ERRO CRÍTICO: mapCategory não foi passado para fetchAmazon!');
+    throw new Error('mapCategory é obrigatório em fetchAmazon');
+  }
+  const _mapCat = mapCategory;
   const _buildTags = buildTags || ((t, c) => [c]);
 
   const category = _mapCat(result.title);

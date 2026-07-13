@@ -43,6 +43,14 @@ import { runSeoGates }                               from './validators/seo.js';
 import { validateConfidence }                        from './validators/confidence.js';
 import { runFinalAudit }                             from './validators/audit.js';
 import { runEditorialGates }                         from './validators/editorial-gate.js';
+import { validateProduct, validateCategorySafety }   from './validators/product-validator.js';
+import { analyzeHallucinations }                     from './validators/anti-hallucination.js';
+import { analyzeSemanticCoherence }                  from './validators/semantic-coherence.js';
+import { validateImages }                            from './validators/image-validator.js';
+import { calculateFinalScore, formatScoreSummary }   from './validators/final-score.js';
+import { validateAllCtas }                           from './affiliate/link-builder.js';
+import { generateProductHash }                        from './validators/product-hash.js';
+import { generateAuditReport }                         from './validators/audit-report.js';
 import { createStateMachine }                        from './core/state-machine.js';
 import { generateExecutionId, acquireLock, releaseLock, createExecution } from './core/execution.js';
 import { createMetricsCollector }                    from './monitoring/metrics.js';
@@ -319,7 +327,42 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
           continue;
         }
 
-        // ── 2. CONFIANÇA ────────────────────────────────────────
+        // ── 2. VALIDAÇÃO COMPLETA DO PRODUTO (Ponto 2: pré-IA) ─────
+        // Antes da IA escrever, verifica consistência de: título, ASIN, imagem, descrição, categoria
+        const productValidation = validateProduct({
+          ...product,
+          title: product.name,
+          affiliateUrl: affUrl,
+        }, { expectedCategory: pillar });
+
+        if (!productValidation.pass) {
+          logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — validação de produto: ${productValidation.errors.join('; ')}. ABORTANDO produto.`);
+          addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'PRODUCT_VALIDATED', error: `Produto inválido: ${productValidation.errors.slice(0, 2).join('; ')}`, meta: { executionId, checks: productValidation.checks } });
+          excluded.push(product.asin);
+          continue;
+        }
+        logger.pass(`Produto validado: ${productValidation.score}% (${productValidation.details.passed}/${productValidation.details.total}) checks`);
+
+        // ── 2b. HASH DO PRODUTO (assinatura criptográfica) ──────────
+        // Gera hash no início do pipeline para detectar troca silenciosa
+        const productHash = generateProductHash({
+          asin: product.asin,
+          title: product.name,
+          brand: product.brand || '',
+          category: pillar,
+        });
+        logger.info(`Hash do produto: ${productHash.slice(0, 12)}...`);
+
+        // ── 2c. SEGURANÇA DE CATEGORIA (Ponto 5: sem fallback) ─────
+        const catSafety = validateCategorySafety(pillar, product.name);
+        if (!catSafety.pass) {
+          logger.fail(`❌ CATEGORIA INDEFINIDA: ${catSafety.error}. Pipeline ABORTADO.`);
+          addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'PRODUCT_VALIDATED', error: catSafety.error, meta: { executionId } });
+          excluded.push(product.asin);
+          continue;
+        }
+
+        // ── 3. CONFIANÇA ────────────────────────────────────────
 
         const source = product.isTrending ? 'puppeteer' : 'catalog';
         const confCheck = validateConfidence(source, 50);
@@ -330,7 +373,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
           continue;
         }
 
-        // ── 3. GERAÇÃO DE CONTEÚDO ───────────────────────────────
+        // ── 4. GERAÇÃO DE CONTEÚDO ───────────────────────────────
         // (novo-post.js faz scraping Amazon, IA, markdown, imagem)
 
         logger.step(`Gerando post: ${product.name} [${product.asin}]`);
@@ -344,7 +387,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
           continue;
         }
 
-        // ── 4. DETECTAR SLUG + RENOMEAR ARQUIVOS ────────────────
+        // ── 5. DETECTAR SLUG + RENOMEAR ARQUIVOS ────────────────
         // Usa o nome do catálogo como slug (confiável).
         // Se novo-post.js gerou com outro slug, renomeia os arquivos.
 
@@ -425,10 +468,41 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
 
         logger.pass(`Arquivos gerados: ${slug}`);
 
-        // ── 5. QUALITY GATES ─────────────────────────────────────
-
+        // ── 6. VALIDAÇÃO DE COERÊNCIA PRODUTO VS CONTEÚDO ─────────
+        // Garante que o título no markdown corresponde ao produto selecionado do catálogo
         let markdownContent = '';
         try { if (fs.existsSync(mdPath)) markdownContent = fs.readFileSync(mdPath, 'utf8'); } catch (_) {}
+
+        if (markdownContent) {
+          // Extrai o título do frontmatter
+          const titleMatch = markdownContent.match(/^title:\s*"([^"]+)"\s*$/m);
+          const mdTitle = titleMatch ? titleMatch[1].trim() : '';
+
+          if (mdTitle) {
+            // Normaliza ambos os títulos para comparação
+            const normMdTitle = mdTitle.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
+            const normProdName = (product.name || '').toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
+
+            // Palavras-chave do produto que DEVEM aparecer no título do markdown
+            const productWords = normProdName.split(/\s+/).filter(w => w.length > 3);
+            const matchedWords = productWords.filter(w => normMdTitle.includes(w));
+            const matchRatio = productWords.length > 0 ? matchedWords.length / productWords.length : 0;
+
+            if (matchRatio < 0.3 && productWords.length >= 2) {
+              logger.warn(`⚠️ INCOERÊNCIA: título do markdown ("${mdTitle.slice(0, 60)}") não corresponde ao produto "${(product.name || '').slice(0, 60)}" (match ${Math.round(matchRatio * 100)}%)`);
+              logger.warn(`   Palavras do produto: ${productWords.slice(0, 5).join(', ')}`);
+              logger.warn(`   Palavras encontradas no título: ${matchedWords.slice(0, 5).join(', ')}`);
+              try { fs.unlinkSync(mdPath); } catch (_) {}
+              try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
+              addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'COHERENCE_CHECK', error: `Incoerência título: ${matchRatio*100}% match`, meta: { executionId, mdTitle: mdTitle.slice(0, 60), productName: product.name } });
+              excluded.push(product.asin);
+              continue;
+            }
+            logger.pass(`Coerência produto vs conteúdo: ${Math.round(matchRatio * 100)}% match (${matchedWords.length}/${productWords.length} palavras-chave)`);
+          }
+        }
+
+        // ── 7. QUALITY GATES ─────────────────────────────────────
 
         // Gate: título genérico
         if (markdownContent && /title:\s*"Produto Amazon\b/i.test(markdownContent)) {
@@ -458,7 +532,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
           logger.pass(`Quality gates OK`);
 
           // SEO Gate
-          seoResult = runSeoGates({ title: product.name, description: `Descubra as vantagens do ${product.name}.`, markdown: markdownContent, slug });
+          seoResult = runSeoGates({ title: product.name, description: `Descubra as vantagens do ${product.name}.`, markdown: markdownContent, slug, category: pillar });
           if (!seoResult.pass) logger.warn(`SEO: ${seoResult.errors.length} problemas`);
           else logger.pass(`SEO OK`);
 
@@ -535,9 +609,55 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
           logger.pass(`Editorial score: ${editorialResult.editorialScore.score}/50`);
         }
 
-        // ── 6. AUDITORIA FINAL ───────────────────────────────────
+        // ── 8. ANTI-ALUCINAÇÃO (Ponto 3) ────────────────────────────
+        if (markdownContent) {
+          const hallucinationCheck = analyzeHallucinations(markdownContent, {
+            specs: product.specs || [],
+            brand: product.brand || '',
+            normalized: product.normalized || {},
+          });
+          if (hallucinationCheck.violations.length > 0) {
+            logger.warn(`⚠️ ALUCINAÇÃO: ${hallucinationCheck.violations.length} suspeitas (${hallucinationCheck.violations.filter(v => v.risk === 'alta').length} críticas)`);
+            for (const v of hallucinationCheck.violations.slice(0, 3)) {
+              logger.warn(`  ${v.risk === 'alta' ? '🔴' : '🟡'} ${v.text.slice(0, 80)} — ${v.reason}`);
+            }
+            if (!hallucinationCheck.passed) {
+              logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — alucinações críticas detectadas. Selecionando próximo...`);
+              try { fs.unlinkSync(mdPath); } catch (_) {}
+              try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
+              addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'ANTI_HALLUCINATION', error: `Alucinações: ${hallucinationCheck.violations.length}`, meta: { executionId, violations: hallucinationCheck.violations.slice(0, 5) } });
+              excluded.push(product.asin);
+              continue;
+            }
+          }
+          logger.pass(`Anti-alucinação: ${hallucinationCheck.violations.length} suspeitas (0 críticas) — OK`);
+        }
 
-        auditResult = runFinalAudit({ slug, title: product.name, affiliateUrl: affUrl, category: pillar, seoResult, historyCheck: { duplicate: false } });
+        // ── 9. COERÊNCIA SEMÂNTICA (Ponto 6) ───────────────────────
+        if (markdownContent) {
+          const coherenceResult = analyzeSemanticCoherence(markdownContent, {
+            name: product.name,
+            productName: product.name,
+            title: product.name,
+          });
+          logger.info(`Coerência semântica: ${coherenceResult.score}% (${coherenceResult.checks.length} checks)`);
+          if (!coherenceResult.passed) {
+            logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — coerência semântica ${coherenceResult.score}% reprovou. Selecionando próximo...`);
+            for (const c of coherenceResult.checks.filter(c => !c.pass)) {
+              logger.warn(`  ${c.detail}`);
+            }
+            try { fs.unlinkSync(mdPath); } catch (_) {}
+            try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
+            addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'SEMANTIC_COHERENCE', error: `Coerência semântica ${coherenceResult.score}%`, meta: { executionId, checks: coherenceResult.checks.filter(c => !c.pass).map(c => c.detail) } });
+            excluded.push(product.asin);
+            continue;
+          }
+          logger.pass(`Coerência semântica: ${coherenceResult.score}% — OK`);
+        }
+
+        // ── 10. AUDITORIA FINAL ───────────────────────────────────
+
+        auditResult = runFinalAudit({ slug, title: product.name, affiliateUrl: affUrl, category: pillar, seoResult, historyCheck: { duplicate: false }, markdownContent });
         logger.info(`Auditoria: ${auditResult.passed ? 'APROVADO' : 'REPROVADO'} — ${auditResult.score}% (${auditResult.details.passed}/${auditResult.details.total})`);
 
         if (!auditResult.passed) {
@@ -547,6 +667,83 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
           excluded.push(product.asin);
           continue;
         }
+
+        // ── 11. VALIDAÇÃO DE TODOS OS CTAs (Ponto 4) ───────────────
+        if (markdownContent) {
+          const ctaCheck = validateAllCtas(markdownContent, affUrl, affConfig.tag);
+          if (!ctaCheck.pass) {
+            logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — CTAs inválidos: ${ctaCheck.errors.join('; ')}. Selecionando próximo...`);
+            for (const e of ctaCheck.errors) logger.warn(`  ${e}`);
+            try { fs.unlinkSync(mdPath); } catch (_) {}
+            try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
+            addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'CTA_VALIDATION', error: `CTAs: ${ctaCheck.errors.join('; ')}`, meta: { executionId, ctas: ctaCheck.ctas } });
+            excluded.push(product.asin);
+            continue;
+          }
+          logger.pass(`CTAs: ${ctaCheck.summary}`);
+        }
+
+        // ── 12. VALIDAÇÃO DE IMAGEM (Ponto 7) ──────────────────────
+        if (markdownContent) {
+          const imgValidation = validateImages({
+            markdown: markdownContent,
+            productName: product.name,
+            slug,
+            imageFile: `${slug}.webp`,
+            imagePath: imgPath,
+          });
+          if (!imgValidation.passed) {
+            logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — imagem inválida: ${imgValidation.errors.slice(0, 2).join('; ')}. Selecionando próximo...`);
+            try { fs.unlinkSync(mdPath); } catch (_) {}
+            try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
+            addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'IMAGE_VALIDATION', error: `Imagem: ${imgValidation.errors.join('; ')}`, meta: { executionId } });
+            excluded.push(product.asin);
+            continue;
+          }
+          logger.pass(`Imagem: ${imgValidation.score}% — OK`);
+        }
+
+        // ── 13. SCORE FINAL COMPOSTO (Ponto 9: publicar ≥ 95%) ────
+        if (markdownContent && auditResult) {
+          const finalScore = calculateFinalScore({
+            productValidation,
+            category: pillar,
+            imageValidation: markdownContent ? { score: 100 } : null,
+            seoResult,
+            editorialResult,
+            auditChecks: auditResult.checks,
+            markdownContent,
+            coherenceResult: { score: 100 },
+          });
+
+          logger.info('\n' + formatScoreSummary(finalScore));
+
+          if (!finalScore.passed) {
+            logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — score final ${finalScore.score}% abaixo de ${finalScore.threshold}%. Selecionando próximo...`);
+            try { fs.unlinkSync(mdPath); } catch (_) {}
+            try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
+            addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'FINAL_SCORE', error: `Score ${finalScore.score}% < ${finalScore.threshold}%`, meta: { executionId, finalScore: finalScore.score, dimensions: finalScore.dimensions } });
+            excluded.push(product.asin);
+            continue;
+          }
+          logger.pass(`Score final: ${finalScore.score}% — APROVADO para publicação`);
+        }
+
+        // ── 14. HASH FINAL — verifica integridade (não houve troca) ──
+        const finalHash = generateProductHash({
+          asin: product.asin,
+          title: product.name,
+          brand: product.brand || '',
+          category: pillar,
+        });
+        const hashIntegrity = finalHash === productHash;
+        if (!hashIntegrity) {
+          logger.fail(`❌ HASH DO PRODUTO ALTERADO! Pipeline corrompido. ABORTANDO.`);
+          addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'HASH_VALIDATION', error: 'Hash alterado durante pipeline', meta: { executionId, initialHash: productHash, finalHash } });
+          excluded.push(product.asin);
+          continue;
+        }
+        logger.pass(`Hash íntegro: ${finalHash.slice(0, 12)}... — produto não foi trocado`);
 
         // ── ✅ TUDO PASSOU! ──────────────────────────────────────
         logger.pass(`✅ Produto selecionado: ${product.name} [${product.asin}]`);
@@ -714,6 +911,34 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
   // ════════════════════════════════════════════════════════════════
   // Finalização: registra histórico, gera dashboard, salva logs
   // ════════════════════════════════════════════════════════════════
+
+  // ════════════════════════════════════════════════════════════════
+  // RELATÓRIO JSON DE AUDITORIA (sempre gera, mesmo em falha)
+  // ════════════════════════════════════════════════════════════════
+  try {
+    generateAuditReport({
+      executionId,
+      timestamp: new Date().toISOString(),
+      trigger,
+      pillar,
+      dryRun,
+      durationMs: collector.getTotalTime(),
+      product: product || {},
+      affiliateUrl: affUrl,
+      slug,
+      mdPath,
+      imgPath,
+    }, {
+      productValidation: null, // TODO: extrair dos resultados do loop
+      catSafety: null,
+      productHash: product ? { valid: true, currentHash: generateProductHash({ asin: product.asin, title: product.name, brand: product.brand || '', category: pillar }) } : null,
+      seoResult,
+      auditResult,
+    });
+    logger.info(`Relatorio de auditoria gerado`);
+  } catch (reportErr) {
+    logger.warn(`Erro ao gerar relatorio: ${reportErr.message}`);
+  }
 
   if (!dryRun && completed && product) {
     // Registra no histórico

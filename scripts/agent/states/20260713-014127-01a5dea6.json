@@ -1,26 +1,26 @@
 {
   "state": "FAIL",
   "context": {
-    "executionId": "20260712-210028-e6b85eb2",
+    "executionId": "20260713-014127-01a5dea6",
     "transitions": [
       {
         "from": "PENDING",
         "to": "PRODUCT_SELECTED",
-        "ts": "2026-07-12T21:00:28.842Z"
+        "ts": "2026-07-13T01:41:27.864Z"
       },
       {
         "from": "PRODUCT_SELECTED",
         "to": "FAIL",
-        "ts": "2026-07-12T21:03:37.695Z"
+        "ts": "2026-07-13T01:41:29.733Z"
       }
     ],
     "errors": [
       {
         "state": "PRODUCT_SELECTED",
         "error": "Todas as tentativas esgotadas - nenhum produto válido",
-        "ts": "2026-07-12T21:03:37.692Z"
+        "ts": "2026-07-13T01:41:29.731Z"
       }
     ]
   },
-  "updatedAt": "2026-07-12T21:03:37.696Z"
+  "updatedAt": "2026-07-13T01:41:29.734Z"
 }

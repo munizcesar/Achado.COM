@@ -515,8 +515,15 @@ export async function fetchAmazon(inputUrl, { mapCategory, buildTags, cleanTitle
     ? `https://www.amazon.com.br/dp/${asin}?tag=${partnerTag}`
     : resolvedUrl;
 
+  if (!cleanTitle) {
+    console.warn('   ⚠️  cleanTitle não foi passado — usando fallback simples');
+  }
   const _clean     = cleanTitle  || (t => t.replace(/\s+/g, ' ').trim().slice(0, 150));
-  const _mapCat    = mapCategory || (() => 'casa');
+  if (!mapCategory) {
+    console.error('   ❌ ERRO CRÍTICO: mapCategory não foi passado para fetchAmazon! Publicação cancelada.');
+    throw new Error('mapCategory é obrigatório em fetchAmazon');
+  }
+  const _mapCat    = mapCategory;
   const _buildTags = buildTags   || ((t, c) => [c]);
 
   const cleanedTitle = _clean(title);

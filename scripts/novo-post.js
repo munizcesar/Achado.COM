@@ -379,6 +379,13 @@ function mapCategory(name) {
     }
   }
   
+  // Log de alerta quando o produto não corresponde a NENHUMA categoria
+  if (maxScore <= 1.5) {
+    console.log(`   ⚠️  ALERTA: Produto "${(name || '').slice(0, 60)}" não corresponde a nenhuma categoria clara.`);
+    console.log(`   Score máximo: ${maxScore}. Categoria atribuída: "${bestCategory}" (fallback).`);
+    console.log('   ⚠️  Isto pode indicar um produto fora dos pilares do site.');
+  }
+  
   return bestCategory; // ex: 'beleza', 'tech', 'saude', 'casa', 'esportes', 'automotivo'
 }
 

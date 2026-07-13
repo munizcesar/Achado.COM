@@ -12,7 +12,8 @@
     "agent": "node scripts/agent/agent.js",
     "agent:now": "node scripts/agent/agent.js --now",
     "agent:status": "node scripts/agent/agent.js --status",
-    "health": "node scripts/agent/monitor/health.js"
+    "health": "node scripts/agent/monitor/health.js",
+    "test": "node scripts/agent/tests/run-all.js"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",

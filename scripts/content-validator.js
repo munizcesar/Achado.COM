@@ -141,7 +141,7 @@ export function validarConteudo(texto) {
     pontuacao,
     total,
     percentual,
-    aprovado: percentual >= 60,
+    aprovado: percentual >= 80,
     resultados
   };
 }

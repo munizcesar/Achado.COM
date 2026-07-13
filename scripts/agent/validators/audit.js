@@ -116,6 +116,22 @@ export function runFinalAudit({ slug, title, affiliateUrl, category, seoResult, 
 
   // ── Verificações avançadas de conteúdo (95-100% target) ──
 
+  // 10. Coerência do título do markdown com o nome do produto
+  if (mdContent && title) {
+    const fmTitleMatch = mdContent.match(/^title:\s*"([^"]+)"\s*$/m);
+    const fmTitle = fmTitleMatch ? fmTitleMatch[1].trim() : '';
+    if (fmTitle) {
+      const normFm = fmTitle.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
+      const normProd = title.toLowerCase().replace(/[^a-z0-9\s]/g, '').trim();
+      const prodWords = normProd.split(/\s+/).filter(w => w.length > 3);
+      const matchedWords = prodWords.filter(w => normFm.includes(w));
+      const matchRatio = prodWords.length > 0 ? matchedWords.length / prodWords.length : 0;
+      const titleCoherent = matchRatio >= 0.3 || prodWords.length < 2;
+      checks.push({ name: 'coerencia_produto', pass: titleCoherent, detail: titleCoherent ? `✅ Título coerente: ${Math.round(matchRatio*100)}% match` : `❌ Título ${fmTitle.slice(0,40)} não corresponde ao produto ${title.slice(0,40)}` });
+      if (titleCoherent) passed++; else failed++;
+    }
+  }
+
   // 10. Sem conteúdo genérico no markdown
   if (mdContent) {
     const hasGeneric = /Produto Amazon\b/i.test(mdContent);
