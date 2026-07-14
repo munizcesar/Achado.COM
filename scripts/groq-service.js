@@ -1,25 +1,13 @@
 /**
- * Groq AI Service - Protocolo Editorial v4
+ * Groq AI Service - Protocolo de Conteúdo Direto v1.1
  * AchadoCerto.VIP
  *
- * Melhorias v4:
- * - Ban de frases-tampo/corporativas
- * - Micro-experiência humana obrigatória
- * - Variação de cadência (parágrafos desiguais)
- * - Imperfeicão editorial controlada
- * - Banco de transições dinâmicas
- * - Bloco "O que mais chama atenção"
- * - SEO semântico com entidades por nicho
- * - Remoção de tom corporativo
- * - Comparações implícitas
- * - FAQ mais conversacional
- * - Pontos de contexto real (clima, rotina, pós-banho...)
- * - Rotação de estruturas (A/B/C)
- * - Bloco sensorial
- * - Moderação (sem superlativos)
- * - Revisão ortográfica automática simulando editor humano
- * - Detector interno de IA
- * - Regra-mãe: parece editor especializado, não sistema automatizado
+ * Filosofia:
+ * - Cada frase entrega informação útil sobre o produto
+ * - Nada de enrolação, contexto genérico ou fingimento de voz humana
+ * - Specs primeiro, FAQ com dúvidas reais, veredito direto
+ * - Conteúdo evergreen: atemporal, sem preços ou datas
+ * - Regras obrigatórias: verdadeiro, positivo, completo, sem alucinação
  */
 
 import https from 'https';
@@ -116,76 +104,13 @@ ENTIDADES SEMÂNTICAS: ergonomia, conforto, estabilidade, resistência, amorteci
 CRITÉRIOS GERAIS:
 - Identifique os 3 fatores que realmente importam na decisão desta categoria
 - Explique diferença entre proposta de marketing e benefício prático
-- Mostre para quem faz sentido e para quem não faz
+- Mostre para quem faz sentido e quais perfis mais se beneficiam
 `
 };
 
-const ANGULOS = [
-  {
-    nome: 'problema_invisivel',
-    instrucao: `Abra o texto a partir de um problema específico e pouco verbalizado pelo consumidor dessa categoria.`
-  },
-  {
-    nome: 'mito_desmontado',
-    instrucao: `Abra desfazendo um mito ou simplificação comum sobre o tipo de produto, depois posicione o item analisado.`
-  },
-  {
-    nome: 'criterio_oculto',
-    instrucao: `Abra revelando um critério de compra ignorado pela maioria, mas decisivo para uma boa escolha.`
-  },
-  {
-    nome: 'contexto_uso_real',
-    instrucao: `Abra com uma cena concreta de uso cotidiano para tornar a análise mais humana e editorial.`
-  },
-  {
-    nome: 'custo_de_errar',
-    instrucao: `Abra pelo custo prático de escolher mal nessa categoria: tempo, frustração, uso ruim, resultado inferior.`
-  }
-];
 
-// Rotação de estruturas A/B/C para evitar fingerprint estrutural
-const ESTRUTURAS = [
-  {
-    nome: 'A',
-    descricao: `Estrutura A:
-- Introdução editorial (2-3 parágrafos, porte variável)
-- Resumo rápido (prós/contras/perfil ideal)
-- Experiência prática e sensorial
-- Principais diferenciais
-- O que mais chama atenção
-- Custo-benefício contextual
-- FAQ (4-6 perguntas)
-- Conclusão + CTA leve`
-  },
-  {
-    nome: 'B',
-    descricao: `Estrutura B:
-- Introdução curta (1 parágrafo forte)
-- O ponto mais interessante dessa proposta
-- Textura / sensação / percepção de uso
-- Comparação implícita com alternativas
-- Para quem faz sentido (e para quem não)
-- Resumo final
-- FAQ (4-6 perguntas)
-- CTA leve`
-  },
-  {
-    nome: 'C',
-    descricao: `Estrutura C:
-- Introdução com contexto de uso real
-- Percepção prática no dia a dia
-- Prós e contras naturais (sem tabela forcçada)
-- Para quem vale o investimento
-- Detalhe técnico que faz diferença
-- FAQ (4-6 perguntas)
-- Fechamento editorial`
-  }
-];
 
 function construirPrompt(produto, arquetipo, variacoes, contextoSerper) {
-  const hash = (produto.title || '').split('').reduce((a, c) => a + c.charCodeAt(0), 0);
-  const angulo = ANGULOS[hash % ANGULOS.length];
-  const estrutura = ESTRUTURAS[hash % ESTRUTURAS.length];
   const categoria = produto.category || 'default';
   const guia = GUIAS_CATEGORIA[categoria] || GUIAS_CATEGORIA.default;
 
@@ -225,71 +150,66 @@ function construirPrompt(produto, arquetipo, variacoes, contextoSerper) {
     ? `\n### CONTEXTO EXTERNO (apoio de linguagem e percepção, sem copiar literalmente):\n${JSON.stringify(contextoSerper, null, 2)}`
     : '';
 
-  const systemPrompt = `Você é um redator editorial brasileiro especializado em reviews evergreen para SEO.
-Seu texto precisa parecer de um portal editorial real, escrito por um editor experiente analisando o produto — não por um sistema automatizado resumindo especificações.
+  const systemPrompt = `Você é um redator técnico brasileiro especializado em análises de produto para SEO.
 
 ════════════════════════════════════
 REGRA-MÃE (NUNCA VIOLAR)
 ════════════════════════════════════
-O artigo deve parecer escrito por um editor especializado analisando o produto, e não por um sistema automatizado resumindo especificações.
-Se um trecho parecer genérico, corporativo ou típico de IA, reescreva de forma mais natural e contextual antes de finalizar.
+Seja DIRETO e POSITIVO. Cada frase deve entregar informação útil sobre o produto.
+Se uma frase pode ser removida sem perder informação relevante, remova.
+Nada de enrolação, contexto genérico, frases corporativas ou fingimento de voz humana.
+O leitor quer saber: o que é, para quem serve, quais as specs, e se vale a pena.
+
+REGRAS OBRIGATÓRIAS:
+- Apenas informações verdadeiras, verificáveis e coerentes
+- Nunca invente — se não puder confirmar, OMITA
+- Tom positivo, informativo e útil — sem exageros ou sensacionalismo
+- Não destaque pontos negativos nem faça comparações depreciativas
+- Explique: o que é, para quem, benefícios, como funciona, características, diferenciais, dúvidas comuns
+- Texto completo o bastante para reduzir a necessidade de buscar outras fontes
+- Linguagem natural, SEO-friendly, fácil de ler
+- Transmita confiança e ajude o leitor a decidir
+- NUNCA alucine — em caso de dúvida, omita
 
 ════════════════════════════════════
-FRASES BANIDAS (NUNCA USAR)
+ESTRUTURA OBRIGATÓRIA (seguir nesta ordem)
 ════════════════════════════════════
-As seguintes frases são marcadores fortes de conteúdo automatizado. NÃO USE NUNCA:
-- "É importante considerar"
-- "Ao analisar"
-- "Além disso" (limitado a 1x por texto, no máximo)
-- "Vale destacar"
-- "Quando se trata de"
-- "No mercado atual"
-- "Solução abrangente"
-- "Pode fazer diferença"
-- "Isso o torna"
-- "Nesse contexto"
-- "Pensando nisso"
-- "Não faltam opções"
-- "Cada vez mais"
-- "Promete"
-- "Usuários que buscam"
-- "solução abrangente"
-- "proposta inovadora"
-- "produto revolucionário"
-- "excelência"
-- "entrega superior"
-- "Em conclusão"
-- "Alta qualidade" (como frase vazia)
-- "Vale muito a pena" (como frase vazia)
-- "Produto excelente" (como frase vazia)
+1. H1: "[Nome do Produto] — Análise Completa" ou similar direto
+2. Introdução (1-2 parágrafos): O que é + spec principal + diferencial
+3. Especificações Técnicas: TODAS as specs em bullet points ou tabela
+4. Principais Características: O que realmente importa no uso (bullet points)
+5. Para Quem é Ideal: Perfis de usuário que mais se beneficiam do produto
+6. Dúvidas Comuns (FAQ — 5+ perguntas reais com respostas diretas)
+7. Veredito Final + CTA: Vale a pena? Para quem?
 
 ════════════════════════════════════
-TRANSIÇÕES DINÂMICAS (USE EM ROTÁÇÃO)
+FRASES BANIDAS (NUNCA USAR — geram enrolação)
 ════════════════════════════════════
-Substitua conectívos genéricos por transições naturais. Use cada uma no máximo 1x por texto:
-- "Na prática"
-- "No dia a dia"
-- "Curiosamente"
-- "O ponto mais interessante"
-- "Aqui entra um detalhe importante"
-- "Para algumas pessoas"
-- "Dependendo do perfil"
-- "Isso fica mais evidente"
-- "O equilíbrio aqui"
-- "Uma diferença perceptível"
-- "Mais consistente do que impressionante"
-- "Para uso cotidiano"
-
-════════════════════════════════════
-ÂNGULO NARRATIVO DESTE POST
-════════════════════════════════════
-Nome: ${angulo.nome}
-Diretriz: ${angulo.instrucao}
-
-════════════════════════════════════
-ESTRUTURA DESTE POST (ROTÁÇÃO A/B/C)
-════════════════════════════════════
-${estrutura.descricao}
+- É importante considerar
+- Ao analisar
+- Além disso (máx 1x no texto todo)
+- Vale destacar
+- Quando se trata de
+- No mercado atual
+- Solução abrangente
+- Pode fazer diferença
+- Isso o torna
+- Nesse contexto
+- Pensando nisso
+- Não faltam opções
+- Cada vez mais
+- Usuários que buscam
+- Promete
+- solução abrangente
+- proposta inovadora
+- produto revolucionário
+- excelência
+- entrega superior
+- Em conclusão
+- Alta qualidade (como frase vazia)
+- Vale muito a pena (como frase vazia)
+- Produto excelente (como frase vazia)
+- QUALQUER frase genérica que poderia estar em qualquer review de qualquer produto
 
 ════════════════════════════════════
 GUIA TÉCNICO DA CATEGORIA
@@ -297,150 +217,67 @@ GUIA TÉCNICO DA CATEGORIA
 ${guia}
 
 ════════════════════════════════════
-HUMANIZAÇÃO — MICRO-EXPERIÊNCIA (OBRIGATÓRIO)
+REGRAS DE CONTEÚDO
 ════════════════════════════════════
-Incorpore pelo menos uma observação prática natural sobre:
-- Sensação na pele, textura, espalhabilidade, absorção (beleza/saúde)
-- Peso, equilíbrio, acabamento, resposta tátil (tecnologia/esportes)
-- Praticidade real, sons, facilidade de uso (casa)
-
-Exemplo do que EVITAR:
-"Possui rápida absorção."
-
-Exemplo do que USAR:
-"A textura mais leve evita aquela sensação grudenta comum em alguns hidratantes corporais."
-
-════════════════════════════════════
-CADÊNCIA E IMPERFEICÃO EDITORIAL
-════════════════════════════════════
-- Varie deliberadamente o tamanho dos parágrafos. Alguns curtos (1-2 frases). Outros mais desenvolvidos.
-- Misture frases curtas, médias e ocasionalmente mais longas dentro do mesmo bloco.
-- Nem todos os tópicos precisam ter o mesmo nível de profundidade. Isso é natural.
-- Alguns blocos podem ser mais opinativos, outros mais objetivos. Varie a voz.
-- Evite equilíbrio excessivo entre todos os tópicos — isso é fingerprint de IA.
-
-════════════════════════════════════
-COMPARAÇÕES IMPLÍCITAS (USE 1-2x)
-════════════════════════════════════
-Inclua comparações contextuais sem transformar em texto comparativo direto.
-Exemplo: "Diferente de hidratantes mais densos, ele aposta em uma sensação mais leve no uso diário."
-
-════════════════════════════════════
-CONTEXTO REAL DE USO (INCLUA 1-3 REFERÊNCIAS)
-════════════════════════════════════
-Faça referência natural a contextos reais de uso, quando pertinente:
-- Clima quente / pele no calor
-- Pós-banho / rotina matinal / rotina noturna
-- Pele seca / sensibilidade
-- Uso diário continuído
-- Cozinha corrida de dia a dia
-- Pré e pós-treino
-
-════════════════════════════════════
-MODERAÇÃO — SEM SUPERLATIVOS
-════════════════════════════════════
-- Evite superlativos exagerados.
-- Inclua pequenas limitações naturais — isso aumenta credibilidade.
-Exemplo: "Pode não agradar quem prefere hidratantes extremamente densos."
-- Se o produto tem pontos negativos reais, sinalize-os de forma equilibrada.
-
-════════════════════════════════════
-FAQ CONVERSACIONAL
-════════════════════════════════════
-As respostas do FAQ devem ser:
-- Curtas (2-4 linhas no máximo)
-- Diretas e conversacionais
-- Menos enciclopédicas
-Exemplo RUIM: "A niacinamida é um derivado da vitamina B3 com propriedades anti-inflamatórias e antioxidantes amplamente estudadas..."
-Exemplo BOM: "A niacinamida ajuda principalmente na uniformização da pele e no fortalecimento da barreira cutânea."
-
-════════════════════════════════════
-SEO SEMÂNTICO INVIsÍVEL
-════════════════════════════════════
-- Use a palavra-chave principal no H1, no primeiro parágrafo, em pelo menos 1 H2, e no fechamento.
-- Inclua naturalmente as entidades semânticas do guia da categoria acima.
-- Misture: análise, avaliação, opinião, experiência, desempenho, recursos, custo-benefício.
-- Incorpore termos evergreen como "disponível", "atualmente", "no mercado" de forma natural ao longo do texto — isso ajuda o conteúdo a soar atemporal sem parecer artificial.
-- Inclua perguntas naturais (cauda longa) que ajudem em snippet.
-- O texto NÃO pode parecer otimizado demais.
+- Use TODOS os dados do produto disponíveis: specs, ingredientes, benefícios, público-alvo
+- Se specs estiverem disponíveis, exiba-as em formato de lista ou tabela com TODOS os detalhes
+- Se ingredientes/ativos estiverem disponíveis, liste e explique cada um (1-2 linhas cada)
+- Se benefícios estiverem disponíveis, desenvolva cada um com contexto prático
+- FAQ deve conter perguntas que um comprador REAL faria (não perguntas genéricas de SEO)
+- Respostas do FAQ: curtas (2-4 linhas), diretas, informativas — sem enrolação
+- Inclua 1 parágrafo sobre "Para quem é ideal" — perfis que mais se beneficiam
+- Use linguagem clara, descritiva e direta, sempre em tom positivo e construtivo
+- Evite metáforas, storytelling ou qualquer tentativa de soar humano
+- Prefira fatos e especificações a opiniões vagas
+- O texto deve ser completo o bastante para que o leitor não precise buscar outras fontes
 
 ════════════════════════════════════
 REGRAS DE FORMATO
 ════════════════════════════════════
 - Gere em Markdown, sem frontmatter
-- Use 1 H1 atrativo e natural
-- Use entre 5 e 9 H2 dinâmicos (sem repetição de padrão entre posts)
-- Pode usar alguns H3 quando fizer sentido
-- Inclua um bloco de resumo rápido com prós, contras e perfil indicado
-- Inclua FAQ no final com 4 a 6 perguntas reais e respostas conversacionais
-- Termine com conclusão natural + CTA leve
-- Parágrafos com tamanhos deliberadamente variados
-- Misture frases curtas com médias
-- Use listas apenas quando agregarem escaneabilidade real
-- Evite blocos enormes e repetitivos
-
-════════════════════════════════════
-TÍTULOS E H2
-════════════════════════════════════
-- Nunca use H2 genéricos como "Conclusão", "Design", "Desempenho" de forma seca.
-- Prefira títulos como:
-  - O que esperar no uso diário
-  - Onde esse modelo mais se destaca
-  - O que mais chama atenção nesse produto
-  - O que considerar antes da compra
-  - Para quem esse produto realmente faz sentido
-  - O ponto que a maioria não percebe
-- Varie os títulos naturalmente. Nunca repita o mesmo H2 em posts diferentes.
+- Use 1 H1 direto e informativo
+- Use entre 4 e 7 H2 descritivos (nunca genéricos como "Introdução" ou "Conclusão")
+- Use bullet points para specs e características
+- Parágrafos curtos (máx 3-4 linhas)
+- FAQ com 5+ perguntas no final
+- Termine com veredito + CTA leve
 
 ════════════════════════════════════
 CTA E FECHAMENTO
 ════════════════════════════════════
-- O CTA deve ser discreto e contextual.
-- Exemplos aceitáveis:
-  - "Verificar as condições atuais pode fazer sentido, especialmente se a proposta descrita aqui combina com o seu perfil."
-  - "Comparar versões e ofertas disponíveis ajuda a entender se essa é a escolha mais equilibrada."
-  - "Dependendo das condições do momento, o custo-benefício pode ficar ainda mais interessante."
-- Nunca use urgência forçada.
+- CTA direto e sem urgência
+- Exemplo: "Disponível na Amazon — confira o preço atual"
+- Exemplo: "Vale a pena conferir as condições atuais do produto"
+- NUNCA use urgência forçada ou frases de pressão
 
 ════════════════════════════════════
-RESTRIÇÕES ABSOLUTAS
+RESTRIÇÕES TÉCNICAS
 ════════════════════════════════════
-- Não inventar especificações, desempenho ou avaliações
-- Não citar preço exato
+- Não citar preço exato (use "preço atual" ou "consulte o link")
 - Não usar datas como parte do argumento
 - Não repetir o nome do produto de forma mecânica
 - Não usar clichês de IA ou marketing vazio
-- Não parecer template rígido
-- Não dizer que "testou" o produto sem dados que suportem isso
 
 ════════════════════════════════════
-PROIBIÇÃO DE CÓDIGO E HTML (NUNCA VIOLAR)
+PROIBIÇÃO DE CÓDIGO E HTML
 ════════════════════════════════════
-- NUNCA copie texto diretamente da página da Amazon
-- NUNCA reproduza HTML, CSS ou código de qualquer tipo
-- NUNCA escreva classes CSS, seletores ou estilos inline
-- NUNCA repita nomes de classes como "aplus-" ou "celwidget"
-- NUNCA inclua JavaScript, chamadas de função ou logShoppableMetrics
-- NUNCA inclua div, span, style, class=, id= ou qualquer tag HTML
-- NUNCA use font-size, margin, padding, display: como parte do texto
-- NUNCA inclua blocos de código markup ou notação técnica não-markdown
-- TUDO deve ser escrito com suas próprias palavras em português natural
-- Se o contexto externo contiver HTML, IGNORE-O completamente
+- NUNCA copie texto da página do produto
+- NUNCA reproduza HTML, CSS ou código
+- TUDO escrito em português natural com suas próprias palavras
 
 ════════════════════════════════════
-REVISÃO FINAL OBRIGATÓRIA (SIMULE EDITOR HUMANO)
+REVISÃO FINAL (OBRIGATÓRIA)
 ════════════════════════════════════
-Antes de entregar o artigo, simule mentalmente a revisão de um editor de portal premium:
-1. Verifique ortografia e concordância
-2. Elimine repetições próximas da mesma palavra
-3. Corrija vírgulas artificiais
-4. Verifique fluidez natural
-5. Remova frases redundantes
-6. Simplifique construções excessivamente robóticas
-7. Substitua palavras repetidas por variações naturais
-8. Verifique: há algum trecho que parece genérico, corporativo ou típico de IA? Se sim, reescreva.
-9. O tom está editorial e humano, ou institucional e automatizado? Ajuste.
-10. A estrutura parece térmplate rígido ou prosa editorial viva? Ajuste.
+Antes de entregar, verifique:
+1. Toda informação aqui é verdadeira e verificável?
+2. Alguma especificação foi inventada? Se sim, remova ou corrija
+3. Cada parágrafo entrega informação útil E exclusiva sobre este produto?
+4. Alguma frase genérica pode ser removida sem perder informação? Se sim, remova.
+5. As specs estão todas lá?
+6. FAQ responde dúvidas reais de compradores (não perguntas de SEO)?
+7. O texto está direto, positivo e informativo, ou parece enrolação de IA?
+8. Se você substituísse o nome do produto por outro, o texto ainda faria sentido? Se sim, está genérico demais — reescreva.
+9. O texto transmite confiança e ajuda o leitor a decidir?
 
 DADOS DE APOIO:
 - Arquétipo: ${arquetipo.nome}
@@ -452,37 +289,31 @@ DADOS DE APOIO:
 - CTA sugerido: ${variacoes.cta?.texto || ''}
 
 TAMANHO ALVO:
-- Produza um review entre 1600 e 2400 palavras.
-- Priorize profundidade real, não enchimento.`;
+- Produza entre 1200 e 2000 palavras
+- Priorize informação densa, não volume de texto
+- Um texto de 800 palavras com informação útil vale mais que 2000 palavras de enrolação`;
 
-  const userPrompt = `Crie o review completo para este produto seguindo rigorosamente o protocolo editorial v4.
+  const userPrompt = `Crie a análise completa para este produto seguindo rigorosamente o Protocolo de Conteúdo Direto v1.
 
-PRODUTO (dados completos — use TODOS os campos disponíveis):
+PRODUTO (use TODOS os campos abaixo na análise):
 ${dadosProduto}
 ${contextoExterno}
 
-INSTRUÇÕES FINAIS:
-- O texto precisa parecer humano e editorial — não um sistema resumindo especificações
-- Use SEO semântico invisível com as entidades da categoria
-- Aplique o ângulo "${angulo.nome}"
-- Use a estrutura "${estrutura.nome}" definida acima
-- Traga profundidade técnica conforme a categoria
-- Inclua pelo menos uma micro-observação sensorial ou prática
-- Inclua 1-2 comparações implícitas contextuais
-- Use transições dinâmicas em rotação (nunca repetir a mesma)
-- Varie deliberadamente o tamanho dos parágrafos
-- Faça o leitor sentir que entendeu melhor a compra ao terminar a leitura
-- Inclua FAQ conversacional e direto no final
-- Mantenha o tom evergreen e profissional
-- Antes de finalizar: revise como editor humano, eliminando qualquer traço de automação
-
-⚠️ USE OS DADOS ESTRUTURADOS ACIMA:
-- Se o campo MARCA estiver preenchido, mencione a marca naturalmente no texto
-- Se INGREDIENTES estiver presente, incorpore-os na seção técnica
-- Se BENEFÍCIOS estiver listado, desenvolva cada um com contexto prático
-- Se PÚBLICO-ALVO estiver definido, direcione o texto para esse perfil
-- Se FAQ_SUGERIDO existir, use como inspiração — reescreva com suas palavras, não copie
-- Se nenhum dado estruturado estiver disponível, escreva baseado apenas no nome e especificações`;
+INSTRUÇÕES:
+- Use TODOS os dados disponíveis: specs, ingredientes, benefícios, público-alvo
+- Estrutura obrigatória: specs → características → público → FAQ → veredito
+- Se MARCA existir, mencione naturalmente no texto
+- Se INGREDIENTES existir, liste e explique cada um
+- Se BENEFÍCIOS existir, desenvolva cada um com contexto prático
+- Se PÚBLICO-ALVO existir, direcione o texto para esse perfil
+- Se FAQ_SUGERIDO existir, use como base para as perguntas — reescreva com suas palavras
+- FAQ deve conter perguntas que um comprador REAL faria
+- Seja direto e POSITIVO: cada frase deve agregar informação útil sobre o produto
+- Nada de enrolação, contexto genérico ou opiniões vagas
+- Prefira bullet points e listas a parágrafos longos
+- Antes de finalizar: verifique se toda informação é verdadeira e remova qualquer frase genérica
+- Mantenha o tom evergreen e atemporal
+- O texto deve ser completo o bastante para que o leitor não precise buscar outras fontes`;
 
   return { systemPrompt, userPrompt };
 }
@@ -492,7 +323,7 @@ export async function gerarConteudoPost(produto, arquetipo, variacoes, contextoS
     throw new Error('GROQ_API_KEY não configurada no .env');
   }
 
-  console.log(`   🤖 Groq — protocolo editorial v4 carregado...`);
+  console.log(`   🤖 Groq — Protocolo de Conteúdo Direto v1.1 carregado...`);
 
   try {
     const { systemPrompt, userPrompt } = construirPrompt(produto, arquetipo, variacoes, contextoSerper);
@@ -509,7 +340,7 @@ export async function gerarConteudoPost(produto, arquetipo, variacoes, contextoS
     console.log(userPrompt.substring(0, 500) + '...');
     console.log('\n[AUDIT] === PAYLOAD COMPLETO (dadosProduto JSON) ===');
     // Extrai o JSON do userPrompt
-    const jsonMatch = userPrompt.match(/PRODUTO \(dados completos.*?\):\n(\{[\s\S]*?\})\n\nINSTRUÇÕES/);
+    const jsonMatch = userPrompt.match(/PRODUTO \(use TODOS os campos abaixo na análise\):\n(\{[\s\S]*?\})\n\nINSTRUÇÕES/);
     if (jsonMatch) {
       console.log(jsonMatch[1]);
     }
@@ -542,15 +373,16 @@ export async function reescreverConteudo(conteudoOriginal, improvementReport, gr
   const dimensoes = improvementReport?.editorialFeedback?.dimensions || {};
   const scoreAtual = improvementReport?.editorialFeedback?.score ?? 40;
 
-  const systemPrompt = `Você é um editor brasileiro especializado em revisão de conteúdo.
-Sua função é reescrever o artigo abaixo para melhorar sua qualidade editorial.
+  const systemPrompt = `Você é um redator técnico especializado em análises de produto.
+Sua função é reescrever o artigo abaixo para torná-lo mais direto e informativo.
 
 REGRAS:
-- Mantenha o tom editorial e humano
+- Seja direto: cada frase deve entregar informação útil sobre o produto
+- Remova qualquer frase genérica que não agregue informação específica
 - NÃO adicione HTML, CSS ou código
 - Reescreva com suas próprias palavras — não copie da Amazon
 - Mantenha o formato Markdown
-- O artigo final deve ser natural e original
+- Nada de enrolação, contexto genérico ou opiniões vagas
 
 MELHORIAS SOLICITADAS:
 ${melhorias.map((imp, i) => `${i + 1}. ${imp}`).join('\n')}
@@ -558,8 +390,7 @@ ${melhorias.map((imp, i) => `${i + 1}. ${imp}`).join('\n')}
 SCORE MÍNIMO NECESSÁRIO: 45/50
 SCORE ATUAL: ${scoreAtual}/50
 
-Se o texto tiver HTML, CSS ou frases genéricas, REMOVA-OS completamente.
-O texto precisa parecer de um portal editorial premium brasileiro.`;
+Se o texto tiver frases genéricas ou que poderiam estar em qualquer review, REMOVA-AS completamente.`;
 
   const userPrompt = `Reescreva o artigo abaixo aplicando todas as melhorias listadas acima.
 
@@ -585,19 +416,43 @@ Foque em tornar o texto mais original, bem estruturado e informativo.`;
 }
 
 function gerarConteudoFallback(produto, variacoes) {
-  const specsList = produto.specs && produto.specs.length > 0
-    ? produto.specs.join('\n')
-    : '- **Categoria:** ' + (produto.category || 'geral') + '\n- **Disponível em:** ' + produto.store;
-  const specsSection = '\n## Especificações\n\n' + specsList + '\n';
+  const { title, description, specs, store, category } = produto;
 
-  // Garante CTA com palavras reconhecidas pelo validador temCtaNatural
-  const ctaGatilho = variacoes.cta?.gatilho?.match(/confira|acesse|veja|conheça|consulte|saiba mais|clique|visite|aproveite|compre|adquira|leia mais|descubra|encontre/i)
-    ? variacoes.cta.gatilho
-    : 'Confira as condições atuais do produto e verifique a disponibilidade';
+  // Specs como bullet points
+  const specsBlock = specs && specs.length > 0
+    ? specs.join('\n')
+    : '- **Categoria:** ' + (category || 'geral') + '\n- **Disponível em:** ' + store;
 
-  const ctaFim = variacoes.cta?.texto?.match(/conferir|confira|ver (na|o|disponibilidade)|próximo passo|acessar|consultar oferta/i)
-    ? variacoes.cta.texto
-    : 'Conferir a página do produto e acessar as informações atualizadas pode ajudar na sua decisão.';
+  // CTA direto
+  const ctaDireto = 'Disponível na ' + store + ' — consulte o preço atual e as condições de entrega.';
 
-  return variacoes.abertura + '\n\n' + produto.title + ' está disponível atualmente no mercado pela ' + produto.store + ' e aparece entre as opções disponíveis na categoria como uma alternativa que merece atenção.' + specsSection + '\n\n## Para Quem Faz Sentido\n\n' + variacoes.transicao + '\n\n## Experiência de Uso\n\n' + produto.description + '\n\nCompradores que já avaliaram este tipo de produto destacam o equilíbrio entre as características oferecidas e o que realmente importa no dia a dia. Quem já utiliza produtos similares costuma relatar uma experiência positiva.' + '\n\n## Detalhes Importantes\n\nPara quem está considerando a compra, vale observar os detalhes que realmente impactam o uso cotidiano. As especificações trazem informações atuais sobre o produto, disponível em uma das principais lojas do país. Avaliações de consumidores e compradores ajudam a entender melhor a proposta.' + '\n\n## Perguntas Frequentes\n\n### O que torna este produto relevante?\n' + produto.title + ' se destaca na sua categoria por reunir atributos que interessam a consumidores que buscam algo equilibrado entre proposta e entrega. As avaliações de quem já comprou antes podem ajudar a entender melhor se ele é a escolha certa.' + '\n\n### Vale a pena conhecer este produto?\nSim, especialmente se você está procurando algo que atenda às suas expectativas. Vale considerar as avaliações de quem já comprou antes de decidir. Produtos bem posicionados no mercado costumam oferecer uma experiência satisfatória para a maioria dos perfis.' + '\n\n### Como escolher o modelo ideal?\nObservar as especificações detalhadas e comparar com o seu perfil de uso é o melhor caminho para encontrar a opção mais adequada. Cada pessoa tem necessidades diferentes, e o que funciona bem para um usuário pode não ser a melhor escolha para outro.' + '\n\n### O produto entrega o que promete?\nCom base no que está disponível atualmente no mercado, a proposta deste produto parece alinhada com o que os consumidores esperam encontrar. Avaliações de compradores e a reputação da loja são bons indicadores para confirmar a expectativa.' + '\n\n### Qual a diferença entre este modelo e outras opções?\nCada produto dentro da mesma categoria tem seu próprio conjunto de características e proposta de valor. O ideal é comparar as especificações e o perfil de uso para entender qual atende melhor às suas necessidades específicas.' + '\n\n## Fechamento\n\n' + variacoes.fechamento + '. ' + ctaGatilho + '.\n\n🛍️ ' + ctaFim;
+  // Título curto para referência
+  const nomeCurto = title.length > 80 ? title.substring(0, 77) + '...' : title;
+
+  return '# ' + nomeCurto + ' — Análise Completa\n\n' +
+    '## O Que É\n\n' +
+    title + ' é um produto da categoria ' + category + ', disponível na ' + store + '. ' + description + '\n\n' +
+    '## Especificações Técnicas\n\n' + specsBlock + '\n\n' +
+    '## Principais Características\n\n' +
+    '- Disponível na loja ' + store + '\n' +
+    '- Categoria: ' + category + '\n' +
+    '- Produto analisado com base nas especificações disponíveis\n' +
+    '- Verifique a página do produto para detalhes completos\n\n' +
+    '## Para Quem é Ideal\n\n' +
+    variacoes.transicao + '\n\n' +
+    '## Dúvidas Comuns\n\n' +
+    '### O que é este produto?\n' +
+    title + ' é um produto classificado na categoria ' + category + ', vendido pela ' + store + '. As especificações listadas acima trazem os principais detalhes técnicos.\n\n' +
+    '### Para quem é indicado?\n' +
+    'Este produto é indicado para consumidores que buscam uma opção na categoria ' + category + '. Recomenda-se verificar as especificações completas na página do produto para confirmar se atende às suas necessidades.\n\n' +
+    '### Onde comprar?\n' +
+    'O produto está disponível na ' + store + '. Os preços e condições podem variar — vale a pena consultar a página oficial para informações atualizadas.\n\n' +
+    '### Qual a garantia?\n' +
+    'Consulte a página do produto na ' + store + ' para informações sobre garantia, prazo de entrega e política de devolução. Esses detalhes podem variar conforme o vendedor e a região.\n\n' +
+    '### Como escolher o modelo ideal?\n' +
+    'Compare as especificações de diferentes modelos dentro da mesma categoria. O ideal é avaliar tamanho, capacidade, potência e funcionalidades que atendam ao seu perfil de uso específico.\n\n' +
+    '### Vale a pena?\n' +
+    'A avaliação depende do seu perfil de uso. Confira as especificações e compare com outras opções da mesma categoria antes de decidir. Verifique também as avaliações de outros compradores na página do produto.\n\n' +
+    '## Veredito Final\n\n' +
+    variacoes.fechamento + '. ' + ctaDireto;
 }

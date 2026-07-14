@@ -782,26 +782,40 @@ ${conteudoFinal}
 // ── Fallback: conteúdo básico ─────────────────────────────────────────────
 
 function gerarConteudoBasico(produto, variacoes) {
-  const { title, description, specs, store } = produto;
+  const { title, description, specs, store, category } = produto;
   const emoji = { 'Mercado Livre': '🛒', 'Amazon': '📦', 'Magalu': '🏪' }[store] || '🛍️';
-  
-  // Cria seção de especificações mesmo sem dados do scraper
-  const specsList = specs && specs.length > 0
-    ? specs.join('\n')
-    : `- **Categoria:** ${produto.category || 'geral'}\n- **Disponível em:** ${store}`;
-  const specsBlock = `\n## Especificações Principais\n\n${specsList}\n`;
-  
-  // Garante CTA com palavras reconhecidas pelo validador temCtaNatural
-  const ctaGatilho = variacoes.cta?.gatilho?.match(/confira|acesse|veja|conheça|consulte|saiba mais|clique|visite|aproveite|compre|adquira|leia mais|descubra|encontre/i)
-    ? variacoes.cta.gatilho
-    : 'Confira as condições atuais do produto e verifique a disponibilidade';
-  
-  // temCtaNatural busca: conferir|confira|ver (na|o|disponibilidade)|próximo passo|acessar|consultar oferta
-  const ctaTexto = variacoes.cta?.texto?.match(/conferir|confira|ver (na|o|disponibilidade)|próximo passo|acessar|consultar oferta/i)
-    ? variacoes.cta.texto
-    : 'Conferir a página do produto e acessar as informações atualizadas pode ajudar na sua decisão.';
 
-  return variacoes.abertura + '\n\n' + title + ' está disponível atualmente na ' + store + ' com entrega rápida para todo o Brasil. Na análise desta categoria, ele aparece entre as opções disponíveis no mercado como uma alternativa que merece atenção de quem busca qualidade e bom custo-benefício.' + '\n\n' + specsBlock + '\n\n## Para Quem Faz Sentido\n\n' + variacoes.transicao + '\n\n## Experiência de Uso\n\n' + description + '\n\nCompradores que já avaliaram este tipo de produto destacam o equilíbrio entre as características oferecidas e o que realmente importa no dia a dia. Quem já utiliza produtos similares costuma relatar uma experiência positiva, especialmente quando o produto atende bem às necessidades básicas da categoria.' + '\n\n## Detalhes Importantes\n\nPara quem está considerando a compra, vale observar os detalhes que realmente impactam o uso cotidiano. As especificações trazem informações atuais sobre o produto, disponível em uma das principais lojas do país. Entre os pontos que mais chamam a atenção dos consumidores estão a relação custo-benefício e a adequação ao perfil de uso.' + '\n\n## O Que Considerar Antes da Compra\n\nAntes de decidir, é importante avaliar como este produto se encaixa na sua rotina. Usuários que buscam praticidade no dia a dia costumam encontrar boas opções dentro desta categoria, mas é sempre interessante verificar se as características atendem exatamente ao que você procura.' + '\n\n## Perguntas Frequentes\n\n### O que torna este produto relevante?\n' + title + ' se destaca dentro da sua categoria por reunir características que interessam a consumidores que buscam qualidade e bom custo-benefício. As avaliações de quem já comprou antes podem ajudar a entender melhor se ele é a escolha certa.' + '\n\n### Vale a pena conhecer este produto?\nSim, especialmente se você está procurando algo que atenda às suas expectativas. Vale considerar as avaliações de quem já comprou antes de decidir. Produtos bem posicionados no mercado costumam oferecer uma experiência satisfatória para a maioria dos perfis.' + '\n\n### Como escolher o modelo ideal?\nObservar as especificações detalhadas e comparar com o seu perfil de uso é o melhor caminho para encontrar a opção mais adequada. Cada pessoa tem necessidades diferentes, e o que funciona bem para um usuário pode não ser a melhor escolha para outro.' + '\n\n### O produto entrega o que promete?\nCom base no que está disponível atualmente no mercado, a proposta deste produto parece alinhada com o que os consumidores esperam encontrar. Avaliações de compradores e a reputação da loja são bons indicadores para confirmar a expectativa.' + '\n\n### Qual a diferença entre este modelo e outras opções?\nCada produto dentro da mesma categoria tem seu próprio conjunto de características e proposta de valor. O ideal é comparar as especificações e o perfil de uso para entender qual atende melhor às suas necessidades específicas.' + '\n\n## Fechamento\n\n' + variacoes.fechamento + '. ' + ctaGatilho + '.\n\n' + emoji + ' ' + ctaTexto;
+  // Specs em bullet points
+  const specsBlock = specs && specs.length > 0
+    ? specs.join('\n')
+    : '- **Categoria:** ' + (category || 'geral') + '\n- **Disponível em:** ' + store;
+
+  // CTA direto
+  const ctaDireto = 'Disponível na ' + store + ' — confira o preço atual e as condições.';
+
+  const nomeCurto = title.length > 80 ? title.substring(0, 77) + '...' : title;
+
+  return '# ' + nomeCurto + ' — Análise Completa\n\n' +
+    '## O Que É\n\n' +
+    title + ' é um produto ' + category + ' disponível na ' + store + '. ' + description + '\n\n' +
+    '## Especificações Técnicas\n\n' + specsBlock + '\n\n' +
+    '## Principais Características\n\n' +
+    '- Disponível na loja ' + store + '\n' +
+    '- Categoria: ' + category + '\n' +
+    '- Consulte a página oficial para ofertas e condições atualizadas\n\n' +
+    '## Para Quem é Ideal\n\n' +
+    variacoes.transicao + '\n\n' +
+    '## Dúvidas Comuns\n\n' +
+    '### O que é este produto?\n' +
+    title + ' é um produto da categoria ' + category + ', vendido pela ' + store + '. Confira as especificações acima para mais detalhes.\n\n' +
+    '### Para quem é indicado?\n' +
+    'Este produto é voltado para consumidores que buscam opções na categoria ' + category + '. Verifique as especificações completas para confirmar se atende às suas necessidades.\n\n' +
+    '### Onde comprar?\n' +
+    'O produto está disponível na loja ' + store + '. Consulte a página oficial para preços e condições atualizadas.\n\n' +
+    '### Vale a pena?\n' +
+    'Depende do seu perfil de uso. Compare as especificações com outras opções da categoria e verifique avaliações de outros compradores na página do produto.\n\n' +
+    '## Veredito Final\n\n' +
+    variacoes.fechamento + '. ' + ctaDireto;
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────

@@ -105,6 +105,32 @@ export const VALIDACOES = {
       valido: temSpecs,
       mensagem: temSpecs ? '✅ Especificações presentes' : '⚠️  Sem especificações técnicas'
     };
+  },
+
+  /**
+   * Verifica se há frases de enrolação genérica (fluff)
+   */
+  semEnrolacao: (texto) => {
+    const frasesEnrolacao = [
+      /se destaca (dentro|na) (sua )?categoria/i,
+      /reunir (atributos|características) que interessam/i,
+      /algo equilibrado entre proposta e entrega/i,
+      /alternativa que merece atenç[ãa]o/i,
+      /equilíbrio entre as características/i,
+      /produtos bem posicionados no mercado/i,
+      /experiência satisfat[óo]ria para a maioria dos perfis/i,
+      /qualidade e bom custo-benefício/i,
+      /aparece entre as opções disponíveis/i,
+      /opções disponíveis no mercado/i,
+      /reputação da loja são bons indicadores/i,
+    ];
+    const encontrou = frasesEnrolacao.some(re => re.test(texto));
+    return {
+      valido: !encontrou,
+      mensagem: encontrou 
+        ? '❌ Frases de enrolação detectadas (conteúdo genérico)' 
+        : '✅ Sem enrolação'
+    };
   }
 };
 
