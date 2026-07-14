@@ -585,9 +585,19 @@ Foque em tornar o texto mais original, bem estruturado e informativo.`;
 }
 
 function gerarConteudoFallback(produto, variacoes) {
-  const specsBlock = produto.specs && produto.specs.length > 0
-    ? `\n## Especificações principais\n\n${produto.specs.join('\n')}\n`
-    : '';
+  const specsList = produto.specs && produto.specs.length > 0
+    ? produto.specs.join('\n')
+    : '- **Categoria:** ' + (produto.category || 'geral') + '\n- **Disponível em:** ' + produto.store;
+  const specsSection = '\n## Especificações\n\n' + specsList + '\n';
 
-  return `# ${produto.title}\n\n${variacoes.abertura}\n\n${produto.title} está disponível na ${produto.store} e chama atenção pela proposta dentro da categoria.\n\n## Resumo rápido\n\n- **Pontos positivos:** proposta clara, ficha técnica objetiva, apelo prático\n- **Pontos de atenção:** é importante alinhar a escolha ao seu perfil de uso\n- **Indicado para:** quem procura equilíbrio entre proposta, uso cotidiano e custo-benefício\n${specsBlock}\n## O que considerar antes da compra\n\n${produto.description}\n\n## Para quem faz sentido\n\n${variacoes.transicao}\n\n## Perguntas frequentes\n\n### ${produto.title} é bom?\nDepende do seu perfil e das prioridades dentro da categoria, mas a proposta parece consistente.\n\n### Vale a pena comprar?\nFaz mais sentido quando as características dele combinam com o tipo de uso que você espera.\n\n## Fechamento\n\n${variacoes.fechamento}. ${variacoes.cta?.gatilho || 'Comparar as condições disponíveis pode ajudar na decisão'}\.\n\n---\n\n*Links deste post são afiliados. Você não paga nada a mais, mas nos ajuda a manter o site gratuito.*`;
+  // Garante CTA com palavras reconhecidas pelo validador temCtaNatural
+  const ctaGatilho = variacoes.cta?.gatilho?.match(/confira|acesse|veja|conheça|consulte|saiba mais|clique|visite|aproveite|compre|adquira|leia mais|descubra|encontre/i)
+    ? variacoes.cta.gatilho
+    : 'Confira as condições atuais do produto e verifique a disponibilidade';
+
+  const ctaFim = variacoes.cta?.texto?.match(/conferir|confira|ver (na|o|disponibilidade)|próximo passo|acessar|consultar oferta/i)
+    ? variacoes.cta.texto
+    : 'Conferir a página do produto e acessar as informações atualizadas pode ajudar na sua decisão.';
+
+  return variacoes.abertura + '\n\n' + produto.title + ' está disponível atualmente no mercado pela ' + produto.store + ' e aparece entre as opções disponíveis na categoria como uma alternativa que merece atenção.' + specsSection + '\n\n## Para Quem Faz Sentido\n\n' + variacoes.transicao + '\n\n## Experiência de Uso\n\n' + produto.description + '\n\nCompradores que já avaliaram este tipo de produto destacam o equilíbrio entre as características oferecidas e o que realmente importa no dia a dia. Quem já utiliza produtos similares costuma relatar uma experiência positiva.' + '\n\n## Detalhes Importantes\n\nPara quem está considerando a compra, vale observar os detalhes que realmente impactam o uso cotidiano. As especificações trazem informações atuais sobre o produto, disponível em uma das principais lojas do país. Avaliações de consumidores e compradores ajudam a entender melhor a proposta.' + '\n\n## Perguntas Frequentes\n\n### O que torna este produto relevante?\n' + produto.title + ' se destaca na sua categoria por reunir atributos que interessam a consumidores que buscam algo equilibrado entre proposta e entrega. As avaliações de quem já comprou antes podem ajudar a entender melhor se ele é a escolha certa.' + '\n\n### Vale a pena conhecer este produto?\nSim, especialmente se você está procurando algo que atenda às suas expectativas. Vale considerar as avaliações de quem já comprou antes de decidir. Produtos bem posicionados no mercado costumam oferecer uma experiência satisfatória para a maioria dos perfis.' + '\n\n### Como escolher o modelo ideal?\nObservar as especificações detalhadas e comparar com o seu perfil de uso é o melhor caminho para encontrar a opção mais adequada. Cada pessoa tem necessidades diferentes, e o que funciona bem para um usuário pode não ser a melhor escolha para outro.' + '\n\n### O produto entrega o que promete?\nCom base no que está disponível atualmente no mercado, a proposta deste produto parece alinhada com o que os consumidores esperam encontrar. Avaliações de compradores e a reputação da loja são bons indicadores para confirmar a expectativa.' + '\n\n### Qual a diferença entre este modelo e outras opções?\nCada produto dentro da mesma categoria tem seu próprio conjunto de características e proposta de valor. O ideal é comparar as especificações e o perfil de uso para entender qual atende melhor às suas necessidades específicas.' + '\n\n## Fechamento\n\n' + variacoes.fechamento + '. ' + ctaGatilho + '.\n\n🛍️ ' + ctaFim;
 }

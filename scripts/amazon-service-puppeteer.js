@@ -74,7 +74,7 @@ async function fetchAmazonWithPuppeteer(asin, partnerTag) {
 
     // Extrai dados do DOM completo
     const data = await page.evaluate(() => {
-      const titleEl = document.querySelector('h1 span') || document.querySelector('[data-feature-name="title"]');
+      const titleEl = document.querySelector('#productTitle') || document.querySelector('[data-feature-name="title"]');
       const title = titleEl?.textContent?.trim() || '';
       
       // Tenta múltiplas estratégias de imagem
