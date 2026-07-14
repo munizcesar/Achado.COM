@@ -45,3 +45,12 @@ reports/
 
 # Changelogs de sessão (artefatos de trabalho)
 CHANGELOG-SESSAO-*.md
+
+# Artefatos do pipeline de scraping / agente (auto-gerados, não commitar)
+data/cache-knowledge/
+scripts/agent/logs/
+scripts/agent/states/
+scripts/agent/core/circuit-breaker-state.json
+scripts/agent/history/dead-letter-queue.json
+scripts/agent/metrics/metrics.json
+scripts/.serper-usage.json

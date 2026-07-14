@@ -263,6 +263,31 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
       let attempt = 0;
       let productSelected = false;
 
+      // ── TELEMETRIA DO POOL ──
+      const telemetry = {
+        poolInitial: pool.length,
+        rejected: {
+          notPortuguese: [],
+          invalidUrl: [],
+          duplicate: [],
+          contentGuard: [],
+          productValidation: [],
+          categorySafety: [],
+          confidence: [],
+          contentGeneration: [],
+          titleCoherence: [],
+          qualityGate: [],
+          editorialGate: [],
+          hallucination: [],
+          semanticCoherence: [],
+          audit: [],
+          ctaValidation: [],
+          imageValidation: [],
+          finalScore: [],
+          hashIntegrity: [],
+        },
+      };
+
       while (attempt < MAX_ATTEMPTS && !productSelected && !pipelineFailed) {
         attempt++;
 
@@ -292,6 +317,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
 
         // Português
         if (!isTitleInPortuguese(product.name)) {
+          telemetry.rejected.notPortuguese.push(product.asin);
           logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — título fora do PT-BR. Selecionando próximo...`);
           excluded.push(product.asin);
           continue;
@@ -301,6 +327,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
         affUrl = buildAmazonAffiliateUrl(product.asin, affConfig.tag);
         const urlValid = validateFinalAffiliateUrl(affUrl);
         if (!urlValid.valid) {
+          telemetry.rejected.invalidUrl.push(product.asin);
           logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — link inválido: ${urlValid.error}. Selecionando próximo...`);
           excluded.push(product.asin);
           continue;
@@ -309,6 +336,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
         // Duplicidade
         const dupCheck = checkDuplicate({ asin: product.asin, title: product.name, url: affUrl }, HISTORY_DAYS);
         if (dupCheck.duplicate) {
+          telemetry.rejected.duplicate.push(product.asin);
           logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — duplicado: ${dupCheck.reason}. Selecionando próximo...`);
           excluded.push(product.asin);
           continue;
@@ -322,6 +350,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
         guard.warnings.forEach(w => logger.warn(w));
 
         if (!guard.safe) {
+          telemetry.rejected.contentGuard.push(product.asin);
           logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — guard bloqueou: ${guard.blockers.join(' | ')}. Selecionando próximo...`);
           excluded.push(product.asin);
           continue;
@@ -333,9 +362,10 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
           ...product,
           title: product.name,
           affiliateUrl: affUrl,
-        }, { expectedCategory: pillar });
+        }, { expectedCategory: pillar, phase: 'selection' });
 
         if (!productValidation.pass) {
+          telemetry.rejected.productValidation.push(product.asin);
           logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — validação de produto: ${productValidation.errors.join('; ')}. ABORTANDO produto.`);
           addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'PRODUCT_VALIDATED', error: `Produto inválido: ${productValidation.errors.slice(0, 2).join('; ')}`, meta: { executionId, checks: productValidation.checks } });
           excluded.push(product.asin);
@@ -356,6 +386,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
         // ── 2c. SEGURANÇA DE CATEGORIA (Ponto 5: sem fallback) ─────
         const catSafety = validateCategorySafety(pillar, product.name);
         if (!catSafety.pass) {
+          telemetry.rejected.categorySafety.push(product.asin);
           logger.fail(`❌ CATEGORIA INDEFINIDA: ${catSafety.error}. Pipeline ABORTADO.`);
           addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'PRODUCT_VALIDATED', error: catSafety.error, meta: { executionId } });
           excluded.push(product.asin);
@@ -367,6 +398,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
         const source = product.isTrending ? 'puppeteer' : 'catalog';
         const confCheck = validateConfidence(source, 50);
         if (!confCheck.pass) {
+          telemetry.rejected.confidence.push(product.asin);
           logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — confiança ${confCheck.score} < ${confCheck.minimum}. Selecionando próximo...`);
           excluded.push(product.asin);
           addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'PRODUCT_VALIDATED', error: `Confidence ${confCheck.score}`, meta: { executionId } });
@@ -381,6 +413,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
         const genOk = runPostGenerator(affUrl, product.name, guard.envVars, logger);
 
         if (!genOk) {
+          telemetry.rejected.contentGeneration.push(product.asin);
           logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — geração falhou (Amazon 404 / scraping / imagem indisponível). Selecionando próximo...`);
           addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'CONTENT_GENERATED', error: 'novo-post.js falhou', meta: { executionId } });
           excluded.push(product.asin);
@@ -494,6 +527,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
               logger.warn(`   Palavras encontradas no título: ${matchedWords.slice(0, 5).join(', ')}`);
               try { fs.unlinkSync(mdPath); } catch (_) {}
               try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
+              telemetry.rejected.titleCoherence.push(product.asin);
               addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'COHERENCE_CHECK', error: `Incoerência título: ${matchRatio*100}% match`, meta: { executionId, mdTitle: mdTitle.slice(0, 60), productName: product.name } });
               excluded.push(product.asin);
               continue;
@@ -502,10 +536,9 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
           }
         }
 
-        // ── 7. QUALITY GATES ─────────────────────────────────────
-
-        // Gate: título genérico
+        // ── 7. QUALITY GATES ─────────────────────────────────────          // Gate: título genérico
         if (markdownContent && /title:\s*"Produto Amazon\b/i.test(markdownContent)) {
+          telemetry.rejected.qualityGate.push(product.asin);
           logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — título genérico detectado. Selecionando próximo...`);
           try { fs.unlinkSync(mdPath); } catch (_) {}
           try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
@@ -522,6 +555,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
           });
           for (const e of qResult.errors) logger.fail(`QUALITY: ${e}`);
           if (!qResult.pass) {
+            telemetry.rejected.qualityGate.push(product.asin);
             logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — quality gates: ${qResult.errors.length} falha(s). Selecionando próximo...`);
             try { fs.unlinkSync(mdPath); } catch (_) {}
             try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
@@ -598,6 +632,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
             }
 
             if (!rewritten) {
+              telemetry.rejected.editorialGate.push(product.asin);
               logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — editorial score ${editorialResult.editorialScore.score}/50. Selecionando próximo...`);
               try { fs.unlinkSync(mdPath); } catch (_) {}
               try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
@@ -622,6 +657,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
               logger.warn(`  ${v.risk === 'alta' ? '🔴' : '🟡'} ${v.text.slice(0, 80)} — ${v.reason}`);
             }
             if (!hallucinationCheck.passed) {
+              telemetry.rejected.hallucination.push(product.asin);
               logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — alucinações críticas detectadas. Selecionando próximo...`);
               try { fs.unlinkSync(mdPath); } catch (_) {}
               try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
@@ -642,6 +678,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
           });
           logger.info(`Coerência semântica: ${coherenceResult.score}% (${coherenceResult.checks.length} checks)`);
           if (!coherenceResult.passed) {
+            telemetry.rejected.semanticCoherence.push(product.asin);
             logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — coerência semântica ${coherenceResult.score}% reprovou. Selecionando próximo...`);
             for (const c of coherenceResult.checks.filter(c => !c.pass)) {
               logger.warn(`  ${c.detail}`);
@@ -661,6 +698,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
         logger.info(`Auditoria: ${auditResult.passed ? 'APROVADO' : 'REPROVADO'} — ${auditResult.score}% (${auditResult.details.passed}/${auditResult.details.total})`);
 
         if (!auditResult.passed) {
+          telemetry.rejected.audit.push(product.asin);
           logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — auditoria ${auditResult.score}% reprovou. Selecionando próximo...`);
           logger.info(`  Motivos: ${auditResult.checks.filter(c => !c.pass).map(c => c.detail).join(' | ')}`);
           addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'AUDIT', error: `Auditoria ${auditResult.score}% — ${auditResult.summary}`, meta: { executionId, slug, checks: auditResult?.checks || [] } });
@@ -672,6 +710,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
         if (markdownContent) {
           const ctaCheck = validateAllCtas(markdownContent, affUrl, affConfig.tag);
           if (!ctaCheck.pass) {
+            telemetry.rejected.ctaValidation.push(product.asin);
             logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — CTAs inválidos: ${ctaCheck.errors.join('; ')}. Selecionando próximo...`);
             for (const e of ctaCheck.errors) logger.warn(`  ${e}`);
             try { fs.unlinkSync(mdPath); } catch (_) {}
@@ -693,6 +732,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
             imagePath: imgPath,
           });
           if (!imgValidation.passed) {
+            telemetry.rejected.imageValidation.push(product.asin);
             logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — imagem inválida: ${imgValidation.errors.slice(0, 2).join('; ')}. Selecionando próximo...`);
             try { fs.unlinkSync(mdPath); } catch (_) {}
             try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
@@ -719,6 +759,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
           logger.info('\n' + formatScoreSummary(finalScore));
 
           if (!finalScore.passed) {
+            telemetry.rejected.finalScore.push(product.asin);
             logger.warn(`⚠️ Produto inválido: ${product.name} [${product.asin}] — score final ${finalScore.score}% abaixo de ${finalScore.threshold}%. Selecionando próximo...`);
             try { fs.unlinkSync(mdPath); } catch (_) {}
             try { if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath); } catch (_) {}
@@ -738,6 +779,7 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
         });
         const hashIntegrity = finalHash === productHash;
         if (!hashIntegrity) {
+          telemetry.rejected.hashIntegrity.push(product.asin);
           logger.fail(`❌ HASH DO PRODUTO ALTERADO! Pipeline corrompido. ABORTANDO.`);
           addToDeadLetter({ asin: product.asin, productName: product.name, pillar, stage: 'HASH_VALIDATION', error: 'Hash alterado durante pipeline', meta: { executionId, initialHash: productHash, finalHash } });
           excluded.push(product.asin);
@@ -751,6 +793,66 @@ async function runJob(forcePillar = null, slotIndex = 0, trigger = 'schedule', d
         stateMachine.setContext({ asin: product.asin, productName: product.name, affiliateUrl: affUrl });
         break;
       }
+
+      // ── TELEMETRIA: funil do pool ──
+      const funnel = [
+        { label: 'Pool inicial',              count: telemetry.poolInitial },
+      ];
+      const order = [
+        { key: 'notPortuguese',     label: 'título fora do PT-BR' },
+        { key: 'invalidUrl',        label: 'URL inválida' },
+        { key: 'duplicate',         label: 'duplicado' },
+        { key: 'contentGuard',      label: 'content guard' },
+        { key: 'productValidation', label: 'validação do produto' },
+        { key: 'categorySafety',    label: 'categoria insegura' },
+        { key: 'confidence',        label: 'confiança baixa' },
+        { key: 'contentGeneration', label: 'geração de conteúdo' },
+        { key: 'titleCoherence',    label: 'coerência do título' },
+        { key: 'qualityGate',       label: 'quality gate' },
+        { key: 'editorialGate',     label: 'editorial gate' },
+        { key: 'hallucination',     label: 'alucinação' },
+        { key: 'semanticCoherence', label: 'coerência semântica' },
+        { key: 'audit',             label: 'auditoria final' },
+        { key: 'ctaValidation',     label: 'validação de CTA' },
+        { key: 'imageValidation',   label: 'validação de imagem' },
+        { key: 'finalScore',        label: 'score final' },
+        { key: 'hashIntegrity',     label: 'integridade de hash' },
+      ];
+
+      let remaining = telemetry.poolInitial;
+      for (const stage of order) {
+        const rejectedCount = (telemetry.rejected[stage.key] || []).length;
+        if (rejectedCount > 0) {
+          remaining -= rejectedCount;
+          funnel.push({ label: `× ${stage.label}`, count: -rejectedCount, remaining });
+        }
+      }
+
+      if (productSelected) {
+        funnel.push({ label: '✅ Produto aprovado', count: 1, remaining: 1 });
+      } else {
+        funnel.push({ label: '❌ Nenhum aprovado', count: 0, remaining: 0 });
+      }
+
+      logger.info('');
+      logger.info('📊 FUNIL DO POOL:');
+      for (const row of funnel) {
+        const bar = row.remaining !== undefined
+          ? `  ${String(row.count).padStart(3)}  (restam ${String(row.remaining).padStart(2)})`
+          : `  ${String(row.count).padStart(3)}`;
+        logger.info(`  ${row.label.padEnd(30)} ${bar}`);
+        // Log individual ASINs for the rejection reasons
+        if (row.count < 0) {
+          const stage = order.find(o => `× ${o.label}` === row.label);
+          if (stage) {
+            const asins = telemetry.rejected[stage.key];
+            for (const asin of asins) {
+              logger.info(`                          ${asin}`);
+            }
+          }
+        }
+      }
+      logger.info('');
 
       if (productSelected) {
         stateMachine.transition('FILES_WRITTEN', { slug, productName: product?.name });

@@ -177,7 +177,7 @@ function validateDescription(productName, description) {
  *   score: number
  * }}
  */
-export function validateProduct(product, { expectedCategory } = {}) {
+export function validateProduct(product, { expectedCategory, phase } = {}) {
   const allChecks = [];
   const allErrors = [];
   const allWarnings = [];
@@ -199,25 +199,34 @@ export function validateProduct(product, { expectedCategory } = {}) {
   if (catCheck.pass) passedChecks++; else failedChecks++;
 
   // 2. Consistência de título (catálogo vs scraping)
-  const titleCheck = validateTitleConsistency(catalogName, scrapedTitle);
-  for (const e of titleCheck.errors) allErrors.push(e);
-  for (const w of titleCheck.warnings) allWarnings.push(w);
-  allChecks.push({ name: 'titulo_consistencia', pass: titleCheck.pass, detail: titleCheck.pass ? '✅ Título consistente entre catálogo e scraping' : `❌ ${titleCheck.errors[0]}` });
-  if (titleCheck.pass) passedChecks++; else failedChecks++;
+  // Pulado na fase 'selection' (dados de scraping ainda não disponíveis)
+  if (phase !== 'selection') {
+    const titleCheck = validateTitleConsistency(catalogName, scrapedTitle);
+    for (const e of titleCheck.errors) allErrors.push(e);
+    for (const w of titleCheck.warnings) allWarnings.push(w);
+    allChecks.push({ name: 'titulo_consistencia', pass: titleCheck.pass, detail: titleCheck.pass ? '✅ Título consistente entre catálogo e scraping' : `❌ ${titleCheck.errors[0]}` });
+    if (titleCheck.pass) passedChecks++; else failedChecks++;
+  }
 
   // 3. Imagem
-  const imgCheck = validateProductImage(imageUrl);
-  for (const e of imgCheck.errors) allErrors.push(e);
-  for (const w of imgCheck.warnings) allWarnings.push(w);
-  allChecks.push({ name: 'imagem_url', pass: imgCheck.pass, detail: imgCheck.pass ? '✅ URL da imagem válida' : `❌ ${imgCheck.errors[0]}` });
-  if (imgCheck.pass) passedChecks++; else failedChecks++;
+  // Pulado na fase 'selection' (imagem só estará disponível após scraping Amazon)
+  if (phase !== 'selection') {
+    const imgCheck = validateProductImage(imageUrl);
+    for (const e of imgCheck.errors) allErrors.push(e);
+    for (const w of imgCheck.warnings) allWarnings.push(w);
+    allChecks.push({ name: 'imagem_url', pass: imgCheck.pass, detail: imgCheck.pass ? '✅ URL da imagem válida' : `❌ ${imgCheck.errors[0]}` });
+    if (imgCheck.pass) passedChecks++; else failedChecks++;
+  }
 
   // 4. Descrição
-  const descCheck = validateDescription(catalogName, description);
-  for (const e of descCheck.errors) allErrors.push(e);
-  for (const w of descCheck.warnings) allWarnings.push(w);
-  allChecks.push({ name: 'descricao', pass: descCheck.pass, detail: descCheck.pass ? '✅ Descrição coerente com produto' : `❌ ${descCheck.errors[0]}` });
-  if (descCheck.pass) passedChecks++; else failedChecks++;
+  // Pulado na fase 'selection' (descrição só será gerada pela IA após scraping)
+  if (phase !== 'selection') {
+    const descCheck = validateDescription(catalogName, description);
+    for (const e of descCheck.errors) allErrors.push(e);
+    for (const w of descCheck.warnings) allWarnings.push(w);
+    allChecks.push({ name: 'descricao', pass: descCheck.pass, detail: descCheck.pass ? '✅ Descrição coerente com produto' : `❌ ${descCheck.errors[0]}` });
+    if (descCheck.pass) passedChecks++; else failedChecks++;
+  }
 
   // 5. ASIN na URL (se disponível)
   if (affiliateUrl) {
