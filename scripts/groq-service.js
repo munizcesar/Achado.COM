@@ -243,6 +243,9 @@ ${dadosProduto}
 ${contextoExterno}
 
 ORIENTACOES:
+- ZERO ALUCINAÇÃO: Baseie-se apenas em fatos verificáveis. Se não tiver certeza de um dado, não invente, omita.
+- O texto deve ser EXTREMAMENTE INTERESSANTE, ajudando o leitor a tirar todas as suas dúvidas e a conhecer o produto a fundo.
+- O conteúdo deve ser 100% EVERGREEN (atemporal), sem focar em preços voláteis ou promoções temporárias.
 - Escreva um artigo que ENSINE ou INFORME o leitor sobre algo relevante sobre este produto
 - Use os dados abaixo como referencia, mas escreva com suas proprias palavras
 - Se MARCA existir, mencione contextualmente

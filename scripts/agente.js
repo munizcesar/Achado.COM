@@ -28,6 +28,12 @@ config({ path: path.join(ROOT, 'backend', '.env') });
 // ═══════════════════════════════════════════════════════════════════
 // BANCO DE PRODUTOS — Mercado Livre com link de afiliado válido
 // Usa apenas produtos configurados em data/produtos-afiliados.json
+//
+// TODO [MELHORIA FUTURA]: Automatizar a busca de "produtos em alta" de todas as
+// categorias principais do site. Atualmente, o script lê de um JSON estático. 
+// A melhoria consistirá em consultar as tendências (via API do Mercado Livre 
+// ou Amazon Bestsellers) e alimentar essa fila dinamicamente com base no que
+// está em alta no momento.
 // ═══════════════════════════════════════════════════════════════════
 
 function carregarProdutosAfiliados() {
@@ -203,7 +209,8 @@ if (modoNow || catForc) {
   log('🤖 Agente AchadoCerto.VIP iniciado — tag: altivita-20');
   log('📅 Agenda:');
   AGENDA.forEach(a => log(`   ${String(a.hora).padStart(2,'0')}:${String(a.minuto).padStart(2,'0')} BRT → ${a.categoria}`));
-  log(`📦 ${PRODUTOS.length} produtos | tag: ${AFFILIATE_TAG}`);
+  const tag = process.env.AMAZON_AFFILIATE_TAG || 'altivita-20';
+  log(`📦 ${PRODUTOS.length} produtos | tag: ${tag}`);
   log('Ctrl+C para parar.');
   setInterval(verificarAgenda, 30000);
   verificarAgenda();
