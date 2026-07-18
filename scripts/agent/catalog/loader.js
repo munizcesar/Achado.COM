@@ -19,6 +19,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname   = path.dirname(__filename);
 const CATALOG_DIR = path.resolve(__dirname);
 
+// Score minimo para um produto ser considerado viavel para publicacao.
+// Produtos com score < MINIMUM_SCORE tem baixa relevancia/demanda e sao descartados.
+const MINIMUM_SCORE = 85;
+
 const ANGLES = {
   skincare_basico:      'O básico que transforma: por que este produto entrou na rotina de tanta gente',
   cuidado_diario:       'A proteção diária que você não pode negligenciar',
@@ -60,8 +64,9 @@ export function loadCatalog(pillar) {
     if (fs.existsSync(filepath)) {
       const raw = fs.readFileSync(filepath, 'utf8');
       const products = JSON.parse(raw);
-      return products
+      const filtered = products
         .filter(p => p.ativo !== false)
+        .filter(p => (p.score || 0) >= MINIMUM_SCORE)
         .map(p => ({
           asin:     p.asin,
           name:     p.nome,
@@ -71,6 +76,14 @@ export function loadCatalog(pillar) {
           score:    p.score || 80,
           lastPublished: p.ultimaPublicacao || null,
         }));
+      
+      if (filtered.length < products.filter(p => p.ativo !== false).length) {
+        const removed = products.filter(p => p.ativo !== false && (p.score || 0) < MINIMUM_SCORE);
+        console.log(`   📊 ${removed.length} produto(s) com score < ${MINIMUM_SCORE} removido(s) do pilar "${pillar}"`);
+        removed.forEach(p => console.log(`      ${p.nome || p.asin} (score: ${p.score || 'N/A'})`));
+      }
+      
+      return filtered;
     }
   } catch (err) {
     console.error(`   ⚠️  Erro ao carregar catálogo ${pillar}: ${err.message}`);

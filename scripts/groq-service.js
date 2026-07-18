@@ -1,13 +1,14 @@
 /**
- * Groq AI Service - Protocolo de Conteúdo Direto v1.1
+ * Groq AI Service - Protocolo Editorial v2.0
  * AchadoCerto.VIP
  *
  * Filosofia:
- * - Cada frase entrega informação útil sobre o produto
- * - Nada de enrolação, contexto genérico ou fingimento de voz humana
- * - Specs primeiro, FAQ com dúvidas reais, veredito direto
- * - Conteúdo evergreen: atemporal, sem preços ou datas
- * - Regras obrigatórias: verdadeiro, positivo, completo, sem alucinação
+ * - O artigo existe para ENSINAR, INFORMAR e RESPONDER DÚVIDAS
+ * - O objetivo NÃO é vender. A venda é consequência natural.
+ * - Cada artigo deve ser útil, interessante e agradável de ler
+ * - Conteúdo evergreen: atemporal, sem preços, promoções ou datas
+ * - Deve parecer escrito por um jornalista especializado, não por IA
+ * - Linguagem editorial natural, não de página de vendas
  */
 
 import https from 'https';
@@ -17,11 +18,11 @@ function groqRequest(messages, apiKey, model = 'llama-3.3-70b-versatile') {
     const postData = JSON.stringify({
       model,
       messages,
-      temperature: 0.82,
+      temperature: 0.85,
       max_tokens: 3500,
-      top_p: 0.93,
-      frequency_penalty: 0.65,
-      presence_penalty: 0.40
+      top_p: 0.92,
+      frequency_penalty: 0.70,
+      presence_penalty: 0.45
     });
 
     const options = {
@@ -60,55 +61,53 @@ function groqRequest(messages, apiKey, model = 'llama-3.3-70b-versatile') {
 
 const GUIAS_CATEGORIA = {
   suplementos: `
-CRITÉRIOS TÉCNICOS DESTA CATEGORIA:
-- Creatina: diferencie monohidratada (mais estudada), creapure (pureza certificada), micronizada (dissolucão)
-- Proteínas: fale sobre perfil de aminoácidos, concentração proteica e digestibilidade
-- Pré-treinos: cafeína, beta-alanina, citrulina e tolerância individual
+CRITERIOS TECNICOS DESTA CATEGORIA:
+- Creatina: diferencie monohidratada (mais estudada), creapure (pureza certificada), micronizada (dissolucao)
+- Proteinas: fale sobre perfil de aminoacidos, concentracao proteica e digestibilidade
+- Pre-treinos: cafeina, beta-alanina, citrulina e tolerancia individual
 - Vitaminas: biodisponibilidade das formas importa mais do que marketing da embalagem
-- Regra de ouro: qualquer suplemento depende de constância, dieta e treino adequados
-- Nunca prometa resultados específicos
-ENTIDADES SEMÂNTICAS: absorcão, biodisponibilidade, aminoácidos essenciais, hipertrofia, recuperação muscular, performance, protocolo de uso, satturação
+- Regra de ouro: qualquer suplemento depende de constancia, dieta e treino adequados
+- Nunca prometa resultados especificos
+ENTIDADES SEMANTICAS: absorcao, biodisponibilidade, aminoacidos essenciais, hipertrofia, recuperacao muscular, performance, protocolo de uso, saturacao
 `,
   tecnologia: `
-CRITÉRIOS TÉCNICOS DESTA CATEGORIA:
-- Processador, memória e armazenamento devem ser traduzidos em uso real
-- Display: brilho, fidelidade, taxa de atualização e tipo de painel mudam a experiência
-- Bateria: autonomia real importa mais do que número isolado de mAh
-- Câmera: sensor, processamento e cenário de uso valem mais que megapixels soltos
-- Explique sempre o impacto prático dos recursos
-ENTIDADES SEMÂNTICAS: desempenho multitarefa, autonomia real, qualidade de build, experiência de tela, velocidade de carga, fluidez do sistema
+CRITERIOS TECNICOS DESTA CATEGORIA:
+- Processador, memoria e armazenamento devem ser traduzidos em uso real
+- Display: brilho, fidelidade, taxa de atualizacao e tipo de painel mudam a experiencia
+- Bateria: autonomia real importa mais do que numero isolado de mAh
+- Camera: sensor, processamento e cenario de uso valem mais que megapixels soltos
+- Explique sempre o impacto pratico dos recursos
+ENTIDADES SEMANTICAS: desempenho multitarefa, autonomia real, qualidade de build, experiencia de tela, velocidade de carga, fluidez do sistema
 `,
   beleza: `
-CRITÉRIOS TÉCNICOS DESTA CATEGORIA:
-- Diferencie ativos, concentração, textura e compatibilidade com tipos de pele/cabelo
-- Fórmula e rotina importam mais que embalagem
-- Explique quando o produto faz sentido e quando pode não ser o ideal
-- Evite promessas absolutas; prefira linguagem responsável
-ENTIDADES SEMÂNTICAS: barreira cutânea, textura sérum, hidratação regenerativa, elasticidade, skincare corporal, rotina corporal, absorção rápida, ingrediente ativo, vitamina B3, niacinamida, proteção solar, FPS, fototipo
+CRITERIOS TECNICOS DESTA CATEGORIA:
+- Diferencie ativos, concentracao, textura e compatibilidade com tipos de pele/cabelo
+- Formula e rotina importam mais que embalagem
+- Explique quando o produto faz sentido e quando pode nao ser o ideal
+- Evite promessas absolutas; prefira linguagem responsavel
+ENTIDADES SEMANTICAS: barreira cutanea, textura serum, hidratacao regenerativa, elasticidade, skincare corporal, rotina corporal, absorcao rapida, ingrediente ativo, vitamina B3, niacinamida, protecao solar, FPS, fototipo
 `,
   casa: `
-CRITÉRIOS TÉCNICOS DESTA CATEGORIA:
+CRITERIOS TECNICOS DESTA CATEGORIA:
 - Material, capacidade, consumo, montagem e durabilidade precisam ser contextualizados
-- Explique o ganho prático no uso cotidiano
+- Explique o ganho pratico no uso cotidiano
 - Diferencie apelo visual de funcionalidade real
-ENTIDADES SEMÂNTICAS: uso diário, praticidade, durabilidade, segurancça alimentar, consumo energético, capacidade real, facilidade de limpeza, desempenho na cozinha
+ENTIDADES SEMANTICAS: uso diario, praticidade, durabilidade, seguranca alimentar, consumo energetico, capacidade real, facilidade de limpeza, desempenho na cozinha
 `,
   esportes: `
-CRITÉRIOS TÉCNICOS DESTA CATEGORIA:
-- Ergonomia, material, segurança e perfil de uso definem o valor real
-- Nem sempre o mais técnico é o melhor para o usuário comum
-- Traduza ficha técnica em conforto, estabilidade, resistência e rotina de uso
-ENTIDADES SEMÂNTICAS: ergonomia, conforto, estabilidade, resistência, amortecimento, ajuste, desempenho em movimento
+CRITERIOS TECNICOS DESTA CATEGORIA:
+- Ergonomia, material, seguranca e perfil de uso definem o valor real
+- Nem sempre o mais tecnico e o melhor para o usuario comum
+- Traduza ficha tecnica em conforto, estabilidade, resistencia e rotina de uso
+ENTIDADES SEMANTICAS: ergonomia, conforto, estabilidade, resistencia, amortecimento, ajuste, desempenho em movimento
 `,
   default: `
-CRITÉRIOS GERAIS:
-- Identifique os 3 fatores que realmente importam na decisão desta categoria
-- Explique diferença entre proposta de marketing e benefício prático
+CRITERIOS GERAIS:
+- Identifique os 3 fatores que realmente importam na decisao desta categoria
+- Explique diferenca entre proposta de marketing e beneficio pratico
 - Mostre para quem faz sentido e quais perfis mais se beneficiam
 `
 };
-
-
 
 function construirPrompt(produto, arquetipo, variacoes, contextoSerper) {
   const categoria = produto.category || 'default';
@@ -136,7 +135,6 @@ function construirPrompt(produto, arquetipo, variacoes, contextoSerper) {
       : (knowledge.contraindications?.length ? knowledge.contraindications : []),
     faq_sugerido: normalized.faq_sugerido?.length ? normalized.faq_sugerido 
       : (knowledge.faq?.length ? knowledge.faq : []),
-    // Dados enriquecidos (Fase 1)
     nomes_cientificos: knowledge.scientific_names || [],
     mecanismos_acao: knowledge.mechanisms || [],
     entidades_semanticas: knowledge.entities || [],
@@ -147,183 +145,126 @@ function construirPrompt(produto, arquetipo, variacoes, contextoSerper) {
   }, null, 2);
 
   const contextoExterno = contextoSerper
-    ? `\n### CONTEXTO EXTERNO (apoio de linguagem e percepção, sem copiar literalmente):\n${JSON.stringify(contextoSerper, null, 2)}`
+    ? `\n### CONTEXTO EXTERNO (apoio de linguagem e percepcao, sem copiar literalmente):\n${JSON.stringify(contextoSerper, null, 2)}`
     : '';
 
-  const systemPrompt = `Você é um redator técnico brasileiro especializado em análises de produto para SEO.
+  const systemPrompt = `Voce e um jornalista especializado em tecnologia, saude, beleza e casa. Escreve para o site AchadoCerto.VIP.
 
 ════════════════════════════════════
-REGRA-MÃE (NUNCA VIOLAR)
+FILOSOFIA EDITORIAL (NUNCA VIOLAR)
 ════════════════════════════════════
-Seja DIRETO e POSITIVO. Cada frase deve entregar informação útil sobre o produto.
-Se uma frase pode ser removida sem perder informação relevante, remova.
-Nada de enrolação, contexto genérico, frases corporativas ou fingimento de voz humana.
-O leitor quer saber: o que é, para quem serve, quais as specs, e se vale a pena.
+Seu papel e EDUCAR e INFORMAR o leitor, nao vender. O artigo deve ser tao util que o leitor o salve para consultar depois.
 
-REGRAS OBRIGATÓRIAS:
-- Apenas informações verdadeiras, verificáveis e coerentes
-- Nunca invente — se não puder confirmar, OMITA
-- Tom positivo, informativo e útil — sem exageros ou sensacionalismo
-- Não destaque pontos negativos nem faça comparações depreciativas
-- Explique: o que é, para quem, benefícios, como funciona, características, diferenciais, dúvidas comuns
-- Texto completo o bastante para reduzir a necessidade de buscar outras fontes
-- Linguagem natural, SEO-friendly, fácil de ler
-- Transmita confiança e ajude o leitor a decidir
-- NUNCA alucine — em caso de dúvida, omita
+O artigo DEVE existir e fazer sentido mesmo sem nenhum link de afiliado.
+Os links de produtos aparecem apenas quando fazem sentido no contexto editorial.
 
 ════════════════════════════════════
-ESTRUTURA OBRIGATÓRIA (seguir nesta ordem)
+FOCOS DO CONTEUDO
 ════════════════════════════════════
-1. H1: "[Nome do Produto] — Análise Completa" ou similar direto
-2. Introdução (1-2 parágrafos): O que é + spec principal + diferencial
-3. Especificações Técnicas: TODAS as specs em bullet points ou tabela
-4. Principais Características: O que realmente importa no uso (bullet points)
-5. Para Quem é Ideal: Perfis de usuário que mais se beneficiam do produto
-6. Dúvidas Comuns (FAQ — 5+ perguntas reais com respostas diretas)
-7. Veredito Final + CTA: Vale a pena? Para quem?
+Cada artigo deve responder a pelo menos 2 destes propositos:
+- ENSINAR algo sobre o produto ou sua tecnologia
+- INFORMAR sobre como funciona, para quem serve, como usar
+- RESPONDER duvidas reais que um comprador teria
+- MOSTRAR CURIOSIDADES ou aplicacoes que o leitor nao conhece
+- EXPLICAR a tecnologia por tras do produto
+- CONTAR a historia ou evolucao do tipo de produto
 
 ════════════════════════════════════
-FRASES BANIDAS (NUNCA USAR — geram enrolação)
+REGRAS DE LINGUAGEM (OBRIGATORIAS)
 ════════════════════════════════════
-- É importante considerar
-- Ao analisar
-- Além disso (máx 1x no texto todo)
-- Vale destacar
-- Quando se trata de
-- No mercado atual
-- Solução abrangente
-- Pode fazer diferença
-- Isso o torna
-- Nesse contexto
-- Pensando nisso
-- Não faltam opções
-- Cada vez mais
-- Usuários que buscam
-- Promete
-- solução abrangente
-- proposta inovadora
-- produto revolucionário
-- excelência
-- entrega superior
-- Em conclusão
-- Alta qualidade (como frase vazia)
-- Vale muito a pena (como frase vazia)
-- Produto excelente (como frase vazia)
-- QUALQUER frase genérica que poderia estar em qualquer review de qualquer produto
+- Linguagem editorial, como uma revista especializada
+- NUNCA use linguagem de vendedor: "Compre agora", "Garanta ja", "Aproveite", "Oferta", "Promocao"
+- Em vez disso, use linguagem editorial:
+  * "Para quem quiser conhecer o modelo mencionado..."
+  * "Mais informacoes podem ser consultadas..."
+  * "Caso tenha interesse no produto citado..."
+- Nao finja que testou o produto se nao testou. Use: "segundo a fabricante", "de acordo com as especificacoes"
+- Nao use frases genericas que poderiam estar em qualquer review
+- Nao use jargao de marketing: "revolucionario", "inovador", "unico no mercado"
+- Nao crie senso de urgencia. Conteudo evergreen e atemporal.
+- Nao mencione precos, promocoes, descontos, estoque ou lancamentos recentes
+- Nao use datas como parte do argumento
+- Seja humilde: se nao sabe um detalhe, diga que nao foi possivel confirmar
 
 ════════════════════════════════════
-GUIA TÉCNICO DA CATEGORIA
+ESTRUTURA (FLEXIVEL - Nao e necessario seguir esta ordem)
+════════════════════════════════════
+Voce PODE escolher entre estas secoes, na ordem que fizer mais sentido para o produto:
+- Gancho de abertura: por que este produto e interessante ou resolve um problema real
+- Contexto: historia do tipo de produto, evolucao, curiosidades
+- Como funciona: explicacao da tecnologia/mecanismo de forma simples
+- Para quem e: perfis de usuario ideal (e para quem NAO e)
+- Diferenciais: o que realmente destaca este modelo
+- Especificacoes: bullet points ou tabela com dados tecnicos
+- Aplicacoes: onde e como usar no dia a dia
+- Duvidas comuns: FAQ com perguntas reais de compradores
+- Para pensar: ponderacoes finais, nao uma conclusao de vendas
+
+IMPORTANTE: NAO use sempre as mesmas secoes. Varie a estrutura a cada artigo.
+O leitor nao pode sentir que todos os artigos seguem o mesmo molde.
+
+════════════════════════════════════
+CATEGORIA DO PRODUTO
 ════════════════════════════════════
 ${guia}
 
 ════════════════════════════════════
-REGRAS DE CONTEÚDO
+RESTRICOES TECNICAS
 ════════════════════════════════════
-- Use TODOS os dados do produto disponíveis: specs, ingredientes, benefícios, público-alvo
-- Se specs estiverem disponíveis, exiba-as em formato de lista ou tabela com TODOS os detalhes
-- Se ingredientes/ativos estiverem disponíveis, liste e explique cada um (1-2 linhas cada)
-- Se benefícios estiverem disponíveis, desenvolva cada um com contexto prático
-- FAQ deve conter perguntas que um comprador REAL faria (não perguntas genéricas de SEO)
-- Respostas do FAQ: curtas (2-4 linhas), diretas, informativas — sem enrolação
-- Inclua 1 parágrafo sobre "Para quem é ideal" — perfis que mais se beneficiam
-- Use linguagem clara, descritiva e direta, sempre em tom positivo e construtivo
-- Evite metáforas, storytelling ou qualquer tentativa de soar humano
-- Prefira fatos e especificações a opiniões vagas
-- O texto deve ser completo o bastante para que o leitor não precise buscar outras fontes
+- NUNCA copie texto da pagina do produto ou da Amazon
+- NUNCA reproduza HTML, CSS ou codigo JavaScript
+- TUDO escrito em portugues natural com suas proprias palavras
+- Apenas informacoes verdadeiras e verificaveis
+- Nunca invente especificacoes, medidas ou caracteristicas
+- Em caso de duvida sobre um dado, OMITA
+- O artigo e markdown. Use H1 para o titulo, H2/H3 para secoes.
+- Paragrafos variados: alguns curtos (1-2 linhas), alguns medios (3-4 linhas)
 
 ════════════════════════════════════
-REGRAS DE FORMATO
+DADOS DE APOIO (use como referencia, nao como unica fonte)
 ════════════════════════════════════
-- Gere em Markdown, sem frontmatter
-- Use 1 H1 direto e informativo
-- Use entre 4 e 7 H2 descritivos (nunca genéricos como "Introdução" ou "Conclusão")
-- Use bullet points para specs e características
-- Parágrafos curtos (máx 3-4 linhas)
-- FAQ com 5+ perguntas no final
-- Termine com veredito + CTA leve
-
-════════════════════════════════════
-CTA E FECHAMENTO
-════════════════════════════════════
-- CTA direto e sem urgência
-- Exemplo: "Disponível na Amazon — confira o preço atual"
-- Exemplo: "Vale a pena conferir as condições atuais do produto"
-- NUNCA use urgência forçada ou frases de pressão
-
-════════════════════════════════════
-RESTRIÇÕES TÉCNICAS
-════════════════════════════════════
-- Não citar preço exato (use "preço atual" ou "consulte o link")
-- Não usar datas como parte do argumento
-- Não repetir o nome do produto de forma mecânica
-- Não usar clichês de IA ou marketing vazio
-
-════════════════════════════════════
-PROIBIÇÃO DE CÓDIGO E HTML
-════════════════════════════════════
-- NUNCA copie texto da página do produto
-- NUNCA reproduza HTML, CSS ou código
-- TUDO escrito em português natural com suas próprias palavras
-
-════════════════════════════════════
-REVISÃO FINAL (OBRIGATÓRIA)
-════════════════════════════════════
-Antes de entregar, verifique:
-1. Toda informação aqui é verdadeira e verificável?
-2. Alguma especificação foi inventada? Se sim, remova ou corrija
-3. Cada parágrafo entrega informação útil E exclusiva sobre este produto?
-4. Alguma frase genérica pode ser removida sem perder informação? Se sim, remova.
-5. As specs estão todas lá?
-6. FAQ responde dúvidas reais de compradores (não perguntas de SEO)?
-7. O texto está direto, positivo e informativo, ou parece enrolação de IA?
-8. Se você substituísse o nome do produto por outro, o texto ainda faria sentido? Se sim, está genérico demais — reescreva.
-9. O texto transmite confiança e ajuda o leitor a decidir?
-
-DADOS DE APOIO:
-- Arquétipo: ${arquetipo.nome}
+- Arquetipo: ${arquetipo.nome}
 - Estrutura-base: ${JSON.stringify(arquetipo.estrutura, null, 2)}
-- Título sugerido: ${variacoes.titulo}
+- Titulo sugerido: ${variacoes.titulo}
 - Abertura sugerida: ${variacoes.abertura}
-- Transição sugerida: ${variacoes.transicao}
+- Transicao sugerida: ${variacoes.transicao}
 - Fechamento sugerido: ${variacoes.fechamento}
-- CTA sugerido: ${variacoes.cta?.texto || ''}
+- CTA editorial sugerido: ${variacoes.cta?.texto || 'Para quem quiser conhecer o modelo mencionado, mais informacoes podem ser consultadas no link do produto'}
 
 TAMANHO ALVO:
-- Produza entre 1200 e 2000 palavras
-- Priorize informação densa, não volume de texto
-- Um texto de 800 palavras com informação útil vale mais que 2000 palavras de enrolação`;
+- Entre 1000 e 1800 palavras
+- Priorize informacao util e interessante, nao volume de texto
+- 700 palavras com informacao relevante valem mais que 2000 palavras de enrolacao`;
 
-  const userPrompt = `Crie a análise completa para este produto seguindo rigorosamente o Protocolo de Conteúdo Direto v1.
+  const userPrompt = `Escreva um artigo editorial sobre este produto, como se fosse uma materia de revista especializada.
 
-PRODUTO (use TODOS os campos abaixo na análise):
+DADOS DO PRODUTO:
 ${dadosProduto}
 ${contextoExterno}
 
-INSTRUÇÕES:
-- Use TODOS os dados disponíveis: specs, ingredientes, benefícios, público-alvo
-- Estrutura obrigatória: specs → características → público → FAQ → veredito
-- Se MARCA existir, mencione naturalmente no texto
-- Se INGREDIENTES existir, liste e explique cada um
-- Se BENEFÍCIOS existir, desenvolva cada um com contexto prático
-- Se PÚBLICO-ALVO existir, direcione o texto para esse perfil
-- Se FAQ_SUGERIDO existir, use como base para as perguntas — reescreva com suas palavras
-- FAQ deve conter perguntas que um comprador REAL faria
-- Seja direto e POSITIVO: cada frase deve agregar informação útil sobre o produto
-- Nada de enrolação, contexto genérico ou opiniões vagas
-- Prefira bullet points e listas a parágrafos longos
-- Antes de finalizar: verifique se toda informação é verdadeira e remova qualquer frase genérica
-- Mantenha o tom evergreen e atemporal
-- O texto deve ser completo o bastante para que o leitor não precise buscar outras fontes`;
+ORIENTACOES:
+- Escreva um artigo que ENSINE ou INFORME o leitor sobre algo relevante sobre este produto
+- Use os dados abaixo como referencia, mas escreva com suas proprias palavras
+- Se MARCA existir, mencione contextualmente
+- Se INGREDIENTES existir, explique o que sao e como funcionam
+- Se BENEFICIOS existir, desenvolva com explicacao do mecanismo
+- Se PUBLICO-ALVO existir, direcione o texto para esse perfil
+- FAQ deve conter perguntas REAIS de quem pesquisa este tipo de produto
+- Nao use a mesma estrutura de sempre. Varie as secoes.
+- Lembre-se: o artigo existe mesmo sem links. Os links sao adicionais, nao o motivo do artigo.
+- Nao use linguagem de vendedor. Use linguagem de jornalista.
+- Nao repita o nome do produto muitas vezes. Use variacoes naturais.
+- O artigo deve ser tao util que o leitor o indicaria para um amigo.`;
 
   return { systemPrompt, userPrompt };
 }
 
 export async function gerarConteudoPost(produto, arquetipo, variacoes, contextoSerper, groqApiKey) {
   if (!groqApiKey || groqApiKey.length < 20) {
-    throw new Error('GROQ_API_KEY não configurada no .env');
+    throw new Error('GROQ_API_KEY nao configurada no .env');
   }
 
-  console.log(`   🤖 Groq — Protocolo de Conteúdo Direto v1.1 carregado...`);
+  console.log(`   📰 Gerando conteudo editorial v2.0...`);
 
   try {
     const { systemPrompt, userPrompt } = construirPrompt(produto, arquetipo, variacoes, contextoSerper);
@@ -333,71 +274,57 @@ export async function gerarConteudoPost(produto, arquetipo, variacoes, contextoS
       { role: 'user', content: userPrompt }
     ];
 
-    // [AUDIT] Log completo do prompt enviado
-    console.log('\n[AUDIT] === SYSTEM PROMPT ENVIADO ===');
-    console.log(systemPrompt.substring(0, 500) + '...');
-    console.log('\n[AUDIT] === USER PROMPT ENVIADO ===');
-    console.log(userPrompt.substring(0, 500) + '...');
-    console.log('\n[AUDIT] === PAYLOAD COMPLETO (dadosProduto JSON) ===');
-    // Extrai o JSON do userPrompt
-    const jsonMatch = userPrompt.match(/PRODUTO \(use TODOS os campos abaixo na análise\):\n(\{[\s\S]*?\})\n\nINSTRUÇÕES/);
-    if (jsonMatch) {
-      console.log(jsonMatch[1]);
-    }
-    console.log('\n[AUDIT] === FIM DO PAYLOAD ===\n');
-
     const conteudo = await groqRequest(messages, groqApiKey);
 
-    console.log(`   ✅ Conteúdo gerado com sucesso (~${conteudo.length} caracteres)`);
+    if (!conteudo || conteudo.length < 200) {
+      console.error('   ❌ Conteudo gerado e muito curto ou vazio. Abortando.');
+      return null;
+    }
+
+    console.log(`   ✅ Conteudo gerado com sucesso (~${conteudo.length} caracteres)`);
     return conteudo;
   } catch (error) {
-    console.error(`   ❌ Erro ao gerar conteúdo: ${error.message}`);
-    console.log('   💡 Usando template de fallback básico...');
-    return gerarConteudoFallback(produto, variacoes);
+    console.error(`   ❌ Erro ao gerar conteudo: ${error.message}`);
+    // NUNCA publicar fallback generico. Se a IA falhou, o pipeline deve abortar.
+    console.log('   ⚠️ A IA falhou. Retornando null para que o pipeline aborte. NÃO publicar fallback generico.');
+    return null;
   }
 }
 
 /**
- * Reescreve o conteúdo com base no relatório de melhoria editorial.
- * Usado no rewrite loop quando Editorial Score < 45/50.
+ * Reescreve o conteudo com base no relatorio de melhoria editorial.
  */
 export async function reescreverConteudo(conteudoOriginal, improvementReport, groqApiKey) {
   if (!groqApiKey || groqApiKey.length < 20) {
-    throw new Error('GROQ_API_KEY não configurada no .env');
+    throw new Error('GROQ_API_KEY nao configurada no .env');
   }
 
-  console.log(`   🔄 Reescrevendo conteúdo com base em feedback editorial...`);
+  console.log(`   🔄 Reescrevendo conteudo com base em feedback editorial...`);
 
-  // Safety: fallback se improvementReport for malformado
   const melhorias = improvementReport?.improvements || ['Melhorar originalidade e naturalidade do texto'];
   const dimensoes = improvementReport?.editorialFeedback?.dimensions || {};
   const scoreAtual = improvementReport?.editorialFeedback?.score ?? 40;
 
-  const systemPrompt = `Você é um redator técnico especializado em análises de produto.
-Sua função é reescrever o artigo abaixo para torná-lo mais direto e informativo.
+  const systemPrompt = `Voce e um redator editorial especializado.
+Sua funcao e reescrever o artigo abaixo para torna-lo mais natural e interessante.
 
 REGRAS:
-- Seja direto: cada frase deve entregar informação útil sobre o produto
-- Remova qualquer frase genérica que não agregue informação específica
-- NÃO adicione HTML, CSS ou código
-- Reescreva com suas próprias palavras — não copie da Amazon
+- Escreva como um jornalista, nao como um vendedor
+- Remova qualquer frase generica que nao agregue informacao especifica
+- NAO use linguagem de "compre agora", "aproveite", "oferta"
+- NAO adicione HTML, CSS ou codigo
+- Reescreva com suas proprias palavras
 - Mantenha o formato Markdown
-- Nada de enrolação, contexto genérico ou opiniões vagas
+- O artigo deve ser agradavel de ler e informativo
 
 MELHORIAS SOLICITADAS:
-${melhorias.map((imp, i) => `${i + 1}. ${imp}`).join('\n')}
-
-SCORE MÍNIMO NECESSÁRIO: 45/50
-SCORE ATUAL: ${scoreAtual}/50
-
-Se o texto tiver frases genéricas ou que poderiam estar em qualquer review, REMOVA-AS completamente.`;
+${melhorias.map((imp, i) => `${i + 1}. ${imp}`).join('\n')}`;
 
   const userPrompt = `Reescreva o artigo abaixo aplicando todas as melhorias listadas acima.
 
 ARTIGO ATUAL:
 ${conteudoOriginal}
 
-Lembre-se: o score editorial atual é ${scoreAtual}/50. Precisamos de no mínimo 45/50.
 Foque em tornar o texto mais original, bem estruturado e informativo.`;
 
   try {
@@ -407,52 +334,14 @@ Foque em tornar o texto mais original, bem estruturado e informativo.`;
     ];
 
     const conteudo = await groqRequest(messages, groqApiKey);
-    console.log(`   ✅ Conteúdo reescrito com sucesso (~${conteudo.length} caracteres)`);
+    if (!conteudo || conteudo.length < 200) {
+      console.log('   ⚠️ Conteudo reescrito e muito curto. Ignorando.');
+      return null;
+    }
+    console.log(`   ✅ Conteudo reescrito com sucesso (~${conteudo.length} caracteres)`);
     return conteudo;
   } catch (error) {
-    console.error(`   ❌ Erro ao reescrever conteúdo: ${error.message}`);
+    console.error(`   ❌ Erro ao reescrever conteudo: ${error.message}`);
     return null;
   }
-}
-
-function gerarConteudoFallback(produto, variacoes) {
-  const { title, description, specs, store, category } = produto;
-
-  // Specs como bullet points
-  const specsBlock = specs && specs.length > 0
-    ? specs.join('\n')
-    : '- **Categoria:** ' + (category || 'geral') + '\n- **Disponível em:** ' + store;
-
-  // CTA direto
-  const ctaDireto = 'Disponível na ' + store + ' — consulte o preço atual e as condições de entrega.';
-
-  // Título curto para referência
-  const nomeCurto = title.length > 80 ? title.substring(0, 77) + '...' : title;
-
-  return '# ' + nomeCurto + ' — Análise Completa\n\n' +
-    '## O Que É\n\n' +
-    title + ' é um produto da categoria ' + category + ', disponível na ' + store + '. ' + description + '\n\n' +
-    '## Especificações Técnicas\n\n' + specsBlock + '\n\n' +
-    '## Principais Características\n\n' +
-    '- Disponível na loja ' + store + '\n' +
-    '- Categoria: ' + category + '\n' +
-    '- Produto analisado com base nas especificações disponíveis\n' +
-    '- Verifique a página do produto para detalhes completos\n\n' +
-    '## Para Quem é Ideal\n\n' +
-    variacoes.transicao + '\n\n' +
-    '## Dúvidas Comuns\n\n' +
-    '### O que é este produto?\n' +
-    title + ' é um produto classificado na categoria ' + category + ', vendido pela ' + store + '. As especificações listadas acima trazem os principais detalhes técnicos.\n\n' +
-    '### Para quem é indicado?\n' +
-    'Este produto é indicado para consumidores que buscam uma opção na categoria ' + category + '. Recomenda-se verificar as especificações completas na página do produto para confirmar se atende às suas necessidades.\n\n' +
-    '### Onde comprar?\n' +
-    'O produto está disponível na ' + store + '. Os preços e condições podem variar — vale a pena consultar a página oficial para informações atualizadas.\n\n' +
-    '### Qual a garantia?\n' +
-    'Consulte a página do produto na ' + store + ' para informações sobre garantia, prazo de entrega e política de devolução. Esses detalhes podem variar conforme o vendedor e a região.\n\n' +
-    '### Como escolher o modelo ideal?\n' +
-    'Compare as especificações de diferentes modelos dentro da mesma categoria. O ideal é avaliar tamanho, capacidade, potência e funcionalidades que atendam ao seu perfil de uso específico.\n\n' +
-    '### Vale a pena?\n' +
-    'A avaliação depende do seu perfil de uso. Confira as especificações e compare com outras opções da mesma categoria antes de decidir. Verifique também as avaliações de outros compradores na página do produto.\n\n' +
-    '## Veredito Final\n\n' +
-    variacoes.fechamento + '. ' + ctaDireto;
 }

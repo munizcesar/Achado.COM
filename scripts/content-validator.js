@@ -61,13 +61,14 @@ export const VALIDACOES = {
   },
 
   /**
-   * Verifica se há CTA natural
+   * Verifica se há CTA editorial natural
+   * Compatível com o Protocolo Editorial v2.0 (linguagem editorial, não de vendas)
    */
   temCtaNatural: (texto) => {
-    const temCta = /conferir|confira|ver (na|o|disponibilidade)|próximo passo|acessar|consultar oferta/i.test(texto);
+    const temCta = /conhe[cç]([ea]|er)|mais informa[cç][õo]es|consultar?|verifiq[ue]|verificar|conferir|para quem quiser|caso tenha interesse|consulte|confira|acessar|dispon[ií]vel|pode (ser )?(encontrado|consultado|verificado)/i.test(texto);
     return {
       valido: temCta,
-      mensagem: temCta ? '✅ CTA natural presente' : '❌ Sem CTA (adicionar)'
+      mensagem: temCta ? '✅ CTA editorial presente' : '❌ Sem CTA editorial (adicionar referência natural ao produto)'
     };
   },
 

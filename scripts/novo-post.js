@@ -157,12 +157,8 @@ function sanitizarConteudo(conteudo) {
     return true;
   }).join('\n');
   
-  // Valida e injeta CTA se faltar
-  const temCTA = /confira|acesse|veja|conheça|consulte|saiba mais|clique|visite|aproveite|compre|adquira|leia mais|descubra|encontre|confira no/i.test(sanitizado);
-  if (!temCTA) {
-    sanitizado = sanitizado.trimRight() + '\n\nConfira o produto no anúncio para detalhes atualizados e aproveitar a melhor oferta.';
-  }
-  
+  // NÃO injeta CTA automaticamente — o prompt editorial já inclui CTA natural quando necessário.
+  // Não usar linguagem de vendedor ("aproveite", "compre", "clique aqui")
   return sanitizado;
 }
 
@@ -740,14 +736,19 @@ async function generateMarkdown(produto, imageFile, slug) {
       groqKey
     );
   } catch (error) {
-    console.log(`   ⚠️  Erro no Groq: ${error.message}`);
-    // Fallback: conteúdo básico
-    conteudoGerado = gerarConteudoBasico(produto, variacoes);
+    console.log(`   ⚠️  Erro no Groq: ${error.message}. NÃO usando fallback genérico.`);
+    // NUNCA usar fallback genérico — conteúdo de baixa qualidade prejudica SEO e reputação
+    throw new Error(`Falha ao gerar conteúdo com IA: ${error.message}. Pipeline abortado.`);
+  }
+  
+  // Verifica se o conteúdo foi gerado (pode retornar null sem lançar exceção)
+  if (!conteudoGerado || conteudoGerado.length < 200) {
+    throw new Error('Conteúdo IA retornou vazio ou muito curto. Pipeline abortado.');
   }
   
   // 5. Valida, corrige e sanitiza conteúdo
   let conteudoFinal = corrigirAutomatico(conteudoGerado);
-  conteudoFinal = sanitizarConteudo(conteudoFinal); // Remove preços e garante CTA
+  conteudoFinal = sanitizarConteudo(conteudoFinal); // Remove preços — CTA editorial é responsabilidade do prompt IA
   const validacao = validarConteudo(conteudoFinal);
 
   if (!validacao.aprovado) {
@@ -777,45 +778,6 @@ ${conteudoFinal}
 
 *Links deste post são afiliados. Você não paga nada a mais, mas nos ajuda a manter o site gratuito.*
 `;
-}
-
-// ── Fallback: conteúdo básico ─────────────────────────────────────────────
-
-function gerarConteudoBasico(produto, variacoes) {
-  const { title, description, specs, store, category } = produto;
-  const emoji = { 'Mercado Livre': '🛒', 'Amazon': '📦', 'Magalu': '🏪' }[store] || '🛍️';
-
-  // Specs em bullet points
-  const specsBlock = specs && specs.length > 0
-    ? specs.join('\n')
-    : '- **Categoria:** ' + (category || 'geral') + '\n- **Disponível em:** ' + store;
-
-  // CTA direto
-  const ctaDireto = 'Disponível na ' + store + ' — confira o preço atual e as condições.';
-
-  const nomeCurto = title.length > 80 ? title.substring(0, 77) + '...' : title;
-
-  return '# ' + nomeCurto + ' — Análise Completa\n\n' +
-    '## O Que É\n\n' +
-    title + ' é um produto ' + category + ' disponível na ' + store + '. ' + description + '\n\n' +
-    '## Especificações Técnicas\n\n' + specsBlock + '\n\n' +
-    '## Principais Características\n\n' +
-    '- Disponível na loja ' + store + '\n' +
-    '- Categoria: ' + category + '\n' +
-    '- Consulte a página oficial para ofertas e condições atualizadas\n\n' +
-    '## Para Quem é Ideal\n\n' +
-    variacoes.transicao + '\n\n' +
-    '## Dúvidas Comuns\n\n' +
-    '### O que é este produto?\n' +
-    title + ' é um produto da categoria ' + category + ', vendido pela ' + store + '. Confira as especificações acima para mais detalhes.\n\n' +
-    '### Para quem é indicado?\n' +
-    'Este produto é voltado para consumidores que buscam opções na categoria ' + category + '. Verifique as especificações completas para confirmar se atende às suas necessidades.\n\n' +
-    '### Onde comprar?\n' +
-    'O produto está disponível na loja ' + store + '. Consulte a página oficial para preços e condições atualizadas.\n\n' +
-    '### Vale a pena?\n' +
-    'Depende do seu perfil de uso. Compare as especificações com outras opções da categoria e verifique avaliações de outros compradores na página do produto.\n\n' +
-    '## Veredito Final\n\n' +
-    variacoes.fechamento + '. ' + ctaDireto;
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
