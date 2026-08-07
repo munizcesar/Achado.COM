@@ -122,8 +122,7 @@ function selecionarProduto(categoria) {
     return todos[Math.floor(Math.random() * todos.length)];
   }
 
-  const candidatos = pool.slice(0, Math.min(4, pool.length));
-  return candidatos[Math.floor(Math.random() * candidatos.length)];
+  return pool[Math.floor(Math.random() * pool.length)];
 }
 
 // ═══════════════════════════════════════════════════════════════════

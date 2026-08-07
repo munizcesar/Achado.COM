@@ -122,6 +122,21 @@ function getPillarForSlot(slotIndex) {
   return PILLARS[(slotIndex + offset) % PILLARS.length];
 }
 
+function getCurrentSlotIndex() {
+  const brt = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
+  const h = brt.getHours();
+  let bestSlot = 0;
+  let minDiff = 24;
+  for (let i = 0; i < SCHEDULES.length; i++) {
+    const diff = Math.abs(h - SCHEDULES[i].hour);
+    if (diff < minDiff) {
+      minDiff = diff;
+      bestSlot = i;
+    }
+  }
+  return bestSlot;
+}
+
 function pickFromPool(pool, exclude = []) {
   const available = pool.filter(p => !exclude.includes(p.asin));
   if (available.length === 0) return null;
@@ -1137,9 +1152,10 @@ if (args.includes('--status')) {
 if (args.includes('--now')) {
   const dryRun = args.includes('--dry-run');
   const forcePillar = args.find(a => PILLARS.includes(a)) || null;
+  const slotIndex = forcePillar ? 0 : getCurrentSlotIndex();
   const logger = createExecutionLogger({ pilar: forcePillar || 'auto', trigger: dryRun ? 'dry-run' : 'manual' });
   logger.info(`⚡ --now ${forcePillar ? `(pilar: ${forcePillar})` : '(rotação automática)'}${dryRun ? ' [DRY RUN]' : ''}`);
-  runJob(forcePillar, 0, 'manual', dryRun)
+  runJob(forcePillar, slotIndex, 'manual', dryRun)
     .then(() => process.exit(0))
     .catch(err => {
       const errLogger = createExecutionLogger({ pilar: 'error', trigger: 'manual' });
